@@ -1,0 +1,472 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Objects" href="objects.html" /><link rel="prev" title="ngrok-api" href="index.html" />
+
+    <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
+        <title>Client - ngrok-api documentation</title>
+      <link rel="stylesheet" href="_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
+    <link rel="stylesheet" href="_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" href="_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">ngrok-api  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">ngrok-api  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption"><span class="caption-text">API</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Errors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="abuse_reports.html">Abuse Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_keys.html">API Keys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="certificate_authorities.html">Certificate Authorities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credentials.html">Tunnel Credentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event_streams.html">Event Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event_destinations.html">Event Destinations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ip_policies.html">IP Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ip_policy_rules.html">IP Policy Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ip_restrictions.html">IP Restrictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ip_whitelist.html">IP Whitelist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_configurations.html">Endpoint Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_logging_module.html">Logging Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_circuit_breaker_module.html">Circuit Breaker Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_compression_module.html">Compression Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_tls_termination_module.html">TLS Termination Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_ip_policy_module.html">IP Policy Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_mutual_tls_module.html">Mutual TLS Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_request_headers_module.html">Request Headers Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_response_headers_module.html">Response Headers Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_o_auth_module.html">OAuth Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_webhook_validation_module.html">Webhook Validation Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_saml_module.html">SAML Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_oidc_module.html">OIDC Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reserved_addrs.html">Reserved Addresses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reserved_domains.html">Reserved Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssh_certificate_authorities.html">SSH Certificate Authorities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssh_credentials.html">SSH Credentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssh_host_certificates.html">SSH Host Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssh_user_certificates.html">SSH User Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_certificates.html">TLS Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tunnel_sessions.html">Tunnel Sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tunnels.html">Tunnels</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Errors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="abuse_reports.html">Abuse Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_keys.html">API Keys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="certificate_authorities.html">Certificate Authorities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credentials.html">Tunnel Credentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event_streams.html">Event Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event_destinations.html">Event Destinations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ip_policies.html">IP Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ip_policy_rules.html">IP Policy Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ip_restrictions.html">IP Restrictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ip_whitelist.html">IP Whitelist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_configurations.html">Endpoint Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_logging_module.html">Logging Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_circuit_breaker_module.html">Circuit Breaker Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_compression_module.html">Compression Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_tls_termination_module.html">TLS Termination Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_ip_policy_module.html">IP Policy Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_mutual_tls_module.html">Mutual TLS Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_request_headers_module.html">Request Headers Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_response_headers_module.html">Response Headers Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_o_auth_module.html">OAuth Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_webhook_validation_module.html">Webhook Validation Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_saml_module.html">SAML Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_oidc_module.html">OIDC Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reserved_addrs.html">Reserved Addresses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reserved_domains.html">Reserved Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssh_certificate_authorities.html">SSH Certificate Authorities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssh_credentials.html">SSH Credentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssh_host_certificates.html">SSH Host Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssh_user_certificates.html">SSH User Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_certificates.html">TLS Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tunnel_sessions.html">Tunnel Sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tunnels.html">Tunnels</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="client">
+<h1>Client<a class="headerlink" href="#client" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#ngrok.Client" title="ngrok.Client"><code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code></a> is the root object of the <cite>ngrok-api</cite> library. Construct
+a Client with an API Key. Then you can access API Services as properties of the
+Client object:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ngrok</span>
+
+<span class="c1"># construct the api client</span>
+<span class="n">ng</span> <span class="o">=</span> <span class="n">ngrok</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s2">"&lt;API KEY&gt;"</span><span class="p">)</span>
+
+<span class="c1"># list all ip policies</span>
+<span class="k">for</span> <span class="n">policy</span> <span class="ow">in</span> <span class="n">ng</span><span class="o">.</span><span class="n">ip_policies</span><span class="o">.</span><span class="n">list</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">policy</span><span class="p">)</span>
+
+<span class="c1"># create an ngrok agent authtoken</span>
+<span class="n">cred</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">tunnel_credentials</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cred</span><span class="p">)</span>
+</pre></div>
+</div>
+<span class="target" id="module-ngrok"></span><dl class="py class">
+<dt id="ngrok.Client">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.</span></code><code class="sig-name descname"><span class="pre">Client</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'https://api.ngrok.com'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/client.html#Client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.Client" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="ngrok.Client.abuse_reports">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">abuse_reports</span></code><a class="headerlink" href="#ngrok.Client.abuse_reports" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="abuse_reports.html#ngrok.services.AbuseReportsClient" title="ngrok.services.AbuseReportsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbuseReportsClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.api_keys">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">api_keys</span></code><a class="headerlink" href="#ngrok.Client.api_keys" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="api_keys.html#ngrok.services.APIKeysClient" title="ngrok.services.APIKeysClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">APIKeysClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.certificate_authorities">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">certificate_authorities</span></code><a class="headerlink" href="#ngrok.Client.certificate_authorities" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="certificate_authorities.html#ngrok.services.CertificateAuthoritiesClient" title="ngrok.services.CertificateAuthoritiesClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">CertificateAuthoritiesClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.credentials">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">credentials</span></code><a class="headerlink" href="#ngrok.Client.credentials" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="credentials.html#ngrok.services.CredentialsClient" title="ngrok.services.CredentialsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">CredentialsClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.endpoint_configurations">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">endpoint_configurations</span></code><a class="headerlink" href="#ngrok.Client.endpoint_configurations" title="Permalink to this definition">¶</a></dt>
+<dd><p>## Endpoint Configuration management</p>
+<p>An [Endpoint Configuration](<a class="reference external" href="https://ngrok.com/docs/ngrok-link#api-endpoint-configurations">https://ngrok.com/docs/ngrok-link#api-endpoint-configurations</a>) describes
+a ngrok network endpoint instance.</p>
+<p>_Endpoints are your gateway to ngrok features!_</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="endpoint_configurations.html#ngrok.services.EndpointConfigurationsClient" title="ngrok.services.EndpointConfigurationsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointConfigurationsClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.event_destinations">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">event_destinations</span></code><a class="headerlink" href="#ngrok.Client.event_destinations" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="event_destinations.html#ngrok.services.EventDestinationsClient" title="ngrok.services.EventDestinationsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventDestinationsClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.event_streams">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">event_streams</span></code><a class="headerlink" href="#ngrok.Client.event_streams" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="event_streams.html#ngrok.services.EventStreamsClient" title="ngrok.services.EventStreamsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventStreamsClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.ip_policies">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ip_policies</span></code><a class="headerlink" href="#ngrok.Client.ip_policies" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="ip_policies.html#ngrok.services.IPPoliciesClient" title="ngrok.services.IPPoliciesClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPPoliciesClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.ip_policy_rules">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ip_policy_rules</span></code><a class="headerlink" href="#ngrok.Client.ip_policy_rules" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="ip_policy_rules.html#ngrok.services.IPPolicyRulesClient" title="ngrok.services.IPPolicyRulesClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPPolicyRulesClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.ip_restrictions">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ip_restrictions</span></code><a class="headerlink" href="#ngrok.Client.ip_restrictions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="ip_restrictions.html#ngrok.services.IPRestrictionsClient" title="ngrok.services.IPRestrictionsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPRestrictionsClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.ip_whitelist">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ip_whitelist</span></code><a class="headerlink" href="#ngrok.Client.ip_whitelist" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="ip_whitelist.html#ngrok.services.IPWhitelistClient" title="ngrok.services.IPWhitelistClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPWhitelistClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.pointcfg_module">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">pointcfg_module</span></code><a class="headerlink" href="#ngrok.Client.pointcfg_module" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.reserved_addrs">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">reserved_addrs</span></code><a class="headerlink" href="#ngrok.Client.reserved_addrs" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="reserved_addrs.html#ngrok.services.ReservedAddrsClient" title="ngrok.services.ReservedAddrsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedAddrsClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.reserved_domains">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">reserved_domains</span></code><a class="headerlink" href="#ngrok.Client.reserved_domains" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="reserved_domains.html#ngrok.services.ReservedDomainsClient" title="ngrok.services.ReservedDomainsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomainsClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.ssh_certificate_authorities">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ssh_certificate_authorities</span></code><a class="headerlink" href="#ngrok.Client.ssh_certificate_authorities" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="ssh_certificate_authorities.html#ngrok.services.SSHCertificateAuthoritiesClient" title="ngrok.services.SSHCertificateAuthoritiesClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSHCertificateAuthoritiesClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.ssh_credentials">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ssh_credentials</span></code><a class="headerlink" href="#ngrok.Client.ssh_credentials" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="ssh_credentials.html#ngrok.services.SSHCredentialsClient" title="ngrok.services.SSHCredentialsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSHCredentialsClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.ssh_host_certificates">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ssh_host_certificates</span></code><a class="headerlink" href="#ngrok.Client.ssh_host_certificates" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="ssh_host_certificates.html#ngrok.services.SSHHostCertificatesClient" title="ngrok.services.SSHHostCertificatesClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSHHostCertificatesClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.ssh_user_certificates">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ssh_user_certificates</span></code><a class="headerlink" href="#ngrok.Client.ssh_user_certificates" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="ssh_user_certificates.html#ngrok.services.SSHUserCertificatesClient" title="ngrok.services.SSHUserCertificatesClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSHUserCertificatesClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.tls_certificates">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">tls_certificates</span></code><a class="headerlink" href="#ngrok.Client.tls_certificates" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="tls_certificates.html#ngrok.services.TLSCertificatesClient" title="ngrok.services.TLSCertificatesClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">TLSCertificatesClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.tunnel_sessions">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">tunnel_sessions</span></code><a class="headerlink" href="#ngrok.Client.tunnel_sessions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="tunnel_sessions.html#ngrok.services.TunnelSessionsClient" title="ngrok.services.TunnelSessionsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">TunnelSessionsClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.tunnels">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">tunnels</span></code><a class="headerlink" href="#ngrok.Client.tunnels" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="tunnels.html#ngrok.services.TunnelsClient" title="ngrok.services.TunnelsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">TunnelsClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="objects.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Objects</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Home</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, ngrok Inc.
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="_sources/client.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>
