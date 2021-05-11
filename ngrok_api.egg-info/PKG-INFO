@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: ngrok-api
+Version: 1.0.0
+Summary: ngrok HTTP API client library
+Home-page: https://github.com/ngrok/ngrok-api-python
+Author: Alan Shreve
+Author-email: alan@ngrok.com
+License: UNKNOWN
+Description: # ngrok API client library
+        
+        This library wraps the [ngrok HTTP API](https://ngrok.com/docs/api) to make it
+        easier to consume in Python.
+        
+        ## Installation
+        
+            pip install ngrok-api
+        
+        ## Documentation and Sample Usage
+        
+        This libray is not yet documented.
+        
+        ## Pull Requests
+        
+        Most code in this library is automatically generated. This means that most pull
+        requests will not be merged as-is and will instead be incorporated into our
+        code generator.
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Provides-Extra: tox
+Provides-Extra: doc

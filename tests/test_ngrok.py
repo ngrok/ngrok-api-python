@@ -20,7 +20,6 @@ def test_certificate_authorities():
     ca_desc = "python api client tests"
     ca_created = c.certificate_authorities.create(ca_pem=ca_pem, description=ca_desc)
     assert ca_created.description == ca_desc
-    # assert ca_created.ca_pem == ca_pem
 
     # get the instance and assert it's the same
     mock.returns(mock_ca)
@@ -50,10 +49,10 @@ def test_certificate_authorities():
 
     # 404 after delete
     try:
-        mock.returns(ngrok.ValidationError(error_code=0, message='Not Found', status_code=404, details={}))
+        mock.returns(ngrok.NotFoundError(error_code=0, message='Not Found', http_status_code=404, details={}))
         c.certificate_authorities.get(ca_created.id)
-    except ngrok.ValidationError as e:
-        assert e.status_code == 404
+    except ngrok.NotFoundError as e:
+        assert e.http_status_code == 404
     else:
         assert False
 
