@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: ngrok-api
-Version: 0.1.0
+Version: 0.1.1
 Summary: ngrok HTTP API client library
 Home-page: https://github.com/ngrok/ngrok-api-python
 Author: Alan Shreve
