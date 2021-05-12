@@ -8,13 +8,13 @@ def read_file(filename):
 
 setup(
     name="ngrok-api",
-    version="0.1.0",
+    version="0.1.1",
     description="ngrok HTTP API client library",
     long_description=read_file("README.md"),
     long_description_content_type="text/markdown",
     author="Alan Shreve",
     author_email="alan@ngrok.com",
-    packages=find_packages('ngrok'),
+    packages=find_packages(exclude=['tests']),
     package_data={"ngrok": ["py.typed"]},
     url="https://github.com/ngrok/ngrok-api-python",
     include_package_data=True,
