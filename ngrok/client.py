@@ -51,12 +51,8 @@ class Client(object):
 
     @property
     def endpoint_configurations(self) -> EndpointConfigurationsClient:
-        """## Endpoint Configuration management
-
-        An [Endpoint Configuration](https://ngrok.com/docs/ngrok-link#api-endpoint-configurations) describes
-        a ngrok network endpoint instance.
-
-        _Endpoints are your gateway to ngrok features!_"""
+        """Endpoint Configuration managementAn `Endpoint Configuration` <https://ngrok.com/docs/ngrok-link#api-endpoint-configurations>`_ describes
+        a ngrok network endpoint instance.*Endpoints are your gateway to ngrok features!*"""
         return EndpointConfigurationsClient(self)
 
     @property

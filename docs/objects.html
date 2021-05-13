@@ -110,47 +110,6 @@
   <p class="caption"><span class="caption-text">API</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="client.html">Client</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Objects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="errors.html">Errors</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Services</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="abuse_reports.html">Abuse Reports</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api_keys.html">API Keys</a></li>
-<li class="toctree-l1"><a class="reference internal" href="certificate_authorities.html">Certificate Authorities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="credentials.html">Tunnel Credentials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="event_streams.html">Event Streams</a></li>
-<li class="toctree-l1"><a class="reference internal" href="event_destinations.html">Event Destinations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ip_policies.html">IP Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ip_policy_rules.html">IP Policy Rules</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ip_restrictions.html">IP Restrictions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ip_whitelist.html">IP Whitelist</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_configurations.html">Endpoint Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_logging_module.html">Logging Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_circuit_breaker_module.html">Circuit Breaker Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_compression_module.html">Compression Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_tls_termination_module.html">TLS Termination Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_ip_policy_module.html">IP Policy Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_mutual_tls_module.html">Mutual TLS Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_request_headers_module.html">Request Headers Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_response_headers_module.html">Response Headers Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_o_auth_module.html">OAuth Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_webhook_validation_module.html">Webhook Validation Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_saml_module.html">SAML Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_oidc_module.html">OIDC Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reserved_addrs.html">Reserved Addresses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reserved_domains.html">Reserved Domains</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ssh_certificate_authorities.html">SSH Certificate Authorities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ssh_credentials.html">SSH Credentials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ssh_host_certificates.html">SSH Host Certificates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ssh_user_certificates.html">SSH User Certificates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tls_certificates.html">TLS Certificates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tunnel_sessions.html">Tunnel Sessions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tunnels.html">Tunnels</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="client.html">Client</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="errors.html">Errors</a></li>
 </ul>
@@ -255,7 +214,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.APIKey.token">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">token</span></code><a class="headerlink" href="#ngrok.objects.APIKey.token" title="Permalink to this definition">¶</a></dt>
-<dd><p>the bearer token that can be placed into the Authorization header to authenticate request to the ngrok API. &lt;strong&gt;This value is only available one time, on the API response from key creation. Otherwise it is null.&lt;/strong&gt;</p>
+<dd><p>the bearer token that can be placed into the Authorization header to authenticate request to the ngrok API. <strong>This value is only available one time, on the API response from key creation. Otherwise it is null.</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -419,7 +378,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.AbuseReport.status">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">status</span></code><a class="headerlink" href="#ngrok.objects.AbuseReport.status" title="Permalink to this definition">¶</a></dt>
-<dd><p>Indicates whether ngrok has processed the abuse report. one of &lt;code&gt;PENDING&lt;/code&gt;, &lt;code&gt;PROCESSED&lt;/code&gt;, or &lt;code&gt;PARTIALLY_PROCESSED&lt;/code&gt;</p>
+<dd><p>Indicates whether ngrok has processed the abuse report. one of <code class="docutils literal notranslate"><span class="pre">PENDING</span></code>, <code class="docutils literal notranslate"><span class="pre">PROCESSED</span></code>, or <code class="docutils literal notranslate"><span class="pre">PARTIALLY_PROCESSED</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -463,7 +422,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.AbuseReportHostname.status">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">status</span></code><a class="headerlink" href="#ngrok.objects.AbuseReportHostname.status" title="Permalink to this definition">¶</a></dt>
-<dd><p>indicates what action ngrok has taken against the hostname. one of &lt;code&gt;PENDING&lt;/code&gt;, &lt;code&gt;BANNED&lt;/code&gt;, &lt;code&gt;UNBANNED&lt;/code&gt;, or &lt;code&gt;IGNORE&lt;/code&gt;</p>
+<dd><p>indicates what action ngrok has taken against the hostname. one of <code class="docutils literal notranslate"><span class="pre">PENDING</span></code>, <code class="docutils literal notranslate"><span class="pre">BANNED</span></code>, <code class="docutils literal notranslate"><span class="pre">UNBANNED</span></code>, or <code class="docutils literal notranslate"><span class="pre">IGNORE</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -633,7 +592,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.objects.Credential.acl">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">acl</span></code><a class="headerlink" href="#ngrok.objects.Credential.acl" title="Permalink to this definition">¶</a></dt>
-<dd><p>optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the &lt;code&gt;bind&lt;/code&gt; rule. The &lt;code&gt;bind&lt;/code&gt; rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule &lt;code&gt;bind:example.ngrok.io&lt;/code&gt;. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of &lt;code&gt;bind:<em>.example.com&lt;/code&gt; which will allow &lt;code&gt;x.example.com&lt;/code&gt;, &lt;code&gt;y.example.com&lt;/code&gt;, &lt;code&gt;</em>.example.com&lt;/code&gt;, etc. A rule of &lt;code&gt;’*’&lt;/code&gt; is equivalent to no acl at all and will explicitly permit all actions.</p>
+<dd><p>optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the <code class="docutils literal notranslate"><span class="pre">bind</span></code> rule. The <code class="docutils literal notranslate"><span class="pre">bind</span></code> rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule <code class="docutils literal notranslate"><span class="pre">bind:example.ngrok.io</span></code>. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of <code class="docutils literal notranslate"><span class="pre">bind:*.example.com</span></code> which will allow <code class="docutils literal notranslate"><span class="pre">x.example.com</span></code>, <code class="docutils literal notranslate"><span class="pre">y.example.com</span></code>, <code class="docutils literal notranslate"><span class="pre">*.example.com</span></code>, etc. A rule of <code class="docutils literal notranslate"><span class="pre">'*'</span></code> is equivalent to no acl at all and will explicitly permit all actions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
@@ -687,7 +646,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.Credential.token">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">token</span></code><a class="headerlink" href="#ngrok.objects.Credential.token" title="Permalink to this definition">¶</a></dt>
-<dd><p>the credential’s authtoken that can be used to authenticate an ngrok client. &lt;strong&gt;&lt;em&gt;This value is only available one time, on the API response from credential creation, otherwise it is null.&lt;/em&gt;&lt;/strong&gt;</p>
+<dd><p>the credential’s authtoken that can be used to authenticate an ngrok client. <strong>This value is only available one time, on the API response from credential creation, otherwise it is null.</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -749,7 +708,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.objects.EndpointCircuitBreaker.enabled">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">enabled</span></code><a class="headerlink" href="#ngrok.objects.EndpointCircuitBreaker.enabled" title="Permalink to this definition">¶</a></dt>
-<dd><p>&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the module will be applied to traffic, <code class="docutils literal notranslate"><span class="pre">false</span></code> to disable. default <code class="docutils literal notranslate"><span class="pre">true</span></code> if unspecified</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
@@ -813,7 +772,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.objects.EndpointCompression.enabled">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">enabled</span></code><a class="headerlink" href="#ngrok.objects.EndpointCompression.enabled" title="Permalink to this definition">¶</a></dt>
-<dd><p>&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the module will be applied to traffic, <code class="docutils literal notranslate"><span class="pre">false</span></code> to disable. default <code class="docutils literal notranslate"><span class="pre">true</span></code> if unspecified</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
@@ -827,7 +786,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.objects.EndpointConfiguration.circuit_breaker">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">circuit_breaker</span></code><a class="headerlink" href="#ngrok.objects.EndpointConfiguration.circuit_breaker" title="Permalink to this definition">¶</a></dt>
-<dd><p>circuit breaker module configuration or &lt;code&gt;null&lt;/code&gt;</p>
+<dd><p>circuit breaker module configuration or <code class="docutils literal notranslate"><span class="pre">null</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#ngrok.objects.EndpointCircuitBreaker" title="ngrok.objects.EndpointCircuitBreaker"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointCircuitBreaker</span></code></a></p>
@@ -837,7 +796,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointConfiguration.compression">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">compression</span></code><a class="headerlink" href="#ngrok.objects.EndpointConfiguration.compression" title="Permalink to this definition">¶</a></dt>
-<dd><p>compression module configuration or &lt;code&gt;null&lt;/code&gt;</p>
+<dd><p>compression module configuration or <code class="docutils literal notranslate"><span class="pre">null</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#ngrok.objects.EndpointCompression" title="ngrok.objects.EndpointCompression"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointCompression</span></code></a></p>
@@ -881,7 +840,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointConfiguration.ip_policy">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ip_policy</span></code><a class="headerlink" href="#ngrok.objects.EndpointConfiguration.ip_policy" title="Permalink to this definition">¶</a></dt>
-<dd><p>ip policy module configuration or &lt;code&gt;null&lt;/code&gt;</p>
+<dd><p>ip policy module configuration or <code class="docutils literal notranslate"><span class="pre">null</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#ngrok.objects.EndpointIPPolicy" title="ngrok.objects.EndpointIPPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointIPPolicy</span></code></a></p>
@@ -891,7 +850,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointConfiguration.logging">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">logging</span></code><a class="headerlink" href="#ngrok.objects.EndpointConfiguration.logging" title="Permalink to this definition">¶</a></dt>
-<dd><p>logging module configuration or &lt;code&gt;null&lt;/code&gt;</p>
+<dd><p>logging module configuration or <code class="docutils literal notranslate"><span class="pre">null</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#ngrok.objects.EndpointLogging" title="ngrok.objects.EndpointLogging"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointLogging</span></code></a></p>
@@ -911,7 +870,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointConfiguration.mutual_tls">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">mutual_tls</span></code><a class="headerlink" href="#ngrok.objects.EndpointConfiguration.mutual_tls" title="Permalink to this definition">¶</a></dt>
-<dd><p>mutual TLS module configuration or &lt;code&gt;null&lt;/code&gt;</p>
+<dd><p>mutual TLS module configuration or <code class="docutils literal notranslate"><span class="pre">null</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#ngrok.objects.EndpointMutualTLS" title="ngrok.objects.EndpointMutualTLS"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointMutualTLS</span></code></a></p>
@@ -921,7 +880,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointConfiguration.oauth">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">oauth</span></code><a class="headerlink" href="#ngrok.objects.EndpointConfiguration.oauth" title="Permalink to this definition">¶</a></dt>
-<dd><p>oauth module configuration or &lt;code&gt;null&lt;/code&gt;</p>
+<dd><p>oauth module configuration or <code class="docutils literal notranslate"><span class="pre">null</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#ngrok.objects.EndpointOAuth" title="ngrok.objects.EndpointOAuth"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointOAuth</span></code></a></p>
@@ -931,7 +890,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointConfiguration.oidc">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">oidc</span></code><a class="headerlink" href="#ngrok.objects.EndpointConfiguration.oidc" title="Permalink to this definition">¶</a></dt>
-<dd><p>oidc module configuration or &lt;code&gt;null&lt;/code&gt;</p>
+<dd><p>oidc module configuration or <code class="docutils literal notranslate"><span class="pre">null</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#ngrok.objects.EndpointOIDC" title="ngrok.objects.EndpointOIDC"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointOIDC</span></code></a></p>
@@ -941,7 +900,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointConfiguration.request_headers">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">request_headers</span></code><a class="headerlink" href="#ngrok.objects.EndpointConfiguration.request_headers" title="Permalink to this definition">¶</a></dt>
-<dd><p>request headers module configuration or &lt;code&gt;null&lt;/code&gt;</p>
+<dd><p>request headers module configuration or <code class="docutils literal notranslate"><span class="pre">null</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#ngrok.objects.EndpointRequestHeaders" title="ngrok.objects.EndpointRequestHeaders"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointRequestHeaders</span></code></a></p>
@@ -951,7 +910,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointConfiguration.response_headers">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">response_headers</span></code><a class="headerlink" href="#ngrok.objects.EndpointConfiguration.response_headers" title="Permalink to this definition">¶</a></dt>
-<dd><p>response headers module configuration or &lt;code&gt;null&lt;/code&gt;</p>
+<dd><p>response headers module configuration or <code class="docutils literal notranslate"><span class="pre">null</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#ngrok.objects.EndpointResponseHeaders" title="ngrok.objects.EndpointResponseHeaders"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointResponseHeaders</span></code></a></p>
@@ -961,7 +920,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointConfiguration.saml">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">saml</span></code><a class="headerlink" href="#ngrok.objects.EndpointConfiguration.saml" title="Permalink to this definition">¶</a></dt>
-<dd><p>saml module configuration or &lt;code&gt;null&lt;/code&gt;</p>
+<dd><p>saml module configuration or <code class="docutils literal notranslate"><span class="pre">null</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#ngrok.objects.EndpointSAML" title="ngrok.objects.EndpointSAML"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointSAML</span></code></a></p>
@@ -971,7 +930,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointConfiguration.tls_termination">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">tls_termination</span></code><a class="headerlink" href="#ngrok.objects.EndpointConfiguration.tls_termination" title="Permalink to this definition">¶</a></dt>
-<dd><p>TLS termination module configuration or &lt;code&gt;null&lt;/code&gt;</p>
+<dd><p>TLS termination module configuration or <code class="docutils literal notranslate"><span class="pre">null</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#ngrok.objects.EndpointTLSTermination" title="ngrok.objects.EndpointTLSTermination"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointTLSTermination</span></code></a></p>
@@ -981,7 +940,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointConfiguration.type">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">type</span></code><a class="headerlink" href="#ngrok.objects.EndpointConfiguration.type" title="Permalink to this definition">¶</a></dt>
-<dd><p>they type of traffic this endpoint configuration can be applied to. one of: &lt;code&gt;http&lt;/code&gt;, &lt;code&gt;https&lt;/code&gt;, &lt;code&gt;tcp&lt;/code&gt;</p>
+<dd><p>they type of traffic this endpoint configuration can be applied to. one of: <code class="docutils literal notranslate"><span class="pre">http</span></code>, <code class="docutils literal notranslate"><span class="pre">https</span></code>, <code class="docutils literal notranslate"><span class="pre">tcp</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -1005,7 +964,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointConfiguration.webhook_validation">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">webhook_validation</span></code><a class="headerlink" href="#ngrok.objects.EndpointConfiguration.webhook_validation" title="Permalink to this definition">¶</a></dt>
-<dd><p>webhook validation module configuration or &lt;code&gt;null&lt;/code&gt;</p>
+<dd><p>webhook validation module configuration or <code class="docutils literal notranslate"><span class="pre">null</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#ngrok.objects.EndpointWebhookValidation" title="ngrok.objects.EndpointWebhookValidation"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointWebhookValidation</span></code></a></p>
@@ -1053,7 +1012,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.objects.EndpointIPPolicy.enabled">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">enabled</span></code><a class="headerlink" href="#ngrok.objects.EndpointIPPolicy.enabled" title="Permalink to this definition">¶</a></dt>
-<dd><p>&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the module will be applied to traffic, <code class="docutils literal notranslate"><span class="pre">false</span></code> to disable. default <code class="docutils literal notranslate"><span class="pre">true</span></code> if unspecified</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
@@ -1076,7 +1035,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.objects.EndpointIPPolicyMutate.enabled">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">enabled</span></code><a class="headerlink" href="#ngrok.objects.EndpointIPPolicyMutate.enabled" title="Permalink to this definition">¶</a></dt>
-<dd><p>&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the module will be applied to traffic, <code class="docutils literal notranslate"><span class="pre">false</span></code> to disable. default <code class="docutils literal notranslate"><span class="pre">true</span></code> if unspecified</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
@@ -1100,7 +1059,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.objects.EndpointLogging.enabled">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">enabled</span></code><a class="headerlink" href="#ngrok.objects.EndpointLogging.enabled" title="Permalink to this definition">¶</a></dt>
-<dd><p>&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the module will be applied to traffic, <code class="docutils literal notranslate"><span class="pre">false</span></code> to disable. default <code class="docutils literal notranslate"><span class="pre">true</span></code> if unspecified</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
@@ -1124,7 +1083,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.objects.EndpointLoggingMutate.enabled">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">enabled</span></code><a class="headerlink" href="#ngrok.objects.EndpointLoggingMutate.enabled" title="Permalink to this definition">¶</a></dt>
-<dd><p>&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the module will be applied to traffic, <code class="docutils literal notranslate"><span class="pre">false</span></code> to disable. default <code class="docutils literal notranslate"><span class="pre">true</span></code> if unspecified</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
@@ -1158,7 +1117,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointMutualTLS.enabled">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">enabled</span></code><a class="headerlink" href="#ngrok.objects.EndpointMutualTLS.enabled" title="Permalink to this definition">¶</a></dt>
-<dd><p>&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the module will be applied to traffic, <code class="docutils literal notranslate"><span class="pre">false</span></code> to disable. default <code class="docutils literal notranslate"><span class="pre">true</span></code> if unspecified</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
@@ -1182,7 +1141,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointMutualTLSMutate.enabled">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">enabled</span></code><a class="headerlink" href="#ngrok.objects.EndpointMutualTLSMutate.enabled" title="Permalink to this definition">¶</a></dt>
-<dd><p>&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the module will be applied to traffic, <code class="docutils literal notranslate"><span class="pre">false</span></code> to disable. default <code class="docutils literal notranslate"><span class="pre">true</span></code> if unspecified</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
@@ -1216,7 +1175,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointOAuth.enabled">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">enabled</span></code><a class="headerlink" href="#ngrok.objects.EndpointOAuth.enabled" title="Permalink to this definition">¶</a></dt>
-<dd><p>&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the module will be applied to traffic, <code class="docutils literal notranslate"><span class="pre">false</span></code> to disable. default <code class="docutils literal notranslate"><span class="pre">true</span></code> if unspecified</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
@@ -1280,7 +1239,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointOAuthFacebook.client_secret">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">client_secret</span></code><a class="headerlink" href="#ngrok.objects.EndpointOAuthFacebook.client_secret" title="Permalink to this definition">¶</a></dt>
-<dd><p>the OAuth app client secret. retrieve if from the identity provider’s dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for &lt;code&gt;client_id&lt;/code&gt;.</p>
+<dd><p>the OAuth app client secret. retrieve if from the identity provider’s dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for <code class="docutils literal notranslate"><span class="pre">client_id</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -1310,7 +1269,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointOAuthFacebook.scopes">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">scopes</span></code><a class="headerlink" href="#ngrok.objects.EndpointOAuthFacebook.scopes" title="Permalink to this definition">¶</a></dt>
-<dd><p>a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both &lt;code&gt;client_id&lt;/code&gt; and &lt;code&gt;client_secret&lt;/code&gt; to set scopes)</p>
+<dd><p>a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both <code class="docutils literal notranslate"><span class="pre">client_id</span></code> and <code class="docutils literal notranslate"><span class="pre">client_secret</span></code> to set scopes)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
@@ -1334,7 +1293,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointOAuthGitHub.client_secret">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">client_secret</span></code><a class="headerlink" href="#ngrok.objects.EndpointOAuthGitHub.client_secret" title="Permalink to this definition">¶</a></dt>
-<dd><p>the OAuth app client secret. retrieve if from the identity provider’s dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for &lt;code&gt;client_id&lt;/code&gt;.</p>
+<dd><p>the OAuth app client secret. retrieve if from the identity provider’s dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for <code class="docutils literal notranslate"><span class="pre">client_id</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -1374,7 +1333,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointOAuthGitHub.scopes">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">scopes</span></code><a class="headerlink" href="#ngrok.objects.EndpointOAuthGitHub.scopes" title="Permalink to this definition">¶</a></dt>
-<dd><p>a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both &lt;code&gt;client_id&lt;/code&gt; and &lt;code&gt;client_secret&lt;/code&gt; to set scopes)</p>
+<dd><p>a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both <code class="docutils literal notranslate"><span class="pre">client_id</span></code> and <code class="docutils literal notranslate"><span class="pre">client_secret</span></code> to set scopes)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
@@ -1384,7 +1343,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointOAuthGitHub.teams">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">teams</span></code><a class="headerlink" href="#ngrok.objects.EndpointOAuthGitHub.teams" title="Permalink to this definition">¶</a></dt>
-<dd><p>a list of github teams identifiers. users will be allowed access to the endpoint if they are a member of any of these teams. identifiers should be in the ‘slug’ format qualified with the org name, e.g. &lt;code&gt;org-name/team-name&lt;/code&gt;</p>
+<dd><p>a list of github teams identifiers. users will be allowed access to the endpoint if they are a member of any of these teams. identifiers should be in the ‘slug’ format qualified with the org name, e.g. <code class="docutils literal notranslate"><span class="pre">org-name/team-name</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
@@ -1408,7 +1367,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointOAuthGoogle.client_secret">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">client_secret</span></code><a class="headerlink" href="#ngrok.objects.EndpointOAuthGoogle.client_secret" title="Permalink to this definition">¶</a></dt>
-<dd><p>the OAuth app client secret. retrieve if from the identity provider’s dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for &lt;code&gt;client_id&lt;/code&gt;.</p>
+<dd><p>the OAuth app client secret. retrieve if from the identity provider’s dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for <code class="docutils literal notranslate"><span class="pre">client_id</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -1438,7 +1397,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointOAuthGoogle.scopes">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">scopes</span></code><a class="headerlink" href="#ngrok.objects.EndpointOAuthGoogle.scopes" title="Permalink to this definition">¶</a></dt>
-<dd><p>a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both &lt;code&gt;client_id&lt;/code&gt; and &lt;code&gt;client_secret&lt;/code&gt; to set scopes)</p>
+<dd><p>a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both <code class="docutils literal notranslate"><span class="pre">client_id</span></code> and <code class="docutils literal notranslate"><span class="pre">client_secret</span></code> to set scopes)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
@@ -1462,7 +1421,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointOAuthMicrosoft.client_secret">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">client_secret</span></code><a class="headerlink" href="#ngrok.objects.EndpointOAuthMicrosoft.client_secret" title="Permalink to this definition">¶</a></dt>
-<dd><p>the OAuth app client secret. retrieve if from the identity provider’s dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for &lt;code&gt;client_id&lt;/code&gt;.</p>
+<dd><p>the OAuth app client secret. retrieve if from the identity provider’s dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for <code class="docutils literal notranslate"><span class="pre">client_id</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -1492,7 +1451,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointOAuthMicrosoft.scopes">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">scopes</span></code><a class="headerlink" href="#ngrok.objects.EndpointOAuthMicrosoft.scopes" title="Permalink to this definition">¶</a></dt>
-<dd><p>a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both &lt;code&gt;client_id&lt;/code&gt; and &lt;code&gt;client_secret&lt;/code&gt; to set scopes)</p>
+<dd><p>a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both <code class="docutils literal notranslate"><span class="pre">client_id</span></code> and <code class="docutils literal notranslate"><span class="pre">client_secret</span></code> to set scopes)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
@@ -1580,7 +1539,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointOIDC.enabled">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">enabled</span></code><a class="headerlink" href="#ngrok.objects.EndpointOIDC.enabled" title="Permalink to this definition">¶</a></dt>
-<dd><p>&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the module will be applied to traffic, <code class="docutils literal notranslate"><span class="pre">false</span></code> to disable. default <code class="docutils literal notranslate"><span class="pre">true</span></code> if unspecified</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
@@ -1654,7 +1613,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointRequestHeaders.enabled">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">enabled</span></code><a class="headerlink" href="#ngrok.objects.EndpointRequestHeaders.enabled" title="Permalink to this definition">¶</a></dt>
-<dd><p>&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the module will be applied to traffic, <code class="docutils literal notranslate"><span class="pre">false</span></code> to disable. default <code class="docutils literal notranslate"><span class="pre">true</span></code> if unspecified</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
@@ -1688,7 +1647,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointResponseHeaders.enabled">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">enabled</span></code><a class="headerlink" href="#ngrok.objects.EndpointResponseHeaders.enabled" title="Permalink to this definition">¶</a></dt>
-<dd><p>&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the module will be applied to traffic, <code class="docutils literal notranslate"><span class="pre">false</span></code> to disable. default <code class="docutils literal notranslate"><span class="pre">true</span></code> if unspecified</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
@@ -1712,7 +1671,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.objects.EndpointSAML.allow_idp_initiated">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">allow_idp_initiated</span></code><a class="headerlink" href="#ngrok.objects.EndpointSAML.allow_idp_initiated" title="Permalink to this definition">¶</a></dt>
-<dd><p>If true, the IdP may initiate a login directly (e.g. the user does not need to visit the endpoint first and then be redirected). The IdP should set the &lt;code&gt;RelayState&lt;/code&gt; parameter to the target URL of the resource they want the user to be redirected to after the SAML login assertion has been processed.</p>
+<dd><p>If true, the IdP may initiate a login directly (e.g. the user does not need to visit the endpoint first and then be redirected). The IdP should set the <code class="docutils literal notranslate"><span class="pre">RelayState</span></code> parameter to the target URL of the resource they want the user to be redirected to after the SAML login assertion has been processed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
@@ -1752,7 +1711,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointSAML.enabled">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">enabled</span></code><a class="headerlink" href="#ngrok.objects.EndpointSAML.enabled" title="Permalink to this definition">¶</a></dt>
-<dd><p>&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the module will be applied to traffic, <code class="docutils literal notranslate"><span class="pre">false</span></code> to disable. default <code class="docutils literal notranslate"><span class="pre">true</span></code> if unspecified</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
@@ -1856,7 +1815,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.objects.EndpointSAMLMutate.allow_idp_initiated">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">allow_idp_initiated</span></code><a class="headerlink" href="#ngrok.objects.EndpointSAMLMutate.allow_idp_initiated" title="Permalink to this definition">¶</a></dt>
-<dd><p>If true, the IdP may initiate a login directly (e.g. the user does not need to visit the endpoint first and then be redirected). The IdP should set the &lt;code&gt;RelayState&lt;/code&gt; parameter to the target URL of the resource they want the user to be redirected to after the SAML login assertion has been processed.</p>
+<dd><p>If true, the IdP may initiate a login directly (e.g. the user does not need to visit the endpoint first and then be redirected). The IdP should set the <code class="docutils literal notranslate"><span class="pre">RelayState</span></code> parameter to the target URL of the resource they want the user to be redirected to after the SAML login assertion has been processed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
@@ -1886,7 +1845,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointSAMLMutate.enabled">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">enabled</span></code><a class="headerlink" href="#ngrok.objects.EndpointSAMLMutate.enabled" title="Permalink to this definition">¶</a></dt>
-<dd><p>&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the module will be applied to traffic, <code class="docutils literal notranslate"><span class="pre">false</span></code> to disable. default <code class="docutils literal notranslate"><span class="pre">true</span></code> if unspecified</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
@@ -1950,7 +1909,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.objects.EndpointTLSTermination.enabled">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">enabled</span></code><a class="headerlink" href="#ngrok.objects.EndpointTLSTermination.enabled" title="Permalink to this definition">¶</a></dt>
-<dd><p>&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the module will be applied to traffic, <code class="docutils literal notranslate"><span class="pre">false</span></code> to disable. default <code class="docutils literal notranslate"><span class="pre">true</span></code> if unspecified</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
@@ -1960,7 +1919,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointTLSTermination.min_version">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">min_version</span></code><a class="headerlink" href="#ngrok.objects.EndpointTLSTermination.min_version" title="Permalink to this definition">¶</a></dt>
-<dd><p>The minimum TLS version used for termination and advertised to the client during the TLS handshake. if unspecified, ngrok will choose an industry-safe default. This value must be null if &lt;code&gt;terminate_at&lt;/code&gt; is set to &lt;code&gt;upstream&lt;/code&gt;.</p>
+<dd><p>The minimum TLS version used for termination and advertised to the client during the TLS handshake. if unspecified, ngrok will choose an industry-safe default. This value must be null if <code class="docutils literal notranslate"><span class="pre">terminate_at</span></code> is set to <code class="docutils literal notranslate"><span class="pre">upstream</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -1970,7 +1929,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointTLSTermination.terminate_at">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">terminate_at</span></code><a class="headerlink" href="#ngrok.objects.EndpointTLSTermination.terminate_at" title="Permalink to this definition">¶</a></dt>
-<dd><p>&lt;code&gt;edge&lt;/code&gt; if the ngrok edge should terminate TLS traffic, &lt;code&gt;upstream&lt;/code&gt; if TLS traffic should be passed through to the upstream ngrok agent / application server for termination. if &lt;code&gt;upstream&lt;/code&gt; is chosen, most other modules will be disallowed because they rely on the ngrok edge being able to access the underlying traffic.</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">edge</span></code> if the ngrok edge should terminate TLS traffic, <code class="docutils literal notranslate"><span class="pre">upstream</span></code> if TLS traffic should be passed through to the upstream ngrok agent / application server for termination. if <code class="docutils literal notranslate"><span class="pre">upstream</span></code> is chosen, most other modules will be disallowed because they rely on the ngrok edge being able to access the underlying traffic.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -1984,7 +1943,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.objects.EndpointWebhookValidation.enabled">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">enabled</span></code><a class="headerlink" href="#ngrok.objects.EndpointWebhookValidation.enabled" title="Permalink to this definition">¶</a></dt>
-<dd><p>&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the module will be applied to traffic, <code class="docutils literal notranslate"><span class="pre">false</span></code> to disable. default <code class="docutils literal notranslate"><span class="pre">true</span></code> if unspecified</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
@@ -1994,7 +1953,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EndpointWebhookValidation.provider">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">provider</span></code><a class="headerlink" href="#ngrok.objects.EndpointWebhookValidation.provider" title="Permalink to this definition">¶</a></dt>
-<dd><p>a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers: &lt;code&gt;SLACK&lt;/code&gt;, &lt;code&gt;SNS&lt;/code&gt;, &lt;code&gt;STRIPE&lt;/code&gt;, &lt;code&gt;GITHUB&lt;/code&gt;, &lt;code&gt;TWILIO&lt;/code&gt;, &lt;code&gt;SHOPIFY&lt;/code&gt;, &lt;code&gt;GITLAB&lt;/code&gt;, &lt;code&gt;INTERCOM&lt;/code&gt;.</p>
+<dd><p>a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers: <code class="docutils literal notranslate"><span class="pre">SLACK</span></code>, <code class="docutils literal notranslate"><span class="pre">SNS</span></code>, <code class="docutils literal notranslate"><span class="pre">STRIPE</span></code>, <code class="docutils literal notranslate"><span class="pre">GITHUB</span></code>, <code class="docutils literal notranslate"><span class="pre">TWILIO</span></code>, <code class="docutils literal notranslate"><span class="pre">SHOPIFY</span></code>, <code class="docutils literal notranslate"><span class="pre">GITLAB</span></code>, <code class="docutils literal notranslate"><span class="pre">INTERCOM</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -2042,7 +2001,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EventDestination.format">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">format</span></code><a class="headerlink" href="#ngrok.objects.EventDestination.format" title="Permalink to this definition">¶</a></dt>
-<dd><p>The output format you would like to serialize events into when sending to their target. Currently the only accepted value is &lt;code&gt;JSON&lt;/code&gt;.</p>
+<dd><p>The output format you would like to serialize events into when sending to their target. Currently the only accepted value is <code class="docutils literal notranslate"><span class="pre">JSON</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -2072,7 +2031,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EventDestination.target">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">target</span></code><a class="headerlink" href="#ngrok.objects.EventDestination.target" title="Permalink to this definition">¶</a></dt>
-<dd><p>An object that encapsulates where and how to send your events. An event destination must contain exactly one of the following objects, leaving the rest null: &lt;code&gt;kinesis&lt;/code&gt;, &lt;code&gt;firehose&lt;/code&gt;, &lt;code&gt;cloudwatch_logs&lt;/code&gt;, or &lt;code&gt;s3&lt;/code&gt;.</p>
+<dd><p>An object that encapsulates where and how to send your events. An event destination must contain exactly one of the following objects, leaving the rest null: <code class="docutils literal notranslate"><span class="pre">kinesis</span></code>, <code class="docutils literal notranslate"><span class="pre">firehose</span></code>, <code class="docutils literal notranslate"><span class="pre">cloudwatch_logs</span></code>, or <code class="docutils literal notranslate"><span class="pre">s3</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#ngrok.objects.EventTarget" title="ngrok.objects.EventTarget"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventTarget</span></code></a></p>
@@ -2164,7 +2123,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.EventStream.event_type">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">event_type</span></code><a class="headerlink" href="#ngrok.objects.EventStream.event_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>The protocol that determines which events will be collected. Supported values are &lt;code&gt;tcp_connection_closed&lt;/code&gt; and &lt;code&gt;http_request_complete&lt;/code&gt;.</p>
+<dd><p>The protocol that determines which events will be collected. Supported values are <code class="docutils literal notranslate"><span class="pre">tcp_connection_closed</span></code> and <code class="docutils literal notranslate"><span class="pre">http_request_complete</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -2300,7 +2259,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.objects.EventTargetCloudwatchLogs.auth">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">auth</span></code><a class="headerlink" href="#ngrok.objects.EventTargetCloudwatchLogs.auth" title="Permalink to this definition">¶</a></dt>
-<dd><p>Configuration for how to authenticate into your AWS account. Exactly one of &lt;code&gt;role&lt;/code&gt; or &lt;code&gt;creds&lt;/code&gt; should be configured.</p>
+<dd><p>Configuration for how to authenticate into your AWS account. Exactly one of <code class="docutils literal notranslate"><span class="pre">role</span></code> or <code class="docutils literal notranslate"><span class="pre">creds</span></code> should be configured.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#ngrok.objects.AWSAuth" title="ngrok.objects.AWSAuth"><code class="xref py py-class docutils literal notranslate"><span class="pre">AWSAuth</span></code></a></p>
@@ -2324,7 +2283,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.objects.EventTargetFirehose.auth">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">auth</span></code><a class="headerlink" href="#ngrok.objects.EventTargetFirehose.auth" title="Permalink to this definition">¶</a></dt>
-<dd><p>Configuration for how to authenticate into your AWS account. Exactly one of &lt;code&gt;role&lt;/code&gt; or &lt;code&gt;creds&lt;/code&gt; should be configured.</p>
+<dd><p>Configuration for how to authenticate into your AWS account. Exactly one of <code class="docutils literal notranslate"><span class="pre">role</span></code> or <code class="docutils literal notranslate"><span class="pre">creds</span></code> should be configured.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#ngrok.objects.AWSAuth" title="ngrok.objects.AWSAuth"><code class="xref py py-class docutils literal notranslate"><span class="pre">AWSAuth</span></code></a></p>
@@ -2348,7 +2307,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.objects.EventTargetKinesis.auth">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">auth</span></code><a class="headerlink" href="#ngrok.objects.EventTargetKinesis.auth" title="Permalink to this definition">¶</a></dt>
-<dd><p>Configuration for how to authenticate into your AWS account. Exactly one of &lt;code&gt;role&lt;/code&gt; or &lt;code&gt;creds&lt;/code&gt; should be configured.</p>
+<dd><p>Configuration for how to authenticate into your AWS account. Exactly one of <code class="docutils literal notranslate"><span class="pre">role</span></code> or <code class="docutils literal notranslate"><span class="pre">creds</span></code> should be configured.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#ngrok.objects.AWSAuth" title="ngrok.objects.AWSAuth"><code class="xref py py-class docutils literal notranslate"><span class="pre">AWSAuth</span></code></a></p>
@@ -2372,7 +2331,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.objects.IPPolicy.action">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">action</span></code><a class="headerlink" href="#ngrok.objects.IPPolicy.action" title="Permalink to this definition">¶</a></dt>
-<dd><p>the IP policy action. Supported values are &lt;code&gt;allow&lt;/code&gt; or &lt;code&gt;deny&lt;/code&gt;</p>
+<dd><p>the IP policy action. Supported values are <code class="docutils literal notranslate"><span class="pre">allow</span></code> or <code class="docutils literal notranslate"><span class="pre">deny</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -2658,7 +2617,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.IPRestriction.type">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">type</span></code><a class="headerlink" href="#ngrok.objects.IPRestriction.type" title="Permalink to this definition">¶</a></dt>
-<dd><p>the type of IP restriction. this defines what traffic will be restricted with the attached policies. four values are currently supported: &lt;code&gt;dashboard&lt;/code&gt;, &lt;code&gt;api&lt;/code&gt;, &lt;code&gt;agent&lt;/code&gt;, and &lt;code&gt;endpoints&lt;/code&gt;</p>
+<dd><p>the type of IP restriction. this defines what traffic will be restricted with the attached policies. four values are currently supported: <code class="docutils literal notranslate"><span class="pre">dashboard</span></code>, <code class="docutils literal notranslate"><span class="pre">api</span></code>, <code class="docutils literal notranslate"><span class="pre">agent</span></code>, and <code class="docutils literal notranslate"><span class="pre">endpoints</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -3382,7 +3341,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.objects.SSHCredential.acl">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">acl</span></code><a class="headerlink" href="#ngrok.objects.SSHCredential.acl" title="Permalink to this definition">¶</a></dt>
-<dd><p>optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the &lt;code&gt;bind&lt;/code&gt; rule. The &lt;code&gt;bind&lt;/code&gt; rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule &lt;code&gt;bind:example.ngrok.io&lt;/code&gt;. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of &lt;code&gt;bind:<em>.example.com&lt;/code&gt; which will allow &lt;code&gt;x.example.com&lt;/code&gt;, &lt;code&gt;y.example.com&lt;/code&gt;, &lt;code&gt;</em>.example.com&lt;/code&gt;, etc. A rule of &lt;code&gt;’*’&lt;/code&gt; is equivalent to no acl at all and will explicitly permit all actions.</p>
+<dd><p>optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the <code class="docutils literal notranslate"><span class="pre">bind</span></code> rule. The <code class="docutils literal notranslate"><span class="pre">bind</span></code> rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule <code class="docutils literal notranslate"><span class="pre">bind:example.ngrok.io</span></code>. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of <code class="docutils literal notranslate"><span class="pre">bind:*.example.com</span></code> which will allow <code class="docutils literal notranslate"><span class="pre">x.example.com</span></code>, <code class="docutils literal notranslate"><span class="pre">y.example.com</span></code>, <code class="docutils literal notranslate"><span class="pre">*.example.com</span></code>, etc. A rule of <code class="docutils literal notranslate"><span class="pre">'*'</span></code> is equivalent to no acl at all and will explicitly permit all actions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
@@ -3498,7 +3457,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.objects.SSHHostCertificate.certificate">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">certificate</span></code><a class="headerlink" href="#ngrok.objects.SSHHostCertificate.certificate" title="Permalink to this definition">¶</a></dt>
-<dd><p>the signed SSH certificate in OpenSSH Authorized Keys format. this value should be placed in a &lt;code&gt;-cert.pub&lt;/code&gt; certificate file on disk that should be referenced in your &lt;code&gt;sshd_config&lt;/code&gt; configuration file with a &lt;code&gt;HostCertificate&lt;/code&gt; directive</p>
+<dd><p>the signed SSH certificate in OpenSSH Authorized Keys format. this value should be placed in a <code class="docutils literal notranslate"><span class="pre">-cert.pub</span></code> certificate file on disk that should be referenced in your <code class="docutils literal notranslate"><span class="pre">sshd_config</span></code> configuration file with a <code class="docutils literal notranslate"><span class="pre">HostCertificate</span></code> directive</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -3542,7 +3501,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.SSHHostCertificate.key_type">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">key_type</span></code><a class="headerlink" href="#ngrok.objects.SSHHostCertificate.key_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>the key type of the &lt;code&gt;public_key&lt;/code&gt;, one of &lt;code&gt;rsa&lt;/code&gt;, &lt;code&gt;ecdsa&lt;/code&gt; or &lt;code&gt;ed25519&lt;/code&gt;</p>
+<dd><p>the key type of the <code class="docutils literal notranslate"><span class="pre">public_key</span></code>, one of <code class="docutils literal notranslate"><span class="pre">rsa</span></code>, <code class="docutils literal notranslate"><span class="pre">ecdsa</span></code> or <code class="docutils literal notranslate"><span class="pre">ed25519</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -3616,7 +3575,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.SSHHostCertificate.valid_until">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">valid_until</span></code><a class="headerlink" href="#ngrok.objects.SSHHostCertificate.valid_until" title="Permalink to this definition">¶</a></dt>
-<dd><p>the time after which the ssh host certificate becomes invalid, in RFC 3339 format. the OpenSSH certificates RFC calls this &lt;code&gt;valid_before&lt;/code&gt;.</p>
+<dd><p>the time after which the ssh host certificate becomes invalid, in RFC 3339 format. the OpenSSH certificates RFC calls this <code class="docutils literal notranslate"><span class="pre">valid_before</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -3664,7 +3623,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.objects.SSHUserCertificate.certificate">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">certificate</span></code><a class="headerlink" href="#ngrok.objects.SSHUserCertificate.certificate" title="Permalink to this definition">¶</a></dt>
-<dd><p>the signed SSH certificate in OpenSSH Authorized Keys Format. this value should be placed in a &lt;code&gt;-cert.pub&lt;/code&gt; certificate file on disk that should be referenced in your &lt;code&gt;sshd_config&lt;/code&gt; configuration file with a &lt;code&gt;HostCertificate&lt;/code&gt; directive</p>
+<dd><p>the signed SSH certificate in OpenSSH Authorized Keys Format. this value should be placed in a <code class="docutils literal notranslate"><span class="pre">-cert.pub</span></code> certificate file on disk that should be referenced in your <code class="docutils literal notranslate"><span class="pre">sshd_config</span></code> configuration file with a <code class="docutils literal notranslate"><span class="pre">HostCertificate</span></code> directive</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -3684,7 +3643,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.SSHUserCertificate.critical_options">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">critical_options</span></code><a class="headerlink" href="#ngrok.objects.SSHUserCertificate.critical_options" title="Permalink to this definition">¶</a></dt>
-<dd><p>A map of critical options included in the certificate. Only two critical options are currently defined by OpenSSH: &lt;code&gt;force-command&lt;/code&gt; and &lt;code&gt;source-address&lt;/code&gt;. See &lt;a href=”<a class="reference external" href="https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys">https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys</a>”&gt;the OpenSSH certificate protocol spec&lt;/a&gt; for additional details.</p>
+<dd><p>A map of critical options included in the certificate. Only two critical options are currently defined by OpenSSH: <code class="docutils literal notranslate"><span class="pre">force-command</span></code> and <code class="docutils literal notranslate"><span class="pre">source-address</span></code>. See <cite>the OpenSSH certificate protocol spec</cite> &lt;<a class="reference external" href="https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys">https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys</a>&gt;`_ for additional details.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapping</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
@@ -3708,7 +3667,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.SSHUserCertificate.extensions">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">extensions</span></code><a class="headerlink" href="#ngrok.objects.SSHUserCertificate.extensions" title="Permalink to this definition">¶</a></dt>
-<dd><p>A map of extensions included in the certificate. Extensions are additional metadata that can be interpreted by the SSH server for any purpose. These can be used to permit or deny the ability to open a terminal, do port forwarding, x11 forwarding, and more. If unspecified, the certificate will include limited permissions with the following extension map: &lt;code&gt;{“permit-pty”: “”, “permit-user-rc”: “”}&lt;/code&gt; OpenSSH understands a number of predefined extensions. See &lt;a href=”<a class="reference external" href="https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys">https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys</a>”&gt;the OpenSSH certificate protocol spec&lt;/a&gt; for additional details.</p>
+<dd><p>A map of extensions included in the certificate. Extensions are additional metadata that can be interpreted by the SSH server for any purpose. These can be used to permit or deny the ability to open a terminal, do port forwarding, x11 forwarding, and more. If unspecified, the certificate will include limited permissions with the following extension map: <code class="docutils literal notranslate"><span class="pre">{"permit-pty":</span> <span class="pre">"",</span> <span class="pre">"permit-user-rc":</span> <span class="pre">""}</span></code> OpenSSH understands a number of predefined extensions. See <cite>the OpenSSH certificate protocol spec</cite> &lt;<a class="reference external" href="https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys">https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys</a>&gt;`_ for additional details.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapping</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
@@ -3728,7 +3687,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.SSHUserCertificate.key_type">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">key_type</span></code><a class="headerlink" href="#ngrok.objects.SSHUserCertificate.key_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>the key type of the &lt;code&gt;public_key&lt;/code&gt;, one of &lt;code&gt;rsa&lt;/code&gt;, &lt;code&gt;ecdsa&lt;/code&gt; or &lt;code&gt;ed25519&lt;/code&gt;</p>
+<dd><p>the key type of the <code class="docutils literal notranslate"><span class="pre">public_key</span></code>, one of <code class="docutils literal notranslate"><span class="pre">rsa</span></code>, <code class="docutils literal notranslate"><span class="pre">ecdsa</span></code> or <code class="docutils literal notranslate"><span class="pre">ed25519</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -3802,7 +3761,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.SSHUserCertificate.valid_until">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">valid_until</span></code><a class="headerlink" href="#ngrok.objects.SSHUserCertificate.valid_until" title="Permalink to this definition">¶</a></dt>
-<dd><p>the time after which the ssh host certificate becomes invalid, in RFC 3339 format. the OpenSSH certificates RFC calls this &lt;code&gt;valid_before&lt;/code&gt;.</p>
+<dd><p>the time after which the ssh host certificate becomes invalid, in RFC 3339 format. the OpenSSH certificates RFC calls this <code class="docutils literal notranslate"><span class="pre">valid_before</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -3850,7 +3809,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.objects.TLSCertificate.certificate_pem">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">certificate_pem</span></code><a class="headerlink" href="#ngrok.objects.TLSCertificate.certificate_pem" title="Permalink to this definition">¶</a></dt>
-<dd><p>chain of PEM-encoded certificates, leaf first. See &lt;a href=”#tls-certificates-pem”&gt;Certificate Bundles&lt;/a&gt;.</p>
+<dd><p>chain of PEM-encoded certificates, leaf first. See <cite>Certificate Bundles</cite> &lt;<a class="reference external" href="https://ngrok.com/docs/api#tls-certificates-pem">https://ngrok.com/docs/api#tls-certificates-pem</a>&gt;`_.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -4140,7 +4099,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.Tunnel.metadata">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">metadata</span></code><a class="headerlink" href="#ngrok.objects.Tunnel.metadata" title="Permalink to this definition">¶</a></dt>
-<dd><p>user-supplied metadata for the tunnel defined in the ngrok configuration file. See the tunnel &lt;a href=”<a class="reference external" href="https://ngrok.com/docs#tunnel-definitions-metadata">https://ngrok.com/docs#tunnel-definitions-metadata</a>”&gt;metadata configuration option&lt;/a&gt; In API version 0, this value was instead pulled from the top-level &lt;a href=”<a class="reference external" href="https://ngrok.com/docs#config_metadata">https://ngrok.com/docs#config_metadata</a>”&gt;metadata configuration option&lt;/a&gt;.</p>
+<dd><p>user-supplied metadata for the tunnel defined in the ngrok configuration file. See the tunnel <cite>metadata configuration option</cite> &lt;<a class="reference external" href="https://ngrok.com/docs#tunnel-definitions-metadata">https://ngrok.com/docs#tunnel-definitions-metadata</a>&gt;`_ In API version 0, this value was instead pulled from the top-level <cite>metadata configuration option</cite> &lt;<a class="reference external" href="https://ngrok.com/docs#config_metadata">https://ngrok.com/docs#config_metadata</a>&gt;`_.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -4150,7 +4109,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.Tunnel.proto">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">proto</span></code><a class="headerlink" href="#ngrok.objects.Tunnel.proto" title="Permalink to this definition">¶</a></dt>
-<dd><p>tunnel protocol. one of &lt;code&gt;http&lt;/code&gt;, &lt;code&gt;https&lt;/code&gt;, &lt;code&gt;tcp&lt;/code&gt; or &lt;code&gt;tls&lt;/code&gt;</p>
+<dd><p>tunnel protocol. one of <code class="docutils literal notranslate"><span class="pre">http</span></code>, <code class="docutils literal notranslate"><span class="pre">https</span></code>, <code class="docutils literal notranslate"><span class="pre">tcp</span></code> or <code class="docutils literal notranslate"><span class="pre">tls</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -4318,7 +4277,7 @@
 <dl class="py method">
 <dt id="ngrok.objects.TunnelSession.transport">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">transport</span></code><a class="headerlink" href="#ngrok.objects.TunnelSession.transport" title="Permalink to this definition">¶</a></dt>
-<dd><p>the transport protocol used to start the tunnel session. Either &lt;code&gt;ngrok/v2&lt;/code&gt; or &lt;code&gt;ssh&lt;/code&gt;</p>
+<dd><p>the transport protocol used to start the tunnel session. Either <code class="docutils literal notranslate"><span class="pre">ngrok/v2</span></code> or <code class="docutils literal notranslate"><span class="pre">ssh</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>

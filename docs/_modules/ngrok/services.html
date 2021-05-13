@@ -148,47 +148,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tunnel_sessions.html">Tunnel Sessions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tunnels.html">Tunnels</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../client.html">Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../objects.html">Objects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../errors.html">Errors</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Services</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../abuse_reports.html">Abuse Reports</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../api_keys.html">API Keys</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../certificate_authorities.html">Certificate Authorities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../credentials.html">Tunnel Credentials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../event_streams.html">Event Streams</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../event_destinations.html">Event Destinations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ip_policies.html">IP Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ip_policy_rules.html">IP Policy Rules</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ip_restrictions.html">IP Restrictions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ip_whitelist.html">IP Whitelist</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_configurations.html">Endpoint Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_logging_module.html">Logging Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_circuit_breaker_module.html">Circuit Breaker Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_compression_module.html">Compression Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_tls_termination_module.html">TLS Termination Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_ip_policy_module.html">IP Policy Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_mutual_tls_module.html">Mutual TLS Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_request_headers_module.html">Request Headers Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_response_headers_module.html">Response Headers Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_o_auth_module.html">OAuth Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_webhook_validation_module.html">Webhook Validation Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_saml_module.html">SAML Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_oidc_module.html">OIDC Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../reserved_addrs.html">Reserved Addresses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../reserved_domains.html">Reserved Domains</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ssh_certificate_authorities.html">SSH Certificate Authorities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ssh_credentials.html">SSH Credentials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ssh_host_certificates.html">SSH Host Certificates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ssh_user_certificates.html">SSH User Certificates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tls_certificates.html">TLS Certificates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tunnel_sessions.html">Tunnel Sessions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tunnels.html">Tunnels</a></li>
-</ul>
 
 </div>
 </div>
@@ -466,7 +425,7 @@
 
 <span class="sd">        :param description: human-readable description of who or what will use the credential to authenticate. Optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this credential. Optional, max 4096 bytes.</span>
-<span class="sd">        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the &lt;code&gt;bind&lt;/code&gt; rule. The &lt;code&gt;bind&lt;/code&gt; rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule &lt;code&gt;bind:example.ngrok.io&lt;/code&gt;. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of &lt;code&gt;bind:*.example.com&lt;/code&gt; which will allow &lt;code&gt;x.example.com&lt;/code&gt;, &lt;code&gt;y.example.com&lt;/code&gt;, &lt;code&gt;*.example.com&lt;/code&gt;, etc. A rule of &lt;code&gt;'*'&lt;/code&gt; is equivalent to no acl at all and will explicitly permit all actions.</span>
+<span class="sd">        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.</span>
 <span class="sd">        """</span>
         <span class="n">path</span> <span class="o">=</span> <span class="s2">"/credentials"</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">api_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
@@ -540,7 +499,7 @@
 <span class="sd">        :param id:</span>
 <span class="sd">        :param description: human-readable description of who or what will use the credential to authenticate. Optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this credential. Optional, max 4096 bytes.</span>
-<span class="sd">        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the &lt;code&gt;bind&lt;/code&gt; rule. The &lt;code&gt;bind&lt;/code&gt; rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule &lt;code&gt;bind:example.ngrok.io&lt;/code&gt;. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of &lt;code&gt;bind:*.example.com&lt;/code&gt; which will allow &lt;code&gt;x.example.com&lt;/code&gt;, &lt;code&gt;y.example.com&lt;/code&gt;, &lt;code&gt;*.example.com&lt;/code&gt;, etc. A rule of &lt;code&gt;'*'&lt;/code&gt; is equivalent to no acl at all and will explicitly permit all actions.</span>
+<span class="sd">        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.</span>
 <span class="sd">        """</span>
         <span class="n">path</span> <span class="o">=</span> <span class="s2">"/credentials/</span><span class="si">{id}</span><span class="s2">"</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
@@ -575,7 +534,7 @@
 <span class="sd">        :param metadata: Arbitrary user-defined machine-readable data of this Event Stream. Optional, max 4096 bytes.</span>
 <span class="sd">        :param description: Human-readable description of the Event Stream. Optional, max 255 bytes.</span>
 <span class="sd">        :param fields: A list of protocol-specific fields you want to collect on each event.</span>
-<span class="sd">        :param event_type: The protocol that determines which events will be collected. Supported values are &lt;code&gt;tcp_connection_closed&lt;/code&gt; and &lt;code&gt;http_request_complete&lt;/code&gt;.</span>
+<span class="sd">        :param event_type: The protocol that determines which events will be collected. Supported values are ``tcp_connection_closed`` and ``http_request_complete``.</span>
 <span class="sd">        :param destination_ids: A list of Event Destination IDs which should be used for this Event Stream. Event Streams are required to have at least one Event Destination.</span>
 <span class="sd">        :param sampling_rate: The percentage of all events you would like to capture. Valid values range from 0.01, representing 1% of all events to 1.00, representing 100% of all events.</span>
 <span class="sd">        """</span>
@@ -692,8 +651,8 @@
 
 <span class="sd">        :param metadata: Arbitrary user-defined machine-readable data of this Event Destination. Optional, max 4096 bytes.</span>
 <span class="sd">        :param description: Human-readable description of the Event Destination. Optional, max 255 bytes.</span>
-<span class="sd">        :param format: The output format you would like to serialize events into when sending to their target. Currently the only accepted value is &lt;code&gt;JSON&lt;/code&gt;.</span>
-<span class="sd">        :param target: An object that encapsulates where and how to send your events. An event destination must contain exactly one of the following objects, leaving the rest null: &lt;code&gt;kinesis&lt;/code&gt;, &lt;code&gt;firehose&lt;/code&gt;, &lt;code&gt;cloudwatch_logs&lt;/code&gt;, or &lt;code&gt;s3&lt;/code&gt;.</span>
+<span class="sd">        :param format: The output format you would like to serialize events into when sending to their target. Currently the only accepted value is ``JSON``.</span>
+<span class="sd">        :param target: An object that encapsulates where and how to send your events. An event destination must contain exactly one of the following objects, leaving the rest null: ``kinesis``, ``firehose``, ``cloudwatch_logs``, or ``s3``.</span>
 <span class="sd">        """</span>
         <span class="n">path</span> <span class="o">=</span> <span class="s2">"/event_destinations"</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">api_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
@@ -769,8 +728,8 @@
 <span class="sd">        :param id: Unique identifier for this Event Destination.</span>
 <span class="sd">        :param metadata: Arbitrary user-defined machine-readable data of this Event Destination. Optional, max 4096 bytes.</span>
 <span class="sd">        :param description: Human-readable description of the Event Destination. Optional, max 255 bytes.</span>
-<span class="sd">        :param format: The output format you would like to serialize events into when sending to their target. Currently the only accepted value is &lt;code&gt;JSON&lt;/code&gt;.</span>
-<span class="sd">        :param target: An object that encapsulates where and how to send your events. An event destination must contain exactly one of the following objects, leaving the rest null: &lt;code&gt;kinesis&lt;/code&gt;, &lt;code&gt;firehose&lt;/code&gt;, &lt;code&gt;cloudwatch_logs&lt;/code&gt;, or &lt;code&gt;s3&lt;/code&gt;.</span>
+<span class="sd">        :param format: The output format you would like to serialize events into when sending to their target. Currently the only accepted value is ``JSON``.</span>
+<span class="sd">        :param target: An object that encapsulates where and how to send your events. An event destination must contain exactly one of the following objects, leaving the rest null: ``kinesis``, ``firehose``, ``cloudwatch_logs``, or ``s3``.</span>
 <span class="sd">        """</span>
         <span class="n">path</span> <span class="o">=</span> <span class="s2">"/event_destinations/</span><span class="si">{id}</span><span class="s2">"</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
@@ -802,7 +761,7 @@
 
 <span class="sd">        :param description: human-readable description of the source IPs of this IP policy. optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this IP policy. optional, max 4096 bytes.</span>
-<span class="sd">        :param action: the IP policy action. Supported values are &lt;code&gt;allow&lt;/code&gt; or &lt;code&gt;deny&lt;/code&gt;</span>
+<span class="sd">        :param action: the IP policy action. Supported values are ``allow`` or ``deny``</span>
 <span class="sd">        """</span>
         <span class="n">path</span> <span class="o">=</span> <span class="s2">"/ip_policies"</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">api_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
@@ -1015,7 +974,7 @@
 <span class="sd">        :param description: human-readable description of this IP restriction. optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this IP restriction. optional, max 4096 bytes.</span>
 <span class="sd">        :param enforced: true if the IP restriction will be enforce. if false, only warnings will be issued</span>
-<span class="sd">        :param type: the type of IP restriction. this defines what traffic will be restricted with the attached policies. four values are currently supported: &lt;code&gt;dashboard&lt;/code&gt;, &lt;code&gt;api&lt;/code&gt;, &lt;code&gt;agent&lt;/code&gt;, and &lt;code&gt;endpoints&lt;/code&gt;</span>
+<span class="sd">        :param type: the type of IP restriction. this defines what traffic will be restricted with the attached policies. four values are currently supported: ``dashboard``, ``api``, ``agent``, and ``endpoints``</span>
 <span class="sd">        :param ip_policy_ids: the set of IP policy identifiers that are used to enforce the restriction</span>
 <span class="sd">        """</span>
         <span class="n">path</span> <span class="o">=</span> <span class="s2">"/ip_restrictions"</span>
@@ -1215,12 +1174,8 @@
 
 
 <div class="viewcode-block" id="EndpointConfigurationsClient"><a class="viewcode-back" href="../../endpoint_configurations.html#ngrok.services.EndpointConfigurationsClient">[docs]</a><span class="k">class</span> <span class="nc">EndpointConfigurationsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""## Endpoint Configuration management</span>
-
-<span class="sd">    An [Endpoint Configuration](https://ngrok.com/docs/ngrok-link#api-endpoint-configurations) describes</span>
-<span class="sd">    a ngrok network endpoint instance.</span>
-
-<span class="sd">    _Endpoints are your gateway to ngrok features!_"""</span>
+    <span class="sd">"""Endpoint Configuration managementAn `Endpoint Configuration` &lt;https://ngrok.com/docs/ngrok-link#api-endpoint-configurations&gt;`_ describes</span>
+<span class="sd">    a ngrok network endpoint instance.*Endpoints are your gateway to ngrok features!*"""</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
@@ -1245,21 +1200,21 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointConfiguration</span><span class="p">:</span>
         <span class="sd">"""Create a new endpoint configuration</span>
 
-<span class="sd">        :param type: they type of traffic this endpoint configuration can be applied to. one of: &lt;code&gt;http&lt;/code&gt;, &lt;code&gt;https&lt;/code&gt;, &lt;code&gt;tcp&lt;/code&gt;</span>
+<span class="sd">        :param type: they type of traffic this endpoint configuration can be applied to. one of: ``http``, ``https``, ``tcp``</span>
 <span class="sd">        :param description: human-readable description of what this endpoint configuration will be do when applied or what traffic it will be applied to. Optional, max 255 bytes</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this endpoint configuration. Optional, max 4096 bytes.</span>
-<span class="sd">        :param circuit_breaker: circuit breaker module configuration or &lt;code&gt;null&lt;/code&gt;</span>
-<span class="sd">        :param compression: compression module configuration or &lt;code&gt;null&lt;/code&gt;</span>
-<span class="sd">        :param request_headers: request headers module configuration or &lt;code&gt;null&lt;/code&gt;</span>
-<span class="sd">        :param response_headers: response headers module configuration or &lt;code&gt;null&lt;/code&gt;</span>
-<span class="sd">        :param ip_policy: ip policy module configuration or &lt;code&gt;null&lt;/code&gt;</span>
-<span class="sd">        :param mutual_tls: mutual TLS module configuration or &lt;code&gt;null&lt;/code&gt;</span>
-<span class="sd">        :param tls_termination: TLS termination module configuration or &lt;code&gt;null&lt;/code&gt;</span>
-<span class="sd">        :param webhook_validation: webhook validation module configuration or &lt;code&gt;null&lt;/code&gt;</span>
-<span class="sd">        :param oauth: oauth module configuration or &lt;code&gt;null&lt;/code&gt;</span>
-<span class="sd">        :param logging: logging module configuration or &lt;code&gt;null&lt;/code&gt;</span>
-<span class="sd">        :param saml: saml module configuration or &lt;code&gt;null&lt;/code&gt;</span>
-<span class="sd">        :param oidc: oidc module configuration or &lt;code&gt;null&lt;/code&gt;</span>
+<span class="sd">        :param circuit_breaker: circuit breaker module configuration or ``null``</span>
+<span class="sd">        :param compression: compression module configuration or ``null``</span>
+<span class="sd">        :param request_headers: request headers module configuration or ``null``</span>
+<span class="sd">        :param response_headers: response headers module configuration or ``null``</span>
+<span class="sd">        :param ip_policy: ip policy module configuration or ``null``</span>
+<span class="sd">        :param mutual_tls: mutual TLS module configuration or ``null``</span>
+<span class="sd">        :param tls_termination: TLS termination module configuration or ``null``</span>
+<span class="sd">        :param webhook_validation: webhook validation module configuration or ``null``</span>
+<span class="sd">        :param oauth: oauth module configuration or ``null``</span>
+<span class="sd">        :param logging: logging module configuration or ``null``</span>
+<span class="sd">        :param saml: saml module configuration or ``null``</span>
+<span class="sd">        :param oidc: oidc module configuration or ``null``</span>
 <span class="sd">        """</span>
         <span class="n">path</span> <span class="o">=</span> <span class="s2">"/endpoint_configurations"</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">api_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
@@ -1356,18 +1311,18 @@
 <span class="sd">        :param id: unique identifier of this endpoint configuration</span>
 <span class="sd">        :param description: human-readable description of what this endpoint configuration will be do when applied or what traffic it will be applied to. Optional, max 255 bytes</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this endpoint configuration. Optional, max 4096 bytes.</span>
-<span class="sd">        :param circuit_breaker: circuit breaker module configuration or &lt;code&gt;null&lt;/code&gt;</span>
-<span class="sd">        :param compression: compression module configuration or &lt;code&gt;null&lt;/code&gt;</span>
-<span class="sd">        :param request_headers: request headers module configuration or &lt;code&gt;null&lt;/code&gt;</span>
-<span class="sd">        :param response_headers: response headers module configuration or &lt;code&gt;null&lt;/code&gt;</span>
-<span class="sd">        :param ip_policy: ip policy module configuration or &lt;code&gt;null&lt;/code&gt;</span>
-<span class="sd">        :param mutual_tls: mutual TLS module configuration or &lt;code&gt;null&lt;/code&gt;</span>
-<span class="sd">        :param tls_termination: TLS termination module configuration or &lt;code&gt;null&lt;/code&gt;</span>
-<span class="sd">        :param webhook_validation: webhook validation module configuration or &lt;code&gt;null&lt;/code&gt;</span>
-<span class="sd">        :param oauth: oauth module configuration or &lt;code&gt;null&lt;/code&gt;</span>
-<span class="sd">        :param logging: logging module configuration or &lt;code&gt;null&lt;/code&gt;</span>
-<span class="sd">        :param saml: saml module configuration or &lt;code&gt;null&lt;/code&gt;</span>
-<span class="sd">        :param oidc: oidc module configuration or &lt;code&gt;null&lt;/code&gt;</span>
+<span class="sd">        :param circuit_breaker: circuit breaker module configuration or ``null``</span>
+<span class="sd">        :param compression: compression module configuration or ``null``</span>
+<span class="sd">        :param request_headers: request headers module configuration or ``null``</span>
+<span class="sd">        :param response_headers: response headers module configuration or ``null``</span>
+<span class="sd">        :param ip_policy: ip policy module configuration or ``null``</span>
+<span class="sd">        :param mutual_tls: mutual TLS module configuration or ``null``</span>
+<span class="sd">        :param tls_termination: TLS termination module configuration or ``null``</span>
+<span class="sd">        :param webhook_validation: webhook validation module configuration or ``null``</span>
+<span class="sd">        :param oauth: oauth module configuration or ``null``</span>
+<span class="sd">        :param logging: logging module configuration or ``null``</span>
+<span class="sd">        :param saml: saml module configuration or ``null``</span>
+<span class="sd">        :param oidc: oidc module configuration or ``null``</span>
 <span class="sd">        """</span>
         <span class="n">path</span> <span class="o">=</span> <span class="s2">"/endpoint_configurations/</span><span class="si">{id}</span><span class="s2">"</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
@@ -2212,8 +2167,8 @@
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this reserved domain. Optional, max 4096 bytes.</span>
 <span class="sd">        :param http_endpoint_configuration_id: ID of an endpoint configuration of type http that will be used to handle inbound http traffic to this domain</span>
 <span class="sd">        :param https_endpoint_configuration_id: ID of an endpoint configuration of type https that will be used to handle inbound https traffic to this domain</span>
-<span class="sd">        :param certificate_id: ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with `certificate_management_policy`.</span>
-<span class="sd">        :param certificate_management_policy: configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with `certificate_id`.</span>
+<span class="sd">        :param certificate_id: ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with ``certificate_management_policy``.</span>
+<span class="sd">        :param certificate_management_policy: configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with ``certificate_id``.</span>
 <span class="sd">        """</span>
         <span class="n">path</span> <span class="o">=</span> <span class="s2">"/reserved_domains"</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">api_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
@@ -2297,8 +2252,8 @@
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this reserved domain. Optional, max 4096 bytes.</span>
 <span class="sd">        :param http_endpoint_configuration_id: ID of an endpoint configuration of type http that will be used to handle inbound http traffic to this domain</span>
 <span class="sd">        :param https_endpoint_configuration_id: ID of an endpoint configuration of type https that will be used to handle inbound https traffic to this domain</span>
-<span class="sd">        :param certificate_id: ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with `certificate_management_policy`.</span>
-<span class="sd">        :param certificate_management_policy: configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with `certificate_id`.</span>
+<span class="sd">        :param certificate_id: ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with ``certificate_management_policy``.</span>
+<span class="sd">        :param certificate_management_policy: configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with ``certificate_id``.</span>
 <span class="sd">        """</span>
         <span class="n">path</span> <span class="o">=</span> <span class="s2">"/reserved_domains/</span><span class="si">{id}</span><span class="s2">"</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
@@ -2390,9 +2345,9 @@
 
 <span class="sd">        :param description: human-readable description of this SSH Certificate Authority. optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this SSH Certificate Authority. optional, max 4096 bytes.</span>
-<span class="sd">        :param private_key_type: the type of private key to generate. one of &lt;code&gt;rsa&lt;/code&gt;, &lt;code&gt;ecdsa&lt;/code&gt;, &lt;code&gt;ed25519&lt;/code&gt;</span>
+<span class="sd">        :param private_key_type: the type of private key to generate. one of ``rsa``, ``ecdsa``, ``ed25519``</span>
 <span class="sd">        :param elliptic_curve: the type of elliptic curve to use when creating an ECDSA key</span>
-<span class="sd">        :param key_size: the key size to use when creating an RSA key. one of &lt;code&gt;2048&lt;/code&gt; or &lt;code&gt;4096&lt;/code&gt;</span>
+<span class="sd">        :param key_size: the key size to use when creating an RSA key. one of ``2048`` or ``4096``</span>
 <span class="sd">        """</span>
         <span class="n">path</span> <span class="o">=</span> <span class="s2">"/ssh_certificate_authorities"</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">api_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
@@ -2497,7 +2452,7 @@
 
 <span class="sd">        :param description: human-readable description of who or what will use the ssh credential to authenticate. Optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this ssh credential. Optional, max 4096 bytes.</span>
-<span class="sd">        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the &lt;code&gt;bind&lt;/code&gt; rule. The &lt;code&gt;bind&lt;/code&gt; rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule &lt;code&gt;bind:example.ngrok.io&lt;/code&gt;. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of &lt;code&gt;bind:*.example.com&lt;/code&gt; which will allow &lt;code&gt;x.example.com&lt;/code&gt;, &lt;code&gt;y.example.com&lt;/code&gt;, &lt;code&gt;*.example.com&lt;/code&gt;, etc. A rule of &lt;code&gt;'*'&lt;/code&gt; is equivalent to no acl at all and will explicitly permit all actions.</span>
+<span class="sd">        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.</span>
 <span class="sd">        :param public_key: the PEM-encoded public key of the SSH keypair that will be used to authenticate</span>
 <span class="sd">        """</span>
         <span class="n">path</span> <span class="o">=</span> <span class="s2">"/ssh_credentials"</span>
@@ -2573,7 +2528,7 @@
 <span class="sd">        :param id:</span>
 <span class="sd">        :param description: human-readable description of who or what will use the ssh credential to authenticate. Optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this ssh credential. Optional, max 4096 bytes.</span>
-<span class="sd">        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the &lt;code&gt;bind&lt;/code&gt; rule. The &lt;code&gt;bind&lt;/code&gt; rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule &lt;code&gt;bind:example.ngrok.io&lt;/code&gt;. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of &lt;code&gt;bind:*.example.com&lt;/code&gt; which will allow &lt;code&gt;x.example.com&lt;/code&gt;, &lt;code&gt;y.example.com&lt;/code&gt;, &lt;code&gt;*.example.com&lt;/code&gt;, etc. A rule of &lt;code&gt;'*'&lt;/code&gt; is equivalent to no acl at all and will explicitly permit all actions.</span>
+<span class="sd">        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.</span>
 <span class="sd">        """</span>
         <span class="n">path</span> <span class="o">=</span> <span class="s2">"/ssh_credentials/</span><span class="si">{id}</span><span class="s2">"</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
@@ -2610,7 +2565,7 @@
 <span class="sd">        :param public_key: a public key in OpenSSH Authorized Keys format that this certificate signs</span>
 <span class="sd">        :param principals: the list of principals included in the ssh host certificate. This is the list of hostnames and/or IP addresses that are authorized to serve SSH traffic with this certificate. Dangerously, if no principals are specified, this certificate is considered valid for all hosts.</span>
 <span class="sd">        :param valid_after: The time when the host certificate becomes valid, in RFC 3339 format. Defaults to the current time if unspecified.</span>
-<span class="sd">        :param valid_until: The time when this host certificate becomes invalid, in RFC 3339 format. If unspecified, a default value of one year in the future will be used. The OpenSSH certificates RFC calls this &lt;code&gt;valid_before&lt;/code&gt;.</span>
+<span class="sd">        :param valid_until: The time when this host certificate becomes invalid, in RFC 3339 format. If unspecified, a default value of one year in the future will be used. The OpenSSH certificates RFC calls this ``valid_before``.</span>
 <span class="sd">        :param description: human-readable description of this SSH Host Certificate. optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this SSH Host Certificate. optional, max 4096 bytes.</span>
 <span class="sd">        """</span>
@@ -2725,10 +2680,10 @@
 <span class="sd">        :param ssh_certificate_authority_id: the ssh certificate authority that is used to sign this ssh user certificate</span>
 <span class="sd">        :param public_key: a public key in OpenSSH Authorized Keys format that this certificate signs</span>
 <span class="sd">        :param principals: the list of principals included in the ssh user certificate. This is the list of usernames that the certificate holder may sign in as on a machine authorizinig the signing certificate authority. Dangerously, if no principals are specified, this certificate may be used to log in as any user.</span>
-<span class="sd">        :param critical_options: A map of critical options included in the certificate. Only two critical options are currently defined by OpenSSH: &lt;code&gt;force-command&lt;/code&gt; and &lt;code&gt;source-address&lt;/code&gt;. See &lt;a href="https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys"&gt;the OpenSSH certificate protocol spec&lt;/a&gt; for additional details.</span>
-<span class="sd">        :param extensions: A map of extensions included in the certificate. Extensions are additional metadata that can be interpreted by the SSH server for any purpose. These can be used to permit or deny the ability to open a terminal, do port forwarding, x11 forwarding, and more. If unspecified, the certificate will include limited permissions with the following extension map: &lt;code&gt;{"permit-pty": "", "permit-user-rc": ""}&lt;/code&gt; OpenSSH understands a number of predefined extensions. See &lt;a href="https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys"&gt;the OpenSSH certificate protocol spec&lt;/a&gt; for additional details.</span>
+<span class="sd">        :param critical_options: A map of critical options included in the certificate. Only two critical options are currently defined by OpenSSH: ``force-command`` and ``source-address``. See `the OpenSSH certificate protocol spec` &lt;https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys&gt;`_ for additional details.</span>
+<span class="sd">        :param extensions: A map of extensions included in the certificate. Extensions are additional metadata that can be interpreted by the SSH server for any purpose. These can be used to permit or deny the ability to open a terminal, do port forwarding, x11 forwarding, and more. If unspecified, the certificate will include limited permissions with the following extension map: ``{"permit-pty": "", "permit-user-rc": ""}`` OpenSSH understands a number of predefined extensions. See `the OpenSSH certificate protocol spec` &lt;https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys&gt;`_ for additional details.</span>
 <span class="sd">        :param valid_after: The time when the user certificate becomes valid, in RFC 3339 format. Defaults to the current time if unspecified.</span>
-<span class="sd">        :param valid_until: The time when this host certificate becomes invalid, in RFC 3339 format. If unspecified, a default value of 24 hours will be used. The OpenSSH certificates RFC calls this &lt;code&gt;valid_before&lt;/code&gt;.</span>
+<span class="sd">        :param valid_until: The time when this host certificate becomes invalid, in RFC 3339 format. If unspecified, a default value of 24 hours will be used. The OpenSSH certificates RFC calls this ``valid_before``.</span>
 <span class="sd">        :param description: human-readable description of this SSH User Certificate. optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this SSH User Certificate. optional, max 4096 bytes.</span>
 <span class="sd">        """</span>
@@ -2839,8 +2794,8 @@
 
 <span class="sd">        :param description: human-readable description of this TLS certificate. optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this TLS certificate. optional, max 4096 bytes.</span>
-<span class="sd">        :param certificate_pem: chain of PEM-encoded certificates, leaf first. See &lt;a href="#tls-certificates-pem"&gt;Certificate Bundles&lt;/a&gt;.</span>
-<span class="sd">        :param private_key_pem: private key for the TLS certificate, PEM-encoded. See &lt;a href="#tls-certificates-key"&gt;Private Keys&lt;/a&gt;.</span>
+<span class="sd">        :param certificate_pem: chain of PEM-encoded certificates, leaf first. See `Certificate Bundles` &lt;https://ngrok.com/docs/api#tls-certificates-pem&gt;`_.</span>
+<span class="sd">        :param private_key_pem: private key for the TLS certificate, PEM-encoded. See `Private Keys` &lt;https://ngrok.com/docs/ngrok-link#tls-certificates-key&gt;`_.</span>
 <span class="sd">        """</span>
         <span class="n">path</span> <span class="o">=</span> <span class="s2">"/tls_certificates"</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">api_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>

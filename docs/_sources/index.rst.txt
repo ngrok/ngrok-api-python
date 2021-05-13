@@ -72,13 +72,13 @@ API object itself as well as directly without needing to first fetch the object.
 ::
 
     # update the metadata of a credential
-    cred = ng.tunnel_credentials.get("cr_1kYyunEyn6XHHlqyMBLrj5nxkoz")
+    cred = ng.credentials.get("cr_1kYyunEyn6XHHlqyMBLrj5nxkoz")
     cred.update(metadata=json.dumps({
         "server_name": "giraffe-1",
     }))
 
     # or do it in single call
-    cred = ng.tunnel_credentials.update("cr_1kYyunEyn6XHHlqyMBLrj5nxkoz", metadata=json.dumps({
+    cred = ng.credentials.update("cr_1kYyunEyn6XHHlqyMBLrj5nxkoz", metadata=json.dumps({
         "server_name": "giraffe-1",
     }))
 
@@ -115,52 +115,6 @@ API Reference
 
 .. toctree::
   :caption: Services
-
-  abuse_reports
-  api_keys
-  certificate_authorities
-  credentials
-  event_streams
-  event_destinations
-  ip_policies
-  ip_policy_rules
-  ip_restrictions
-  ip_whitelist
-  endpoint_configurations
-  endpoint_logging_module
-  endpoint_circuit_breaker_module
-  endpoint_compression_module
-  endpoint_tls_termination_module
-  endpoint_ip_policy_module
-  endpoint_mutual_tls_module
-  endpoint_request_headers_module
-  endpoint_response_headers_module
-  endpoint_o_auth_module
-  endpoint_webhook_validation_module
-  endpoint_saml_module
-  endpoint_oidc_module
-  reserved_addrs
-  reserved_domains
-  ssh_certificate_authorities
-  ssh_credentials
-  ssh_host_certificates
-  ssh_user_certificates
-  tls_certificates
-  tunnel_sessions
-  tunnels
-
-
-.. toctree::
-  :caption: API
-  :hidden:
-
-  client
-  objects
-  errors
-
-.. toctree::
-  :caption: Services
-  :hidden:
 
   abuse_reports
   api_keys

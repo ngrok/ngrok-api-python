@@ -261,7 +261,7 @@ class CredentialsClient(object):
 
         :param description: human-readable description of who or what will use the credential to authenticate. Optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this credential. Optional, max 4096 bytes.
-        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the <code>bind</code> rule. The <code>bind</code> rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule <code>bind:example.ngrok.io</code>. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of <code>bind:*.example.com</code> which will allow <code>x.example.com</code>, <code>y.example.com</code>, <code>*.example.com</code>, etc. A rule of <code>'*'</code> is equivalent to no acl at all and will explicitly permit all actions.
+        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.
         """
         path = "/credentials"
         result = self._client.api_client.post(
@@ -335,7 +335,7 @@ class CredentialsClient(object):
         :param id:
         :param description: human-readable description of who or what will use the credential to authenticate. Optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this credential. Optional, max 4096 bytes.
-        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the <code>bind</code> rule. The <code>bind</code> rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule <code>bind:example.ngrok.io</code>. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of <code>bind:*.example.com</code> which will allow <code>x.example.com</code>, <code>y.example.com</code>, <code>*.example.com</code>, etc. A rule of <code>'*'</code> is equivalent to no acl at all and will explicitly permit all actions.
+        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.
         """
         path = "/credentials/{id}"
         path = path.format(
@@ -370,7 +370,7 @@ class EventStreamsClient(object):
         :param metadata: Arbitrary user-defined machine-readable data of this Event Stream. Optional, max 4096 bytes.
         :param description: Human-readable description of the Event Stream. Optional, max 255 bytes.
         :param fields: A list of protocol-specific fields you want to collect on each event.
-        :param event_type: The protocol that determines which events will be collected. Supported values are <code>tcp_connection_closed</code> and <code>http_request_complete</code>.
+        :param event_type: The protocol that determines which events will be collected. Supported values are ``tcp_connection_closed`` and ``http_request_complete``.
         :param destination_ids: A list of Event Destination IDs which should be used for this Event Stream. Event Streams are required to have at least one Event Destination.
         :param sampling_rate: The percentage of all events you would like to capture. Valid values range from 0.01, representing 1% of all events to 1.00, representing 100% of all events.
         """
@@ -487,8 +487,8 @@ class EventDestinationsClient(object):
 
         :param metadata: Arbitrary user-defined machine-readable data of this Event Destination. Optional, max 4096 bytes.
         :param description: Human-readable description of the Event Destination. Optional, max 255 bytes.
-        :param format: The output format you would like to serialize events into when sending to their target. Currently the only accepted value is <code>JSON</code>.
-        :param target: An object that encapsulates where and how to send your events. An event destination must contain exactly one of the following objects, leaving the rest null: <code>kinesis</code>, <code>firehose</code>, <code>cloudwatch_logs</code>, or <code>s3</code>.
+        :param format: The output format you would like to serialize events into when sending to their target. Currently the only accepted value is ``JSON``.
+        :param target: An object that encapsulates where and how to send your events. An event destination must contain exactly one of the following objects, leaving the rest null: ``kinesis``, ``firehose``, ``cloudwatch_logs``, or ``s3``.
         """
         path = "/event_destinations"
         result = self._client.api_client.post(
@@ -564,8 +564,8 @@ class EventDestinationsClient(object):
         :param id: Unique identifier for this Event Destination.
         :param metadata: Arbitrary user-defined machine-readable data of this Event Destination. Optional, max 4096 bytes.
         :param description: Human-readable description of the Event Destination. Optional, max 255 bytes.
-        :param format: The output format you would like to serialize events into when sending to their target. Currently the only accepted value is <code>JSON</code>.
-        :param target: An object that encapsulates where and how to send your events. An event destination must contain exactly one of the following objects, leaving the rest null: <code>kinesis</code>, <code>firehose</code>, <code>cloudwatch_logs</code>, or <code>s3</code>.
+        :param format: The output format you would like to serialize events into when sending to their target. Currently the only accepted value is ``JSON``.
+        :param target: An object that encapsulates where and how to send your events. An event destination must contain exactly one of the following objects, leaving the rest null: ``kinesis``, ``firehose``, ``cloudwatch_logs``, or ``s3``.
         """
         path = "/event_destinations/{id}"
         path = path.format(
@@ -597,7 +597,7 @@ class IPPoliciesClient(object):
 
         :param description: human-readable description of the source IPs of this IP policy. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this IP policy. optional, max 4096 bytes.
-        :param action: the IP policy action. Supported values are <code>allow</code> or <code>deny</code>
+        :param action: the IP policy action. Supported values are ``allow`` or ``deny``
         """
         path = "/ip_policies"
         result = self._client.api_client.post(
@@ -810,7 +810,7 @@ class IPRestrictionsClient(object):
         :param description: human-readable description of this IP restriction. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this IP restriction. optional, max 4096 bytes.
         :param enforced: true if the IP restriction will be enforce. if false, only warnings will be issued
-        :param type: the type of IP restriction. this defines what traffic will be restricted with the attached policies. four values are currently supported: <code>dashboard</code>, <code>api</code>, <code>agent</code>, and <code>endpoints</code>
+        :param type: the type of IP restriction. this defines what traffic will be restricted with the attached policies. four values are currently supported: ``dashboard``, ``api``, ``agent``, and ``endpoints``
         :param ip_policy_ids: the set of IP policy identifiers that are used to enforce the restriction
         """
         path = "/ip_restrictions"
@@ -1010,12 +1010,8 @@ class IPWhitelistClient(object):
 
 
 class EndpointConfigurationsClient(object):
-    """## Endpoint Configuration management
-
-    An [Endpoint Configuration](https://ngrok.com/docs/ngrok-link#api-endpoint-configurations) describes
-    a ngrok network endpoint instance.
-
-    _Endpoints are your gateway to ngrok features!_"""
+    """Endpoint Configuration managementAn `Endpoint Configuration` <https://ngrok.com/docs/ngrok-link#api-endpoint-configurations>`_ describes
+    a ngrok network endpoint instance.*Endpoints are your gateway to ngrok features!*"""
 
     def __init__(self, client):
         self._client = client
@@ -1040,21 +1036,21 @@ class EndpointConfigurationsClient(object):
     ) -> EndpointConfiguration:
         """Create a new endpoint configuration
 
-        :param type: they type of traffic this endpoint configuration can be applied to. one of: <code>http</code>, <code>https</code>, <code>tcp</code>
+        :param type: they type of traffic this endpoint configuration can be applied to. one of: ``http``, ``https``, ``tcp``
         :param description: human-readable description of what this endpoint configuration will be do when applied or what traffic it will be applied to. Optional, max 255 bytes
         :param metadata: arbitrary user-defined machine-readable data of this endpoint configuration. Optional, max 4096 bytes.
-        :param circuit_breaker: circuit breaker module configuration or <code>null</code>
-        :param compression: compression module configuration or <code>null</code>
-        :param request_headers: request headers module configuration or <code>null</code>
-        :param response_headers: response headers module configuration or <code>null</code>
-        :param ip_policy: ip policy module configuration or <code>null</code>
-        :param mutual_tls: mutual TLS module configuration or <code>null</code>
-        :param tls_termination: TLS termination module configuration or <code>null</code>
-        :param webhook_validation: webhook validation module configuration or <code>null</code>
-        :param oauth: oauth module configuration or <code>null</code>
-        :param logging: logging module configuration or <code>null</code>
-        :param saml: saml module configuration or <code>null</code>
-        :param oidc: oidc module configuration or <code>null</code>
+        :param circuit_breaker: circuit breaker module configuration or ``null``
+        :param compression: compression module configuration or ``null``
+        :param request_headers: request headers module configuration or ``null``
+        :param response_headers: response headers module configuration or ``null``
+        :param ip_policy: ip policy module configuration or ``null``
+        :param mutual_tls: mutual TLS module configuration or ``null``
+        :param tls_termination: TLS termination module configuration or ``null``
+        :param webhook_validation: webhook validation module configuration or ``null``
+        :param oauth: oauth module configuration or ``null``
+        :param logging: logging module configuration or ``null``
+        :param saml: saml module configuration or ``null``
+        :param oidc: oidc module configuration or ``null``
         """
         path = "/endpoint_configurations"
         result = self._client.api_client.post(
@@ -1151,18 +1147,18 @@ class EndpointConfigurationsClient(object):
         :param id: unique identifier of this endpoint configuration
         :param description: human-readable description of what this endpoint configuration will be do when applied or what traffic it will be applied to. Optional, max 255 bytes
         :param metadata: arbitrary user-defined machine-readable data of this endpoint configuration. Optional, max 4096 bytes.
-        :param circuit_breaker: circuit breaker module configuration or <code>null</code>
-        :param compression: compression module configuration or <code>null</code>
-        :param request_headers: request headers module configuration or <code>null</code>
-        :param response_headers: response headers module configuration or <code>null</code>
-        :param ip_policy: ip policy module configuration or <code>null</code>
-        :param mutual_tls: mutual TLS module configuration or <code>null</code>
-        :param tls_termination: TLS termination module configuration or <code>null</code>
-        :param webhook_validation: webhook validation module configuration or <code>null</code>
-        :param oauth: oauth module configuration or <code>null</code>
-        :param logging: logging module configuration or <code>null</code>
-        :param saml: saml module configuration or <code>null</code>
-        :param oidc: oidc module configuration or <code>null</code>
+        :param circuit_breaker: circuit breaker module configuration or ``null``
+        :param compression: compression module configuration or ``null``
+        :param request_headers: request headers module configuration or ``null``
+        :param response_headers: response headers module configuration or ``null``
+        :param ip_policy: ip policy module configuration or ``null``
+        :param mutual_tls: mutual TLS module configuration or ``null``
+        :param tls_termination: TLS termination module configuration or ``null``
+        :param webhook_validation: webhook validation module configuration or ``null``
+        :param oauth: oauth module configuration or ``null``
+        :param logging: logging module configuration or ``null``
+        :param saml: saml module configuration or ``null``
+        :param oidc: oidc module configuration or ``null``
         """
         path = "/endpoint_configurations/{id}"
         path = path.format(
@@ -2007,8 +2003,8 @@ class ReservedDomainsClient(object):
         :param metadata: arbitrary user-defined machine-readable data of this reserved domain. Optional, max 4096 bytes.
         :param http_endpoint_configuration_id: ID of an endpoint configuration of type http that will be used to handle inbound http traffic to this domain
         :param https_endpoint_configuration_id: ID of an endpoint configuration of type https that will be used to handle inbound https traffic to this domain
-        :param certificate_id: ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with `certificate_management_policy`.
-        :param certificate_management_policy: configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with `certificate_id`.
+        :param certificate_id: ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with ``certificate_management_policy``.
+        :param certificate_management_policy: configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with ``certificate_id``.
         """
         path = "/reserved_domains"
         result = self._client.api_client.post(
@@ -2092,8 +2088,8 @@ class ReservedDomainsClient(object):
         :param metadata: arbitrary user-defined machine-readable data of this reserved domain. Optional, max 4096 bytes.
         :param http_endpoint_configuration_id: ID of an endpoint configuration of type http that will be used to handle inbound http traffic to this domain
         :param https_endpoint_configuration_id: ID of an endpoint configuration of type https that will be used to handle inbound https traffic to this domain
-        :param certificate_id: ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with `certificate_management_policy`.
-        :param certificate_management_policy: configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with `certificate_id`.
+        :param certificate_id: ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with ``certificate_management_policy``.
+        :param certificate_management_policy: configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with ``certificate_id``.
         """
         path = "/reserved_domains/{id}"
         path = path.format(
@@ -2185,9 +2181,9 @@ class SSHCertificateAuthoritiesClient(object):
 
         :param description: human-readable description of this SSH Certificate Authority. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this SSH Certificate Authority. optional, max 4096 bytes.
-        :param private_key_type: the type of private key to generate. one of <code>rsa</code>, <code>ecdsa</code>, <code>ed25519</code>
+        :param private_key_type: the type of private key to generate. one of ``rsa``, ``ecdsa``, ``ed25519``
         :param elliptic_curve: the type of elliptic curve to use when creating an ECDSA key
-        :param key_size: the key size to use when creating an RSA key. one of <code>2048</code> or <code>4096</code>
+        :param key_size: the key size to use when creating an RSA key. one of ``2048`` or ``4096``
         """
         path = "/ssh_certificate_authorities"
         result = self._client.api_client.post(
@@ -2292,7 +2288,7 @@ class SSHCredentialsClient(object):
 
         :param description: human-readable description of who or what will use the ssh credential to authenticate. Optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this ssh credential. Optional, max 4096 bytes.
-        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the <code>bind</code> rule. The <code>bind</code> rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule <code>bind:example.ngrok.io</code>. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of <code>bind:*.example.com</code> which will allow <code>x.example.com</code>, <code>y.example.com</code>, <code>*.example.com</code>, etc. A rule of <code>'*'</code> is equivalent to no acl at all and will explicitly permit all actions.
+        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.
         :param public_key: the PEM-encoded public key of the SSH keypair that will be used to authenticate
         """
         path = "/ssh_credentials"
@@ -2368,7 +2364,7 @@ class SSHCredentialsClient(object):
         :param id:
         :param description: human-readable description of who or what will use the ssh credential to authenticate. Optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this ssh credential. Optional, max 4096 bytes.
-        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the <code>bind</code> rule. The <code>bind</code> rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule <code>bind:example.ngrok.io</code>. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of <code>bind:*.example.com</code> which will allow <code>x.example.com</code>, <code>y.example.com</code>, <code>*.example.com</code>, etc. A rule of <code>'*'</code> is equivalent to no acl at all and will explicitly permit all actions.
+        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.
         """
         path = "/ssh_credentials/{id}"
         path = path.format(
@@ -2405,7 +2401,7 @@ class SSHHostCertificatesClient(object):
         :param public_key: a public key in OpenSSH Authorized Keys format that this certificate signs
         :param principals: the list of principals included in the ssh host certificate. This is the list of hostnames and/or IP addresses that are authorized to serve SSH traffic with this certificate. Dangerously, if no principals are specified, this certificate is considered valid for all hosts.
         :param valid_after: The time when the host certificate becomes valid, in RFC 3339 format. Defaults to the current time if unspecified.
-        :param valid_until: The time when this host certificate becomes invalid, in RFC 3339 format. If unspecified, a default value of one year in the future will be used. The OpenSSH certificates RFC calls this <code>valid_before</code>.
+        :param valid_until: The time when this host certificate becomes invalid, in RFC 3339 format. If unspecified, a default value of one year in the future will be used. The OpenSSH certificates RFC calls this ``valid_before``.
         :param description: human-readable description of this SSH Host Certificate. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this SSH Host Certificate. optional, max 4096 bytes.
         """
@@ -2520,10 +2516,10 @@ class SSHUserCertificatesClient(object):
         :param ssh_certificate_authority_id: the ssh certificate authority that is used to sign this ssh user certificate
         :param public_key: a public key in OpenSSH Authorized Keys format that this certificate signs
         :param principals: the list of principals included in the ssh user certificate. This is the list of usernames that the certificate holder may sign in as on a machine authorizinig the signing certificate authority. Dangerously, if no principals are specified, this certificate may be used to log in as any user.
-        :param critical_options: A map of critical options included in the certificate. Only two critical options are currently defined by OpenSSH: <code>force-command</code> and <code>source-address</code>. See <a href="https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys">the OpenSSH certificate protocol spec</a> for additional details.
-        :param extensions: A map of extensions included in the certificate. Extensions are additional metadata that can be interpreted by the SSH server for any purpose. These can be used to permit or deny the ability to open a terminal, do port forwarding, x11 forwarding, and more. If unspecified, the certificate will include limited permissions with the following extension map: <code>{"permit-pty": "", "permit-user-rc": ""}</code> OpenSSH understands a number of predefined extensions. See <a href="https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys">the OpenSSH certificate protocol spec</a> for additional details.
+        :param critical_options: A map of critical options included in the certificate. Only two critical options are currently defined by OpenSSH: ``force-command`` and ``source-address``. See `the OpenSSH certificate protocol spec` <https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys>`_ for additional details.
+        :param extensions: A map of extensions included in the certificate. Extensions are additional metadata that can be interpreted by the SSH server for any purpose. These can be used to permit or deny the ability to open a terminal, do port forwarding, x11 forwarding, and more. If unspecified, the certificate will include limited permissions with the following extension map: ``{"permit-pty": "", "permit-user-rc": ""}`` OpenSSH understands a number of predefined extensions. See `the OpenSSH certificate protocol spec` <https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys>`_ for additional details.
         :param valid_after: The time when the user certificate becomes valid, in RFC 3339 format. Defaults to the current time if unspecified.
-        :param valid_until: The time when this host certificate becomes invalid, in RFC 3339 format. If unspecified, a default value of 24 hours will be used. The OpenSSH certificates RFC calls this <code>valid_before</code>.
+        :param valid_until: The time when this host certificate becomes invalid, in RFC 3339 format. If unspecified, a default value of 24 hours will be used. The OpenSSH certificates RFC calls this ``valid_before``.
         :param description: human-readable description of this SSH User Certificate. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this SSH User Certificate. optional, max 4096 bytes.
         """
@@ -2634,8 +2630,8 @@ class TLSCertificatesClient(object):
 
         :param description: human-readable description of this TLS certificate. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this TLS certificate. optional, max 4096 bytes.
-        :param certificate_pem: chain of PEM-encoded certificates, leaf first. See <a href="#tls-certificates-pem">Certificate Bundles</a>.
-        :param private_key_pem: private key for the TLS certificate, PEM-encoded. See <a href="#tls-certificates-key">Private Keys</a>.
+        :param certificate_pem: chain of PEM-encoded certificates, leaf first. See `Certificate Bundles` <https://ngrok.com/docs/api#tls-certificates-pem>`_.
+        :param private_key_pem: private key for the TLS certificate, PEM-encoded. See `Private Keys` <https://ngrok.com/docs/ngrok-link#tls-certificates-key>`_.
         """
         path = "/tls_certificates"
         result = self._client.api_client.post(
