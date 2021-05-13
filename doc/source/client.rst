@@ -17,7 +17,7 @@ Client object:
         print(policy)
  
     # create an ngrok agent authtoken
-    cred = api.tunnel_credentials.create()
+    cred = ng.credentials.create()
     print(cred)
 
 .. automodule:: ngrok

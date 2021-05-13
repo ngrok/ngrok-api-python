@@ -148,47 +148,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tunnel_sessions.html">Tunnel Sessions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tunnels.html">Tunnels</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../client.html">Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../objects.html">Objects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../errors.html">Errors</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Services</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../abuse_reports.html">Abuse Reports</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../api_keys.html">API Keys</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../certificate_authorities.html">Certificate Authorities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../credentials.html">Tunnel Credentials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../event_streams.html">Event Streams</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../event_destinations.html">Event Destinations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ip_policies.html">IP Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ip_policy_rules.html">IP Policy Rules</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ip_restrictions.html">IP Restrictions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ip_whitelist.html">IP Whitelist</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_configurations.html">Endpoint Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_logging_module.html">Logging Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_circuit_breaker_module.html">Circuit Breaker Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_compression_module.html">Compression Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_tls_termination_module.html">TLS Termination Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_ip_policy_module.html">IP Policy Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_mutual_tls_module.html">Mutual TLS Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_request_headers_module.html">Request Headers Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_response_headers_module.html">Response Headers Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_o_auth_module.html">OAuth Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_webhook_validation_module.html">Webhook Validation Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_saml_module.html">SAML Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_oidc_module.html">OIDC Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../reserved_addrs.html">Reserved Addresses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../reserved_domains.html">Reserved Domains</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ssh_certificate_authorities.html">SSH Certificate Authorities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ssh_credentials.html">SSH Credentials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ssh_host_certificates.html">SSH Host Certificates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ssh_user_certificates.html">SSH User Certificates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tls_certificates.html">TLS Certificates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tunnel_sessions.html">Tunnel Sessions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tunnels.html">Tunnels</a></li>
-</ul>
 
 </div>
 </div>
@@ -271,7 +230,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">status</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""Indicates whether ngrok has processed the abuse report. one of &lt;code&gt;PENDING&lt;/code&gt;, &lt;code&gt;PROCESSED&lt;/code&gt;, or &lt;code&gt;PARTIALLY_PROCESSED&lt;/code&gt;"""</span>
+        <span class="sd">"""Indicates whether ngrok has processed the abuse report. one of ``PENDING``, ``PROCESSED``, or ``PARTIALLY_PROCESSED``"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -298,7 +257,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">status</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""indicates what action ngrok has taken against the hostname. one of &lt;code&gt;PENDING&lt;/code&gt;, &lt;code&gt;BANNED&lt;/code&gt;, &lt;code&gt;UNBANNED&lt;/code&gt;, or &lt;code&gt;IGNORE&lt;/code&gt;"""</span>
+        <span class="sd">"""indicates what action ngrok has taken against the hostname. one of ``PENDING``, ``BANNED``, ``UNBANNED``, or ``IGNORE``"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span></div>
 
 
@@ -358,7 +317,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">token</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""the bearer token that can be placed into the Authorization header to authenticate request to the ngrok API. &lt;strong&gt;This value is only available one time, on the API response from key creation. Otherwise it is null.&lt;/strong&gt;"""</span>
+        <span class="sd">"""the bearer token that can be placed into the Authorization header to authenticate request to the ngrok API. **This value is only available one time, on the API response from key creation. Otherwise it is null.**"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"token"</span><span class="p">]</span></div>
 
 
@@ -569,12 +528,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">token</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""the credential's authtoken that can be used to authenticate an ngrok client. &lt;strong&gt;&lt;em&gt;This value is only available one time, on the API response from credential creation, otherwise it is null.&lt;/em&gt;&lt;/strong&gt;"""</span>
+        <span class="sd">"""the credential's authtoken that can be used to authenticate an ngrok client. **This value is only available one time, on the API response from credential creation, otherwise it is null.**"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"token"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">acl</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="sd">"""optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the &lt;code&gt;bind&lt;/code&gt; rule. The &lt;code&gt;bind&lt;/code&gt; rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule &lt;code&gt;bind:example.ngrok.io&lt;/code&gt;. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of &lt;code&gt;bind:*.example.com&lt;/code&gt; which will allow &lt;code&gt;x.example.com&lt;/code&gt;, &lt;code&gt;y.example.com&lt;/code&gt;, &lt;code&gt;*.example.com&lt;/code&gt;, etc. A rule of &lt;code&gt;'*'&lt;/code&gt; is equivalent to no acl at all and will explicitly permit all actions."""</span>
+        <span class="sd">"""optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"acl"</span><span class="p">]</span></div>
 
 
@@ -711,7 +670,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">event_type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""The protocol that determines which events will be collected. Supported values are &lt;code&gt;tcp_connection_closed&lt;/code&gt; and &lt;code&gt;http_request_complete&lt;/code&gt;."""</span>
+        <span class="sd">"""The protocol that determines which events will be collected. Supported values are ``tcp_connection_closed`` and ``http_request_complete``."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"event_type"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -766,12 +725,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""The output format you would like to serialize events into when sending to their target. Currently the only accepted value is &lt;code&gt;JSON&lt;/code&gt;."""</span>
+        <span class="sd">"""The output format you would like to serialize events into when sending to their target. Currently the only accepted value is ``JSON``."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"format"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">target</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventTarget</span><span class="p">:</span>
-        <span class="sd">"""An object that encapsulates where and how to send your events. An event destination must contain exactly one of the following objects, leaving the rest null: &lt;code&gt;kinesis&lt;/code&gt;, &lt;code&gt;firehose&lt;/code&gt;, &lt;code&gt;cloudwatch_logs&lt;/code&gt;, or &lt;code&gt;s3&lt;/code&gt;."""</span>
+        <span class="sd">"""An object that encapsulates where and how to send your events. An event destination must contain exactly one of the following objects, leaving the rest null: ``kinesis``, ``firehose``, ``cloudwatch_logs``, or ``s3``."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"target"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -859,7 +818,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">auth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AWSAuth</span><span class="p">:</span>
-        <span class="sd">"""Configuration for how to authenticate into your AWS account. Exactly one of &lt;code&gt;role&lt;/code&gt; or &lt;code&gt;creds&lt;/code&gt; should be configured."""</span>
+        <span class="sd">"""Configuration for how to authenticate into your AWS account. Exactly one of ``role`` or ``creds`` should be configured."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"auth"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -882,7 +841,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">auth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AWSAuth</span><span class="p">:</span>
-        <span class="sd">"""Configuration for how to authenticate into your AWS account. Exactly one of &lt;code&gt;role&lt;/code&gt; or &lt;code&gt;creds&lt;/code&gt; should be configured."""</span>
+        <span class="sd">"""Configuration for how to authenticate into your AWS account. Exactly one of ``role`` or ``creds`` should be configured."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"auth"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -905,7 +864,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">auth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AWSAuth</span><span class="p">:</span>
-        <span class="sd">"""Configuration for how to authenticate into your AWS account. Exactly one of &lt;code&gt;role&lt;/code&gt; or &lt;code&gt;creds&lt;/code&gt; should be configured."""</span>
+        <span class="sd">"""Configuration for how to authenticate into your AWS account. Exactly one of ``role`` or ``creds`` should be configured."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"auth"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -1033,7 +992,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""the IP policy action. Supported values are &lt;code&gt;allow&lt;/code&gt; or &lt;code&gt;deny&lt;/code&gt;"""</span>
+        <span class="sd">"""the IP policy action. Supported values are ``allow`` or ``deny``"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"action"</span><span class="p">]</span></div>
 
 
@@ -1220,7 +1179,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""the type of IP restriction. this defines what traffic will be restricted with the attached policies. four values are currently supported: &lt;code&gt;dashboard&lt;/code&gt;, &lt;code&gt;api&lt;/code&gt;, &lt;code&gt;agent&lt;/code&gt;, and &lt;code&gt;endpoints&lt;/code&gt;"""</span>
+        <span class="sd">"""the type of IP restriction. this defines what traffic will be restricted with the attached policies. four values are currently supported: ``dashboard``, ``api``, ``agent``, and ``endpoints``"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"type"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -1437,7 +1396,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""they type of traffic this endpoint configuration can be applied to. one of: &lt;code&gt;http&lt;/code&gt;, &lt;code&gt;https&lt;/code&gt;, &lt;code&gt;tcp&lt;/code&gt;"""</span>
+        <span class="sd">"""they type of traffic this endpoint configuration can be applied to. one of: ``http``, ``https``, ``tcp``"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"type"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -1462,62 +1421,62 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">circuit_breaker</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointCircuitBreaker</span><span class="p">:</span>
-        <span class="sd">"""circuit breaker module configuration or &lt;code&gt;null&lt;/code&gt;"""</span>
+        <span class="sd">"""circuit breaker module configuration or ``null``"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"circuit_breaker"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">compression</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointCompression</span><span class="p">:</span>
-        <span class="sd">"""compression module configuration or &lt;code&gt;null&lt;/code&gt;"""</span>
+        <span class="sd">"""compression module configuration or ``null``"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"compression"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">request_headers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointRequestHeaders</span><span class="p">:</span>
-        <span class="sd">"""request headers module configuration or &lt;code&gt;null&lt;/code&gt;"""</span>
+        <span class="sd">"""request headers module configuration or ``null``"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"request_headers"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">response_headers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointResponseHeaders</span><span class="p">:</span>
-        <span class="sd">"""response headers module configuration or &lt;code&gt;null&lt;/code&gt;"""</span>
+        <span class="sd">"""response headers module configuration or ``null``"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"response_headers"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ip_policy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointIPPolicy</span><span class="p">:</span>
-        <span class="sd">"""ip policy module configuration or &lt;code&gt;null&lt;/code&gt;"""</span>
+        <span class="sd">"""ip policy module configuration or ``null``"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"ip_policy"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">mutual_tls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointMutualTLS</span><span class="p">:</span>
-        <span class="sd">"""mutual TLS module configuration or &lt;code&gt;null&lt;/code&gt;"""</span>
+        <span class="sd">"""mutual TLS module configuration or ``null``"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"mutual_tls"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tls_termination</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointTLSTermination</span><span class="p">:</span>
-        <span class="sd">"""TLS termination module configuration or &lt;code&gt;null&lt;/code&gt;"""</span>
+        <span class="sd">"""TLS termination module configuration or ``null``"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"tls_termination"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">webhook_validation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointWebhookValidation</span><span class="p">:</span>
-        <span class="sd">"""webhook validation module configuration or &lt;code&gt;null&lt;/code&gt;"""</span>
+        <span class="sd">"""webhook validation module configuration or ``null``"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"webhook_validation"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">oauth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointOAuth</span><span class="p">:</span>
-        <span class="sd">"""oauth module configuration or &lt;code&gt;null&lt;/code&gt;"""</span>
+        <span class="sd">"""oauth module configuration or ``null``"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"oauth"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">logging</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointLogging</span><span class="p">:</span>
-        <span class="sd">"""logging module configuration or &lt;code&gt;null&lt;/code&gt;"""</span>
+        <span class="sd">"""logging module configuration or ``null``"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"logging"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">saml</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointSAML</span><span class="p">:</span>
-        <span class="sd">"""saml module configuration or &lt;code&gt;null&lt;/code&gt;"""</span>
+        <span class="sd">"""saml module configuration or ``null``"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"saml"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">oidc</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointOIDC</span><span class="p">:</span>
-        <span class="sd">"""oidc module configuration or &lt;code&gt;null&lt;/code&gt;"""</span>
+        <span class="sd">"""oidc module configuration or ``null``"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"oidc"</span><span class="p">]</span></div>
 
 
@@ -1567,12 +1526,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">"""&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified"""</span>
+        <span class="sd">"""``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"enabled"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">provider</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers: &lt;code&gt;SLACK&lt;/code&gt;, &lt;code&gt;SNS&lt;/code&gt;, &lt;code&gt;STRIPE&lt;/code&gt;, &lt;code&gt;GITHUB&lt;/code&gt;, &lt;code&gt;TWILIO&lt;/code&gt;, &lt;code&gt;SHOPIFY&lt;/code&gt;, &lt;code&gt;GITLAB&lt;/code&gt;, &lt;code&gt;INTERCOM&lt;/code&gt;."""</span>
+        <span class="sd">"""a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers: ``SLACK``, ``SNS``, ``STRIPE``, ``GITHUB``, ``TWILIO``, ``SHOPIFY``, ``GITLAB``, ``INTERCOM``."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"provider"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -1594,7 +1553,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">"""&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified"""</span>
+        <span class="sd">"""``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"enabled"</span><span class="p">]</span></div>
 
 
@@ -1614,7 +1573,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">"""&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified"""</span>
+        <span class="sd">"""``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"enabled"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -1636,7 +1595,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">"""&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified"""</span>
+        <span class="sd">"""``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"enabled"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -1658,17 +1617,17 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">"""&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified"""</span>
+        <span class="sd">"""``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"enabled"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">terminate_at</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""&lt;code&gt;edge&lt;/code&gt; if the ngrok edge should terminate TLS traffic, &lt;code&gt;upstream&lt;/code&gt; if TLS traffic should be passed through to the upstream ngrok agent / application server for termination. if &lt;code&gt;upstream&lt;/code&gt; is chosen, most other modules will be disallowed because they rely on the ngrok edge being able to access the underlying traffic."""</span>
+        <span class="sd">"""``edge`` if the ngrok edge should terminate TLS traffic, ``upstream`` if TLS traffic should be passed through to the upstream ngrok agent / application server for termination. if ``upstream`` is chosen, most other modules will be disallowed because they rely on the ngrok edge being able to access the underlying traffic."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"terminate_at"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">min_version</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""The minimum TLS version used for termination and advertised to the client during the TLS handshake. if unspecified, ngrok will choose an industry-safe default. This value must be null if &lt;code&gt;terminate_at&lt;/code&gt; is set to &lt;code&gt;upstream&lt;/code&gt;."""</span>
+        <span class="sd">"""The minimum TLS version used for termination and advertised to the client during the TLS handshake. if unspecified, ngrok will choose an industry-safe default. This value must be null if ``terminate_at`` is set to ``upstream``."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"min_version"</span><span class="p">]</span></div>
 
 
@@ -1686,7 +1645,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">"""&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified"""</span>
+        <span class="sd">"""``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"enabled"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -1708,7 +1667,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">"""&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified"""</span>
+        <span class="sd">"""``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"enabled"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -1730,7 +1689,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">"""&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified"""</span>
+        <span class="sd">"""``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"enabled"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -1757,7 +1716,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">"""&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified"""</span>
+        <span class="sd">"""``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"enabled"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -1785,7 +1744,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">"""&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified"""</span>
+        <span class="sd">"""``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"enabled"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -1806,7 +1765,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">"""&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified"""</span>
+        <span class="sd">"""``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"enabled"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -1828,7 +1787,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">"""&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified"""</span>
+        <span class="sd">"""``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"enabled"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -1871,7 +1830,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">"""&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified"""</span>
+        <span class="sd">"""``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"enabled"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -1959,12 +1918,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">client_secret</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""the OAuth app client secret. retrieve if from the identity provider's dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for &lt;code&gt;client_id&lt;/code&gt;."""</span>
+        <span class="sd">"""the OAuth app client secret. retrieve if from the identity provider's dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for ``client_id``."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"client_secret"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">scopes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="sd">"""a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both &lt;code&gt;client_id&lt;/code&gt; and &lt;code&gt;client_secret&lt;/code&gt; to set scopes)"""</span>
+        <span class="sd">"""a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both ``client_id`` and ``client_secret`` to set scopes)"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"scopes"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -1979,7 +1938,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">teams</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="sd">"""a list of github teams identifiers. users will be allowed access to the endpoint if they are a member of any of these teams. identifiers should be in the 'slug' format qualified with the org name, e.g. &lt;code&gt;org-name/team-name&lt;/code&gt;"""</span>
+        <span class="sd">"""a list of github teams identifiers. users will be allowed access to the endpoint if they are a member of any of these teams. identifiers should be in the 'slug' format qualified with the org name, e.g. ``org-name/team-name``"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"teams"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -2006,12 +1965,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">client_secret</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""the OAuth app client secret. retrieve if from the identity provider's dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for &lt;code&gt;client_id&lt;/code&gt;."""</span>
+        <span class="sd">"""the OAuth app client secret. retrieve if from the identity provider's dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for ``client_id``."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"client_secret"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">scopes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="sd">"""a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both &lt;code&gt;client_id&lt;/code&gt; and &lt;code&gt;client_secret&lt;/code&gt; to set scopes)"""</span>
+        <span class="sd">"""a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both ``client_id`` and ``client_secret`` to set scopes)"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"scopes"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -2043,12 +2002,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">client_secret</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""the OAuth app client secret. retrieve if from the identity provider's dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for &lt;code&gt;client_id&lt;/code&gt;."""</span>
+        <span class="sd">"""the OAuth app client secret. retrieve if from the identity provider's dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for ``client_id``."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"client_secret"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">scopes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="sd">"""a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both &lt;code&gt;client_id&lt;/code&gt; and &lt;code&gt;client_secret&lt;/code&gt; to set scopes)"""</span>
+        <span class="sd">"""a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both ``client_id`` and ``client_secret`` to set scopes)"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"scopes"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -2080,12 +2039,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">client_secret</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""the OAuth app client secret. retrieve if from the identity provider's dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for &lt;code&gt;client_id&lt;/code&gt;."""</span>
+        <span class="sd">"""the OAuth app client secret. retrieve if from the identity provider's dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for ``client_id``."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"client_secret"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">scopes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="sd">"""a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both &lt;code&gt;client_id&lt;/code&gt; and &lt;code&gt;client_secret&lt;/code&gt; to set scopes)"""</span>
+        <span class="sd">"""a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both ``client_id`` and ``client_secret`` to set scopes)"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"scopes"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -2112,7 +2071,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">"""&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified"""</span>
+        <span class="sd">"""``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"enabled"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -2147,7 +2106,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">allow_idp_initiated</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">"""If true, the IdP may initiate a login directly (e.g. the user does not need to visit the endpoint first and then be redirected). The IdP should set the &lt;code&gt;RelayState&lt;/code&gt; parameter to the target URL of the resource they want the user to be redirected to after the SAML login assertion has been processed."""</span>
+        <span class="sd">"""If true, the IdP may initiate a login directly (e.g. the user does not need to visit the endpoint first and then be redirected). The IdP should set the ``RelayState`` parameter to the target URL of the resource they want the user to be redirected to after the SAML login assertion has been processed."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"allow_idp_initiated"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -2194,7 +2153,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">"""&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified"""</span>
+        <span class="sd">"""``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"enabled"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -2229,7 +2188,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">allow_idp_initiated</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">"""If true, the IdP may initiate a login directly (e.g. the user does not need to visit the endpoint first and then be redirected). The IdP should set the &lt;code&gt;RelayState&lt;/code&gt; parameter to the target URL of the resource they want the user to be redirected to after the SAML login assertion has been processed."""</span>
+        <span class="sd">"""If true, the IdP may initiate a login directly (e.g. the user does not need to visit the endpoint first and then be redirected). The IdP should set the ``RelayState`` parameter to the target URL of the resource they want the user to be redirected to after the SAML login assertion has been processed."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"allow_idp_initiated"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -2251,7 +2210,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">"""&lt;code&gt;true&lt;/code&gt; if the module will be applied to traffic, &lt;code&gt;false&lt;/code&gt; to disable. default &lt;code&gt;true&lt;/code&gt; if unspecified"""</span>
+        <span class="sd">"""``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"enabled"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -2791,7 +2750,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">acl</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="sd">"""optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the &lt;code&gt;bind&lt;/code&gt; rule. The &lt;code&gt;bind&lt;/code&gt; rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule &lt;code&gt;bind:example.ngrok.io&lt;/code&gt;. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of &lt;code&gt;bind:*.example.com&lt;/code&gt; which will allow &lt;code&gt;x.example.com&lt;/code&gt;, &lt;code&gt;y.example.com&lt;/code&gt;, &lt;code&gt;*.example.com&lt;/code&gt;, etc. A rule of &lt;code&gt;'*'&lt;/code&gt; is equivalent to no acl at all and will explicitly permit all actions."""</span>
+        <span class="sd">"""optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"acl"</span><span class="p">]</span></div>
 
 
@@ -2889,7 +2848,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">key_type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""the key type of the &lt;code&gt;public_key&lt;/code&gt;, one of &lt;code&gt;rsa&lt;/code&gt;, &lt;code&gt;ecdsa&lt;/code&gt; or &lt;code&gt;ed25519&lt;/code&gt;"""</span>
+        <span class="sd">"""the key type of the ``public_key``, one of ``rsa``, ``ecdsa`` or ``ed25519``"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"key_type"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -2909,12 +2868,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">valid_until</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""the time after which the ssh host certificate becomes invalid, in RFC 3339 format. the OpenSSH certificates RFC calls this &lt;code&gt;valid_before&lt;/code&gt;."""</span>
+        <span class="sd">"""the time after which the ssh host certificate becomes invalid, in RFC 3339 format. the OpenSSH certificates RFC calls this ``valid_before``."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"valid_until"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">certificate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""the signed SSH certificate in OpenSSH Authorized Keys format. this value should be placed in a &lt;code&gt;-cert.pub&lt;/code&gt; certificate file on disk that should be referenced in your &lt;code&gt;sshd_config&lt;/code&gt; configuration file with a &lt;code&gt;HostCertificate&lt;/code&gt; directive"""</span>
+        <span class="sd">"""the signed SSH certificate in OpenSSH Authorized Keys format. this value should be placed in a ``-cert.pub`` certificate file on disk that should be referenced in your ``sshd_config`` configuration file with a ``HostCertificate`` directive"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"certificate"</span><span class="p">]</span></div>
 
 
@@ -3012,7 +2971,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">key_type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""the key type of the &lt;code&gt;public_key&lt;/code&gt;, one of &lt;code&gt;rsa&lt;/code&gt;, &lt;code&gt;ecdsa&lt;/code&gt; or &lt;code&gt;ed25519&lt;/code&gt;"""</span>
+        <span class="sd">"""the key type of the ``public_key``, one of ``rsa``, ``ecdsa`` or ``ed25519``"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"key_type"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -3027,12 +2986,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">critical_options</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
-        <span class="sd">"""A map of critical options included in the certificate. Only two critical options are currently defined by OpenSSH: &lt;code&gt;force-command&lt;/code&gt; and &lt;code&gt;source-address&lt;/code&gt;. See &lt;a href="https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys"&gt;the OpenSSH certificate protocol spec&lt;/a&gt; for additional details."""</span>
+        <span class="sd">"""A map of critical options included in the certificate. Only two critical options are currently defined by OpenSSH: ``force-command`` and ``source-address``. See `the OpenSSH certificate protocol spec` &lt;https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys&gt;`_ for additional details."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"critical_options"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">extensions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
-        <span class="sd">"""A map of extensions included in the certificate. Extensions are additional metadata that can be interpreted by the SSH server for any purpose. These can be used to permit or deny the ability to open a terminal, do port forwarding, x11 forwarding, and more. If unspecified, the certificate will include limited permissions with the following extension map: &lt;code&gt;{"permit-pty": "", "permit-user-rc": ""}&lt;/code&gt; OpenSSH understands a number of predefined extensions. See &lt;a href="https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys"&gt;the OpenSSH certificate protocol spec&lt;/a&gt; for additional details."""</span>
+        <span class="sd">"""A map of extensions included in the certificate. Extensions are additional metadata that can be interpreted by the SSH server for any purpose. These can be used to permit or deny the ability to open a terminal, do port forwarding, x11 forwarding, and more. If unspecified, the certificate will include limited permissions with the following extension map: ``{"permit-pty": "", "permit-user-rc": ""}`` OpenSSH understands a number of predefined extensions. See `the OpenSSH certificate protocol spec` &lt;https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys&gt;`_ for additional details."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"extensions"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -3042,12 +3001,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">valid_until</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""the time after which the ssh host certificate becomes invalid, in RFC 3339 format. the OpenSSH certificates RFC calls this &lt;code&gt;valid_before&lt;/code&gt;."""</span>
+        <span class="sd">"""the time after which the ssh host certificate becomes invalid, in RFC 3339 format. the OpenSSH certificates RFC calls this ``valid_before``."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"valid_until"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">certificate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""the signed SSH certificate in OpenSSH Authorized Keys Format. this value should be placed in a &lt;code&gt;-cert.pub&lt;/code&gt; certificate file on disk that should be referenced in your &lt;code&gt;sshd_config&lt;/code&gt; configuration file with a &lt;code&gt;HostCertificate&lt;/code&gt; directive"""</span>
+        <span class="sd">"""the signed SSH certificate in OpenSSH Authorized Keys Format. this value should be placed in a ``-cert.pub`` certificate file on disk that should be referenced in your ``sshd_config`` configuration file with a ``HostCertificate`` directive"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"certificate"</span><span class="p">]</span></div>
 
 
@@ -3143,7 +3102,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">certificate_pem</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""chain of PEM-encoded certificates, leaf first. See &lt;a href="#tls-certificates-pem"&gt;Certificate Bundles&lt;/a&gt;."""</span>
+        <span class="sd">"""chain of PEM-encoded certificates, leaf first. See `Certificate Bundles` &lt;https://ngrok.com/docs/api#tls-certificates-pem&gt;`_."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"certificate_pem"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -3331,7 +3290,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">transport</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""the transport protocol used to start the tunnel session. Either &lt;code&gt;ngrok/v2&lt;/code&gt; or &lt;code&gt;ssh&lt;/code&gt;"""</span>
+        <span class="sd">"""the transport protocol used to start the tunnel session. Either ``ngrok/v2`` or ``ssh``"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"transport"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -3402,12 +3361,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""user-supplied metadata for the tunnel defined in the ngrok configuration file. See the tunnel &lt;a href="https://ngrok.com/docs#tunnel-definitions-metadata"&gt;metadata configuration option&lt;/a&gt; In API version 0, this value was instead pulled from the top-level &lt;a href="https://ngrok.com/docs#config_metadata"&gt;metadata configuration option&lt;/a&gt;."""</span>
+        <span class="sd">"""user-supplied metadata for the tunnel defined in the ngrok configuration file. See the tunnel `metadata configuration option` &lt;https://ngrok.com/docs#tunnel-definitions-metadata&gt;`_ In API version 0, this value was instead pulled from the top-level `metadata configuration option` &lt;https://ngrok.com/docs#config_metadata&gt;`_."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"metadata"</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">proto</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">"""tunnel protocol. one of &lt;code&gt;http&lt;/code&gt;, &lt;code&gt;https&lt;/code&gt;, &lt;code&gt;tcp&lt;/code&gt; or &lt;code&gt;tls&lt;/code&gt;"""</span>
+        <span class="sd">"""tunnel protocol. one of ``http``, ``https``, ``tcp`` or ``tls``"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">"proto"</span><span class="p">]</span>
 
     <span class="nd">@property</span>

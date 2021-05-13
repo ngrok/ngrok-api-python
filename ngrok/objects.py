@@ -66,7 +66,7 @@ class AbuseReport(object):
 
     @property
     def status(self) -> str:
-        """Indicates whether ngrok has processed the abuse report. one of <code>PENDING</code>, <code>PROCESSED</code>, or <code>PARTIALLY_PROCESSED</code>"""
+        """Indicates whether ngrok has processed the abuse report. one of ``PENDING``, ``PROCESSED``, or ``PARTIALLY_PROCESSED``"""
         return self._props["status"]
 
     @property
@@ -93,7 +93,7 @@ class AbuseReportHostname(object):
 
     @property
     def status(self) -> str:
-        """indicates what action ngrok has taken against the hostname. one of <code>PENDING</code>, <code>BANNED</code>, <code>UNBANNED</code>, or <code>IGNORE</code>"""
+        """indicates what action ngrok has taken against the hostname. one of ``PENDING``, ``BANNED``, ``UNBANNED``, or ``IGNORE``"""
         return self._props["status"]
 
 
@@ -153,7 +153,7 @@ class APIKey(object):
 
     @property
     def token(self) -> str:
-        """the bearer token that can be placed into the Authorization header to authenticate request to the ngrok API. <strong>This value is only available one time, on the API response from key creation. Otherwise it is null.</strong>"""
+        """the bearer token that can be placed into the Authorization header to authenticate request to the ngrok API. **This value is only available one time, on the API response from key creation. Otherwise it is null.**"""
         return self._props["token"]
 
 
@@ -364,12 +364,12 @@ class Credential(object):
 
     @property
     def token(self) -> str:
-        """the credential's authtoken that can be used to authenticate an ngrok client. <strong><em>This value is only available one time, on the API response from credential creation, otherwise it is null.</em></strong>"""
+        """the credential's authtoken that can be used to authenticate an ngrok client. **This value is only available one time, on the API response from credential creation, otherwise it is null.**"""
         return self._props["token"]
 
     @property
     def acl(self) -> Sequence[str]:
-        """optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the <code>bind</code> rule. The <code>bind</code> rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule <code>bind:example.ngrok.io</code>. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of <code>bind:*.example.com</code> which will allow <code>x.example.com</code>, <code>y.example.com</code>, <code>*.example.com</code>, etc. A rule of <code>'*'</code> is equivalent to no acl at all and will explicitly permit all actions."""
+        """optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions."""
         return self._props["acl"]
 
 
@@ -506,7 +506,7 @@ class EventStream(object):
 
     @property
     def event_type(self) -> str:
-        """The protocol that determines which events will be collected. Supported values are <code>tcp_connection_closed</code> and <code>http_request_complete</code>."""
+        """The protocol that determines which events will be collected. Supported values are ``tcp_connection_closed`` and ``http_request_complete``."""
         return self._props["event_type"]
 
     @property
@@ -561,12 +561,12 @@ class EventDestination(object):
 
     @property
     def format(self) -> str:
-        """The output format you would like to serialize events into when sending to their target. Currently the only accepted value is <code>JSON</code>."""
+        """The output format you would like to serialize events into when sending to their target. Currently the only accepted value is ``JSON``."""
         return self._props["format"]
 
     @property
     def target(self) -> EventTarget:
-        """An object that encapsulates where and how to send your events. An event destination must contain exactly one of the following objects, leaving the rest null: <code>kinesis</code>, <code>firehose</code>, <code>cloudwatch_logs</code>, or <code>s3</code>."""
+        """An object that encapsulates where and how to send your events. An event destination must contain exactly one of the following objects, leaving the rest null: ``kinesis``, ``firehose``, ``cloudwatch_logs``, or ``s3``."""
         return self._props["target"]
 
     @property
@@ -654,7 +654,7 @@ class EventTargetFirehose(object):
 
     @property
     def auth(self) -> AWSAuth:
-        """Configuration for how to authenticate into your AWS account. Exactly one of <code>role</code> or <code>creds</code> should be configured."""
+        """Configuration for how to authenticate into your AWS account. Exactly one of ``role`` or ``creds`` should be configured."""
         return self._props["auth"]
 
     @property
@@ -677,7 +677,7 @@ class EventTargetKinesis(object):
 
     @property
     def auth(self) -> AWSAuth:
-        """Configuration for how to authenticate into your AWS account. Exactly one of <code>role</code> or <code>creds</code> should be configured."""
+        """Configuration for how to authenticate into your AWS account. Exactly one of ``role`` or ``creds`` should be configured."""
         return self._props["auth"]
 
     @property
@@ -700,7 +700,7 @@ class EventTargetCloudwatchLogs(object):
 
     @property
     def auth(self) -> AWSAuth:
-        """Configuration for how to authenticate into your AWS account. Exactly one of <code>role</code> or <code>creds</code> should be configured."""
+        """Configuration for how to authenticate into your AWS account. Exactly one of ``role`` or ``creds`` should be configured."""
         return self._props["auth"]
 
     @property
@@ -828,7 +828,7 @@ class IPPolicy(object):
 
     @property
     def action(self) -> str:
-        """the IP policy action. Supported values are <code>allow</code> or <code>deny</code>"""
+        """the IP policy action. Supported values are ``allow`` or ``deny``"""
         return self._props["action"]
 
 
@@ -1015,7 +1015,7 @@ class IPRestriction(object):
 
     @property
     def type(self) -> str:
-        """the type of IP restriction. this defines what traffic will be restricted with the attached policies. four values are currently supported: <code>dashboard</code>, <code>api</code>, <code>agent</code>, and <code>endpoints</code>"""
+        """the type of IP restriction. this defines what traffic will be restricted with the attached policies. four values are currently supported: ``dashboard``, ``api``, ``agent``, and ``endpoints``"""
         return self._props["type"]
 
     @property
@@ -1232,7 +1232,7 @@ class EndpointConfiguration(object):
 
     @property
     def type(self) -> str:
-        """they type of traffic this endpoint configuration can be applied to. one of: <code>http</code>, <code>https</code>, <code>tcp</code>"""
+        """they type of traffic this endpoint configuration can be applied to. one of: ``http``, ``https``, ``tcp``"""
         return self._props["type"]
 
     @property
@@ -1257,62 +1257,62 @@ class EndpointConfiguration(object):
 
     @property
     def circuit_breaker(self) -> EndpointCircuitBreaker:
-        """circuit breaker module configuration or <code>null</code>"""
+        """circuit breaker module configuration or ``null``"""
         return self._props["circuit_breaker"]
 
     @property
     def compression(self) -> EndpointCompression:
-        """compression module configuration or <code>null</code>"""
+        """compression module configuration or ``null``"""
         return self._props["compression"]
 
     @property
     def request_headers(self) -> EndpointRequestHeaders:
-        """request headers module configuration or <code>null</code>"""
+        """request headers module configuration or ``null``"""
         return self._props["request_headers"]
 
     @property
     def response_headers(self) -> EndpointResponseHeaders:
-        """response headers module configuration or <code>null</code>"""
+        """response headers module configuration or ``null``"""
         return self._props["response_headers"]
 
     @property
     def ip_policy(self) -> EndpointIPPolicy:
-        """ip policy module configuration or <code>null</code>"""
+        """ip policy module configuration or ``null``"""
         return self._props["ip_policy"]
 
     @property
     def mutual_tls(self) -> EndpointMutualTLS:
-        """mutual TLS module configuration or <code>null</code>"""
+        """mutual TLS module configuration or ``null``"""
         return self._props["mutual_tls"]
 
     @property
     def tls_termination(self) -> EndpointTLSTermination:
-        """TLS termination module configuration or <code>null</code>"""
+        """TLS termination module configuration or ``null``"""
         return self._props["tls_termination"]
 
     @property
     def webhook_validation(self) -> EndpointWebhookValidation:
-        """webhook validation module configuration or <code>null</code>"""
+        """webhook validation module configuration or ``null``"""
         return self._props["webhook_validation"]
 
     @property
     def oauth(self) -> EndpointOAuth:
-        """oauth module configuration or <code>null</code>"""
+        """oauth module configuration or ``null``"""
         return self._props["oauth"]
 
     @property
     def logging(self) -> EndpointLogging:
-        """logging module configuration or <code>null</code>"""
+        """logging module configuration or ``null``"""
         return self._props["logging"]
 
     @property
     def saml(self) -> EndpointSAML:
-        """saml module configuration or <code>null</code>"""
+        """saml module configuration or ``null``"""
         return self._props["saml"]
 
     @property
     def oidc(self) -> EndpointOIDC:
-        """oidc module configuration or <code>null</code>"""
+        """oidc module configuration or ``null``"""
         return self._props["oidc"]
 
 
@@ -1362,12 +1362,12 @@ class EndpointWebhookValidation(object):
 
     @property
     def enabled(self) -> bool:
-        """<code>true</code> if the module will be applied to traffic, <code>false</code> to disable. default <code>true</code> if unspecified"""
+        """``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""
         return self._props["enabled"]
 
     @property
     def provider(self) -> str:
-        """a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers: <code>SLACK</code>, <code>SNS</code>, <code>STRIPE</code>, <code>GITHUB</code>, <code>TWILIO</code>, <code>SHOPIFY</code>, <code>GITLAB</code>, <code>INTERCOM</code>."""
+        """a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers: ``SLACK``, ``SNS``, ``STRIPE``, ``GITHUB``, ``TWILIO``, ``SHOPIFY``, ``GITLAB``, ``INTERCOM``."""
         return self._props["provider"]
 
     @property
@@ -1389,7 +1389,7 @@ class EndpointCompression(object):
 
     @property
     def enabled(self) -> bool:
-        """<code>true</code> if the module will be applied to traffic, <code>false</code> to disable. default <code>true</code> if unspecified"""
+        """``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""
         return self._props["enabled"]
 
 
@@ -1409,7 +1409,7 @@ class EndpointMutualTLS(object):
 
     @property
     def enabled(self) -> bool:
-        """<code>true</code> if the module will be applied to traffic, <code>false</code> to disable. default <code>true</code> if unspecified"""
+        """``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""
         return self._props["enabled"]
 
     @property
@@ -1431,7 +1431,7 @@ class EndpointMutualTLSMutate(object):
 
     @property
     def enabled(self) -> bool:
-        """<code>true</code> if the module will be applied to traffic, <code>false</code> to disable. default <code>true</code> if unspecified"""
+        """``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""
         return self._props["enabled"]
 
     @property
@@ -1453,17 +1453,17 @@ class EndpointTLSTermination(object):
 
     @property
     def enabled(self) -> bool:
-        """<code>true</code> if the module will be applied to traffic, <code>false</code> to disable. default <code>true</code> if unspecified"""
+        """``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""
         return self._props["enabled"]
 
     @property
     def terminate_at(self) -> str:
-        """<code>edge</code> if the ngrok edge should terminate TLS traffic, <code>upstream</code> if TLS traffic should be passed through to the upstream ngrok agent / application server for termination. if <code>upstream</code> is chosen, most other modules will be disallowed because they rely on the ngrok edge being able to access the underlying traffic."""
+        """``edge`` if the ngrok edge should terminate TLS traffic, ``upstream`` if TLS traffic should be passed through to the upstream ngrok agent / application server for termination. if ``upstream`` is chosen, most other modules will be disallowed because they rely on the ngrok edge being able to access the underlying traffic."""
         return self._props["terminate_at"]
 
     @property
     def min_version(self) -> str:
-        """The minimum TLS version used for termination and advertised to the client during the TLS handshake. if unspecified, ngrok will choose an industry-safe default. This value must be null if <code>terminate_at</code> is set to <code>upstream</code>."""
+        """The minimum TLS version used for termination and advertised to the client during the TLS handshake. if unspecified, ngrok will choose an industry-safe default. This value must be null if ``terminate_at`` is set to ``upstream``."""
         return self._props["min_version"]
 
 
@@ -1481,7 +1481,7 @@ class EndpointLogging(object):
 
     @property
     def enabled(self) -> bool:
-        """<code>true</code> if the module will be applied to traffic, <code>false</code> to disable. default <code>true</code> if unspecified"""
+        """``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""
         return self._props["enabled"]
 
     @property
@@ -1503,7 +1503,7 @@ class EndpointLoggingMutate(object):
 
     @property
     def enabled(self) -> bool:
-        """<code>true</code> if the module will be applied to traffic, <code>false</code> to disable. default <code>true</code> if unspecified"""
+        """``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""
         return self._props["enabled"]
 
     @property
@@ -1525,7 +1525,7 @@ class EndpointRequestHeaders(object):
 
     @property
     def enabled(self) -> bool:
-        """<code>true</code> if the module will be applied to traffic, <code>false</code> to disable. default <code>true</code> if unspecified"""
+        """``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""
         return self._props["enabled"]
 
     @property
@@ -1552,7 +1552,7 @@ class EndpointResponseHeaders(object):
 
     @property
     def enabled(self) -> bool:
-        """<code>true</code> if the module will be applied to traffic, <code>false</code> to disable. default <code>true</code> if unspecified"""
+        """``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""
         return self._props["enabled"]
 
     @property
@@ -1580,7 +1580,7 @@ class EndpointIPPolicy(object):
 
     @property
     def enabled(self) -> bool:
-        """<code>true</code> if the module will be applied to traffic, <code>false</code> to disable. default <code>true</code> if unspecified"""
+        """``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""
         return self._props["enabled"]
 
     @property
@@ -1601,7 +1601,7 @@ class EndpointIPPolicyMutate(object):
 
     @property
     def enabled(self) -> bool:
-        """<code>true</code> if the module will be applied to traffic, <code>false</code> to disable. default <code>true</code> if unspecified"""
+        """``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""
         return self._props["enabled"]
 
     @property
@@ -1623,7 +1623,7 @@ class EndpointCircuitBreaker(object):
 
     @property
     def enabled(self) -> bool:
-        """<code>true</code> if the module will be applied to traffic, <code>false</code> to disable. default <code>true</code> if unspecified"""
+        """``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""
         return self._props["enabled"]
 
     @property
@@ -1666,7 +1666,7 @@ class EndpointOAuth(object):
 
     @property
     def enabled(self) -> bool:
-        """<code>true</code> if the module will be applied to traffic, <code>false</code> to disable. default <code>true</code> if unspecified"""
+        """``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""
         return self._props["enabled"]
 
     @property
@@ -1754,12 +1754,12 @@ class EndpointOAuthGitHub(object):
 
     @property
     def client_secret(self) -> str:
-        """the OAuth app client secret. retrieve if from the identity provider's dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for <code>client_id</code>."""
+        """the OAuth app client secret. retrieve if from the identity provider's dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for ``client_id``."""
         return self._props["client_secret"]
 
     @property
     def scopes(self) -> Sequence[str]:
-        """a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both <code>client_id</code> and <code>client_secret</code> to set scopes)"""
+        """a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both ``client_id`` and ``client_secret`` to set scopes)"""
         return self._props["scopes"]
 
     @property
@@ -1774,7 +1774,7 @@ class EndpointOAuthGitHub(object):
 
     @property
     def teams(self) -> Sequence[str]:
-        """a list of github teams identifiers. users will be allowed access to the endpoint if they are a member of any of these teams. identifiers should be in the 'slug' format qualified with the org name, e.g. <code>org-name/team-name</code>"""
+        """a list of github teams identifiers. users will be allowed access to the endpoint if they are a member of any of these teams. identifiers should be in the 'slug' format qualified with the org name, e.g. ``org-name/team-name``"""
         return self._props["teams"]
 
     @property
@@ -1801,12 +1801,12 @@ class EndpointOAuthFacebook(object):
 
     @property
     def client_secret(self) -> str:
-        """the OAuth app client secret. retrieve if from the identity provider's dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for <code>client_id</code>."""
+        """the OAuth app client secret. retrieve if from the identity provider's dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for ``client_id``."""
         return self._props["client_secret"]
 
     @property
     def scopes(self) -> Sequence[str]:
-        """a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both <code>client_id</code> and <code>client_secret</code> to set scopes)"""
+        """a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both ``client_id`` and ``client_secret`` to set scopes)"""
         return self._props["scopes"]
 
     @property
@@ -1838,12 +1838,12 @@ class EndpointOAuthMicrosoft(object):
 
     @property
     def client_secret(self) -> str:
-        """the OAuth app client secret. retrieve if from the identity provider's dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for <code>client_id</code>."""
+        """the OAuth app client secret. retrieve if from the identity provider's dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for ``client_id``."""
         return self._props["client_secret"]
 
     @property
     def scopes(self) -> Sequence[str]:
-        """a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both <code>client_id</code> and <code>client_secret</code> to set scopes)"""
+        """a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both ``client_id`` and ``client_secret`` to set scopes)"""
         return self._props["scopes"]
 
     @property
@@ -1875,12 +1875,12 @@ class EndpointOAuthGoogle(object):
 
     @property
     def client_secret(self) -> str:
-        """the OAuth app client secret. retrieve if from the identity provider's dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for <code>client_id</code>."""
+        """the OAuth app client secret. retrieve if from the identity provider's dashboard where you created your own OAuth app. optional, see all of the caveats in the docs for ``client_id``."""
         return self._props["client_secret"]
 
     @property
     def scopes(self) -> Sequence[str]:
-        """a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both <code>client_id</code> and <code>client_secret</code> to set scopes)"""
+        """a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both ``client_id`` and ``client_secret`` to set scopes)"""
         return self._props["scopes"]
 
     @property
@@ -1907,7 +1907,7 @@ class EndpointSAML(object):
 
     @property
     def enabled(self) -> bool:
-        """<code>true</code> if the module will be applied to traffic, <code>false</code> to disable. default <code>true</code> if unspecified"""
+        """``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""
         return self._props["enabled"]
 
     @property
@@ -1942,7 +1942,7 @@ class EndpointSAML(object):
 
     @property
     def allow_idp_initiated(self) -> bool:
-        """If true, the IdP may initiate a login directly (e.g. the user does not need to visit the endpoint first and then be redirected). The IdP should set the <code>RelayState</code> parameter to the target URL of the resource they want the user to be redirected to after the SAML login assertion has been processed."""
+        """If true, the IdP may initiate a login directly (e.g. the user does not need to visit the endpoint first and then be redirected). The IdP should set the ``RelayState`` parameter to the target URL of the resource they want the user to be redirected to after the SAML login assertion has been processed."""
         return self._props["allow_idp_initiated"]
 
     @property
@@ -1989,7 +1989,7 @@ class EndpointSAMLMutate(object):
 
     @property
     def enabled(self) -> bool:
-        """<code>true</code> if the module will be applied to traffic, <code>false</code> to disable. default <code>true</code> if unspecified"""
+        """``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""
         return self._props["enabled"]
 
     @property
@@ -2024,7 +2024,7 @@ class EndpointSAMLMutate(object):
 
     @property
     def allow_idp_initiated(self) -> bool:
-        """If true, the IdP may initiate a login directly (e.g. the user does not need to visit the endpoint first and then be redirected). The IdP should set the <code>RelayState</code> parameter to the target URL of the resource they want the user to be redirected to after the SAML login assertion has been processed."""
+        """If true, the IdP may initiate a login directly (e.g. the user does not need to visit the endpoint first and then be redirected). The IdP should set the ``RelayState`` parameter to the target URL of the resource they want the user to be redirected to after the SAML login assertion has been processed."""
         return self._props["allow_idp_initiated"]
 
     @property
@@ -2046,7 +2046,7 @@ class EndpointOIDC(object):
 
     @property
     def enabled(self) -> bool:
-        """<code>true</code> if the module will be applied to traffic, <code>false</code> to disable. default <code>true</code> if unspecified"""
+        """``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""
         return self._props["enabled"]
 
     @property
@@ -2586,7 +2586,7 @@ class SSHCredential(object):
 
     @property
     def acl(self) -> Sequence[str]:
-        """optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the <code>bind</code> rule. The <code>bind</code> rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule <code>bind:example.ngrok.io</code>. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of <code>bind:*.example.com</code> which will allow <code>x.example.com</code>, <code>y.example.com</code>, <code>*.example.com</code>, etc. A rule of <code>'*'</code> is equivalent to no acl at all and will explicitly permit all actions."""
+        """optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions."""
         return self._props["acl"]
 
 
@@ -2684,7 +2684,7 @@ class SSHHostCertificate(object):
 
     @property
     def key_type(self) -> str:
-        """the key type of the <code>public_key</code>, one of <code>rsa</code>, <code>ecdsa</code> or <code>ed25519</code>"""
+        """the key type of the ``public_key``, one of ``rsa``, ``ecdsa`` or ``ed25519``"""
         return self._props["key_type"]
 
     @property
@@ -2704,12 +2704,12 @@ class SSHHostCertificate(object):
 
     @property
     def valid_until(self) -> str:
-        """the time after which the ssh host certificate becomes invalid, in RFC 3339 format. the OpenSSH certificates RFC calls this <code>valid_before</code>."""
+        """the time after which the ssh host certificate becomes invalid, in RFC 3339 format. the OpenSSH certificates RFC calls this ``valid_before``."""
         return self._props["valid_until"]
 
     @property
     def certificate(self) -> str:
-        """the signed SSH certificate in OpenSSH Authorized Keys format. this value should be placed in a <code>-cert.pub</code> certificate file on disk that should be referenced in your <code>sshd_config</code> configuration file with a <code>HostCertificate</code> directive"""
+        """the signed SSH certificate in OpenSSH Authorized Keys format. this value should be placed in a ``-cert.pub`` certificate file on disk that should be referenced in your ``sshd_config`` configuration file with a ``HostCertificate`` directive"""
         return self._props["certificate"]
 
 
@@ -2807,7 +2807,7 @@ class SSHUserCertificate(object):
 
     @property
     def key_type(self) -> str:
-        """the key type of the <code>public_key</code>, one of <code>rsa</code>, <code>ecdsa</code> or <code>ed25519</code>"""
+        """the key type of the ``public_key``, one of ``rsa``, ``ecdsa`` or ``ed25519``"""
         return self._props["key_type"]
 
     @property
@@ -2822,12 +2822,12 @@ class SSHUserCertificate(object):
 
     @property
     def critical_options(self) -> Mapping[str, str]:
-        """A map of critical options included in the certificate. Only two critical options are currently defined by OpenSSH: <code>force-command</code> and <code>source-address</code>. See <a href="https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys">the OpenSSH certificate protocol spec</a> for additional details."""
+        """A map of critical options included in the certificate. Only two critical options are currently defined by OpenSSH: ``force-command`` and ``source-address``. See `the OpenSSH certificate protocol spec` <https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys>`_ for additional details."""
         return self._props["critical_options"]
 
     @property
     def extensions(self) -> Mapping[str, str]:
-        """A map of extensions included in the certificate. Extensions are additional metadata that can be interpreted by the SSH server for any purpose. These can be used to permit or deny the ability to open a terminal, do port forwarding, x11 forwarding, and more. If unspecified, the certificate will include limited permissions with the following extension map: <code>{"permit-pty": "", "permit-user-rc": ""}</code> OpenSSH understands a number of predefined extensions. See <a href="https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys">the OpenSSH certificate protocol spec</a> for additional details."""
+        """A map of extensions included in the certificate. Extensions are additional metadata that can be interpreted by the SSH server for any purpose. These can be used to permit or deny the ability to open a terminal, do port forwarding, x11 forwarding, and more. If unspecified, the certificate will include limited permissions with the following extension map: ``{"permit-pty": "", "permit-user-rc": ""}`` OpenSSH understands a number of predefined extensions. See `the OpenSSH certificate protocol spec` <https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys>`_ for additional details."""
         return self._props["extensions"]
 
     @property
@@ -2837,12 +2837,12 @@ class SSHUserCertificate(object):
 
     @property
     def valid_until(self) -> str:
-        """the time after which the ssh host certificate becomes invalid, in RFC 3339 format. the OpenSSH certificates RFC calls this <code>valid_before</code>."""
+        """the time after which the ssh host certificate becomes invalid, in RFC 3339 format. the OpenSSH certificates RFC calls this ``valid_before``."""
         return self._props["valid_until"]
 
     @property
     def certificate(self) -> str:
-        """the signed SSH certificate in OpenSSH Authorized Keys Format. this value should be placed in a <code>-cert.pub</code> certificate file on disk that should be referenced in your <code>sshd_config</code> configuration file with a <code>HostCertificate</code> directive"""
+        """the signed SSH certificate in OpenSSH Authorized Keys Format. this value should be placed in a ``-cert.pub`` certificate file on disk that should be referenced in your ``sshd_config`` configuration file with a ``HostCertificate`` directive"""
         return self._props["certificate"]
 
 
@@ -2938,7 +2938,7 @@ class TLSCertificate(object):
 
     @property
     def certificate_pem(self) -> str:
-        """chain of PEM-encoded certificates, leaf first. See <a href="#tls-certificates-pem">Certificate Bundles</a>."""
+        """chain of PEM-encoded certificates, leaf first. See `Certificate Bundles` <https://ngrok.com/docs/api#tls-certificates-pem>`_."""
         return self._props["certificate_pem"]
 
     @property
@@ -3126,7 +3126,7 @@ class TunnelSession(object):
 
     @property
     def transport(self) -> str:
-        """the transport protocol used to start the tunnel session. Either <code>ngrok/v2</code> or <code>ssh</code>"""
+        """the transport protocol used to start the tunnel session. Either ``ngrok/v2`` or ``ssh``"""
         return self._props["transport"]
 
     @property
@@ -3197,12 +3197,12 @@ class Tunnel(object):
 
     @property
     def metadata(self) -> str:
-        """user-supplied metadata for the tunnel defined in the ngrok configuration file. See the tunnel <a href="https://ngrok.com/docs#tunnel-definitions-metadata">metadata configuration option</a> In API version 0, this value was instead pulled from the top-level <a href="https://ngrok.com/docs#config_metadata">metadata configuration option</a>."""
+        """user-supplied metadata for the tunnel defined in the ngrok configuration file. See the tunnel `metadata configuration option` <https://ngrok.com/docs#tunnel-definitions-metadata>`_ In API version 0, this value was instead pulled from the top-level `metadata configuration option` <https://ngrok.com/docs#config_metadata>`_."""
         return self._props["metadata"]
 
     @property
     def proto(self) -> str:
-        """tunnel protocol. one of <code>http</code>, <code>https</code>, <code>tcp</code> or <code>tls</code>"""
+        """tunnel protocol. one of ``http``, ``https``, ``tcp`` or ``tls``"""
         return self._props["proto"]
 
     @property

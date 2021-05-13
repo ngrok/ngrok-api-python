@@ -139,47 +139,6 @@
 <li class="toctree-l1"><a class="reference internal" href="endpoint_saml_module.html">SAML Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_oidc_module.html">OIDC Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reserved_addrs.html">Reserved Addresses</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Reserved Domains</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ssh_certificate_authorities.html">SSH Certificate Authorities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ssh_credentials.html">SSH Credentials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ssh_host_certificates.html">SSH Host Certificates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ssh_user_certificates.html">SSH User Certificates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tls_certificates.html">TLS Certificates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tunnel_sessions.html">Tunnel Sessions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tunnels.html">Tunnels</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="client.html">Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="objects.html">Objects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="errors.html">Errors</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Services</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="abuse_reports.html">Abuse Reports</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api_keys.html">API Keys</a></li>
-<li class="toctree-l1"><a class="reference internal" href="certificate_authorities.html">Certificate Authorities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="credentials.html">Tunnel Credentials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="event_streams.html">Event Streams</a></li>
-<li class="toctree-l1"><a class="reference internal" href="event_destinations.html">Event Destinations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ip_policies.html">IP Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ip_policy_rules.html">IP Policy Rules</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ip_restrictions.html">IP Restrictions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ip_whitelist.html">IP Whitelist</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_configurations.html">Endpoint Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_logging_module.html">Logging Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_circuit_breaker_module.html">Circuit Breaker Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_compression_module.html">Compression Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_tls_termination_module.html">TLS Termination Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_ip_policy_module.html">IP Policy Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_mutual_tls_module.html">Mutual TLS Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_request_headers_module.html">Request Headers Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_response_headers_module.html">Response Headers Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_o_auth_module.html">OAuth Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_webhook_validation_module.html">Webhook Validation Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_saml_module.html">SAML Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_oidc_module.html">OIDC Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reserved_addrs.html">Reserved Addresses</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Reserved Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_certificate_authorities.html">SSH Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_credentials.html">SSH Credentials</a></li>
@@ -222,8 +181,8 @@
 <li><p><strong>metadata</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – arbitrary user-defined machine-readable data of this reserved domain. Optional, max 4096 bytes.</p></li>
 <li><p><strong>http_endpoint_configuration_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – ID of an endpoint configuration of type http that will be used to handle inbound http traffic to this domain</p></li>
 <li><p><strong>https_endpoint_configuration_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – ID of an endpoint configuration of type https that will be used to handle inbound https traffic to this domain</p></li>
-<li><p><strong>certificate_id</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with <cite>certificate_management_policy</cite>.</p></li>
-<li><p><strong>certificate_management_policy</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="objects.html#ngrok.objects.ReservedDomainCertPolicy" title="ngrok.objects.ReservedDomainCertPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomainCertPolicy</span></code></a>]) – configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with <cite>certificate_id</cite>.</p></li>
+<li><p><strong>certificate_id</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with <code class="docutils literal notranslate"><span class="pre">certificate_management_policy</span></code>.</p></li>
+<li><p><strong>certificate_management_policy</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="objects.html#ngrok.objects.ReservedDomainCertPolicy" title="ngrok.objects.ReservedDomainCertPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomainCertPolicy</span></code></a>]) – configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with <code class="docutils literal notranslate"><span class="pre">certificate_id</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
@@ -322,8 +281,8 @@
 <li><p><strong>metadata</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – arbitrary user-defined machine-readable data of this reserved domain. Optional, max 4096 bytes.</p></li>
 <li><p><strong>http_endpoint_configuration_id</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – ID of an endpoint configuration of type http that will be used to handle inbound http traffic to this domain</p></li>
 <li><p><strong>https_endpoint_configuration_id</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – ID of an endpoint configuration of type https that will be used to handle inbound https traffic to this domain</p></li>
-<li><p><strong>certificate_id</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with <cite>certificate_management_policy</cite>.</p></li>
-<li><p><strong>certificate_management_policy</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="objects.html#ngrok.objects.ReservedDomainCertPolicy" title="ngrok.objects.ReservedDomainCertPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomainCertPolicy</span></code></a>]) – configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with <cite>certificate_id</cite>.</p></li>
+<li><p><strong>certificate_id</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with <code class="docutils literal notranslate"><span class="pre">certificate_management_policy</span></code>.</p></li>
+<li><p><strong>certificate_management_policy</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="objects.html#ngrok.objects.ReservedDomainCertPolicy" title="ngrok.objects.ReservedDomainCertPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomainCertPolicy</span></code></a>]) – configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with <code class="docutils literal notranslate"><span class="pre">certificate_id</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
