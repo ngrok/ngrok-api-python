@@ -11,8 +11,11 @@ class Ref(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<Ref {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<Ref {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<Ref {}>".format(repr(self._props))
 
     @property
     def id(self) -> str:
@@ -36,8 +39,11 @@ class AbuseReport(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<AbuseReport {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<AbuseReport {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<AbuseReport {}>".format(repr(self._props))
 
     @property
     def id(self) -> str:
@@ -83,8 +89,11 @@ class AbuseReportHostname(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<AbuseReportHostname {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<AbuseReportHostname {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<AbuseReportHostname {}>".format(repr(self._props))
 
     @property
     def hostname(self) -> str:
@@ -105,8 +114,11 @@ class APIKey(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<APIKey {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<APIKey {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<APIKey {}>".format(repr(self._props))
 
     def delete(
         self,
@@ -166,8 +178,11 @@ class APIKeyList(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<APIKeyList {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<APIKeyList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<APIKeyList {}>".format(repr(self._props))
 
     def __iter__(self):
         return PagedIterator(self._client, self, "keys")
@@ -196,8 +211,11 @@ class CertificateAuthority(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<CertificateAuthority {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<CertificateAuthority {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<CertificateAuthority {}>".format(repr(self._props))
 
     def delete(
         self,
@@ -284,8 +302,11 @@ class CertificateAuthorityList(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<CertificateAuthorityList {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<CertificateAuthorityList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<CertificateAuthorityList {}>".format(repr(self._props))
 
     def __iter__(self):
         return PagedIterator(self._client, self, "certificate_authorities")
@@ -314,8 +335,11 @@ class Credential(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<Credential {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<Credential {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<Credential {}>".format(repr(self._props))
 
     def delete(
         self,
@@ -384,8 +408,11 @@ class CredentialList(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<CredentialList {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<CredentialList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<CredentialList {}>".format(repr(self._props))
 
     def __iter__(self):
         return PagedIterator(self._client, self, "credentials")
@@ -417,8 +444,11 @@ class EventStreamList(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EventStreamList {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventStreamList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EventStreamList {}>".format(repr(self._props))
 
     def __iter__(self):
         return PagedIterator(self._client, self, "event_streams")
@@ -447,8 +477,11 @@ class EventStream(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EventStream {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventStream {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EventStream {}>".format(repr(self._props))
 
     def delete(
         self,
@@ -529,8 +562,11 @@ class EventDestination(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EventDestination {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventDestination {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EventDestination {}>".format(repr(self._props))
 
     def delete(
         self,
@@ -586,8 +622,11 @@ class EventDestinationList(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EventDestinationList {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventDestinationList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EventDestinationList {}>".format(repr(self._props))
 
     def __iter__(self):
         return PagedIterator(self._client, self, "event_destinations")
@@ -621,8 +660,11 @@ class EventTarget(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EventTarget {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventTarget {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EventTarget {}>".format(repr(self._props))
 
     @property
     def firehose(self) -> EventTargetFirehose:
@@ -649,8 +691,11 @@ class EventTargetFirehose(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EventTargetFirehose {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventTargetFirehose {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EventTargetFirehose {}>".format(repr(self._props))
 
     @property
     def auth(self) -> AWSAuth:
@@ -672,8 +717,11 @@ class EventTargetKinesis(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EventTargetKinesis {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventTargetKinesis {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EventTargetKinesis {}>".format(repr(self._props))
 
     @property
     def auth(self) -> AWSAuth:
@@ -695,8 +743,13 @@ class EventTargetCloudwatchLogs(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EventTargetCloudwatchLogs {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventTargetCloudwatchLogs {} {}>".format(
+                self.id, repr(self._props)
+            )
+        else:
+            return "<EventTargetCloudwatchLogs {}>".format(repr(self._props))
 
     @property
     def auth(self) -> AWSAuth:
@@ -719,8 +772,11 @@ class AWSAuth(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<AWSAuth {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<AWSAuth {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<AWSAuth {}>".format(repr(self._props))
 
     @property
     def role(self) -> AWSRole:
@@ -741,8 +797,11 @@ class AWSRole(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<AWSRole {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<AWSRole {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<AWSRole {}>".format(repr(self._props))
 
     @property
     def role_arn(self) -> str:
@@ -758,8 +817,11 @@ class AWSCredentials(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<AWSCredentials {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<AWSCredentials {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<AWSCredentials {}>".format(repr(self._props))
 
     @property
     def aws_access_key_id(self) -> str:
@@ -780,8 +842,11 @@ class IPPolicy(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<IPPolicy {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<IPPolicy {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<IPPolicy {}>".format(repr(self._props))
 
     def delete(
         self,
@@ -841,8 +906,11 @@ class IPPolicyList(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<IPPolicyList {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<IPPolicyList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<IPPolicyList {}>".format(repr(self._props))
 
     def __iter__(self):
         return PagedIterator(self._client, self, "ip_policies")
@@ -872,8 +940,11 @@ class IPPolicyRule(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<IPPolicyRule {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<IPPolicyRule {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<IPPolicyRule {}>".format(repr(self._props))
 
     def delete(
         self,
@@ -942,8 +1013,11 @@ class IPPolicyRuleList(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<IPPolicyRuleList {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<IPPolicyRuleList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<IPPolicyRuleList {}>".format(repr(self._props))
 
     def __iter__(self):
         return PagedIterator(self._client, self, "ip_policy_rules")
@@ -973,8 +1047,11 @@ class IPRestriction(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<IPRestriction {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<IPRestriction {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<IPRestriction {}>".format(repr(self._props))
 
     def delete(
         self,
@@ -1035,8 +1112,11 @@ class IPRestrictionList(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<IPRestrictionList {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<IPRestrictionList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<IPRestrictionList {}>".format(repr(self._props))
 
     def __iter__(self):
         return PagedIterator(self._client, self, "ip_restrictions")
@@ -1065,8 +1145,11 @@ class IPWhitelistEntry(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<IPWhitelistEntry {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<IPWhitelistEntry {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<IPWhitelistEntry {}>".format(repr(self._props))
 
     def delete(
         self,
@@ -1128,8 +1211,11 @@ class IPWhitelistEntryList(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<IPWhitelistEntryList {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<IPWhitelistEntryList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<IPWhitelistEntryList {}>".format(repr(self._props))
 
     def __iter__(self):
         return PagedIterator(self._client, self, "whitelist")
@@ -1180,8 +1266,11 @@ class EndpointConfiguration(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointConfiguration {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointConfiguration {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointConfiguration {}>".format(repr(self._props))
 
     def delete(
         self,
@@ -1327,8 +1416,13 @@ class EndpointConfigurationList(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointConfigurationList {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointConfigurationList {} {}>".format(
+                self.id, repr(self._props)
+            )
+        else:
+            return "<EndpointConfigurationList {}>".format(repr(self._props))
 
     def __iter__(self):
         return PagedIterator(self._client, self, "endpoint_configurations")
@@ -1357,8 +1451,13 @@ class EndpointWebhookValidation(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointWebhookValidation {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointWebhookValidation {} {}>".format(
+                self.id, repr(self._props)
+            )
+        else:
+            return "<EndpointWebhookValidation {}>".format(repr(self._props))
 
     @property
     def enabled(self) -> bool:
@@ -1384,8 +1483,11 @@ class EndpointCompression(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointCompression {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointCompression {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointCompression {}>".format(repr(self._props))
 
     @property
     def enabled(self) -> bool:
@@ -1404,8 +1506,11 @@ class EndpointMutualTLS(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointMutualTLS {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointMutualTLS {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointMutualTLS {}>".format(repr(self._props))
 
     @property
     def enabled(self) -> bool:
@@ -1426,8 +1531,11 @@ class EndpointMutualTLSMutate(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointMutualTLSMutate {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointMutualTLSMutate {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointMutualTLSMutate {}>".format(repr(self._props))
 
     @property
     def enabled(self) -> bool:
@@ -1448,8 +1556,11 @@ class EndpointTLSTermination(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointTLSTermination {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointTLSTermination {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointTLSTermination {}>".format(repr(self._props))
 
     @property
     def enabled(self) -> bool:
@@ -1476,8 +1587,11 @@ class EndpointLogging(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointLogging {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointLogging {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointLogging {}>".format(repr(self._props))
 
     @property
     def enabled(self) -> bool:
@@ -1498,8 +1612,11 @@ class EndpointLoggingMutate(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointLoggingMutate {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointLoggingMutate {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointLoggingMutate {}>".format(repr(self._props))
 
     @property
     def enabled(self) -> bool:
@@ -1520,8 +1637,11 @@ class EndpointRequestHeaders(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointRequestHeaders {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointRequestHeaders {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointRequestHeaders {}>".format(repr(self._props))
 
     @property
     def enabled(self) -> bool:
@@ -1547,8 +1667,11 @@ class EndpointResponseHeaders(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointResponseHeaders {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointResponseHeaders {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointResponseHeaders {}>".format(repr(self._props))
 
     @property
     def enabled(self) -> bool:
@@ -1575,8 +1698,11 @@ class EndpointIPPolicy(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointIPPolicy {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointIPPolicy {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointIPPolicy {}>".format(repr(self._props))
 
     @property
     def enabled(self) -> bool:
@@ -1596,8 +1722,11 @@ class EndpointIPPolicyMutate(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointIPPolicyMutate {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointIPPolicyMutate {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointIPPolicyMutate {}>".format(repr(self._props))
 
     @property
     def enabled(self) -> bool:
@@ -1618,8 +1747,11 @@ class EndpointCircuitBreaker(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointCircuitBreaker {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointCircuitBreaker {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointCircuitBreaker {}>".format(repr(self._props))
 
     @property
     def enabled(self) -> bool:
@@ -1661,8 +1793,11 @@ class EndpointOAuth(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointOAuth {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointOAuth {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointOAuth {}>".format(repr(self._props))
 
     @property
     def enabled(self) -> bool:
@@ -1712,8 +1847,11 @@ class EndpointOAuthProvider(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointOAuthProvider {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointOAuthProvider {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointOAuthProvider {}>".format(repr(self._props))
 
     @property
     def github(self) -> EndpointOAuthGitHub:
@@ -1744,8 +1882,11 @@ class EndpointOAuthGitHub(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointOAuthGitHub {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointOAuthGitHub {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointOAuthGitHub {}>".format(repr(self._props))
 
     @property
     def client_id(self) -> str:
@@ -1791,8 +1932,11 @@ class EndpointOAuthFacebook(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointOAuthFacebook {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointOAuthFacebook {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointOAuthFacebook {}>".format(repr(self._props))
 
     @property
     def client_id(self) -> str:
@@ -1828,8 +1972,11 @@ class EndpointOAuthMicrosoft(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointOAuthMicrosoft {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointOAuthMicrosoft {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointOAuthMicrosoft {}>".format(repr(self._props))
 
     @property
     def client_id(self) -> str:
@@ -1865,8 +2012,11 @@ class EndpointOAuthGoogle(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointOAuthGoogle {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointOAuthGoogle {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointOAuthGoogle {}>".format(repr(self._props))
 
     @property
     def client_id(self) -> str:
@@ -1902,8 +2052,11 @@ class EndpointSAML(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointSAML {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointSAML {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointSAML {}>".format(repr(self._props))
 
     @property
     def enabled(self) -> bool:
@@ -1984,8 +2137,11 @@ class EndpointSAMLMutate(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointSAMLMutate {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointSAMLMutate {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointSAMLMutate {}>".format(repr(self._props))
 
     @property
     def enabled(self) -> bool:
@@ -2041,8 +2197,11 @@ class EndpointOIDC(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<EndpointOIDC {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointOIDC {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointOIDC {}>".format(repr(self._props))
 
     @property
     def enabled(self) -> bool:
@@ -2101,8 +2260,11 @@ class ReservedAddr(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<ReservedAddr {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<ReservedAddr {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<ReservedAddr {}>".format(repr(self._props))
 
     def delete(
         self,
@@ -2163,8 +2325,11 @@ class ReservedAddrList(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<ReservedAddrList {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<ReservedAddrList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<ReservedAddrList {}>".format(repr(self._props))
 
     def __iter__(self):
         return PagedIterator(self._client, self, "reserved_addrs")
@@ -2206,8 +2371,11 @@ class ReservedDomain(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<ReservedDomain {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<ReservedDomain {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<ReservedDomain {}>".format(repr(self._props))
 
     def delete(
         self,
@@ -2293,8 +2461,11 @@ class ReservedDomainList(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<ReservedDomainList {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<ReservedDomainList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<ReservedDomainList {}>".format(repr(self._props))
 
     def __iter__(self):
         return PagedIterator(self._client, self, "reserved_domains")
@@ -2323,8 +2494,11 @@ class ReservedDomainCertPolicy(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<ReservedDomainCertPolicy {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<ReservedDomainCertPolicy {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<ReservedDomainCertPolicy {}>".format(repr(self._props))
 
     @property
     def authority(self) -> str:
@@ -2348,8 +2522,11 @@ class ReservedDomainCertStatus(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<ReservedDomainCertStatus {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<ReservedDomainCertStatus {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<ReservedDomainCertStatus {}>".format(repr(self._props))
 
     @property
     def renews_at(self) -> str:
@@ -2370,8 +2547,13 @@ class ReservedDomainCertNSTarget(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<ReservedDomainCertNSTarget {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<ReservedDomainCertNSTarget {} {}>".format(
+                self.id, repr(self._props)
+            )
+        else:
+            return "<ReservedDomainCertNSTarget {}>".format(repr(self._props))
 
     @property
     def zone(self) -> str:
@@ -2395,8 +2577,11 @@ class ReservedDomainCertJob(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<ReservedDomainCertJob {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<ReservedDomainCertJob {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<ReservedDomainCertJob {}>".format(repr(self._props))
 
     @property
     def error_code(self) -> str:
@@ -2432,8 +2617,11 @@ class SSHCertificateAuthority(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<SSHCertificateAuthority {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<SSHCertificateAuthority {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<SSHCertificateAuthority {}>".format(repr(self._props))
 
     def delete(
         self,
@@ -2501,8 +2689,13 @@ class SSHCertificateAuthorityList(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<SSHCertificateAuthorityList {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<SSHCertificateAuthorityList {} {}>".format(
+                self.id, repr(self._props)
+            )
+        else:
+            return "<SSHCertificateAuthorityList {}>".format(repr(self._props))
 
     def __iter__(self):
         return PagedIterator(self._client, self, "ssh_certificate_authorities")
@@ -2531,8 +2724,11 @@ class SSHCredential(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<SSHCredential {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<SSHCredential {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<SSHCredential {}>".format(repr(self._props))
 
     def delete(
         self,
@@ -2601,8 +2797,11 @@ class SSHCredentialList(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<SSHCredentialList {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<SSHCredentialList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<SSHCredentialList {}>".format(repr(self._props))
 
     def __iter__(self):
         return PagedIterator(self._client, self, "ssh_credentials")
@@ -2631,8 +2830,11 @@ class SSHHostCertificate(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<SSHHostCertificate {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<SSHHostCertificate {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<SSHHostCertificate {}>".format(repr(self._props))
 
     def delete(
         self,
@@ -2724,8 +2926,11 @@ class SSHHostCertificateList(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<SSHHostCertificateList {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<SSHHostCertificateList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<SSHHostCertificateList {}>".format(repr(self._props))
 
     def __iter__(self):
         return PagedIterator(self._client, self, "ssh_host_certificates")
@@ -2754,8 +2959,11 @@ class SSHUserCertificate(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<SSHUserCertificate {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<SSHUserCertificate {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<SSHUserCertificate {}>".format(repr(self._props))
 
     def delete(
         self,
@@ -2857,8 +3065,11 @@ class SSHUserCertificateList(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<SSHUserCertificateList {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<SSHUserCertificateList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<SSHUserCertificateList {}>".format(repr(self._props))
 
     def __iter__(self):
         return PagedIterator(self._client, self, "ssh_user_certificates")
@@ -2890,8 +3101,11 @@ class TLSCertificate(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<TLSCertificate {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<TLSCertificate {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<TLSCertificate {}>".format(repr(self._props))
 
     def delete(
         self,
@@ -3028,8 +3242,11 @@ class TLSCertificateList(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<TLSCertificateList {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<TLSCertificateList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<TLSCertificateList {}>".format(repr(self._props))
 
     def __iter__(self):
         return PagedIterator(self._client, self, "tls_certificates")
@@ -3058,8 +3275,11 @@ class TLSCertificateSANs(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<TLSCertificateSANs {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<TLSCertificateSANs {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<TLSCertificateSANs {}>".format(repr(self._props))
 
     @property
     def dns_names(self) -> Sequence[str]:
@@ -3081,8 +3301,11 @@ class TunnelSession(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<TunnelSession {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<TunnelSession {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<TunnelSession {}>".format(repr(self._props))
 
     @property
     def agent_version(self) -> str:
@@ -3146,8 +3369,11 @@ class TunnelSessionList(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<TunnelSessionList {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<TunnelSessionList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<TunnelSessionList {}>".format(repr(self._props))
 
     def __iter__(self):
         return PagedIterator(self._client, self, "tunnel_sessions")
@@ -3177,8 +3403,11 @@ class Tunnel(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<Tunnel {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<Tunnel {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<Tunnel {}>".format(repr(self._props))
 
     @property
     def id(self) -> str:
@@ -3225,8 +3454,11 @@ class TunnelList(object):
     def __eq__(self, other):
         return self._props == other._props
 
-    def __repr__(self):
-        return "<TunnelList {}>".format(self.id)
+    def __str__(self):
+        if "id" in self._props:
+            return "<TunnelList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<TunnelList {}>".format(repr(self._props))
 
     def __iter__(self):
         return PagedIterator(self._client, self, "tunnels")

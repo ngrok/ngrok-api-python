@@ -14,7 +14,7 @@ class PagedIterator(object):
             if self.page.next_page_uri is None:
                 raise StopIteration
             else:
-                props = self.client.api_client.request("get", self.page.next_page_uri)
+                props = self.client.http_client.request("get", self.page.next_page_uri)
                 self.n = 0
                 self.page = self.page.__class__(self.client, props)
                 return self.__next__()

@@ -110,7 +110,7 @@
   <p class="caption"><span class="caption-text">API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../client.html">Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../objects.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../datatypes.html">Datatypes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../errors.html">Errors</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Services</span></p>
@@ -169,9 +169,8 @@
 
 
 <div class="viewcode-block" id="Client"><a class="viewcode-back" href="../../client.html#ngrok.Client">[docs]</a><span class="k">class</span> <span class="nc">Client</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> <span class="n">base_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"https://api.ngrok.com"</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="n">api_key</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"NGROK_API_KEY"</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">api_client</span> <span class="o">=</span> <span class="n">APIClient</span><span class="p">(</span><span class="n">api_key</span><span class="p">,</span> <span class="n">base_url</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">base_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"https://api.ngrok.com"</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">http_client</span> <span class="o">=</span> <span class="n">HTTPClient</span><span class="p">(</span><span class="n">api_key</span><span class="p">,</span> <span class="n">base_url</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">abuse_reports</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbuseReportsClient</span><span class="p">:</span>

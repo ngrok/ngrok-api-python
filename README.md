@@ -1,4 +1,4 @@
-# ngrok API client library
+# ngrok API client library for Python
 
 This library wraps the [ngrok HTTP API](https://ngrok.com/docs/api) to make it
 easier to consume in Python.

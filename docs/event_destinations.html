@@ -110,7 +110,7 @@
   <p class="caption"><span class="caption-text">API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="client.html">Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="objects.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datatypes.html">Datatypes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="errors.html">Errors</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Services</span></p>
@@ -178,11 +178,14 @@
 <li><p><strong>metadata</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Arbitrary user-defined machine-readable data of this Event Destination. Optional, max 4096 bytes.</p></li>
 <li><p><strong>description</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Human-readable description of the Event Destination. Optional, max 255 bytes.</p></li>
 <li><p><strong>format</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – The output format you would like to serialize events into when sending to their target. Currently the only accepted value is <code class="docutils literal notranslate"><span class="pre">JSON</span></code>.</p></li>
-<li><p><strong>target</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="objects.html#ngrok.objects.EventTarget" title="ngrok.objects.EventTarget"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventTarget</span></code></a>]) – An object that encapsulates where and how to send your events. An event destination must contain exactly one of the following objects, leaving the rest null: <code class="docutils literal notranslate"><span class="pre">kinesis</span></code>, <code class="docutils literal notranslate"><span class="pre">firehose</span></code>, <code class="docutils literal notranslate"><span class="pre">cloudwatch_logs</span></code>, or <code class="docutils literal notranslate"><span class="pre">s3</span></code>.</p></li>
+<li><p><strong>target</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTarget" title="ngrok.datatypes.EventTarget"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventTarget</span></code></a>]) – An object that encapsulates where and how to send your events. An event destination must contain exactly one of the following objects, leaving the rest null: <code class="docutils literal notranslate"><span class="pre">kinesis</span></code>, <code class="docutils literal notranslate"><span class="pre">firehose</span></code>, <code class="docutils literal notranslate"><span class="pre">cloudwatch_logs</span></code>, or <code class="docutils literal notranslate"><span class="pre">s3</span></code>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="objects.html#ngrok.objects.EventDestination" title="ngrok.objects.EventDestination"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventDestination</span></code></a></p>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-event-destinations-create">https://ngrok.com/docs/api#api-event-destinations-create</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventDestination" title="ngrok.datatypes.EventDestination"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventDestination</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -195,6 +198,7 @@
 <dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
 </dd>
 </dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-event-destinations-delete">https://ngrok.com/docs/api#api-event-destinations-delete</a></p>
 </dd></dl>
 <dl class="py method">
 <dt id="ngrok.services.EventDestinationsClient.get">
@@ -204,8 +208,11 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="objects.html#ngrok.objects.EventDestination" title="ngrok.objects.EventDestination"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventDestination</span></code></a></p>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-event-destinations-get">https://ngrok.com/docs/api#api-event-destinations-get</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventDestination" title="ngrok.datatypes.EventDestination"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventDestination</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -220,8 +227,11 @@
 <li><p><strong>limit</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – </p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="objects.html#ngrok.objects.EventDestinationList" title="ngrok.objects.EventDestinationList"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventDestinationList</span></code></a></p>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-event-destinations-list">https://ngrok.com/docs/api#api-event-destinations-list</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventDestinationList" title="ngrok.datatypes.EventDestinationList"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventDestinationList</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -236,11 +246,14 @@
 <li><p><strong>metadata</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – Arbitrary user-defined machine-readable data of this Event Destination. Optional, max 4096 bytes.</p></li>
 <li><p><strong>description</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – Human-readable description of the Event Destination. Optional, max 255 bytes.</p></li>
 <li><p><strong>format</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – The output format you would like to serialize events into when sending to their target. Currently the only accepted value is <code class="docutils literal notranslate"><span class="pre">JSON</span></code>.</p></li>
-<li><p><strong>target</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="objects.html#ngrok.objects.EventTarget" title="ngrok.objects.EventTarget"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventTarget</span></code></a>]) – An object that encapsulates where and how to send your events. An event destination must contain exactly one of the following objects, leaving the rest null: <code class="docutils literal notranslate"><span class="pre">kinesis</span></code>, <code class="docutils literal notranslate"><span class="pre">firehose</span></code>, <code class="docutils literal notranslate"><span class="pre">cloudwatch_logs</span></code>, or <code class="docutils literal notranslate"><span class="pre">s3</span></code>.</p></li>
+<li><p><strong>target</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTarget" title="ngrok.datatypes.EventTarget"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventTarget</span></code></a>]) – An object that encapsulates where and how to send your events. An event destination must contain exactly one of the following objects, leaving the rest null: <code class="docutils literal notranslate"><span class="pre">kinesis</span></code>, <code class="docutils literal notranslate"><span class="pre">firehose</span></code>, <code class="docutils literal notranslate"><span class="pre">cloudwatch_logs</span></code>, or <code class="docutils literal notranslate"><span class="pre">s3</span></code>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="objects.html#ngrok.objects.EventDestination" title="ngrok.objects.EventDestination"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventDestination</span></code></a></p>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-event-destinations-update">https://ngrok.com/docs/api#api-event-destinations-update</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventDestination" title="ngrok.datatypes.EventDestination"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventDestination</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>

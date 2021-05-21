@@ -7,7 +7,12 @@ import requests
 from .error import Error, NotFoundError
 
 
-class APIClient(object):
+class HTTPClient(object):
+    """low-level api client for communicating with ngrok's http api.
+    do not use this object directly, it is intended for internal use only and no
+    guarantees are made about the stability of its APIs
+    """
+
     def __init__(self, api_key: str, base_url: str):
         self.api_key = api_key
         self.base_url = base_url

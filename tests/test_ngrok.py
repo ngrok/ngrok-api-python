@@ -1,17 +1,17 @@
 import ngrok
-import ngrok.api_client
+import ngrok.http_client
 import json
 import os
 from typing import Optional, Mapping, Union, Dict, Any
 
 def test_certificate_authorities():
-    c = ngrok.Client()
+    c = ngrok.Client(os.getenv("NGROK_API_KEY"))
 
-    mock = MockAPIClient()
-    if os.getenv('TEST_RECORD', False):
-        c.api_client = RecordingAPIClient(c.api_client.api_key, c.api_client.base_url)
-    if os.getenv('TEST_MOCK', False):
-        c.api_client = mock
+    mock = MockHTTPClient()
+    if not os.getenv('TEST_NO_MOCK', False):
+        c.http_client = mock
+    elif os.getenv('TEST_DEBUG', False):
+        c.http_client = RecordingHTTPClient(c.http_client.api_key, c.http_client.base_url)
 
     mock.returns(mock_empty_ca_list)
     c.certificate_authorities.list()
@@ -95,14 +95,14 @@ mock_ca_list = """
 {"certificate_authorities": ["""+mock_ca_updated+"""], "uri": "https://api.ngrok.com/certificate_authorities", "next_page_uri": null}
 """
 
-class RecordingAPIClient(ngrok.api_client.APIClient):
+class RecordingHTTPClient(ngrok.http_client.HTTPClient):
     """ prints all responses received to stdout, useful for creating mocked outputs """
     def do(self, method: str, path: str, query_params: Mapping[str, str] = None, payload: Mapping[str, Any] = None) -> Optional[Dict[str, Any]]:
-        ret = super(RecordingAPIClient, self).do(method, path, query_params, payload)
+        ret = super(RecordingHTTPClient, self).do(method, path, query_params, payload)
         print(json.dumps(ret))
         return ret
 
-class MockAPIClient(ngrok.api_client.APIClient):
+class MockHTTPClient(ngrok.http_client.HTTPClient):
     def __init__(self):
         pass
 

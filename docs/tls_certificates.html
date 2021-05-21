@@ -110,7 +110,7 @@
   <p class="caption"><span class="caption-text">API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="client.html">Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="objects.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datatypes.html">Datatypes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="errors.html">Errors</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Services</span></p>
@@ -181,8 +181,11 @@
 <li><p><strong>private_key_pem</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – private key for the TLS certificate, PEM-encoded. See <cite>Private Keys</cite> &lt;<a class="reference external" href="https://ngrok.com/docs/ngrok-link#tls-certificates-key">https://ngrok.com/docs/ngrok-link#tls-certificates-key</a>&gt;`_.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="objects.html#ngrok.objects.TLSCertificate" title="ngrok.objects.TLSCertificate"><code class="xref py py-class docutils literal notranslate"><span class="pre">TLSCertificate</span></code></a></p>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-tls-certificates-create">https://ngrok.com/docs/api#api-tls-certificates-create</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.TLSCertificate" title="ngrok.datatypes.TLSCertificate"><code class="xref py py-class docutils literal notranslate"><span class="pre">TLSCertificate</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -195,6 +198,7 @@
 <dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
 </dd>
 </dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-tls-certificates-delete">https://ngrok.com/docs/api#api-tls-certificates-delete</a></p>
 </dd></dl>
 <dl class="py method">
 <dt id="ngrok.services.TLSCertificatesClient.get">
@@ -204,8 +208,11 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="objects.html#ngrok.objects.TLSCertificate" title="ngrok.objects.TLSCertificate"><code class="xref py py-class docutils literal notranslate"><span class="pre">TLSCertificate</span></code></a></p>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-tls-certificates-get">https://ngrok.com/docs/api#api-tls-certificates-get</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.TLSCertificate" title="ngrok.datatypes.TLSCertificate"><code class="xref py py-class docutils literal notranslate"><span class="pre">TLSCertificate</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -220,8 +227,11 @@
 <li><p><strong>limit</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – </p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="objects.html#ngrok.objects.TLSCertificateList" title="ngrok.objects.TLSCertificateList"><code class="xref py py-class docutils literal notranslate"><span class="pre">TLSCertificateList</span></code></a></p>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-tls-certificates-list">https://ngrok.com/docs/api#api-tls-certificates-list</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.TLSCertificateList" title="ngrok.datatypes.TLSCertificateList"><code class="xref py py-class docutils literal notranslate"><span class="pre">TLSCertificateList</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -237,8 +247,11 @@
 <li><p><strong>metadata</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – arbitrary user-defined machine-readable data of this TLS certificate. optional, max 4096 bytes.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="objects.html#ngrok.objects.TLSCertificate" title="ngrok.objects.TLSCertificate"><code class="xref py py-class docutils literal notranslate"><span class="pre">TLSCertificate</span></code></a></p>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-tls-certificates-update">https://ngrok.com/docs/api#api-tls-certificates-update</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.TLSCertificate" title="ngrok.datatypes.TLSCertificate"><code class="xref py py-class docutils literal notranslate"><span class="pre">TLSCertificate</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
