@@ -2,7 +2,7 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Abuse Reports" href="abuse_reports.html" /><link rel="prev" title="Objects" href="objects.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Abuse Reports" href="abuse_reports.html" /><link rel="prev" title="Datatypes" href="datatypes.html" />
 
     <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
         <title>Errors - ngrok-api documentation</title>
@@ -110,7 +110,7 @@
   <p class="caption"><span class="caption-text">API</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="client.html">Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="objects.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datatypes.html">Datatypes</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Errors</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Services</span></p>
@@ -186,7 +186,7 @@ documentation for the <a class="reference external" href="https://ngrok.com/docs
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">c</span><span class="o">.</span><span class="n">ip_policies</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"something invalid"</span><span class="p">)</span>
 <span class="k">except</span> <span class="n">ngrok</span><span class="o">.</span><span class="n">Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">error_code</span> <span class="o">==</span> <span class="mi">1410</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">error_code</span> <span class="o">==</span> <span class="s2">"ERR_NGROK_1410"</span><span class="p">:</span>
         <span class="c1"># handle a specific condition</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span>
@@ -220,6 +220,12 @@ to introspect the error and take action on it.</p>
 </ul>
 </dd>
 </dl>
+<dl class="py method">
+<dt id="ngrok.Error.operation_id">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">operation_id</span></code><a class="headerlink" href="#ngrok.Error.operation_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>OperationID returns the unique trace ID assigned by ngrok to this API
+request.</p>
+</dd></dl>
 </dd></dl>
 <dl class="py exception">
 <dt id="ngrok.NotFoundError">
@@ -243,14 +249,14 @@ This is a separate class to make this common condition easier to handle.</p>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="objects.html">
+          <a class="prev-page" href="datatypes.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Objects</div>
+                <div class="title">Datatypes</div>
                 
               </div>
             </a>

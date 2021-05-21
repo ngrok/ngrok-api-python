@@ -36,7 +36,7 @@ documentation for the `list of all ngrok error codes <https://ngrok.com/docs/err
     try:
         c.ip_policies.create(action="something invalid")
     except ngrok.Error as e:
-        if e.error_code == 1410:
+        if e.error_code == "ERR_NGROK_1410":
             # handle a specific condition
         else:
             raise

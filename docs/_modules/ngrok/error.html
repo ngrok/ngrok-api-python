@@ -110,7 +110,7 @@
   <p class="caption"><span class="caption-text">API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../client.html">Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../objects.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../datatypes.html">Datatypes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../errors.html">Errors</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Services</span></p>
@@ -187,7 +187,15 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">error_code</span> <span class="o">=</span> <span class="n">error_code</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">http_status_code</span> <span class="o">=</span> <span class="n">http_status_code</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">details</span> <span class="o">=</span> <span class="n">details</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">details</span> <span class="o">=</span> <span class="n">details</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">operation_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        OperationID returns the unique trace ID assigned by ngrok to this API</span>
+<span class="sd">        request.</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"operation_id"</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="NotFoundError"><a class="viewcode-back" href="../../errors.html#ngrok.NotFoundError">[docs]</a><span class="k">class</span> <span class="nc">NotFoundError</span><span class="p">(</span><span class="n">Error</span><span class="p">):</span>

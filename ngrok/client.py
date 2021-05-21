@@ -5,9 +5,8 @@ from .services import *
 
 
 class Client(object):
-    def __init__(self, api_key: str = "", base_url: str = "https://api.ngrok.com"):
-        self.api_key = api_key or os.getenv("NGROK_API_KEY")
-        self.api_client = APIClient(api_key, base_url)
+    def __init__(self, api_key: str, base_url: str = "https://api.ngrok.com"):
+        self.http_client = HTTPClient(api_key, base_url)
 
     @property
     def abuse_reports(self) -> AbuseReportsClient:

@@ -110,7 +110,7 @@
   <p class="caption"><span class="caption-text">API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="client.html">Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="objects.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datatypes.html">Datatypes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="errors.html">Errors</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Services</span></p>
@@ -182,11 +182,14 @@
 <li><p><strong>http_endpoint_configuration_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – ID of an endpoint configuration of type http that will be used to handle inbound http traffic to this domain</p></li>
 <li><p><strong>https_endpoint_configuration_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – ID of an endpoint configuration of type https that will be used to handle inbound https traffic to this domain</p></li>
 <li><p><strong>certificate_id</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with <code class="docutils literal notranslate"><span class="pre">certificate_management_policy</span></code>.</p></li>
-<li><p><strong>certificate_management_policy</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="objects.html#ngrok.objects.ReservedDomainCertPolicy" title="ngrok.objects.ReservedDomainCertPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomainCertPolicy</span></code></a>]) – configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with <code class="docutils literal notranslate"><span class="pre">certificate_id</span></code>.</p></li>
+<li><p><strong>certificate_management_policy</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="datatypes.html#ngrok.datatypes.ReservedDomainCertPolicy" title="ngrok.datatypes.ReservedDomainCertPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomainCertPolicy</span></code></a>]) – configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with <code class="docutils literal notranslate"><span class="pre">certificate_id</span></code>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="objects.html#ngrok.objects.ReservedDomain" title="ngrok.objects.ReservedDomain"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomain</span></code></a></p>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-reserved-domains-create">https://ngrok.com/docs/api#api-reserved-domains-create</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.ReservedDomain" title="ngrok.datatypes.ReservedDomain"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomain</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -199,6 +202,7 @@
 <dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
 </dd>
 </dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-reserved-domains-delete">https://ngrok.com/docs/api#api-reserved-domains-delete</a></p>
 </dd></dl>
 <dl class="py method">
 <dt id="ngrok.services.ReservedDomainsClient.delete_certificate">
@@ -209,6 +213,7 @@
 <dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
 </dd>
 </dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-reserved-domains-delete-certificate">https://ngrok.com/docs/api#api-reserved-domains-delete-certificate</a></p>
 </dd></dl>
 <dl class="py method">
 <dt id="ngrok.services.ReservedDomainsClient.delete_certificate_management_policy">
@@ -219,6 +224,7 @@
 <dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
 </dd>
 </dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-reserved-domains-delete-certificate-management-policy">https://ngrok.com/docs/api#api-reserved-domains-delete-certificate-management-policy</a></p>
 </dd></dl>
 <dl class="py method">
 <dt id="ngrok.services.ReservedDomainsClient.delete_http_endpoint_config">
@@ -229,6 +235,7 @@
 <dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
 </dd>
 </dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-reserved-domains-delete-http-endpoint-config">https://ngrok.com/docs/api#api-reserved-domains-delete-http-endpoint-config</a></p>
 </dd></dl>
 <dl class="py method">
 <dt id="ngrok.services.ReservedDomainsClient.delete_https_endpoint_config">
@@ -239,6 +246,7 @@
 <dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
 </dd>
 </dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-reserved-domains-delete-https-endpoint-config">https://ngrok.com/docs/api#api-reserved-domains-delete-https-endpoint-config</a></p>
 </dd></dl>
 <dl class="py method">
 <dt id="ngrok.services.ReservedDomainsClient.get">
@@ -248,8 +256,11 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="objects.html#ngrok.objects.ReservedDomain" title="ngrok.objects.ReservedDomain"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomain</span></code></a></p>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-reserved-domains-get">https://ngrok.com/docs/api#api-reserved-domains-get</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.ReservedDomain" title="ngrok.datatypes.ReservedDomain"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomain</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -264,8 +275,11 @@
 <li><p><strong>limit</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – </p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="objects.html#ngrok.objects.ReservedDomainList" title="ngrok.objects.ReservedDomainList"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomainList</span></code></a></p>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-reserved-domains-list">https://ngrok.com/docs/api#api-reserved-domains-list</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.ReservedDomainList" title="ngrok.datatypes.ReservedDomainList"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomainList</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -282,11 +296,14 @@
 <li><p><strong>http_endpoint_configuration_id</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – ID of an endpoint configuration of type http that will be used to handle inbound http traffic to this domain</p></li>
 <li><p><strong>https_endpoint_configuration_id</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – ID of an endpoint configuration of type https that will be used to handle inbound https traffic to this domain</p></li>
 <li><p><strong>certificate_id</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with <code class="docutils literal notranslate"><span class="pre">certificate_management_policy</span></code>.</p></li>
-<li><p><strong>certificate_management_policy</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="objects.html#ngrok.objects.ReservedDomainCertPolicy" title="ngrok.objects.ReservedDomainCertPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomainCertPolicy</span></code></a>]) – configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with <code class="docutils literal notranslate"><span class="pre">certificate_id</span></code>.</p></li>
+<li><p><strong>certificate_management_policy</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="datatypes.html#ngrok.datatypes.ReservedDomainCertPolicy" title="ngrok.datatypes.ReservedDomainCertPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomainCertPolicy</span></code></a>]) – configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with <code class="docutils literal notranslate"><span class="pre">certificate_id</span></code>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="objects.html#ngrok.objects.ReservedDomain" title="ngrok.objects.ReservedDomain"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomain</span></code></a></p>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-reserved-domains-update">https://ngrok.com/docs/api#api-reserved-domains-update</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.ReservedDomain" title="ngrok.datatypes.ReservedDomain"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomain</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>

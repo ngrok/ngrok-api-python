@@ -25,6 +25,14 @@ class Error(Exception):
         self.http_status_code = http_status_code
         self.details = details
 
+    @property
+    def operation_id(self):
+        """
+        OperationID returns the unique trace ID assigned by ngrok to this API
+        request.
+        """
+        return self.details.get("operation_id")
+
 
 class NotFoundError(Error):
     """Raised if the http_status_code of an API operation is 404.

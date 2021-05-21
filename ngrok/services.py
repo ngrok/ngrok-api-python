@@ -2,8 +2,8 @@ from __future__ import annotations
 from collections.abc import Iterator
 from typing import Any, Mapping, Sequence
 
-from .api_client import APIClient
-from .objects import *
+from .http_client import HTTPClient
+from .datatypes import *
 
 
 class AbuseReportsClient(object):
@@ -19,9 +19,11 @@ class AbuseReportsClient(object):
 
         :param urls: a list of URLs containing suspected abusive content
         :param metadata: arbitrary user-defined data about this abuse report. Optional, max 4096 bytes.
+
+        https://ngrok.com/docs/api#api-abuse-reports-create
         """
         path = "/abuse_reports"
-        result = self._client.api_client.post(
+        result = self._client.http_client.post(
             path,
             dict(
                 urls=urls,
@@ -37,12 +39,14 @@ class AbuseReportsClient(object):
         """Get the detailed status of abuse report by ID.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-abuse-reports-get
         """
         path = "/abuse_reports/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return AbuseReport(self._client, result)
 
 
@@ -59,9 +63,11 @@ class APIKeysClient(object):
 
         :param description: human-readable description of what uses the API key to authenticate. optional, max 255 bytes.
         :param metadata: arbitrary user-defined data of this API key. optional, max 4096 bytes
+
+        https://ngrok.com/docs/api#api-api-keys-create
         """
         path = "/api_keys"
-        result = self._client.api_client.post(
+        result = self._client.http_client.post(
             path,
             dict(
                 description=description,
@@ -77,12 +83,14 @@ class APIKeysClient(object):
         """Delete an API key by ID
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-api-keys-delete
         """
         path = "/api_keys/{id}"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
     def get(
         self,
@@ -91,12 +99,14 @@ class APIKeysClient(object):
         """Get the details of an API key by ID.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-api-keys-get
         """
         path = "/api_keys/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return APIKey(self._client, result)
 
     def list(
@@ -108,9 +118,11 @@ class APIKeysClient(object):
 
         :param before_id:
         :param limit:
+
+        https://ngrok.com/docs/api#api-api-keys-list
         """
         path = "/api_keys"
-        result = self._client.api_client.get(
+        result = self._client.http_client.get(
             path,
             dict(
                 before_id=before_id,
@@ -130,12 +142,14 @@ class APIKeysClient(object):
         :param id:
         :param description: human-readable description of what uses the API key to authenticate. optional, max 255 bytes.
         :param metadata: arbitrary user-defined data of this API key. optional, max 4096 bytes
+
+        https://ngrok.com/docs/api#api-api-keys-update
         """
         path = "/api_keys/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.patch(
+        result = self._client.http_client.patch(
             path,
             dict(
                 description=description,
@@ -160,9 +174,11 @@ class CertificateAuthoritiesClient(object):
         :param description: human-readable description of this Certificate Authority. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this Certificate Authority. optional, max 4096 bytes.
         :param ca_pem: raw PEM of the Certificate Authority
+
+        https://ngrok.com/docs/api#api-certificate-authorities-create
         """
         path = "/certificate_authorities"
-        result = self._client.api_client.post(
+        result = self._client.http_client.post(
             path,
             dict(
                 description=description,
@@ -179,12 +195,14 @@ class CertificateAuthoritiesClient(object):
         """Delete a Certificate Authority
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-certificate-authorities-delete
         """
         path = "/certificate_authorities/{id}"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
     def get(
         self,
@@ -193,12 +211,14 @@ class CertificateAuthoritiesClient(object):
         """Get detailed information about a certficate authority
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-certificate-authorities-get
         """
         path = "/certificate_authorities/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return CertificateAuthority(self._client, result)
 
     def list(
@@ -210,9 +230,11 @@ class CertificateAuthoritiesClient(object):
 
         :param before_id:
         :param limit:
+
+        https://ngrok.com/docs/api#api-certificate-authorities-list
         """
         path = "/certificate_authorities"
-        result = self._client.api_client.get(
+        result = self._client.http_client.get(
             path,
             dict(
                 before_id=before_id,
@@ -232,12 +254,14 @@ class CertificateAuthoritiesClient(object):
         :param id:
         :param description: human-readable description of this Certificate Authority. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this Certificate Authority. optional, max 4096 bytes.
+
+        https://ngrok.com/docs/api#api-certificate-authorities-update
         """
         path = "/certificate_authorities/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.patch(
+        result = self._client.http_client.patch(
             path,
             dict(
                 description=description,
@@ -262,9 +286,11 @@ class CredentialsClient(object):
         :param description: human-readable description of who or what will use the credential to authenticate. Optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this credential. Optional, max 4096 bytes.
         :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.
+
+        https://ngrok.com/docs/api#api-credentials-create
         """
         path = "/credentials"
-        result = self._client.api_client.post(
+        result = self._client.http_client.post(
             path,
             dict(
                 description=description,
@@ -281,12 +307,14 @@ class CredentialsClient(object):
         """Delete a tunnel authtoken credential by ID
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-credentials-delete
         """
         path = "/credentials/{id}"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
     def get(
         self,
@@ -295,12 +323,14 @@ class CredentialsClient(object):
         """Get detailed information about a tunnel authtoken credential
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-credentials-get
         """
         path = "/credentials/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return Credential(self._client, result)
 
     def list(
@@ -312,9 +342,11 @@ class CredentialsClient(object):
 
         :param before_id:
         :param limit:
+
+        https://ngrok.com/docs/api#api-credentials-list
         """
         path = "/credentials"
-        result = self._client.api_client.get(
+        result = self._client.http_client.get(
             path,
             dict(
                 before_id=before_id,
@@ -336,12 +368,14 @@ class CredentialsClient(object):
         :param description: human-readable description of who or what will use the credential to authenticate. Optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this credential. Optional, max 4096 bytes.
         :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.
+
+        https://ngrok.com/docs/api#api-credentials-update
         """
         path = "/credentials/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.patch(
+        result = self._client.http_client.patch(
             path,
             dict(
                 description=description,
@@ -373,9 +407,11 @@ class EventStreamsClient(object):
         :param event_type: The protocol that determines which events will be collected. Supported values are ``tcp_connection_closed`` and ``http_request_complete``.
         :param destination_ids: A list of Event Destination IDs which should be used for this Event Stream. Event Streams are required to have at least one Event Destination.
         :param sampling_rate: The percentage of all events you would like to capture. Valid values range from 0.01, representing 1% of all events to 1.00, representing 100% of all events.
+
+        https://ngrok.com/docs/api#api-event-streams-create
         """
         path = "/event_streams"
-        result = self._client.api_client.post(
+        result = self._client.http_client.post(
             path,
             dict(
                 metadata=metadata,
@@ -395,12 +431,14 @@ class EventStreamsClient(object):
         """Delete an Event Stream. Associated Event Destinations will be preserved.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-event-streams-delete
         """
         path = "/event_streams/{id}"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
     def get(
         self,
@@ -409,12 +447,14 @@ class EventStreamsClient(object):
         """Get detailed information about an Event Stream by ID.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-event-streams-get
         """
         path = "/event_streams/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return EventStream(self._client, result)
 
     def list(
@@ -426,9 +466,11 @@ class EventStreamsClient(object):
 
         :param before_id:
         :param limit:
+
+        https://ngrok.com/docs/api#api-event-streams-list
         """
         path = "/event_streams"
-        result = self._client.api_client.get(
+        result = self._client.http_client.get(
             path,
             dict(
                 before_id=before_id,
@@ -454,12 +496,14 @@ class EventStreamsClient(object):
         :param fields: A list of protocol-specific fields you want to collect on each event.
         :param destination_ids: A list of Event Destination IDs which should be used for this Event Stream. Event Streams are required to have at least one Event Destination.
         :param sampling_rate: The percentage of all events you would like to capture. Valid values range from 0.01, representing 1% of all events to 1.00, representing 100% of all events.
+
+        https://ngrok.com/docs/api#api-event-streams-update
         """
         path = "/event_streams/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.patch(
+        result = self._client.http_client.patch(
             path,
             dict(
                 metadata=metadata,
@@ -489,9 +533,11 @@ class EventDestinationsClient(object):
         :param description: Human-readable description of the Event Destination. Optional, max 255 bytes.
         :param format: The output format you would like to serialize events into when sending to their target. Currently the only accepted value is ``JSON``.
         :param target: An object that encapsulates where and how to send your events. An event destination must contain exactly one of the following objects, leaving the rest null: ``kinesis``, ``firehose``, ``cloudwatch_logs``, or ``s3``.
+
+        https://ngrok.com/docs/api#api-event-destinations-create
         """
         path = "/event_destinations"
-        result = self._client.api_client.post(
+        result = self._client.http_client.post(
             path,
             dict(
                 metadata=metadata,
@@ -509,12 +555,14 @@ class EventDestinationsClient(object):
         """Delete an Event Destination. If the Event Destination is still referenced by an Event Stream, this will throw an error until that Event Stream has removed that reference.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-event-destinations-delete
         """
         path = "/event_destinations/{id}"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
     def get(
         self,
@@ -523,12 +571,14 @@ class EventDestinationsClient(object):
         """Get detailed information about an Event Destination by ID.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-event-destinations-get
         """
         path = "/event_destinations/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return EventDestination(self._client, result)
 
     def list(
@@ -540,9 +590,11 @@ class EventDestinationsClient(object):
 
         :param before_id:
         :param limit:
+
+        https://ngrok.com/docs/api#api-event-destinations-list
         """
         path = "/event_destinations"
-        result = self._client.api_client.get(
+        result = self._client.http_client.get(
             path,
             dict(
                 before_id=before_id,
@@ -566,12 +618,14 @@ class EventDestinationsClient(object):
         :param description: Human-readable description of the Event Destination. Optional, max 255 bytes.
         :param format: The output format you would like to serialize events into when sending to their target. Currently the only accepted value is ``JSON``.
         :param target: An object that encapsulates where and how to send your events. An event destination must contain exactly one of the following objects, leaving the rest null: ``kinesis``, ``firehose``, ``cloudwatch_logs``, or ``s3``.
+
+        https://ngrok.com/docs/api#api-event-destinations-update
         """
         path = "/event_destinations/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.patch(
+        result = self._client.http_client.patch(
             path,
             dict(
                 metadata=metadata,
@@ -598,9 +652,11 @@ class IPPoliciesClient(object):
         :param description: human-readable description of the source IPs of this IP policy. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this IP policy. optional, max 4096 bytes.
         :param action: the IP policy action. Supported values are ``allow`` or ``deny``
+
+        https://ngrok.com/docs/api#api-ip-policies-create
         """
         path = "/ip_policies"
-        result = self._client.api_client.post(
+        result = self._client.http_client.post(
             path,
             dict(
                 description=description,
@@ -617,12 +673,14 @@ class IPPoliciesClient(object):
         """Delete an IP policy. If the IP policy is referenced by another object for the purposes of traffic restriction it will be treated as if the IP policy remains but has zero rules.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-ip-policies-delete
         """
         path = "/ip_policies/{id}"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
     def get(
         self,
@@ -631,12 +689,14 @@ class IPPoliciesClient(object):
         """Get detailed information about an IP policy by ID.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-ip-policies-get
         """
         path = "/ip_policies/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return IPPolicy(self._client, result)
 
     def list(
@@ -648,9 +708,11 @@ class IPPoliciesClient(object):
 
         :param before_id:
         :param limit:
+
+        https://ngrok.com/docs/api#api-ip-policies-list
         """
         path = "/ip_policies"
-        result = self._client.api_client.get(
+        result = self._client.http_client.get(
             path,
             dict(
                 before_id=before_id,
@@ -670,12 +732,14 @@ class IPPoliciesClient(object):
         :param id:
         :param description: human-readable description of the source IPs of this IP policy. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this IP policy. optional, max 4096 bytes.
+
+        https://ngrok.com/docs/api#api-ip-policies-update
         """
         path = "/ip_policies/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.patch(
+        result = self._client.http_client.patch(
             path,
             dict(
                 description=description,
@@ -702,9 +766,11 @@ class IPPolicyRulesClient(object):
         :param metadata: arbitrary user-defined machine-readable data of this IP policy rule. optional, max 4096 bytes.
         :param cidr: an IP or IP range specified in CIDR notation. IPv4 and IPv6 are both supported.
         :param ip_policy_id: ID of the IP policy this IP policy rule will be attached to
+
+        https://ngrok.com/docs/api#api-ip-policy-rules-create
         """
         path = "/ip_policy_rules"
-        result = self._client.api_client.post(
+        result = self._client.http_client.post(
             path,
             dict(
                 description=description,
@@ -722,12 +788,14 @@ class IPPolicyRulesClient(object):
         """Delete an IP policy rule.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-ip-policy-rules-delete
         """
         path = "/ip_policy_rules/{id}"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
     def get(
         self,
@@ -736,12 +804,14 @@ class IPPolicyRulesClient(object):
         """Get detailed information about an IP policy rule by ID.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-ip-policy-rules-get
         """
         path = "/ip_policy_rules/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return IPPolicyRule(self._client, result)
 
     def list(
@@ -753,9 +823,11 @@ class IPPolicyRulesClient(object):
 
         :param before_id:
         :param limit:
+
+        https://ngrok.com/docs/api#api-ip-policy-rules-list
         """
         path = "/ip_policy_rules"
-        result = self._client.api_client.get(
+        result = self._client.http_client.get(
             path,
             dict(
                 before_id=before_id,
@@ -777,12 +849,14 @@ class IPPolicyRulesClient(object):
         :param description: human-readable description of the source IPs of this IP rule. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this IP policy rule. optional, max 4096 bytes.
         :param cidr: an IP or IP range specified in CIDR notation. IPv4 and IPv6 are both supported.
+
+        https://ngrok.com/docs/api#api-ip-policy-rules-update
         """
         path = "/ip_policy_rules/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.patch(
+        result = self._client.http_client.patch(
             path,
             dict(
                 description=description,
@@ -812,9 +886,11 @@ class IPRestrictionsClient(object):
         :param enforced: true if the IP restriction will be enforce. if false, only warnings will be issued
         :param type: the type of IP restriction. this defines what traffic will be restricted with the attached policies. four values are currently supported: ``dashboard``, ``api``, ``agent``, and ``endpoints``
         :param ip_policy_ids: the set of IP policy identifiers that are used to enforce the restriction
+
+        https://ngrok.com/docs/api#api-ip-restrictions-create
         """
         path = "/ip_restrictions"
-        result = self._client.api_client.post(
+        result = self._client.http_client.post(
             path,
             dict(
                 description=description,
@@ -833,12 +909,14 @@ class IPRestrictionsClient(object):
         """Delete an IP restriction
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-ip-restrictions-delete
         """
         path = "/ip_restrictions/{id}"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
     def get(
         self,
@@ -847,12 +925,14 @@ class IPRestrictionsClient(object):
         """Get detailed information about an IP restriction
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-ip-restrictions-get
         """
         path = "/ip_restrictions/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return IPRestriction(self._client, result)
 
     def list(
@@ -864,9 +944,11 @@ class IPRestrictionsClient(object):
 
         :param before_id:
         :param limit:
+
+        https://ngrok.com/docs/api#api-ip-restrictions-list
         """
         path = "/ip_restrictions"
-        result = self._client.api_client.get(
+        result = self._client.http_client.get(
             path,
             dict(
                 before_id=before_id,
@@ -890,12 +972,14 @@ class IPRestrictionsClient(object):
         :param metadata: arbitrary user-defined machine-readable data of this IP restriction. optional, max 4096 bytes.
         :param enforced: true if the IP restriction will be enforce. if false, only warnings will be issued
         :param ip_policy_ids: the set of IP policy identifiers that are used to enforce the restriction
+
+        https://ngrok.com/docs/api#api-ip-restrictions-update
         """
         path = "/ip_restrictions/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.patch(
+        result = self._client.http_client.patch(
             path,
             dict(
                 description=description,
@@ -922,9 +1006,11 @@ class IPWhitelistClient(object):
         :param description: human-readable description of the source IPs for this IP whitelist entry. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this IP whitelist entry. optional, max 4096 bytes.
         :param ip_net: an IP address or IP network range in CIDR notation (e.g. 10.1.1.1 or 10.1.0.0/16) of addresses that will be whitelisted to communicate with your tunnel endpoints
+
+        https://ngrok.com/docs/api#api-ip-whitelist-create
         """
         path = "/ip_whitelist"
-        result = self._client.api_client.post(
+        result = self._client.http_client.post(
             path,
             dict(
                 description=description,
@@ -941,12 +1027,14 @@ class IPWhitelistClient(object):
         """Delete an IP whitelist entry.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-ip-whitelist-delete
         """
         path = "/ip_whitelist/{id}"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
     def get(
         self,
@@ -955,12 +1043,14 @@ class IPWhitelistClient(object):
         """Get detailed information about an IP whitelist entry by ID.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-ip-whitelist-get
         """
         path = "/ip_whitelist/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return IPWhitelistEntry(self._client, result)
 
     def list(
@@ -972,9 +1062,11 @@ class IPWhitelistClient(object):
 
         :param before_id:
         :param limit:
+
+        https://ngrok.com/docs/api#api-ip-whitelist-list
         """
         path = "/ip_whitelist"
-        result = self._client.api_client.get(
+        result = self._client.http_client.get(
             path,
             dict(
                 before_id=before_id,
@@ -994,12 +1086,14 @@ class IPWhitelistClient(object):
         :param id:
         :param description: human-readable description of the source IPs for this IP whitelist entry. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this IP whitelist entry. optional, max 4096 bytes.
+
+        https://ngrok.com/docs/api#api-ip-whitelist-update
         """
         path = "/ip_whitelist/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.patch(
+        result = self._client.http_client.patch(
             path,
             dict(
                 description=description,
@@ -1051,9 +1145,11 @@ class EndpointConfigurationsClient(object):
         :param logging: logging module configuration or ``null``
         :param saml: saml module configuration or ``null``
         :param oidc: oidc module configuration or ``null``
+
+        https://ngrok.com/docs/api#api-endpoint-configurations-create
         """
         path = "/endpoint_configurations"
-        result = self._client.api_client.post(
+        result = self._client.http_client.post(
             path,
             dict(
                 type=type,
@@ -1082,12 +1178,14 @@ class EndpointConfigurationsClient(object):
         """Delete an endpoint configuration. This operation will fail if the endpoint configuration is still referenced by any reserved domain or reserved address.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-configurations-delete
         """
         path = "/endpoint_configurations/{id}"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
     def get(
         self,
@@ -1096,12 +1194,14 @@ class EndpointConfigurationsClient(object):
         """Returns detailed information about an endpoint configuration
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-configurations-get
         """
         path = "/endpoint_configurations/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return EndpointConfiguration(self._client, result)
 
     def list(
@@ -1113,9 +1213,11 @@ class EndpointConfigurationsClient(object):
 
         :param before_id:
         :param limit:
+
+        https://ngrok.com/docs/api#api-endpoint-configurations-list
         """
         path = "/endpoint_configurations"
-        result = self._client.api_client.get(
+        result = self._client.http_client.get(
             path,
             dict(
                 before_id=before_id,
@@ -1159,12 +1261,14 @@ class EndpointConfigurationsClient(object):
         :param logging: logging module configuration or ``null``
         :param saml: saml module configuration or ``null``
         :param oidc: oidc module configuration or ``null``
+
+        https://ngrok.com/docs/api#api-endpoint-configurations-update
         """
         path = "/endpoint_configurations/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.patch(
+        result = self._client.http_client.patch(
             path,
             dict(
                 description=description,
@@ -1199,12 +1303,14 @@ class EndpointLoggingModuleClient(object):
 
         :param id:
         :param module:
+
+        https://ngrok.com/docs/api#api-endpoint-logging-module-replace
         """
         path = "/endpoint_configurations/{id}/logging"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.put(
+        result = self._client.http_client.put(
             path,
             dict(
                 module=module,
@@ -1219,12 +1325,14 @@ class EndpointLoggingModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-logging-module-get
         """
         path = "/endpoint_configurations/{id}/logging"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return EndpointLogging(self._client, result)
 
     def delete(
@@ -1234,12 +1342,14 @@ class EndpointLoggingModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-logging-module-delete
         """
         path = "/endpoint_configurations/{id}/logging"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
 
 class EndpointCircuitBreakerModuleClient(object):
@@ -1255,12 +1365,14 @@ class EndpointCircuitBreakerModuleClient(object):
 
         :param id:
         :param module:
+
+        https://ngrok.com/docs/api#api-endpoint-circuit-breaker-module-replace
         """
         path = "/endpoint_configurations/{id}/circuit_breaker"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.put(
+        result = self._client.http_client.put(
             path,
             dict(
                 module=module,
@@ -1275,12 +1387,14 @@ class EndpointCircuitBreakerModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-circuit-breaker-module-get
         """
         path = "/endpoint_configurations/{id}/circuit_breaker"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return EndpointCircuitBreaker(self._client, result)
 
     def delete(
@@ -1290,12 +1404,14 @@ class EndpointCircuitBreakerModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-circuit-breaker-module-delete
         """
         path = "/endpoint_configurations/{id}/circuit_breaker"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
 
 class EndpointCompressionModuleClient(object):
@@ -1311,12 +1427,14 @@ class EndpointCompressionModuleClient(object):
 
         :param id:
         :param module:
+
+        https://ngrok.com/docs/api#api-endpoint-compression-module-replace
         """
         path = "/endpoint_configurations/{id}/compression"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.put(
+        result = self._client.http_client.put(
             path,
             dict(
                 module=module,
@@ -1331,12 +1449,14 @@ class EndpointCompressionModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-compression-module-get
         """
         path = "/endpoint_configurations/{id}/compression"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return EndpointCompression(self._client, result)
 
     def delete(
@@ -1346,12 +1466,14 @@ class EndpointCompressionModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-compression-module-delete
         """
         path = "/endpoint_configurations/{id}/compression"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
 
 class EndpointTLSTerminationModuleClient(object):
@@ -1367,12 +1489,14 @@ class EndpointTLSTerminationModuleClient(object):
 
         :param id:
         :param module:
+
+        https://ngrok.com/docs/api#api-endpoint-tls-termination-module-replace
         """
         path = "/endpoint_configurations/{id}/tls_termination"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.put(
+        result = self._client.http_client.put(
             path,
             dict(
                 module=module,
@@ -1387,12 +1511,14 @@ class EndpointTLSTerminationModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-tls-termination-module-get
         """
         path = "/endpoint_configurations/{id}/tls_termination"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return EndpointTLSTermination(self._client, result)
 
     def delete(
@@ -1402,12 +1528,14 @@ class EndpointTLSTerminationModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-tls-termination-module-delete
         """
         path = "/endpoint_configurations/{id}/tls_termination"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
 
 class EndpointIPPolicyModuleClient(object):
@@ -1423,12 +1551,14 @@ class EndpointIPPolicyModuleClient(object):
 
         :param id:
         :param module:
+
+        https://ngrok.com/docs/api#api-endpoint-ip-policy-module-replace
         """
         path = "/endpoint_configurations/{id}/ip_policy"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.put(
+        result = self._client.http_client.put(
             path,
             dict(
                 module=module,
@@ -1443,12 +1573,14 @@ class EndpointIPPolicyModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-ip-policy-module-get
         """
         path = "/endpoint_configurations/{id}/ip_policy"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return EndpointIPPolicy(self._client, result)
 
     def delete(
@@ -1458,12 +1590,14 @@ class EndpointIPPolicyModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-ip-policy-module-delete
         """
         path = "/endpoint_configurations/{id}/ip_policy"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
 
 class EndpointMutualTLSModuleClient(object):
@@ -1479,12 +1613,14 @@ class EndpointMutualTLSModuleClient(object):
 
         :param id:
         :param module:
+
+        https://ngrok.com/docs/api#api-endpoint-mutual-tls-module-replace
         """
         path = "/endpoint_configurations/{id}/mutual_tls"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.put(
+        result = self._client.http_client.put(
             path,
             dict(
                 module=module,
@@ -1499,12 +1635,14 @@ class EndpointMutualTLSModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-mutual-tls-module-get
         """
         path = "/endpoint_configurations/{id}/mutual_tls"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return EndpointMutualTLS(self._client, result)
 
     def delete(
@@ -1514,12 +1652,14 @@ class EndpointMutualTLSModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-mutual-tls-module-delete
         """
         path = "/endpoint_configurations/{id}/mutual_tls"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
 
 class EndpointRequestHeadersModuleClient(object):
@@ -1535,12 +1675,14 @@ class EndpointRequestHeadersModuleClient(object):
 
         :param id:
         :param module:
+
+        https://ngrok.com/docs/api#api-endpoint-request-headers-module-replace
         """
         path = "/endpoint_configurations/{id}/request_headers"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.put(
+        result = self._client.http_client.put(
             path,
             dict(
                 module=module,
@@ -1555,12 +1697,14 @@ class EndpointRequestHeadersModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-request-headers-module-get
         """
         path = "/endpoint_configurations/{id}/request_headers"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return EndpointRequestHeaders(self._client, result)
 
     def delete(
@@ -1570,12 +1714,14 @@ class EndpointRequestHeadersModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-request-headers-module-delete
         """
         path = "/endpoint_configurations/{id}/request_headers"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
 
 class EndpointResponseHeadersModuleClient(object):
@@ -1591,12 +1737,14 @@ class EndpointResponseHeadersModuleClient(object):
 
         :param id:
         :param module:
+
+        https://ngrok.com/docs/api#api-endpoint-response-headers-module-replace
         """
         path = "/endpoint_configurations/{id}/response_headers"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.put(
+        result = self._client.http_client.put(
             path,
             dict(
                 module=module,
@@ -1611,12 +1759,14 @@ class EndpointResponseHeadersModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-response-headers-module-get
         """
         path = "/endpoint_configurations/{id}/response_headers"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return EndpointResponseHeaders(self._client, result)
 
     def delete(
@@ -1626,12 +1776,14 @@ class EndpointResponseHeadersModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-response-headers-module-delete
         """
         path = "/endpoint_configurations/{id}/response_headers"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
 
 class EndpointOAuthModuleClient(object):
@@ -1647,12 +1799,14 @@ class EndpointOAuthModuleClient(object):
 
         :param id:
         :param module:
+
+        https://ngrok.com/docs/api#api-endpoint-o-auth-module-replace
         """
         path = "/endpoint_configurations/{id}/oauth"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.put(
+        result = self._client.http_client.put(
             path,
             dict(
                 module=module,
@@ -1667,12 +1821,14 @@ class EndpointOAuthModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-o-auth-module-get
         """
         path = "/endpoint_configurations/{id}/oauth"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return EndpointOAuth(self._client, result)
 
     def delete(
@@ -1682,12 +1838,14 @@ class EndpointOAuthModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-o-auth-module-delete
         """
         path = "/endpoint_configurations/{id}/oauth"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
 
 class EndpointWebhookValidationModuleClient(object):
@@ -1703,12 +1861,14 @@ class EndpointWebhookValidationModuleClient(object):
 
         :param id:
         :param module:
+
+        https://ngrok.com/docs/api#api-endpoint-webhook-validation-module-replace
         """
         path = "/endpoint_configurations/{id}/webhook_validation"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.put(
+        result = self._client.http_client.put(
             path,
             dict(
                 module=module,
@@ -1723,12 +1883,14 @@ class EndpointWebhookValidationModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-webhook-validation-module-get
         """
         path = "/endpoint_configurations/{id}/webhook_validation"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return EndpointWebhookValidation(self._client, result)
 
     def delete(
@@ -1738,12 +1900,14 @@ class EndpointWebhookValidationModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-webhook-validation-module-delete
         """
         path = "/endpoint_configurations/{id}/webhook_validation"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
 
 class EndpointSAMLModuleClient(object):
@@ -1759,12 +1923,14 @@ class EndpointSAMLModuleClient(object):
 
         :param id:
         :param module:
+
+        https://ngrok.com/docs/api#api-endpoint-saml-module-replace
         """
         path = "/endpoint_configurations/{id}/saml"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.put(
+        result = self._client.http_client.put(
             path,
             dict(
                 module=module,
@@ -1779,12 +1945,14 @@ class EndpointSAMLModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-saml-module-get
         """
         path = "/endpoint_configurations/{id}/saml"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return EndpointSAML(self._client, result)
 
     def delete(
@@ -1794,12 +1962,14 @@ class EndpointSAMLModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-saml-module-delete
         """
         path = "/endpoint_configurations/{id}/saml"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
 
 class EndpointOIDCModuleClient(object):
@@ -1815,12 +1985,14 @@ class EndpointOIDCModuleClient(object):
 
         :param id:
         :param module:
+
+        https://ngrok.com/docs/api#api-endpoint-oidc-module-replace
         """
         path = "/endpoint_configurations/{id}/oidc"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.put(
+        result = self._client.http_client.put(
             path,
             dict(
                 module=module,
@@ -1835,12 +2007,14 @@ class EndpointOIDCModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-oidc-module-get
         """
         path = "/endpoint_configurations/{id}/oidc"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return EndpointOIDC(self._client, result)
 
     def delete(
@@ -1850,12 +2024,14 @@ class EndpointOIDCModuleClient(object):
         """
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-oidc-module-delete
         """
         path = "/endpoint_configurations/{id}/oidc"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
 
 class ReservedAddrsClient(object):
@@ -1875,9 +2051,11 @@ class ReservedAddrsClient(object):
         :param metadata: arbitrary user-defined machine-readable data of this reserved address. Optional, max 4096 bytes.
         :param region: reserve the address in this geographic ngrok datacenter. Optional, default is us. (au, eu, ap, us, jp, in, sa)
         :param endpoint_configuration_id: ID of an endpoint configuration of type tcp that will be used to handle inbound traffic to this address
+
+        https://ngrok.com/docs/api#api-reserved-addrs-create
         """
         path = "/reserved_addrs"
-        result = self._client.api_client.post(
+        result = self._client.http_client.post(
             path,
             dict(
                 description=description,
@@ -1895,12 +2073,14 @@ class ReservedAddrsClient(object):
         """Delete a reserved address.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-reserved-addrs-delete
         """
         path = "/reserved_addrs/{id}"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
     def get(
         self,
@@ -1909,12 +2089,14 @@ class ReservedAddrsClient(object):
         """Get the details of a reserved address.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-reserved-addrs-get
         """
         path = "/reserved_addrs/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return ReservedAddr(self._client, result)
 
     def list(
@@ -1926,9 +2108,11 @@ class ReservedAddrsClient(object):
 
         :param before_id:
         :param limit:
+
+        https://ngrok.com/docs/api#api-reserved-addrs-list
         """
         path = "/reserved_addrs"
-        result = self._client.api_client.get(
+        result = self._client.http_client.get(
             path,
             dict(
                 before_id=before_id,
@@ -1950,12 +2134,14 @@ class ReservedAddrsClient(object):
         :param description: human-readable description of what this reserved address will be used for
         :param metadata: arbitrary user-defined machine-readable data of this reserved address. Optional, max 4096 bytes.
         :param endpoint_configuration_id: ID of an endpoint configuration of type tcp that will be used to handle inbound traffic to this address
+
+        https://ngrok.com/docs/api#api-reserved-addrs-update
         """
         path = "/reserved_addrs/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.patch(
+        result = self._client.http_client.patch(
             path,
             dict(
                 description=description,
@@ -1972,12 +2158,14 @@ class ReservedAddrsClient(object):
         """Detach the endpoint configuration attached to a reserved address.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-reserved-addrs-delete-endpoint-config
         """
         path = "/reserved_addrs/{id}/endpoint_configuration"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
 
 class ReservedDomainsClient(object):
@@ -2005,9 +2193,11 @@ class ReservedDomainsClient(object):
         :param https_endpoint_configuration_id: ID of an endpoint configuration of type https that will be used to handle inbound https traffic to this domain
         :param certificate_id: ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with ``certificate_management_policy``.
         :param certificate_management_policy: configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with ``certificate_id``.
+
+        https://ngrok.com/docs/api#api-reserved-domains-create
         """
         path = "/reserved_domains"
-        result = self._client.api_client.post(
+        result = self._client.http_client.post(
             path,
             dict(
                 name=name,
@@ -2029,12 +2219,14 @@ class ReservedDomainsClient(object):
         """Delete a reserved domain.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-reserved-domains-delete
         """
         path = "/reserved_domains/{id}"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
     def get(
         self,
@@ -2043,12 +2235,14 @@ class ReservedDomainsClient(object):
         """Get the details of a reserved domain.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-reserved-domains-get
         """
         path = "/reserved_domains/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return ReservedDomain(self._client, result)
 
     def list(
@@ -2060,9 +2254,11 @@ class ReservedDomainsClient(object):
 
         :param before_id:
         :param limit:
+
+        https://ngrok.com/docs/api#api-reserved-domains-list
         """
         path = "/reserved_domains"
-        result = self._client.api_client.get(
+        result = self._client.http_client.get(
             path,
             dict(
                 before_id=before_id,
@@ -2090,12 +2286,14 @@ class ReservedDomainsClient(object):
         :param https_endpoint_configuration_id: ID of an endpoint configuration of type https that will be used to handle inbound https traffic to this domain
         :param certificate_id: ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with ``certificate_management_policy``.
         :param certificate_management_policy: configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with ``certificate_id``.
+
+        https://ngrok.com/docs/api#api-reserved-domains-update
         """
         path = "/reserved_domains/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.patch(
+        result = self._client.http_client.patch(
             path,
             dict(
                 description=description,
@@ -2115,12 +2313,14 @@ class ReservedDomainsClient(object):
         """Detach the certificate management policy attached to a reserved domain.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-reserved-domains-delete-certificate-management-policy
         """
         path = "/reserved_domains/{id}/certificate_management_policy"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
     def delete_certificate(
         self,
@@ -2129,12 +2329,14 @@ class ReservedDomainsClient(object):
         """Detach the certificate attached to a reserved domain.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-reserved-domains-delete-certificate
         """
         path = "/reserved_domains/{id}/certificate"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
     def delete_http_endpoint_config(
         self,
@@ -2143,12 +2345,14 @@ class ReservedDomainsClient(object):
         """Detach the http endpoint configuration attached to a reserved domain.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-reserved-domains-delete-http-endpoint-config
         """
         path = "/reserved_domains/{id}/http_endpoint_configuration"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
     def delete_https_endpoint_config(
         self,
@@ -2157,12 +2361,14 @@ class ReservedDomainsClient(object):
         """Detach the https endpoint configuration attached to a reserved domain.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-reserved-domains-delete-https-endpoint-config
         """
         path = "/reserved_domains/{id}/https_endpoint_configuration"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
 
 class SSHCertificateAuthoritiesClient(object):
@@ -2184,9 +2390,11 @@ class SSHCertificateAuthoritiesClient(object):
         :param private_key_type: the type of private key to generate. one of ``rsa``, ``ecdsa``, ``ed25519``
         :param elliptic_curve: the type of elliptic curve to use when creating an ECDSA key
         :param key_size: the key size to use when creating an RSA key. one of ``2048`` or ``4096``
+
+        https://ngrok.com/docs/api#api-ssh-certificate-authorities-create
         """
         path = "/ssh_certificate_authorities"
-        result = self._client.api_client.post(
+        result = self._client.http_client.post(
             path,
             dict(
                 description=description,
@@ -2205,12 +2413,14 @@ class SSHCertificateAuthoritiesClient(object):
         """Delete an SSH Certificate Authority
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-ssh-certificate-authorities-delete
         """
         path = "/ssh_certificate_authorities/{id}"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
     def get(
         self,
@@ -2219,12 +2429,14 @@ class SSHCertificateAuthoritiesClient(object):
         """Get detailed information about an SSH Certficate Authority
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-ssh-certificate-authorities-get
         """
         path = "/ssh_certificate_authorities/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return SSHCertificateAuthority(self._client, result)
 
     def list(
@@ -2236,9 +2448,11 @@ class SSHCertificateAuthoritiesClient(object):
 
         :param before_id:
         :param limit:
+
+        https://ngrok.com/docs/api#api-ssh-certificate-authorities-list
         """
         path = "/ssh_certificate_authorities"
-        result = self._client.api_client.get(
+        result = self._client.http_client.get(
             path,
             dict(
                 before_id=before_id,
@@ -2258,12 +2472,14 @@ class SSHCertificateAuthoritiesClient(object):
         :param id:
         :param description: human-readable description of this SSH Certificate Authority. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this SSH Certificate Authority. optional, max 4096 bytes.
+
+        https://ngrok.com/docs/api#api-ssh-certificate-authorities-update
         """
         path = "/ssh_certificate_authorities/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.patch(
+        result = self._client.http_client.patch(
             path,
             dict(
                 description=description,
@@ -2290,9 +2506,11 @@ class SSHCredentialsClient(object):
         :param metadata: arbitrary user-defined machine-readable data of this ssh credential. Optional, max 4096 bytes.
         :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.
         :param public_key: the PEM-encoded public key of the SSH keypair that will be used to authenticate
+
+        https://ngrok.com/docs/api#api-ssh-credentials-create
         """
         path = "/ssh_credentials"
-        result = self._client.api_client.post(
+        result = self._client.http_client.post(
             path,
             dict(
                 description=description,
@@ -2310,12 +2528,14 @@ class SSHCredentialsClient(object):
         """Delete an ssh_credential by ID
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-ssh-credentials-delete
         """
         path = "/ssh_credentials/{id}"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
     def get(
         self,
@@ -2324,12 +2544,14 @@ class SSHCredentialsClient(object):
         """Get detailed information about an ssh_credential
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-ssh-credentials-get
         """
         path = "/ssh_credentials/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return SSHCredential(self._client, result)
 
     def list(
@@ -2341,9 +2563,11 @@ class SSHCredentialsClient(object):
 
         :param before_id:
         :param limit:
+
+        https://ngrok.com/docs/api#api-ssh-credentials-list
         """
         path = "/ssh_credentials"
-        result = self._client.api_client.get(
+        result = self._client.http_client.get(
             path,
             dict(
                 before_id=before_id,
@@ -2365,12 +2589,14 @@ class SSHCredentialsClient(object):
         :param description: human-readable description of who or what will use the ssh credential to authenticate. Optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this ssh credential. Optional, max 4096 bytes.
         :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.
+
+        https://ngrok.com/docs/api#api-ssh-credentials-update
         """
         path = "/ssh_credentials/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.patch(
+        result = self._client.http_client.patch(
             path,
             dict(
                 description=description,
@@ -2404,9 +2630,11 @@ class SSHHostCertificatesClient(object):
         :param valid_until: The time when this host certificate becomes invalid, in RFC 3339 format. If unspecified, a default value of one year in the future will be used. The OpenSSH certificates RFC calls this ``valid_before``.
         :param description: human-readable description of this SSH Host Certificate. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this SSH Host Certificate. optional, max 4096 bytes.
+
+        https://ngrok.com/docs/api#api-ssh-host-certificates-create
         """
         path = "/ssh_host_certificates"
-        result = self._client.api_client.post(
+        result = self._client.http_client.post(
             path,
             dict(
                 ssh_certificate_authority_id=ssh_certificate_authority_id,
@@ -2427,12 +2655,14 @@ class SSHHostCertificatesClient(object):
         """Delete an SSH Host Certificate
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-ssh-host-certificates-delete
         """
         path = "/ssh_host_certificates/{id}"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
     def get(
         self,
@@ -2441,12 +2671,14 @@ class SSHHostCertificatesClient(object):
         """Get detailed information about an SSH Host Certficate
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-ssh-host-certificates-get
         """
         path = "/ssh_host_certificates/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return SSHHostCertificate(self._client, result)
 
     def list(
@@ -2458,9 +2690,11 @@ class SSHHostCertificatesClient(object):
 
         :param before_id:
         :param limit:
+
+        https://ngrok.com/docs/api#api-ssh-host-certificates-list
         """
         path = "/ssh_host_certificates"
-        result = self._client.api_client.get(
+        result = self._client.http_client.get(
             path,
             dict(
                 before_id=before_id,
@@ -2480,12 +2714,14 @@ class SSHHostCertificatesClient(object):
         :param id:
         :param description: human-readable description of this SSH Host Certificate. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this SSH Host Certificate. optional, max 4096 bytes.
+
+        https://ngrok.com/docs/api#api-ssh-host-certificates-update
         """
         path = "/ssh_host_certificates/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.patch(
+        result = self._client.http_client.patch(
             path,
             dict(
                 description=description,
@@ -2522,9 +2758,11 @@ class SSHUserCertificatesClient(object):
         :param valid_until: The time when this host certificate becomes invalid, in RFC 3339 format. If unspecified, a default value of 24 hours will be used. The OpenSSH certificates RFC calls this ``valid_before``.
         :param description: human-readable description of this SSH User Certificate. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this SSH User Certificate. optional, max 4096 bytes.
+
+        https://ngrok.com/docs/api#api-ssh-user-certificates-create
         """
         path = "/ssh_user_certificates"
-        result = self._client.api_client.post(
+        result = self._client.http_client.post(
             path,
             dict(
                 ssh_certificate_authority_id=ssh_certificate_authority_id,
@@ -2547,12 +2785,14 @@ class SSHUserCertificatesClient(object):
         """Delete an SSH User Certificate
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-ssh-user-certificates-delete
         """
         path = "/ssh_user_certificates/{id}"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
     def get(
         self,
@@ -2561,12 +2801,14 @@ class SSHUserCertificatesClient(object):
         """Get detailed information about an SSH User Certficate
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-ssh-user-certificates-get
         """
         path = "/ssh_user_certificates/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return SSHUserCertificate(self._client, result)
 
     def list(
@@ -2578,9 +2820,11 @@ class SSHUserCertificatesClient(object):
 
         :param before_id:
         :param limit:
+
+        https://ngrok.com/docs/api#api-ssh-user-certificates-list
         """
         path = "/ssh_user_certificates"
-        result = self._client.api_client.get(
+        result = self._client.http_client.get(
             path,
             dict(
                 before_id=before_id,
@@ -2600,12 +2844,14 @@ class SSHUserCertificatesClient(object):
         :param id:
         :param description: human-readable description of this SSH User Certificate. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this SSH User Certificate. optional, max 4096 bytes.
+
+        https://ngrok.com/docs/api#api-ssh-user-certificates-update
         """
         path = "/ssh_user_certificates/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.patch(
+        result = self._client.http_client.patch(
             path,
             dict(
                 description=description,
@@ -2632,9 +2878,11 @@ class TLSCertificatesClient(object):
         :param metadata: arbitrary user-defined machine-readable data of this TLS certificate. optional, max 4096 bytes.
         :param certificate_pem: chain of PEM-encoded certificates, leaf first. See `Certificate Bundles` <https://ngrok.com/docs/api#tls-certificates-pem>`_.
         :param private_key_pem: private key for the TLS certificate, PEM-encoded. See `Private Keys` <https://ngrok.com/docs/ngrok-link#tls-certificates-key>`_.
+
+        https://ngrok.com/docs/api#api-tls-certificates-create
         """
         path = "/tls_certificates"
-        result = self._client.api_client.post(
+        result = self._client.http_client.post(
             path,
             dict(
                 description=description,
@@ -2652,12 +2900,14 @@ class TLSCertificatesClient(object):
         """Delete a TLS certificate
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tls-certificates-delete
         """
         path = "/tls_certificates/{id}"
         path = path.format(
             id=id,
         )
-        self._client.api_client.delete(path, dict())
+        self._client.http_client.delete(path, dict())
 
     def get(
         self,
@@ -2666,12 +2916,14 @@ class TLSCertificatesClient(object):
         """Get detailed information about a TLS certificate
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tls-certificates-get
         """
         path = "/tls_certificates/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return TLSCertificate(self._client, result)
 
     def list(
@@ -2683,9 +2935,11 @@ class TLSCertificatesClient(object):
 
         :param before_id:
         :param limit:
+
+        https://ngrok.com/docs/api#api-tls-certificates-list
         """
         path = "/tls_certificates"
-        result = self._client.api_client.get(
+        result = self._client.http_client.get(
             path,
             dict(
                 before_id=before_id,
@@ -2705,12 +2959,14 @@ class TLSCertificatesClient(object):
         :param id:
         :param description: human-readable description of this TLS certificate. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this TLS certificate. optional, max 4096 bytes.
+
+        https://ngrok.com/docs/api#api-tls-certificates-update
         """
         path = "/tls_certificates/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.patch(
+        result = self._client.http_client.patch(
             path,
             dict(
                 description=description,
@@ -2733,9 +2989,11 @@ class TunnelSessionsClient(object):
 
         :param before_id:
         :param limit:
+
+        https://ngrok.com/docs/api#api-tunnel-sessions-list
         """
         path = "/tunnel_sessions"
-        result = self._client.api_client.get(
+        result = self._client.http_client.get(
             path,
             dict(
                 before_id=before_id,
@@ -2751,12 +3009,14 @@ class TunnelSessionsClient(object):
         """Get the detailed status of a tunnel session by ID
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tunnel-sessions-get
         """
         path = "/tunnel_sessions/{id}"
         path = path.format(
             id=id,
         )
-        result = self._client.api_client.get(path, dict())
+        result = self._client.http_client.get(path, dict())
         return TunnelSession(self._client, result)
 
     def restart(
@@ -2766,12 +3026,14 @@ class TunnelSessionsClient(object):
         """Issues a command instructing the ngrok agent to restart. The agent restarts itself by calling exec() on platforms that support it. This operation is notably not supported on Windows. When an agent restarts, it reconnects with a new tunnel session ID.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tunnel-sessions-restart
         """
         path = "/tunnel_sessions/{id}/restart"
         path = path.format(
             id=id,
         )
-        self._client.api_client.post(path, dict())
+        self._client.http_client.post(path, dict())
 
     def stop(
         self,
@@ -2780,12 +3042,14 @@ class TunnelSessionsClient(object):
         """Issues a command instructing the ngrok agent that started this tunnel session to exit.
 
         :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tunnel-sessions-stop
         """
         path = "/tunnel_sessions/{id}/stop"
         path = path.format(
             id=id,
         )
-        self._client.api_client.post(path, dict())
+        self._client.http_client.post(path, dict())
 
     def update(
         self,
@@ -2794,12 +3058,14 @@ class TunnelSessionsClient(object):
         """Issues a command instructing the ngrok agent to update itself to the latest version. After this call completes successfully, the ngrok agent will be in the update process. A caller should wait some amount of time to allow the update to complete (at least 10 seconds) before making a call to the Restart endpoint to request that the agent restart itself to start using the new code. This call will never update an ngrok agent to a new major version which could cause breaking compatibility issues. If you wish to update to a new major version, that must be done manually. Still, please be aware that updating your ngrok agent could break your integration. This call will fail in any of the following circumstances: there is no update available the ngrok agent's configuration disabled update checks the agent is currently in process of updating the agent has already successfully updated but has not yet been restarted
 
         :param id:
+
+        https://ngrok.com/docs/api#api-tunnel-sessions-update
         """
         path = "/tunnel_sessions/{id}/update"
         path = path.format(
             id=id,
         )
-        self._client.api_client.post(path, dict())
+        self._client.http_client.post(path, dict())
 
 
 class TunnelsClient(object):
@@ -2815,9 +3081,11 @@ class TunnelsClient(object):
 
         :param before_id:
         :param limit:
+
+        https://ngrok.com/docs/api#api-tunnels-list
         """
         path = "/tunnels"
-        result = self._client.api_client.get(
+        result = self._client.http_client.get(
             path,
             dict(
                 before_id=before_id,

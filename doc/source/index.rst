@@ -110,7 +110,7 @@ API Reference
   :caption: API
 
   client
-  objects
+  datatypes
   errors
 
 .. toctree::
