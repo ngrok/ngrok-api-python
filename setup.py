@@ -8,7 +8,7 @@ def read_file(filename):
 
 setup(
     name="ngrok-api",
-    version="0.1.3",
+    version="0.2.0",
     description="ngrok HTTP API client library",
     long_description=read_file("README.md"),
     long_description_content_type="text/markdown",
