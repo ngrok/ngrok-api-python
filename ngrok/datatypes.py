@@ -1499,9 +1499,10 @@ class EndpointMutualTLS(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["certificate_authorities"] = [
-            Ref(client, x) for x in props["certificate_authorities"]
-        ]
+        if props is not None:
+            self._props["certificate_authorities"] = [
+                Ref(client, x) for x in props["certificate_authorities"]
+            ]
 
     def __eq__(self, other):
         return self._props == other._props
@@ -1582,7 +1583,8 @@ class EndpointLogging(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["event_streams"] = [Ref(client, x) for x in props["event_streams"]]
+        if props is not None:
+            self._props["event_streams"] = [Ref(client, x) for x in props["event_streams"]]
 
     def __eq__(self, other):
         return self._props == other._props
@@ -1693,7 +1695,8 @@ class EndpointIPPolicy(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["ip_policies"] = [Ref(client, x) for x in props["ip_policies"]]
+        if props is not None:
+            self._props["ip_policies"] = [Ref(client, x) for x in props["ip_policies"]]
 
     def __eq__(self, other):
         return self._props == other._props
