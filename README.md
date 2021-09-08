@@ -23,7 +23,7 @@ Please consult the [documentation](https://python-api.docs.ngrok.com) for additi
     ng = ngrok.Client("<API KEY>")
 
     # list all online tunnels
-    for t in ng.tunnels():
+    for t in ng.tunnels.list():
         print(t)
 
     # create an ip policy the allows traffic from some subnets
