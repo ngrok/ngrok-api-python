@@ -2573,9 +2573,10 @@ class ReservedDomainCertJob(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["ns_targets"] = [
-            ReservedDomainCertNSTarget(client, x) for x in props["ns_targets"]
-        ]
+        if props is not None:
+            self._props["ns_targets"] = [
+                ReservedDomainCertNSTarget(client, x) for x in props["ns_targets"]
+            ]
 
     def __eq__(self, other):
         return self._props == other._props
