@@ -2,10 +2,10 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Event Destinations" href="event_destinations.html" /><link rel="prev" title="Endpoint Configurations" href="endpoint_configurations.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Event Sources" href="event_sources.html" /><link rel="prev" title="Event Destinations" href="event_destinations.html" />
 
     <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
-        <title>Event Streams - ngrok-api documentation</title>
+        <title>Event Subscriptions - ngrok-api documentation</title>
       <link rel="stylesheet" href="_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
     <link rel="stylesheet" href="_static/pygments.css">
     <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css">
@@ -120,9 +120,9 @@
 <li class="toctree-l1"><a class="reference internal" href="certificate_authorities.html">Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Tunnel Credentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_configurations.html">Endpoint Configurations</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Event Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event_streams.html">Event Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_destinations.html">Event Destinations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="event_subscriptions.html">Event Subscriptions</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Event Subscriptions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_sources.html">Event Sources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policies.html">IP Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policy_rules.html">IP Policy Rules</a></li>
@@ -163,67 +163,65 @@
         <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        <div class="section" id="event-streams">
-<h1>Event Streams<a class="headerlink" href="#event-streams" title="Permalink to this headline">¶</a></h1>
+        <div class="section" id="event-subscriptions">
+<h1>Event Subscriptions<a class="headerlink" href="#event-subscriptions" title="Permalink to this headline">¶</a></h1>
 <p>Do not construct this object directly, instead access the
-<a class="reference internal" href="client.html#ngrok.Client.event_streams" title="ngrok.Client.event_streams"><code class="xref py py-attr docutils literal notranslate"><span class="pre">event_streams</span></code></a> property of an <a class="reference internal" href="client.html#ngrok.Client" title="ngrok.Client"><code class="xref py py-class docutils literal notranslate"><span class="pre">ngrok.Client</span></code></a> object.</p>
+<a class="reference internal" href="client.html#ngrok.Client.event_subscriptions" title="ngrok.Client.event_subscriptions"><code class="xref py py-attr docutils literal notranslate"><span class="pre">event_subscriptions</span></code></a> property of an <a class="reference internal" href="client.html#ngrok.Client" title="ngrok.Client"><code class="xref py py-class docutils literal notranslate"><span class="pre">ngrok.Client</span></code></a> object.</p>
 <span class="target" id="module-ngrok.services"></span><dl class="py class">
-<dt id="ngrok.services.EventStreamsClient">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.services.</span></code><code class="sig-name descname"><span class="pre">EventStreamsClient</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EventStreamsClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EventStreamsClient" title="Permalink to this definition">¶</a></dt>
+<dt id="ngrok.services.EventSubscriptionsClient">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.services.</span></code><code class="sig-name descname"><span class="pre">EventSubscriptionsClient</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EventSubscriptionsClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EventSubscriptionsClient" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py method">
-<dt id="ngrok.services.EventStreamsClient.create">
-<code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EventStreamsClient.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EventStreamsClient.create" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a new Event Stream. It will not apply to anything until you associate it with one or more Endpoint Configs.</p>
+<dt id="ngrok.services.EventSubscriptionsClient.create">
+<code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sources</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EventSubscriptionsClient.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EventSubscriptionsClient.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an Event Subscription.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>metadata</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Arbitrary user-defined machine-readable data of this Event Stream. Optional, max 4096 bytes.</p></li>
-<li><p><strong>description</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Human-readable description of the Event Stream. Optional, max 255 bytes.</p></li>
-<li><p><strong>fields</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – A list of protocol-specific fields you want to collect on each event.</p></li>
-<li><p><strong>event_type</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – The protocol that determines which events will be collected. Supported values are <code class="docutils literal notranslate"><span class="pre">tcp_connection_closed</span></code> and <code class="docutils literal notranslate"><span class="pre">http_request_complete</span></code>.</p></li>
+<li><p><strong>metadata</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Arbitrary customer supplied information intended to be machine readable. Optional, max 4096 chars.</p></li>
+<li><p><strong>description</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Arbitrary customer supplied information intended to be human readable. Optional, max 255 chars.</p></li>
+<li><p><strong>sources</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<a class="reference internal" href="datatypes.html#ngrok.datatypes.EventSourceReplace" title="ngrok.datatypes.EventSourceReplace"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventSourceReplace</span></code></a>]) – Sources containing the types for which this event subscription will trigger</p></li>
 <li><p><strong>destination_ids</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – A list of Event Destination IDs which should be used for this Event Stream. Event Streams are required to have at least one Event Destination.</p></li>
-<li><p><strong>sampling_rate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – The percentage of all events you would like to capture. Valid values range from 0.01, representing 1% of all events to 1.00, representing 100% of all events.</p></li>
 </ul>
 </dd>
 </dl>
-<p><a class="reference external" href="https://ngrok.com/docs/api#api-event-streams-create">https://ngrok.com/docs/api#api-event-streams-create</a></p>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-event-subscriptions-create">https://ngrok.com/docs/api#api-event-subscriptions-create</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventStream" title="ngrok.datatypes.EventStream"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventStream</span></code></a></p>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventSubscription" title="ngrok.datatypes.EventSubscription"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventSubscription</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt id="ngrok.services.EventStreamsClient.delete">
-<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EventStreamsClient.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EventStreamsClient.delete" title="Permalink to this definition">¶</a></dt>
-<dd><p>Delete an Event Stream. Associated Event Destinations will be preserved.</p>
+<dt id="ngrok.services.EventSubscriptionsClient.delete">
+<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EventSubscriptionsClient.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EventSubscriptionsClient.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete an Event Subscription.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
 </dd>
 </dl>
-<p><a class="reference external" href="https://ngrok.com/docs/api#api-event-streams-delete">https://ngrok.com/docs/api#api-event-streams-delete</a></p>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-event-subscriptions-delete">https://ngrok.com/docs/api#api-event-subscriptions-delete</a></p>
 </dd></dl>
 <dl class="py method">
-<dt id="ngrok.services.EventStreamsClient.get">
-<code class="sig-name descname"><span class="pre">get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EventStreamsClient.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EventStreamsClient.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get detailed information about an Event Stream by ID.</p>
+<dt id="ngrok.services.EventSubscriptionsClient.get">
+<code class="sig-name descname"><span class="pre">get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EventSubscriptionsClient.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EventSubscriptionsClient.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an Event Subscription by ID.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
 </dd>
 </dl>
-<p><a class="reference external" href="https://ngrok.com/docs/api#api-event-streams-get">https://ngrok.com/docs/api#api-event-streams-get</a></p>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-event-subscriptions-get">https://ngrok.com/docs/api#api-event-subscriptions-get</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventStream" title="ngrok.datatypes.EventStream"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventStream</span></code></a></p>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventSubscription" title="ngrok.datatypes.EventSubscription"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventSubscription</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt id="ngrok.services.EventStreamsClient.list">
-<code class="sig-name descname"><span class="pre">list</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">before_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EventStreamsClient.list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EventStreamsClient.list" title="Permalink to this definition">¶</a></dt>
-<dd><p>List all Event Streams available on this account.</p>
+<dt id="ngrok.services.EventSubscriptionsClient.list">
+<code class="sig-name descname"><span class="pre">list</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">before_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EventSubscriptionsClient.list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EventSubscriptionsClient.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>List this Account’s Event Subscriptions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -232,33 +230,32 @@
 </ul>
 </dd>
 </dl>
-<p><a class="reference external" href="https://ngrok.com/docs/api#api-event-streams-list">https://ngrok.com/docs/api#api-event-streams-list</a></p>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-event-subscriptions-list">https://ngrok.com/docs/api#api-event-subscriptions-list</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventStreamList" title="ngrok.datatypes.EventStreamList"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventStreamList</span></code></a></p>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventSubscriptionList" title="ngrok.datatypes.EventSubscriptionList"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventSubscriptionList</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt id="ngrok.services.EventStreamsClient.update">
-<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EventStreamsClient.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EventStreamsClient.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update attributes of an Event Stream by ID.</p>
+<dt id="ngrok.services.EventSubscriptionsClient.update">
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sources</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EventSubscriptionsClient.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EventSubscriptionsClient.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update an Event Subscription.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Unique identifier for this Event Stream.</p></li>
-<li><p><strong>metadata</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – Arbitrary user-defined machine-readable data of this Event Stream. Optional, max 4096 bytes.</p></li>
-<li><p><strong>description</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – Human-readable description of the Event Stream. Optional, max 255 bytes.</p></li>
-<li><p><strong>fields</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]) – A list of protocol-specific fields you want to collect on each event.</p></li>
+<li><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Unique identifier for this Event Subscription.</p></li>
+<li><p><strong>metadata</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – Arbitrary customer supplied information intended to be machine readable. Optional, max 4096 chars.</p></li>
+<li><p><strong>description</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – Arbitrary customer supplied information intended to be human readable. Optional, max 255 chars.</p></li>
+<li><p><strong>sources</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<a class="reference internal" href="datatypes.html#ngrok.datatypes.EventSourceReplace" title="ngrok.datatypes.EventSourceReplace"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventSourceReplace</span></code></a>]]) – Sources containing the types for which this event subscription will trigger</p></li>
 <li><p><strong>destination_ids</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]) – A list of Event Destination IDs which should be used for this Event Stream. Event Streams are required to have at least one Event Destination.</p></li>
-<li><p><strong>sampling_rate</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – The percentage of all events you would like to capture. Valid values range from 0.01, representing 1% of all events to 1.00, representing 100% of all events.</p></li>
 </ul>
 </dd>
 </dl>
-<p><a class="reference external" href="https://ngrok.com/docs/api#api-event-streams-update">https://ngrok.com/docs/api#api-event-streams-update</a></p>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-event-subscriptions-update">https://ngrok.com/docs/api#api-event-subscriptions-update</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventStream" title="ngrok.datatypes.EventStream"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventStream</span></code></a></p>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventSubscription" title="ngrok.datatypes.EventSubscription"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventSubscription</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -269,23 +266,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="event_destinations.html">
+          <a class="next-page" href="event_sources.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Event Destinations</div>
+                <div class="title">Event Sources</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="endpoint_configurations.html">
+          <a class="prev-page" href="event_destinations.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Endpoint Configurations</div>
+                <div class="title">Event Destinations</div>
                 
               </div>
             </a>
@@ -299,7 +296,7 @@
               <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
               <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
             |
-            <a class="muted-link" href="_sources/event_streams.rst.txt"
+            <a class="muted-link" href="_sources/event_subscriptions.rst.txt"
                rel="nofollow">
               Show Source
             </a>

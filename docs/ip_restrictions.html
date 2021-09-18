@@ -119,13 +119,15 @@
 <li class="toctree-l1"><a class="reference internal" href="api_keys.html">API Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="certificate_authorities.html">Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Tunnel Credentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_configurations.html">Endpoint Configurations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_streams.html">Event Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_destinations.html">Event Destinations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event_subscriptions.html">Event Subscriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event_sources.html">Event Sources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policies.html">IP Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policy_rules.html">IP Policy Rules</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">IP Restrictions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_whitelist.html">IP Whitelist</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_configurations.html">Endpoint Configurations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_logging_module.html">Logging Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_circuit_breaker_module.html">Circuit Breaker Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_compression_module.html">Compression Module</a></li>
@@ -168,7 +170,13 @@
 <span class="target" id="module-ngrok.services"></span><dl class="py class">
 <dt id="ngrok.services.IPRestrictionsClient">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.services.</span></code><code class="sig-name descname"><span class="pre">IPRestrictionsClient</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#IPRestrictionsClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.IPRestrictionsClient" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="py method">
+<dd><p>An IP restriction is a restriction placed on the CIDRs that are allowed to
+initate traffic to a specific aspect of your ngrok account. An IP
+restriction has a type which defines the ingress it applies to. IP
+restrictions can be used to enforce the source IPs that can make API
+requests, log in to the dashboard, start ngrok agents, and connect to your
+public-facing endpoints.</p>
+<dl class="py method">
 <dt id="ngrok.services.IPRestrictionsClient.create">
 <code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip_policy_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enforced</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#IPRestrictionsClient.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.IPRestrictionsClient.create" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new IP restriction</p>
@@ -177,7 +185,7 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>description</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – human-readable description of this IP restriction. optional, max 255 bytes.</p></li>
 <li><p><strong>metadata</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – arbitrary user-defined machine-readable data of this IP restriction. optional, max 4096 bytes.</p></li>
-<li><p><strong>enforced</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – true if the IP restriction will be enforce. if false, only warnings will be issued</p></li>
+<li><p><strong>enforced</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – true if the IP restriction will be enforced. if false, only warnings will be issued</p></li>
 <li><p><strong>type</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – the type of IP restriction. this defines what traffic will be restricted with the attached policies. four values are currently supported: <code class="docutils literal notranslate"><span class="pre">dashboard</span></code>, <code class="docutils literal notranslate"><span class="pre">api</span></code>, <code class="docutils literal notranslate"><span class="pre">agent</span></code>, and <code class="docutils literal notranslate"><span class="pre">endpoints</span></code></p></li>
 <li><p><strong>ip_policy_ids</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – the set of IP policy identifiers that are used to enforce the restriction</p></li>
 </ul>
@@ -246,7 +254,7 @@
 <li><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
 <li><p><strong>description</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – human-readable description of this IP restriction. optional, max 255 bytes.</p></li>
 <li><p><strong>metadata</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – arbitrary user-defined machine-readable data of this IP restriction. optional, max 4096 bytes.</p></li>
-<li><p><strong>enforced</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>]) – true if the IP restriction will be enforce. if false, only warnings will be issued</p></li>
+<li><p><strong>enforced</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>]) – true if the IP restriction will be enforced. if false, only warnings will be issued</p></li>
 <li><p><strong>ip_policy_ids</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – the set of IP policy identifiers that are used to enforce the restriction</p></li>
 </ul>
 </dd>

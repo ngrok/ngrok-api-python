@@ -4,14 +4,22 @@ import json
 import os
 from typing import Optional, Mapping, Union, Dict, Any
 
-def test_certificate_authorities():
+def setup_api_client():
     c = ngrok.Client(os.getenv("NGROK_API_KEY"))
-
     mock = MockHTTPClient()
     if not os.getenv('TEST_NO_MOCK', False):
         c.http_client = mock
     elif os.getenv('TEST_DEBUG', False):
         c.http_client = RecordingHTTPClient(c.http_client.api_key, c.http_client.base_url)
+    return c, mock
+
+def test_domains():
+    c, mock = setup_api_client()
+    mock.returns(mock_domains_list)
+    c.reserved_domains.list()
+
+def test_certificate_authorities():
+    c, mock = setup_api_client()
 
     mock.returns(mock_empty_ca_list)
     c.certificate_authorities.list()
@@ -93,6 +101,78 @@ mock_empty_ca_list = """
 
 mock_ca_list = """
 {"certificate_authorities": ["""+mock_ca_updated+"""], "uri": "https://api.ngrok.com/certificate_authorities", "next_page_uri": null}
+"""
+
+mock_domains_list = """
+{
+  "next_page_uri": null,
+  "reserved_domains": [
+    {
+      "certificate": {
+        "id": "cert_1x0gxFw5yk5hP9l5CCCeZFJGQYe",
+        "uri": "https://api.ngrok.com/tls_certificates/cert_1x0gxFw5yk5hP9l5CCCeZFJGQYe"
+      },
+      "certificate_management_policy": null,
+      "certificate_management_status": {
+        "provisioning_job": null,
+        "renews_at": "2021-09-27T00:00:00Z"
+      },
+      "cname_target": null,
+      "created_at": "2021-07-29T23:26:04Z",
+      "description": "",
+      "domain": "foo.bar.eu.ngrok.io",
+      "http_endpoint_configuration": null,
+      "https_endpoint_configuration": null,
+      "id": "rd_1y0gxIswrmoFkUNRtcFI7Jp3kxc",
+      "metadata": "",
+      "region": "eu",
+      "uri": "https://api.ngrok.com/reserved_domains/rd_1y0gxIswrmoFkUNRtcFI7Jp3kxc"
+    },
+    {
+      "certificate": null,
+      "certificate_management_policy": null,
+      "certificate_management_status": null,
+      "cname_target": null,
+      "created_at": "2021-08-06T17:52:19Z",
+      "description": "",
+      "domain": "example.sa.ngrok.io",
+      "http_endpoint_configuration": null,
+      "https_endpoint_configuration": {
+        "id": "ec_1gUC0ny5iRymskdQR19d3toQfqm",
+        "uri": "https://api.ngrok.com/endpoint_configurations/ec_1fHC0ny5iRymskdQR19d3toQfqm"
+      },
+      "id": "rd_1P3s6a44QOx89K42NUPV94Jrtqv",
+      "metadata": "",
+      "region": "sa",
+      "uri": "https://api.ngrok.com/reserved_domains/rd_1P3s6a44QOx89K42NUPV94Jrtqv"
+    },
+    {
+      "certificate": {
+        "id": "cert_1wEAwMH75dWjyiceoDA0xw5WY09",
+        "uri": "https://api.ngrok.com/tls_certificates/cert_1wEAwMH75dWjyiceoDA0xw5WY09"
+      },
+      "certificate_management_policy": {
+        "authority": "letsencrypt",
+        "private_key_type": "rsa"
+      },
+      "certificate_management_status": {
+        "provisioning_job": null,
+        "renews_at": "2021-10-02T00:00:00Z"
+      },
+      "cname_target": "gqgmkjdu.cname.ngrok.io",
+      "created_at": "1970-01-01T00:00:00Z",
+      "description": "",
+      "domain": "name.example.com",
+      "http_endpoint_configuration": null,
+      "https_endpoint_configuration": null,
+      "id": "rd_8iLLoZgFuC6mYrgRf5NM",
+      "metadata": "",
+      "region": "us",
+      "uri": "https://api.ngrok.com/reserved_domains/rd_8iLLoZgFuC6mYrgRf5NM"
+    }
+  ],
+  "uri": "https://api.ngrok.com/reserved_domains"
+}
 """
 
 class RecordingHTTPClient(ngrok.http_client.HTTPClient):

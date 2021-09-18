@@ -7,6 +7,9 @@ from .datatypes import *
 
 
 class AbuseReportsClient(object):
+    """Abuse Reports allow you to submit take-down requests for URLs hosted by
+    ngrok that violate ngrok's terms of service."""
+
     def __init__(self, client):
         self._client = client
 
@@ -51,6 +54,12 @@ class AbuseReportsClient(object):
 
 
 class APIKeysClient(object):
+    """API Keys are used to authenticate to the `ngrok
+    API` <https://ngrok.com/docs/api#authentication>`_. You may use the API itself
+    to provision and manage API Keys but you'll need to provision your first API
+    key from the `API Keys page` <https://dashboard.ngrok.com/api/keys>`_ on your
+    ngrok.com dashboard."""
+
     def __init__(self, client):
         self._client = client
 
@@ -160,6 +169,12 @@ class APIKeysClient(object):
 
 
 class CertificateAuthoritiesClient(object):
+    """Certificate Authorities are x509 certificates that are used to sign other
+    x509 certificates. Attach a Certificate Authority to the Mutual TLS module
+    to verify that the TLS certificate presented by a client has been signed by
+    this CA. Certificate Authorities  are used only for mTLS validation only and
+    thus a private key is not included in the resource."""
+
     def __init__(self, client):
         self._client = client
 
@@ -272,6 +287,11 @@ class CertificateAuthoritiesClient(object):
 
 
 class CredentialsClient(object):
+    """Tunnel Credentials are ngrok agent authtokens. They authorize the ngrok
+    agent to connect the ngrok service as your account. They are installed with
+    the ``ngrok authtoken`` command or by specifying it in the ``ngrok.yml``
+    configuration file with the ``authtoken`` property."""
+
     def __init__(self, client):
         self._client = client
 
@@ -384,6 +404,194 @@ class CredentialsClient(object):
             ),
         )
         return Credential(self._client, result)
+
+
+class EndpointConfigurationsClient(object):
+    """Endpoint Configurations are a reusable group of modules that encapsulate how
+    traffic to a domain or address is handled. Endpoint configurations are only
+    applied to Domains and TCP Addresses they have been attached to."""
+
+    def __init__(self, client):
+        self._client = client
+
+    def create(
+        self,
+        type: str = "",
+        description: str = "",
+        metadata: str = "",
+        circuit_breaker: EndpointCircuitBreaker = None,
+        compression: EndpointCompression = None,
+        request_headers: EndpointRequestHeaders = None,
+        response_headers: EndpointResponseHeaders = None,
+        ip_policy: EndpointIPPolicyMutate = None,
+        mutual_tls: EndpointMutualTLSMutate = None,
+        tls_termination: EndpointTLSTermination = None,
+        webhook_validation: EndpointWebhookValidation = None,
+        oauth: EndpointOAuth = None,
+        logging: EndpointLoggingMutate = None,
+        saml: EndpointSAMLMutate = None,
+        oidc: EndpointOIDC = None,
+    ) -> EndpointConfiguration:
+        """Create a new endpoint configuration
+
+        :param type: they type of traffic this endpoint configuration can be applied to. one of: ``http``, ``https``, ``tcp``
+        :param description: human-readable description of what this endpoint configuration will be do when applied or what traffic it will be applied to. Optional, max 255 bytes
+        :param metadata: arbitrary user-defined machine-readable data of this endpoint configuration. Optional, max 4096 bytes.
+        :param circuit_breaker: circuit breaker module configuration or ``null``
+        :param compression: compression module configuration or ``null``
+        :param request_headers: request headers module configuration or ``null``
+        :param response_headers: response headers module configuration or ``null``
+        :param ip_policy: ip policy module configuration or ``null``
+        :param mutual_tls: mutual TLS module configuration or ``null``
+        :param tls_termination: TLS termination module configuration or ``null``
+        :param webhook_validation: webhook validation module configuration or ``null``
+        :param oauth: oauth module configuration or ``null``
+        :param logging: logging module configuration or ``null``
+        :param saml: saml module configuration or ``null``
+        :param oidc: oidc module configuration or ``null``
+
+        https://ngrok.com/docs/api#api-endpoint-configurations-create
+        """
+        path = "/endpoint_configurations"
+        result = self._client.http_client.post(
+            path,
+            dict(
+                type=type,
+                description=description,
+                metadata=metadata,
+                circuit_breaker=circuit_breaker,
+                compression=compression,
+                request_headers=request_headers,
+                response_headers=response_headers,
+                ip_policy=ip_policy,
+                mutual_tls=mutual_tls,
+                tls_termination=tls_termination,
+                webhook_validation=webhook_validation,
+                oauth=oauth,
+                logging=logging,
+                saml=saml,
+                oidc=oidc,
+            ),
+        )
+        return EndpointConfiguration(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """Delete an endpoint configuration. This operation will fail if the endpoint configuration is still referenced by any reserved domain or reserved address.
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-configurations-delete
+        """
+        path = "/endpoint_configurations/{id}"
+        path = path.format(
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+    def get(
+        self,
+        id: str,
+    ) -> EndpointConfiguration:
+        """Returns detailed information about an endpoint configuration
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoint-configurations-get
+        """
+        path = "/endpoint_configurations/{id}"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return EndpointConfiguration(self._client, result)
+
+    def list(
+        self,
+        before_id: str = None,
+        limit: str = None,
+    ) -> EndpointConfigurationList:
+        """Returns a list of all endpoint configurations on this account
+
+        :param before_id:
+        :param limit:
+
+        https://ngrok.com/docs/api#api-endpoint-configurations-list
+        """
+        path = "/endpoint_configurations"
+        result = self._client.http_client.get(
+            path,
+            dict(
+                before_id=before_id,
+                limit=limit,
+            ),
+        )
+        return EndpointConfigurationList(self._client, result)
+
+    def update(
+        self,
+        id: str,
+        description: str = None,
+        metadata: str = None,
+        circuit_breaker: EndpointCircuitBreaker = None,
+        compression: EndpointCompression = None,
+        request_headers: EndpointRequestHeaders = None,
+        response_headers: EndpointResponseHeaders = None,
+        ip_policy: EndpointIPPolicyMutate = None,
+        mutual_tls: EndpointMutualTLSMutate = None,
+        tls_termination: EndpointTLSTermination = None,
+        webhook_validation: EndpointWebhookValidation = None,
+        oauth: EndpointOAuth = None,
+        logging: EndpointLoggingMutate = None,
+        saml: EndpointSAMLMutate = None,
+        oidc: EndpointOIDC = None,
+    ) -> EndpointConfiguration:
+        """Updates an endpoint configuration. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.
+
+        :param id: unique identifier of this endpoint configuration
+        :param description: human-readable description of what this endpoint configuration will be do when applied or what traffic it will be applied to. Optional, max 255 bytes
+        :param metadata: arbitrary user-defined machine-readable data of this endpoint configuration. Optional, max 4096 bytes.
+        :param circuit_breaker: circuit breaker module configuration or ``null``
+        :param compression: compression module configuration or ``null``
+        :param request_headers: request headers module configuration or ``null``
+        :param response_headers: response headers module configuration or ``null``
+        :param ip_policy: ip policy module configuration or ``null``
+        :param mutual_tls: mutual TLS module configuration or ``null``
+        :param tls_termination: TLS termination module configuration or ``null``
+        :param webhook_validation: webhook validation module configuration or ``null``
+        :param oauth: oauth module configuration or ``null``
+        :param logging: logging module configuration or ``null``
+        :param saml: saml module configuration or ``null``
+        :param oidc: oidc module configuration or ``null``
+
+        https://ngrok.com/docs/api#api-endpoint-configurations-update
+        """
+        path = "/endpoint_configurations/{id}"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.patch(
+            path,
+            dict(
+                description=description,
+                metadata=metadata,
+                circuit_breaker=circuit_breaker,
+                compression=compression,
+                request_headers=request_headers,
+                response_headers=response_headers,
+                ip_policy=ip_policy,
+                mutual_tls=mutual_tls,
+                tls_termination=tls_termination,
+                webhook_validation=webhook_validation,
+                oauth=oauth,
+                logging=logging,
+                saml=saml,
+                oidc=oidc,
+            ),
+        )
+        return EndpointConfiguration(self._client, result)
 
 
 class EventStreamsClient(object):
@@ -637,7 +845,238 @@ class EventDestinationsClient(object):
         return EventDestination(self._client, result)
 
 
+class EventSubscriptionsClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def create(
+        self,
+        metadata: str = "",
+        description: str = "",
+        sources: Sequence[EventSourceReplace] = [],
+        destination_ids: Sequence[str] = [],
+    ) -> EventSubscription:
+        """Create an Event Subscription.
+
+        :param metadata: Arbitrary customer supplied information intended to be machine readable. Optional, max 4096 chars.
+        :param description: Arbitrary customer supplied information intended to be human readable. Optional, max 255 chars.
+        :param sources: Sources containing the types for which this event subscription will trigger
+        :param destination_ids: A list of Event Destination IDs which should be used for this Event Stream. Event Streams are required to have at least one Event Destination.
+
+        https://ngrok.com/docs/api#api-event-subscriptions-create
+        """
+        path = "/event_subscriptions"
+        result = self._client.http_client.post(
+            path,
+            dict(
+                metadata=metadata,
+                description=description,
+                sources=sources,
+                destination_ids=destination_ids,
+            ),
+        )
+        return EventSubscription(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """Delete an Event Subscription.
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-event-subscriptions-delete
+        """
+        path = "/event_subscriptions/{id}"
+        path = path.format(
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+    def get(
+        self,
+        id: str,
+    ) -> EventSubscription:
+        """Get an Event Subscription by ID.
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-event-subscriptions-get
+        """
+        path = "/event_subscriptions/{id}"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return EventSubscription(self._client, result)
+
+    def list(
+        self,
+        before_id: str = None,
+        limit: str = None,
+    ) -> EventSubscriptionList:
+        """List this Account's Event Subscriptions.
+
+        :param before_id:
+        :param limit:
+
+        https://ngrok.com/docs/api#api-event-subscriptions-list
+        """
+        path = "/event_subscriptions"
+        result = self._client.http_client.get(
+            path,
+            dict(
+                before_id=before_id,
+                limit=limit,
+            ),
+        )
+        return EventSubscriptionList(self._client, result)
+
+    def update(
+        self,
+        id: str,
+        metadata: str = None,
+        description: str = None,
+        sources: Sequence[EventSourceReplace] = None,
+        destination_ids: Sequence[str] = None,
+    ) -> EventSubscription:
+        """Update an Event Subscription.
+
+        :param id: Unique identifier for this Event Subscription.
+        :param metadata: Arbitrary customer supplied information intended to be machine readable. Optional, max 4096 chars.
+        :param description: Arbitrary customer supplied information intended to be human readable. Optional, max 255 chars.
+        :param sources: Sources containing the types for which this event subscription will trigger
+        :param destination_ids: A list of Event Destination IDs which should be used for this Event Stream. Event Streams are required to have at least one Event Destination.
+
+        https://ngrok.com/docs/api#api-event-subscriptions-update
+        """
+        path = "/event_subscriptions/{id}"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.patch(
+            path,
+            dict(
+                metadata=metadata,
+                description=description,
+                sources=sources,
+                destination_ids=destination_ids,
+            ),
+        )
+        return EventSubscription(self._client, result)
+
+
+class EventSourcesClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def create(
+        self,
+        subscription_id: str,
+        type: str = "",
+    ) -> EventSource:
+        """Add an additional type for which this event subscription will trigger
+
+        :param subscription_id: The unique identifier for the Event Subscription that this Event Source is attached to.
+        :param type: Type of event for which an event subscription will trigger
+
+        https://ngrok.com/docs/api#api-event-sources-create
+        """
+        path = "/event_subscriptions/{subscription_id}/sources"
+        path = path.format(
+            subscription_id=subscription_id,
+        )
+        result = self._client.http_client.post(
+            path,
+            dict(
+                type=type,
+            ),
+        )
+        return EventSource(self._client, result)
+
+    def delete(
+        self,
+        subscription_id: str,
+        type: str,
+    ):
+        """Remove a type for which this event subscription will trigger
+
+        :param subscription_id: The unique identifier for the Event Subscription that this Event Source is attached to.
+        :param type: Type of event for which an event subscription will trigger
+
+        https://ngrok.com/docs/api#api-event-sources-delete
+        """
+        path = "/event_subscriptions/{subscription_id}/sources/{type}"
+        path = path.format(
+            subscription_id=subscription_id,
+            type=type,
+        )
+        self._client.http_client.delete(path, dict())
+
+    def get(
+        self,
+        subscription_id: str,
+        type: str,
+    ) -> EventSource:
+        """Get the details for a given type that triggers for the given event subscription
+
+        :param subscription_id: The unique identifier for the Event Subscription that this Event Source is attached to.
+        :param type: Type of event for which an event subscription will trigger
+
+        https://ngrok.com/docs/api#api-event-sources-get
+        """
+        path = "/event_subscriptions/{subscription_id}/sources/{type}"
+        path = path.format(
+            subscription_id=subscription_id,
+            type=type,
+        )
+        result = self._client.http_client.get(path, dict())
+        return EventSource(self._client, result)
+
+    def list(
+        self,
+        subscription_id: str,
+    ) -> EventSourceList:
+        """List the types for which this event subscription will trigger
+
+        :param subscription_id: The unique identifier for the Event Subscription that this Event Source is attached to.
+
+        https://ngrok.com/docs/api#api-event-sources-list
+        """
+        path = "/event_subscriptions/{subscription_id}/sources"
+        path = path.format(
+            subscription_id=subscription_id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return EventSourceList(self._client, result)
+
+    def update(
+        self,
+        subscription_id: str,
+        type: str,
+    ) -> EventSource:
+        """Update the type for which this event subscription will trigger
+
+        :param subscription_id: The unique identifier for the Event Subscription that this Event Source is attached to.
+        :param type: Type of event for which an event subscription will trigger
+
+        https://ngrok.com/docs/api#api-event-sources-update
+        """
+        path = "/event_subscriptions/{subscription_id}/sources/{type}"
+        path = path.format(
+            subscription_id=subscription_id,
+            type=type,
+        )
+        result = self._client.http_client.patch(path, dict())
+        return EventSource(self._client, result)
+
+
 class IPPoliciesClient(object):
+    """IP Policies are reusable groups of CIDR ranges with an ``allow`` or ``deny``
+    action. They can be attached to endpoints via the Endpoint Configuration IP
+    Policy module. They can also be used with IP Restrictions to control source
+    IP ranges that can start tunnel sessions and connect to the API and dashboard."""
+
     def __init__(self, client):
         self._client = client
 
@@ -750,6 +1189,9 @@ class IPPoliciesClient(object):
 
 
 class IPPolicyRulesClient(object):
+    """IP Policy Rules are the IPv4 or IPv6 CIDRs entries that
+    make up an IP Policy."""
+
     def __init__(self, client):
         self._client = client
 
@@ -868,6 +1310,13 @@ class IPPolicyRulesClient(object):
 
 
 class IPRestrictionsClient(object):
+    """An IP restriction is a restriction placed on the CIDRs that are allowed to
+    initate traffic to a specific aspect of your ngrok account. An IP
+    restriction has a type which defines the ingress it applies to. IP
+    restrictions can be used to enforce the source IPs that can make API
+    requests, log in to the dashboard, start ngrok agents, and connect to your
+    public-facing endpoints."""
+
     def __init__(self, client):
         self._client = client
 
@@ -883,7 +1332,7 @@ class IPRestrictionsClient(object):
 
         :param description: human-readable description of this IP restriction. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this IP restriction. optional, max 4096 bytes.
-        :param enforced: true if the IP restriction will be enforce. if false, only warnings will be issued
+        :param enforced: true if the IP restriction will be enforced. if false, only warnings will be issued
         :param type: the type of IP restriction. this defines what traffic will be restricted with the attached policies. four values are currently supported: ``dashboard``, ``api``, ``agent``, and ``endpoints``
         :param ip_policy_ids: the set of IP policy identifiers that are used to enforce the restriction
 
@@ -970,7 +1419,7 @@ class IPRestrictionsClient(object):
         :param id:
         :param description: human-readable description of this IP restriction. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this IP restriction. optional, max 4096 bytes.
-        :param enforced: true if the IP restriction will be enforce. if false, only warnings will be issued
+        :param enforced: true if the IP restriction will be enforced. if false, only warnings will be issued
         :param ip_policy_ids: the set of IP policy identifiers that are used to enforce the restriction
 
         https://ngrok.com/docs/api#api-ip-restrictions-update
@@ -992,6 +1441,9 @@ class IPRestrictionsClient(object):
 
 
 class IPWhitelistClient(object):
+    """The IP Whitelist is deprecated and will be removed. Use an IP Restriction
+    with an ``endpoints`` type instead."""
+
     def __init__(self, client):
         self._client = client
 
@@ -1101,193 +1553,6 @@ class IPWhitelistClient(object):
             ),
         )
         return IPWhitelistEntry(self._client, result)
-
-
-class EndpointConfigurationsClient(object):
-    """Endpoint Configuration managementAn `Endpoint Configuration` <https://ngrok.com/docs/ngrok-link#api-endpoint-configurations>`_ describes
-    a ngrok network endpoint instance.*Endpoints are your gateway to ngrok features!*"""
-
-    def __init__(self, client):
-        self._client = client
-
-    def create(
-        self,
-        type: str = "",
-        description: str = "",
-        metadata: str = "",
-        circuit_breaker: EndpointCircuitBreaker = None,
-        compression: EndpointCompression = None,
-        request_headers: EndpointRequestHeaders = None,
-        response_headers: EndpointResponseHeaders = None,
-        ip_policy: EndpointIPPolicyMutate = None,
-        mutual_tls: EndpointMutualTLSMutate = None,
-        tls_termination: EndpointTLSTermination = None,
-        webhook_validation: EndpointWebhookValidation = None,
-        oauth: EndpointOAuth = None,
-        logging: EndpointLoggingMutate = None,
-        saml: EndpointSAMLMutate = None,
-        oidc: EndpointOIDC = None,
-    ) -> EndpointConfiguration:
-        """Create a new endpoint configuration
-
-        :param type: they type of traffic this endpoint configuration can be applied to. one of: ``http``, ``https``, ``tcp``
-        :param description: human-readable description of what this endpoint configuration will be do when applied or what traffic it will be applied to. Optional, max 255 bytes
-        :param metadata: arbitrary user-defined machine-readable data of this endpoint configuration. Optional, max 4096 bytes.
-        :param circuit_breaker: circuit breaker module configuration or ``null``
-        :param compression: compression module configuration or ``null``
-        :param request_headers: request headers module configuration or ``null``
-        :param response_headers: response headers module configuration or ``null``
-        :param ip_policy: ip policy module configuration or ``null``
-        :param mutual_tls: mutual TLS module configuration or ``null``
-        :param tls_termination: TLS termination module configuration or ``null``
-        :param webhook_validation: webhook validation module configuration or ``null``
-        :param oauth: oauth module configuration or ``null``
-        :param logging: logging module configuration or ``null``
-        :param saml: saml module configuration or ``null``
-        :param oidc: oidc module configuration or ``null``
-
-        https://ngrok.com/docs/api#api-endpoint-configurations-create
-        """
-        path = "/endpoint_configurations"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                type=type,
-                description=description,
-                metadata=metadata,
-                circuit_breaker=circuit_breaker,
-                compression=compression,
-                request_headers=request_headers,
-                response_headers=response_headers,
-                ip_policy=ip_policy,
-                mutual_tls=mutual_tls,
-                tls_termination=tls_termination,
-                webhook_validation=webhook_validation,
-                oauth=oauth,
-                logging=logging,
-                saml=saml,
-                oidc=oidc,
-            ),
-        )
-        return EndpointConfiguration(self._client, result)
-
-    def delete(
-        self,
-        id: str,
-    ):
-        """Delete an endpoint configuration. This operation will fail if the endpoint configuration is still referenced by any reserved domain or reserved address.
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-configurations-delete
-        """
-        path = "/endpoint_configurations/{id}"
-        path = path.format(
-            id=id,
-        )
-        self._client.http_client.delete(path, dict())
-
-    def get(
-        self,
-        id: str,
-    ) -> EndpointConfiguration:
-        """Returns detailed information about an endpoint configuration
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-configurations-get
-        """
-        path = "/endpoint_configurations/{id}"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.get(path, dict())
-        return EndpointConfiguration(self._client, result)
-
-    def list(
-        self,
-        before_id: str = None,
-        limit: str = None,
-    ) -> EndpointConfigurationList:
-        """Returns a list of all endpoint configurations on this account
-
-        :param before_id:
-        :param limit:
-
-        https://ngrok.com/docs/api#api-endpoint-configurations-list
-        """
-        path = "/endpoint_configurations"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
-        )
-        return EndpointConfigurationList(self._client, result)
-
-    def update(
-        self,
-        id: str,
-        description: str = None,
-        metadata: str = None,
-        circuit_breaker: EndpointCircuitBreaker = None,
-        compression: EndpointCompression = None,
-        request_headers: EndpointRequestHeaders = None,
-        response_headers: EndpointResponseHeaders = None,
-        ip_policy: EndpointIPPolicyMutate = None,
-        mutual_tls: EndpointMutualTLSMutate = None,
-        tls_termination: EndpointTLSTermination = None,
-        webhook_validation: EndpointWebhookValidation = None,
-        oauth: EndpointOAuth = None,
-        logging: EndpointLoggingMutate = None,
-        saml: EndpointSAMLMutate = None,
-        oidc: EndpointOIDC = None,
-    ) -> EndpointConfiguration:
-        """Updates an endpoint configuration. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.
-
-        :param id: unique identifier of this endpoint configuration
-        :param description: human-readable description of what this endpoint configuration will be do when applied or what traffic it will be applied to. Optional, max 255 bytes
-        :param metadata: arbitrary user-defined machine-readable data of this endpoint configuration. Optional, max 4096 bytes.
-        :param circuit_breaker: circuit breaker module configuration or ``null``
-        :param compression: compression module configuration or ``null``
-        :param request_headers: request headers module configuration or ``null``
-        :param response_headers: response headers module configuration or ``null``
-        :param ip_policy: ip policy module configuration or ``null``
-        :param mutual_tls: mutual TLS module configuration or ``null``
-        :param tls_termination: TLS termination module configuration or ``null``
-        :param webhook_validation: webhook validation module configuration or ``null``
-        :param oauth: oauth module configuration or ``null``
-        :param logging: logging module configuration or ``null``
-        :param saml: saml module configuration or ``null``
-        :param oidc: oidc module configuration or ``null``
-
-        https://ngrok.com/docs/api#api-endpoint-configurations-update
-        """
-        path = "/endpoint_configurations/{id}"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                circuit_breaker=circuit_breaker,
-                compression=compression,
-                request_headers=request_headers,
-                response_headers=response_headers,
-                ip_policy=ip_policy,
-                mutual_tls=mutual_tls,
-                tls_termination=tls_termination,
-                webhook_validation=webhook_validation,
-                oauth=oauth,
-                logging=logging,
-                saml=saml,
-                oidc=oidc,
-            ),
-        )
-        return EndpointConfiguration(self._client, result)
 
 
 class EndpointLoggingModuleClient(object):
@@ -2035,6 +2300,10 @@ class EndpointOIDCModuleClient(object):
 
 
 class ReservedAddrsClient(object):
+    """Reserved Addresses are TCP addresses that can be used to listen for traffic.
+    TCP address hostnames and ports are assigned by ngrok, they cannot be
+    chosen."""
+
     def __init__(self, client):
         self._client = client
 
@@ -2169,6 +2438,11 @@ class ReservedAddrsClient(object):
 
 
 class ReservedDomainsClient(object):
+    """Reserved Domains are hostnames that you can listen for traffic on. Domains
+    can be used to listen for http, https or tls traffic. You may use a domain
+    that you own by creating a CNAME record specified in the returned resource.
+    This CNAME record points traffic for that domain to ngrok's edge servers."""
+
     def __init__(self, client):
         self._client = client
 
@@ -2178,8 +2452,8 @@ class ReservedDomainsClient(object):
         region: str = "",
         description: str = "",
         metadata: str = "",
-        http_endpoint_configuration_id: str = "",
-        https_endpoint_configuration_id: str = "",
+        http_endpoint_configuration_id: str = None,
+        https_endpoint_configuration_id: str = None,
         certificate_id: str = None,
         certificate_management_policy: ReservedDomainCertPolicy = None,
     ) -> ReservedDomain:
@@ -2372,6 +2646,9 @@ class ReservedDomainsClient(object):
 
 
 class SSHCertificateAuthoritiesClient(object):
+    """An SSH Certificate Authority is a pair of an SSH Certificate and its private
+    key that can be used to sign other SSH host and user certificates."""
+
     def __init__(self, client):
         self._client = client
 
@@ -2490,6 +2767,9 @@ class SSHCertificateAuthoritiesClient(object):
 
 
 class SSHCredentialsClient(object):
+    """SSH Credentials are SSH public keys that can be used to start SSH tunnels
+    via the ngrok SSH tunnel gateway."""
+
     def __init__(self, client):
         self._client = client
 
@@ -2608,6 +2888,10 @@ class SSHCredentialsClient(object):
 
 
 class SSHHostCertificatesClient(object):
+    """SSH Host Certificates along with the corresponding private key allows an SSH
+    server to assert its authenticity to connecting SSH clients who trust the
+    SSH Certificate Authority that was used to sign the certificate."""
+
     def __init__(self, client):
         self._client = client
 
@@ -2732,6 +3016,10 @@ class SSHHostCertificatesClient(object):
 
 
 class SSHUserCertificatesClient(object):
+    """SSH User Certificates are presented by SSH clients when connecting to an SSH
+    server to authenticate their connection. The SSH server must trust the SSH
+    Certificate Authority used to sign the certificate."""
+
     def __init__(self, client):
         self._client = client
 
@@ -2862,6 +3150,12 @@ class SSHUserCertificatesClient(object):
 
 
 class TLSCertificatesClient(object):
+    """TLS Certificates are pairs of x509 certificates and their matching private
+    key that can be used to terminate TLS traffic. TLS certificates are unused
+    until they are attached to a Domain. TLS Certificates may also be
+    provisioned by ngrok automatically for domains on which you have enabled
+    automated certificate provisioning."""
+
     def __init__(self, client):
         self._client = client
 
@@ -2977,6 +3271,10 @@ class TLSCertificatesClient(object):
 
 
 class TunnelSessionsClient(object):
+    """Tunnel Sessions represent instances of ngrok agents or SSH reverse tunnel
+    sessions that are running and connected to the ngrok service. Each tunnel
+    session can include one or more Tunnels."""
+
     def __init__(self, client):
         self._client = client
 
@@ -3069,6 +3367,9 @@ class TunnelSessionsClient(object):
 
 
 class TunnelsClient(object):
+    """Tunnels provide endpoints to access services exposed by a running ngrok
+    agent tunnel session or an SSH reverse tunnel session."""
+
     def __init__(self, client):
         self._client = client
 

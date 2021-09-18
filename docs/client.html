@@ -119,13 +119,15 @@
 <li class="toctree-l1"><a class="reference internal" href="api_keys.html">API Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="certificate_authorities.html">Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Tunnel Credentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_configurations.html">Endpoint Configurations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_streams.html">Event Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_destinations.html">Event Destinations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event_subscriptions.html">Event Subscriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event_sources.html">Event Sources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policies.html">IP Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policy_rules.html">IP Policy Rules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_restrictions.html">IP Restrictions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_whitelist.html">IP Whitelist</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_configurations.html">Endpoint Configurations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_logging_module.html">Logging Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_circuit_breaker_module.html">Circuit Breaker Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_compression_module.html">Compression Module</a></li>
@@ -186,7 +188,9 @@ Client object:</p>
 <dd><dl class="py method">
 <dt id="ngrok.Client.abuse_reports">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">abuse_reports</span></code><a class="headerlink" href="#ngrok.Client.abuse_reports" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Abuse Reports allow you to submit take-down requests for URLs hosted by
+ngrok that violate ngrok’s terms of service.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="abuse_reports.html#ngrok.services.AbuseReportsClient" title="ngrok.services.AbuseReportsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbuseReportsClient</span></code></a></p>
 </dd>
@@ -195,7 +199,12 @@ Client object:</p>
 <dl class="py method">
 <dt id="ngrok.Client.api_keys">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">api_keys</span></code><a class="headerlink" href="#ngrok.Client.api_keys" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>API Keys are used to authenticate to the <cite>ngrok
+API</cite> &lt;<a class="reference external" href="https://ngrok.com/docs/api#authentication">https://ngrok.com/docs/api#authentication</a>&gt;`_. You may use the API itself
+to provision and manage API Keys but you’ll need to provision your first API
+key from the <cite>API Keys page</cite> &lt;<a class="reference external" href="https://dashboard.ngrok.com/api/keys">https://dashboard.ngrok.com/api/keys</a>&gt;`_ on your
+ngrok.com dashboard.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="api_keys.html#ngrok.services.APIKeysClient" title="ngrok.services.APIKeysClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">APIKeysClient</span></code></a></p>
 </dd>
@@ -204,7 +213,12 @@ Client object:</p>
 <dl class="py method">
 <dt id="ngrok.Client.certificate_authorities">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">certificate_authorities</span></code><a class="headerlink" href="#ngrok.Client.certificate_authorities" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Certificate Authorities are x509 certificates that are used to sign other
+x509 certificates. Attach a Certificate Authority to the Mutual TLS module
+to verify that the TLS certificate presented by a client has been signed by
+this CA. Certificate Authorities  are used only for mTLS validation only and
+thus a private key is not included in the resource.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="certificate_authorities.html#ngrok.services.CertificateAuthoritiesClient" title="ngrok.services.CertificateAuthoritiesClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">CertificateAuthoritiesClient</span></code></a></p>
 </dd>
@@ -213,7 +227,11 @@ Client object:</p>
 <dl class="py method">
 <dt id="ngrok.Client.credentials">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">credentials</span></code><a class="headerlink" href="#ngrok.Client.credentials" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Tunnel Credentials are ngrok agent authtokens. They authorize the ngrok
+agent to connect the ngrok service as your account. They are installed with
+the <code class="docutils literal notranslate"><span class="pre">ngrok</span> <span class="pre">authtoken</span></code> command or by specifying it in the <code class="docutils literal notranslate"><span class="pre">ngrok.yml</span></code>
+configuration file with the <code class="docutils literal notranslate"><span class="pre">authtoken</span></code> property.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="credentials.html#ngrok.services.CredentialsClient" title="ngrok.services.CredentialsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">CredentialsClient</span></code></a></p>
 </dd>
@@ -222,8 +240,9 @@ Client object:</p>
 <dl class="py method">
 <dt id="ngrok.Client.endpoint_configurations">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">endpoint_configurations</span></code><a class="headerlink" href="#ngrok.Client.endpoint_configurations" title="Permalink to this definition">¶</a></dt>
-<dd><p>Endpoint Configuration managementAn <cite>Endpoint Configuration</cite> &lt;<a class="reference external" href="https://ngrok.com/docs/ngrok-link#api-endpoint-configurations">https://ngrok.com/docs/ngrok-link#api-endpoint-configurations</a>&gt;`_ describes
-a ngrok network endpoint instance.*Endpoints are your gateway to ngrok features!*</p>
+<dd><p>Endpoint Configurations are a reusable group of modules that encapsulate how
+traffic to a domain or address is handled. Endpoint configurations are only
+applied to Domains and TCP Addresses they have been attached to.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="endpoint_configurations.html#ngrok.services.EndpointConfigurationsClient" title="ngrok.services.EndpointConfigurationsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointConfigurationsClient</span></code></a></p>
@@ -240,6 +259,15 @@ a ngrok network endpoint instance.*Endpoints are your gateway to ngrok features!
 </dl>
 </dd></dl>
 <dl class="py method">
+<dt id="ngrok.Client.event_sources">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">event_sources</span></code><a class="headerlink" href="#ngrok.Client.event_sources" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="event_sources.html#ngrok.services.EventSourcesClient" title="ngrok.services.EventSourcesClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventSourcesClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
 <dt id="ngrok.Client.event_streams">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">event_streams</span></code><a class="headerlink" href="#ngrok.Client.event_streams" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -249,9 +277,22 @@ a ngrok network endpoint instance.*Endpoints are your gateway to ngrok features!
 </dl>
 </dd></dl>
 <dl class="py method">
+<dt id="ngrok.Client.event_subscriptions">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">event_subscriptions</span></code><a class="headerlink" href="#ngrok.Client.event_subscriptions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="event_subscriptions.html#ngrok.services.EventSubscriptionsClient" title="ngrok.services.EventSubscriptionsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventSubscriptionsClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
 <dt id="ngrok.Client.ip_policies">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ip_policies</span></code><a class="headerlink" href="#ngrok.Client.ip_policies" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>IP Policies are reusable groups of CIDR ranges with an <code class="docutils literal notranslate"><span class="pre">allow</span></code> or <code class="docutils literal notranslate"><span class="pre">deny</span></code>
+action. They can be attached to endpoints via the Endpoint Configuration IP
+Policy module. They can also be used with IP Restrictions to control source
+IP ranges that can start tunnel sessions and connect to the API and dashboard.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="ip_policies.html#ngrok.services.IPPoliciesClient" title="ngrok.services.IPPoliciesClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPPoliciesClient</span></code></a></p>
 </dd>
@@ -260,7 +301,9 @@ a ngrok network endpoint instance.*Endpoints are your gateway to ngrok features!
 <dl class="py method">
 <dt id="ngrok.Client.ip_policy_rules">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ip_policy_rules</span></code><a class="headerlink" href="#ngrok.Client.ip_policy_rules" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>IP Policy Rules are the IPv4 or IPv6 CIDRs entries that
+make up an IP Policy.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="ip_policy_rules.html#ngrok.services.IPPolicyRulesClient" title="ngrok.services.IPPolicyRulesClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPPolicyRulesClient</span></code></a></p>
 </dd>
@@ -269,7 +312,13 @@ a ngrok network endpoint instance.*Endpoints are your gateway to ngrok features!
 <dl class="py method">
 <dt id="ngrok.Client.ip_restrictions">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ip_restrictions</span></code><a class="headerlink" href="#ngrok.Client.ip_restrictions" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>An IP restriction is a restriction placed on the CIDRs that are allowed to
+initate traffic to a specific aspect of your ngrok account. An IP
+restriction has a type which defines the ingress it applies to. IP
+restrictions can be used to enforce the source IPs that can make API
+requests, log in to the dashboard, start ngrok agents, and connect to your
+public-facing endpoints.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="ip_restrictions.html#ngrok.services.IPRestrictionsClient" title="ngrok.services.IPRestrictionsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPRestrictionsClient</span></code></a></p>
 </dd>
@@ -278,7 +327,9 @@ a ngrok network endpoint instance.*Endpoints are your gateway to ngrok features!
 <dl class="py method">
 <dt id="ngrok.Client.ip_whitelist">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ip_whitelist</span></code><a class="headerlink" href="#ngrok.Client.ip_whitelist" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>The IP Whitelist is deprecated and will be removed. Use an IP Restriction
+with an <code class="docutils literal notranslate"><span class="pre">endpoints</span></code> type instead.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="ip_whitelist.html#ngrok.services.IPWhitelistClient" title="ngrok.services.IPWhitelistClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPWhitelistClient</span></code></a></p>
 </dd>
@@ -291,7 +342,10 @@ a ngrok network endpoint instance.*Endpoints are your gateway to ngrok features!
 <dl class="py method">
 <dt id="ngrok.Client.reserved_addrs">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">reserved_addrs</span></code><a class="headerlink" href="#ngrok.Client.reserved_addrs" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Reserved Addresses are TCP addresses that can be used to listen for traffic.
+TCP address hostnames and ports are assigned by ngrok, they cannot be
+chosen.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="reserved_addrs.html#ngrok.services.ReservedAddrsClient" title="ngrok.services.ReservedAddrsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedAddrsClient</span></code></a></p>
 </dd>
@@ -300,7 +354,11 @@ a ngrok network endpoint instance.*Endpoints are your gateway to ngrok features!
 <dl class="py method">
 <dt id="ngrok.Client.reserved_domains">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">reserved_domains</span></code><a class="headerlink" href="#ngrok.Client.reserved_domains" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Reserved Domains are hostnames that you can listen for traffic on. Domains
+can be used to listen for http, https or tls traffic. You may use a domain
+that you own by creating a CNAME record specified in the returned resource.
+This CNAME record points traffic for that domain to ngrok’s edge servers.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="reserved_domains.html#ngrok.services.ReservedDomainsClient" title="ngrok.services.ReservedDomainsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomainsClient</span></code></a></p>
 </dd>
@@ -309,7 +367,9 @@ a ngrok network endpoint instance.*Endpoints are your gateway to ngrok features!
 <dl class="py method">
 <dt id="ngrok.Client.ssh_certificate_authorities">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ssh_certificate_authorities</span></code><a class="headerlink" href="#ngrok.Client.ssh_certificate_authorities" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>An SSH Certificate Authority is a pair of an SSH Certificate and its private
+key that can be used to sign other SSH host and user certificates.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="ssh_certificate_authorities.html#ngrok.services.SSHCertificateAuthoritiesClient" title="ngrok.services.SSHCertificateAuthoritiesClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSHCertificateAuthoritiesClient</span></code></a></p>
 </dd>
@@ -318,7 +378,9 @@ a ngrok network endpoint instance.*Endpoints are your gateway to ngrok features!
 <dl class="py method">
 <dt id="ngrok.Client.ssh_credentials">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ssh_credentials</span></code><a class="headerlink" href="#ngrok.Client.ssh_credentials" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>SSH Credentials are SSH public keys that can be used to start SSH tunnels
+via the ngrok SSH tunnel gateway.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="ssh_credentials.html#ngrok.services.SSHCredentialsClient" title="ngrok.services.SSHCredentialsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSHCredentialsClient</span></code></a></p>
 </dd>
@@ -327,7 +389,10 @@ a ngrok network endpoint instance.*Endpoints are your gateway to ngrok features!
 <dl class="py method">
 <dt id="ngrok.Client.ssh_host_certificates">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ssh_host_certificates</span></code><a class="headerlink" href="#ngrok.Client.ssh_host_certificates" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>SSH Host Certificates along with the corresponding private key allows an SSH
+server to assert its authenticity to connecting SSH clients who trust the
+SSH Certificate Authority that was used to sign the certificate.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="ssh_host_certificates.html#ngrok.services.SSHHostCertificatesClient" title="ngrok.services.SSHHostCertificatesClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSHHostCertificatesClient</span></code></a></p>
 </dd>
@@ -336,7 +401,10 @@ a ngrok network endpoint instance.*Endpoints are your gateway to ngrok features!
 <dl class="py method">
 <dt id="ngrok.Client.ssh_user_certificates">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ssh_user_certificates</span></code><a class="headerlink" href="#ngrok.Client.ssh_user_certificates" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>SSH User Certificates are presented by SSH clients when connecting to an SSH
+server to authenticate their connection. The SSH server must trust the SSH
+Certificate Authority used to sign the certificate.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="ssh_user_certificates.html#ngrok.services.SSHUserCertificatesClient" title="ngrok.services.SSHUserCertificatesClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSHUserCertificatesClient</span></code></a></p>
 </dd>
@@ -345,7 +413,12 @@ a ngrok network endpoint instance.*Endpoints are your gateway to ngrok features!
 <dl class="py method">
 <dt id="ngrok.Client.tls_certificates">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">tls_certificates</span></code><a class="headerlink" href="#ngrok.Client.tls_certificates" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>TLS Certificates are pairs of x509 certificates and their matching private
+key that can be used to terminate TLS traffic. TLS certificates are unused
+until they are attached to a Domain. TLS Certificates may also be
+provisioned by ngrok automatically for domains on which you have enabled
+automated certificate provisioning.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="tls_certificates.html#ngrok.services.TLSCertificatesClient" title="ngrok.services.TLSCertificatesClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">TLSCertificatesClient</span></code></a></p>
 </dd>
@@ -354,7 +427,10 @@ a ngrok network endpoint instance.*Endpoints are your gateway to ngrok features!
 <dl class="py method">
 <dt id="ngrok.Client.tunnel_sessions">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">tunnel_sessions</span></code><a class="headerlink" href="#ngrok.Client.tunnel_sessions" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Tunnel Sessions represent instances of ngrok agents or SSH reverse tunnel
+sessions that are running and connected to the ngrok service. Each tunnel
+session can include one or more Tunnels.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="tunnel_sessions.html#ngrok.services.TunnelSessionsClient" title="ngrok.services.TunnelSessionsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">TunnelSessionsClient</span></code></a></p>
 </dd>
@@ -363,7 +439,9 @@ a ngrok network endpoint instance.*Endpoints are your gateway to ngrok features!
 <dl class="py method">
 <dt id="ngrok.Client.tunnels">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">tunnels</span></code><a class="headerlink" href="#ngrok.Client.tunnels" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Tunnels provide endpoints to access services exposed by a running ngrok
+agent tunnel session or an SSH reverse tunnel session.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="tunnels.html#ngrok.services.TunnelsClient" title="ngrok.services.TunnelsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">TunnelsClient</span></code></a></p>
 </dd>

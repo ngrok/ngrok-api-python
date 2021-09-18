@@ -119,13 +119,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../../api_keys.html">API Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../certificate_authorities.html">Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../credentials.html">Tunnel Credentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoint_configurations.html">Endpoint Configurations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../event_streams.html">Event Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../event_destinations.html">Event Destinations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../event_subscriptions.html">Event Subscriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../event_sources.html">Event Sources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ip_policies.html">IP Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ip_policy_rules.html">IP Policy Rules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ip_restrictions.html">IP Restrictions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ip_whitelist.html">IP Whitelist</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_configurations.html">Endpoint Configurations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoint_logging_module.html">Logging Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoint_circuit_breaker_module.html">Circuit Breaker Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoint_compression_module.html">Compression Module</a></li>
@@ -171,6 +173,9 @@
 
 
 <div class="viewcode-block" id="AbuseReportsClient"><a class="viewcode-back" href="../../abuse_reports.html#ngrok.services.AbuseReportsClient">[docs]</a><span class="k">class</span> <span class="nc">AbuseReportsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""Abuse Reports allow you to submit take-down requests for URLs hosted by</span>
+<span class="sd">    ngrok that violate ngrok's terms of service."""</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
 
@@ -215,6 +220,12 @@
 
 
 <div class="viewcode-block" id="APIKeysClient"><a class="viewcode-back" href="../../api_keys.html#ngrok.services.APIKeysClient">[docs]</a><span class="k">class</span> <span class="nc">APIKeysClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""API Keys are used to authenticate to the `ngrok</span>
+<span class="sd">    API` &lt;https://ngrok.com/docs/api#authentication&gt;`_. You may use the API itself</span>
+<span class="sd">    to provision and manage API Keys but you'll need to provision your first API</span>
+<span class="sd">    key from the `API Keys page` &lt;https://dashboard.ngrok.com/api/keys&gt;`_ on your</span>
+<span class="sd">    ngrok.com dashboard."""</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
 
@@ -324,6 +335,12 @@
 
 
 <div class="viewcode-block" id="CertificateAuthoritiesClient"><a class="viewcode-back" href="../../certificate_authorities.html#ngrok.services.CertificateAuthoritiesClient">[docs]</a><span class="k">class</span> <span class="nc">CertificateAuthoritiesClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""Certificate Authorities are x509 certificates that are used to sign other</span>
+<span class="sd">    x509 certificates. Attach a Certificate Authority to the Mutual TLS module</span>
+<span class="sd">    to verify that the TLS certificate presented by a client has been signed by</span>
+<span class="sd">    this CA. Certificate Authorities  are used only for mTLS validation only and</span>
+<span class="sd">    thus a private key is not included in the resource."""</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
 
@@ -436,6 +453,11 @@
 
 
 <div class="viewcode-block" id="CredentialsClient"><a class="viewcode-back" href="../../credentials.html#ngrok.services.CredentialsClient">[docs]</a><span class="k">class</span> <span class="nc">CredentialsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""Tunnel Credentials are ngrok agent authtokens. They authorize the ngrok</span>
+<span class="sd">    agent to connect the ngrok service as your account. They are installed with</span>
+<span class="sd">    the ``ngrok authtoken`` command or by specifying it in the ``ngrok.yml``</span>
+<span class="sd">    configuration file with the ``authtoken`` property."""</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
 
@@ -548,6 +570,194 @@
             <span class="p">),</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">Credential</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="EndpointConfigurationsClient"><a class="viewcode-back" href="../../endpoint_configurations.html#ngrok.services.EndpointConfigurationsClient">[docs]</a><span class="k">class</span> <span class="nc">EndpointConfigurationsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""Endpoint Configurations are a reusable group of modules that encapsulate how</span>
+<span class="sd">    traffic to a domain or address is handled. Endpoint configurations are only</span>
+<span class="sd">    applied to Domains and TCP Addresses they have been attached to."""</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
+
+<div class="viewcode-block" id="EndpointConfigurationsClient.create"><a class="viewcode-back" href="../../endpoint_configurations.html#ngrok.services.EndpointConfigurationsClient.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
+        <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
+        <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
+        <span class="n">circuit_breaker</span><span class="p">:</span> <span class="n">EndpointCircuitBreaker</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">compression</span><span class="p">:</span> <span class="n">EndpointCompression</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">request_headers</span><span class="p">:</span> <span class="n">EndpointRequestHeaders</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">response_headers</span><span class="p">:</span> <span class="n">EndpointResponseHeaders</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">ip_policy</span><span class="p">:</span> <span class="n">EndpointIPPolicyMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">mutual_tls</span><span class="p">:</span> <span class="n">EndpointMutualTLSMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">tls_termination</span><span class="p">:</span> <span class="n">EndpointTLSTermination</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">webhook_validation</span><span class="p">:</span> <span class="n">EndpointWebhookValidation</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">oauth</span><span class="p">:</span> <span class="n">EndpointOAuth</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">logging</span><span class="p">:</span> <span class="n">EndpointLoggingMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">saml</span><span class="p">:</span> <span class="n">EndpointSAMLMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">oidc</span><span class="p">:</span> <span class="n">EndpointOIDC</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointConfiguration</span><span class="p">:</span>
+        <span class="sd">"""Create a new endpoint configuration</span>
+
+<span class="sd">        :param type: they type of traffic this endpoint configuration can be applied to. one of: ``http``, ``https``, ``tcp``</span>
+<span class="sd">        :param description: human-readable description of what this endpoint configuration will be do when applied or what traffic it will be applied to. Optional, max 255 bytes</span>
+<span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this endpoint configuration. Optional, max 4096 bytes.</span>
+<span class="sd">        :param circuit_breaker: circuit breaker module configuration or ``null``</span>
+<span class="sd">        :param compression: compression module configuration or ``null``</span>
+<span class="sd">        :param request_headers: request headers module configuration or ``null``</span>
+<span class="sd">        :param response_headers: response headers module configuration or ``null``</span>
+<span class="sd">        :param ip_policy: ip policy module configuration or ``null``</span>
+<span class="sd">        :param mutual_tls: mutual TLS module configuration or ``null``</span>
+<span class="sd">        :param tls_termination: TLS termination module configuration or ``null``</span>
+<span class="sd">        :param webhook_validation: webhook validation module configuration or ``null``</span>
+<span class="sd">        :param oauth: oauth module configuration or ``null``</span>
+<span class="sd">        :param logging: logging module configuration or ``null``</span>
+<span class="sd">        :param saml: saml module configuration or ``null``</span>
+<span class="sd">        :param oidc: oidc module configuration or ``null``</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-endpoint-configurations-create</span>
+<span class="sd">        """</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/endpoint_configurations"</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="n">path</span><span class="p">,</span>
+            <span class="nb">dict</span><span class="p">(</span>
+                <span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
+                <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
+                <span class="n">circuit_breaker</span><span class="o">=</span><span class="n">circuit_breaker</span><span class="p">,</span>
+                <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
+                <span class="n">request_headers</span><span class="o">=</span><span class="n">request_headers</span><span class="p">,</span>
+                <span class="n">response_headers</span><span class="o">=</span><span class="n">response_headers</span><span class="p">,</span>
+                <span class="n">ip_policy</span><span class="o">=</span><span class="n">ip_policy</span><span class="p">,</span>
+                <span class="n">mutual_tls</span><span class="o">=</span><span class="n">mutual_tls</span><span class="p">,</span>
+                <span class="n">tls_termination</span><span class="o">=</span><span class="n">tls_termination</span><span class="p">,</span>
+                <span class="n">webhook_validation</span><span class="o">=</span><span class="n">webhook_validation</span><span class="p">,</span>
+                <span class="n">oauth</span><span class="o">=</span><span class="n">oauth</span><span class="p">,</span>
+                <span class="n">logging</span><span class="o">=</span><span class="n">logging</span><span class="p">,</span>
+                <span class="n">saml</span><span class="o">=</span><span class="n">saml</span><span class="p">,</span>
+                <span class="n">oidc</span><span class="o">=</span><span class="n">oidc</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">EndpointConfiguration</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EndpointConfigurationsClient.delete"><a class="viewcode-back" href="../../endpoint_configurations.html#ngrok.services.EndpointConfigurationsClient.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">"""Delete an endpoint configuration. This operation will fail if the endpoint configuration is still referenced by any reserved domain or reserved address.</span>
+
+<span class="sd">        :param id: a resource identifier</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-endpoint-configurations-delete</span>
+<span class="sd">        """</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/endpoint_configurations/</span><span class="si">{id}</span><span class="s2">"</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="EndpointConfigurationsClient.get"><a class="viewcode-back" href="../../endpoint_configurations.html#ngrok.services.EndpointConfigurationsClient.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointConfiguration</span><span class="p">:</span>
+        <span class="sd">"""Returns detailed information about an endpoint configuration</span>
+
+<span class="sd">        :param id: a resource identifier</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-endpoint-configurations-get</span>
+<span class="sd">        """</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/endpoint_configurations/</span><span class="si">{id}</span><span class="s2">"</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">EndpointConfiguration</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EndpointConfigurationsClient.list"><a class="viewcode-back" href="../../endpoint_configurations.html#ngrok.services.EndpointConfigurationsClient.list">[docs]</a>    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointConfigurationList</span><span class="p">:</span>
+        <span class="sd">"""Returns a list of all endpoint configurations on this account</span>
+
+<span class="sd">        :param before_id:</span>
+<span class="sd">        :param limit:</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-endpoint-configurations-list</span>
+<span class="sd">        """</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/endpoint_configurations"</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="n">path</span><span class="p">,</span>
+            <span class="nb">dict</span><span class="p">(</span>
+                <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
+                <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">EndpointConfigurationList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EndpointConfigurationsClient.update"><a class="viewcode-back" href="../../endpoint_configurations.html#ngrok.services.EndpointConfigurationsClient.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">circuit_breaker</span><span class="p">:</span> <span class="n">EndpointCircuitBreaker</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">compression</span><span class="p">:</span> <span class="n">EndpointCompression</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">request_headers</span><span class="p">:</span> <span class="n">EndpointRequestHeaders</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">response_headers</span><span class="p">:</span> <span class="n">EndpointResponseHeaders</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">ip_policy</span><span class="p">:</span> <span class="n">EndpointIPPolicyMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">mutual_tls</span><span class="p">:</span> <span class="n">EndpointMutualTLSMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">tls_termination</span><span class="p">:</span> <span class="n">EndpointTLSTermination</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">webhook_validation</span><span class="p">:</span> <span class="n">EndpointWebhookValidation</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">oauth</span><span class="p">:</span> <span class="n">EndpointOAuth</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">logging</span><span class="p">:</span> <span class="n">EndpointLoggingMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">saml</span><span class="p">:</span> <span class="n">EndpointSAMLMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">oidc</span><span class="p">:</span> <span class="n">EndpointOIDC</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointConfiguration</span><span class="p">:</span>
+        <span class="sd">"""Updates an endpoint configuration. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.</span>
+
+<span class="sd">        :param id: unique identifier of this endpoint configuration</span>
+<span class="sd">        :param description: human-readable description of what this endpoint configuration will be do when applied or what traffic it will be applied to. Optional, max 255 bytes</span>
+<span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this endpoint configuration. Optional, max 4096 bytes.</span>
+<span class="sd">        :param circuit_breaker: circuit breaker module configuration or ``null``</span>
+<span class="sd">        :param compression: compression module configuration or ``null``</span>
+<span class="sd">        :param request_headers: request headers module configuration or ``null``</span>
+<span class="sd">        :param response_headers: response headers module configuration or ``null``</span>
+<span class="sd">        :param ip_policy: ip policy module configuration or ``null``</span>
+<span class="sd">        :param mutual_tls: mutual TLS module configuration or ``null``</span>
+<span class="sd">        :param tls_termination: TLS termination module configuration or ``null``</span>
+<span class="sd">        :param webhook_validation: webhook validation module configuration or ``null``</span>
+<span class="sd">        :param oauth: oauth module configuration or ``null``</span>
+<span class="sd">        :param logging: logging module configuration or ``null``</span>
+<span class="sd">        :param saml: saml module configuration or ``null``</span>
+<span class="sd">        :param oidc: oidc module configuration or ``null``</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-endpoint-configurations-update</span>
+<span class="sd">        """</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/endpoint_configurations/</span><span class="si">{id}</span><span class="s2">"</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span>
+            <span class="n">path</span><span class="p">,</span>
+            <span class="nb">dict</span><span class="p">(</span>
+                <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
+                <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
+                <span class="n">circuit_breaker</span><span class="o">=</span><span class="n">circuit_breaker</span><span class="p">,</span>
+                <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
+                <span class="n">request_headers</span><span class="o">=</span><span class="n">request_headers</span><span class="p">,</span>
+                <span class="n">response_headers</span><span class="o">=</span><span class="n">response_headers</span><span class="p">,</span>
+                <span class="n">ip_policy</span><span class="o">=</span><span class="n">ip_policy</span><span class="p">,</span>
+                <span class="n">mutual_tls</span><span class="o">=</span><span class="n">mutual_tls</span><span class="p">,</span>
+                <span class="n">tls_termination</span><span class="o">=</span><span class="n">tls_termination</span><span class="p">,</span>
+                <span class="n">webhook_validation</span><span class="o">=</span><span class="n">webhook_validation</span><span class="p">,</span>
+                <span class="n">oauth</span><span class="o">=</span><span class="n">oauth</span><span class="p">,</span>
+                <span class="n">logging</span><span class="o">=</span><span class="n">logging</span><span class="p">,</span>
+                <span class="n">saml</span><span class="o">=</span><span class="n">saml</span><span class="p">,</span>
+                <span class="n">oidc</span><span class="o">=</span><span class="n">oidc</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">EndpointConfiguration</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="EventStreamsClient"><a class="viewcode-back" href="../../event_streams.html#ngrok.services.EventStreamsClient">[docs]</a><span class="k">class</span> <span class="nc">EventStreamsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -801,7 +1011,238 @@
         <span class="k">return</span> <span class="n">EventDestination</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div></div>
 
 
+<div class="viewcode-block" id="EventSubscriptionsClient"><a class="viewcode-back" href="../../event_subscriptions.html#ngrok.services.EventSubscriptionsClient">[docs]</a><span class="k">class</span> <span class="nc">EventSubscriptionsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
+
+<div class="viewcode-block" id="EventSubscriptionsClient.create"><a class="viewcode-back" href="../../event_subscriptions.html#ngrok.services.EventSubscriptionsClient.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
+        <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
+        <span class="n">sources</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">EventSourceReplace</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">destination_ids</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSubscription</span><span class="p">:</span>
+        <span class="sd">"""Create an Event Subscription.</span>
+
+<span class="sd">        :param metadata: Arbitrary customer supplied information intended to be machine readable. Optional, max 4096 chars.</span>
+<span class="sd">        :param description: Arbitrary customer supplied information intended to be human readable. Optional, max 255 chars.</span>
+<span class="sd">        :param sources: Sources containing the types for which this event subscription will trigger</span>
+<span class="sd">        :param destination_ids: A list of Event Destination IDs which should be used for this Event Stream. Event Streams are required to have at least one Event Destination.</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-event-subscriptions-create</span>
+<span class="sd">        """</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/event_subscriptions"</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="n">path</span><span class="p">,</span>
+            <span class="nb">dict</span><span class="p">(</span>
+                <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
+                <span class="n">sources</span><span class="o">=</span><span class="n">sources</span><span class="p">,</span>
+                <span class="n">destination_ids</span><span class="o">=</span><span class="n">destination_ids</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">EventSubscription</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EventSubscriptionsClient.delete"><a class="viewcode-back" href="../../event_subscriptions.html#ngrok.services.EventSubscriptionsClient.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">"""Delete an Event Subscription.</span>
+
+<span class="sd">        :param id: a resource identifier</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-event-subscriptions-delete</span>
+<span class="sd">        """</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/event_subscriptions/</span><span class="si">{id}</span><span class="s2">"</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="EventSubscriptionsClient.get"><a class="viewcode-back" href="../../event_subscriptions.html#ngrok.services.EventSubscriptionsClient.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSubscription</span><span class="p">:</span>
+        <span class="sd">"""Get an Event Subscription by ID.</span>
+
+<span class="sd">        :param id: a resource identifier</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-event-subscriptions-get</span>
+<span class="sd">        """</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/event_subscriptions/</span><span class="si">{id}</span><span class="s2">"</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">EventSubscription</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EventSubscriptionsClient.list"><a class="viewcode-back" href="../../event_subscriptions.html#ngrok.services.EventSubscriptionsClient.list">[docs]</a>    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSubscriptionList</span><span class="p">:</span>
+        <span class="sd">"""List this Account's Event Subscriptions.</span>
+
+<span class="sd">        :param before_id:</span>
+<span class="sd">        :param limit:</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-event-subscriptions-list</span>
+<span class="sd">        """</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/event_subscriptions"</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="n">path</span><span class="p">,</span>
+            <span class="nb">dict</span><span class="p">(</span>
+                <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
+                <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">EventSubscriptionList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EventSubscriptionsClient.update"><a class="viewcode-back" href="../../event_subscriptions.html#ngrok.services.EventSubscriptionsClient.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">sources</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">EventSourceReplace</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">destination_ids</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSubscription</span><span class="p">:</span>
+        <span class="sd">"""Update an Event Subscription.</span>
+
+<span class="sd">        :param id: Unique identifier for this Event Subscription.</span>
+<span class="sd">        :param metadata: Arbitrary customer supplied information intended to be machine readable. Optional, max 4096 chars.</span>
+<span class="sd">        :param description: Arbitrary customer supplied information intended to be human readable. Optional, max 255 chars.</span>
+<span class="sd">        :param sources: Sources containing the types for which this event subscription will trigger</span>
+<span class="sd">        :param destination_ids: A list of Event Destination IDs which should be used for this Event Stream. Event Streams are required to have at least one Event Destination.</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-event-subscriptions-update</span>
+<span class="sd">        """</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/event_subscriptions/</span><span class="si">{id}</span><span class="s2">"</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span>
+            <span class="n">path</span><span class="p">,</span>
+            <span class="nb">dict</span><span class="p">(</span>
+                <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
+                <span class="n">sources</span><span class="o">=</span><span class="n">sources</span><span class="p">,</span>
+                <span class="n">destination_ids</span><span class="o">=</span><span class="n">destination_ids</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">EventSubscription</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="EventSourcesClient"><a class="viewcode-back" href="../../event_sources.html#ngrok.services.EventSourcesClient">[docs]</a><span class="k">class</span> <span class="nc">EventSourcesClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
+
+<div class="viewcode-block" id="EventSourcesClient.create"><a class="viewcode-back" href="../../event_sources.html#ngrok.services.EventSourcesClient.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">subscription_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSource</span><span class="p">:</span>
+        <span class="sd">"""Add an additional type for which this event subscription will trigger</span>
+
+<span class="sd">        :param subscription_id: The unique identifier for the Event Subscription that this Event Source is attached to.</span>
+<span class="sd">        :param type: Type of event for which an event subscription will trigger</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-event-sources-create</span>
+<span class="sd">        """</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/event_subscriptions/</span><span class="si">{subscription_id}</span><span class="s2">/sources"</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">subscription_id</span><span class="o">=</span><span class="n">subscription_id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="n">path</span><span class="p">,</span>
+            <span class="nb">dict</span><span class="p">(</span>
+                <span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">EventSource</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EventSourcesClient.delete"><a class="viewcode-back" href="../../event_sources.html#ngrok.services.EventSourcesClient.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">subscription_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">"""Remove a type for which this event subscription will trigger</span>
+
+<span class="sd">        :param subscription_id: The unique identifier for the Event Subscription that this Event Source is attached to.</span>
+<span class="sd">        :param type: Type of event for which an event subscription will trigger</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-event-sources-delete</span>
+<span class="sd">        """</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/event_subscriptions/</span><span class="si">{subscription_id}</span><span class="s2">/sources/</span><span class="si">{type}</span><span class="s2">"</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">subscription_id</span><span class="o">=</span><span class="n">subscription_id</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="EventSourcesClient.get"><a class="viewcode-back" href="../../event_sources.html#ngrok.services.EventSourcesClient.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">subscription_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSource</span><span class="p">:</span>
+        <span class="sd">"""Get the details for a given type that triggers for the given event subscription</span>
+
+<span class="sd">        :param subscription_id: The unique identifier for the Event Subscription that this Event Source is attached to.</span>
+<span class="sd">        :param type: Type of event for which an event subscription will trigger</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-event-sources-get</span>
+<span class="sd">        """</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/event_subscriptions/</span><span class="si">{subscription_id}</span><span class="s2">/sources/</span><span class="si">{type}</span><span class="s2">"</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">subscription_id</span><span class="o">=</span><span class="n">subscription_id</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">EventSource</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EventSourcesClient.list"><a class="viewcode-back" href="../../event_sources.html#ngrok.services.EventSourcesClient.list">[docs]</a>    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">subscription_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSourceList</span><span class="p">:</span>
+        <span class="sd">"""List the types for which this event subscription will trigger</span>
+
+<span class="sd">        :param subscription_id: The unique identifier for the Event Subscription that this Event Source is attached to.</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-event-sources-list</span>
+<span class="sd">        """</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/event_subscriptions/</span><span class="si">{subscription_id}</span><span class="s2">/sources"</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">subscription_id</span><span class="o">=</span><span class="n">subscription_id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">EventSourceList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EventSourcesClient.update"><a class="viewcode-back" href="../../event_sources.html#ngrok.services.EventSourcesClient.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">subscription_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSource</span><span class="p">:</span>
+        <span class="sd">"""Update the type for which this event subscription will trigger</span>
+
+<span class="sd">        :param subscription_id: The unique identifier for the Event Subscription that this Event Source is attached to.</span>
+<span class="sd">        :param type: Type of event for which an event subscription will trigger</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-event-sources-update</span>
+<span class="sd">        """</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/event_subscriptions/</span><span class="si">{subscription_id}</span><span class="s2">/sources/</span><span class="si">{type}</span><span class="s2">"</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">subscription_id</span><span class="o">=</span><span class="n">subscription_id</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">EventSource</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div></div>
+
+
 <div class="viewcode-block" id="IPPoliciesClient"><a class="viewcode-back" href="../../ip_policies.html#ngrok.services.IPPoliciesClient">[docs]</a><span class="k">class</span> <span class="nc">IPPoliciesClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""IP Policies are reusable groups of CIDR ranges with an ``allow`` or ``deny``</span>
+<span class="sd">    action. They can be attached to endpoints via the Endpoint Configuration IP</span>
+<span class="sd">    Policy module. They can also be used with IP Restrictions to control source</span>
+<span class="sd">    IP ranges that can start tunnel sessions and connect to the API and dashboard."""</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
 
@@ -914,6 +1355,9 @@
 
 
 <div class="viewcode-block" id="IPPolicyRulesClient"><a class="viewcode-back" href="../../ip_policy_rules.html#ngrok.services.IPPolicyRulesClient">[docs]</a><span class="k">class</span> <span class="nc">IPPolicyRulesClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""IP Policy Rules are the IPv4 or IPv6 CIDRs entries that</span>
+<span class="sd">    make up an IP Policy."""</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
 
@@ -1032,6 +1476,13 @@
 
 
 <div class="viewcode-block" id="IPRestrictionsClient"><a class="viewcode-back" href="../../ip_restrictions.html#ngrok.services.IPRestrictionsClient">[docs]</a><span class="k">class</span> <span class="nc">IPRestrictionsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""An IP restriction is a restriction placed on the CIDRs that are allowed to</span>
+<span class="sd">    initate traffic to a specific aspect of your ngrok account. An IP</span>
+<span class="sd">    restriction has a type which defines the ingress it applies to. IP</span>
+<span class="sd">    restrictions can be used to enforce the source IPs that can make API</span>
+<span class="sd">    requests, log in to the dashboard, start ngrok agents, and connect to your</span>
+<span class="sd">    public-facing endpoints."""</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
 
@@ -1047,7 +1498,7 @@
 
 <span class="sd">        :param description: human-readable description of this IP restriction. optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this IP restriction. optional, max 4096 bytes.</span>
-<span class="sd">        :param enforced: true if the IP restriction will be enforce. if false, only warnings will be issued</span>
+<span class="sd">        :param enforced: true if the IP restriction will be enforced. if false, only warnings will be issued</span>
 <span class="sd">        :param type: the type of IP restriction. this defines what traffic will be restricted with the attached policies. four values are currently supported: ``dashboard``, ``api``, ``agent``, and ``endpoints``</span>
 <span class="sd">        :param ip_policy_ids: the set of IP policy identifiers that are used to enforce the restriction</span>
 
@@ -1134,7 +1585,7 @@
 <span class="sd">        :param id:</span>
 <span class="sd">        :param description: human-readable description of this IP restriction. optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this IP restriction. optional, max 4096 bytes.</span>
-<span class="sd">        :param enforced: true if the IP restriction will be enforce. if false, only warnings will be issued</span>
+<span class="sd">        :param enforced: true if the IP restriction will be enforced. if false, only warnings will be issued</span>
 <span class="sd">        :param ip_policy_ids: the set of IP policy identifiers that are used to enforce the restriction</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-ip-restrictions-update</span>
@@ -1156,6 +1607,9 @@
 
 
 <div class="viewcode-block" id="IPWhitelistClient"><a class="viewcode-back" href="../../ip_whitelist.html#ngrok.services.IPWhitelistClient">[docs]</a><span class="k">class</span> <span class="nc">IPWhitelistClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""The IP Whitelist is deprecated and will be removed. Use an IP Restriction</span>
+<span class="sd">    with an ``endpoints`` type instead."""</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
 
@@ -1265,193 +1719,6 @@
             <span class="p">),</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">IPWhitelistEntry</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div></div>
-
-
-<div class="viewcode-block" id="EndpointConfigurationsClient"><a class="viewcode-back" href="../../endpoint_configurations.html#ngrok.services.EndpointConfigurationsClient">[docs]</a><span class="k">class</span> <span class="nc">EndpointConfigurationsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""Endpoint Configuration managementAn `Endpoint Configuration` &lt;https://ngrok.com/docs/ngrok-link#api-endpoint-configurations&gt;`_ describes</span>
-<span class="sd">    a ngrok network endpoint instance.*Endpoints are your gateway to ngrok features!*"""</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
-
-<div class="viewcode-block" id="EndpointConfigurationsClient.create"><a class="viewcode-back" href="../../endpoint_configurations.html#ngrok.services.EndpointConfigurationsClient.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
-        <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
-        <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
-        <span class="n">circuit_breaker</span><span class="p">:</span> <span class="n">EndpointCircuitBreaker</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">compression</span><span class="p">:</span> <span class="n">EndpointCompression</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">request_headers</span><span class="p">:</span> <span class="n">EndpointRequestHeaders</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">response_headers</span><span class="p">:</span> <span class="n">EndpointResponseHeaders</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">ip_policy</span><span class="p">:</span> <span class="n">EndpointIPPolicyMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">mutual_tls</span><span class="p">:</span> <span class="n">EndpointMutualTLSMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">tls_termination</span><span class="p">:</span> <span class="n">EndpointTLSTermination</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">webhook_validation</span><span class="p">:</span> <span class="n">EndpointWebhookValidation</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">oauth</span><span class="p">:</span> <span class="n">EndpointOAuth</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">logging</span><span class="p">:</span> <span class="n">EndpointLoggingMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">saml</span><span class="p">:</span> <span class="n">EndpointSAMLMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">oidc</span><span class="p">:</span> <span class="n">EndpointOIDC</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointConfiguration</span><span class="p">:</span>
-        <span class="sd">"""Create a new endpoint configuration</span>
-
-<span class="sd">        :param type: they type of traffic this endpoint configuration can be applied to. one of: ``http``, ``https``, ``tcp``</span>
-<span class="sd">        :param description: human-readable description of what this endpoint configuration will be do when applied or what traffic it will be applied to. Optional, max 255 bytes</span>
-<span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this endpoint configuration. Optional, max 4096 bytes.</span>
-<span class="sd">        :param circuit_breaker: circuit breaker module configuration or ``null``</span>
-<span class="sd">        :param compression: compression module configuration or ``null``</span>
-<span class="sd">        :param request_headers: request headers module configuration or ``null``</span>
-<span class="sd">        :param response_headers: response headers module configuration or ``null``</span>
-<span class="sd">        :param ip_policy: ip policy module configuration or ``null``</span>
-<span class="sd">        :param mutual_tls: mutual TLS module configuration or ``null``</span>
-<span class="sd">        :param tls_termination: TLS termination module configuration or ``null``</span>
-<span class="sd">        :param webhook_validation: webhook validation module configuration or ``null``</span>
-<span class="sd">        :param oauth: oauth module configuration or ``null``</span>
-<span class="sd">        :param logging: logging module configuration or ``null``</span>
-<span class="sd">        :param saml: saml module configuration or ``null``</span>
-<span class="sd">        :param oidc: oidc module configuration or ``null``</span>
-
-<span class="sd">        https://ngrok.com/docs/api#api-endpoint-configurations-create</span>
-<span class="sd">        """</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/endpoint_configurations"</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
-            <span class="n">path</span><span class="p">,</span>
-            <span class="nb">dict</span><span class="p">(</span>
-                <span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">,</span>
-                <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
-                <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
-                <span class="n">circuit_breaker</span><span class="o">=</span><span class="n">circuit_breaker</span><span class="p">,</span>
-                <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
-                <span class="n">request_headers</span><span class="o">=</span><span class="n">request_headers</span><span class="p">,</span>
-                <span class="n">response_headers</span><span class="o">=</span><span class="n">response_headers</span><span class="p">,</span>
-                <span class="n">ip_policy</span><span class="o">=</span><span class="n">ip_policy</span><span class="p">,</span>
-                <span class="n">mutual_tls</span><span class="o">=</span><span class="n">mutual_tls</span><span class="p">,</span>
-                <span class="n">tls_termination</span><span class="o">=</span><span class="n">tls_termination</span><span class="p">,</span>
-                <span class="n">webhook_validation</span><span class="o">=</span><span class="n">webhook_validation</span><span class="p">,</span>
-                <span class="n">oauth</span><span class="o">=</span><span class="n">oauth</span><span class="p">,</span>
-                <span class="n">logging</span><span class="o">=</span><span class="n">logging</span><span class="p">,</span>
-                <span class="n">saml</span><span class="o">=</span><span class="n">saml</span><span class="p">,</span>
-                <span class="n">oidc</span><span class="o">=</span><span class="n">oidc</span><span class="p">,</span>
-            <span class="p">),</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="n">EndpointConfiguration</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="EndpointConfigurationsClient.delete"><a class="viewcode-back" href="../../endpoint_configurations.html#ngrok.services.EndpointConfigurationsClient.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="p">):</span>
-        <span class="sd">"""Delete an endpoint configuration. This operation will fail if the endpoint configuration is still referenced by any reserved domain or reserved address.</span>
-
-<span class="sd">        :param id: a resource identifier</span>
-
-<span class="sd">        https://ngrok.com/docs/api#api-endpoint-configurations-delete</span>
-<span class="sd">        """</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/endpoint_configurations/</span><span class="si">{id}</span><span class="s2">"</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span></div>
-
-<div class="viewcode-block" id="EndpointConfigurationsClient.get"><a class="viewcode-back" href="../../endpoint_configurations.html#ngrok.services.EndpointConfigurationsClient.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointConfiguration</span><span class="p">:</span>
-        <span class="sd">"""Returns detailed information about an endpoint configuration</span>
-
-<span class="sd">        :param id: a resource identifier</span>
-
-<span class="sd">        https://ngrok.com/docs/api#api-endpoint-configurations-get</span>
-<span class="sd">        """</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/endpoint_configurations/</span><span class="si">{id}</span><span class="s2">"</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
-        <span class="k">return</span> <span class="n">EndpointConfiguration</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="EndpointConfigurationsClient.list"><a class="viewcode-back" href="../../endpoint_configurations.html#ngrok.services.EndpointConfigurationsClient.list">[docs]</a>    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointConfigurationList</span><span class="p">:</span>
-        <span class="sd">"""Returns a list of all endpoint configurations on this account</span>
-
-<span class="sd">        :param before_id:</span>
-<span class="sd">        :param limit:</span>
-
-<span class="sd">        https://ngrok.com/docs/api#api-endpoint-configurations-list</span>
-<span class="sd">        """</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/endpoint_configurations"</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-            <span class="n">path</span><span class="p">,</span>
-            <span class="nb">dict</span><span class="p">(</span>
-                <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
-                <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
-            <span class="p">),</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="n">EndpointConfigurationList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="EndpointConfigurationsClient.update"><a class="viewcode-back" href="../../endpoint_configurations.html#ngrok.services.EndpointConfigurationsClient.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">circuit_breaker</span><span class="p">:</span> <span class="n">EndpointCircuitBreaker</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">compression</span><span class="p">:</span> <span class="n">EndpointCompression</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">request_headers</span><span class="p">:</span> <span class="n">EndpointRequestHeaders</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">response_headers</span><span class="p">:</span> <span class="n">EndpointResponseHeaders</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">ip_policy</span><span class="p">:</span> <span class="n">EndpointIPPolicyMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">mutual_tls</span><span class="p">:</span> <span class="n">EndpointMutualTLSMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">tls_termination</span><span class="p">:</span> <span class="n">EndpointTLSTermination</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">webhook_validation</span><span class="p">:</span> <span class="n">EndpointWebhookValidation</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">oauth</span><span class="p">:</span> <span class="n">EndpointOAuth</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">logging</span><span class="p">:</span> <span class="n">EndpointLoggingMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">saml</span><span class="p">:</span> <span class="n">EndpointSAMLMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">oidc</span><span class="p">:</span> <span class="n">EndpointOIDC</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointConfiguration</span><span class="p">:</span>
-        <span class="sd">"""Updates an endpoint configuration. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.</span>
-
-<span class="sd">        :param id: unique identifier of this endpoint configuration</span>
-<span class="sd">        :param description: human-readable description of what this endpoint configuration will be do when applied or what traffic it will be applied to. Optional, max 255 bytes</span>
-<span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this endpoint configuration. Optional, max 4096 bytes.</span>
-<span class="sd">        :param circuit_breaker: circuit breaker module configuration or ``null``</span>
-<span class="sd">        :param compression: compression module configuration or ``null``</span>
-<span class="sd">        :param request_headers: request headers module configuration or ``null``</span>
-<span class="sd">        :param response_headers: response headers module configuration or ``null``</span>
-<span class="sd">        :param ip_policy: ip policy module configuration or ``null``</span>
-<span class="sd">        :param mutual_tls: mutual TLS module configuration or ``null``</span>
-<span class="sd">        :param tls_termination: TLS termination module configuration or ``null``</span>
-<span class="sd">        :param webhook_validation: webhook validation module configuration or ``null``</span>
-<span class="sd">        :param oauth: oauth module configuration or ``null``</span>
-<span class="sd">        :param logging: logging module configuration or ``null``</span>
-<span class="sd">        :param saml: saml module configuration or ``null``</span>
-<span class="sd">        :param oidc: oidc module configuration or ``null``</span>
-
-<span class="sd">        https://ngrok.com/docs/api#api-endpoint-configurations-update</span>
-<span class="sd">        """</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/endpoint_configurations/</span><span class="si">{id}</span><span class="s2">"</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span>
-            <span class="n">path</span><span class="p">,</span>
-            <span class="nb">dict</span><span class="p">(</span>
-                <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
-                <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
-                <span class="n">circuit_breaker</span><span class="o">=</span><span class="n">circuit_breaker</span><span class="p">,</span>
-                <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
-                <span class="n">request_headers</span><span class="o">=</span><span class="n">request_headers</span><span class="p">,</span>
-                <span class="n">response_headers</span><span class="o">=</span><span class="n">response_headers</span><span class="p">,</span>
-                <span class="n">ip_policy</span><span class="o">=</span><span class="n">ip_policy</span><span class="p">,</span>
-                <span class="n">mutual_tls</span><span class="o">=</span><span class="n">mutual_tls</span><span class="p">,</span>
-                <span class="n">tls_termination</span><span class="o">=</span><span class="n">tls_termination</span><span class="p">,</span>
-                <span class="n">webhook_validation</span><span class="o">=</span><span class="n">webhook_validation</span><span class="p">,</span>
-                <span class="n">oauth</span><span class="o">=</span><span class="n">oauth</span><span class="p">,</span>
-                <span class="n">logging</span><span class="o">=</span><span class="n">logging</span><span class="p">,</span>
-                <span class="n">saml</span><span class="o">=</span><span class="n">saml</span><span class="p">,</span>
-                <span class="n">oidc</span><span class="o">=</span><span class="n">oidc</span><span class="p">,</span>
-            <span class="p">),</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="n">EndpointConfiguration</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="EndpointLoggingModuleClient"><a class="viewcode-back" href="../../endpoint_logging_module.html#ngrok.services.EndpointLoggingModuleClient">[docs]</a><span class="k">class</span> <span class="nc">EndpointLoggingModuleClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -2199,6 +2466,10 @@
 
 
 <div class="viewcode-block" id="ReservedAddrsClient"><a class="viewcode-back" href="../../reserved_addrs.html#ngrok.services.ReservedAddrsClient">[docs]</a><span class="k">class</span> <span class="nc">ReservedAddrsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""Reserved Addresses are TCP addresses that can be used to listen for traffic.</span>
+<span class="sd">    TCP address hostnames and ports are assigned by ngrok, they cannot be</span>
+<span class="sd">    chosen."""</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
 
@@ -2333,6 +2604,11 @@
 
 
 <div class="viewcode-block" id="ReservedDomainsClient"><a class="viewcode-back" href="../../reserved_domains.html#ngrok.services.ReservedDomainsClient">[docs]</a><span class="k">class</span> <span class="nc">ReservedDomainsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""Reserved Domains are hostnames that you can listen for traffic on. Domains</span>
+<span class="sd">    can be used to listen for http, https or tls traffic. You may use a domain</span>
+<span class="sd">    that you own by creating a CNAME record specified in the returned resource.</span>
+<span class="sd">    This CNAME record points traffic for that domain to ngrok's edge servers."""</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
 
@@ -2342,8 +2618,8 @@
         <span class="n">region</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
-        <span class="n">http_endpoint_configuration_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
-        <span class="n">https_endpoint_configuration_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
+        <span class="n">http_endpoint_configuration_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">https_endpoint_configuration_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">certificate_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">certificate_management_policy</span><span class="p">:</span> <span class="n">ReservedDomainCertPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReservedDomain</span><span class="p">:</span>
@@ -2536,6 +2812,9 @@
 
 
 <div class="viewcode-block" id="SSHCertificateAuthoritiesClient"><a class="viewcode-back" href="../../ssh_certificate_authorities.html#ngrok.services.SSHCertificateAuthoritiesClient">[docs]</a><span class="k">class</span> <span class="nc">SSHCertificateAuthoritiesClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""An SSH Certificate Authority is a pair of an SSH Certificate and its private</span>
+<span class="sd">    key that can be used to sign other SSH host and user certificates."""</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
 
@@ -2654,6 +2933,9 @@
 
 
 <div class="viewcode-block" id="SSHCredentialsClient"><a class="viewcode-back" href="../../ssh_credentials.html#ngrok.services.SSHCredentialsClient">[docs]</a><span class="k">class</span> <span class="nc">SSHCredentialsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""SSH Credentials are SSH public keys that can be used to start SSH tunnels</span>
+<span class="sd">    via the ngrok SSH tunnel gateway."""</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
 
@@ -2772,6 +3054,10 @@
 
 
 <div class="viewcode-block" id="SSHHostCertificatesClient"><a class="viewcode-back" href="../../ssh_host_certificates.html#ngrok.services.SSHHostCertificatesClient">[docs]</a><span class="k">class</span> <span class="nc">SSHHostCertificatesClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""SSH Host Certificates along with the corresponding private key allows an SSH</span>
+<span class="sd">    server to assert its authenticity to connecting SSH clients who trust the</span>
+<span class="sd">    SSH Certificate Authority that was used to sign the certificate."""</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
 
@@ -2896,6 +3182,10 @@
 
 
 <div class="viewcode-block" id="SSHUserCertificatesClient"><a class="viewcode-back" href="../../ssh_user_certificates.html#ngrok.services.SSHUserCertificatesClient">[docs]</a><span class="k">class</span> <span class="nc">SSHUserCertificatesClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""SSH User Certificates are presented by SSH clients when connecting to an SSH</span>
+<span class="sd">    server to authenticate their connection. The SSH server must trust the SSH</span>
+<span class="sd">    Certificate Authority used to sign the certificate."""</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
 
@@ -3026,6 +3316,12 @@
 
 
 <div class="viewcode-block" id="TLSCertificatesClient"><a class="viewcode-back" href="../../tls_certificates.html#ngrok.services.TLSCertificatesClient">[docs]</a><span class="k">class</span> <span class="nc">TLSCertificatesClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""TLS Certificates are pairs of x509 certificates and their matching private</span>
+<span class="sd">    key that can be used to terminate TLS traffic. TLS certificates are unused</span>
+<span class="sd">    until they are attached to a Domain. TLS Certificates may also be</span>
+<span class="sd">    provisioned by ngrok automatically for domains on which you have enabled</span>
+<span class="sd">    automated certificate provisioning."""</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
 
@@ -3141,6 +3437,10 @@
 
 
 <div class="viewcode-block" id="TunnelSessionsClient"><a class="viewcode-back" href="../../tunnel_sessions.html#ngrok.services.TunnelSessionsClient">[docs]</a><span class="k">class</span> <span class="nc">TunnelSessionsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""Tunnel Sessions represent instances of ngrok agents or SSH reverse tunnel</span>
+<span class="sd">    sessions that are running and connected to the ngrok service. Each tunnel</span>
+<span class="sd">    session can include one or more Tunnels."""</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
 
@@ -3233,6 +3533,9 @@
 
 
 <div class="viewcode-block" id="TunnelsClient"><a class="viewcode-back" href="../../tunnels.html#ngrok.services.TunnelsClient">[docs]</a><span class="k">class</span> <span class="nc">TunnelsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""Tunnels provide endpoints to access services exposed by a running ngrok</span>
+<span class="sd">    agent tunnel session or an SSH reverse tunnel session."""</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
 

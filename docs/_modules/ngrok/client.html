@@ -119,13 +119,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../../api_keys.html">API Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../certificate_authorities.html">Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../credentials.html">Tunnel Credentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoint_configurations.html">Endpoint Configurations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../event_streams.html">Event Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../event_destinations.html">Event Destinations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../event_subscriptions.html">Event Subscriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../event_sources.html">Event Sources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ip_policies.html">IP Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ip_policy_rules.html">IP Policy Rules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ip_restrictions.html">IP Restrictions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ip_whitelist.html">IP Whitelist</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoint_configurations.html">Endpoint Configurations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoint_logging_module.html">Logging Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoint_circuit_breaker_module.html">Circuit Breaker Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoint_compression_module.html">Compression Module</a></li>
@@ -174,19 +176,42 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">abuse_reports</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbuseReportsClient</span><span class="p">:</span>
+        <span class="sd">"""Abuse Reports allow you to submit take-down requests for URLs hosted by</span>
+<span class="sd">        ngrok that violate ngrok's terms of service."""</span>
         <span class="k">return</span> <span class="n">AbuseReportsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">api_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">APIKeysClient</span><span class="p">:</span>
+        <span class="sd">"""API Keys are used to authenticate to the `ngrok</span>
+<span class="sd">        API` &lt;https://ngrok.com/docs/api#authentication&gt;`_. You may use the API itself</span>
+<span class="sd">        to provision and manage API Keys but you'll need to provision your first API</span>
+<span class="sd">        key from the `API Keys page` &lt;https://dashboard.ngrok.com/api/keys&gt;`_ on your</span>
+<span class="sd">        ngrok.com dashboard."""</span>
         <span class="k">return</span> <span class="n">APIKeysClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">certificate_authorities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CertificateAuthoritiesClient</span><span class="p">:</span>
+        <span class="sd">"""Certificate Authorities are x509 certificates that are used to sign other</span>
+<span class="sd">        x509 certificates. Attach a Certificate Authority to the Mutual TLS module</span>
+<span class="sd">        to verify that the TLS certificate presented by a client has been signed by</span>
+<span class="sd">        this CA. Certificate Authorities  are used only for mTLS validation only and</span>
+<span class="sd">        thus a private key is not included in the resource."""</span>
         <span class="k">return</span> <span class="n">CertificateAuthoritiesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">credentials</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CredentialsClient</span><span class="p">:</span>
+        <span class="sd">"""Tunnel Credentials are ngrok agent authtokens. They authorize the ngrok</span>
+<span class="sd">        agent to connect the ngrok service as your account. They are installed with</span>
+<span class="sd">        the ``ngrok authtoken`` command or by specifying it in the ``ngrok.yml``</span>
+<span class="sd">        configuration file with the ``authtoken`` property."""</span>
         <span class="k">return</span> <span class="n">CredentialsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">endpoint_configurations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointConfigurationsClient</span><span class="p">:</span>
+        <span class="sd">"""Endpoint Configurations are a reusable group of modules that encapsulate how</span>
+<span class="sd">        traffic to a domain or address is handled. Endpoint configurations are only</span>
+<span class="sd">        applied to Domains and TCP Addresses they have been attached to."""</span>
+        <span class="k">return</span> <span class="n">EndpointConfigurationsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">event_streams</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventStreamsClient</span><span class="p">:</span>
@@ -197,61 +222,104 @@
         <span class="k">return</span> <span class="n">EventDestinationsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">event_subscriptions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSubscriptionsClient</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">EventSubscriptionsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">event_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSourcesClient</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">EventSourcesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ip_policies</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPPoliciesClient</span><span class="p">:</span>
+        <span class="sd">"""IP Policies are reusable groups of CIDR ranges with an ``allow`` or ``deny``</span>
+<span class="sd">        action. They can be attached to endpoints via the Endpoint Configuration IP</span>
+<span class="sd">        Policy module. They can also be used with IP Restrictions to control source</span>
+<span class="sd">        IP ranges that can start tunnel sessions and connect to the API and dashboard."""</span>
         <span class="k">return</span> <span class="n">IPPoliciesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ip_policy_rules</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPPolicyRulesClient</span><span class="p">:</span>
+        <span class="sd">"""IP Policy Rules are the IPv4 or IPv6 CIDRs entries that</span>
+<span class="sd">        make up an IP Policy."""</span>
         <span class="k">return</span> <span class="n">IPPolicyRulesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ip_restrictions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPRestrictionsClient</span><span class="p">:</span>
+        <span class="sd">"""An IP restriction is a restriction placed on the CIDRs that are allowed to</span>
+<span class="sd">        initate traffic to a specific aspect of your ngrok account. An IP</span>
+<span class="sd">        restriction has a type which defines the ingress it applies to. IP</span>
+<span class="sd">        restrictions can be used to enforce the source IPs that can make API</span>
+<span class="sd">        requests, log in to the dashboard, start ngrok agents, and connect to your</span>
+<span class="sd">        public-facing endpoints."""</span>
         <span class="k">return</span> <span class="n">IPRestrictionsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ip_whitelist</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPWhitelistClient</span><span class="p">:</span>
+        <span class="sd">"""The IP Whitelist is deprecated and will be removed. Use an IP Restriction</span>
+<span class="sd">        with an ``endpoints`` type instead."""</span>
         <span class="k">return</span> <span class="n">IPWhitelistClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">endpoint_configurations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointConfigurationsClient</span><span class="p">:</span>
-        <span class="sd">"""Endpoint Configuration managementAn `Endpoint Configuration` &lt;https://ngrok.com/docs/ngrok-link#api-endpoint-configurations&gt;`_ describes</span>
-<span class="sd">        a ngrok network endpoint instance.*Endpoints are your gateway to ngrok features!*"""</span>
-        <span class="k">return</span> <span class="n">EndpointConfigurationsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-
-    <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">reserved_addrs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReservedAddrsClient</span><span class="p">:</span>
+        <span class="sd">"""Reserved Addresses are TCP addresses that can be used to listen for traffic.</span>
+<span class="sd">        TCP address hostnames and ports are assigned by ngrok, they cannot be</span>
+<span class="sd">        chosen."""</span>
         <span class="k">return</span> <span class="n">ReservedAddrsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">reserved_domains</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReservedDomainsClient</span><span class="p">:</span>
+        <span class="sd">"""Reserved Domains are hostnames that you can listen for traffic on. Domains</span>
+<span class="sd">        can be used to listen for http, https or tls traffic. You may use a domain</span>
+<span class="sd">        that you own by creating a CNAME record specified in the returned resource.</span>
+<span class="sd">        This CNAME record points traffic for that domain to ngrok's edge servers."""</span>
         <span class="k">return</span> <span class="n">ReservedDomainsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ssh_certificate_authorities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHCertificateAuthoritiesClient</span><span class="p">:</span>
+        <span class="sd">"""An SSH Certificate Authority is a pair of an SSH Certificate and its private</span>
+<span class="sd">        key that can be used to sign other SSH host and user certificates."""</span>
         <span class="k">return</span> <span class="n">SSHCertificateAuthoritiesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ssh_credentials</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHCredentialsClient</span><span class="p">:</span>
+        <span class="sd">"""SSH Credentials are SSH public keys that can be used to start SSH tunnels</span>
+<span class="sd">        via the ngrok SSH tunnel gateway."""</span>
         <span class="k">return</span> <span class="n">SSHCredentialsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ssh_host_certificates</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHHostCertificatesClient</span><span class="p">:</span>
+        <span class="sd">"""SSH Host Certificates along with the corresponding private key allows an SSH</span>
+<span class="sd">        server to assert its authenticity to connecting SSH clients who trust the</span>
+<span class="sd">        SSH Certificate Authority that was used to sign the certificate."""</span>
         <span class="k">return</span> <span class="n">SSHHostCertificatesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ssh_user_certificates</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHUserCertificatesClient</span><span class="p">:</span>
+        <span class="sd">"""SSH User Certificates are presented by SSH clients when connecting to an SSH</span>
+<span class="sd">        server to authenticate their connection. The SSH server must trust the SSH</span>
+<span class="sd">        Certificate Authority used to sign the certificate."""</span>
         <span class="k">return</span> <span class="n">SSHUserCertificatesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tls_certificates</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TLSCertificatesClient</span><span class="p">:</span>
+        <span class="sd">"""TLS Certificates are pairs of x509 certificates and their matching private</span>
+<span class="sd">        key that can be used to terminate TLS traffic. TLS certificates are unused</span>
+<span class="sd">        until they are attached to a Domain. TLS Certificates may also be</span>
+<span class="sd">        provisioned by ngrok automatically for domains on which you have enabled</span>
+<span class="sd">        automated certificate provisioning."""</span>
         <span class="k">return</span> <span class="n">TLSCertificatesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tunnel_sessions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelSessionsClient</span><span class="p">:</span>
+        <span class="sd">"""Tunnel Sessions represent instances of ngrok agents or SSH reverse tunnel</span>
+<span class="sd">        sessions that are running and connected to the ngrok service. Each tunnel</span>
+<span class="sd">        session can include one or more Tunnels."""</span>
         <span class="k">return</span> <span class="n">TunnelSessionsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tunnels</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelsClient</span><span class="p">:</span>
+        <span class="sd">"""Tunnels provide endpoints to access services exposed by a running ngrok</span>
+<span class="sd">        agent tunnel session or an SSH reverse tunnel session."""</span>
         <span class="k">return</span> <span class="n">TunnelsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
