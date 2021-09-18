@@ -118,13 +118,15 @@
 <li class="toctree-l1"><a class="reference internal" href="api_keys.html">API Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="certificate_authorities.html">Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Tunnel Credentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_configurations.html">Endpoint Configurations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_streams.html">Event Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_destinations.html">Event Destinations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event_subscriptions.html">Event Subscriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event_sources.html">Event Sources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policies.html">IP Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policy_rules.html">IP Policy Rules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_restrictions.html">IP Restrictions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_whitelist.html">IP Whitelist</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_configurations.html">Endpoint Configurations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_logging_module.html">Logging Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_circuit_breaker_module.html">Circuit Breaker Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_compression_module.html">Compression Module</a></li>
@@ -340,7 +342,11 @@
 </li>
           <li><a href="event_destinations.html#ngrok.services.EventDestinationsClient.create">(ngrok.services.EventDestinationsClient method)</a>
 </li>
+          <li><a href="event_sources.html#ngrok.services.EventSourcesClient.create">(ngrok.services.EventSourcesClient method)</a>
+</li>
           <li><a href="event_streams.html#ngrok.services.EventStreamsClient.create">(ngrok.services.EventStreamsClient method)</a>
+</li>
+          <li><a href="event_subscriptions.html#ngrok.services.EventSubscriptionsClient.create">(ngrok.services.EventSubscriptionsClient method)</a>
 </li>
           <li><a href="ip_policies.html#ngrok.services.IPPoliciesClient.create">(ngrok.services.IPPoliciesClient method)</a>
 </li>
@@ -381,6 +387,8 @@
           <li><a href="datatypes.html#ngrok.datatypes.EventDestination.created_at">(ngrok.datatypes.EventDestination property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.EventStream.created_at">(ngrok.datatypes.EventStream property)</a>
+</li>
+          <li><a href="datatypes.html#ngrok.datatypes.EventSubscription.created_at">(ngrok.datatypes.EventSubscription property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.IPPolicy.created_at">(ngrok.datatypes.IPPolicy property)</a>
 </li>
@@ -444,6 +452,8 @@
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.EventStream.delete">(ngrok.datatypes.EventStream method)</a>
 </li>
+          <li><a href="datatypes.html#ngrok.datatypes.EventSubscription.delete">(ngrok.datatypes.EventSubscription method)</a>
+</li>
           <li><a href="datatypes.html#ngrok.datatypes.IPPolicy.delete">(ngrok.datatypes.IPPolicy method)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.IPPolicyRule.delete">(ngrok.datatypes.IPPolicyRule method)</a>
@@ -500,7 +510,11 @@
 </li>
           <li><a href="event_destinations.html#ngrok.services.EventDestinationsClient.delete">(ngrok.services.EventDestinationsClient method)</a>
 </li>
+          <li><a href="event_sources.html#ngrok.services.EventSourcesClient.delete">(ngrok.services.EventSourcesClient method)</a>
+</li>
           <li><a href="event_streams.html#ngrok.services.EventStreamsClient.delete">(ngrok.services.EventStreamsClient method)</a>
+</li>
+          <li><a href="event_subscriptions.html#ngrok.services.EventSubscriptionsClient.delete">(ngrok.services.EventSubscriptionsClient method)</a>
 </li>
           <li><a href="ip_policies.html#ngrok.services.IPPoliciesClient.delete">(ngrok.services.IPPoliciesClient method)</a>
 </li>
@@ -552,6 +566,8 @@
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.EventStream.description">(ngrok.datatypes.EventStream property)</a>
 </li>
+          <li><a href="datatypes.html#ngrok.datatypes.EventSubscription.description">(ngrok.datatypes.EventSubscription property)</a>
+</li>
           <li><a href="datatypes.html#ngrok.datatypes.IPPolicy.description">(ngrok.datatypes.IPPolicy property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.IPPolicyRule.description">(ngrok.datatypes.IPPolicyRule property)</a>
@@ -576,6 +592,8 @@
 </li>
         </ul></li>
         <li><a href="datatypes.html#ngrok.datatypes.EventStream.destination_ids">destination_ids() (ngrok.datatypes.EventStream property)</a>
+</li>
+        <li><a href="datatypes.html#ngrok.datatypes.EventSubscription.destinations">destinations() (ngrok.datatypes.EventSubscription property)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.TLSCertificateSANs.dns_names">dns_names() (ngrok.datatypes.TLSCertificateSANs property)</a>
 </li>
@@ -685,8 +703,6 @@
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.EndpointOAuth">EndpointOAuth (class in ngrok.datatypes)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="datatypes.html#ngrok.datatypes.EndpointOAuthFacebook">EndpointOAuthFacebook (class in ngrok.datatypes)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.EndpointOAuthGitHub">EndpointOAuthGitHub (class in ngrok.datatypes)</a>
@@ -697,6 +713,8 @@
 </li>
         <li><a href="endpoint_o_auth_module.html#ngrok.services.EndpointOAuthModuleClient">EndpointOAuthModuleClient (class in ngrok.services)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="datatypes.html#ngrok.datatypes.EndpointOAuthProvider">EndpointOAuthProvider (class in ngrok.datatypes)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.EndpointOIDC">EndpointOIDC (class in ngrok.datatypes)</a>
@@ -741,6 +759,8 @@
           <li><a href="datatypes.html#ngrok.datatypes.EventDestinationList.event_destinations">(ngrok.datatypes.EventDestinationList property)</a>
 </li>
         </ul></li>
+        <li><a href="client.html#ngrok.Client.event_sources">event_sources() (ngrok.Client property)</a>
+</li>
         <li><a href="datatypes.html#ngrok.datatypes.EndpointLoggingMutate.event_stream_ids">event_stream_ids() (ngrok.datatypes.EndpointLoggingMutate property)</a>
 </li>
         <li><a href="client.html#ngrok.Client.event_streams">event_streams() (ngrok.Client property)</a>
@@ -751,6 +771,12 @@
           <li><a href="datatypes.html#ngrok.datatypes.EventStreamList.event_streams">(ngrok.datatypes.EventStreamList property)</a>
 </li>
         </ul></li>
+        <li><a href="client.html#ngrok.Client.event_subscriptions">event_subscriptions() (ngrok.Client property)</a>
+
+        <ul>
+          <li><a href="datatypes.html#ngrok.datatypes.EventSubscriptionList.event_subscriptions">(ngrok.datatypes.EventSubscriptionList property)</a>
+</li>
+        </ul></li>
         <li><a href="datatypes.html#ngrok.datatypes.EventStream.event_type">event_type() (ngrok.datatypes.EventStream property)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.EventDestination">EventDestination (class in ngrok.datatypes)</a>
@@ -759,11 +785,25 @@
 </li>
         <li><a href="event_destinations.html#ngrok.services.EventDestinationsClient">EventDestinationsClient (class in ngrok.services)</a>
 </li>
+        <li><a href="datatypes.html#ngrok.datatypes.EventSource">EventSource (class in ngrok.datatypes)</a>
+</li>
+        <li><a href="datatypes.html#ngrok.datatypes.EventSourceList">EventSourceList (class in ngrok.datatypes)</a>
+</li>
+        <li><a href="datatypes.html#ngrok.datatypes.EventSourceReplace">EventSourceReplace (class in ngrok.datatypes)</a>
+</li>
+        <li><a href="event_sources.html#ngrok.services.EventSourcesClient">EventSourcesClient (class in ngrok.services)</a>
+</li>
         <li><a href="datatypes.html#ngrok.datatypes.EventStream">EventStream (class in ngrok.datatypes)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.EventStreamList">EventStreamList (class in ngrok.datatypes)</a>
 </li>
         <li><a href="event_streams.html#ngrok.services.EventStreamsClient">EventStreamsClient (class in ngrok.services)</a>
+</li>
+        <li><a href="datatypes.html#ngrok.datatypes.EventSubscription">EventSubscription (class in ngrok.datatypes)</a>
+</li>
+        <li><a href="datatypes.html#ngrok.datatypes.EventSubscriptionList">EventSubscriptionList (class in ngrok.datatypes)</a>
+</li>
+        <li><a href="event_subscriptions.html#ngrok.services.EventSubscriptionsClient">EventSubscriptionsClient (class in ngrok.services)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.EventTarget">EventTarget (class in ngrok.datatypes)</a>
 </li>
@@ -850,7 +890,11 @@
 </li>
           <li><a href="event_destinations.html#ngrok.services.EventDestinationsClient.get">(ngrok.services.EventDestinationsClient method)</a>
 </li>
+          <li><a href="event_sources.html#ngrok.services.EventSourcesClient.get">(ngrok.services.EventSourcesClient method)</a>
+</li>
           <li><a href="event_streams.html#ngrok.services.EventStreamsClient.get">(ngrok.services.EventStreamsClient method)</a>
+</li>
+          <li><a href="event_subscriptions.html#ngrok.services.EventSubscriptionsClient.get">(ngrok.services.EventSubscriptionsClient method)</a>
 </li>
           <li><a href="ip_policies.html#ngrok.services.IPPoliciesClient.get">(ngrok.services.IPPoliciesClient method)</a>
 </li>
@@ -923,6 +967,8 @@
           <li><a href="datatypes.html#ngrok.datatypes.EventDestination.id">(ngrok.datatypes.EventDestination property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.EventStream.id">(ngrok.datatypes.EventStream property)</a>
+</li>
+          <li><a href="datatypes.html#ngrok.datatypes.EventSubscription.id">(ngrok.datatypes.EventSubscription property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.IPPolicy.id">(ngrok.datatypes.IPPolicy property)</a>
 </li>
@@ -1086,7 +1132,11 @@
 </li>
           <li><a href="event_destinations.html#ngrok.services.EventDestinationsClient.list">(ngrok.services.EventDestinationsClient method)</a>
 </li>
+          <li><a href="event_sources.html#ngrok.services.EventSourcesClient.list">(ngrok.services.EventSourcesClient method)</a>
+</li>
           <li><a href="event_streams.html#ngrok.services.EventStreamsClient.list">(ngrok.services.EventStreamsClient method)</a>
+</li>
+          <li><a href="event_subscriptions.html#ngrok.services.EventSubscriptionsClient.list">(ngrok.services.EventSubscriptionsClient method)</a>
 </li>
           <li><a href="ip_policies.html#ngrok.services.IPPoliciesClient.list">(ngrok.services.IPPoliciesClient method)</a>
 </li>
@@ -1154,6 +1204,8 @@
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.EventStream.metadata">(ngrok.datatypes.EventStream property)</a>
 </li>
+          <li><a href="datatypes.html#ngrok.datatypes.EventSubscription.metadata">(ngrok.datatypes.EventSubscription property)</a>
+</li>
           <li><a href="datatypes.html#ngrok.datatypes.IPPolicy.metadata">(ngrok.datatypes.IPPolicy property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.IPPolicyRule.metadata">(ngrok.datatypes.IPPolicyRule property)</a>
@@ -1197,7 +1249,7 @@
 </li>
           <li><a href="datatypes.html#module-ngrok.datatypes">ngrok.datatypes</a>
 </li>
-          <li><a href="abuse_reports.html#module-ngrok.services">ngrok.services</a>, <a href="api_keys.html#module-ngrok.services">[1]</a>, <a href="certificate_authorities.html#module-ngrok.services">[2]</a>, <a href="credentials.html#module-ngrok.services">[3]</a>, <a href="endpoint_circuit_breaker_module.html#module-ngrok.services">[4]</a>, <a href="endpoint_compression_module.html#module-ngrok.services">[5]</a>, <a href="endpoint_configurations.html#module-ngrok.services">[6]</a>, <a href="endpoint_ip_policy_module.html#module-ngrok.services">[7]</a>, <a href="endpoint_logging_module.html#module-ngrok.services">[8]</a>, <a href="endpoint_mutual_tls_module.html#module-ngrok.services">[9]</a>, <a href="endpoint_o_auth_module.html#module-ngrok.services">[10]</a>, <a href="endpoint_oidc_module.html#module-ngrok.services">[11]</a>, <a href="endpoint_request_headers_module.html#module-ngrok.services">[12]</a>, <a href="endpoint_response_headers_module.html#module-ngrok.services">[13]</a>, <a href="endpoint_saml_module.html#module-ngrok.services">[14]</a>, <a href="endpoint_tls_termination_module.html#module-ngrok.services">[15]</a>, <a href="endpoint_webhook_validation_module.html#module-ngrok.services">[16]</a>, <a href="event_destinations.html#module-ngrok.services">[17]</a>, <a href="event_streams.html#module-ngrok.services">[18]</a>, <a href="ip_policies.html#module-ngrok.services">[19]</a>, <a href="ip_policy_rules.html#module-ngrok.services">[20]</a>, <a href="ip_restrictions.html#module-ngrok.services">[21]</a>, <a href="ip_whitelist.html#module-ngrok.services">[22]</a>, <a href="reserved_addrs.html#module-ngrok.services">[23]</a>, <a href="reserved_domains.html#module-ngrok.services">[24]</a>, <a href="ssh_certificate_authorities.html#module-ngrok.services">[25]</a>, <a href="ssh_credentials.html#module-ngrok.services">[26]</a>, <a href="ssh_host_certificates.html#module-ngrok.services">[27]</a>, <a href="ssh_user_certificates.html#module-ngrok.services">[28]</a>, <a href="tls_certificates.html#module-ngrok.services">[29]</a>, <a href="tunnel_sessions.html#module-ngrok.services">[30]</a>, <a href="tunnels.html#module-ngrok.services">[31]</a>
+          <li><a href="abuse_reports.html#module-ngrok.services">ngrok.services</a>, <a href="api_keys.html#module-ngrok.services">[1]</a>, <a href="certificate_authorities.html#module-ngrok.services">[2]</a>, <a href="credentials.html#module-ngrok.services">[3]</a>, <a href="endpoint_circuit_breaker_module.html#module-ngrok.services">[4]</a>, <a href="endpoint_compression_module.html#module-ngrok.services">[5]</a>, <a href="endpoint_configurations.html#module-ngrok.services">[6]</a>, <a href="endpoint_ip_policy_module.html#module-ngrok.services">[7]</a>, <a href="endpoint_logging_module.html#module-ngrok.services">[8]</a>, <a href="endpoint_mutual_tls_module.html#module-ngrok.services">[9]</a>, <a href="endpoint_o_auth_module.html#module-ngrok.services">[10]</a>, <a href="endpoint_oidc_module.html#module-ngrok.services">[11]</a>, <a href="endpoint_request_headers_module.html#module-ngrok.services">[12]</a>, <a href="endpoint_response_headers_module.html#module-ngrok.services">[13]</a>, <a href="endpoint_saml_module.html#module-ngrok.services">[14]</a>, <a href="endpoint_tls_termination_module.html#module-ngrok.services">[15]</a>, <a href="endpoint_webhook_validation_module.html#module-ngrok.services">[16]</a>, <a href="event_destinations.html#module-ngrok.services">[17]</a>, <a href="event_sources.html#module-ngrok.services">[18]</a>, <a href="event_streams.html#module-ngrok.services">[19]</a>, <a href="event_subscriptions.html#module-ngrok.services">[20]</a>, <a href="ip_policies.html#module-ngrok.services">[21]</a>, <a href="ip_policy_rules.html#module-ngrok.services">[22]</a>, <a href="ip_restrictions.html#module-ngrok.services">[23]</a>, <a href="ip_whitelist.html#module-ngrok.services">[24]</a>, <a href="reserved_addrs.html#module-ngrok.services">[25]</a>, <a href="reserved_domains.html#module-ngrok.services">[26]</a>, <a href="ssh_certificate_authorities.html#module-ngrok.services">[27]</a>, <a href="ssh_credentials.html#module-ngrok.services">[28]</a>, <a href="ssh_host_certificates.html#module-ngrok.services">[29]</a>, <a href="ssh_user_certificates.html#module-ngrok.services">[30]</a>, <a href="tls_certificates.html#module-ngrok.services">[31]</a>, <a href="tunnel_sessions.html#module-ngrok.services">[32]</a>, <a href="tunnels.html#module-ngrok.services">[33]</a>
 </li>
         </ul></li>
         <li><a href="datatypes.html#ngrok.datatypes.ReservedDomainCertJob.msg">msg() (ngrok.datatypes.ReservedDomainCertJob property)</a>
@@ -1212,6 +1264,12 @@
   <h2>N</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="datatypes.html#ngrok.datatypes.EndpointSAML.nameid_format">nameid_format() (ngrok.datatypes.EndpointSAML property)</a>
+
+        <ul>
+          <li><a href="datatypes.html#ngrok.datatypes.EndpointSAMLMutate.nameid_format">(ngrok.datatypes.EndpointSAMLMutate property)</a>
+</li>
+        </ul></li>
         <li><a href="datatypes.html#ngrok.datatypes.ReservedDomainCertNSTarget.nameservers">nameservers() (ngrok.datatypes.ReservedDomainCertNSTarget property)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.APIKeyList.next_page_uri">next_page_uri() (ngrok.datatypes.APIKeyList property)</a>
@@ -1226,6 +1284,8 @@
           <li><a href="datatypes.html#ngrok.datatypes.EventDestinationList.next_page_uri">(ngrok.datatypes.EventDestinationList property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.EventStreamList.next_page_uri">(ngrok.datatypes.EventStreamList property)</a>
+</li>
+          <li><a href="datatypes.html#ngrok.datatypes.EventSubscriptionList.next_page_uri">(ngrok.datatypes.EventSubscriptionList property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.IPPolicyList.next_page_uri">(ngrok.datatypes.IPPolicyList property)</a>
 </li>
@@ -1274,7 +1334,7 @@
     ngrok.services
 
         <ul>
-          <li><a href="abuse_reports.html#module-ngrok.services">module</a>, <a href="api_keys.html#module-ngrok.services">[1]</a>, <a href="certificate_authorities.html#module-ngrok.services">[2]</a>, <a href="credentials.html#module-ngrok.services">[3]</a>, <a href="endpoint_circuit_breaker_module.html#module-ngrok.services">[4]</a>, <a href="endpoint_compression_module.html#module-ngrok.services">[5]</a>, <a href="endpoint_configurations.html#module-ngrok.services">[6]</a>, <a href="endpoint_ip_policy_module.html#module-ngrok.services">[7]</a>, <a href="endpoint_logging_module.html#module-ngrok.services">[8]</a>, <a href="endpoint_mutual_tls_module.html#module-ngrok.services">[9]</a>, <a href="endpoint_o_auth_module.html#module-ngrok.services">[10]</a>, <a href="endpoint_oidc_module.html#module-ngrok.services">[11]</a>, <a href="endpoint_request_headers_module.html#module-ngrok.services">[12]</a>, <a href="endpoint_response_headers_module.html#module-ngrok.services">[13]</a>, <a href="endpoint_saml_module.html#module-ngrok.services">[14]</a>, <a href="endpoint_tls_termination_module.html#module-ngrok.services">[15]</a>, <a href="endpoint_webhook_validation_module.html#module-ngrok.services">[16]</a>, <a href="event_destinations.html#module-ngrok.services">[17]</a>, <a href="event_streams.html#module-ngrok.services">[18]</a>, <a href="ip_policies.html#module-ngrok.services">[19]</a>, <a href="ip_policy_rules.html#module-ngrok.services">[20]</a>, <a href="ip_restrictions.html#module-ngrok.services">[21]</a>, <a href="ip_whitelist.html#module-ngrok.services">[22]</a>, <a href="reserved_addrs.html#module-ngrok.services">[23]</a>, <a href="reserved_domains.html#module-ngrok.services">[24]</a>, <a href="ssh_certificate_authorities.html#module-ngrok.services">[25]</a>, <a href="ssh_credentials.html#module-ngrok.services">[26]</a>, <a href="ssh_host_certificates.html#module-ngrok.services">[27]</a>, <a href="ssh_user_certificates.html#module-ngrok.services">[28]</a>, <a href="tls_certificates.html#module-ngrok.services">[29]</a>, <a href="tunnel_sessions.html#module-ngrok.services">[30]</a>, <a href="tunnels.html#module-ngrok.services">[31]</a>
+          <li><a href="abuse_reports.html#module-ngrok.services">module</a>, <a href="api_keys.html#module-ngrok.services">[1]</a>, <a href="certificate_authorities.html#module-ngrok.services">[2]</a>, <a href="credentials.html#module-ngrok.services">[3]</a>, <a href="endpoint_circuit_breaker_module.html#module-ngrok.services">[4]</a>, <a href="endpoint_compression_module.html#module-ngrok.services">[5]</a>, <a href="endpoint_configurations.html#module-ngrok.services">[6]</a>, <a href="endpoint_ip_policy_module.html#module-ngrok.services">[7]</a>, <a href="endpoint_logging_module.html#module-ngrok.services">[8]</a>, <a href="endpoint_mutual_tls_module.html#module-ngrok.services">[9]</a>, <a href="endpoint_o_auth_module.html#module-ngrok.services">[10]</a>, <a href="endpoint_oidc_module.html#module-ngrok.services">[11]</a>, <a href="endpoint_request_headers_module.html#module-ngrok.services">[12]</a>, <a href="endpoint_response_headers_module.html#module-ngrok.services">[13]</a>, <a href="endpoint_saml_module.html#module-ngrok.services">[14]</a>, <a href="endpoint_tls_termination_module.html#module-ngrok.services">[15]</a>, <a href="endpoint_webhook_validation_module.html#module-ngrok.services">[16]</a>, <a href="event_destinations.html#module-ngrok.services">[17]</a>, <a href="event_sources.html#module-ngrok.services">[18]</a>, <a href="event_streams.html#module-ngrok.services">[19]</a>, <a href="event_subscriptions.html#module-ngrok.services">[20]</a>, <a href="ip_policies.html#module-ngrok.services">[21]</a>, <a href="ip_policy_rules.html#module-ngrok.services">[22]</a>, <a href="ip_restrictions.html#module-ngrok.services">[23]</a>, <a href="ip_whitelist.html#module-ngrok.services">[24]</a>, <a href="reserved_addrs.html#module-ngrok.services">[25]</a>, <a href="reserved_domains.html#module-ngrok.services">[26]</a>, <a href="ssh_certificate_authorities.html#module-ngrok.services">[27]</a>, <a href="ssh_credentials.html#module-ngrok.services">[28]</a>, <a href="ssh_host_certificates.html#module-ngrok.services">[29]</a>, <a href="ssh_user_certificates.html#module-ngrok.services">[30]</a>, <a href="tls_certificates.html#module-ngrok.services">[31]</a>, <a href="tunnel_sessions.html#module-ngrok.services">[32]</a>, <a href="tunnels.html#module-ngrok.services">[33]</a>
 </li>
         </ul></li>
         <li><a href="datatypes.html#ngrok.datatypes.CertificateAuthority.not_after">not_after() (ngrok.datatypes.CertificateAuthority property)</a>
@@ -1505,6 +1565,12 @@
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.EndpointSAML.single_logout_url">single_logout_url() (ngrok.datatypes.EndpointSAML property)</a>
 </li>
+        <li><a href="datatypes.html#ngrok.datatypes.EventSourceList.sources">sources() (ngrok.datatypes.EventSourceList property)</a>
+
+        <ul>
+          <li><a href="datatypes.html#ngrok.datatypes.EventSubscription.sources">(ngrok.datatypes.EventSubscription property)</a>
+</li>
+        </ul></li>
         <li><a href="client.html#ngrok.Client.ssh_certificate_authorities">ssh_certificate_authorities() (ngrok.Client property)</a>
 
         <ul>
@@ -1539,10 +1605,10 @@
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.SSHCertificateAuthority">SSHCertificateAuthority (class in ngrok.datatypes)</a>
 </li>
-        <li><a href="datatypes.html#ngrok.datatypes.SSHCertificateAuthorityList">SSHCertificateAuthorityList (class in ngrok.datatypes)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="datatypes.html#ngrok.datatypes.SSHCertificateAuthorityList">SSHCertificateAuthorityList (class in ngrok.datatypes)</a>
+</li>
         <li><a href="datatypes.html#ngrok.datatypes.SSHCredential">SSHCredential (class in ngrok.datatypes)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.SSHCredentialList">SSHCredentialList (class in ngrok.datatypes)</a>
@@ -1635,10 +1701,10 @@
         </ul></li>
         <li><a href="datatypes.html#ngrok.datatypes.TunnelSession.transport">transport() (ngrok.datatypes.TunnelSession property)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="datatypes.html#ngrok.datatypes.EndpointCircuitBreaker.tripped_duration">tripped_duration() (ngrok.datatypes.EndpointCircuitBreaker property)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="datatypes.html#ngrok.datatypes.Tunnel">Tunnel (class in ngrok.datatypes)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.Tunnel.tunnel_session">tunnel_session() (ngrok.datatypes.Tunnel property)</a>
@@ -1668,6 +1734,10 @@
         <li><a href="datatypes.html#ngrok.datatypes.EndpointConfiguration.type">type() (ngrok.datatypes.EndpointConfiguration property)</a>
 
         <ul>
+          <li><a href="datatypes.html#ngrok.datatypes.EventSource.type">(ngrok.datatypes.EventSource property)</a>
+</li>
+          <li><a href="datatypes.html#ngrok.datatypes.EventSourceReplace.type">(ngrok.datatypes.EventSourceReplace property)</a>
+</li>
           <li><a href="datatypes.html#ngrok.datatypes.IPRestriction.type">(ngrok.datatypes.IPRestriction property)</a>
 </li>
         </ul></li>
@@ -1716,7 +1786,11 @@
 </li>
           <li><a href="event_destinations.html#ngrok.services.EventDestinationsClient.update">(ngrok.services.EventDestinationsClient method)</a>
 </li>
+          <li><a href="event_sources.html#ngrok.services.EventSourcesClient.update">(ngrok.services.EventSourcesClient method)</a>
+</li>
           <li><a href="event_streams.html#ngrok.services.EventStreamsClient.update">(ngrok.services.EventStreamsClient method)</a>
+</li>
+          <li><a href="event_subscriptions.html#ngrok.services.EventSubscriptionsClient.update">(ngrok.services.EventSubscriptionsClient method)</a>
 </li>
           <li><a href="ip_policies.html#ngrok.services.IPPoliciesClient.update">(ngrok.services.IPPoliciesClient method)</a>
 </li>
@@ -1766,9 +1840,17 @@
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.EventDestinationList.uri">(ngrok.datatypes.EventDestinationList property)</a>
 </li>
+          <li><a href="datatypes.html#ngrok.datatypes.EventSource.uri">(ngrok.datatypes.EventSource property)</a>
+</li>
+          <li><a href="datatypes.html#ngrok.datatypes.EventSourceList.uri">(ngrok.datatypes.EventSourceList property)</a>
+</li>
           <li><a href="datatypes.html#ngrok.datatypes.EventStream.uri">(ngrok.datatypes.EventStream property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.EventStreamList.uri">(ngrok.datatypes.EventStreamList property)</a>
+</li>
+          <li><a href="datatypes.html#ngrok.datatypes.EventSubscription.uri">(ngrok.datatypes.EventSubscription property)</a>
+</li>
+          <li><a href="datatypes.html#ngrok.datatypes.EventSubscriptionList.uri">(ngrok.datatypes.EventSubscriptionList property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.IPPolicy.uri">(ngrok.datatypes.IPPolicy property)</a>
 </li>

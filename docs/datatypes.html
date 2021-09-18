@@ -119,13 +119,15 @@
 <li class="toctree-l1"><a class="reference internal" href="api_keys.html">API Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="certificate_authorities.html">Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Tunnel Credentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_configurations.html">Endpoint Configurations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_streams.html">Event Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_destinations.html">Event Destinations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event_subscriptions.html">Event Subscriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event_sources.html">Event Sources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policies.html">IP Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policy_rules.html">IP Policy Rules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_restrictions.html">IP Restrictions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_whitelist.html">IP Whitelist</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_configurations.html">Endpoint Configurations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_logging_module.html">Logging Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_circuit_breaker_module.html">Circuit Breaker Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_compression_module.html">Compression Module</a></li>
@@ -1779,6 +1781,16 @@
 </dl>
 </dd></dl>
 <dl class="py method">
+<dt id="ngrok.datatypes.EndpointSAML.nameid_format">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">nameid_format</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointSAML.nameid_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the name identifier format the SP expects the IdP to use in its assertions to identify subjects. If unspecified, a default value of <code class="docutils literal notranslate"><span class="pre">urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</span></code> will be used. A subset of the allowed values enumerated by the SAML specification are supported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
 <dt id="ngrok.datatypes.EndpointSAML.options_passthrough">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">options_passthrough</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointSAML.options_passthrough" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do not enforce authentication on HTTP OPTIONS requests. necessary if you are supporting CORS.</p>
@@ -1893,6 +1905,16 @@
 </dl>
 </dd></dl>
 <dl class="py method">
+<dt id="ngrok.datatypes.EndpointSAMLMutate.nameid_format">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">nameid_format</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointSAMLMutate.nameid_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the name identifier format the SP expects the IdP to use in its assertions to identify subjects. If unspecified, a default value of <code class="docutils literal notranslate"><span class="pre">urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</span></code> will be used. A subset of the allowed values enumerated by the SAML specification are supported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
 <dt id="ngrok.datatypes.EndpointSAMLMutate.options_passthrough">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">options_passthrough</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointSAMLMutate.options_passthrough" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do not enforce authentication on HTTP OPTIONS requests. necessary if you are supporting CORS.</p>
@@ -1953,7 +1975,7 @@
 <dl class="py method">
 <dt id="ngrok.datatypes.EndpointWebhookValidation.provider">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">provider</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointWebhookValidation.provider" title="Permalink to this definition">¶</a></dt>
-<dd><p>a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers: <code class="docutils literal notranslate"><span class="pre">SLACK</span></code>, <code class="docutils literal notranslate"><span class="pre">SNS</span></code>, <code class="docutils literal notranslate"><span class="pre">STRIPE</span></code>, <code class="docutils literal notranslate"><span class="pre">GITHUB</span></code>, <code class="docutils literal notranslate"><span class="pre">TWILIO</span></code>, <code class="docutils literal notranslate"><span class="pre">SHOPIFY</span></code>, <code class="docutils literal notranslate"><span class="pre">GITLAB</span></code>, <code class="docutils literal notranslate"><span class="pre">INTERCOM</span></code>.</p>
+<dd><p>a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers: <code class="docutils literal notranslate"><span class="pre">SLACK</span></code>, <code class="docutils literal notranslate"><span class="pre">SNS</span></code>, <code class="docutils literal notranslate"><span class="pre">STRIPE</span></code>, <code class="docutils literal notranslate"><span class="pre">GITHUB</span></code>, <code class="docutils literal notranslate"><span class="pre">TWILIO</span></code>, <code class="docutils literal notranslate"><span class="pre">SHOPIFY</span></code>, <code class="docutils literal notranslate"><span class="pre">GITLAB</span></code>, <code class="docutils literal notranslate"><span class="pre">INTERCOM</span></code>, <code class="docutils literal notranslate"><span class="pre">SENDGRID</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -2076,6 +2098,68 @@
 <dt id="ngrok.datatypes.EventDestinationList.uri">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">uri</span></code><a class="headerlink" href="#ngrok.datatypes.EventDestinationList.uri" title="Permalink to this definition">¶</a></dt>
 <dd><p>URI of the Event Destinations list API resource.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="ngrok.datatypes.EventSource">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">EventSource</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#EventSource"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.EventSource" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="ngrok.datatypes.EventSource.type">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">type</span></code><a class="headerlink" href="#ngrok.datatypes.EventSource.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type of event for which an event subscription will trigger</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EventSource.uri">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">uri</span></code><a class="headerlink" href="#ngrok.datatypes.EventSource.uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>URI of the Event Source API resource.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="ngrok.datatypes.EventSourceList">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">EventSourceList</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#EventSourceList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.EventSourceList" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="ngrok.datatypes.EventSourceList.sources">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">sources</span></code><a class="headerlink" href="#ngrok.datatypes.EventSourceList.sources" title="Permalink to this definition">¶</a></dt>
+<dd><p>The list of all Event Sources for an Event Subscription</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<a class="reference internal" href="#ngrok.datatypes.EventSource" title="ngrok.datatypes.EventSource"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventSource</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EventSourceList.uri">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">uri</span></code><a class="headerlink" href="#ngrok.datatypes.EventSourceList.uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>URI of the next page, or null if there is no next page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="ngrok.datatypes.EventSourceReplace">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">EventSourceReplace</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#EventSourceReplace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.EventSourceReplace" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="ngrok.datatypes.EventSourceReplace.type">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">type</span></code><a class="headerlink" href="#ngrok.datatypes.EventSourceReplace.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type of event for which an event subscription will trigger</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -2212,6 +2296,118 @@
 <dt id="ngrok.datatypes.EventStreamList.uri">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">uri</span></code><a class="headerlink" href="#ngrok.datatypes.EventStreamList.uri" title="Permalink to this definition">¶</a></dt>
 <dd><p>URI of the Event Stream list API resource.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="ngrok.datatypes.EventSubscription">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">EventSubscription</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#EventSubscription"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.EventSubscription" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="ngrok.datatypes.EventSubscription.created_at">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">created_at</span></code><a class="headerlink" href="#ngrok.datatypes.EventSubscription.created_at" title="Permalink to this definition">¶</a></dt>
+<dd><p>When the Event Subscription was created (RFC 3339 format).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EventSubscription.delete">
+<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#EventSubscription.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.EventSubscription.delete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EventSubscription.description">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">description</span></code><a class="headerlink" href="#ngrok.datatypes.EventSubscription.description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Arbitrary customer supplied information intended to be human readable. Optional, max 255 chars.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EventSubscription.destinations">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">destinations</span></code><a class="headerlink" href="#ngrok.datatypes.EventSubscription.destinations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Destinations to which these events will be sent</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<a class="reference internal" href="#ngrok.datatypes.Ref" title="ngrok.datatypes.Ref"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ref</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EventSubscription.id">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">id</span></code><a class="headerlink" href="#ngrok.datatypes.EventSubscription.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unique identifier for this Event Subscription.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EventSubscription.metadata">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">metadata</span></code><a class="headerlink" href="#ngrok.datatypes.EventSubscription.metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Arbitrary customer supplied information intended to be machine readable. Optional, max 4096 chars.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EventSubscription.sources">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">sources</span></code><a class="headerlink" href="#ngrok.datatypes.EventSubscription.sources" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sources containing the types for which this event subscription will trigger</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<a class="reference internal" href="#ngrok.datatypes.EventSource" title="ngrok.datatypes.EventSource"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventSource</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EventSubscription.uri">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">uri</span></code><a class="headerlink" href="#ngrok.datatypes.EventSubscription.uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>URI of the Event Subscription API resource.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="ngrok.datatypes.EventSubscriptionList">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">EventSubscriptionList</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#EventSubscriptionList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.EventSubscriptionList" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="ngrok.datatypes.EventSubscriptionList.event_subscriptions">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">event_subscriptions</span></code><a class="headerlink" href="#ngrok.datatypes.EventSubscriptionList.event_subscriptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>The list of all Event Subscriptions on this account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<a class="reference internal" href="#ngrok.datatypes.EventSubscription" title="ngrok.datatypes.EventSubscription"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventSubscription</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EventSubscriptionList.next_page_uri">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">next_page_uri</span></code><a class="headerlink" href="#ngrok.datatypes.EventSubscriptionList.next_page_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>URI of next page, or null if there is no next page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EventSubscriptionList.uri">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">uri</span></code><a class="headerlink" href="#ngrok.datatypes.EventSubscriptionList.uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>URI of the Event Subscriptions list API resource.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -2577,7 +2773,7 @@
 <dl class="py method">
 <dt id="ngrok.datatypes.IPRestriction.enforced">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">enforced</span></code><a class="headerlink" href="#ngrok.datatypes.IPRestriction.enforced" title="Permalink to this definition">¶</a></dt>
-<dd><p>true if the IP restriction will be enforce. if false, only warnings will be issued</p>
+<dd><p>true if the IP restriction will be enforced. if false, only warnings will be issued</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>

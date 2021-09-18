@@ -32,9 +32,11 @@ class AbuseReport(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["hostnames"] = [
-            AbuseReportHostname(client, x) for x in props["hostnames"]
-        ]
+        self._props["hostnames"] = (
+            [AbuseReportHostname(client, x) for x in props["hostnames"]]
+            if props["hostnames"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -173,7 +175,11 @@ class APIKeyList(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["keys"] = [APIKey(client, x) for x in props["keys"]]
+        self._props["keys"] = (
+            [APIKey(client, x) for x in props["keys"]]
+            if props["keys"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -295,9 +301,11 @@ class CertificateAuthorityList(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["certificate_authorities"] = [
-            CertificateAuthority(client, x) for x in props["certificate_authorities"]
-        ]
+        self._props["certificate_authorities"] = (
+            [CertificateAuthority(client, x) for x in props["certificate_authorities"]]
+            if props["certificate_authorities"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -401,9 +409,11 @@ class CredentialList(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["credentials"] = [
-            Credential(client, x) for x in props["credentials"]
-        ]
+        self._props["credentials"] = (
+            [Credential(client, x) for x in props["credentials"]]
+            if props["credentials"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -433,835 +443,66 @@ class CredentialList(object):
         return self._props["next_page_uri"]
 
 
-class EventStreamList(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["event_streams"] = [
-            EventStream(client, x) for x in props["event_streams"]
-        ]
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<EventStreamList {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<EventStreamList {}>".format(repr(self._props))
-
-    def __iter__(self):
-        return PagedIterator(self._client, self, "event_streams")
-
-    @property
-    def event_streams(self) -> Sequence[EventStream]:
-        """The list of all Event Streams on this account."""
-        return self._props["event_streams"]
-
-    @property
-    def uri(self) -> str:
-        """URI of the Event Stream list API resource."""
-        return self._props["uri"]
-
-    @property
-    def next_page_uri(self) -> str:
-        """URI of the next page, or null if there is no next page."""
-        return self._props["next_page_uri"]
-
-
-class EventStream(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<EventStream {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<EventStream {}>".format(repr(self._props))
-
-    def delete(
-        self,
-    ):
-        self._client.event_streams.delete(
-            id=self.id,
-        )
-
-    def update(
-        self,
-        metadata: str = None,
-        description: str = None,
-        fields: Sequence[str] = None,
-        destination_ids: Sequence[str] = None,
-        sampling_rate: float = None,
-    ):
-        self._client.event_streams.update(
-            id=self.id,
-            metadata=metadata,
-            description=description,
-            fields=fields,
-            destination_ids=destination_ids,
-            sampling_rate=sampling_rate,
-        )
-
-    @property
-    def id(self) -> str:
-        """Unique identifier for this Event Stream."""
-        return self._props["id"]
-
-    @property
-    def uri(self) -> str:
-        """URI of the Event Stream API resource."""
-        return self._props["uri"]
-
-    @property
-    def created_at(self) -> str:
-        """Timestamp when the Event Stream was created, RFC 3339 format."""
-        return self._props["created_at"]
-
-    @property
-    def metadata(self) -> str:
-        """Arbitrary user-defined machine-readable data of this Event Stream. Optional, max 4096 bytes."""
-        return self._props["metadata"]
-
-    @property
-    def description(self) -> str:
-        """Human-readable description of the Event Stream. Optional, max 255 bytes."""
-        return self._props["description"]
-
-    @property
-    def fields(self) -> Sequence[str]:
-        """A list of protocol-specific fields you want to collect on each event."""
-        return self._props["fields"]
-
-    @property
-    def event_type(self) -> str:
-        """The protocol that determines which events will be collected. Supported values are ``tcp_connection_closed`` and ``http_request_complete``."""
-        return self._props["event_type"]
-
-    @property
-    def destination_ids(self) -> Sequence[str]:
-        """A list of Event Destination IDs which should be used for this Event Stream. Event Streams are required to have at least one Event Destination."""
-        return self._props["destination_ids"]
-
-    @property
-    def sampling_rate(self) -> float:
-        """The percentage of all events you would like to capture. Valid values range from 0.01, representing 1% of all events to 1.00, representing 100% of all events."""
-        return self._props["sampling_rate"]
-
-
-class EventDestination(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["target"] = EventTarget(client, props["target"])
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<EventDestination {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<EventDestination {}>".format(repr(self._props))
-
-    def delete(
-        self,
-    ):
-        self._client.event_destinations.delete(
-            id=self.id,
-        )
-
-    @property
-    def id(self) -> str:
-        """Unique identifier for this Event Destination."""
-        return self._props["id"]
-
-    @property
-    def metadata(self) -> str:
-        """Arbitrary user-defined machine-readable data of this Event Destination. Optional, max 4096 bytes."""
-        return self._props["metadata"]
-
-    @property
-    def created_at(self) -> str:
-        """Timestamp when the Event Destination was created, RFC 3339 format."""
-        return self._props["created_at"]
-
-    @property
-    def description(self) -> str:
-        """Human-readable description of the Event Destination. Optional, max 255 bytes."""
-        return self._props["description"]
-
-    @property
-    def format(self) -> str:
-        """The output format you would like to serialize events into when sending to their target. Currently the only accepted value is ``JSON``."""
-        return self._props["format"]
-
-    @property
-    def target(self) -> EventTarget:
-        """An object that encapsulates where and how to send your events. An event destination must contain exactly one of the following objects, leaving the rest null: ``kinesis``, ``firehose``, ``cloudwatch_logs``, or ``s3``."""
-        return self._props["target"]
-
-    @property
-    def uri(self) -> str:
-        """URI of the Event Destination API resource."""
-        return self._props["uri"]
-
-
-class EventDestinationList(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["event_destinations"] = [
-            EventDestination(client, x) for x in props["event_destinations"]
-        ]
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<EventDestinationList {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<EventDestinationList {}>".format(repr(self._props))
-
-    def __iter__(self):
-        return PagedIterator(self._client, self, "event_destinations")
-
-    @property
-    def event_destinations(self) -> Sequence[EventDestination]:
-        """The list of all Event Destinations on this account."""
-        return self._props["event_destinations"]
-
-    @property
-    def uri(self) -> str:
-        """URI of the Event Destinations list API resource."""
-        return self._props["uri"]
-
-    @property
-    def next_page_uri(self) -> str:
-        """URI of the next page, or null if there is no next page."""
-        return self._props["next_page_uri"]
-
-
-class EventTarget(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["firehose"] = EventTargetFirehose(client, props["firehose"])
-        self._props["kinesis"] = EventTargetKinesis(client, props["kinesis"])
-        self._props["cloudwatch_logs"] = EventTargetCloudwatchLogs(
-            client, props["cloudwatch_logs"]
-        )
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<EventTarget {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<EventTarget {}>".format(repr(self._props))
-
-    @property
-    def firehose(self) -> EventTargetFirehose:
-        """Configuration used to send events to Amazon Kinesis Data Firehose."""
-        return self._props["firehose"]
-
-    @property
-    def kinesis(self) -> EventTargetKinesis:
-        """Configuration used to send events to Amazon Kinesis."""
-        return self._props["kinesis"]
-
-    @property
-    def cloudwatch_logs(self) -> EventTargetCloudwatchLogs:
-        """Configuration used to send events to Amazon CloudWatch Logs."""
-        return self._props["cloudwatch_logs"]
-
-
-class EventTargetFirehose(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["auth"] = AWSAuth(client, props["auth"])
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<EventTargetFirehose {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<EventTargetFirehose {}>".format(repr(self._props))
-
-    @property
-    def auth(self) -> AWSAuth:
-        """Configuration for how to authenticate into your AWS account. Exactly one of ``role`` or ``creds`` should be configured."""
-        return self._props["auth"]
-
-    @property
-    def delivery_stream_arn(self) -> str:
-        """An Amazon Resource Name specifying the Firehose delivery stream to deposit events into."""
-        return self._props["delivery_stream_arn"]
-
-
-class EventTargetKinesis(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["auth"] = AWSAuth(client, props["auth"])
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<EventTargetKinesis {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<EventTargetKinesis {}>".format(repr(self._props))
-
-    @property
-    def auth(self) -> AWSAuth:
-        """Configuration for how to authenticate into your AWS account. Exactly one of ``role`` or ``creds`` should be configured."""
-        return self._props["auth"]
-
-    @property
-    def stream_arn(self) -> str:
-        """An Amazon Resource Name specifying the Kinesis stream to deposit events into."""
-        return self._props["stream_arn"]
-
-
-class EventTargetCloudwatchLogs(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["auth"] = AWSAuth(client, props["auth"])
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<EventTargetCloudwatchLogs {} {}>".format(
-                self.id, repr(self._props)
-            )
-        else:
-            return "<EventTargetCloudwatchLogs {}>".format(repr(self._props))
-
-    @property
-    def auth(self) -> AWSAuth:
-        """Configuration for how to authenticate into your AWS account. Exactly one of ``role`` or ``creds`` should be configured."""
-        return self._props["auth"]
-
-    @property
-    def log_group_arn(self) -> str:
-        """An Amazon Resource Name specifying the CloudWatch Logs group to deposit events into."""
-        return self._props["log_group_arn"]
-
-
-class AWSAuth(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["role"] = AWSRole(client, props["role"])
-        self._props["creds"] = AWSCredentials(client, props["creds"])
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<AWSAuth {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<AWSAuth {}>".format(repr(self._props))
-
-    @property
-    def role(self) -> AWSRole:
-        """A role for ngrok to assume on your behalf to deposit events into your AWS account."""
-        return self._props["role"]
-
-    @property
-    def creds(self) -> AWSCredentials:
-        """Credentials to your AWS account if you prefer ngrok to sign in with long-term access keys."""
-        return self._props["creds"]
-
-
-class AWSRole(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<AWSRole {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<AWSRole {}>".format(repr(self._props))
-
-    @property
-    def role_arn(self) -> str:
-        """An ARN that specifies the role that ngrok should use to deliver to the configured target."""
-        return self._props["role_arn"]
-
-
-class AWSCredentials(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<AWSCredentials {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<AWSCredentials {}>".format(repr(self._props))
-
-    @property
-    def aws_access_key_id(self) -> str:
-        """The ID portion of an AWS access key."""
-        return self._props["aws_access_key_id"]
-
-    @property
-    def aws_secret_access_key(self) -> str:
-        """The secret portion of an AWS access key."""
-        return self._props["aws_secret_access_key"]
-
-
-class IPPolicy(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<IPPolicy {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<IPPolicy {}>".format(repr(self._props))
-
-    def delete(
-        self,
-    ):
-        self._client.ip_policies.delete(
-            id=self.id,
-        )
-
-    def update(
-        self,
-        description: str = None,
-        metadata: str = None,
-    ):
-        self._client.ip_policies.update(
-            id=self.id,
-            description=description,
-            metadata=metadata,
-        )
-
-    @property
-    def id(self) -> str:
-        """unique identifier for this IP policy"""
-        return self._props["id"]
-
-    @property
-    def uri(self) -> str:
-        """URI of the IP Policy API resource"""
-        return self._props["uri"]
-
-    @property
-    def created_at(self) -> str:
-        """timestamp when the IP policy was created, RFC 3339 format"""
-        return self._props["created_at"]
-
-    @property
-    def description(self) -> str:
-        """human-readable description of the source IPs of this IP policy. optional, max 255 bytes."""
-        return self._props["description"]
-
-    @property
-    def metadata(self) -> str:
-        """arbitrary user-defined machine-readable data of this IP policy. optional, max 4096 bytes."""
-        return self._props["metadata"]
-
-    @property
-    def action(self) -> str:
-        """the IP policy action. Supported values are ``allow`` or ``deny``"""
-        return self._props["action"]
-
-
-class IPPolicyList(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["ip_policies"] = [IPPolicy(client, x) for x in props["ip_policies"]]
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<IPPolicyList {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<IPPolicyList {}>".format(repr(self._props))
-
-    def __iter__(self):
-        return PagedIterator(self._client, self, "ip_policies")
-
-    @property
-    def ip_policies(self) -> Sequence[IPPolicy]:
-        """the list of all IP policies on this account"""
-        return self._props["ip_policies"]
-
-    @property
-    def uri(self) -> str:
-        """URI of the IP policy list API resource"""
-        return self._props["uri"]
-
-    @property
-    def next_page_uri(self) -> str:
-        """URI of the next page, or null if there is no next page"""
-        return self._props["next_page_uri"]
-
-
-class IPPolicyRule(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["ip_policy"] = Ref(client, props["ip_policy"])
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<IPPolicyRule {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<IPPolicyRule {}>".format(repr(self._props))
-
-    def delete(
-        self,
-    ):
-        self._client.ip_policy_rules.delete(
-            id=self.id,
-        )
-
-    def update(
-        self,
-        description: str = None,
-        metadata: str = None,
-        cidr: str = None,
-    ):
-        self._client.ip_policy_rules.update(
-            id=self.id,
-            description=description,
-            metadata=metadata,
-            cidr=cidr,
-        )
-
-    @property
-    def id(self) -> str:
-        """unique identifier for this IP policy rule"""
-        return self._props["id"]
-
-    @property
-    def uri(self) -> str:
-        """URI of the IP policy rule API resource"""
-        return self._props["uri"]
-
-    @property
-    def created_at(self) -> str:
-        """timestamp when the IP policy rule was created, RFC 3339 format"""
-        return self._props["created_at"]
-
-    @property
-    def description(self) -> str:
-        """human-readable description of the source IPs of this IP rule. optional, max 255 bytes."""
-        return self._props["description"]
-
-    @property
-    def metadata(self) -> str:
-        """arbitrary user-defined machine-readable data of this IP policy rule. optional, max 4096 bytes."""
-        return self._props["metadata"]
-
-    @property
-    def cidr(self) -> str:
-        """an IP or IP range specified in CIDR notation. IPv4 and IPv6 are both supported."""
-        return self._props["cidr"]
-
-    @property
-    def ip_policy(self) -> Ref:
-        """object describing the IP policy this IP Policy Rule belongs to"""
-        return self._props["ip_policy"]
-
-
-class IPPolicyRuleList(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["ip_policy_rules"] = [
-            IPPolicyRule(client, x) for x in props["ip_policy_rules"]
-        ]
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<IPPolicyRuleList {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<IPPolicyRuleList {}>".format(repr(self._props))
-
-    def __iter__(self):
-        return PagedIterator(self._client, self, "ip_policy_rules")
-
-    @property
-    def ip_policy_rules(self) -> Sequence[IPPolicyRule]:
-        """the list of all IP policy rules on this account"""
-        return self._props["ip_policy_rules"]
-
-    @property
-    def uri(self) -> str:
-        """URI of the IP policy rule list API resource"""
-        return self._props["uri"]
-
-    @property
-    def next_page_uri(self) -> str:
-        """URI of the next page, or null if there is no next page"""
-        return self._props["next_page_uri"]
-
-
-class IPRestriction(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["ip_policies"] = [Ref(client, x) for x in props["ip_policies"]]
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<IPRestriction {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<IPRestriction {}>".format(repr(self._props))
-
-    def delete(
-        self,
-    ):
-        self._client.ip_restrictions.delete(
-            id=self.id,
-        )
-
-    @property
-    def id(self) -> str:
-        """unique identifier for this IP restriction"""
-        return self._props["id"]
-
-    @property
-    def uri(self) -> str:
-        """URI of the IP restriction API resource"""
-        return self._props["uri"]
-
-    @property
-    def created_at(self) -> str:
-        """timestamp when the IP restriction was created, RFC 3339 format"""
-        return self._props["created_at"]
-
-    @property
-    def description(self) -> str:
-        """human-readable description of this IP restriction. optional, max 255 bytes."""
-        return self._props["description"]
-
-    @property
-    def metadata(self) -> str:
-        """arbitrary user-defined machine-readable data of this IP restriction. optional, max 4096 bytes."""
-        return self._props["metadata"]
-
-    @property
-    def enforced(self) -> bool:
-        """true if the IP restriction will be enforce. if false, only warnings will be issued"""
-        return self._props["enforced"]
-
-    @property
-    def type(self) -> str:
-        """the type of IP restriction. this defines what traffic will be restricted with the attached policies. four values are currently supported: ``dashboard``, ``api``, ``agent``, and ``endpoints``"""
-        return self._props["type"]
-
-    @property
-    def ip_policies(self) -> Sequence[Ref]:
-        """the set of IP policies that are used to enforce the restriction"""
-        return self._props["ip_policies"]
-
-
-class IPRestrictionList(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["ip_restrictions"] = [
-            IPRestriction(client, x) for x in props["ip_restrictions"]
-        ]
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<IPRestrictionList {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<IPRestrictionList {}>".format(repr(self._props))
-
-    def __iter__(self):
-        return PagedIterator(self._client, self, "ip_restrictions")
-
-    @property
-    def ip_restrictions(self) -> Sequence[IPRestriction]:
-        """the list of all IP restrictions on this account"""
-        return self._props["ip_restrictions"]
-
-    @property
-    def uri(self) -> str:
-        """URI of the IP resrtrictions list API resource"""
-        return self._props["uri"]
-
-    @property
-    def next_page_uri(self) -> str:
-        """URI of the next page, or null if there is no next page"""
-        return self._props["next_page_uri"]
-
-
-class IPWhitelistEntry(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<IPWhitelistEntry {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<IPWhitelistEntry {}>".format(repr(self._props))
-
-    def delete(
-        self,
-    ):
-        self._client.ip_whitelist.delete(
-            id=self.id,
-        )
-
-    def update(
-        self,
-        description: str = None,
-        metadata: str = None,
-    ):
-        self._client.ip_whitelist.update(
-            id=self.id,
-            description=description,
-            metadata=metadata,
-        )
-
-    @property
-    def id(self) -> str:
-        """unique identifier for this IP whitelist entry"""
-        return self._props["id"]
-
-    @property
-    def uri(self) -> str:
-        """URI of the IP whitelist entry API resource"""
-        return self._props["uri"]
-
-    @property
-    def created_at(self) -> str:
-        """timestamp when the IP whitelist entry was created, RFC 3339 format"""
-        return self._props["created_at"]
-
-    @property
-    def description(self) -> str:
-        """human-readable description of the source IPs for this IP whitelist entry. optional, max 255 bytes."""
-        return self._props["description"]
-
-    @property
-    def metadata(self) -> str:
-        """arbitrary user-defined machine-readable data of this IP whitelist entry. optional, max 4096 bytes."""
-        return self._props["metadata"]
-
-    @property
-    def ip_net(self) -> str:
-        """an IP address or IP network range in CIDR notation (e.g. 10.1.1.1 or 10.1.0.0/16) of addresses that will be whitelisted to communicate with your tunnel endpoints"""
-        return self._props["ip_net"]
-
-
-class IPWhitelistEntryList(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["whitelist"] = [
-            IPWhitelistEntry(client, x) for x in props["whitelist"]
-        ]
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<IPWhitelistEntryList {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<IPWhitelistEntryList {}>".format(repr(self._props))
-
-    def __iter__(self):
-        return PagedIterator(self._client, self, "whitelist")
-
-    @property
-    def whitelist(self) -> Sequence[IPWhitelistEntry]:
-        """the list of all IP whitelist entries on this account"""
-        return self._props["whitelist"]
-
-    @property
-    def uri(self) -> str:
-        """URI of the IP whitelist API resource"""
-        return self._props["uri"]
-
-    @property
-    def next_page_uri(self) -> str:
-        """URI of the next page, or null if there is no next page"""
-        return self._props["next_page_uri"]
-
-
 class EndpointConfiguration(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["circuit_breaker"] = EndpointCircuitBreaker(
-            client, props["circuit_breaker"]
+        self._props["circuit_breaker"] = (
+            EndpointCircuitBreaker(client, props["circuit_breaker"])
+            if props["circuit_breaker"] is not None
+            else None
         )
-        self._props["compression"] = EndpointCompression(client, props["compression"])
-        self._props["request_headers"] = EndpointRequestHeaders(
-            client, props["request_headers"]
+        self._props["compression"] = (
+            EndpointCompression(client, props["compression"])
+            if props["compression"] is not None
+            else None
         )
-        self._props["response_headers"] = EndpointResponseHeaders(
-            client, props["response_headers"]
+        self._props["request_headers"] = (
+            EndpointRequestHeaders(client, props["request_headers"])
+            if props["request_headers"] is not None
+            else None
         )
-        self._props["ip_policy"] = EndpointIPPolicy(client, props["ip_policy"])
-        self._props["mutual_tls"] = EndpointMutualTLS(client, props["mutual_tls"])
-        self._props["tls_termination"] = EndpointTLSTermination(
-            client, props["tls_termination"]
+        self._props["response_headers"] = (
+            EndpointResponseHeaders(client, props["response_headers"])
+            if props["response_headers"] is not None
+            else None
         )
-        self._props["webhook_validation"] = EndpointWebhookValidation(
-            client, props["webhook_validation"]
+        self._props["ip_policy"] = (
+            EndpointIPPolicy(client, props["ip_policy"])
+            if props["ip_policy"] is not None
+            else None
         )
-        self._props["oauth"] = EndpointOAuth(client, props["oauth"])
-        self._props["logging"] = EndpointLogging(client, props["logging"])
-        self._props["saml"] = EndpointSAML(client, props["saml"])
-        self._props["oidc"] = EndpointOIDC(client, props["oidc"])
+        self._props["mutual_tls"] = (
+            EndpointMutualTLS(client, props["mutual_tls"])
+            if props["mutual_tls"] is not None
+            else None
+        )
+        self._props["tls_termination"] = (
+            EndpointTLSTermination(client, props["tls_termination"])
+            if props["tls_termination"] is not None
+            else None
+        )
+        self._props["webhook_validation"] = (
+            EndpointWebhookValidation(client, props["webhook_validation"])
+            if props["webhook_validation"] is not None
+            else None
+        )
+        self._props["oauth"] = (
+            EndpointOAuth(client, props["oauth"])
+            if props["oauth"] is not None
+            else None
+        )
+        self._props["logging"] = (
+            EndpointLogging(client, props["logging"])
+            if props["logging"] is not None
+            else None
+        )
+        self._props["saml"] = (
+            EndpointSAML(client, props["saml"]) if props["saml"] is not None else None
+        )
+        self._props["oidc"] = (
+            EndpointOIDC(client, props["oidc"]) if props["oidc"] is not None else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -1409,9 +650,11 @@ class EndpointConfigurationList(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["endpoint_configurations"] = [
-            EndpointConfiguration(client, x) for x in props["endpoint_configurations"]
-        ]
+        self._props["endpoint_configurations"] = (
+            [EndpointConfiguration(client, x) for x in props["endpoint_configurations"]]
+            if props["endpoint_configurations"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -1466,7 +709,7 @@ class EndpointWebhookValidation(object):
 
     @property
     def provider(self) -> str:
-        """a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers: ``SLACK``, ``SNS``, ``STRIPE``, ``GITHUB``, ``TWILIO``, ``SHOPIFY``, ``GITLAB``, ``INTERCOM``."""
+        """a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers: ``SLACK``, ``SNS``, ``STRIPE``, ``GITHUB``, ``TWILIO``, ``SHOPIFY``, ``GITLAB``, ``INTERCOM``, ``SENDGRID``."""
         return self._props["provider"]
 
     @property
@@ -1499,9 +742,11 @@ class EndpointMutualTLS(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["certificate_authorities"] = [
-            Ref(client, x) for x in props["certificate_authorities"]
-        ]
+        self._props["certificate_authorities"] = (
+            [Ref(client, x) for x in props["certificate_authorities"]]
+            if props["certificate_authorities"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -1582,7 +827,11 @@ class EndpointLogging(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["event_streams"] = [Ref(client, x) for x in props["event_streams"]]
+        self._props["event_streams"] = (
+            [Ref(client, x) for x in props["event_streams"]]
+            if props["event_streams"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -1693,7 +942,11 @@ class EndpointIPPolicy(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["ip_policies"] = [Ref(client, x) for x in props["ip_policies"]]
+        self._props["ip_policies"] = (
+            [Ref(client, x) for x in props["ip_policies"]]
+            if props["ip_policies"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -1788,7 +1041,11 @@ class EndpointOAuth(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["provider"] = EndpointOAuthProvider(client, props["provider"])
+        self._props["provider"] = (
+            EndpointOAuthProvider(client, props["provider"])
+            if props["provider"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -1839,10 +1096,26 @@ class EndpointOAuthProvider(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["github"] = EndpointOAuthGitHub(client, props["github"])
-        self._props["facebook"] = EndpointOAuthFacebook(client, props["facebook"])
-        self._props["microsoft"] = EndpointOAuthMicrosoft(client, props["microsoft"])
-        self._props["google"] = EndpointOAuthGoogle(client, props["google"])
+        self._props["github"] = (
+            EndpointOAuthGitHub(client, props["github"])
+            if props["github"] is not None
+            else None
+        )
+        self._props["facebook"] = (
+            EndpointOAuthFacebook(client, props["facebook"])
+            if props["facebook"] is not None
+            else None
+        )
+        self._props["microsoft"] = (
+            EndpointOAuthMicrosoft(client, props["microsoft"])
+            if props["microsoft"] is not None
+            else None
+        )
+        self._props["google"] = (
+            EndpointOAuthGoogle(client, props["google"])
+            if props["google"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -2128,6 +1401,11 @@ class EndpointSAML(object):
         """A public URL where the SP's metadata is hosted. If an IdP supports dynamic configuration, this is the URL it can use to retrieve the SP metadata."""
         return self._props["metadata_url"]
 
+    @property
+    def nameid_format(self) -> str:
+        """Defines the name identifier format the SP expects the IdP to use in its assertions to identify subjects. If unspecified, a default value of ``urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`` will be used. A subset of the allowed values enumerated by the SAML specification are supported."""
+        return self._props["nameid_format"]
+
 
 class EndpointSAMLMutate(object):
     def __init__(self, client, props):
@@ -2187,6 +1465,11 @@ class EndpointSAMLMutate(object):
     def authorized_groups(self) -> Sequence[str]:
         """If present, only users who are a member of one of the listed groups may access the target endpoint."""
         return self._props["authorized_groups"]
+
+    @property
+    def nameid_format(self) -> str:
+        """Defines the name identifier format the SP expects the IdP to use in its assertions to identify subjects. If unspecified, a default value of ``urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`` will be used. A subset of the allowed values enumerated by the SAML specification are supported."""
+        return self._props["nameid_format"]
 
 
 class EndpointOIDC(object):
@@ -2249,12 +1532,1043 @@ class EndpointOIDC(object):
         return self._props["scopes"]
 
 
+class EventStreamList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["event_streams"] = (
+            [EventStream(client, x) for x in props["event_streams"]]
+            if props["event_streams"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventStreamList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EventStreamList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "event_streams")
+
+    @property
+    def event_streams(self) -> Sequence[EventStream]:
+        """The list of all Event Streams on this account."""
+        return self._props["event_streams"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the Event Stream list API resource."""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page, or null if there is no next page."""
+        return self._props["next_page_uri"]
+
+
+class EventStream(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventStream {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EventStream {}>".format(repr(self._props))
+
+    def delete(
+        self,
+    ):
+        self._client.event_streams.delete(
+            id=self.id,
+        )
+
+    def update(
+        self,
+        metadata: str = None,
+        description: str = None,
+        fields: Sequence[str] = None,
+        destination_ids: Sequence[str] = None,
+        sampling_rate: float = None,
+    ):
+        self._client.event_streams.update(
+            id=self.id,
+            metadata=metadata,
+            description=description,
+            fields=fields,
+            destination_ids=destination_ids,
+            sampling_rate=sampling_rate,
+        )
+
+    @property
+    def id(self) -> str:
+        """Unique identifier for this Event Stream."""
+        return self._props["id"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the Event Stream API resource."""
+        return self._props["uri"]
+
+    @property
+    def created_at(self) -> str:
+        """Timestamp when the Event Stream was created, RFC 3339 format."""
+        return self._props["created_at"]
+
+    @property
+    def metadata(self) -> str:
+        """Arbitrary user-defined machine-readable data of this Event Stream. Optional, max 4096 bytes."""
+        return self._props["metadata"]
+
+    @property
+    def description(self) -> str:
+        """Human-readable description of the Event Stream. Optional, max 255 bytes."""
+        return self._props["description"]
+
+    @property
+    def fields(self) -> Sequence[str]:
+        """A list of protocol-specific fields you want to collect on each event."""
+        return self._props["fields"]
+
+    @property
+    def event_type(self) -> str:
+        """The protocol that determines which events will be collected. Supported values are ``tcp_connection_closed`` and ``http_request_complete``."""
+        return self._props["event_type"]
+
+    @property
+    def destination_ids(self) -> Sequence[str]:
+        """A list of Event Destination IDs which should be used for this Event Stream. Event Streams are required to have at least one Event Destination."""
+        return self._props["destination_ids"]
+
+    @property
+    def sampling_rate(self) -> float:
+        """The percentage of all events you would like to capture. Valid values range from 0.01, representing 1% of all events to 1.00, representing 100% of all events."""
+        return self._props["sampling_rate"]
+
+
+class EventDestination(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["target"] = (
+            EventTarget(client, props["target"])
+            if props["target"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventDestination {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EventDestination {}>".format(repr(self._props))
+
+    def delete(
+        self,
+    ):
+        self._client.event_destinations.delete(
+            id=self.id,
+        )
+
+    @property
+    def id(self) -> str:
+        """Unique identifier for this Event Destination."""
+        return self._props["id"]
+
+    @property
+    def metadata(self) -> str:
+        """Arbitrary user-defined machine-readable data of this Event Destination. Optional, max 4096 bytes."""
+        return self._props["metadata"]
+
+    @property
+    def created_at(self) -> str:
+        """Timestamp when the Event Destination was created, RFC 3339 format."""
+        return self._props["created_at"]
+
+    @property
+    def description(self) -> str:
+        """Human-readable description of the Event Destination. Optional, max 255 bytes."""
+        return self._props["description"]
+
+    @property
+    def format(self) -> str:
+        """The output format you would like to serialize events into when sending to their target. Currently the only accepted value is ``JSON``."""
+        return self._props["format"]
+
+    @property
+    def target(self) -> EventTarget:
+        """An object that encapsulates where and how to send your events. An event destination must contain exactly one of the following objects, leaving the rest null: ``kinesis``, ``firehose``, ``cloudwatch_logs``, or ``s3``."""
+        return self._props["target"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the Event Destination API resource."""
+        return self._props["uri"]
+
+
+class EventDestinationList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["event_destinations"] = (
+            [EventDestination(client, x) for x in props["event_destinations"]]
+            if props["event_destinations"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventDestinationList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EventDestinationList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "event_destinations")
+
+    @property
+    def event_destinations(self) -> Sequence[EventDestination]:
+        """The list of all Event Destinations on this account."""
+        return self._props["event_destinations"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the Event Destinations list API resource."""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page, or null if there is no next page."""
+        return self._props["next_page_uri"]
+
+
+class EventTarget(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["firehose"] = (
+            EventTargetFirehose(client, props["firehose"])
+            if props["firehose"] is not None
+            else None
+        )
+        self._props["kinesis"] = (
+            EventTargetKinesis(client, props["kinesis"])
+            if props["kinesis"] is not None
+            else None
+        )
+        self._props["cloudwatch_logs"] = (
+            EventTargetCloudwatchLogs(client, props["cloudwatch_logs"])
+            if props["cloudwatch_logs"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventTarget {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EventTarget {}>".format(repr(self._props))
+
+    @property
+    def firehose(self) -> EventTargetFirehose:
+        """Configuration used to send events to Amazon Kinesis Data Firehose."""
+        return self._props["firehose"]
+
+    @property
+    def kinesis(self) -> EventTargetKinesis:
+        """Configuration used to send events to Amazon Kinesis."""
+        return self._props["kinesis"]
+
+    @property
+    def cloudwatch_logs(self) -> EventTargetCloudwatchLogs:
+        """Configuration used to send events to Amazon CloudWatch Logs."""
+        return self._props["cloudwatch_logs"]
+
+
+class EventTargetFirehose(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["auth"] = (
+            AWSAuth(client, props["auth"]) if props["auth"] is not None else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventTargetFirehose {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EventTargetFirehose {}>".format(repr(self._props))
+
+    @property
+    def auth(self) -> AWSAuth:
+        """Configuration for how to authenticate into your AWS account. Exactly one of ``role`` or ``creds`` should be configured."""
+        return self._props["auth"]
+
+    @property
+    def delivery_stream_arn(self) -> str:
+        """An Amazon Resource Name specifying the Firehose delivery stream to deposit events into."""
+        return self._props["delivery_stream_arn"]
+
+
+class EventTargetKinesis(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["auth"] = (
+            AWSAuth(client, props["auth"]) if props["auth"] is not None else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventTargetKinesis {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EventTargetKinesis {}>".format(repr(self._props))
+
+    @property
+    def auth(self) -> AWSAuth:
+        """Configuration for how to authenticate into your AWS account. Exactly one of ``role`` or ``creds`` should be configured."""
+        return self._props["auth"]
+
+    @property
+    def stream_arn(self) -> str:
+        """An Amazon Resource Name specifying the Kinesis stream to deposit events into."""
+        return self._props["stream_arn"]
+
+
+class EventTargetCloudwatchLogs(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["auth"] = (
+            AWSAuth(client, props["auth"]) if props["auth"] is not None else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventTargetCloudwatchLogs {} {}>".format(
+                self.id, repr(self._props)
+            )
+        else:
+            return "<EventTargetCloudwatchLogs {}>".format(repr(self._props))
+
+    @property
+    def auth(self) -> AWSAuth:
+        """Configuration for how to authenticate into your AWS account. Exactly one of ``role`` or ``creds`` should be configured."""
+        return self._props["auth"]
+
+    @property
+    def log_group_arn(self) -> str:
+        """An Amazon Resource Name specifying the CloudWatch Logs group to deposit events into."""
+        return self._props["log_group_arn"]
+
+
+class AWSAuth(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["role"] = (
+            AWSRole(client, props["role"]) if props["role"] is not None else None
+        )
+        self._props["creds"] = (
+            AWSCredentials(client, props["creds"])
+            if props["creds"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<AWSAuth {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<AWSAuth {}>".format(repr(self._props))
+
+    @property
+    def role(self) -> AWSRole:
+        """A role for ngrok to assume on your behalf to deposit events into your AWS account."""
+        return self._props["role"]
+
+    @property
+    def creds(self) -> AWSCredentials:
+        """Credentials to your AWS account if you prefer ngrok to sign in with long-term access keys."""
+        return self._props["creds"]
+
+
+class AWSRole(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<AWSRole {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<AWSRole {}>".format(repr(self._props))
+
+    @property
+    def role_arn(self) -> str:
+        """An ARN that specifies the role that ngrok should use to deliver to the configured target."""
+        return self._props["role_arn"]
+
+
+class AWSCredentials(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<AWSCredentials {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<AWSCredentials {}>".format(repr(self._props))
+
+    @property
+    def aws_access_key_id(self) -> str:
+        """The ID portion of an AWS access key."""
+        return self._props["aws_access_key_id"]
+
+    @property
+    def aws_secret_access_key(self) -> str:
+        """The secret portion of an AWS access key."""
+        return self._props["aws_secret_access_key"]
+
+
+class EventSubscriptionList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["event_subscriptions"] = (
+            [EventSubscription(client, x) for x in props["event_subscriptions"]]
+            if props["event_subscriptions"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventSubscriptionList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EventSubscriptionList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "event_subscriptions")
+
+    @property
+    def event_subscriptions(self) -> Sequence[EventSubscription]:
+        """The list of all Event Subscriptions on this account."""
+        return self._props["event_subscriptions"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the Event Subscriptions list API resource."""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of next page, or null if there is no next page."""
+        return self._props["next_page_uri"]
+
+
+class EventSubscription(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["sources"] = (
+            [EventSource(client, x) for x in props["sources"]]
+            if props["sources"] is not None
+            else None
+        )
+        self._props["destinations"] = (
+            [Ref(client, x) for x in props["destinations"]]
+            if props["destinations"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventSubscription {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EventSubscription {}>".format(repr(self._props))
+
+    def delete(
+        self,
+    ):
+        self._client.event_subscriptions.delete(
+            id=self.id,
+        )
+
+    @property
+    def id(self) -> str:
+        """Unique identifier for this Event Subscription."""
+        return self._props["id"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the Event Subscription API resource."""
+        return self._props["uri"]
+
+    @property
+    def created_at(self) -> str:
+        """When the Event Subscription was created (RFC 3339 format)."""
+        return self._props["created_at"]
+
+    @property
+    def metadata(self) -> str:
+        """Arbitrary customer supplied information intended to be machine readable. Optional, max 4096 chars."""
+        return self._props["metadata"]
+
+    @property
+    def description(self) -> str:
+        """Arbitrary customer supplied information intended to be human readable. Optional, max 255 chars."""
+        return self._props["description"]
+
+    @property
+    def sources(self) -> Sequence[EventSource]:
+        """Sources containing the types for which this event subscription will trigger"""
+        return self._props["sources"]
+
+    @property
+    def destinations(self) -> Sequence[Ref]:
+        """Destinations to which these events will be sent"""
+        return self._props["destinations"]
+
+
+class EventSourceReplace(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventSourceReplace {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EventSourceReplace {}>".format(repr(self._props))
+
+    @property
+    def type(self) -> str:
+        """Type of event for which an event subscription will trigger"""
+        return self._props["type"]
+
+
+class EventSource(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventSource {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EventSource {}>".format(repr(self._props))
+
+    @property
+    def type(self) -> str:
+        """Type of event for which an event subscription will trigger"""
+        return self._props["type"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the Event Source API resource."""
+        return self._props["uri"]
+
+
+class EventSourceList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["sources"] = (
+            [EventSource(client, x) for x in props["sources"]]
+            if props["sources"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventSourceList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EventSourceList {}>".format(repr(self._props))
+
+    @property
+    def sources(self) -> Sequence[EventSource]:
+        """The list of all Event Sources for an Event Subscription"""
+        return self._props["sources"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the next page, or null if there is no next page."""
+        return self._props["uri"]
+
+
+class IPPolicy(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<IPPolicy {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<IPPolicy {}>".format(repr(self._props))
+
+    def delete(
+        self,
+    ):
+        self._client.ip_policies.delete(
+            id=self.id,
+        )
+
+    def update(
+        self,
+        description: str = None,
+        metadata: str = None,
+    ):
+        self._client.ip_policies.update(
+            id=self.id,
+            description=description,
+            metadata=metadata,
+        )
+
+    @property
+    def id(self) -> str:
+        """unique identifier for this IP policy"""
+        return self._props["id"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the IP Policy API resource"""
+        return self._props["uri"]
+
+    @property
+    def created_at(self) -> str:
+        """timestamp when the IP policy was created, RFC 3339 format"""
+        return self._props["created_at"]
+
+    @property
+    def description(self) -> str:
+        """human-readable description of the source IPs of this IP policy. optional, max 255 bytes."""
+        return self._props["description"]
+
+    @property
+    def metadata(self) -> str:
+        """arbitrary user-defined machine-readable data of this IP policy. optional, max 4096 bytes."""
+        return self._props["metadata"]
+
+    @property
+    def action(self) -> str:
+        """the IP policy action. Supported values are ``allow`` or ``deny``"""
+        return self._props["action"]
+
+
+class IPPolicyList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["ip_policies"] = (
+            [IPPolicy(client, x) for x in props["ip_policies"]]
+            if props["ip_policies"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<IPPolicyList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<IPPolicyList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "ip_policies")
+
+    @property
+    def ip_policies(self) -> Sequence[IPPolicy]:
+        """the list of all IP policies on this account"""
+        return self._props["ip_policies"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the IP policy list API resource"""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page, or null if there is no next page"""
+        return self._props["next_page_uri"]
+
+
+class IPPolicyRule(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["ip_policy"] = (
+            Ref(client, props["ip_policy"]) if props["ip_policy"] is not None else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<IPPolicyRule {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<IPPolicyRule {}>".format(repr(self._props))
+
+    def delete(
+        self,
+    ):
+        self._client.ip_policy_rules.delete(
+            id=self.id,
+        )
+
+    def update(
+        self,
+        description: str = None,
+        metadata: str = None,
+        cidr: str = None,
+    ):
+        self._client.ip_policy_rules.update(
+            id=self.id,
+            description=description,
+            metadata=metadata,
+            cidr=cidr,
+        )
+
+    @property
+    def id(self) -> str:
+        """unique identifier for this IP policy rule"""
+        return self._props["id"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the IP policy rule API resource"""
+        return self._props["uri"]
+
+    @property
+    def created_at(self) -> str:
+        """timestamp when the IP policy rule was created, RFC 3339 format"""
+        return self._props["created_at"]
+
+    @property
+    def description(self) -> str:
+        """human-readable description of the source IPs of this IP rule. optional, max 255 bytes."""
+        return self._props["description"]
+
+    @property
+    def metadata(self) -> str:
+        """arbitrary user-defined machine-readable data of this IP policy rule. optional, max 4096 bytes."""
+        return self._props["metadata"]
+
+    @property
+    def cidr(self) -> str:
+        """an IP or IP range specified in CIDR notation. IPv4 and IPv6 are both supported."""
+        return self._props["cidr"]
+
+    @property
+    def ip_policy(self) -> Ref:
+        """object describing the IP policy this IP Policy Rule belongs to"""
+        return self._props["ip_policy"]
+
+
+class IPPolicyRuleList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["ip_policy_rules"] = (
+            [IPPolicyRule(client, x) for x in props["ip_policy_rules"]]
+            if props["ip_policy_rules"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<IPPolicyRuleList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<IPPolicyRuleList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "ip_policy_rules")
+
+    @property
+    def ip_policy_rules(self) -> Sequence[IPPolicyRule]:
+        """the list of all IP policy rules on this account"""
+        return self._props["ip_policy_rules"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the IP policy rule list API resource"""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page, or null if there is no next page"""
+        return self._props["next_page_uri"]
+
+
+class IPRestriction(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["ip_policies"] = (
+            [Ref(client, x) for x in props["ip_policies"]]
+            if props["ip_policies"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<IPRestriction {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<IPRestriction {}>".format(repr(self._props))
+
+    def delete(
+        self,
+    ):
+        self._client.ip_restrictions.delete(
+            id=self.id,
+        )
+
+    @property
+    def id(self) -> str:
+        """unique identifier for this IP restriction"""
+        return self._props["id"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the IP restriction API resource"""
+        return self._props["uri"]
+
+    @property
+    def created_at(self) -> str:
+        """timestamp when the IP restriction was created, RFC 3339 format"""
+        return self._props["created_at"]
+
+    @property
+    def description(self) -> str:
+        """human-readable description of this IP restriction. optional, max 255 bytes."""
+        return self._props["description"]
+
+    @property
+    def metadata(self) -> str:
+        """arbitrary user-defined machine-readable data of this IP restriction. optional, max 4096 bytes."""
+        return self._props["metadata"]
+
+    @property
+    def enforced(self) -> bool:
+        """true if the IP restriction will be enforced. if false, only warnings will be issued"""
+        return self._props["enforced"]
+
+    @property
+    def type(self) -> str:
+        """the type of IP restriction. this defines what traffic will be restricted with the attached policies. four values are currently supported: ``dashboard``, ``api``, ``agent``, and ``endpoints``"""
+        return self._props["type"]
+
+    @property
+    def ip_policies(self) -> Sequence[Ref]:
+        """the set of IP policies that are used to enforce the restriction"""
+        return self._props["ip_policies"]
+
+
+class IPRestrictionList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["ip_restrictions"] = (
+            [IPRestriction(client, x) for x in props["ip_restrictions"]]
+            if props["ip_restrictions"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<IPRestrictionList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<IPRestrictionList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "ip_restrictions")
+
+    @property
+    def ip_restrictions(self) -> Sequence[IPRestriction]:
+        """the list of all IP restrictions on this account"""
+        return self._props["ip_restrictions"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the IP resrtrictions list API resource"""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page, or null if there is no next page"""
+        return self._props["next_page_uri"]
+
+
+class IPWhitelistEntry(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<IPWhitelistEntry {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<IPWhitelistEntry {}>".format(repr(self._props))
+
+    def delete(
+        self,
+    ):
+        self._client.ip_whitelist.delete(
+            id=self.id,
+        )
+
+    def update(
+        self,
+        description: str = None,
+        metadata: str = None,
+    ):
+        self._client.ip_whitelist.update(
+            id=self.id,
+            description=description,
+            metadata=metadata,
+        )
+
+    @property
+    def id(self) -> str:
+        """unique identifier for this IP whitelist entry"""
+        return self._props["id"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the IP whitelist entry API resource"""
+        return self._props["uri"]
+
+    @property
+    def created_at(self) -> str:
+        """timestamp when the IP whitelist entry was created, RFC 3339 format"""
+        return self._props["created_at"]
+
+    @property
+    def description(self) -> str:
+        """human-readable description of the source IPs for this IP whitelist entry. optional, max 255 bytes."""
+        return self._props["description"]
+
+    @property
+    def metadata(self) -> str:
+        """arbitrary user-defined machine-readable data of this IP whitelist entry. optional, max 4096 bytes."""
+        return self._props["metadata"]
+
+    @property
+    def ip_net(self) -> str:
+        """an IP address or IP network range in CIDR notation (e.g. 10.1.1.1 or 10.1.0.0/16) of addresses that will be whitelisted to communicate with your tunnel endpoints"""
+        return self._props["ip_net"]
+
+
+class IPWhitelistEntryList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["whitelist"] = (
+            [IPWhitelistEntry(client, x) for x in props["whitelist"]]
+            if props["whitelist"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<IPWhitelistEntryList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<IPWhitelistEntryList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "whitelist")
+
+    @property
+    def whitelist(self) -> Sequence[IPWhitelistEntry]:
+        """the list of all IP whitelist entries on this account"""
+        return self._props["whitelist"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the IP whitelist API resource"""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page, or null if there is no next page"""
+        return self._props["next_page_uri"]
+
+
 class ReservedAddr(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["endpoint_configuration"] = Ref(
-            client, props["endpoint_configuration"]
+        self._props["endpoint_configuration"] = (
+            Ref(client, props["endpoint_configuration"])
+            if props["endpoint_configuration"] is not None
+            else None
         )
 
     def __eq__(self, other):
@@ -2318,9 +2632,11 @@ class ReservedAddrList(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["reserved_addrs"] = [
-            ReservedAddr(client, x) for x in props["reserved_addrs"]
-        ]
+        self._props["reserved_addrs"] = (
+            [ReservedAddr(client, x) for x in props["reserved_addrs"]]
+            if props["reserved_addrs"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -2354,18 +2670,30 @@ class ReservedDomain(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["http_endpoint_configuration"] = Ref(
-            client, props["http_endpoint_configuration"]
+        self._props["http_endpoint_configuration"] = (
+            Ref(client, props["http_endpoint_configuration"])
+            if props["http_endpoint_configuration"] is not None
+            else None
         )
-        self._props["https_endpoint_configuration"] = Ref(
-            client, props["https_endpoint_configuration"]
+        self._props["https_endpoint_configuration"] = (
+            Ref(client, props["https_endpoint_configuration"])
+            if props["https_endpoint_configuration"] is not None
+            else None
         )
-        self._props["certificate"] = Ref(client, props["certificate"])
-        self._props["certificate_management_policy"] = ReservedDomainCertPolicy(
-            client, props["certificate_management_policy"]
+        self._props["certificate"] = (
+            Ref(client, props["certificate"])
+            if props["certificate"] is not None
+            else None
         )
-        self._props["certificate_management_status"] = ReservedDomainCertStatus(
-            client, props["certificate_management_status"]
+        self._props["certificate_management_policy"] = (
+            ReservedDomainCertPolicy(client, props["certificate_management_policy"])
+            if props["certificate_management_policy"] is not None
+            else None
+        )
+        self._props["certificate_management_status"] = (
+            ReservedDomainCertStatus(client, props["certificate_management_status"])
+            if props["certificate_management_status"] is not None
+            else None
         )
 
     def __eq__(self, other):
@@ -2454,9 +2782,11 @@ class ReservedDomainList(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["reserved_domains"] = [
-            ReservedDomain(client, x) for x in props["reserved_domains"]
-        ]
+        self._props["reserved_domains"] = (
+            [ReservedDomain(client, x) for x in props["reserved_domains"]]
+            if props["reserved_domains"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -2515,8 +2845,10 @@ class ReservedDomainCertStatus(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["provisioning_job"] = ReservedDomainCertJob(
-            client, props["provisioning_job"]
+        self._props["provisioning_job"] = (
+            ReservedDomainCertJob(client, props["provisioning_job"])
+            if props["provisioning_job"] is not None
+            else None
         )
 
     def __eq__(self, other):
@@ -2570,9 +2902,11 @@ class ReservedDomainCertJob(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["ns_targets"] = [
-            ReservedDomainCertNSTarget(client, x) for x in props["ns_targets"]
-        ]
+        self._props["ns_targets"] = (
+            [ReservedDomainCertNSTarget(client, x) for x in props["ns_targets"]]
+            if props["ns_targets"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -2681,10 +3015,14 @@ class SSHCertificateAuthorityList(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["ssh_certificate_authorities"] = [
-            SSHCertificateAuthority(client, x)
-            for x in props["ssh_certificate_authorities"]
-        ]
+        self._props["ssh_certificate_authorities"] = (
+            [
+                SSHCertificateAuthority(client, x)
+                for x in props["ssh_certificate_authorities"]
+            ]
+            if props["ssh_certificate_authorities"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -2790,9 +3128,11 @@ class SSHCredentialList(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["ssh_credentials"] = [
-            SSHCredential(client, x) for x in props["ssh_credentials"]
-        ]
+        self._props["ssh_credentials"] = (
+            [SSHCredential(client, x) for x in props["ssh_credentials"]]
+            if props["ssh_credentials"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -2919,9 +3259,11 @@ class SSHHostCertificateList(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["ssh_host_certificates"] = [
-            SSHHostCertificate(client, x) for x in props["ssh_host_certificates"]
-        ]
+        self._props["ssh_host_certificates"] = (
+            [SSHHostCertificate(client, x) for x in props["ssh_host_certificates"]]
+            if props["ssh_host_certificates"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -3058,9 +3400,11 @@ class SSHUserCertificateList(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["ssh_user_certificates"] = [
-            SSHUserCertificate(client, x) for x in props["ssh_user_certificates"]
-        ]
+        self._props["ssh_user_certificates"] = (
+            [SSHUserCertificate(client, x) for x in props["ssh_user_certificates"]]
+            if props["ssh_user_certificates"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -3094,8 +3438,10 @@ class TLSCertificate(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["subject_alternative_names"] = TLSCertificateSANs(
-            client, props["subject_alternative_names"]
+        self._props["subject_alternative_names"] = (
+            TLSCertificateSANs(client, props["subject_alternative_names"])
+            if props["subject_alternative_names"] is not None
+            else None
         )
 
     def __eq__(self, other):
@@ -3235,9 +3581,11 @@ class TLSCertificateList(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["tls_certificates"] = [
-            TLSCertificate(client, x) for x in props["tls_certificates"]
-        ]
+        self._props["tls_certificates"] = (
+            [TLSCertificate(client, x) for x in props["tls_certificates"]]
+            if props["tls_certificates"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -3296,7 +3644,11 @@ class TunnelSession(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["credential"] = Ref(client, props["credential"])
+        self._props["credential"] = (
+            Ref(client, props["credential"])
+            if props["credential"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -3362,9 +3714,11 @@ class TunnelSessionList(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["tunnel_sessions"] = [
-            TunnelSession(client, x) for x in props["tunnel_sessions"]
-        ]
+        self._props["tunnel_sessions"] = (
+            [TunnelSession(client, x) for x in props["tunnel_sessions"]]
+            if props["tunnel_sessions"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -3398,7 +3752,11 @@ class Tunnel(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["tunnel_session"] = Ref(client, props["tunnel_session"])
+        self._props["tunnel_session"] = (
+            Ref(client, props["tunnel_session"])
+            if props["tunnel_session"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -3449,7 +3807,11 @@ class TunnelList(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["tunnels"] = [Tunnel(client, x) for x in props["tunnels"]]
+        self._props["tunnels"] = (
+            [Tunnel(client, x) for x in props["tunnels"]]
+            if props["tunnels"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props

@@ -2,10 +2,10 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Compression Module" href="endpoint_compression_module.html" /><link rel="prev" title="Logging Module" href="endpoint_logging_module.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="IP Policies" href="ip_policies.html" /><link rel="prev" title="Event Subscriptions" href="event_subscriptions.html" />
 
     <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
-        <title>Circuit Breaker Module - ngrok-api documentation</title>
+        <title>Event Sources - ngrok-api documentation</title>
       <link rel="stylesheet" href="_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
     <link rel="stylesheet" href="_static/pygments.css">
     <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css">
@@ -123,13 +123,13 @@
 <li class="toctree-l1"><a class="reference internal" href="event_streams.html">Event Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_destinations.html">Event Destinations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_subscriptions.html">Event Subscriptions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="event_sources.html">Event Sources</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Event Sources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policies.html">IP Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policy_rules.html">IP Policy Rules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_restrictions.html">IP Restrictions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_whitelist.html">IP Whitelist</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_logging_module.html">Logging Module</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Circuit Breaker Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_circuit_breaker_module.html">Circuit Breaker Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_compression_module.html">Compression Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_tls_termination_module.html">TLS Termination Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_ip_policy_module.html">IP Policy Module</a></li>
@@ -163,53 +163,97 @@
         <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        <div class="section" id="circuit-breaker-module">
-<h1>Circuit Breaker Module<a class="headerlink" href="#circuit-breaker-module" title="Permalink to this headline">¶</a></h1>
+        <div class="section" id="event-sources">
+<h1>Event Sources<a class="headerlink" href="#event-sources" title="Permalink to this headline">¶</a></h1>
 <p>Do not construct this object directly, instead access the
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">endpoint_circuit_breaker_module</span></code> property of an <a class="reference internal" href="client.html#ngrok.Client" title="ngrok.Client"><code class="xref py py-class docutils literal notranslate"><span class="pre">ngrok.Client</span></code></a> object.</p>
+<a class="reference internal" href="client.html#ngrok.Client.event_sources" title="ngrok.Client.event_sources"><code class="xref py py-attr docutils literal notranslate"><span class="pre">event_sources</span></code></a> property of an <a class="reference internal" href="client.html#ngrok.Client" title="ngrok.Client"><code class="xref py py-class docutils literal notranslate"><span class="pre">ngrok.Client</span></code></a> object.</p>
 <span class="target" id="module-ngrok.services"></span><dl class="py class">
-<dt id="ngrok.services.EndpointCircuitBreakerModuleClient">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.services.</span></code><code class="sig-name descname"><span class="pre">EndpointCircuitBreakerModuleClient</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EndpointCircuitBreakerModuleClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EndpointCircuitBreakerModuleClient" title="Permalink to this definition">¶</a></dt>
+<dt id="ngrok.services.EventSourcesClient">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.services.</span></code><code class="sig-name descname"><span class="pre">EventSourcesClient</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EventSourcesClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EventSourcesClient" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py method">
-<dt id="ngrok.services.EndpointCircuitBreakerModuleClient.delete">
-<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EndpointCircuitBreakerModuleClient.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EndpointCircuitBreakerModuleClient.delete" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
-</dd>
-</dl>
-<p><a class="reference external" href="https://ngrok.com/docs/api#api-endpoint-circuit-breaker-module-delete">https://ngrok.com/docs/api#api-endpoint-circuit-breaker-module-delete</a></p>
-</dd></dl>
-<dl class="py method">
-<dt id="ngrok.services.EndpointCircuitBreakerModuleClient.get">
-<code class="sig-name descname"><span class="pre">get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EndpointCircuitBreakerModuleClient.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EndpointCircuitBreakerModuleClient.get" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
-</dd>
-</dl>
-<p><a class="reference external" href="https://ngrok.com/docs/api#api-endpoint-circuit-breaker-module-get">https://ngrok.com/docs/api#api-endpoint-circuit-breaker-module-get</a></p>
+<dt id="ngrok.services.EventSourcesClient.create">
+<code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subscription_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EventSourcesClient.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EventSourcesClient.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an additional type for which this event subscription will trigger</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointCircuitBreaker" title="ngrok.datatypes.EndpointCircuitBreaker"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointCircuitBreaker</span></code></a></p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="ngrok.services.EndpointCircuitBreakerModuleClient.replace">
-<code class="sig-name descname"><span class="pre">replace</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EndpointCircuitBreakerModuleClient.replace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EndpointCircuitBreakerModuleClient.replace" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
-<li><p><strong>module</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointCircuitBreaker" title="ngrok.datatypes.EndpointCircuitBreaker"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointCircuitBreaker</span></code></a>]) – </p></li>
+<li><p><strong>subscription_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – The unique identifier for the Event Subscription that this Event Source is attached to.</p></li>
+<li><p><strong>type</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Type of event for which an event subscription will trigger</p></li>
 </ul>
 </dd>
 </dl>
-<p><a class="reference external" href="https://ngrok.com/docs/api#api-endpoint-circuit-breaker-module-replace">https://ngrok.com/docs/api#api-endpoint-circuit-breaker-module-replace</a></p>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-event-sources-create">https://ngrok.com/docs/api#api-event-sources-create</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointCircuitBreaker" title="ngrok.datatypes.EndpointCircuitBreaker"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointCircuitBreaker</span></code></a></p>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventSource" title="ngrok.datatypes.EventSource"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventSource</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.services.EventSourcesClient.delete">
+<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subscription_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EventSourcesClient.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EventSourcesClient.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a type for which this event subscription will trigger</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subscription_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – The unique identifier for the Event Subscription that this Event Source is attached to.</p></li>
+<li><p><strong>type</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Type of event for which an event subscription will trigger</p></li>
+</ul>
+</dd>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-event-sources-delete">https://ngrok.com/docs/api#api-event-sources-delete</a></p>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.services.EventSourcesClient.get">
+<code class="sig-name descname"><span class="pre">get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subscription_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EventSourcesClient.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EventSourcesClient.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the details for a given type that triggers for the given event subscription</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subscription_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – The unique identifier for the Event Subscription that this Event Source is attached to.</p></li>
+<li><p><strong>type</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Type of event for which an event subscription will trigger</p></li>
+</ul>
+</dd>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-event-sources-get">https://ngrok.com/docs/api#api-event-sources-get</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventSource" title="ngrok.datatypes.EventSource"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventSource</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.services.EventSourcesClient.list">
+<code class="sig-name descname"><span class="pre">list</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subscription_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EventSourcesClient.list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EventSourcesClient.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the types for which this event subscription will trigger</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>subscription_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – The unique identifier for the Event Subscription that this Event Source is attached to.</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-event-sources-list">https://ngrok.com/docs/api#api-event-sources-list</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventSourceList" title="ngrok.datatypes.EventSourceList"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventSourceList</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.services.EventSourcesClient.update">
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subscription_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EventSourcesClient.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EventSourcesClient.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the type for which this event subscription will trigger</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subscription_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – The unique identifier for the Event Subscription that this Event Source is attached to.</p></li>
+<li><p><strong>type</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Type of event for which an event subscription will trigger</p></li>
+</ul>
+</dd>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-event-sources-update">https://ngrok.com/docs/api#api-event-sources-update</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventSource" title="ngrok.datatypes.EventSource"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventSource</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -220,23 +264,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="endpoint_compression_module.html">
+          <a class="next-page" href="ip_policies.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Compression Module</div>
+                <div class="title">IP Policies</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="endpoint_logging_module.html">
+          <a class="prev-page" href="event_subscriptions.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Logging Module</div>
+                <div class="title">Event Subscriptions</div>
                 
               </div>
             </a>
@@ -250,7 +294,7 @@
               <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
               <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
             |
-            <a class="muted-link" href="_sources/endpoint_circuit_breaker_module.rst.txt"
+            <a class="muted-link" href="_sources/event_sources.rst.txt"
                rel="nofollow">
               Show Source
             </a>

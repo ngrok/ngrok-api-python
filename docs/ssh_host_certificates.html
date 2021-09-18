@@ -119,13 +119,15 @@
 <li class="toctree-l1"><a class="reference internal" href="api_keys.html">API Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="certificate_authorities.html">Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Tunnel Credentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoint_configurations.html">Endpoint Configurations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_streams.html">Event Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_destinations.html">Event Destinations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event_subscriptions.html">Event Subscriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event_sources.html">Event Sources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policies.html">IP Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policy_rules.html">IP Policy Rules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_restrictions.html">IP Restrictions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_whitelist.html">IP Whitelist</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_configurations.html">Endpoint Configurations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_logging_module.html">Logging Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_circuit_breaker_module.html">Circuit Breaker Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_compression_module.html">Compression Module</a></li>
@@ -168,7 +170,10 @@
 <span class="target" id="module-ngrok.services"></span><dl class="py class">
 <dt id="ngrok.services.SSHHostCertificatesClient">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.services.</span></code><code class="sig-name descname"><span class="pre">SSHHostCertificatesClient</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#SSHHostCertificatesClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.SSHHostCertificatesClient" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="py method">
+<dd><p>SSH Host Certificates along with the corresponding private key allows an SSH
+server to assert its authenticity to connecting SSH clients who trust the
+SSH Certificate Authority that was used to sign the certificate.</p>
+<dl class="py method">
 <dt id="ngrok.services.SSHHostCertificatesClient.create">
 <code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssh_certificate_authority_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">public_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">principals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_until</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#SSHHostCertificatesClient.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.SSHHostCertificatesClient.create" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new SSH Host Certificate</p>

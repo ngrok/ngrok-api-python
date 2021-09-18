@@ -41,10 +41,10 @@ object. That's it!
     policy = ng.ip_policies.create(action="allow")
     for cidr in ["24.0.0.0/8", "12.0.0.0/8"]:
         ng.ip_policy_rules.create(cidr=cidr, ip_policy_id=policy.id)
- 
 
-Transparent Paging
-------------------
+
+Automatic Paging
+----------------
 
 The ngrok API pages all list resources but this library abstracts that away
 from you. All response objects from any ``list()`` methods return an object that
@@ -120,13 +120,15 @@ API Reference
   api_keys
   certificate_authorities
   credentials
+  endpoint_configurations
   event_streams
   event_destinations
+  event_subscriptions
+  event_sources
   ip_policies
   ip_policy_rules
   ip_restrictions
   ip_whitelist
-  endpoint_configurations
   endpoint_logging_module
   endpoint_circuit_breaker_module
   endpoint_compression_module
