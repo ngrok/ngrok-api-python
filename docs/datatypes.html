@@ -116,6 +116,7 @@
 <p class="caption"><span class="caption-text">Services</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="abuse_reports.html">Abuse Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agent_ingresses.html">Agent Ingresses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_keys.html">API Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="certificate_authorities.html">Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Tunnel Credentials</a></li>
@@ -127,7 +128,6 @@
 <li class="toctree-l1"><a class="reference internal" href="ip_policies.html">IP Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policy_rules.html">IP Policy Rules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_restrictions.html">IP Restrictions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ip_whitelist.html">IP Whitelist</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_logging_module.html">Logging Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_circuit_breaker_module.html">Circuit Breaker Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_compression_module.html">Compression Module</a></li>
@@ -425,6 +425,132 @@
 <dt id="ngrok.datatypes.AbuseReportHostname.status">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">status</span></code><a class="headerlink" href="#ngrok.datatypes.AbuseReportHostname.status" title="Permalink to this definition">¶</a></dt>
 <dd><p>indicates what action ngrok has taken against the hostname. one of <code class="docutils literal notranslate"><span class="pre">PENDING</span></code>, <code class="docutils literal notranslate"><span class="pre">BANNED</span></code>, <code class="docutils literal notranslate"><span class="pre">UNBANNED</span></code>, or <code class="docutils literal notranslate"><span class="pre">IGNORE</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="ngrok.datatypes.AgentIngress">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">AgentIngress</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#AgentIngress"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.AgentIngress" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="ngrok.datatypes.AgentIngress.created_at">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">created_at</span></code><a class="headerlink" href="#ngrok.datatypes.AgentIngress.created_at" title="Permalink to this definition">¶</a></dt>
+<dd><p>timestamp when the Agent Ingress was created, RFC 3339 format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.AgentIngress.delete">
+<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#AgentIngress.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.AgentIngress.delete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.AgentIngress.description">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">description</span></code><a class="headerlink" href="#ngrok.datatypes.AgentIngress.description" title="Permalink to this definition">¶</a></dt>
+<dd><p>human-readable description of the use of this Agent Ingress. optional, max 255 bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.AgentIngress.domain">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">domain</span></code><a class="headerlink" href="#ngrok.datatypes.AgentIngress.domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>the domain that you own to be used as the base domain name to generate regional agent ingress domains.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.AgentIngress.id">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">id</span></code><a class="headerlink" href="#ngrok.datatypes.AgentIngress.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>unique Agent Ingress resource identifier</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.AgentIngress.metadata">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">metadata</span></code><a class="headerlink" href="#ngrok.datatypes.AgentIngress.metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>arbitrary user-defined machine-readable data of this Agent Ingress. optional, max 4096 bytes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.AgentIngress.ns_targets">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ns_targets</span></code><a class="headerlink" href="#ngrok.datatypes.AgentIngress.ns_targets" title="Permalink to this definition">¶</a></dt>
+<dd><p>a list of target values to use as the values of NS records for the domain property these values will delegate control over the domain to ngrok</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.AgentIngress.region_domains">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">region_domains</span></code><a class="headerlink" href="#ngrok.datatypes.AgentIngress.region_domains" title="Permalink to this definition">¶</a></dt>
+<dd><p>a list of regional agent ingress domains that are subdomains of the value of domain this value may increase over time as ngrok adds more regions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.AgentIngress.update">
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#AgentIngress.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.AgentIngress.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.AgentIngress.uri">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">uri</span></code><a class="headerlink" href="#ngrok.datatypes.AgentIngress.uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>URI to the API resource of this Agent ingress</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="ngrok.datatypes.AgentIngressList">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">AgentIngressList</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#AgentIngressList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.AgentIngressList" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="ngrok.datatypes.AgentIngressList.ingresses">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ingresses</span></code><a class="headerlink" href="#ngrok.datatypes.AgentIngressList.ingresses" title="Permalink to this definition">¶</a></dt>
+<dd><p>the list of Agent Ingresses owned by this account</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<a class="reference internal" href="#ngrok.datatypes.AgentIngress" title="ngrok.datatypes.AgentIngress"><code class="xref py py-class docutils literal notranslate"><span class="pre">AgentIngress</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.AgentIngressList.next_page_uri">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">next_page_uri</span></code><a class="headerlink" href="#ngrok.datatypes.AgentIngressList.next_page_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>URI of the next page, or null if there is no next page</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.AgentIngressList.uri">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">uri</span></code><a class="headerlink" href="#ngrok.datatypes.AgentIngressList.uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>URI of the Agent Ingress list API resource</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -1975,7 +2101,7 @@
 <dl class="py method">
 <dt id="ngrok.datatypes.EndpointWebhookValidation.provider">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">provider</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointWebhookValidation.provider" title="Permalink to this definition">¶</a></dt>
-<dd><p>a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers: <code class="docutils literal notranslate"><span class="pre">SLACK</span></code>, <code class="docutils literal notranslate"><span class="pre">SNS</span></code>, <code class="docutils literal notranslate"><span class="pre">STRIPE</span></code>, <code class="docutils literal notranslate"><span class="pre">GITHUB</span></code>, <code class="docutils literal notranslate"><span class="pre">TWILIO</span></code>, <code class="docutils literal notranslate"><span class="pre">SHOPIFY</span></code>, <code class="docutils literal notranslate"><span class="pre">GITLAB</span></code>, <code class="docutils literal notranslate"><span class="pre">INTERCOM</span></code>, <code class="docutils literal notranslate"><span class="pre">SENDGRID</span></code>.</p>
+<dd><p>a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers: <code class="docutils literal notranslate"><span class="pre">SLACK</span></code>, <code class="docutils literal notranslate"><span class="pre">SNS</span></code>, <code class="docutils literal notranslate"><span class="pre">STRIPE</span></code>, <code class="docutils literal notranslate"><span class="pre">GITHUB</span></code>, <code class="docutils literal notranslate"><span class="pre">TWILIO</span></code>, <code class="docutils literal notranslate"><span class="pre">SHOPIFY</span></code>, <code class="docutils literal notranslate"><span class="pre">GITLAB</span></code>, <code class="docutils literal notranslate"><span class="pre">INTERCOM</span></code>, <code class="docutils literal notranslate"><span class="pre">SENDGRID</span></code>, <code class="docutils literal notranslate"><span class="pre">XERO</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -2866,112 +2992,6 @@
 </dd></dl>
 </dd></dl>
 <dl class="py class">
-<dt id="ngrok.datatypes.IPWhitelistEntry">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">IPWhitelistEntry</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#IPWhitelistEntry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.IPWhitelistEntry" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="py method">
-<dt id="ngrok.datatypes.IPWhitelistEntry.created_at">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">created_at</span></code><a class="headerlink" href="#ngrok.datatypes.IPWhitelistEntry.created_at" title="Permalink to this definition">¶</a></dt>
-<dd><p>timestamp when the IP whitelist entry was created, RFC 3339 format</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="ngrok.datatypes.IPWhitelistEntry.delete">
-<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#IPWhitelistEntry.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.IPWhitelistEntry.delete" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py method">
-<dt id="ngrok.datatypes.IPWhitelistEntry.description">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">description</span></code><a class="headerlink" href="#ngrok.datatypes.IPWhitelistEntry.description" title="Permalink to this definition">¶</a></dt>
-<dd><p>human-readable description of the source IPs for this IP whitelist entry. optional, max 255 bytes.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="ngrok.datatypes.IPWhitelistEntry.id">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">id</span></code><a class="headerlink" href="#ngrok.datatypes.IPWhitelistEntry.id" title="Permalink to this definition">¶</a></dt>
-<dd><p>unique identifier for this IP whitelist entry</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="ngrok.datatypes.IPWhitelistEntry.ip_net">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ip_net</span></code><a class="headerlink" href="#ngrok.datatypes.IPWhitelistEntry.ip_net" title="Permalink to this definition">¶</a></dt>
-<dd><p>an IP address or IP network range in CIDR notation (e.g. 10.1.1.1 or 10.1.0.0/16) of addresses that will be whitelisted to communicate with your tunnel endpoints</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="ngrok.datatypes.IPWhitelistEntry.metadata">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">metadata</span></code><a class="headerlink" href="#ngrok.datatypes.IPWhitelistEntry.metadata" title="Permalink to this definition">¶</a></dt>
-<dd><p>arbitrary user-defined machine-readable data of this IP whitelist entry. optional, max 4096 bytes.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="ngrok.datatypes.IPWhitelistEntry.update">
-<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#IPWhitelistEntry.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.IPWhitelistEntry.update" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py method">
-<dt id="ngrok.datatypes.IPWhitelistEntry.uri">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">uri</span></code><a class="headerlink" href="#ngrok.datatypes.IPWhitelistEntry.uri" title="Permalink to this definition">¶</a></dt>
-<dd><p>URI of the IP whitelist entry API resource</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt id="ngrok.datatypes.IPWhitelistEntryList">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">IPWhitelistEntryList</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#IPWhitelistEntryList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.IPWhitelistEntryList" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="py method">
-<dt id="ngrok.datatypes.IPWhitelistEntryList.next_page_uri">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">next_page_uri</span></code><a class="headerlink" href="#ngrok.datatypes.IPWhitelistEntryList.next_page_uri" title="Permalink to this definition">¶</a></dt>
-<dd><p>URI of the next page, or null if there is no next page</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="ngrok.datatypes.IPWhitelistEntryList.uri">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">uri</span></code><a class="headerlink" href="#ngrok.datatypes.IPWhitelistEntryList.uri" title="Permalink to this definition">¶</a></dt>
-<dd><p>URI of the IP whitelist API resource</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="ngrok.datatypes.IPWhitelistEntryList.whitelist">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">whitelist</span></code><a class="headerlink" href="#ngrok.datatypes.IPWhitelistEntryList.whitelist" title="Permalink to this definition">¶</a></dt>
-<dd><p>the list of all IP whitelist entries on this account</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<a class="reference internal" href="#ngrok.datatypes.IPWhitelistEntry" title="ngrok.datatypes.IPWhitelistEntry"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPWhitelistEntry</span></code></a>]</p>
-</dd>
-</dl>
-</dd></dl>
-</dd></dl>
-<dl class="py class">
 <dt id="ngrok.datatypes.Ref">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">Ref</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#Ref"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.Ref" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py method">
@@ -3121,6 +3141,16 @@
 <dt id="ngrok.datatypes.ReservedDomain">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">ReservedDomain</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#ReservedDomain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.ReservedDomain" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py method">
+<dt id="ngrok.datatypes.ReservedDomain.acme_challenge_cname_target">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">acme_challenge_cname_target</span></code><a class="headerlink" href="#ngrok.datatypes.ReservedDomain.acme_challenge_cname_target" title="Permalink to this definition">¶</a></dt>
+<dd><p>DNS CNAME target for the host _acme-challenge.example.com, where example.com is your reserved domain name. This is required to issue certificates for wildcard, non-ngrok reserved domains. Must be null for non-wildcard domains and ngrok subdomains.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
 <dt id="ngrok.datatypes.ReservedDomain.certificate">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">certificate</span></code><a class="headerlink" href="#ngrok.datatypes.ReservedDomain.certificate" title="Permalink to this definition">¶</a></dt>
 <dd><p>object referencing the TLS certificate used for connections to this domain. This can be either a user-uploaded certificate, the most recently issued automatic one, or null otherwise.</p>
@@ -3279,16 +3309,6 @@
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt id="ngrok.datatypes.ReservedDomainCertJob.ns_targets">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ns_targets</span></code><a class="headerlink" href="#ngrok.datatypes.ReservedDomainCertJob.ns_targets" title="Permalink to this definition">¶</a></dt>
-<dd><p>if present, indicates the dns nameservers that the user must configure to complete the provisioning process of a wildcard certificate</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<a class="reference internal" href="#ngrok.datatypes.ReservedDomainCertNSTarget" title="ngrok.datatypes.ReservedDomainCertNSTarget"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomainCertNSTarget</span></code></a>]</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
 <dt id="ngrok.datatypes.ReservedDomainCertJob.retries_at">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">retries_at</span></code><a class="headerlink" href="#ngrok.datatypes.ReservedDomainCertJob.retries_at" title="Permalink to this definition">¶</a></dt>
 <dd><p>timestamp when the provisioning job will be retried</p>
@@ -3302,30 +3322,6 @@
 <dt id="ngrok.datatypes.ReservedDomainCertJob.started_at">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">started_at</span></code><a class="headerlink" href="#ngrok.datatypes.ReservedDomainCertJob.started_at" title="Permalink to this definition">¶</a></dt>
 <dd><p>timestamp when the provisioning job started, RFC 3339 format</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt id="ngrok.datatypes.ReservedDomainCertNSTarget">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">ReservedDomainCertNSTarget</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#ReservedDomainCertNSTarget"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.ReservedDomainCertNSTarget" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="py method">
-<dt id="ngrok.datatypes.ReservedDomainCertNSTarget.nameservers">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">nameservers</span></code><a class="headerlink" href="#ngrok.datatypes.ReservedDomainCertNSTarget.nameservers" title="Permalink to this definition">¶</a></dt>
-<dd><p>the nameservers the user must add</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="ngrok.datatypes.ReservedDomainCertNSTarget.zone">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">zone</span></code><a class="headerlink" href="#ngrok.datatypes.ReservedDomainCertNSTarget.zone" title="Permalink to this definition">¶</a></dt>
-<dd><p>the zone that the nameservers need to be applied to</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>

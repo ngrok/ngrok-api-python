@@ -116,6 +116,7 @@
 <p class="caption"><span class="caption-text">Services</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="abuse_reports.html">Abuse Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agent_ingresses.html">Agent Ingresses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_keys.html">API Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="certificate_authorities.html">Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Tunnel Credentials</a></li>
@@ -127,7 +128,6 @@
 <li class="toctree-l1"><a class="reference internal" href="ip_policies.html">IP Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policy_rules.html">IP Policy Rules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_restrictions.html">IP Restrictions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ip_whitelist.html">IP Whitelist</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_logging_module.html">Logging Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_circuit_breaker_module.html">Circuit Breaker Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_compression_module.html">Compression Module</a></li>
@@ -193,6 +193,15 @@ ngrok that violate ngrok’s terms of service.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="abuse_reports.html#ngrok.services.AbuseReportsClient" title="ngrok.services.AbuseReportsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbuseReportsClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.agent_ingresses">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">agent_ingresses</span></code><a class="headerlink" href="#ngrok.Client.agent_ingresses" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="agent_ingresses.html#ngrok.services.AgentIngressesClient" title="ngrok.services.AgentIngressesClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">AgentIngressesClient</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -313,7 +322,7 @@ make up an IP Policy.</p>
 <dt id="ngrok.Client.ip_restrictions">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ip_restrictions</span></code><a class="headerlink" href="#ngrok.Client.ip_restrictions" title="Permalink to this definition">¶</a></dt>
 <dd><p>An IP restriction is a restriction placed on the CIDRs that are allowed to
-initate traffic to a specific aspect of your ngrok account. An IP
+initiate traffic to a specific aspect of your ngrok account. An IP
 restriction has a type which defines the ingress it applies to. IP
 restrictions can be used to enforce the source IPs that can make API
 requests, log in to the dashboard, start ngrok agents, and connect to your
@@ -321,17 +330,6 @@ public-facing endpoints.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="ip_restrictions.html#ngrok.services.IPRestrictionsClient" title="ngrok.services.IPRestrictionsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPRestrictionsClient</span></code></a></p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="ngrok.Client.ip_whitelist">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ip_whitelist</span></code><a class="headerlink" href="#ngrok.Client.ip_whitelist" title="Permalink to this definition">¶</a></dt>
-<dd><p>The IP Whitelist is deprecated and will be removed. Use an IP Restriction
-with an <code class="docutils literal notranslate"><span class="pre">endpoints</span></code> type instead.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="ip_whitelist.html#ngrok.services.IPWhitelistClient" title="ngrok.services.IPWhitelistClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPWhitelistClient</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>

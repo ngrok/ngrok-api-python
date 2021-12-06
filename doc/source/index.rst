@@ -117,6 +117,7 @@ API Reference
   :caption: Services
 
   abuse_reports
+  agent_ingresses
   api_keys
   certificate_authorities
   credentials
@@ -128,7 +129,6 @@ API Reference
   ip_policies
   ip_policy_rules
   ip_restrictions
-  ip_whitelist
   endpoint_logging_module
   endpoint_circuit_breaker_module
   endpoint_compression_module
