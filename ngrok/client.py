@@ -15,6 +15,10 @@ class Client(object):
         return AbuseReportsClient(self)
 
     @property
+    def agent_ingresses(self) -> AgentIngressesClient:
+        return AgentIngressesClient(self)
+
+    @property
     def api_keys(self) -> APIKeysClient:
         """API Keys are used to authenticate to the `ngrok
         API` <https://ngrok.com/docs/api#authentication>`_. You may use the API itself
@@ -80,18 +84,12 @@ class Client(object):
     @property
     def ip_restrictions(self) -> IPRestrictionsClient:
         """An IP restriction is a restriction placed on the CIDRs that are allowed to
-        initate traffic to a specific aspect of your ngrok account. An IP
+        initiate traffic to a specific aspect of your ngrok account. An IP
         restriction has a type which defines the ingress it applies to. IP
         restrictions can be used to enforce the source IPs that can make API
         requests, log in to the dashboard, start ngrok agents, and connect to your
         public-facing endpoints."""
         return IPRestrictionsClient(self)
-
-    @property
-    def ip_whitelist(self) -> IPWhitelistClient:
-        """The IP Whitelist is deprecated and will be removed. Use an IP Restriction
-        with an ``endpoints`` type instead."""
-        return IPWhitelistClient(self)
 
     @property
     def reserved_addrs(self) -> ReservedAddrsClient:

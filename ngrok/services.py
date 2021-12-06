@@ -53,6 +53,118 @@ class AbuseReportsClient(object):
         return AbuseReport(self._client, result)
 
 
+class AgentIngressesClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def create(
+        self,
+        domain: str,
+        description: str = "",
+        metadata: str = "",
+    ) -> AgentIngress:
+        """Create a new Agent Ingress. The ngrok agent can be configured to connect to ngrok via the new set of addresses on the returned Agent Ingress.
+
+        :param description: human-readable description of the use of this Agent Ingress. optional, max 255 bytes.
+        :param metadata: arbitrary user-defined machine-readable data of this Agent Ingress. optional, max 4096 bytes
+        :param domain: the domain that you own to be used as the base domain name to generate regional agent ingress domains.
+
+        https://ngrok.com/docs/api#api-agent-ingresses-create
+        """
+        path = "/agent_ingresses"
+        result = self._client.http_client.post(
+            path,
+            dict(
+                description=description,
+                metadata=metadata,
+                domain=domain,
+            ),
+        )
+        return AgentIngress(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """Delete an Agent Ingress by ID
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-agent-ingresses-delete
+        """
+        path = "/agent_ingresses/{id}"
+        path = path.format(
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+    def get(
+        self,
+        id: str,
+    ) -> AgentIngress:
+        """Get the details of an Agent Ingress by ID.
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-agent-ingresses-get
+        """
+        path = "/agent_ingresses/{id}"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return AgentIngress(self._client, result)
+
+    def list(
+        self,
+        before_id: str = None,
+        limit: str = None,
+    ) -> AgentIngressList:
+        """List all Agent Ingresses owned by this account
+
+        :param before_id:
+        :param limit:
+
+        https://ngrok.com/docs/api#api-agent-ingresses-list
+        """
+        path = "/agent_ingresses"
+        result = self._client.http_client.get(
+            path,
+            dict(
+                before_id=before_id,
+                limit=limit,
+            ),
+        )
+        return AgentIngressList(self._client, result)
+
+    def update(
+        self,
+        id: str,
+        description: str = None,
+        metadata: str = None,
+    ) -> AgentIngress:
+        """Update attributes of an Agent Ingress by ID.
+
+        :param id:
+        :param description: human-readable description of the use of this Agent Ingress. optional, max 255 bytes.
+        :param metadata: arbitrary user-defined machine-readable data of this Agent Ingress. optional, max 4096 bytes
+
+        https://ngrok.com/docs/api#api-agent-ingresses-update
+        """
+        path = "/agent_ingresses/{id}"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.patch(
+            path,
+            dict(
+                description=description,
+                metadata=metadata,
+            ),
+        )
+        return AgentIngress(self._client, result)
+
+
 class APIKeysClient(object):
     """API Keys are used to authenticate to the `ngrok
     API` <https://ngrok.com/docs/api#authentication>`_. You may use the API itself
@@ -1311,7 +1423,7 @@ class IPPolicyRulesClient(object):
 
 class IPRestrictionsClient(object):
     """An IP restriction is a restriction placed on the CIDRs that are allowed to
-    initate traffic to a specific aspect of your ngrok account. An IP
+    initiate traffic to a specific aspect of your ngrok account. An IP
     restriction has a type which defines the ingress it applies to. IP
     restrictions can be used to enforce the source IPs that can make API
     requests, log in to the dashboard, start ngrok agents, and connect to your
@@ -1438,121 +1550,6 @@ class IPRestrictionsClient(object):
             ),
         )
         return IPRestriction(self._client, result)
-
-
-class IPWhitelistClient(object):
-    """The IP Whitelist is deprecated and will be removed. Use an IP Restriction
-    with an ``endpoints`` type instead."""
-
-    def __init__(self, client):
-        self._client = client
-
-    def create(
-        self,
-        description: str = "",
-        metadata: str = "",
-        ip_net: str = "",
-    ) -> IPWhitelistEntry:
-        """Create a new IP whitelist entry that will restrict traffic to all tunnel endpoints on the account.
-
-        :param description: human-readable description of the source IPs for this IP whitelist entry. optional, max 255 bytes.
-        :param metadata: arbitrary user-defined machine-readable data of this IP whitelist entry. optional, max 4096 bytes.
-        :param ip_net: an IP address or IP network range in CIDR notation (e.g. 10.1.1.1 or 10.1.0.0/16) of addresses that will be whitelisted to communicate with your tunnel endpoints
-
-        https://ngrok.com/docs/api#api-ip-whitelist-create
-        """
-        path = "/ip_whitelist"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                ip_net=ip_net,
-            ),
-        )
-        return IPWhitelistEntry(self._client, result)
-
-    def delete(
-        self,
-        id: str,
-    ):
-        """Delete an IP whitelist entry.
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-ip-whitelist-delete
-        """
-        path = "/ip_whitelist/{id}"
-        path = path.format(
-            id=id,
-        )
-        self._client.http_client.delete(path, dict())
-
-    def get(
-        self,
-        id: str,
-    ) -> IPWhitelistEntry:
-        """Get detailed information about an IP whitelist entry by ID.
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-ip-whitelist-get
-        """
-        path = "/ip_whitelist/{id}"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.get(path, dict())
-        return IPWhitelistEntry(self._client, result)
-
-    def list(
-        self,
-        before_id: str = None,
-        limit: str = None,
-    ) -> IPWhitelistEntryList:
-        """List all IP whitelist entries on this account
-
-        :param before_id:
-        :param limit:
-
-        https://ngrok.com/docs/api#api-ip-whitelist-list
-        """
-        path = "/ip_whitelist"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
-        )
-        return IPWhitelistEntryList(self._client, result)
-
-    def update(
-        self,
-        id: str,
-        description: str = None,
-        metadata: str = None,
-    ) -> IPWhitelistEntry:
-        """Update attributes of an IP whitelist entry by ID
-
-        :param id:
-        :param description: human-readable description of the source IPs for this IP whitelist entry. optional, max 255 bytes.
-        :param metadata: arbitrary user-defined machine-readable data of this IP whitelist entry. optional, max 4096 bytes.
-
-        https://ngrok.com/docs/api#api-ip-whitelist-update
-        """
-        path = "/ip_whitelist/{id}"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-            ),
-        )
-        return IPWhitelistEntry(self._client, result)
 
 
 class EndpointLoggingModuleClient(object):
@@ -2312,7 +2309,7 @@ class ReservedAddrsClient(object):
         description: str = "",
         metadata: str = "",
         region: str = "",
-        endpoint_configuration_id: str = "",
+        endpoint_configuration_id: str = None,
     ) -> ReservedAddr:
         """Create a new reserved address.
 

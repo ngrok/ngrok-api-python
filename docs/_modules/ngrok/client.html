@@ -116,6 +116,7 @@
 <p class="caption"><span class="caption-text">Services</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../abuse_reports.html">Abuse Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../agent_ingresses.html">Agent Ingresses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api_keys.html">API Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../certificate_authorities.html">Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../credentials.html">Tunnel Credentials</a></li>
@@ -127,7 +128,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../ip_policies.html">IP Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ip_policy_rules.html">IP Policy Rules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ip_restrictions.html">IP Restrictions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ip_whitelist.html">IP Whitelist</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoint_logging_module.html">Logging Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoint_circuit_breaker_module.html">Circuit Breaker Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoint_compression_module.html">Compression Module</a></li>
@@ -179,6 +179,10 @@
         <span class="sd">"""Abuse Reports allow you to submit take-down requests for URLs hosted by</span>
 <span class="sd">        ngrok that violate ngrok's terms of service."""</span>
         <span class="k">return</span> <span class="n">AbuseReportsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">agent_ingresses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentIngressesClient</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">AgentIngressesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">api_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">APIKeysClient</span><span class="p">:</span>
@@ -246,18 +250,12 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ip_restrictions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPRestrictionsClient</span><span class="p">:</span>
         <span class="sd">"""An IP restriction is a restriction placed on the CIDRs that are allowed to</span>
-<span class="sd">        initate traffic to a specific aspect of your ngrok account. An IP</span>
+<span class="sd">        initiate traffic to a specific aspect of your ngrok account. An IP</span>
 <span class="sd">        restriction has a type which defines the ingress it applies to. IP</span>
 <span class="sd">        restrictions can be used to enforce the source IPs that can make API</span>
 <span class="sd">        requests, log in to the dashboard, start ngrok agents, and connect to your</span>
 <span class="sd">        public-facing endpoints."""</span>
         <span class="k">return</span> <span class="n">IPRestrictionsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">ip_whitelist</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPWhitelistClient</span><span class="p">:</span>
-        <span class="sd">"""The IP Whitelist is deprecated and will be removed. Use an IP Restriction</span>
-<span class="sd">        with an ``endpoints`` type instead."""</span>
-        <span class="k">return</span> <span class="n">IPWhitelistClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">reserved_addrs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReservedAddrsClient</span><span class="p">:</span>

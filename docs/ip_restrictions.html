@@ -2,7 +2,7 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="IP Whitelist" href="ip_whitelist.html" /><link rel="prev" title="IP Policy Rules" href="ip_policy_rules.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Logging Module" href="endpoint_logging_module.html" /><link rel="prev" title="IP Policy Rules" href="ip_policy_rules.html" />
 
     <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
         <title>IP Restrictions - ngrok-api documentation</title>
@@ -116,6 +116,7 @@
 <p class="caption"><span class="caption-text">Services</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="abuse_reports.html">Abuse Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agent_ingresses.html">Agent Ingresses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_keys.html">API Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="certificate_authorities.html">Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Tunnel Credentials</a></li>
@@ -127,7 +128,6 @@
 <li class="toctree-l1"><a class="reference internal" href="ip_policies.html">IP Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policy_rules.html">IP Policy Rules</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">IP Restrictions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ip_whitelist.html">IP Whitelist</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_logging_module.html">Logging Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_circuit_breaker_module.html">Circuit Breaker Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_compression_module.html">Compression Module</a></li>
@@ -171,7 +171,7 @@
 <dt id="ngrok.services.IPRestrictionsClient">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.services.</span></code><code class="sig-name descname"><span class="pre">IPRestrictionsClient</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#IPRestrictionsClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.IPRestrictionsClient" title="Permalink to this definition">¶</a></dt>
 <dd><p>An IP restriction is a restriction placed on the CIDRs that are allowed to
-initate traffic to a specific aspect of your ngrok account. An IP
+initiate traffic to a specific aspect of your ngrok account. An IP
 restriction has a type which defines the ingress it applies to. IP
 restrictions can be used to enforce the source IPs that can make API
 requests, log in to the dashboard, start ngrok agents, and connect to your
@@ -273,12 +273,12 @@ public-facing endpoints.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="ip_whitelist.html">
+          <a class="next-page" href="endpoint_logging_module.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">IP Whitelist</div>
+                <div class="title">Logging Module</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>

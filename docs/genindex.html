@@ -115,6 +115,7 @@
 <p class="caption"><span class="caption-text">Services</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="abuse_reports.html">Abuse Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agent_ingresses.html">Agent Ingresses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_keys.html">API Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="certificate_authorities.html">Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Tunnel Credentials</a></li>
@@ -126,7 +127,6 @@
 <li class="toctree-l1"><a class="reference internal" href="ip_policies.html">IP Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policy_rules.html">IP Policy Rules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_restrictions.html">IP Restrictions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ip_whitelist.html">IP Whitelist</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_logging_module.html">Logging Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_circuit_breaker_module.html">Circuit Breaker Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoint_compression_module.html">Compression Module</a></li>
@@ -165,7 +165,7 @@
         
 <section class="genindex-section">
   <h1 id="index">Index</h1>
-  <div class="genindex-jumpbox"><a href="#A"><strong>A</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#D"><strong>D</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#H"><strong>H</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#K"><strong>K</strong></a> | <a href="#L"><strong>L</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#N"><strong>N</strong></a> | <a href="#O"><strong>O</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#U"><strong>U</strong></a> | <a href="#V"><strong>V</strong></a> | <a href="#W"><strong>W</strong></a> | <a href="#Z"><strong>Z</strong></a></div>
+  <div class="genindex-jumpbox"><a href="#A"><strong>A</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#D"><strong>D</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#H"><strong>H</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#K"><strong>K</strong></a> | <a href="#L"><strong>L</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#N"><strong>N</strong></a> | <a href="#O"><strong>O</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#U"><strong>U</strong></a> | <a href="#V"><strong>V</strong></a> | <a href="#W"><strong>W</strong></a></div>
 </section>
 <section id="A" class="genindex-section">
   <h2>A</h2>
@@ -185,6 +185,8 @@
           <li><a href="datatypes.html#ngrok.datatypes.SSHCredential.acl">(ngrok.datatypes.SSHCredential property)</a>
 </li>
         </ul></li>
+        <li><a href="datatypes.html#ngrok.datatypes.ReservedDomain.acme_challenge_cname_target">acme_challenge_cname_target() (ngrok.datatypes.ReservedDomain property)</a>
+</li>
         <li><a href="datatypes.html#ngrok.datatypes.IPPolicy.action">action() (ngrok.datatypes.IPPolicy property)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.EndpointRequestHeaders.add">add() (ngrok.datatypes.EndpointRequestHeaders property)</a>
@@ -195,7 +197,15 @@
         </ul></li>
         <li><a href="datatypes.html#ngrok.datatypes.ReservedAddr.addr">addr() (ngrok.datatypes.ReservedAddr property)</a>
 </li>
+        <li><a href="client.html#ngrok.Client.agent_ingresses">agent_ingresses() (ngrok.Client property)</a>
+</li>
         <li><a href="datatypes.html#ngrok.datatypes.TunnelSession.agent_version">agent_version() (ngrok.datatypes.TunnelSession property)</a>
+</li>
+        <li><a href="datatypes.html#ngrok.datatypes.AgentIngress">AgentIngress (class in ngrok.datatypes)</a>
+</li>
+        <li><a href="agent_ingresses.html#ngrok.services.AgentIngressesClient">AgentIngressesClient (class in ngrok.services)</a>
+</li>
+        <li><a href="datatypes.html#ngrok.datatypes.AgentIngressList">AgentIngressList (class in ngrok.datatypes)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.EndpointSAML.allow_idp_initiated">allow_idp_initiated() (ngrok.datatypes.EndpointSAML property)</a>
 
@@ -203,12 +213,12 @@
           <li><a href="datatypes.html#ngrok.datatypes.EndpointSAMLMutate.allow_idp_initiated">(ngrok.datatypes.EndpointSAMLMutate property)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="client.html#ngrok.Client.api_keys">api_keys() (ngrok.Client property)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.APIKey">APIKey (class in ngrok.datatypes)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="datatypes.html#ngrok.datatypes.APIKeyList">APIKeyList (class in ngrok.datatypes)</a>
 </li>
         <li><a href="api_keys.html#ngrok.services.APIKeysClient">APIKeysClient (class in ngrok.services)</a>
@@ -332,6 +342,8 @@
         <li><a href="abuse_reports.html#ngrok.services.AbuseReportsClient.create">create() (ngrok.services.AbuseReportsClient method)</a>
 
         <ul>
+          <li><a href="agent_ingresses.html#ngrok.services.AgentIngressesClient.create">(ngrok.services.AgentIngressesClient method)</a>
+</li>
           <li><a href="api_keys.html#ngrok.services.APIKeysClient.create">(ngrok.services.APIKeysClient method)</a>
 </li>
           <li><a href="certificate_authorities.html#ngrok.services.CertificateAuthoritiesClient.create">(ngrok.services.CertificateAuthoritiesClient method)</a>
@@ -354,8 +366,6 @@
 </li>
           <li><a href="ip_restrictions.html#ngrok.services.IPRestrictionsClient.create">(ngrok.services.IPRestrictionsClient method)</a>
 </li>
-          <li><a href="ip_whitelist.html#ngrok.services.IPWhitelistClient.create">(ngrok.services.IPWhitelistClient method)</a>
-</li>
           <li><a href="reserved_addrs.html#ngrok.services.ReservedAddrsClient.create">(ngrok.services.ReservedAddrsClient method)</a>
 </li>
           <li><a href="reserved_domains.html#ngrok.services.ReservedDomainsClient.create">(ngrok.services.ReservedDomainsClient method)</a>
@@ -376,6 +386,8 @@
         <li><a href="datatypes.html#ngrok.datatypes.AbuseReport.created_at">created_at() (ngrok.datatypes.AbuseReport property)</a>
 
         <ul>
+          <li><a href="datatypes.html#ngrok.datatypes.AgentIngress.created_at">(ngrok.datatypes.AgentIngress property)</a>
+</li>
           <li><a href="datatypes.html#ngrok.datatypes.APIKey.created_at">(ngrok.datatypes.APIKey property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.CertificateAuthority.created_at">(ngrok.datatypes.CertificateAuthority property)</a>
@@ -395,8 +407,6 @@
           <li><a href="datatypes.html#ngrok.datatypes.IPPolicyRule.created_at">(ngrok.datatypes.IPPolicyRule property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.IPRestriction.created_at">(ngrok.datatypes.IPRestriction property)</a>
-</li>
-          <li><a href="datatypes.html#ngrok.datatypes.IPWhitelistEntry.created_at">(ngrok.datatypes.IPWhitelistEntry property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.ReservedAddr.created_at">(ngrok.datatypes.ReservedAddr property)</a>
 </li>
@@ -439,9 +449,11 @@
   <h2>D</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="datatypes.html#ngrok.datatypes.APIKey.delete">delete() (ngrok.datatypes.APIKey method)</a>
+        <li><a href="datatypes.html#ngrok.datatypes.AgentIngress.delete">delete() (ngrok.datatypes.AgentIngress method)</a>
 
         <ul>
+          <li><a href="datatypes.html#ngrok.datatypes.APIKey.delete">(ngrok.datatypes.APIKey method)</a>
+</li>
           <li><a href="datatypes.html#ngrok.datatypes.CertificateAuthority.delete">(ngrok.datatypes.CertificateAuthority method)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.Credential.delete">(ngrok.datatypes.Credential method)</a>
@@ -460,8 +472,6 @@
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.IPRestriction.delete">(ngrok.datatypes.IPRestriction method)</a>
 </li>
-          <li><a href="datatypes.html#ngrok.datatypes.IPWhitelistEntry.delete">(ngrok.datatypes.IPWhitelistEntry method)</a>
-</li>
           <li><a href="datatypes.html#ngrok.datatypes.ReservedAddr.delete">(ngrok.datatypes.ReservedAddr method)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.ReservedDomain.delete">(ngrok.datatypes.ReservedDomain method)</a>
@@ -475,6 +485,8 @@
           <li><a href="datatypes.html#ngrok.datatypes.SSHUserCertificate.delete">(ngrok.datatypes.SSHUserCertificate method)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.TLSCertificate.delete">(ngrok.datatypes.TLSCertificate method)</a>
+</li>
+          <li><a href="agent_ingresses.html#ngrok.services.AgentIngressesClient.delete">(ngrok.services.AgentIngressesClient method)</a>
 </li>
           <li><a href="api_keys.html#ngrok.services.APIKeysClient.delete">(ngrok.services.APIKeysClient method)</a>
 </li>
@@ -522,8 +534,6 @@
 </li>
           <li><a href="ip_restrictions.html#ngrok.services.IPRestrictionsClient.delete">(ngrok.services.IPRestrictionsClient method)</a>
 </li>
-          <li><a href="ip_whitelist.html#ngrok.services.IPWhitelistClient.delete">(ngrok.services.IPWhitelistClient method)</a>
-</li>
           <li><a href="reserved_addrs.html#ngrok.services.ReservedAddrsClient.delete">(ngrok.services.ReservedAddrsClient method)</a>
 </li>
           <li><a href="reserved_domains.html#ngrok.services.ReservedDomainsClient.delete">(ngrok.services.ReservedDomainsClient method)</a>
@@ -553,9 +563,11 @@
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.EventTargetFirehose.delivery_stream_arn">delivery_stream_arn() (ngrok.datatypes.EventTargetFirehose property)</a>
 </li>
-        <li><a href="datatypes.html#ngrok.datatypes.APIKey.description">description() (ngrok.datatypes.APIKey property)</a>
+        <li><a href="datatypes.html#ngrok.datatypes.AgentIngress.description">description() (ngrok.datatypes.AgentIngress property)</a>
 
         <ul>
+          <li><a href="datatypes.html#ngrok.datatypes.APIKey.description">(ngrok.datatypes.APIKey property)</a>
+</li>
           <li><a href="datatypes.html#ngrok.datatypes.CertificateAuthority.description">(ngrok.datatypes.CertificateAuthority property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.Credential.description">(ngrok.datatypes.Credential property)</a>
@@ -573,8 +585,6 @@
           <li><a href="datatypes.html#ngrok.datatypes.IPPolicyRule.description">(ngrok.datatypes.IPPolicyRule property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.IPRestriction.description">(ngrok.datatypes.IPRestriction property)</a>
-</li>
-          <li><a href="datatypes.html#ngrok.datatypes.IPWhitelistEntry.description">(ngrok.datatypes.IPWhitelistEntry property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.ReservedAddr.description">(ngrok.datatypes.ReservedAddr property)</a>
 </li>
@@ -597,8 +607,12 @@
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.TLSCertificateSANs.dns_names">dns_names() (ngrok.datatypes.TLSCertificateSANs property)</a>
 </li>
-        <li><a href="datatypes.html#ngrok.datatypes.ReservedDomain.domain">domain() (ngrok.datatypes.ReservedDomain property)</a>
+        <li><a href="datatypes.html#ngrok.datatypes.AgentIngress.domain">domain() (ngrok.datatypes.AgentIngress property)</a>
+
+        <ul>
+          <li><a href="datatypes.html#ngrok.datatypes.ReservedDomain.domain">(ngrok.datatypes.ReservedDomain property)</a>
 </li>
+        </ul></li>
     </ul></td>
   </tr></table>
 </section>
@@ -856,6 +870,8 @@
         <li><a href="abuse_reports.html#ngrok.services.AbuseReportsClient.get">get() (ngrok.services.AbuseReportsClient method)</a>
 
         <ul>
+          <li><a href="agent_ingresses.html#ngrok.services.AgentIngressesClient.get">(ngrok.services.AgentIngressesClient method)</a>
+</li>
           <li><a href="api_keys.html#ngrok.services.APIKeysClient.get">(ngrok.services.APIKeysClient method)</a>
 </li>
           <li><a href="certificate_authorities.html#ngrok.services.CertificateAuthoritiesClient.get">(ngrok.services.CertificateAuthoritiesClient method)</a>
@@ -901,8 +917,6 @@
           <li><a href="ip_policy_rules.html#ngrok.services.IPPolicyRulesClient.get">(ngrok.services.IPPolicyRulesClient method)</a>
 </li>
           <li><a href="ip_restrictions.html#ngrok.services.IPRestrictionsClient.get">(ngrok.services.IPRestrictionsClient method)</a>
-</li>
-          <li><a href="ip_whitelist.html#ngrok.services.IPWhitelistClient.get">(ngrok.services.IPWhitelistClient method)</a>
 </li>
           <li><a href="reserved_addrs.html#ngrok.services.ReservedAddrsClient.get">(ngrok.services.ReservedAddrsClient method)</a>
 </li>
@@ -956,6 +970,8 @@
         <li><a href="datatypes.html#ngrok.datatypes.AbuseReport.id">id() (ngrok.datatypes.AbuseReport property)</a>
 
         <ul>
+          <li><a href="datatypes.html#ngrok.datatypes.AgentIngress.id">(ngrok.datatypes.AgentIngress property)</a>
+</li>
           <li><a href="datatypes.html#ngrok.datatypes.APIKey.id">(ngrok.datatypes.APIKey property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.CertificateAuthority.id">(ngrok.datatypes.CertificateAuthority property)</a>
@@ -975,8 +991,6 @@
           <li><a href="datatypes.html#ngrok.datatypes.IPPolicyRule.id">(ngrok.datatypes.IPPolicyRule property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.IPRestriction.id">(ngrok.datatypes.IPRestriction property)</a>
-</li>
-          <li><a href="datatypes.html#ngrok.datatypes.IPWhitelistEntry.id">(ngrok.datatypes.IPWhitelistEntry property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.Ref.id">(ngrok.datatypes.Ref property)</a>
 </li>
@@ -1015,11 +1029,11 @@
           <li><a href="datatypes.html#ngrok.datatypes.EndpointSAMLMutate.inactivity_timeout">(ngrok.datatypes.EndpointSAMLMutate property)</a>
 </li>
         </ul></li>
-        <li><a href="datatypes.html#ngrok.datatypes.TunnelSession.ip">ip() (ngrok.datatypes.TunnelSession property)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="datatypes.html#ngrok.datatypes.IPWhitelistEntry.ip_net">ip_net() (ngrok.datatypes.IPWhitelistEntry property)</a>
+        <li><a href="datatypes.html#ngrok.datatypes.AgentIngressList.ingresses">ingresses() (ngrok.datatypes.AgentIngressList property)</a>
+</li>
+        <li><a href="datatypes.html#ngrok.datatypes.TunnelSession.ip">ip() (ngrok.datatypes.TunnelSession property)</a>
 </li>
         <li><a href="client.html#ngrok.Client.ip_policies">ip_policies() (ngrok.Client property)</a>
 
@@ -1051,8 +1065,6 @@
           <li><a href="datatypes.html#ngrok.datatypes.IPRestrictionList.ip_restrictions">(ngrok.datatypes.IPRestrictionList property)</a>
 </li>
         </ul></li>
-        <li><a href="client.html#ngrok.Client.ip_whitelist">ip_whitelist() (ngrok.Client property)</a>
-</li>
         <li><a href="ip_policies.html#ngrok.services.IPPoliciesClient">IPPoliciesClient (class in ngrok.services)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.IPPolicy">IPPolicy (class in ngrok.datatypes)</a>
@@ -1072,12 +1084,6 @@
         <li><a href="ip_restrictions.html#ngrok.services.IPRestrictionsClient">IPRestrictionsClient (class in ngrok.services)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.TLSCertificateSANs.ips">ips() (ngrok.datatypes.TLSCertificateSANs property)</a>
-</li>
-        <li><a href="ip_whitelist.html#ngrok.services.IPWhitelistClient">IPWhitelistClient (class in ngrok.services)</a>
-</li>
-        <li><a href="datatypes.html#ngrok.datatypes.IPWhitelistEntry">IPWhitelistEntry (class in ngrok.datatypes)</a>
-</li>
-        <li><a href="datatypes.html#ngrok.datatypes.IPWhitelistEntryList">IPWhitelistEntryList (class in ngrok.datatypes)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.TLSCertificate.issued_at">issued_at() (ngrok.datatypes.TLSCertificate property)</a>
 </li>
@@ -1121,9 +1127,11 @@
   <h2>L</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="api_keys.html#ngrok.services.APIKeysClient.list">list() (ngrok.services.APIKeysClient method)</a>
+        <li><a href="agent_ingresses.html#ngrok.services.AgentIngressesClient.list">list() (ngrok.services.AgentIngressesClient method)</a>
 
         <ul>
+          <li><a href="api_keys.html#ngrok.services.APIKeysClient.list">(ngrok.services.APIKeysClient method)</a>
+</li>
           <li><a href="certificate_authorities.html#ngrok.services.CertificateAuthoritiesClient.list">(ngrok.services.CertificateAuthoritiesClient method)</a>
 </li>
           <li><a href="credentials.html#ngrok.services.CredentialsClient.list">(ngrok.services.CredentialsClient method)</a>
@@ -1143,8 +1151,6 @@
           <li><a href="ip_policy_rules.html#ngrok.services.IPPolicyRulesClient.list">(ngrok.services.IPPolicyRulesClient method)</a>
 </li>
           <li><a href="ip_restrictions.html#ngrok.services.IPRestrictionsClient.list">(ngrok.services.IPRestrictionsClient method)</a>
-</li>
-          <li><a href="ip_whitelist.html#ngrok.services.IPWhitelistClient.list">(ngrok.services.IPWhitelistClient method)</a>
 </li>
           <li><a href="reserved_addrs.html#ngrok.services.ReservedAddrsClient.list">(ngrok.services.ReservedAddrsClient method)</a>
 </li>
@@ -1192,6 +1198,8 @@
         <li><a href="datatypes.html#ngrok.datatypes.AbuseReport.metadata">metadata() (ngrok.datatypes.AbuseReport property)</a>
 
         <ul>
+          <li><a href="datatypes.html#ngrok.datatypes.AgentIngress.metadata">(ngrok.datatypes.AgentIngress property)</a>
+</li>
           <li><a href="datatypes.html#ngrok.datatypes.APIKey.metadata">(ngrok.datatypes.APIKey property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.CertificateAuthority.metadata">(ngrok.datatypes.CertificateAuthority property)</a>
@@ -1211,8 +1219,6 @@
           <li><a href="datatypes.html#ngrok.datatypes.IPPolicyRule.metadata">(ngrok.datatypes.IPPolicyRule property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.IPRestriction.metadata">(ngrok.datatypes.IPRestriction property)</a>
-</li>
-          <li><a href="datatypes.html#ngrok.datatypes.IPWhitelistEntry.metadata">(ngrok.datatypes.IPWhitelistEntry property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.ReservedAddr.metadata">(ngrok.datatypes.ReservedAddr property)</a>
 </li>
@@ -1249,7 +1255,7 @@
 </li>
           <li><a href="datatypes.html#module-ngrok.datatypes">ngrok.datatypes</a>
 </li>
-          <li><a href="abuse_reports.html#module-ngrok.services">ngrok.services</a>, <a href="api_keys.html#module-ngrok.services">[1]</a>, <a href="certificate_authorities.html#module-ngrok.services">[2]</a>, <a href="credentials.html#module-ngrok.services">[3]</a>, <a href="endpoint_circuit_breaker_module.html#module-ngrok.services">[4]</a>, <a href="endpoint_compression_module.html#module-ngrok.services">[5]</a>, <a href="endpoint_configurations.html#module-ngrok.services">[6]</a>, <a href="endpoint_ip_policy_module.html#module-ngrok.services">[7]</a>, <a href="endpoint_logging_module.html#module-ngrok.services">[8]</a>, <a href="endpoint_mutual_tls_module.html#module-ngrok.services">[9]</a>, <a href="endpoint_o_auth_module.html#module-ngrok.services">[10]</a>, <a href="endpoint_oidc_module.html#module-ngrok.services">[11]</a>, <a href="endpoint_request_headers_module.html#module-ngrok.services">[12]</a>, <a href="endpoint_response_headers_module.html#module-ngrok.services">[13]</a>, <a href="endpoint_saml_module.html#module-ngrok.services">[14]</a>, <a href="endpoint_tls_termination_module.html#module-ngrok.services">[15]</a>, <a href="endpoint_webhook_validation_module.html#module-ngrok.services">[16]</a>, <a href="event_destinations.html#module-ngrok.services">[17]</a>, <a href="event_sources.html#module-ngrok.services">[18]</a>, <a href="event_streams.html#module-ngrok.services">[19]</a>, <a href="event_subscriptions.html#module-ngrok.services">[20]</a>, <a href="ip_policies.html#module-ngrok.services">[21]</a>, <a href="ip_policy_rules.html#module-ngrok.services">[22]</a>, <a href="ip_restrictions.html#module-ngrok.services">[23]</a>, <a href="ip_whitelist.html#module-ngrok.services">[24]</a>, <a href="reserved_addrs.html#module-ngrok.services">[25]</a>, <a href="reserved_domains.html#module-ngrok.services">[26]</a>, <a href="ssh_certificate_authorities.html#module-ngrok.services">[27]</a>, <a href="ssh_credentials.html#module-ngrok.services">[28]</a>, <a href="ssh_host_certificates.html#module-ngrok.services">[29]</a>, <a href="ssh_user_certificates.html#module-ngrok.services">[30]</a>, <a href="tls_certificates.html#module-ngrok.services">[31]</a>, <a href="tunnel_sessions.html#module-ngrok.services">[32]</a>, <a href="tunnels.html#module-ngrok.services">[33]</a>
+          <li><a href="abuse_reports.html#module-ngrok.services">ngrok.services</a>, <a href="agent_ingresses.html#module-ngrok.services">[1]</a>, <a href="api_keys.html#module-ngrok.services">[2]</a>, <a href="certificate_authorities.html#module-ngrok.services">[3]</a>, <a href="credentials.html#module-ngrok.services">[4]</a>, <a href="endpoint_circuit_breaker_module.html#module-ngrok.services">[5]</a>, <a href="endpoint_compression_module.html#module-ngrok.services">[6]</a>, <a href="endpoint_configurations.html#module-ngrok.services">[7]</a>, <a href="endpoint_ip_policy_module.html#module-ngrok.services">[8]</a>, <a href="endpoint_logging_module.html#module-ngrok.services">[9]</a>, <a href="endpoint_mutual_tls_module.html#module-ngrok.services">[10]</a>, <a href="endpoint_o_auth_module.html#module-ngrok.services">[11]</a>, <a href="endpoint_oidc_module.html#module-ngrok.services">[12]</a>, <a href="endpoint_request_headers_module.html#module-ngrok.services">[13]</a>, <a href="endpoint_response_headers_module.html#module-ngrok.services">[14]</a>, <a href="endpoint_saml_module.html#module-ngrok.services">[15]</a>, <a href="endpoint_tls_termination_module.html#module-ngrok.services">[16]</a>, <a href="endpoint_webhook_validation_module.html#module-ngrok.services">[17]</a>, <a href="event_destinations.html#module-ngrok.services">[18]</a>, <a href="event_sources.html#module-ngrok.services">[19]</a>, <a href="event_streams.html#module-ngrok.services">[20]</a>, <a href="event_subscriptions.html#module-ngrok.services">[21]</a>, <a href="ip_policies.html#module-ngrok.services">[22]</a>, <a href="ip_policy_rules.html#module-ngrok.services">[23]</a>, <a href="ip_restrictions.html#module-ngrok.services">[24]</a>, <a href="reserved_addrs.html#module-ngrok.services">[25]</a>, <a href="reserved_domains.html#module-ngrok.services">[26]</a>, <a href="ssh_certificate_authorities.html#module-ngrok.services">[27]</a>, <a href="ssh_credentials.html#module-ngrok.services">[28]</a>, <a href="ssh_host_certificates.html#module-ngrok.services">[29]</a>, <a href="ssh_user_certificates.html#module-ngrok.services">[30]</a>, <a href="tls_certificates.html#module-ngrok.services">[31]</a>, <a href="tunnel_sessions.html#module-ngrok.services">[32]</a>, <a href="tunnels.html#module-ngrok.services">[33]</a>
 </li>
         </ul></li>
         <li><a href="datatypes.html#ngrok.datatypes.ReservedDomainCertJob.msg">msg() (ngrok.datatypes.ReservedDomainCertJob property)</a>
@@ -1270,11 +1276,11 @@
           <li><a href="datatypes.html#ngrok.datatypes.EndpointSAMLMutate.nameid_format">(ngrok.datatypes.EndpointSAMLMutate property)</a>
 </li>
         </ul></li>
-        <li><a href="datatypes.html#ngrok.datatypes.ReservedDomainCertNSTarget.nameservers">nameservers() (ngrok.datatypes.ReservedDomainCertNSTarget property)</a>
-</li>
-        <li><a href="datatypes.html#ngrok.datatypes.APIKeyList.next_page_uri">next_page_uri() (ngrok.datatypes.APIKeyList property)</a>
+        <li><a href="datatypes.html#ngrok.datatypes.AgentIngressList.next_page_uri">next_page_uri() (ngrok.datatypes.AgentIngressList property)</a>
 
         <ul>
+          <li><a href="datatypes.html#ngrok.datatypes.APIKeyList.next_page_uri">(ngrok.datatypes.APIKeyList property)</a>
+</li>
           <li><a href="datatypes.html#ngrok.datatypes.CertificateAuthorityList.next_page_uri">(ngrok.datatypes.CertificateAuthorityList property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.CredentialList.next_page_uri">(ngrok.datatypes.CredentialList property)</a>
@@ -1292,8 +1298,6 @@
           <li><a href="datatypes.html#ngrok.datatypes.IPPolicyRuleList.next_page_uri">(ngrok.datatypes.IPPolicyRuleList property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.IPRestrictionList.next_page_uri">(ngrok.datatypes.IPRestrictionList property)</a>
-</li>
-          <li><a href="datatypes.html#ngrok.datatypes.IPWhitelistEntryList.next_page_uri">(ngrok.datatypes.IPWhitelistEntryList property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.ReservedAddrList.next_page_uri">(ngrok.datatypes.ReservedAddrList property)</a>
 </li>
@@ -1334,7 +1338,7 @@
     ngrok.services
 
         <ul>
-          <li><a href="abuse_reports.html#module-ngrok.services">module</a>, <a href="api_keys.html#module-ngrok.services">[1]</a>, <a href="certificate_authorities.html#module-ngrok.services">[2]</a>, <a href="credentials.html#module-ngrok.services">[3]</a>, <a href="endpoint_circuit_breaker_module.html#module-ngrok.services">[4]</a>, <a href="endpoint_compression_module.html#module-ngrok.services">[5]</a>, <a href="endpoint_configurations.html#module-ngrok.services">[6]</a>, <a href="endpoint_ip_policy_module.html#module-ngrok.services">[7]</a>, <a href="endpoint_logging_module.html#module-ngrok.services">[8]</a>, <a href="endpoint_mutual_tls_module.html#module-ngrok.services">[9]</a>, <a href="endpoint_o_auth_module.html#module-ngrok.services">[10]</a>, <a href="endpoint_oidc_module.html#module-ngrok.services">[11]</a>, <a href="endpoint_request_headers_module.html#module-ngrok.services">[12]</a>, <a href="endpoint_response_headers_module.html#module-ngrok.services">[13]</a>, <a href="endpoint_saml_module.html#module-ngrok.services">[14]</a>, <a href="endpoint_tls_termination_module.html#module-ngrok.services">[15]</a>, <a href="endpoint_webhook_validation_module.html#module-ngrok.services">[16]</a>, <a href="event_destinations.html#module-ngrok.services">[17]</a>, <a href="event_sources.html#module-ngrok.services">[18]</a>, <a href="event_streams.html#module-ngrok.services">[19]</a>, <a href="event_subscriptions.html#module-ngrok.services">[20]</a>, <a href="ip_policies.html#module-ngrok.services">[21]</a>, <a href="ip_policy_rules.html#module-ngrok.services">[22]</a>, <a href="ip_restrictions.html#module-ngrok.services">[23]</a>, <a href="ip_whitelist.html#module-ngrok.services">[24]</a>, <a href="reserved_addrs.html#module-ngrok.services">[25]</a>, <a href="reserved_domains.html#module-ngrok.services">[26]</a>, <a href="ssh_certificate_authorities.html#module-ngrok.services">[27]</a>, <a href="ssh_credentials.html#module-ngrok.services">[28]</a>, <a href="ssh_host_certificates.html#module-ngrok.services">[29]</a>, <a href="ssh_user_certificates.html#module-ngrok.services">[30]</a>, <a href="tls_certificates.html#module-ngrok.services">[31]</a>, <a href="tunnel_sessions.html#module-ngrok.services">[32]</a>, <a href="tunnels.html#module-ngrok.services">[33]</a>
+          <li><a href="abuse_reports.html#module-ngrok.services">module</a>, <a href="agent_ingresses.html#module-ngrok.services">[1]</a>, <a href="api_keys.html#module-ngrok.services">[2]</a>, <a href="certificate_authorities.html#module-ngrok.services">[3]</a>, <a href="credentials.html#module-ngrok.services">[4]</a>, <a href="endpoint_circuit_breaker_module.html#module-ngrok.services">[5]</a>, <a href="endpoint_compression_module.html#module-ngrok.services">[6]</a>, <a href="endpoint_configurations.html#module-ngrok.services">[7]</a>, <a href="endpoint_ip_policy_module.html#module-ngrok.services">[8]</a>, <a href="endpoint_logging_module.html#module-ngrok.services">[9]</a>, <a href="endpoint_mutual_tls_module.html#module-ngrok.services">[10]</a>, <a href="endpoint_o_auth_module.html#module-ngrok.services">[11]</a>, <a href="endpoint_oidc_module.html#module-ngrok.services">[12]</a>, <a href="endpoint_request_headers_module.html#module-ngrok.services">[13]</a>, <a href="endpoint_response_headers_module.html#module-ngrok.services">[14]</a>, <a href="endpoint_saml_module.html#module-ngrok.services">[15]</a>, <a href="endpoint_tls_termination_module.html#module-ngrok.services">[16]</a>, <a href="endpoint_webhook_validation_module.html#module-ngrok.services">[17]</a>, <a href="event_destinations.html#module-ngrok.services">[18]</a>, <a href="event_sources.html#module-ngrok.services">[19]</a>, <a href="event_streams.html#module-ngrok.services">[20]</a>, <a href="event_subscriptions.html#module-ngrok.services">[21]</a>, <a href="ip_policies.html#module-ngrok.services">[22]</a>, <a href="ip_policy_rules.html#module-ngrok.services">[23]</a>, <a href="ip_restrictions.html#module-ngrok.services">[24]</a>, <a href="reserved_addrs.html#module-ngrok.services">[25]</a>, <a href="reserved_domains.html#module-ngrok.services">[26]</a>, <a href="ssh_certificate_authorities.html#module-ngrok.services">[27]</a>, <a href="ssh_credentials.html#module-ngrok.services">[28]</a>, <a href="ssh_host_certificates.html#module-ngrok.services">[29]</a>, <a href="ssh_user_certificates.html#module-ngrok.services">[30]</a>, <a href="tls_certificates.html#module-ngrok.services">[31]</a>, <a href="tunnel_sessions.html#module-ngrok.services">[32]</a>, <a href="tunnels.html#module-ngrok.services">[33]</a>
 </li>
         </ul></li>
         <li><a href="datatypes.html#ngrok.datatypes.CertificateAuthority.not_after">not_after() (ngrok.datatypes.CertificateAuthority property)</a>
@@ -1351,7 +1355,7 @@
         </ul></li>
         <li><a href="errors.html#ngrok.NotFoundError">NotFoundError</a>
 </li>
-        <li><a href="datatypes.html#ngrok.datatypes.ReservedDomainCertJob.ns_targets">ns_targets() (ngrok.datatypes.ReservedDomainCertJob property)</a>
+        <li><a href="datatypes.html#ngrok.datatypes.AgentIngress.ns_targets">ns_targets() (ngrok.datatypes.AgentIngress property)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.EndpointCircuitBreaker.num_buckets">num_buckets() (ngrok.datatypes.EndpointCircuitBreaker property)</a>
 </li>
@@ -1451,6 +1455,8 @@
           <li><a href="datatypes.html#ngrok.datatypes.TunnelSession.region">(ngrok.datatypes.TunnelSession property)</a>
 </li>
         </ul></li>
+        <li><a href="datatypes.html#ngrok.datatypes.AgentIngress.region_domains">region_domains() (ngrok.datatypes.AgentIngress property)</a>
+</li>
         <li><a href="datatypes.html#ngrok.datatypes.EndpointRequestHeaders.remove">remove() (ngrok.datatypes.EndpointRequestHeaders property)</a>
 
         <ul>
@@ -1485,10 +1491,10 @@
           <li><a href="endpoint_webhook_validation_module.html#ngrok.services.EndpointWebhookValidationModuleClient.replace">(ngrok.services.EndpointWebhookValidationModuleClient method)</a>
 </li>
         </ul></li>
-        <li><a href="datatypes.html#ngrok.datatypes.EndpointConfiguration.request_headers">request_headers() (ngrok.datatypes.EndpointConfiguration property)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="datatypes.html#ngrok.datatypes.EndpointConfiguration.request_headers">request_headers() (ngrok.datatypes.EndpointConfiguration property)</a>
+</li>
         <li><a href="datatypes.html#ngrok.datatypes.EndpointSAML.request_signing_certificate_pem">request_signing_certificate_pem() (ngrok.datatypes.EndpointSAML property)</a>
 </li>
         <li><a href="client.html#ngrok.Client.reserved_addrs">reserved_addrs() (ngrok.Client property)</a>
@@ -1512,8 +1518,6 @@
         <li><a href="datatypes.html#ngrok.datatypes.ReservedDomain">ReservedDomain (class in ngrok.datatypes)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.ReservedDomainCertJob">ReservedDomainCertJob (class in ngrok.datatypes)</a>
-</li>
-        <li><a href="datatypes.html#ngrok.datatypes.ReservedDomainCertNSTarget">ReservedDomainCertNSTarget (class in ngrok.datatypes)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.ReservedDomainCertPolicy">ReservedDomainCertPolicy (class in ngrok.datatypes)</a>
 </li>
@@ -1749,9 +1753,11 @@
   <h2>U</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="datatypes.html#ngrok.datatypes.APIKey.update">update() (ngrok.datatypes.APIKey method)</a>
+        <li><a href="datatypes.html#ngrok.datatypes.AgentIngress.update">update() (ngrok.datatypes.AgentIngress method)</a>
 
         <ul>
+          <li><a href="datatypes.html#ngrok.datatypes.APIKey.update">(ngrok.datatypes.APIKey method)</a>
+</li>
           <li><a href="datatypes.html#ngrok.datatypes.CertificateAuthority.update">(ngrok.datatypes.CertificateAuthority method)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.Credential.update">(ngrok.datatypes.Credential method)</a>
@@ -1764,8 +1770,6 @@
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.IPPolicyRule.update">(ngrok.datatypes.IPPolicyRule method)</a>
 </li>
-          <li><a href="datatypes.html#ngrok.datatypes.IPWhitelistEntry.update">(ngrok.datatypes.IPWhitelistEntry method)</a>
-</li>
           <li><a href="datatypes.html#ngrok.datatypes.SSHCertificateAuthority.update">(ngrok.datatypes.SSHCertificateAuthority method)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.SSHCredential.update">(ngrok.datatypes.SSHCredential method)</a>
@@ -1775,6 +1779,8 @@
           <li><a href="datatypes.html#ngrok.datatypes.SSHUserCertificate.update">(ngrok.datatypes.SSHUserCertificate method)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.TLSCertificate.update">(ngrok.datatypes.TLSCertificate method)</a>
+</li>
+          <li><a href="agent_ingresses.html#ngrok.services.AgentIngressesClient.update">(ngrok.services.AgentIngressesClient method)</a>
 </li>
           <li><a href="api_keys.html#ngrok.services.APIKeysClient.update">(ngrok.services.APIKeysClient method)</a>
 </li>
@@ -1798,8 +1804,6 @@
 </li>
           <li><a href="ip_restrictions.html#ngrok.services.IPRestrictionsClient.update">(ngrok.services.IPRestrictionsClient method)</a>
 </li>
-          <li><a href="ip_whitelist.html#ngrok.services.IPWhitelistClient.update">(ngrok.services.IPWhitelistClient method)</a>
-</li>
           <li><a href="reserved_addrs.html#ngrok.services.ReservedAddrsClient.update">(ngrok.services.ReservedAddrsClient method)</a>
 </li>
           <li><a href="reserved_domains.html#ngrok.services.ReservedDomainsClient.update">(ngrok.services.ReservedDomainsClient method)</a>
@@ -1820,6 +1824,10 @@
         <li><a href="datatypes.html#ngrok.datatypes.AbuseReport.uri">uri() (ngrok.datatypes.AbuseReport property)</a>
 
         <ul>
+          <li><a href="datatypes.html#ngrok.datatypes.AgentIngress.uri">(ngrok.datatypes.AgentIngress property)</a>
+</li>
+          <li><a href="datatypes.html#ngrok.datatypes.AgentIngressList.uri">(ngrok.datatypes.AgentIngressList property)</a>
+</li>
           <li><a href="datatypes.html#ngrok.datatypes.APIKey.uri">(ngrok.datatypes.APIKey property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.APIKeyList.uri">(ngrok.datatypes.APIKeyList property)</a>
@@ -1863,10 +1871,6 @@
           <li><a href="datatypes.html#ngrok.datatypes.IPRestriction.uri">(ngrok.datatypes.IPRestriction property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.IPRestrictionList.uri">(ngrok.datatypes.IPRestrictionList property)</a>
-</li>
-          <li><a href="datatypes.html#ngrok.datatypes.IPWhitelistEntry.uri">(ngrok.datatypes.IPWhitelistEntry property)</a>
-</li>
-          <li><a href="datatypes.html#ngrok.datatypes.IPWhitelistEntryList.uri">(ngrok.datatypes.IPWhitelistEntryList property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.Ref.uri">(ngrok.datatypes.Ref property)</a>
 </li>
@@ -1942,20 +1946,6 @@
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="datatypes.html#ngrok.datatypes.EndpointConfiguration.webhook_validation">webhook_validation() (ngrok.datatypes.EndpointConfiguration property)</a>
-</li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="datatypes.html#ngrok.datatypes.IPWhitelistEntryList.whitelist">whitelist() (ngrok.datatypes.IPWhitelistEntryList property)</a>
-</li>
-    </ul></td>
-  </tr></table>
-</section>
-
-<section id="Z" class="genindex-section">
-  <h2>Z</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-    <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="datatypes.html#ngrok.datatypes.ReservedDomainCertNSTarget.zone">zone() (ngrok.datatypes.ReservedDomainCertNSTarget property)</a>
 </li>
     </ul></td>
   </tr></table>

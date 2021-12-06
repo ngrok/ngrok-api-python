@@ -108,6 +108,117 @@ class AbuseReportHostname(object):
         return self._props["status"]
 
 
+class AgentIngress(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<AgentIngress {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<AgentIngress {}>".format(repr(self._props))
+
+    def delete(
+        self,
+    ):
+        self._client.agent_ingresses.delete(
+            id=self.id,
+        )
+
+    def update(
+        self,
+        description: str = None,
+        metadata: str = None,
+    ):
+        self._client.agent_ingresses.update(
+            id=self.id,
+            description=description,
+            metadata=metadata,
+        )
+
+    @property
+    def id(self) -> str:
+        """unique Agent Ingress resource identifier"""
+        return self._props["id"]
+
+    @property
+    def uri(self) -> str:
+        """URI to the API resource of this Agent ingress"""
+        return self._props["uri"]
+
+    @property
+    def description(self) -> str:
+        """human-readable description of the use of this Agent Ingress. optional, max 255 bytes."""
+        return self._props["description"]
+
+    @property
+    def metadata(self) -> str:
+        """arbitrary user-defined machine-readable data of this Agent Ingress. optional, max 4096 bytes"""
+        return self._props["metadata"]
+
+    @property
+    def domain(self) -> str:
+        """the domain that you own to be used as the base domain name to generate regional agent ingress domains."""
+        return self._props["domain"]
+
+    @property
+    def ns_targets(self) -> Sequence[str]:
+        """a list of target values to use as the values of NS records for the domain property these values will delegate control over the domain to ngrok"""
+        return self._props["ns_targets"]
+
+    @property
+    def region_domains(self) -> Sequence[str]:
+        """a list of regional agent ingress domains that are subdomains of the value of domain this value may increase over time as ngrok adds more regions"""
+        return self._props["region_domains"]
+
+    @property
+    def created_at(self) -> str:
+        """timestamp when the Agent Ingress was created, RFC 3339 format"""
+        return self._props["created_at"]
+
+
+class AgentIngressList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["ingresses"] = (
+            [AgentIngress(client, x) for x in props["ingresses"]]
+            if props["ingresses"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<AgentIngressList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<AgentIngressList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "ingresses")
+
+    @property
+    def ingresses(self) -> Sequence[AgentIngress]:
+        """the list of Agent Ingresses owned by this account"""
+        return self._props["ingresses"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the Agent Ingress list API resource"""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page, or null if there is no next page"""
+        return self._props["next_page_uri"]
+
+
 class APIKey(object):
     def __init__(self, client, props):
         self._client = client
@@ -709,7 +820,7 @@ class EndpointWebhookValidation(object):
 
     @property
     def provider(self) -> str:
-        """a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers: ``SLACK``, ``SNS``, ``STRIPE``, ``GITHUB``, ``TWILIO``, ``SHOPIFY``, ``GITLAB``, ``INTERCOM``, ``SENDGRID``."""
+        """a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers: ``SLACK``, ``SNS``, ``STRIPE``, ``GITHUB``, ``TWILIO``, ``SHOPIFY``, ``GITLAB``, ``INTERCOM``, ``SENDGRID``, ``XERO``."""
         return self._props["provider"]
 
     @property
@@ -2460,107 +2571,6 @@ class IPRestrictionList(object):
         return self._props["next_page_uri"]
 
 
-class IPWhitelistEntry(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<IPWhitelistEntry {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<IPWhitelistEntry {}>".format(repr(self._props))
-
-    def delete(
-        self,
-    ):
-        self._client.ip_whitelist.delete(
-            id=self.id,
-        )
-
-    def update(
-        self,
-        description: str = None,
-        metadata: str = None,
-    ):
-        self._client.ip_whitelist.update(
-            id=self.id,
-            description=description,
-            metadata=metadata,
-        )
-
-    @property
-    def id(self) -> str:
-        """unique identifier for this IP whitelist entry"""
-        return self._props["id"]
-
-    @property
-    def uri(self) -> str:
-        """URI of the IP whitelist entry API resource"""
-        return self._props["uri"]
-
-    @property
-    def created_at(self) -> str:
-        """timestamp when the IP whitelist entry was created, RFC 3339 format"""
-        return self._props["created_at"]
-
-    @property
-    def description(self) -> str:
-        """human-readable description of the source IPs for this IP whitelist entry. optional, max 255 bytes."""
-        return self._props["description"]
-
-    @property
-    def metadata(self) -> str:
-        """arbitrary user-defined machine-readable data of this IP whitelist entry. optional, max 4096 bytes."""
-        return self._props["metadata"]
-
-    @property
-    def ip_net(self) -> str:
-        """an IP address or IP network range in CIDR notation (e.g. 10.1.1.1 or 10.1.0.0/16) of addresses that will be whitelisted to communicate with your tunnel endpoints"""
-        return self._props["ip_net"]
-
-
-class IPWhitelistEntryList(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["whitelist"] = (
-            [IPWhitelistEntry(client, x) for x in props["whitelist"]]
-            if props["whitelist"] is not None
-            else None
-        )
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<IPWhitelistEntryList {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<IPWhitelistEntryList {}>".format(repr(self._props))
-
-    def __iter__(self):
-        return PagedIterator(self._client, self, "whitelist")
-
-    @property
-    def whitelist(self) -> Sequence[IPWhitelistEntry]:
-        """the list of all IP whitelist entries on this account"""
-        return self._props["whitelist"]
-
-    @property
-    def uri(self) -> str:
-        """URI of the IP whitelist API resource"""
-        return self._props["uri"]
-
-    @property
-    def next_page_uri(self) -> str:
-        """URI of the next page, or null if there is no next page"""
-        return self._props["next_page_uri"]
-
-
 class ReservedAddr(object):
     def __init__(self, client, props):
         self._client = client
@@ -2777,6 +2787,11 @@ class ReservedDomain(object):
         """status of the automatic certificate management for this domain, or null if automatic management is disabled"""
         return self._props["certificate_management_status"]
 
+    @property
+    def acme_challenge_cname_target(self) -> str:
+        """DNS CNAME target for the host _acme-challenge.example.com, where example.com is your reserved domain name. This is required to issue certificates for wildcard, non-ngrok reserved domains. Must be null for non-wildcard domains and ngrok subdomains."""
+        return self._props["acme_challenge_cname_target"]
+
 
 class ReservedDomainList(object):
     def __init__(self, client, props):
@@ -2871,42 +2886,10 @@ class ReservedDomainCertStatus(object):
         return self._props["provisioning_job"]
 
 
-class ReservedDomainCertNSTarget(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<ReservedDomainCertNSTarget {} {}>".format(
-                self.id, repr(self._props)
-            )
-        else:
-            return "<ReservedDomainCertNSTarget {}>".format(repr(self._props))
-
-    @property
-    def zone(self) -> str:
-        """the zone that the nameservers need to be applied to"""
-        return self._props["zone"]
-
-    @property
-    def nameservers(self) -> Sequence[str]:
-        """the nameservers the user must add"""
-        return self._props["nameservers"]
-
-
 class ReservedDomainCertJob(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["ns_targets"] = (
-            [ReservedDomainCertNSTarget(client, x) for x in props["ns_targets"]]
-            if props["ns_targets"] is not None
-            else None
-        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -2936,11 +2919,6 @@ class ReservedDomainCertJob(object):
     def retries_at(self) -> str:
         """timestamp when the provisioning job will be retried"""
         return self._props["retries_at"]
-
-    @property
-    def ns_targets(self) -> Sequence[ReservedDomainCertNSTarget]:
-        """if present, indicates the dns nameservers that the user must configure to complete the provisioning process of a wildcard certificate"""
-        return self._props["ns_targets"]
 
 
 class SSHCertificateAuthority(object):
