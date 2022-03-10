@@ -280,6 +280,491 @@ class APIKeysClient(object):
         return APIKey(self._client, result)
 
 
+class FailoverBackendsClient(object):
+    """A Failover backend defines failover behavior within a list of referenced
+    backends. Traffic is sent to the first backend in the list. If that backend
+    is offline or no connection can be established, ngrok attempts to connect to
+    the next backend in the list until one is successful."""
+
+    def __init__(self, client):
+        self._client = client
+
+    def create(
+        self,
+        description: str = "",
+        metadata: str = "",
+        backends: Sequence[str] = [],
+    ) -> FailoverBackend:
+        """Create a new Failover backend
+
+        :param description: human-readable description of this backend. Optional
+        :param metadata: arbitrary user-defined machine-readable data of this backend. Optional
+        :param backends: the ids of the child backends in order
+
+        https://ngrok.com/docs/api#api-failover-backends-create
+        """
+        path = "/backends/failover"
+        result = self._client.http_client.post(
+            path,
+            dict(
+                description=description,
+                metadata=metadata,
+                backends=backends,
+            ),
+        )
+        return FailoverBackend(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """Delete a Failover backend by ID. TODO what if used?
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-failover-backends-delete
+        """
+        path = "/backends/failover/{id}"
+        path = path.format(
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+    def get(
+        self,
+        id: str,
+    ) -> FailoverBackend:
+        """Get detailed information about a Failover backend by ID
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-failover-backends-get
+        """
+        path = "/backends/failover/{id}"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return FailoverBackend(self._client, result)
+
+    def list(
+        self,
+        before_id: str = None,
+        limit: str = None,
+    ) -> FailoverBackendList:
+        """List all Failover backends on this account
+
+        :param before_id:
+        :param limit:
+
+        https://ngrok.com/docs/api#api-failover-backends-list
+        """
+        path = "/backends/failover"
+        result = self._client.http_client.get(
+            path,
+            dict(
+                before_id=before_id,
+                limit=limit,
+            ),
+        )
+        return FailoverBackendList(self._client, result)
+
+    def update(
+        self,
+        id: str,
+        description: str = None,
+        metadata: str = None,
+        backends: Sequence[str] = [],
+    ) -> FailoverBackend:
+        """Update Failover backend by ID
+
+        :param id:
+        :param description: human-readable description of this backend. Optional
+        :param metadata: arbitrary user-defined machine-readable data of this backend. Optional
+        :param backends: the ids of the child backends in order
+
+        https://ngrok.com/docs/api#api-failover-backends-update
+        """
+        path = "/backends/failover/{id}"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.patch(
+            path,
+            dict(
+                description=description,
+                metadata=metadata,
+                backends=backends,
+            ),
+        )
+        return FailoverBackend(self._client, result)
+
+
+class HTTPResponseBackendsClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def create(
+        self,
+        description: str = "",
+        metadata: str = "",
+        body: str = "",
+        headers: Mapping[str, str] = {},
+        status_code: int = None,
+    ) -> HTTPResponseBackend:
+        """
+
+        :param description: human-readable description of this backend. Optional
+        :param metadata: arbitrary user-defined machine-readable data of this backend. Optional
+        :param body: body to return as fixed content
+        :param headers: headers to return
+        :param status_code: status code to return
+
+        https://ngrok.com/docs/api#api-http-response-backends-create
+        """
+        path = "/backends/http_response"
+        result = self._client.http_client.post(
+            path,
+            dict(
+                description=description,
+                metadata=metadata,
+                body=body,
+                headers=headers,
+                status_code=status_code,
+            ),
+        )
+        return HTTPResponseBackend(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-http-response-backends-delete
+        """
+        path = "/backends/http_response/{id}"
+        path = path.format(
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+    def get(
+        self,
+        id: str,
+    ) -> HTTPResponseBackend:
+        """
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-http-response-backends-get
+        """
+        path = "/backends/http_response/{id}"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return HTTPResponseBackend(self._client, result)
+
+    def list(
+        self,
+        before_id: str = None,
+        limit: str = None,
+    ) -> HTTPResponseBackendList:
+        """
+
+        :param before_id:
+        :param limit:
+
+        https://ngrok.com/docs/api#api-http-response-backends-list
+        """
+        path = "/backends/http_response"
+        result = self._client.http_client.get(
+            path,
+            dict(
+                before_id=before_id,
+                limit=limit,
+            ),
+        )
+        return HTTPResponseBackendList(self._client, result)
+
+    def update(
+        self,
+        id: str,
+        description: str = None,
+        metadata: str = None,
+        body: str = None,
+        headers: Mapping[str, str] = None,
+        status_code: int = None,
+    ) -> HTTPResponseBackend:
+        """
+
+        :param id:
+        :param description: human-readable description of this backend. Optional
+        :param metadata: arbitrary user-defined machine-readable data of this backend. Optional
+        :param body: body to return as fixed content
+        :param headers: headers to return
+        :param status_code: status code to return
+
+        https://ngrok.com/docs/api#api-http-response-backends-update
+        """
+        path = "/backends/http_response/{id}"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.patch(
+            path,
+            dict(
+                description=description,
+                metadata=metadata,
+                body=body,
+                headers=headers,
+                status_code=status_code,
+            ),
+        )
+        return HTTPResponseBackend(self._client, result)
+
+
+class TunnelGroupBackendsClient(object):
+    """A Tunnel Group Backend balances traffic among all online tunnels that match
+    a label selector."""
+
+    def __init__(self, client):
+        self._client = client
+
+    def create(
+        self,
+        description: str = "",
+        metadata: str = "",
+        labels: Mapping[str, str] = {},
+    ) -> TunnelGroupBackend:
+        """Create a new TunnelGroup backend
+
+        :param description: human-readable description of this backend. Optional
+        :param metadata: arbitrary user-defined machine-readable data of this backend. Optional
+        :param labels: labels to watch for tunnels on, e.g. app->foo, dc->bar
+
+        https://ngrok.com/docs/api#api-tunnel-group-backends-create
+        """
+        path = "/backends/tunnel_group"
+        result = self._client.http_client.post(
+            path,
+            dict(
+                description=description,
+                metadata=metadata,
+                labels=labels,
+            ),
+        )
+        return TunnelGroupBackend(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """Delete a TunnelGroup backend by ID. TODO what if used?
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tunnel-group-backends-delete
+        """
+        path = "/backends/tunnel_group/{id}"
+        path = path.format(
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+    def get(
+        self,
+        id: str,
+    ) -> TunnelGroupBackend:
+        """Get detailed information about a TunnelGroup backend by ID
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tunnel-group-backends-get
+        """
+        path = "/backends/tunnel_group/{id}"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return TunnelGroupBackend(self._client, result)
+
+    def list(
+        self,
+        before_id: str = None,
+        limit: str = None,
+    ) -> TunnelGroupBackendList:
+        """List all TunnelGroup backends on this account
+
+        :param before_id:
+        :param limit:
+
+        https://ngrok.com/docs/api#api-tunnel-group-backends-list
+        """
+        path = "/backends/tunnel_group"
+        result = self._client.http_client.get(
+            path,
+            dict(
+                before_id=before_id,
+                limit=limit,
+            ),
+        )
+        return TunnelGroupBackendList(self._client, result)
+
+    def update(
+        self,
+        id: str,
+        description: str = None,
+        metadata: str = None,
+        labels: Mapping[str, str] = {},
+    ) -> TunnelGroupBackend:
+        """Update TunnelGroup backend by ID
+
+        :param id:
+        :param description: human-readable description of this backend. Optional
+        :param metadata: arbitrary user-defined machine-readable data of this backend. Optional
+        :param labels: labels to watch for tunnels on, e.g. app->foo, dc->bar
+
+        https://ngrok.com/docs/api#api-tunnel-group-backends-update
+        """
+        path = "/backends/tunnel_group/{id}"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.patch(
+            path,
+            dict(
+                description=description,
+                metadata=metadata,
+                labels=labels,
+            ),
+        )
+        return TunnelGroupBackend(self._client, result)
+
+
+class WeightedBackendsClient(object):
+    """A Weighted Backend balances traffic among the referenced backends. Traffic
+    is assigned proportionally to each based on its weight. The percentage of
+    traffic is calculated by dividing a backend's weight by the sum of all
+    weights."""
+
+    def __init__(self, client):
+        self._client = client
+
+    def create(
+        self,
+        description: str = "",
+        metadata: str = "",
+        backends: Mapping[str, int] = {},
+    ) -> WeightedBackend:
+        """Create a new Weighted backend
+
+        :param description: human-readable description of this backend. Optional
+        :param metadata: arbitrary user-defined machine-readable data of this backend. Optional
+        :param backends: the ids of the child backends to their weights (0-10000)
+
+        https://ngrok.com/docs/api#api-weighted-backends-create
+        """
+        path = "/backends/weighted"
+        result = self._client.http_client.post(
+            path,
+            dict(
+                description=description,
+                metadata=metadata,
+                backends=backends,
+            ),
+        )
+        return WeightedBackend(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """Delete a Weighted backend by ID. TODO what if used?
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-weighted-backends-delete
+        """
+        path = "/backends/weighted/{id}"
+        path = path.format(
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+    def get(
+        self,
+        id: str,
+    ) -> WeightedBackend:
+        """Get detailed information about a Weighted backend by ID
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-weighted-backends-get
+        """
+        path = "/backends/weighted/{id}"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return WeightedBackend(self._client, result)
+
+    def list(
+        self,
+        before_id: str = None,
+        limit: str = None,
+    ) -> WeightedBackendList:
+        """List all Weighted backends on this account
+
+        :param before_id:
+        :param limit:
+
+        https://ngrok.com/docs/api#api-weighted-backends-list
+        """
+        path = "/backends/weighted"
+        result = self._client.http_client.get(
+            path,
+            dict(
+                before_id=before_id,
+                limit=limit,
+            ),
+        )
+        return WeightedBackendList(self._client, result)
+
+    def update(
+        self,
+        id: str,
+        description: str = None,
+        metadata: str = None,
+        backends: Mapping[str, int] = {},
+    ) -> WeightedBackend:
+        """Update Weighted backend by ID
+
+        :param id:
+        :param description: human-readable description of this backend. Optional
+        :param metadata: arbitrary user-defined machine-readable data of this backend. Optional
+        :param backends: the ids of the child backends to their weights (0-10000)
+
+        https://ngrok.com/docs/api#api-weighted-backends-update
+        """
+        path = "/backends/weighted/{id}"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.patch(
+            path,
+            dict(
+                description=description,
+                metadata=metadata,
+                backends=backends,
+            ),
+        )
+        return WeightedBackend(self._client, result)
+
+
 class CertificateAuthoritiesClient(object):
     """Certificate Authorities are x509 certificates that are used to sign other
     x509 certificates. Attach a Certificate Authority to the Mutual TLS module
@@ -518,121 +1003,250 @@ class CredentialsClient(object):
         return Credential(self._client, result)
 
 
-class EndpointConfigurationsClient(object):
-    """Endpoint Configurations are a reusable group of modules that encapsulate how
-    traffic to a domain or address is handled. Endpoint configurations are only
-    applied to Domains and TCP Addresses they have been attached to."""
-
+class EdgesHTTPSRoutesClient(object):
     def __init__(self, client):
         self._client = client
 
     def create(
         self,
-        type: str = "",
+        edge_id: str,
+        match_type: str,
+        match: str,
         description: str = "",
         metadata: str = "",
+        backend: EndpointBackendMutate = None,
+        ip_restriction: EndpointIPPolicyMutate = None,
         circuit_breaker: EndpointCircuitBreaker = None,
         compression: EndpointCompression = None,
         request_headers: EndpointRequestHeaders = None,
         response_headers: EndpointResponseHeaders = None,
-        ip_policy: EndpointIPPolicyMutate = None,
-        mutual_tls: EndpointMutualTLSMutate = None,
-        tls_termination: EndpointTLSTermination = None,
-        webhook_validation: EndpointWebhookValidation = None,
+        webhook_verification: EndpointWebhookValidation = None,
         oauth: EndpointOAuth = None,
-        logging: EndpointLoggingMutate = None,
         saml: EndpointSAMLMutate = None,
         oidc: EndpointOIDC = None,
-    ) -> EndpointConfiguration:
-        """Create a new endpoint configuration
+        websocket_tcp_converter: EndpointWebsocketTCPConverter = None,
+    ) -> HTTPSEdgeRoute:
+        """Create an HTTPS Edge Route
 
-        :param type: they type of traffic this endpoint configuration can be applied to. one of: ``http``, ``https``, ``tcp``
-        :param description: human-readable description of what this endpoint configuration will be do when applied or what traffic it will be applied to. Optional, max 255 bytes
-        :param metadata: arbitrary user-defined machine-readable data of this endpoint configuration. Optional, max 4096 bytes.
+        :param edge_id: unique identifier of this edge
+        :param match_type: Type of match to use for this route. Valid values are "exact_path" and "path_prefix".
+        :param match: Route selector: "/blog" or "example.com" or "example.com/blog"
+        :param description: human-readable description of what this edge will be used for; optional, max 255 bytes.
+        :param metadata: arbitrary user-defined machine-readable data of this edge. Optional, max 4096 bytes.
+        :param backend: backend module configuration or ``null``
+        :param ip_restriction: ip restriction module configuration or ``null``
         :param circuit_breaker: circuit breaker module configuration or ``null``
         :param compression: compression module configuration or ``null``
         :param request_headers: request headers module configuration or ``null``
         :param response_headers: response headers module configuration or ``null``
-        :param ip_policy: ip policy module configuration or ``null``
-        :param mutual_tls: mutual TLS module configuration or ``null``
-        :param tls_termination: TLS termination module configuration or ``null``
-        :param webhook_validation: webhook validation module configuration or ``null``
+        :param webhook_verification: webhook verification module configuration or ``null``
         :param oauth: oauth module configuration or ``null``
-        :param logging: logging module configuration or ``null``
         :param saml: saml module configuration or ``null``
         :param oidc: oidc module configuration or ``null``
+        :param websocket_tcp_converter: websocket to tcp adapter configuration or ``null``
 
-        https://ngrok.com/docs/api#api-endpoint-configurations-create
+        https://ngrok.com/docs/api#api-edges-https-routes-create
         """
-        path = "/endpoint_configurations"
+        path = "/edges/https/{edge_id}/routes"
+        path = path.format(
+            edge_id=edge_id,
+        )
         result = self._client.http_client.post(
             path,
             dict(
-                type=type,
+                match_type=match_type,
+                match=match,
                 description=description,
                 metadata=metadata,
+                backend=backend,
+                ip_restriction=ip_restriction,
                 circuit_breaker=circuit_breaker,
                 compression=compression,
                 request_headers=request_headers,
                 response_headers=response_headers,
-                ip_policy=ip_policy,
-                mutual_tls=mutual_tls,
-                tls_termination=tls_termination,
-                webhook_validation=webhook_validation,
+                webhook_verification=webhook_verification,
                 oauth=oauth,
-                logging=logging,
                 saml=saml,
                 oidc=oidc,
+                websocket_tcp_converter=websocket_tcp_converter,
             ),
         )
-        return EndpointConfiguration(self._client, result)
+        return HTTPSEdgeRoute(self._client, result)
+
+    def get(
+        self,
+        edge_id: str,
+        id: str,
+    ) -> HTTPSEdgeRoute:
+        """Get an HTTPS Edge Route by ID
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edges-https-routes-get
+        """
+        path = "/edges/https/{edge_id}/routes/{id}"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return HTTPSEdgeRoute(self._client, result)
+
+    def update(
+        self,
+        edge_id: str,
+        id: str,
+        match_type: str = "",
+        match: str = "",
+        description: str = "",
+        metadata: str = "",
+        backend: EndpointBackendMutate = None,
+        ip_restriction: EndpointIPPolicyMutate = None,
+        circuit_breaker: EndpointCircuitBreaker = None,
+        compression: EndpointCompression = None,
+        request_headers: EndpointRequestHeaders = None,
+        response_headers: EndpointResponseHeaders = None,
+        webhook_verification: EndpointWebhookValidation = None,
+        oauth: EndpointOAuth = None,
+        saml: EndpointSAMLMutate = None,
+        oidc: EndpointOIDC = None,
+        websocket_tcp_converter: EndpointWebsocketTCPConverter = None,
+    ) -> HTTPSEdgeRoute:
+        """Updates an HTTPS Edge Route by ID. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+        :param match_type: Type of match to use for this route. Valid values are "exact_path" and "path_prefix".
+        :param match: Route selector: "/blog" or "example.com" or "example.com/blog"
+        :param description: human-readable description of what this edge will be used for; optional, max 255 bytes.
+        :param metadata: arbitrary user-defined machine-readable data of this edge. Optional, max 4096 bytes.
+        :param backend: backend module configuration or ``null``
+        :param ip_restriction: ip restriction module configuration or ``null``
+        :param circuit_breaker: circuit breaker module configuration or ``null``
+        :param compression: compression module configuration or ``null``
+        :param request_headers: request headers module configuration or ``null``
+        :param response_headers: response headers module configuration or ``null``
+        :param webhook_verification: webhook verification module configuration or ``null``
+        :param oauth: oauth module configuration or ``null``
+        :param saml: saml module configuration or ``null``
+        :param oidc: oidc module configuration or ``null``
+        :param websocket_tcp_converter: websocket to tcp adapter configuration or ``null``
+
+        https://ngrok.com/docs/api#api-edges-https-routes-update
+        """
+        path = "/edges/https/{edge_id}/routes/{id}"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.patch(
+            path,
+            dict(
+                match_type=match_type,
+                match=match,
+                description=description,
+                metadata=metadata,
+                backend=backend,
+                ip_restriction=ip_restriction,
+                circuit_breaker=circuit_breaker,
+                compression=compression,
+                request_headers=request_headers,
+                response_headers=response_headers,
+                webhook_verification=webhook_verification,
+                oauth=oauth,
+                saml=saml,
+                oidc=oidc,
+                websocket_tcp_converter=websocket_tcp_converter,
+            ),
+        )
+        return HTTPSEdgeRoute(self._client, result)
 
     def delete(
         self,
+        edge_id: str,
         id: str,
     ):
-        """Delete an endpoint configuration. This operation will fail if the endpoint configuration is still referenced by any reserved domain or reserved address.
+        """Delete an HTTPS Edge Route by ID
 
-        :param id: a resource identifier
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
 
-        https://ngrok.com/docs/api#api-endpoint-configurations-delete
+        https://ngrok.com/docs/api#api-edges-https-routes-delete
         """
-        path = "/endpoint_configurations/{id}"
+        path = "/edges/https/{edge_id}/routes/{id}"
         path = path.format(
+            edge_id=edge_id,
             id=id,
         )
         self._client.http_client.delete(path, dict())
 
+
+class EdgesHTTPSClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def create(
+        self,
+        description: str = "",
+        metadata: str = "",
+        hostports: Sequence[str] = None,
+        mutual_tls: EndpointMutualTLSMutate = None,
+        tls_termination: EndpointTLSTerminationAtEdge = None,
+    ) -> HTTPSEdge:
+        """Create an HTTPS Edge
+
+        :param description: human-readable description of what this edge will be used for; optional, max 255 bytes.
+        :param metadata: arbitrary user-defined machine-readable data of this edge; optional, max 4096 bytes.
+        :param hostports: hostports served by this edge
+        :param mutual_tls: edge modules
+        :param tls_termination:
+
+        https://ngrok.com/docs/api#api-edges-https-create
+        """
+        path = "/edges/https"
+        result = self._client.http_client.post(
+            path,
+            dict(
+                description=description,
+                metadata=metadata,
+                hostports=hostports,
+                mutual_tls=mutual_tls,
+                tls_termination=tls_termination,
+            ),
+        )
+        return HTTPSEdge(self._client, result)
+
     def get(
         self,
         id: str,
-    ) -> EndpointConfiguration:
-        """Returns detailed information about an endpoint configuration
+    ) -> HTTPSEdge:
+        """Get an HTTPS Edge by ID
 
         :param id: a resource identifier
 
-        https://ngrok.com/docs/api#api-endpoint-configurations-get
+        https://ngrok.com/docs/api#api-edges-https-get
         """
-        path = "/endpoint_configurations/{id}"
+        path = "/edges/https/{id}"
         path = path.format(
             id=id,
         )
         result = self._client.http_client.get(path, dict())
-        return EndpointConfiguration(self._client, result)
+        return HTTPSEdge(self._client, result)
 
     def list(
         self,
         before_id: str = None,
         limit: str = None,
-    ) -> EndpointConfigurationList:
-        """Returns a list of all endpoint configurations on this account
+    ) -> HTTPSEdgeList:
+        """Returns a list of all HTTPS Edges on this account
 
         :param before_id:
         :param limit:
 
-        https://ngrok.com/docs/api#api-endpoint-configurations-list
+        https://ngrok.com/docs/api#api-edges-https-list
         """
-        path = "/endpoint_configurations"
+        path = "/edges/https"
         result = self._client.http_client.get(
             path,
             dict(
@@ -640,47 +1254,29 @@ class EndpointConfigurationsClient(object):
                 limit=limit,
             ),
         )
-        return EndpointConfigurationList(self._client, result)
+        return HTTPSEdgeList(self._client, result)
 
     def update(
         self,
         id: str,
         description: str = None,
         metadata: str = None,
-        circuit_breaker: EndpointCircuitBreaker = None,
-        compression: EndpointCompression = None,
-        request_headers: EndpointRequestHeaders = None,
-        response_headers: EndpointResponseHeaders = None,
-        ip_policy: EndpointIPPolicyMutate = None,
+        hostports: Sequence[str] = None,
         mutual_tls: EndpointMutualTLSMutate = None,
-        tls_termination: EndpointTLSTermination = None,
-        webhook_validation: EndpointWebhookValidation = None,
-        oauth: EndpointOAuth = None,
-        logging: EndpointLoggingMutate = None,
-        saml: EndpointSAMLMutate = None,
-        oidc: EndpointOIDC = None,
-    ) -> EndpointConfiguration:
-        """Updates an endpoint configuration. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.
+        tls_termination: EndpointTLSTerminationAtEdge = None,
+    ) -> HTTPSEdge:
+        """Updates an HTTPS Edge by ID. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.
 
-        :param id: unique identifier of this endpoint configuration
-        :param description: human-readable description of what this endpoint configuration will be do when applied or what traffic it will be applied to. Optional, max 255 bytes
-        :param metadata: arbitrary user-defined machine-readable data of this endpoint configuration. Optional, max 4096 bytes.
-        :param circuit_breaker: circuit breaker module configuration or ``null``
-        :param compression: compression module configuration or ``null``
-        :param request_headers: request headers module configuration or ``null``
-        :param response_headers: response headers module configuration or ``null``
-        :param ip_policy: ip policy module configuration or ``null``
-        :param mutual_tls: mutual TLS module configuration or ``null``
-        :param tls_termination: TLS termination module configuration or ``null``
-        :param webhook_validation: webhook validation module configuration or ``null``
-        :param oauth: oauth module configuration or ``null``
-        :param logging: logging module configuration or ``null``
-        :param saml: saml module configuration or ``null``
-        :param oidc: oidc module configuration or ``null``
+        :param id: unique identifier of this edge
+        :param description: human-readable description of what this edge will be used for; optional, max 255 bytes.
+        :param metadata: arbitrary user-defined machine-readable data of this edge; optional, max 4096 bytes.
+        :param hostports: hostports served by this edge
+        :param mutual_tls: edge modules
+        :param tls_termination:
 
-        https://ngrok.com/docs/api#api-endpoint-configurations-update
+        https://ngrok.com/docs/api#api-edges-https-update
         """
-        path = "/endpoint_configurations/{id}"
+        path = "/edges/https/{id}"
         path = path.format(
             id=id,
         )
@@ -689,107 +1285,1000 @@ class EndpointConfigurationsClient(object):
             dict(
                 description=description,
                 metadata=metadata,
-                circuit_breaker=circuit_breaker,
-                compression=compression,
-                request_headers=request_headers,
-                response_headers=response_headers,
-                ip_policy=ip_policy,
+                hostports=hostports,
                 mutual_tls=mutual_tls,
                 tls_termination=tls_termination,
-                webhook_validation=webhook_validation,
-                oauth=oauth,
-                logging=logging,
-                saml=saml,
-                oidc=oidc,
             ),
         )
-        return EndpointConfiguration(self._client, result)
-
-
-class EventStreamsClient(object):
-    def __init__(self, client):
-        self._client = client
-
-    def create(
-        self,
-        metadata: str = "",
-        description: str = "",
-        fields: Sequence[str] = [],
-        event_type: str = "",
-        destination_ids: Sequence[str] = [],
-        sampling_rate: float = 0,
-    ) -> EventStream:
-        """Create a new Event Stream. It will not apply to anything until you associate it with one or more Endpoint Configs.
-
-        :param metadata: Arbitrary user-defined machine-readable data of this Event Stream. Optional, max 4096 bytes.
-        :param description: Human-readable description of the Event Stream. Optional, max 255 bytes.
-        :param fields: A list of protocol-specific fields you want to collect on each event.
-        :param event_type: The protocol that determines which events will be collected. Supported values are ``tcp_connection_closed`` and ``http_request_complete``.
-        :param destination_ids: A list of Event Destination IDs which should be used for this Event Stream. Event Streams are required to have at least one Event Destination.
-        :param sampling_rate: The percentage of all events you would like to capture. Valid values range from 0.01, representing 1% of all events to 1.00, representing 100% of all events.
-
-        https://ngrok.com/docs/api#api-event-streams-create
-        """
-        path = "/event_streams"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                metadata=metadata,
-                description=description,
-                fields=fields,
-                event_type=event_type,
-                destination_ids=destination_ids,
-                sampling_rate=sampling_rate,
-            ),
-        )
-        return EventStream(self._client, result)
+        return HTTPSEdge(self._client, result)
 
     def delete(
         self,
         id: str,
     ):
-        """Delete an Event Stream. Associated Event Destinations will be preserved.
+        """Delete an HTTPS Edge by ID
 
         :param id: a resource identifier
 
-        https://ngrok.com/docs/api#api-event-streams-delete
+        https://ngrok.com/docs/api#api-edges-https-delete
         """
-        path = "/event_streams/{id}"
+        path = "/edges/https/{id}"
         path = path.format(
             id=id,
         )
         self._client.http_client.delete(path, dict())
 
+
+class HTTPSEdgeMutualTLSModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        id: str,
+        module: EndpointMutualTLSMutate = None,
+    ) -> EndpointMutualTLS:
+        """
+
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-https-edge-mutual-tls-module-replace
+        """
+        path = "/edges/https/{id}/mutual_tls"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.put(
+            path,
+            dict(
+                module=module,
+            ),
+        )
+        return EndpointMutualTLS(self._client, result)
+
     def get(
         self,
         id: str,
-    ) -> EventStream:
-        """Get detailed information about an Event Stream by ID.
+    ) -> EndpointMutualTLS:
+        """
 
         :param id: a resource identifier
 
-        https://ngrok.com/docs/api#api-event-streams-get
+        https://ngrok.com/docs/api#api-https-edge-mutual-tls-module-get
         """
-        path = "/event_streams/{id}"
+        path = "/edges/https/{id}/mutual_tls"
         path = path.format(
             id=id,
         )
         result = self._client.http_client.get(path, dict())
-        return EventStream(self._client, result)
+        return EndpointMutualTLS(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-https-edge-mutual-tls-module-delete
+        """
+        path = "/edges/https/{id}/mutual_tls"
+        path = path.format(
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+
+class HTTPSEdgeTLSTerminationModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        id: str,
+        module: EndpointTLSTerminationAtEdge = None,
+    ) -> EndpointTLSTermination:
+        """
+
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-https-edge-tls-termination-module-replace
+        """
+        path = "/edges/https/{id}/tls_termination"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.put(
+            path,
+            dict(
+                module=module,
+            ),
+        )
+        return EndpointTLSTermination(self._client, result)
+
+    def get(
+        self,
+        id: str,
+    ) -> EndpointTLSTermination:
+        """
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-https-edge-tls-termination-module-get
+        """
+        path = "/edges/https/{id}/tls_termination"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return EndpointTLSTermination(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-https-edge-tls-termination-module-delete
+        """
+        path = "/edges/https/{id}/tls_termination"
+        path = path.format(
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+
+class EdgeRouteBackendModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        edge_id: str,
+        id: str,
+        module: EndpointBackendMutate = None,
+    ) -> EndpointBackend:
+        """
+
+        :param edge_id:
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-edge-route-backend-module-replace
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/backend"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.put(
+            path,
+            dict(
+                module=module,
+            ),
+        )
+        return EndpointBackend(self._client, result)
+
+    def get(
+        self,
+        edge_id: str,
+        id: str,
+    ) -> EndpointBackend:
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-backend-module-get
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/backend"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return EndpointBackend(self._client, result)
+
+    def delete(
+        self,
+        edge_id: str,
+        id: str,
+    ):
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-backend-module-delete
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/backend"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+
+class EdgeRouteIPRestrictionModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        edge_id: str,
+        id: str,
+        module: EndpointIPPolicyMutate = None,
+    ) -> EndpointIPPolicy:
+        """
+
+        :param edge_id:
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-edge-route-ip-restriction-module-replace
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/ip_restriction"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.put(
+            path,
+            dict(
+                module=module,
+            ),
+        )
+        return EndpointIPPolicy(self._client, result)
+
+    def get(
+        self,
+        edge_id: str,
+        id: str,
+    ) -> EndpointIPPolicy:
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-ip-restriction-module-get
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/ip_restriction"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return EndpointIPPolicy(self._client, result)
+
+    def delete(
+        self,
+        edge_id: str,
+        id: str,
+    ):
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-ip-restriction-module-delete
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/ip_restriction"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+
+class EdgeRouteRequestHeadersModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        edge_id: str,
+        id: str,
+        module: EndpointRequestHeaders = None,
+    ) -> EndpointRequestHeaders:
+        """
+
+        :param edge_id:
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-edge-route-request-headers-module-replace
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/request_headers"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.put(
+            path,
+            dict(
+                module=module,
+            ),
+        )
+        return EndpointRequestHeaders(self._client, result)
+
+    def get(
+        self,
+        edge_id: str,
+        id: str,
+    ) -> EndpointRequestHeaders:
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-request-headers-module-get
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/request_headers"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return EndpointRequestHeaders(self._client, result)
+
+    def delete(
+        self,
+        edge_id: str,
+        id: str,
+    ):
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-request-headers-module-delete
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/request_headers"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+
+class EdgeRouteResponseHeadersModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        edge_id: str,
+        id: str,
+        module: EndpointResponseHeaders = None,
+    ) -> EndpointResponseHeaders:
+        """
+
+        :param edge_id:
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-edge-route-response-headers-module-replace
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/response_headers"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.put(
+            path,
+            dict(
+                module=module,
+            ),
+        )
+        return EndpointResponseHeaders(self._client, result)
+
+    def get(
+        self,
+        edge_id: str,
+        id: str,
+    ) -> EndpointResponseHeaders:
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-response-headers-module-get
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/response_headers"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return EndpointResponseHeaders(self._client, result)
+
+    def delete(
+        self,
+        edge_id: str,
+        id: str,
+    ):
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-response-headers-module-delete
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/response_headers"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+
+class EdgeRouteCompressionModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        edge_id: str,
+        id: str,
+        module: EndpointCompression = None,
+    ) -> EndpointCompression:
+        """
+
+        :param edge_id:
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-edge-route-compression-module-replace
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/compression"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.put(
+            path,
+            dict(
+                module=module,
+            ),
+        )
+        return EndpointCompression(self._client, result)
+
+    def get(
+        self,
+        edge_id: str,
+        id: str,
+    ) -> EndpointCompression:
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-compression-module-get
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/compression"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return EndpointCompression(self._client, result)
+
+    def delete(
+        self,
+        edge_id: str,
+        id: str,
+    ):
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-compression-module-delete
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/compression"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+
+class EdgeRouteCircuitBreakerModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        edge_id: str,
+        id: str,
+        module: EndpointCircuitBreaker = None,
+    ) -> EndpointCircuitBreaker:
+        """
+
+        :param edge_id:
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-edge-route-circuit-breaker-module-replace
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/circuit_breaker"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.put(
+            path,
+            dict(
+                module=module,
+            ),
+        )
+        return EndpointCircuitBreaker(self._client, result)
+
+    def get(
+        self,
+        edge_id: str,
+        id: str,
+    ) -> EndpointCircuitBreaker:
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-circuit-breaker-module-get
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/circuit_breaker"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return EndpointCircuitBreaker(self._client, result)
+
+    def delete(
+        self,
+        edge_id: str,
+        id: str,
+    ):
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-circuit-breaker-module-delete
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/circuit_breaker"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+
+class EdgeRouteWebhookVerificationModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        edge_id: str,
+        id: str,
+        module: EndpointWebhookValidation = None,
+    ) -> EndpointWebhookValidation:
+        """
+
+        :param edge_id:
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-edge-route-webhook-verification-module-replace
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/webhook_verification"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.put(
+            path,
+            dict(
+                module=module,
+            ),
+        )
+        return EndpointWebhookValidation(self._client, result)
+
+    def get(
+        self,
+        edge_id: str,
+        id: str,
+    ) -> EndpointWebhookValidation:
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-webhook-verification-module-get
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/webhook_verification"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return EndpointWebhookValidation(self._client, result)
+
+    def delete(
+        self,
+        edge_id: str,
+        id: str,
+    ):
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-webhook-verification-module-delete
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/webhook_verification"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+
+class EdgeRouteOAuthModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        edge_id: str,
+        id: str,
+        module: EndpointOAuth = None,
+    ) -> EndpointOAuth:
+        """
+
+        :param edge_id:
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-edge-route-o-auth-module-replace
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/oauth"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.put(
+            path,
+            dict(
+                module=module,
+            ),
+        )
+        return EndpointOAuth(self._client, result)
+
+    def get(
+        self,
+        edge_id: str,
+        id: str,
+    ) -> EndpointOAuth:
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-o-auth-module-get
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/oauth"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return EndpointOAuth(self._client, result)
+
+    def delete(
+        self,
+        edge_id: str,
+        id: str,
+    ):
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-o-auth-module-delete
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/oauth"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+
+class EdgeRouteSAMLModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        edge_id: str,
+        id: str,
+        module: EndpointSAMLMutate = None,
+    ) -> EndpointSAML:
+        """
+
+        :param edge_id:
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-edge-route-saml-module-replace
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/saml"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.put(
+            path,
+            dict(
+                module=module,
+            ),
+        )
+        return EndpointSAML(self._client, result)
+
+    def get(
+        self,
+        edge_id: str,
+        id: str,
+    ) -> EndpointSAML:
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-saml-module-get
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/saml"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return EndpointSAML(self._client, result)
+
+    def delete(
+        self,
+        edge_id: str,
+        id: str,
+    ):
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-saml-module-delete
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/saml"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+
+class EdgeRouteOIDCModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        edge_id: str,
+        id: str,
+        module: EndpointOIDC = None,
+    ) -> EndpointOIDC:
+        """
+
+        :param edge_id:
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-edge-route-oidc-module-replace
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/oidc"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.put(
+            path,
+            dict(
+                module=module,
+            ),
+        )
+        return EndpointOIDC(self._client, result)
+
+    def get(
+        self,
+        edge_id: str,
+        id: str,
+    ) -> EndpointOIDC:
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-oidc-module-get
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/oidc"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return EndpointOIDC(self._client, result)
+
+    def delete(
+        self,
+        edge_id: str,
+        id: str,
+    ):
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-oidc-module-delete
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/oidc"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+
+class EdgeRouteWebsocketTCPConverterModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        edge_id: str,
+        id: str,
+        module: EndpointWebsocketTCPConverter = None,
+    ) -> EndpointWebsocketTCPConverter:
+        """
+
+        :param edge_id:
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-edge-route-websocket-tcp-converter-module-replace
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/websocket_tcp_converter"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.put(
+            path,
+            dict(
+                module=module,
+            ),
+        )
+        return EndpointWebsocketTCPConverter(self._client, result)
+
+    def get(
+        self,
+        edge_id: str,
+        id: str,
+    ) -> EndpointWebsocketTCPConverter:
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-websocket-tcp-converter-module-get
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/websocket_tcp_converter"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return EndpointWebsocketTCPConverter(self._client, result)
+
+    def delete(
+        self,
+        edge_id: str,
+        id: str,
+    ):
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-websocket-tcp-converter-module-delete
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/websocket_tcp_converter"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+
+class EdgesTCPClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def create(
+        self,
+        description: str = "",
+        metadata: str = "",
+        hostports: Sequence[str] = None,
+        backend: EndpointBackendMutate = None,
+        ip_restriction: EndpointIPPolicyMutate = None,
+    ) -> TCPEdge:
+        """Create a TCP Edge
+
+        :param description: human-readable description of what this edge will be used for; optional, max 255 bytes.
+        :param metadata: arbitrary user-defined machine-readable data of this edge. Optional, max 4096 bytes.
+        :param hostports: hostports served by this edge
+        :param backend: edge modules
+        :param ip_restriction:
+
+        https://ngrok.com/docs/api#api-edges-tcp-create
+        """
+        path = "/edges/tcp"
+        result = self._client.http_client.post(
+            path,
+            dict(
+                description=description,
+                metadata=metadata,
+                hostports=hostports,
+                backend=backend,
+                ip_restriction=ip_restriction,
+            ),
+        )
+        return TCPEdge(self._client, result)
+
+    def get(
+        self,
+        id: str,
+    ) -> TCPEdge:
+        """Get a TCP Edge by ID
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-edges-tcp-get
+        """
+        path = "/edges/tcp/{id}"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return TCPEdge(self._client, result)
 
     def list(
         self,
         before_id: str = None,
         limit: str = None,
-    ) -> EventStreamList:
-        """List all Event Streams available on this account.
+    ) -> TCPEdgeList:
+        """Returns a list of all TCP Edges on this account
 
         :param before_id:
         :param limit:
 
-        https://ngrok.com/docs/api#api-event-streams-list
+        https://ngrok.com/docs/api#api-edges-tcp-list
         """
-        path = "/event_streams"
+        path = "/edges/tcp"
         result = self._client.http_client.get(
             path,
             dict(
@@ -797,43 +2286,618 @@ class EventStreamsClient(object):
                 limit=limit,
             ),
         )
-        return EventStreamList(self._client, result)
+        return TCPEdgeList(self._client, result)
 
     def update(
         self,
         id: str,
-        metadata: str = None,
         description: str = None,
-        fields: Sequence[str] = None,
-        destination_ids: Sequence[str] = None,
-        sampling_rate: float = None,
-    ) -> EventStream:
-        """Update attributes of an Event Stream by ID.
+        metadata: str = None,
+        hostports: Sequence[str] = None,
+        backend: EndpointBackendMutate = None,
+        ip_restriction: EndpointIPPolicyMutate = None,
+    ) -> TCPEdge:
+        """Updates a TCP Edge by ID. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.
 
-        :param id: Unique identifier for this Event Stream.
-        :param metadata: Arbitrary user-defined machine-readable data of this Event Stream. Optional, max 4096 bytes.
-        :param description: Human-readable description of the Event Stream. Optional, max 255 bytes.
-        :param fields: A list of protocol-specific fields you want to collect on each event.
-        :param destination_ids: A list of Event Destination IDs which should be used for this Event Stream. Event Streams are required to have at least one Event Destination.
-        :param sampling_rate: The percentage of all events you would like to capture. Valid values range from 0.01, representing 1% of all events to 1.00, representing 100% of all events.
+        :param id: unique identifier of this edge
+        :param description: human-readable description of what this edge will be used for; optional, max 255 bytes.
+        :param metadata: arbitrary user-defined machine-readable data of this edge. Optional, max 4096 bytes.
+        :param hostports: hostports served by this edge
+        :param backend: edge modules
+        :param ip_restriction:
 
-        https://ngrok.com/docs/api#api-event-streams-update
+        https://ngrok.com/docs/api#api-edges-tcp-update
         """
-        path = "/event_streams/{id}"
+        path = "/edges/tcp/{id}"
         path = path.format(
             id=id,
         )
         result = self._client.http_client.patch(
             path,
             dict(
-                metadata=metadata,
                 description=description,
-                fields=fields,
-                destination_ids=destination_ids,
-                sampling_rate=sampling_rate,
+                metadata=metadata,
+                hostports=hostports,
+                backend=backend,
+                ip_restriction=ip_restriction,
             ),
         )
-        return EventStream(self._client, result)
+        return TCPEdge(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """Delete a TCP Edge by ID
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-edges-tcp-delete
+        """
+        path = "/edges/tcp/{id}"
+        path = path.format(
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+
+class TCPEdgeBackendModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        id: str,
+        module: EndpointBackendMutate = None,
+    ) -> EndpointBackend:
+        """
+
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-tcp-edge-backend-module-replace
+        """
+        path = "/edges/tcp/{id}/backend"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.put(
+            path,
+            dict(
+                module=module,
+            ),
+        )
+        return EndpointBackend(self._client, result)
+
+    def get(
+        self,
+        id: str,
+    ) -> EndpointBackend:
+        """
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tcp-edge-backend-module-get
+        """
+        path = "/edges/tcp/{id}/backend"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return EndpointBackend(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tcp-edge-backend-module-delete
+        """
+        path = "/edges/tcp/{id}/backend"
+        path = path.format(
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+
+class TCPEdgeIPRestrictionModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        id: str,
+        module: EndpointIPPolicyMutate = None,
+    ) -> EndpointIPPolicy:
+        """
+
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-tcp-edge-ip-restriction-module-replace
+        """
+        path = "/edges/tcp/{id}/ip_restriction"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.put(
+            path,
+            dict(
+                module=module,
+            ),
+        )
+        return EndpointIPPolicy(self._client, result)
+
+    def get(
+        self,
+        id: str,
+    ) -> EndpointIPPolicy:
+        """
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tcp-edge-ip-restriction-module-get
+        """
+        path = "/edges/tcp/{id}/ip_restriction"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return EndpointIPPolicy(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tcp-edge-ip-restriction-module-delete
+        """
+        path = "/edges/tcp/{id}/ip_restriction"
+        path = path.format(
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+
+class EdgesTLSClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def create(
+        self,
+        description: str = "",
+        metadata: str = "",
+        hostports: Sequence[str] = None,
+        backend: EndpointBackendMutate = None,
+        ip_restriction: EndpointIPPolicyMutate = None,
+        mutual_tls: EndpointMutualTLSMutate = None,
+        tls_termination: EndpointTLSTermination = None,
+    ) -> TLSEdge:
+        """Create a TLS Edge
+
+        :param description: human-readable description of what this edge will be used for; optional, max 255 bytes.
+        :param metadata: arbitrary user-defined machine-readable data of this edge. Optional, max 4096 bytes.
+        :param hostports: hostports served by this edge
+        :param backend: edge modules
+        :param ip_restriction:
+        :param mutual_tls:
+        :param tls_termination:
+
+        https://ngrok.com/docs/api#api-edges-tls-create
+        """
+        path = "/edges/tls"
+        result = self._client.http_client.post(
+            path,
+            dict(
+                description=description,
+                metadata=metadata,
+                hostports=hostports,
+                backend=backend,
+                ip_restriction=ip_restriction,
+                mutual_tls=mutual_tls,
+                tls_termination=tls_termination,
+            ),
+        )
+        return TLSEdge(self._client, result)
+
+    def get(
+        self,
+        id: str,
+    ) -> TLSEdge:
+        """Get a TLS Edge by ID
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-edges-tls-get
+        """
+        path = "/edges/tls/{id}"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return TLSEdge(self._client, result)
+
+    def list(
+        self,
+        before_id: str = None,
+        limit: str = None,
+    ) -> TLSEdgeList:
+        """Returns a list of all TLS Edges on this account
+
+        :param before_id:
+        :param limit:
+
+        https://ngrok.com/docs/api#api-edges-tls-list
+        """
+        path = "/edges/tls"
+        result = self._client.http_client.get(
+            path,
+            dict(
+                before_id=before_id,
+                limit=limit,
+            ),
+        )
+        return TLSEdgeList(self._client, result)
+
+    def update(
+        self,
+        id: str,
+        description: str = None,
+        metadata: str = None,
+        hostports: Sequence[str] = None,
+        backend: EndpointBackendMutate = None,
+        ip_restriction: EndpointIPPolicyMutate = None,
+        mutual_tls: EndpointMutualTLSMutate = None,
+        tls_termination: EndpointTLSTermination = None,
+    ) -> TLSEdge:
+        """Updates a TLS Edge by ID. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.
+
+        :param id: unique identifier of this edge
+        :param description: human-readable description of what this edge will be used for; optional, max 255 bytes.
+        :param metadata: arbitrary user-defined machine-readable data of this edge. Optional, max 4096 bytes.
+        :param hostports: hostports served by this edge
+        :param backend: edge modules
+        :param ip_restriction:
+        :param mutual_tls:
+        :param tls_termination:
+
+        https://ngrok.com/docs/api#api-edges-tls-update
+        """
+        path = "/edges/tls/{id}"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.patch(
+            path,
+            dict(
+                description=description,
+                metadata=metadata,
+                hostports=hostports,
+                backend=backend,
+                ip_restriction=ip_restriction,
+                mutual_tls=mutual_tls,
+                tls_termination=tls_termination,
+            ),
+        )
+        return TLSEdge(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """Delete a TLS Edge by ID
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-edges-tls-delete
+        """
+        path = "/edges/tls/{id}"
+        path = path.format(
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+
+class TLSEdgeBackendModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        id: str,
+        module: EndpointBackendMutate = None,
+    ) -> EndpointBackend:
+        """
+
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-tls-edge-backend-module-replace
+        """
+        path = "/edges/tls/{id}/backend"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.put(
+            path,
+            dict(
+                module=module,
+            ),
+        )
+        return EndpointBackend(self._client, result)
+
+    def get(
+        self,
+        id: str,
+    ) -> EndpointBackend:
+        """
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tls-edge-backend-module-get
+        """
+        path = "/edges/tls/{id}/backend"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return EndpointBackend(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tls-edge-backend-module-delete
+        """
+        path = "/edges/tls/{id}/backend"
+        path = path.format(
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+
+class TLSEdgeIPRestrictionModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        id: str,
+        module: EndpointIPPolicyMutate = None,
+    ) -> EndpointIPPolicy:
+        """
+
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-tls-edge-ip-restriction-module-replace
+        """
+        path = "/edges/tls/{id}/ip_restriction"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.put(
+            path,
+            dict(
+                module=module,
+            ),
+        )
+        return EndpointIPPolicy(self._client, result)
+
+    def get(
+        self,
+        id: str,
+    ) -> EndpointIPPolicy:
+        """
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tls-edge-ip-restriction-module-get
+        """
+        path = "/edges/tls/{id}/ip_restriction"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return EndpointIPPolicy(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tls-edge-ip-restriction-module-delete
+        """
+        path = "/edges/tls/{id}/ip_restriction"
+        path = path.format(
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+
+class TLSEdgeMutualTLSModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        id: str,
+        module: EndpointMutualTLSMutate = None,
+    ) -> EndpointMutualTLS:
+        """
+
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-tls-edge-mutual-tls-module-replace
+        """
+        path = "/edges/tls/{id}/mutual_tls"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.put(
+            path,
+            dict(
+                module=module,
+            ),
+        )
+        return EndpointMutualTLS(self._client, result)
+
+    def get(
+        self,
+        id: str,
+    ) -> EndpointMutualTLS:
+        """
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tls-edge-mutual-tls-module-get
+        """
+        path = "/edges/tls/{id}/mutual_tls"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return EndpointMutualTLS(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tls-edge-mutual-tls-module-delete
+        """
+        path = "/edges/tls/{id}/mutual_tls"
+        path = path.format(
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+
+class TLSEdgeTLSTerminationModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        id: str,
+        module: EndpointTLSTermination = None,
+    ) -> EndpointTLSTermination:
+        """
+
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-tls-edge-tls-termination-module-replace
+        """
+        path = "/edges/tls/{id}/tls_termination"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.put(
+            path,
+            dict(
+                module=module,
+            ),
+        )
+        return EndpointTLSTermination(self._client, result)
+
+    def get(
+        self,
+        id: str,
+    ) -> EndpointTLSTermination:
+        """
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tls-edge-tls-termination-module-get
+        """
+        path = "/edges/tls/{id}/tls_termination"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return EndpointTLSTermination(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tls-edge-tls-termination-module-delete
+        """
+        path = "/edges/tls/{id}/tls_termination"
+        path = path.format(
+            id=id,
+        )
+        self._client.http_client.delete(path, dict())
+
+
+class EndpointsClient(object):
+    """Endpoints provides an API for querying the endpoint objects
+    which define what tunnel or edge is used to serve a hostport.
+    Only active endpoints associated with a tunnel or backend are returned."""
+
+    def __init__(self, client):
+        self._client = client
+
+    def list(
+        self,
+        before_id: str = None,
+        limit: str = None,
+    ) -> EndpointList:
+        """List all active endpoints on the account
+
+        :param before_id:
+        :param limit:
+
+        https://ngrok.com/docs/api#api-endpoints-list
+        """
+        path = "/endpoints"
+        result = self._client.http_client.get(
+            path,
+            dict(
+                before_id=before_id,
+                limit=limit,
+            ),
+        )
+        return EndpointList(self._client, result)
+
+    def get(
+        self,
+        id: str,
+    ) -> Endpoint:
+        """Get the status of an endpoint by ID
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-endpoints-get
+        """
+        path = "/endpoints/{id}"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return Endpoint(self._client, result)
 
 
 class EventDestinationsClient(object):
@@ -872,7 +2936,7 @@ class EventDestinationsClient(object):
         self,
         id: str,
     ):
-        """Delete an Event Destination. If the Event Destination is still referenced by an Event Stream, this will throw an error until that Event Stream has removed that reference.
+        """Delete an Event Destination. If the Event Destination is still referenced by an Event Subscription.
 
         :param id: a resource identifier
 
@@ -973,7 +3037,7 @@ class EventSubscriptionsClient(object):
         :param metadata: Arbitrary customer supplied information intended to be machine readable. Optional, max 4096 chars.
         :param description: Arbitrary customer supplied information intended to be human readable. Optional, max 255 chars.
         :param sources: Sources containing the types for which this event subscription will trigger
-        :param destination_ids: A list of Event Destination IDs which should be used for this Event Stream. Event Streams are required to have at least one Event Destination.
+        :param destination_ids: A list of Event Destination IDs which should be used for this Event Subscription.
 
         https://ngrok.com/docs/api#api-event-subscriptions-create
         """
@@ -1058,7 +3122,7 @@ class EventSubscriptionsClient(object):
         :param metadata: Arbitrary customer supplied information intended to be machine readable. Optional, max 4096 chars.
         :param description: Arbitrary customer supplied information intended to be human readable. Optional, max 255 chars.
         :param sources: Sources containing the types for which this event subscription will trigger
-        :param destination_ids: A list of Event Destination IDs which should be used for this Event Stream. Event Streams are required to have at least one Event Destination.
+        :param destination_ids: A list of Event Destination IDs which should be used for this Event Subscription.
 
         https://ngrok.com/docs/api#api-event-subscriptions-update
         """
@@ -1194,7 +3258,6 @@ class IPPoliciesClient(object):
 
     def create(
         self,
-        action: str,
         description: str = "",
         metadata: str = "",
     ) -> IPPolicy:
@@ -1202,7 +3265,6 @@ class IPPoliciesClient(object):
 
         :param description: human-readable description of the source IPs of this IP policy. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this IP policy. optional, max 4096 bytes.
-        :param action: the IP policy action. Supported values are ``allow`` or ``deny``
 
         https://ngrok.com/docs/api#api-ip-policies-create
         """
@@ -1212,7 +3274,6 @@ class IPPoliciesClient(object):
             dict(
                 description=description,
                 metadata=metadata,
-                action=action,
             ),
         )
         return IPPolicy(self._client, result)
@@ -1313,6 +3374,7 @@ class IPPolicyRulesClient(object):
         ip_policy_id: str,
         description: str = "",
         metadata: str = "",
+        action: str = None,
     ) -> IPPolicyRule:
         """Create a new IP policy rule attached to an IP Policy.
 
@@ -1320,6 +3382,7 @@ class IPPolicyRulesClient(object):
         :param metadata: arbitrary user-defined machine-readable data of this IP policy rule. optional, max 4096 bytes.
         :param cidr: an IP or IP range specified in CIDR notation. IPv4 and IPv6 are both supported.
         :param ip_policy_id: ID of the IP policy this IP policy rule will be attached to
+        :param action: the action to apply to the policy rule, either ``allow`` or ``deny``
 
         https://ngrok.com/docs/api#api-ip-policy-rules-create
         """
@@ -1331,6 +3394,7 @@ class IPPolicyRulesClient(object):
                 metadata=metadata,
                 cidr=cidr,
                 ip_policy_id=ip_policy_id,
+                action=action,
             ),
         )
         return IPPolicyRule(self._client, result)
@@ -1552,750 +3616,6 @@ class IPRestrictionsClient(object):
         return IPRestriction(self._client, result)
 
 
-class EndpointLoggingModuleClient(object):
-    def __init__(self, client):
-        self._client = client
-
-    def replace(
-        self,
-        id: str,
-        module: EndpointLoggingMutate = None,
-    ) -> EndpointLogging:
-        """
-
-        :param id:
-        :param module:
-
-        https://ngrok.com/docs/api#api-endpoint-logging-module-replace
-        """
-        path = "/endpoint_configurations/{id}/logging"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
-        return EndpointLogging(self._client, result)
-
-    def get(
-        self,
-        id: str,
-    ) -> EndpointLogging:
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-logging-module-get
-        """
-        path = "/endpoint_configurations/{id}/logging"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.get(path, dict())
-        return EndpointLogging(self._client, result)
-
-    def delete(
-        self,
-        id: str,
-    ):
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-logging-module-delete
-        """
-        path = "/endpoint_configurations/{id}/logging"
-        path = path.format(
-            id=id,
-        )
-        self._client.http_client.delete(path, dict())
-
-
-class EndpointCircuitBreakerModuleClient(object):
-    def __init__(self, client):
-        self._client = client
-
-    def replace(
-        self,
-        id: str,
-        module: EndpointCircuitBreaker = None,
-    ) -> EndpointCircuitBreaker:
-        """
-
-        :param id:
-        :param module:
-
-        https://ngrok.com/docs/api#api-endpoint-circuit-breaker-module-replace
-        """
-        path = "/endpoint_configurations/{id}/circuit_breaker"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
-        return EndpointCircuitBreaker(self._client, result)
-
-    def get(
-        self,
-        id: str,
-    ) -> EndpointCircuitBreaker:
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-circuit-breaker-module-get
-        """
-        path = "/endpoint_configurations/{id}/circuit_breaker"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.get(path, dict())
-        return EndpointCircuitBreaker(self._client, result)
-
-    def delete(
-        self,
-        id: str,
-    ):
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-circuit-breaker-module-delete
-        """
-        path = "/endpoint_configurations/{id}/circuit_breaker"
-        path = path.format(
-            id=id,
-        )
-        self._client.http_client.delete(path, dict())
-
-
-class EndpointCompressionModuleClient(object):
-    def __init__(self, client):
-        self._client = client
-
-    def replace(
-        self,
-        id: str,
-        module: EndpointCompression = None,
-    ) -> EndpointCompression:
-        """
-
-        :param id:
-        :param module:
-
-        https://ngrok.com/docs/api#api-endpoint-compression-module-replace
-        """
-        path = "/endpoint_configurations/{id}/compression"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
-        return EndpointCompression(self._client, result)
-
-    def get(
-        self,
-        id: str,
-    ) -> EndpointCompression:
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-compression-module-get
-        """
-        path = "/endpoint_configurations/{id}/compression"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.get(path, dict())
-        return EndpointCompression(self._client, result)
-
-    def delete(
-        self,
-        id: str,
-    ):
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-compression-module-delete
-        """
-        path = "/endpoint_configurations/{id}/compression"
-        path = path.format(
-            id=id,
-        )
-        self._client.http_client.delete(path, dict())
-
-
-class EndpointTLSTerminationModuleClient(object):
-    def __init__(self, client):
-        self._client = client
-
-    def replace(
-        self,
-        id: str,
-        module: EndpointTLSTermination = None,
-    ) -> EndpointTLSTermination:
-        """
-
-        :param id:
-        :param module:
-
-        https://ngrok.com/docs/api#api-endpoint-tls-termination-module-replace
-        """
-        path = "/endpoint_configurations/{id}/tls_termination"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
-        return EndpointTLSTermination(self._client, result)
-
-    def get(
-        self,
-        id: str,
-    ) -> EndpointTLSTermination:
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-tls-termination-module-get
-        """
-        path = "/endpoint_configurations/{id}/tls_termination"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.get(path, dict())
-        return EndpointTLSTermination(self._client, result)
-
-    def delete(
-        self,
-        id: str,
-    ):
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-tls-termination-module-delete
-        """
-        path = "/endpoint_configurations/{id}/tls_termination"
-        path = path.format(
-            id=id,
-        )
-        self._client.http_client.delete(path, dict())
-
-
-class EndpointIPPolicyModuleClient(object):
-    def __init__(self, client):
-        self._client = client
-
-    def replace(
-        self,
-        id: str,
-        module: EndpointIPPolicyMutate = None,
-    ) -> EndpointIPPolicy:
-        """
-
-        :param id:
-        :param module:
-
-        https://ngrok.com/docs/api#api-endpoint-ip-policy-module-replace
-        """
-        path = "/endpoint_configurations/{id}/ip_policy"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
-        return EndpointIPPolicy(self._client, result)
-
-    def get(
-        self,
-        id: str,
-    ) -> EndpointIPPolicy:
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-ip-policy-module-get
-        """
-        path = "/endpoint_configurations/{id}/ip_policy"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.get(path, dict())
-        return EndpointIPPolicy(self._client, result)
-
-    def delete(
-        self,
-        id: str,
-    ):
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-ip-policy-module-delete
-        """
-        path = "/endpoint_configurations/{id}/ip_policy"
-        path = path.format(
-            id=id,
-        )
-        self._client.http_client.delete(path, dict())
-
-
-class EndpointMutualTLSModuleClient(object):
-    def __init__(self, client):
-        self._client = client
-
-    def replace(
-        self,
-        id: str,
-        module: EndpointMutualTLSMutate = None,
-    ) -> EndpointMutualTLS:
-        """
-
-        :param id:
-        :param module:
-
-        https://ngrok.com/docs/api#api-endpoint-mutual-tls-module-replace
-        """
-        path = "/endpoint_configurations/{id}/mutual_tls"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
-        return EndpointMutualTLS(self._client, result)
-
-    def get(
-        self,
-        id: str,
-    ) -> EndpointMutualTLS:
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-mutual-tls-module-get
-        """
-        path = "/endpoint_configurations/{id}/mutual_tls"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.get(path, dict())
-        return EndpointMutualTLS(self._client, result)
-
-    def delete(
-        self,
-        id: str,
-    ):
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-mutual-tls-module-delete
-        """
-        path = "/endpoint_configurations/{id}/mutual_tls"
-        path = path.format(
-            id=id,
-        )
-        self._client.http_client.delete(path, dict())
-
-
-class EndpointRequestHeadersModuleClient(object):
-    def __init__(self, client):
-        self._client = client
-
-    def replace(
-        self,
-        id: str,
-        module: EndpointRequestHeaders = None,
-    ) -> EndpointRequestHeaders:
-        """
-
-        :param id:
-        :param module:
-
-        https://ngrok.com/docs/api#api-endpoint-request-headers-module-replace
-        """
-        path = "/endpoint_configurations/{id}/request_headers"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
-        return EndpointRequestHeaders(self._client, result)
-
-    def get(
-        self,
-        id: str,
-    ) -> EndpointRequestHeaders:
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-request-headers-module-get
-        """
-        path = "/endpoint_configurations/{id}/request_headers"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.get(path, dict())
-        return EndpointRequestHeaders(self._client, result)
-
-    def delete(
-        self,
-        id: str,
-    ):
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-request-headers-module-delete
-        """
-        path = "/endpoint_configurations/{id}/request_headers"
-        path = path.format(
-            id=id,
-        )
-        self._client.http_client.delete(path, dict())
-
-
-class EndpointResponseHeadersModuleClient(object):
-    def __init__(self, client):
-        self._client = client
-
-    def replace(
-        self,
-        id: str,
-        module: EndpointResponseHeaders = None,
-    ) -> EndpointResponseHeaders:
-        """
-
-        :param id:
-        :param module:
-
-        https://ngrok.com/docs/api#api-endpoint-response-headers-module-replace
-        """
-        path = "/endpoint_configurations/{id}/response_headers"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
-        return EndpointResponseHeaders(self._client, result)
-
-    def get(
-        self,
-        id: str,
-    ) -> EndpointResponseHeaders:
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-response-headers-module-get
-        """
-        path = "/endpoint_configurations/{id}/response_headers"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.get(path, dict())
-        return EndpointResponseHeaders(self._client, result)
-
-    def delete(
-        self,
-        id: str,
-    ):
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-response-headers-module-delete
-        """
-        path = "/endpoint_configurations/{id}/response_headers"
-        path = path.format(
-            id=id,
-        )
-        self._client.http_client.delete(path, dict())
-
-
-class EndpointOAuthModuleClient(object):
-    def __init__(self, client):
-        self._client = client
-
-    def replace(
-        self,
-        id: str,
-        module: EndpointOAuth = None,
-    ) -> EndpointOAuth:
-        """
-
-        :param id:
-        :param module:
-
-        https://ngrok.com/docs/api#api-endpoint-o-auth-module-replace
-        """
-        path = "/endpoint_configurations/{id}/oauth"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
-        return EndpointOAuth(self._client, result)
-
-    def get(
-        self,
-        id: str,
-    ) -> EndpointOAuth:
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-o-auth-module-get
-        """
-        path = "/endpoint_configurations/{id}/oauth"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.get(path, dict())
-        return EndpointOAuth(self._client, result)
-
-    def delete(
-        self,
-        id: str,
-    ):
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-o-auth-module-delete
-        """
-        path = "/endpoint_configurations/{id}/oauth"
-        path = path.format(
-            id=id,
-        )
-        self._client.http_client.delete(path, dict())
-
-
-class EndpointWebhookValidationModuleClient(object):
-    def __init__(self, client):
-        self._client = client
-
-    def replace(
-        self,
-        id: str,
-        module: EndpointWebhookValidation = None,
-    ) -> EndpointWebhookValidation:
-        """
-
-        :param id:
-        :param module:
-
-        https://ngrok.com/docs/api#api-endpoint-webhook-validation-module-replace
-        """
-        path = "/endpoint_configurations/{id}/webhook_validation"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
-        return EndpointWebhookValidation(self._client, result)
-
-    def get(
-        self,
-        id: str,
-    ) -> EndpointWebhookValidation:
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-webhook-validation-module-get
-        """
-        path = "/endpoint_configurations/{id}/webhook_validation"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.get(path, dict())
-        return EndpointWebhookValidation(self._client, result)
-
-    def delete(
-        self,
-        id: str,
-    ):
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-webhook-validation-module-delete
-        """
-        path = "/endpoint_configurations/{id}/webhook_validation"
-        path = path.format(
-            id=id,
-        )
-        self._client.http_client.delete(path, dict())
-
-
-class EndpointSAMLModuleClient(object):
-    def __init__(self, client):
-        self._client = client
-
-    def replace(
-        self,
-        id: str,
-        module: EndpointSAMLMutate = None,
-    ) -> EndpointSAML:
-        """
-
-        :param id:
-        :param module:
-
-        https://ngrok.com/docs/api#api-endpoint-saml-module-replace
-        """
-        path = "/endpoint_configurations/{id}/saml"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
-        return EndpointSAML(self._client, result)
-
-    def get(
-        self,
-        id: str,
-    ) -> EndpointSAML:
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-saml-module-get
-        """
-        path = "/endpoint_configurations/{id}/saml"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.get(path, dict())
-        return EndpointSAML(self._client, result)
-
-    def delete(
-        self,
-        id: str,
-    ):
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-saml-module-delete
-        """
-        path = "/endpoint_configurations/{id}/saml"
-        path = path.format(
-            id=id,
-        )
-        self._client.http_client.delete(path, dict())
-
-
-class EndpointOIDCModuleClient(object):
-    def __init__(self, client):
-        self._client = client
-
-    def replace(
-        self,
-        id: str,
-        module: EndpointOIDC = None,
-    ) -> EndpointOIDC:
-        """
-
-        :param id:
-        :param module:
-
-        https://ngrok.com/docs/api#api-endpoint-oidc-module-replace
-        """
-        path = "/endpoint_configurations/{id}/oidc"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
-        return EndpointOIDC(self._client, result)
-
-    def get(
-        self,
-        id: str,
-    ) -> EndpointOIDC:
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-oidc-module-get
-        """
-        path = "/endpoint_configurations/{id}/oidc"
-        path = path.format(
-            id=id,
-        )
-        result = self._client.http_client.get(path, dict())
-        return EndpointOIDC(self._client, result)
-
-    def delete(
-        self,
-        id: str,
-    ):
-        """
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-endpoint-oidc-module-delete
-        """
-        path = "/endpoint_configurations/{id}/oidc"
-        path = path.format(
-            id=id,
-        )
-        self._client.http_client.delete(path, dict())
-
-
 class ReservedAddrsClient(object):
     """Reserved Addresses are TCP addresses that can be used to listen for traffic.
     TCP address hostnames and ports are assigned by ngrok, they cannot be
@@ -2309,14 +3629,12 @@ class ReservedAddrsClient(object):
         description: str = "",
         metadata: str = "",
         region: str = "",
-        endpoint_configuration_id: str = None,
     ) -> ReservedAddr:
         """Create a new reserved address.
 
         :param description: human-readable description of what this reserved address will be used for
         :param metadata: arbitrary user-defined machine-readable data of this reserved address. Optional, max 4096 bytes.
         :param region: reserve the address in this geographic ngrok datacenter. Optional, default is us. (au, eu, ap, us, jp, in, sa)
-        :param endpoint_configuration_id: ID of an endpoint configuration of type tcp that will be used to handle inbound traffic to this address
 
         https://ngrok.com/docs/api#api-reserved-addrs-create
         """
@@ -2327,7 +3645,6 @@ class ReservedAddrsClient(object):
                 description=description,
                 metadata=metadata,
                 region=region,
-                endpoint_configuration_id=endpoint_configuration_id,
             ),
         )
         return ReservedAddr(self._client, result)
@@ -2392,14 +3709,12 @@ class ReservedAddrsClient(object):
         id: str,
         description: str = None,
         metadata: str = None,
-        endpoint_configuration_id: str = None,
     ) -> ReservedAddr:
         """Update the attributes of a reserved address.
 
         :param id:
         :param description: human-readable description of what this reserved address will be used for
         :param metadata: arbitrary user-defined machine-readable data of this reserved address. Optional, max 4096 bytes.
-        :param endpoint_configuration_id: ID of an endpoint configuration of type tcp that will be used to handle inbound traffic to this address
 
         https://ngrok.com/docs/api#api-reserved-addrs-update
         """
@@ -2412,26 +3727,9 @@ class ReservedAddrsClient(object):
             dict(
                 description=description,
                 metadata=metadata,
-                endpoint_configuration_id=endpoint_configuration_id,
             ),
         )
         return ReservedAddr(self._client, result)
-
-    def delete_endpoint_config(
-        self,
-        id: str,
-    ):
-        """Detach the endpoint configuration attached to a reserved address.
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-reserved-addrs-delete-endpoint-config
-        """
-        path = "/reserved_addrs/{id}/endpoint_configuration"
-        path = path.format(
-            id=id,
-        )
-        self._client.http_client.delete(path, dict())
 
 
 class ReservedDomainsClient(object):
@@ -2449,8 +3747,6 @@ class ReservedDomainsClient(object):
         region: str = "",
         description: str = "",
         metadata: str = "",
-        http_endpoint_configuration_id: str = None,
-        https_endpoint_configuration_id: str = None,
         certificate_id: str = None,
         certificate_management_policy: ReservedDomainCertPolicy = None,
     ) -> ReservedDomain:
@@ -2460,8 +3756,6 @@ class ReservedDomainsClient(object):
         :param region: reserve the domain in this geographic ngrok datacenter. Optional, default is us. (au, eu, ap, us, jp, in, sa)
         :param description: human-readable description of what this reserved domain will be used for
         :param metadata: arbitrary user-defined machine-readable data of this reserved domain. Optional, max 4096 bytes.
-        :param http_endpoint_configuration_id: ID of an endpoint configuration of type http that will be used to handle inbound http traffic to this domain
-        :param https_endpoint_configuration_id: ID of an endpoint configuration of type https that will be used to handle inbound https traffic to this domain
         :param certificate_id: ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with ``certificate_management_policy``.
         :param certificate_management_policy: configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with ``certificate_id``.
 
@@ -2475,8 +3769,6 @@ class ReservedDomainsClient(object):
                 region=region,
                 description=description,
                 metadata=metadata,
-                http_endpoint_configuration_id=http_endpoint_configuration_id,
-                https_endpoint_configuration_id=https_endpoint_configuration_id,
                 certificate_id=certificate_id,
                 certificate_management_policy=certificate_management_policy,
             ),
@@ -2543,8 +3835,6 @@ class ReservedDomainsClient(object):
         id: str,
         description: str = None,
         metadata: str = None,
-        http_endpoint_configuration_id: str = None,
-        https_endpoint_configuration_id: str = None,
         certificate_id: str = None,
         certificate_management_policy: ReservedDomainCertPolicy = None,
     ) -> ReservedDomain:
@@ -2553,8 +3843,6 @@ class ReservedDomainsClient(object):
         :param id:
         :param description: human-readable description of what this reserved domain will be used for
         :param metadata: arbitrary user-defined machine-readable data of this reserved domain. Optional, max 4096 bytes.
-        :param http_endpoint_configuration_id: ID of an endpoint configuration of type http that will be used to handle inbound http traffic to this domain
-        :param https_endpoint_configuration_id: ID of an endpoint configuration of type https that will be used to handle inbound https traffic to this domain
         :param certificate_id: ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with ``certificate_management_policy``.
         :param certificate_management_policy: configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with ``certificate_id``.
 
@@ -2569,8 +3857,6 @@ class ReservedDomainsClient(object):
             dict(
                 description=description,
                 metadata=metadata,
-                http_endpoint_configuration_id=http_endpoint_configuration_id,
-                https_endpoint_configuration_id=https_endpoint_configuration_id,
                 certificate_id=certificate_id,
                 certificate_management_policy=certificate_management_policy,
             ),
@@ -2604,38 +3890,6 @@ class ReservedDomainsClient(object):
         https://ngrok.com/docs/api#api-reserved-domains-delete-certificate
         """
         path = "/reserved_domains/{id}/certificate"
-        path = path.format(
-            id=id,
-        )
-        self._client.http_client.delete(path, dict())
-
-    def delete_http_endpoint_config(
-        self,
-        id: str,
-    ):
-        """Detach the http endpoint configuration attached to a reserved domain.
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-reserved-domains-delete-http-endpoint-config
-        """
-        path = "/reserved_domains/{id}/http_endpoint_configuration"
-        path = path.format(
-            id=id,
-        )
-        self._client.http_client.delete(path, dict())
-
-    def delete_https_endpoint_config(
-        self,
-        id: str,
-    ):
-        """Detach the https endpoint configuration attached to a reserved domain.
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-reserved-domains-delete-https-endpoint-config
-        """
-        path = "/reserved_domains/{id}/https_endpoint_configuration"
         path = path.format(
             id=id,
         )
@@ -3391,3 +4645,20 @@ class TunnelsClient(object):
             ),
         )
         return TunnelList(self._client, result)
+
+    def get(
+        self,
+        id: str,
+    ) -> Tunnel:
+        """Get the status of a tunnel by ID
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tunnels-get
+        """
+        path = "/tunnels/{id}"
+        path = path.format(
+            id=id,
+        )
+        result = self._client.http_client.get(path, dict())
+        return Tunnel(self._client, result)

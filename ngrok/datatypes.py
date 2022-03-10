@@ -320,6 +320,438 @@ class APIKeyList(object):
         return self._props["next_page_uri"]
 
 
+class FailoverBackend(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<FailoverBackend {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<FailoverBackend {}>".format(repr(self._props))
+
+    def delete(
+        self,
+    ):
+        self._client.failover_backends.delete(
+            id=self.id,
+        )
+
+    def update(
+        self,
+        description: str = None,
+        metadata: str = None,
+        backends: Sequence[str] = [],
+    ):
+        self._client.failover_backends.update(
+            id=self.id,
+            description=description,
+            metadata=metadata,
+            backends=backends,
+        )
+
+    @property
+    def id(self) -> str:
+        """unique identifier for this Failover backend"""
+        return self._props["id"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the FailoverBackend API resource"""
+        return self._props["uri"]
+
+    @property
+    def created_at(self) -> str:
+        """timestamp when the backend was created, RFC 3339 format"""
+        return self._props["created_at"]
+
+    @property
+    def description(self) -> str:
+        """human-readable description of this backend. Optional"""
+        return self._props["description"]
+
+    @property
+    def metadata(self) -> str:
+        """arbitrary user-defined machine-readable data of this backend. Optional"""
+        return self._props["metadata"]
+
+    @property
+    def backends(self) -> Sequence[str]:
+        """the ids of the child backends in order"""
+        return self._props["backends"]
+
+
+class FailoverBackendList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["backends"] = (
+            [FailoverBackend(client, x) for x in props["backends"]]
+            if props["backends"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<FailoverBackendList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<FailoverBackendList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "backends")
+
+    @property
+    def backends(self) -> Sequence[FailoverBackend]:
+        """the list of all Failover backends on this account"""
+        return self._props["backends"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the Failover backends list API resource"""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page, or null if there is no next page"""
+        return self._props["next_page_uri"]
+
+
+class HTTPResponseBackend(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<HTTPResponseBackend {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<HTTPResponseBackend {}>".format(repr(self._props))
+
+    def delete(
+        self,
+    ):
+        self._client.http_response_backends.delete(
+            id=self.id,
+        )
+
+    def update(
+        self,
+        description: str = None,
+        metadata: str = None,
+        body: str = None,
+        headers: Mapping[str, str] = None,
+        status_code: int = None,
+    ):
+        self._client.http_response_backends.update(
+            id=self.id,
+            description=description,
+            metadata=metadata,
+            body=body,
+            headers=headers,
+            status_code=status_code,
+        )
+
+    @property
+    def id(self) -> str:
+        return self._props["id"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the HTTPResponseBackend API resource"""
+        return self._props["uri"]
+
+    @property
+    def created_at(self) -> str:
+        """timestamp when the backend was created, RFC 3339 format"""
+        return self._props["created_at"]
+
+    @property
+    def description(self) -> str:
+        """human-readable description of this backend. Optional"""
+        return self._props["description"]
+
+    @property
+    def metadata(self) -> str:
+        """arbitrary user-defined machine-readable data of this backend. Optional"""
+        return self._props["metadata"]
+
+    @property
+    def body(self) -> str:
+        """body to return as fixed content"""
+        return self._props["body"]
+
+    @property
+    def headers(self) -> Mapping[str, str]:
+        """headers to return"""
+        return self._props["headers"]
+
+    @property
+    def status_code(self) -> int:
+        """status code to return"""
+        return self._props["status_code"]
+
+
+class HTTPResponseBackendList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["backends"] = (
+            [HTTPResponseBackend(client, x) for x in props["backends"]]
+            if props["backends"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<HTTPResponseBackendList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<HTTPResponseBackendList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "backends")
+
+    @property
+    def backends(self) -> Sequence[HTTPResponseBackend]:
+        return self._props["backends"]
+
+    @property
+    def uri(self) -> str:
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        return self._props["next_page_uri"]
+
+
+class TunnelGroupBackend(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["tunnels"] = (
+            [Ref(client, x) for x in props["tunnels"]]
+            if props["tunnels"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<TunnelGroupBackend {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<TunnelGroupBackend {}>".format(repr(self._props))
+
+    def delete(
+        self,
+    ):
+        self._client.tunnel_group_backends.delete(
+            id=self.id,
+        )
+
+    def update(
+        self,
+        description: str = None,
+        metadata: str = None,
+        labels: Mapping[str, str] = {},
+    ):
+        self._client.tunnel_group_backends.update(
+            id=self.id,
+            description=description,
+            metadata=metadata,
+            labels=labels,
+        )
+
+    @property
+    def id(self) -> str:
+        """unique identifier for this TunnelGroup backend"""
+        return self._props["id"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the TunnelGroupBackend API resource"""
+        return self._props["uri"]
+
+    @property
+    def created_at(self) -> str:
+        """timestamp when the backend was created, RFC 3339 format"""
+        return self._props["created_at"]
+
+    @property
+    def description(self) -> str:
+        """human-readable description of this backend. Optional"""
+        return self._props["description"]
+
+    @property
+    def metadata(self) -> str:
+        """arbitrary user-defined machine-readable data of this backend. Optional"""
+        return self._props["metadata"]
+
+    @property
+    def labels(self) -> Mapping[str, str]:
+        """labels to watch for tunnels on, e.g. app->foo, dc->bar"""
+        return self._props["labels"]
+
+    @property
+    def tunnels(self) -> Sequence[Ref]:
+        """tunnels matching this backend"""
+        return self._props["tunnels"]
+
+
+class TunnelGroupBackendList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["backends"] = (
+            [TunnelGroupBackend(client, x) for x in props["backends"]]
+            if props["backends"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<TunnelGroupBackendList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<TunnelGroupBackendList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "backends")
+
+    @property
+    def backends(self) -> Sequence[TunnelGroupBackend]:
+        """the list of all TunnelGroup backends on this account"""
+        return self._props["backends"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the TunnelGroup backends list API resource"""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page, or null if there is no next page"""
+        return self._props["next_page_uri"]
+
+
+class WeightedBackend(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<WeightedBackend {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<WeightedBackend {}>".format(repr(self._props))
+
+    def delete(
+        self,
+    ):
+        self._client.weighted_backends.delete(
+            id=self.id,
+        )
+
+    def update(
+        self,
+        description: str = None,
+        metadata: str = None,
+        backends: Mapping[str, int] = {},
+    ):
+        self._client.weighted_backends.update(
+            id=self.id,
+            description=description,
+            metadata=metadata,
+            backends=backends,
+        )
+
+    @property
+    def id(self) -> str:
+        """unique identifier for this Weighted backend"""
+        return self._props["id"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the WeightedBackend API resource"""
+        return self._props["uri"]
+
+    @property
+    def created_at(self) -> str:
+        """timestamp when the backend was created, RFC 3339 format"""
+        return self._props["created_at"]
+
+    @property
+    def description(self) -> str:
+        """human-readable description of this backend. Optional"""
+        return self._props["description"]
+
+    @property
+    def metadata(self) -> str:
+        """arbitrary user-defined machine-readable data of this backend. Optional"""
+        return self._props["metadata"]
+
+    @property
+    def backends(self) -> Mapping[str, int]:
+        """the ids of the child backends to their weights (0-10000)"""
+        return self._props["backends"]
+
+
+class WeightedBackendList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["backends"] = (
+            [WeightedBackend(client, x) for x in props["backends"]]
+            if props["backends"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<WeightedBackendList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<WeightedBackendList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "backends")
+
+    @property
+    def backends(self) -> Sequence[WeightedBackend]:
+        """the list of all Weighted backends on this account"""
+        return self._props["backends"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the Weighted backends list API resource"""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page, or null if there is no next page"""
+        return self._props["next_page_uri"]
+
+
 class CertificateAuthority(object):
     def __init__(self, client, props):
         self._client = client
@@ -554,249 +986,6 @@ class CredentialList(object):
         return self._props["next_page_uri"]
 
 
-class EndpointConfiguration(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["circuit_breaker"] = (
-            EndpointCircuitBreaker(client, props["circuit_breaker"])
-            if props["circuit_breaker"] is not None
-            else None
-        )
-        self._props["compression"] = (
-            EndpointCompression(client, props["compression"])
-            if props["compression"] is not None
-            else None
-        )
-        self._props["request_headers"] = (
-            EndpointRequestHeaders(client, props["request_headers"])
-            if props["request_headers"] is not None
-            else None
-        )
-        self._props["response_headers"] = (
-            EndpointResponseHeaders(client, props["response_headers"])
-            if props["response_headers"] is not None
-            else None
-        )
-        self._props["ip_policy"] = (
-            EndpointIPPolicy(client, props["ip_policy"])
-            if props["ip_policy"] is not None
-            else None
-        )
-        self._props["mutual_tls"] = (
-            EndpointMutualTLS(client, props["mutual_tls"])
-            if props["mutual_tls"] is not None
-            else None
-        )
-        self._props["tls_termination"] = (
-            EndpointTLSTermination(client, props["tls_termination"])
-            if props["tls_termination"] is not None
-            else None
-        )
-        self._props["webhook_validation"] = (
-            EndpointWebhookValidation(client, props["webhook_validation"])
-            if props["webhook_validation"] is not None
-            else None
-        )
-        self._props["oauth"] = (
-            EndpointOAuth(client, props["oauth"])
-            if props["oauth"] is not None
-            else None
-        )
-        self._props["logging"] = (
-            EndpointLogging(client, props["logging"])
-            if props["logging"] is not None
-            else None
-        )
-        self._props["saml"] = (
-            EndpointSAML(client, props["saml"]) if props["saml"] is not None else None
-        )
-        self._props["oidc"] = (
-            EndpointOIDC(client, props["oidc"]) if props["oidc"] is not None else None
-        )
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<EndpointConfiguration {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<EndpointConfiguration {}>".format(repr(self._props))
-
-    def delete(
-        self,
-    ):
-        self._client.endpoint_configurations.delete(
-            id=self.id,
-        )
-
-    def update(
-        self,
-        description: str = None,
-        metadata: str = None,
-        circuit_breaker: EndpointCircuitBreaker = None,
-        compression: EndpointCompression = None,
-        request_headers: EndpointRequestHeaders = None,
-        response_headers: EndpointResponseHeaders = None,
-        ip_policy: EndpointIPPolicyMutate = None,
-        mutual_tls: EndpointMutualTLSMutate = None,
-        tls_termination: EndpointTLSTermination = None,
-        webhook_validation: EndpointWebhookValidation = None,
-        oauth: EndpointOAuth = None,
-        logging: EndpointLoggingMutate = None,
-        saml: EndpointSAMLMutate = None,
-        oidc: EndpointOIDC = None,
-    ):
-        self._client.endpoint_configurations.update(
-            id=self.id,
-            description=description,
-            metadata=metadata,
-            circuit_breaker=circuit_breaker,
-            compression=compression,
-            request_headers=request_headers,
-            response_headers=response_headers,
-            ip_policy=ip_policy,
-            mutual_tls=mutual_tls,
-            tls_termination=tls_termination,
-            webhook_validation=webhook_validation,
-            oauth=oauth,
-            logging=logging,
-            saml=saml,
-            oidc=oidc,
-        )
-
-    @property
-    def id(self) -> str:
-        """unique identifier of this endpoint configuration"""
-        return self._props["id"]
-
-    @property
-    def type(self) -> str:
-        """they type of traffic this endpoint configuration can be applied to. one of: ``http``, ``https``, ``tcp``"""
-        return self._props["type"]
-
-    @property
-    def description(self) -> str:
-        """human-readable description of what this endpoint configuration will be do when applied or what traffic it will be applied to. Optional, max 255 bytes"""
-        return self._props["description"]
-
-    @property
-    def metadata(self) -> str:
-        """arbitrary user-defined machine-readable data of this endpoint configuration. Optional, max 4096 bytes."""
-        return self._props["metadata"]
-
-    @property
-    def created_at(self) -> str:
-        """timestamp when the endpoint configuration was created, RFC 3339 format"""
-        return self._props["created_at"]
-
-    @property
-    def uri(self) -> str:
-        """URI of the endpoint configuration API resource"""
-        return self._props["uri"]
-
-    @property
-    def circuit_breaker(self) -> EndpointCircuitBreaker:
-        """circuit breaker module configuration or ``null``"""
-        return self._props["circuit_breaker"]
-
-    @property
-    def compression(self) -> EndpointCompression:
-        """compression module configuration or ``null``"""
-        return self._props["compression"]
-
-    @property
-    def request_headers(self) -> EndpointRequestHeaders:
-        """request headers module configuration or ``null``"""
-        return self._props["request_headers"]
-
-    @property
-    def response_headers(self) -> EndpointResponseHeaders:
-        """response headers module configuration or ``null``"""
-        return self._props["response_headers"]
-
-    @property
-    def ip_policy(self) -> EndpointIPPolicy:
-        """ip policy module configuration or ``null``"""
-        return self._props["ip_policy"]
-
-    @property
-    def mutual_tls(self) -> EndpointMutualTLS:
-        """mutual TLS module configuration or ``null``"""
-        return self._props["mutual_tls"]
-
-    @property
-    def tls_termination(self) -> EndpointTLSTermination:
-        """TLS termination module configuration or ``null``"""
-        return self._props["tls_termination"]
-
-    @property
-    def webhook_validation(self) -> EndpointWebhookValidation:
-        """webhook validation module configuration or ``null``"""
-        return self._props["webhook_validation"]
-
-    @property
-    def oauth(self) -> EndpointOAuth:
-        """oauth module configuration or ``null``"""
-        return self._props["oauth"]
-
-    @property
-    def logging(self) -> EndpointLogging:
-        """logging module configuration or ``null``"""
-        return self._props["logging"]
-
-    @property
-    def saml(self) -> EndpointSAML:
-        """saml module configuration or ``null``"""
-        return self._props["saml"]
-
-    @property
-    def oidc(self) -> EndpointOIDC:
-        """oidc module configuration or ``null``"""
-        return self._props["oidc"]
-
-
-class EndpointConfigurationList(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["endpoint_configurations"] = (
-            [EndpointConfiguration(client, x) for x in props["endpoint_configurations"]]
-            if props["endpoint_configurations"] is not None
-            else None
-        )
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<EndpointConfigurationList {} {}>".format(
-                self.id, repr(self._props)
-            )
-        else:
-            return "<EndpointConfigurationList {}>".format(repr(self._props))
-
-    def __iter__(self):
-        return PagedIterator(self._client, self, "endpoint_configurations")
-
-    @property
-    def endpoint_configurations(self) -> Sequence[EndpointConfiguration]:
-        """the list of all endpoint configurations on this account"""
-        return self._props["endpoint_configurations"]
-
-    @property
-    def uri(self) -> str:
-        """URI of the endpoint configurations list API resource"""
-        return self._props["uri"]
-
-    @property
-    def next_page_uri(self) -> str:
-        """URI of the next page, or null if there is no next page"""
-        return self._props["next_page_uri"]
-
-
 class EndpointWebhookValidation(object):
     def __init__(self, client, props):
         self._client = client
@@ -820,7 +1009,7 @@ class EndpointWebhookValidation(object):
 
     @property
     def provider(self) -> str:
-        """a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers: ``SLACK``, ``SNS``, ``STRIPE``, ``GITHUB``, ``TWILIO``, ``SHOPIFY``, ``GITLAB``, ``INTERCOM``, ``SENDGRID``, ``XERO``."""
+        """a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers: ``SLACK``, ``SNS``, ``STRIPE``, ``GITHUB``, ``TWILIO``, ``SHOPIFY``, ``GITLAB``, ``INTERCOM``, ``SENDGRID``, ``XERO``, ``PAGERDUTY``."""
         return self._props["provider"]
 
     @property
@@ -934,37 +1123,7 @@ class EndpointTLSTermination(object):
         return self._props["min_version"]
 
 
-class EndpointLogging(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["event_streams"] = (
-            [Ref(client, x) for x in props["event_streams"]]
-            if props["event_streams"] is not None
-            else None
-        )
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<EndpointLogging {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<EndpointLogging {}>".format(repr(self._props))
-
-    @property
-    def enabled(self) -> bool:
-        """``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""
-        return self._props["enabled"]
-
-    @property
-    def event_streams(self) -> Sequence[Ref]:
-        """list of all EventStreams that will be used to configure and export this endpoint's logs"""
-        return self._props["event_streams"]
-
-
-class EndpointLoggingMutate(object):
+class EndpointTLSTerminationAtEdge(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
@@ -974,9 +1133,11 @@ class EndpointLoggingMutate(object):
 
     def __str__(self):
         if "id" in self._props:
-            return "<EndpointLoggingMutate {} {}>".format(self.id, repr(self._props))
+            return "<EndpointTLSTerminationAtEdge {} {}>".format(
+                self.id, repr(self._props)
+            )
         else:
-            return "<EndpointLoggingMutate {}>".format(repr(self._props))
+            return "<EndpointTLSTerminationAtEdge {}>".format(repr(self._props))
 
     @property
     def enabled(self) -> bool:
@@ -984,9 +1145,9 @@ class EndpointLoggingMutate(object):
         return self._props["enabled"]
 
     @property
-    def event_stream_ids(self) -> Sequence[str]:
-        """list of all EventStreams that will be used to configure and export this endpoint's logs"""
-        return self._props["event_stream_ids"]
+    def min_version(self) -> str:
+        """The minimum TLS version used for termination and advertised to the client during the TLS handshake. if unspecified, ngrok will choose an industry-safe default. This value must be null if ``terminate_at`` is set to ``upstream``."""
+        return self._props["min_version"]
 
 
 class EndpointRequestHeaders(object):
@@ -1643,13 +1804,134 @@ class EndpointOIDC(object):
         return self._props["scopes"]
 
 
-class EventStreamList(object):
+class EndpointBackend(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["event_streams"] = (
-            [EventStream(client, x) for x in props["event_streams"]]
-            if props["event_streams"] is not None
+        self._props["backend"] = (
+            Ref(client, props["backend"]) if props["backend"] is not None else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointBackend {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointBackend {}>".format(repr(self._props))
+
+    @property
+    def enabled(self) -> bool:
+        """``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""
+        return self._props["enabled"]
+
+    @property
+    def backend(self) -> Ref:
+        """backend to be used to back this endpoint"""
+        return self._props["backend"]
+
+
+class EndpointBackendMutate(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointBackendMutate {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointBackendMutate {}>".format(repr(self._props))
+
+    @property
+    def enabled(self) -> bool:
+        """``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""
+        return self._props["enabled"]
+
+    @property
+    def backend_id(self) -> str:
+        """backend to be used to back this endpoint"""
+        return self._props["backend_id"]
+
+
+class EndpointWebsocketTCPConverter(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointWebsocketTCPConverter {} {}>".format(
+                self.id, repr(self._props)
+            )
+        else:
+            return "<EndpointWebsocketTCPConverter {}>".format(repr(self._props))
+
+    @property
+    def enabled(self) -> bool:
+        """``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""
+        return self._props["enabled"]
+
+
+class HTTPSEdgeRoute(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["backend"] = (
+            EndpointBackend(client, props["backend"])
+            if props["backend"] is not None
+            else None
+        )
+        self._props["ip_restriction"] = (
+            EndpointIPPolicy(client, props["ip_restriction"])
+            if props["ip_restriction"] is not None
+            else None
+        )
+        self._props["circuit_breaker"] = (
+            EndpointCircuitBreaker(client, props["circuit_breaker"])
+            if props["circuit_breaker"] is not None
+            else None
+        )
+        self._props["compression"] = (
+            EndpointCompression(client, props["compression"])
+            if props["compression"] is not None
+            else None
+        )
+        self._props["request_headers"] = (
+            EndpointRequestHeaders(client, props["request_headers"])
+            if props["request_headers"] is not None
+            else None
+        )
+        self._props["response_headers"] = (
+            EndpointResponseHeaders(client, props["response_headers"])
+            if props["response_headers"] is not None
+            else None
+        )
+        self._props["webhook_verification"] = (
+            EndpointWebhookValidation(client, props["webhook_verification"])
+            if props["webhook_verification"] is not None
+            else None
+        )
+        self._props["oauth"] = (
+            EndpointOAuth(client, props["oauth"])
+            if props["oauth"] is not None
+            else None
+        )
+        self._props["saml"] = (
+            EndpointSAML(client, props["saml"]) if props["saml"] is not None else None
+        )
+        self._props["oidc"] = (
+            EndpointOIDC(client, props["oidc"]) if props["oidc"] is not None else None
+        )
+        self._props["websocket_tcp_converter"] = (
+            EndpointWebsocketTCPConverter(client, props["websocket_tcp_converter"])
+            if props["websocket_tcp_converter"] is not None
             else None
         )
 
@@ -1658,111 +1940,690 @@ class EventStreamList(object):
 
     def __str__(self):
         if "id" in self._props:
-            return "<EventStreamList {} {}>".format(self.id, repr(self._props))
+            return "<HTTPSEdgeRoute {} {}>".format(self.id, repr(self._props))
         else:
-            return "<EventStreamList {}>".format(repr(self._props))
+            return "<HTTPSEdgeRoute {}>".format(repr(self._props))
 
-    def __iter__(self):
-        return PagedIterator(self._client, self, "event_streams")
+    def update(
+        self,
+        match_type: str = "",
+        match: str = "",
+        description: str = "",
+        metadata: str = "",
+        backend: EndpointBackendMutate = None,
+        ip_restriction: EndpointIPPolicyMutate = None,
+        circuit_breaker: EndpointCircuitBreaker = None,
+        compression: EndpointCompression = None,
+        request_headers: EndpointRequestHeaders = None,
+        response_headers: EndpointResponseHeaders = None,
+        webhook_verification: EndpointWebhookValidation = None,
+        oauth: EndpointOAuth = None,
+        saml: EndpointSAMLMutate = None,
+        oidc: EndpointOIDC = None,
+        websocket_tcp_converter: EndpointWebsocketTCPConverter = None,
+    ):
+        self._client.edges_https_routes.update(
+            edge_id=self.edge_id,
+            id=self.id,
+            match_type=match_type,
+            match=match,
+            description=description,
+            metadata=metadata,
+            backend=backend,
+            ip_restriction=ip_restriction,
+            circuit_breaker=circuit_breaker,
+            compression=compression,
+            request_headers=request_headers,
+            response_headers=response_headers,
+            webhook_verification=webhook_verification,
+            oauth=oauth,
+            saml=saml,
+            oidc=oidc,
+            websocket_tcp_converter=websocket_tcp_converter,
+        )
+
+    def delete(
+        self,
+    ):
+        self._client.edges_https_routes.delete(
+            edge_id=self.edge_id,
+            id=self.id,
+        )
 
     @property
-    def event_streams(self) -> Sequence[EventStream]:
-        """The list of all Event Streams on this account."""
-        return self._props["event_streams"]
+    def edge_id(self) -> str:
+        """unique identifier of this edge"""
+        return self._props["edge_id"]
+
+    @property
+    def id(self) -> str:
+        """unique identifier of this edge route"""
+        return self._props["id"]
+
+    @property
+    def created_at(self) -> str:
+        """timestamp when the edge configuration was created, RFC 3339 format"""
+        return self._props["created_at"]
+
+    @property
+    def match_type(self) -> str:
+        """Type of match to use for this route. Valid values are "exact_path" and "path_prefix"."""
+        return self._props["match_type"]
+
+    @property
+    def match(self) -> str:
+        """Route selector: "/blog" or "example.com" or "example.com/blog" """
+        return self._props["match"]
 
     @property
     def uri(self) -> str:
-        """URI of the Event Stream list API resource."""
+        """URI of the edge API resource"""
         return self._props["uri"]
 
     @property
-    def next_page_uri(self) -> str:
-        """URI of the next page, or null if there is no next page."""
-        return self._props["next_page_uri"]
+    def description(self) -> str:
+        """human-readable description of what this edge will be used for; optional, max 255 bytes."""
+        return self._props["description"]
+
+    @property
+    def metadata(self) -> str:
+        """arbitrary user-defined machine-readable data of this edge. Optional, max 4096 bytes."""
+        return self._props["metadata"]
+
+    @property
+    def backend(self) -> EndpointBackend:
+        """backend module configuration or ``null``"""
+        return self._props["backend"]
+
+    @property
+    def ip_restriction(self) -> EndpointIPPolicy:
+        """ip restriction module configuration or ``null``"""
+        return self._props["ip_restriction"]
+
+    @property
+    def circuit_breaker(self) -> EndpointCircuitBreaker:
+        """circuit breaker module configuration or ``null``"""
+        return self._props["circuit_breaker"]
+
+    @property
+    def compression(self) -> EndpointCompression:
+        """compression module configuration or ``null``"""
+        return self._props["compression"]
+
+    @property
+    def request_headers(self) -> EndpointRequestHeaders:
+        """request headers module configuration or ``null``"""
+        return self._props["request_headers"]
+
+    @property
+    def response_headers(self) -> EndpointResponseHeaders:
+        """response headers module configuration or ``null``"""
+        return self._props["response_headers"]
+
+    @property
+    def webhook_verification(self) -> EndpointWebhookValidation:
+        """webhook verification module configuration or ``null``"""
+        return self._props["webhook_verification"]
+
+    @property
+    def oauth(self) -> EndpointOAuth:
+        """oauth module configuration or ``null``"""
+        return self._props["oauth"]
+
+    @property
+    def saml(self) -> EndpointSAML:
+        """saml module configuration or ``null``"""
+        return self._props["saml"]
+
+    @property
+    def oidc(self) -> EndpointOIDC:
+        """oidc module configuration or ``null``"""
+        return self._props["oidc"]
+
+    @property
+    def websocket_tcp_converter(self) -> EndpointWebsocketTCPConverter:
+        """websocket to tcp adapter configuration or ``null``"""
+        return self._props["websocket_tcp_converter"]
 
 
-class EventStream(object):
+class HTTPSEdgeList(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
+        self._props["https_edges"] = (
+            [HTTPSEdge(client, x) for x in props["https_edges"]]
+            if props["https_edges"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
 
     def __str__(self):
         if "id" in self._props:
-            return "<EventStream {} {}>".format(self.id, repr(self._props))
+            return "<HTTPSEdgeList {} {}>".format(self.id, repr(self._props))
         else:
-            return "<EventStream {}>".format(repr(self._props))
+            return "<HTTPSEdgeList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "https_edges")
+
+    @property
+    def https_edges(self) -> Sequence[HTTPSEdge]:
+        """the list of all HTTPS Edges on this account"""
+        return self._props["https_edges"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the HTTPS Edge list API resource"""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page, or null if there is no next page"""
+        return self._props["next_page_uri"]
+
+
+class HTTPSEdge(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["mutual_tls"] = (
+            EndpointMutualTLS(client, props["mutual_tls"])
+            if props["mutual_tls"] is not None
+            else None
+        )
+        self._props["tls_termination"] = (
+            EndpointTLSTermination(client, props["tls_termination"])
+            if props["tls_termination"] is not None
+            else None
+        )
+        self._props["routes"] = (
+            [HTTPSEdgeRoute(client, x) for x in props["routes"]]
+            if props["routes"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<HTTPSEdge {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<HTTPSEdge {}>".format(repr(self._props))
+
+    def update(
+        self,
+        description: str = None,
+        metadata: str = None,
+        hostports: Sequence[str] = None,
+        mutual_tls: EndpointMutualTLSMutate = None,
+        tls_termination: EndpointTLSTerminationAtEdge = None,
+    ):
+        self._client.edges_https.update(
+            id=self.id,
+            description=description,
+            metadata=metadata,
+            hostports=hostports,
+            mutual_tls=mutual_tls,
+            tls_termination=tls_termination,
+        )
 
     def delete(
         self,
     ):
-        self._client.event_streams.delete(
+        self._client.edges_https.delete(
             id=self.id,
-        )
-
-    def update(
-        self,
-        metadata: str = None,
-        description: str = None,
-        fields: Sequence[str] = None,
-        destination_ids: Sequence[str] = None,
-        sampling_rate: float = None,
-    ):
-        self._client.event_streams.update(
-            id=self.id,
-            metadata=metadata,
-            description=description,
-            fields=fields,
-            destination_ids=destination_ids,
-            sampling_rate=sampling_rate,
         )
 
     @property
     def id(self) -> str:
-        """Unique identifier for this Event Stream."""
+        """unique identifier of this edge"""
         return self._props["id"]
 
     @property
-    def uri(self) -> str:
-        """URI of the Event Stream API resource."""
-        return self._props["uri"]
-
-    @property
-    def created_at(self) -> str:
-        """Timestamp when the Event Stream was created, RFC 3339 format."""
-        return self._props["created_at"]
-
-    @property
-    def metadata(self) -> str:
-        """Arbitrary user-defined machine-readable data of this Event Stream. Optional, max 4096 bytes."""
-        return self._props["metadata"]
-
-    @property
     def description(self) -> str:
-        """Human-readable description of the Event Stream. Optional, max 255 bytes."""
+        """human-readable description of what this edge will be used for; optional, max 255 bytes."""
         return self._props["description"]
 
     @property
-    def fields(self) -> Sequence[str]:
-        """A list of protocol-specific fields you want to collect on each event."""
-        return self._props["fields"]
+    def metadata(self) -> str:
+        """arbitrary user-defined machine-readable data of this edge; optional, max 4096 bytes."""
+        return self._props["metadata"]
 
     @property
-    def event_type(self) -> str:
-        """The protocol that determines which events will be collected. Supported values are ``tcp_connection_closed`` and ``http_request_complete``."""
-        return self._props["event_type"]
+    def created_at(self) -> str:
+        """timestamp when the edge configuration was created, RFC 3339 format"""
+        return self._props["created_at"]
 
     @property
-    def destination_ids(self) -> Sequence[str]:
-        """A list of Event Destination IDs which should be used for this Event Stream. Event Streams are required to have at least one Event Destination."""
-        return self._props["destination_ids"]
+    def uri(self) -> str:
+        """URI of the edge API resource"""
+        return self._props["uri"]
 
     @property
-    def sampling_rate(self) -> float:
-        """The percentage of all events you would like to capture. Valid values range from 0.01, representing 1% of all events to 1.00, representing 100% of all events."""
-        return self._props["sampling_rate"]
+    def hostports(self) -> Sequence[str]:
+        """hostports served by this edge"""
+        return self._props["hostports"]
+
+    @property
+    def mutual_tls(self) -> EndpointMutualTLS:
+        """edge modules"""
+        return self._props["mutual_tls"]
+
+    @property
+    def tls_termination(self) -> EndpointTLSTermination:
+        return self._props["tls_termination"]
+
+    @property
+    def routes(self) -> Sequence[HTTPSEdgeRoute]:
+        """routes"""
+        return self._props["routes"]
+
+
+class TCPEdgeList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["tcp_edges"] = (
+            [TCPEdge(client, x) for x in props["tcp_edges"]]
+            if props["tcp_edges"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<TCPEdgeList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<TCPEdgeList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "tcp_edges")
+
+    @property
+    def tcp_edges(self) -> Sequence[TCPEdge]:
+        """the list of all TCP Edges on this account"""
+        return self._props["tcp_edges"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the TCP Edge list API resource"""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page, or null if there is no next page"""
+        return self._props["next_page_uri"]
+
+
+class TCPEdge(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["backend"] = (
+            EndpointBackend(client, props["backend"])
+            if props["backend"] is not None
+            else None
+        )
+        self._props["ip_restriction"] = (
+            EndpointIPPolicy(client, props["ip_restriction"])
+            if props["ip_restriction"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<TCPEdge {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<TCPEdge {}>".format(repr(self._props))
+
+    def update(
+        self,
+        description: str = None,
+        metadata: str = None,
+        hostports: Sequence[str] = None,
+        backend: EndpointBackendMutate = None,
+        ip_restriction: EndpointIPPolicyMutate = None,
+    ):
+        self._client.edges_tcp.update(
+            id=self.id,
+            description=description,
+            metadata=metadata,
+            hostports=hostports,
+            backend=backend,
+            ip_restriction=ip_restriction,
+        )
+
+    def delete(
+        self,
+    ):
+        self._client.edges_tcp.delete(
+            id=self.id,
+        )
+
+    @property
+    def id(self) -> str:
+        """unique identifier of this edge"""
+        return self._props["id"]
+
+    @property
+    def description(self) -> str:
+        """human-readable description of what this edge will be used for; optional, max 255 bytes."""
+        return self._props["description"]
+
+    @property
+    def metadata(self) -> str:
+        """arbitrary user-defined machine-readable data of this edge. Optional, max 4096 bytes."""
+        return self._props["metadata"]
+
+    @property
+    def created_at(self) -> str:
+        """timestamp when the edge was created, RFC 3339 format"""
+        return self._props["created_at"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the edge API resource"""
+        return self._props["uri"]
+
+    @property
+    def hostports(self) -> Sequence[str]:
+        """hostports served by this edge"""
+        return self._props["hostports"]
+
+    @property
+    def backend(self) -> EndpointBackend:
+        """edge modules"""
+        return self._props["backend"]
+
+    @property
+    def ip_restriction(self) -> EndpointIPPolicy:
+        return self._props["ip_restriction"]
+
+
+class TLSEdgeList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["tls_edges"] = (
+            [TLSEdge(client, x) for x in props["tls_edges"]]
+            if props["tls_edges"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<TLSEdgeList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<TLSEdgeList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "tls_edges")
+
+    @property
+    def tls_edges(self) -> Sequence[TLSEdge]:
+        """the list of all TLS Edges on this account"""
+        return self._props["tls_edges"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the TLS Edge list API resource"""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page, or null if there is no next page"""
+        return self._props["next_page_uri"]
+
+
+class TLSEdge(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["backend"] = (
+            EndpointBackend(client, props["backend"])
+            if props["backend"] is not None
+            else None
+        )
+        self._props["ip_restriction"] = (
+            EndpointIPPolicy(client, props["ip_restriction"])
+            if props["ip_restriction"] is not None
+            else None
+        )
+        self._props["mutual_tls"] = (
+            EndpointMutualTLS(client, props["mutual_tls"])
+            if props["mutual_tls"] is not None
+            else None
+        )
+        self._props["tls_termination"] = (
+            EndpointTLSTermination(client, props["tls_termination"])
+            if props["tls_termination"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<TLSEdge {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<TLSEdge {}>".format(repr(self._props))
+
+    def update(
+        self,
+        description: str = None,
+        metadata: str = None,
+        hostports: Sequence[str] = None,
+        backend: EndpointBackendMutate = None,
+        ip_restriction: EndpointIPPolicyMutate = None,
+        mutual_tls: EndpointMutualTLSMutate = None,
+        tls_termination: EndpointTLSTermination = None,
+    ):
+        self._client.edges_tls.update(
+            id=self.id,
+            description=description,
+            metadata=metadata,
+            hostports=hostports,
+            backend=backend,
+            ip_restriction=ip_restriction,
+            mutual_tls=mutual_tls,
+            tls_termination=tls_termination,
+        )
+
+    def delete(
+        self,
+    ):
+        self._client.edges_tls.delete(
+            id=self.id,
+        )
+
+    @property
+    def id(self) -> str:
+        """unique identifier of this edge"""
+        return self._props["id"]
+
+    @property
+    def description(self) -> str:
+        """human-readable description of what this edge will be used for; optional, max 255 bytes."""
+        return self._props["description"]
+
+    @property
+    def metadata(self) -> str:
+        """arbitrary user-defined machine-readable data of this edge. Optional, max 4096 bytes."""
+        return self._props["metadata"]
+
+    @property
+    def created_at(self) -> str:
+        """timestamp when the edge configuration was created, RFC 3339 format"""
+        return self._props["created_at"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the edge API resource"""
+        return self._props["uri"]
+
+    @property
+    def hostports(self) -> Sequence[str]:
+        """hostports served by this edge"""
+        return self._props["hostports"]
+
+    @property
+    def backend(self) -> EndpointBackend:
+        """edge modules"""
+        return self._props["backend"]
+
+    @property
+    def ip_restriction(self) -> EndpointIPPolicy:
+        return self._props["ip_restriction"]
+
+    @property
+    def mutual_tls(self) -> EndpointMutualTLS:
+        return self._props["mutual_tls"]
+
+    @property
+    def tls_termination(self) -> EndpointTLSTermination:
+        return self._props["tls_termination"]
+
+
+class Endpoint(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["domain"] = (
+            Ref(client, props["domain"]) if props["domain"] is not None else None
+        )
+        self._props["tcp_addr"] = (
+            Ref(client, props["tcp_addr"]) if props["tcp_addr"] is not None else None
+        )
+        self._props["tunnel"] = (
+            Ref(client, props["tunnel"]) if props["tunnel"] is not None else None
+        )
+        self._props["edge"] = (
+            Ref(client, props["edge"]) if props["edge"] is not None else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<Endpoint {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<Endpoint {}>".format(repr(self._props))
+
+    @property
+    def id(self) -> str:
+        """unique endpoint resource identifier"""
+        return self._props["id"]
+
+    @property
+    def region(self) -> str:
+        """identifier of the region this endpoint belongs to"""
+        return self._props["region"]
+
+    @property
+    def created_at(self) -> str:
+        """timestamp when the endpoint was created in RFC 3339 format"""
+        return self._props["created_at"]
+
+    @property
+    def updated_at(self) -> str:
+        """timestamp when the endpoint was updated in RFC 3339 format"""
+        return self._props["updated_at"]
+
+    @property
+    def public_url(self) -> str:
+        """URL of the hostport served by this endpoint"""
+        return self._props["public_url"]
+
+    @property
+    def proto(self) -> str:
+        """protocol served by this endpoint. one of ``http``, ``https``, ``tcp``, or ``tls``"""
+        return self._props["proto"]
+
+    @property
+    def hostport(self) -> str:
+        """hostport served by this endpoint (hostname:port)"""
+        return self._props["hostport"]
+
+    @property
+    def type(self) -> str:
+        """whether the endpoint is ``ephemeral`` (served directly by an agent-initiated tunnel) or ``edge`` (served by an edge)"""
+        return self._props["type"]
+
+    @property
+    def metadata(self) -> str:
+        """user-supplied metadata of the associated tunnel or edge object"""
+        return self._props["metadata"]
+
+    @property
+    def domain(self) -> Ref:
+        """the domain reserved for this endpoint"""
+        return self._props["domain"]
+
+    @property
+    def tcp_addr(self) -> Ref:
+        """the address reserved for this endpoint"""
+        return self._props["tcp_addr"]
+
+    @property
+    def tunnel(self) -> Ref:
+        """the tunnel serving requests to this endpoint, if this is an ephemeral endpoint"""
+        return self._props["tunnel"]
+
+    @property
+    def edge(self) -> Ref:
+        """the edge serving requests to this endpoint, if this is an edge endpoint"""
+        return self._props["edge"]
+
+
+class EndpointList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["endpoints"] = (
+            [Endpoint(client, x) for x in props["endpoints"]]
+            if props["endpoints"] is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "endpoints")
+
+    @property
+    def endpoints(self) -> Sequence[Endpoint]:
+        """the list of all active endpoints on this account"""
+        return self._props["endpoints"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the endpoints list API resource"""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page, or null if there is no next page"""
+        return self._props["next_page_uri"]
 
 
 class EventDestination(object):
@@ -2311,11 +3172,6 @@ class IPPolicy(object):
         """arbitrary user-defined machine-readable data of this IP policy. optional, max 4096 bytes."""
         return self._props["metadata"]
 
-    @property
-    def action(self) -> str:
-        """the IP policy action. Supported values are ``allow`` or ``deny``"""
-        return self._props["action"]
-
 
 class IPPolicyList(object):
     def __init__(self, client, props):
@@ -2426,6 +3282,11 @@ class IPPolicyRule(object):
     def ip_policy(self) -> Ref:
         """object describing the IP policy this IP Policy Rule belongs to"""
         return self._props["ip_policy"]
+
+    @property
+    def action(self) -> str:
+        """the action to apply to the policy rule, either ``allow`` or ``deny``"""
+        return self._props["action"]
 
 
 class IPPolicyRuleList(object):
@@ -2575,11 +3436,6 @@ class ReservedAddr(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["endpoint_configuration"] = (
-            Ref(client, props["endpoint_configuration"])
-            if props["endpoint_configuration"] is not None
-            else None
-        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -2632,11 +3488,6 @@ class ReservedAddr(object):
         """reserve the address in this geographic ngrok datacenter. Optional, default is us. (au, eu, ap, us, jp, in, sa)"""
         return self._props["region"]
 
-    @property
-    def endpoint_configuration(self) -> Ref:
-        """object reference to the endpoint configuration that will be applied to traffic to this address"""
-        return self._props["endpoint_configuration"]
-
 
 class ReservedAddrList(object):
     def __init__(self, client, props):
@@ -2680,16 +3531,6 @@ class ReservedDomain(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["http_endpoint_configuration"] = (
-            Ref(client, props["http_endpoint_configuration"])
-            if props["http_endpoint_configuration"] is not None
-            else None
-        )
-        self._props["https_endpoint_configuration"] = (
-            Ref(client, props["https_endpoint_configuration"])
-            if props["https_endpoint_configuration"] is not None
-            else None
-        )
         self._props["certificate"] = (
             Ref(client, props["certificate"])
             if props["certificate"] is not None
@@ -2761,16 +3602,6 @@ class ReservedDomain(object):
     def cname_target(self) -> str:
         """DNS CNAME target for a custom hostname, or null if the reserved domain is a subdomain of *.ngrok.io"""
         return self._props["cname_target"]
-
-    @property
-    def http_endpoint_configuration(self) -> Ref:
-        """object referencing the endpoint configuration applied to http traffic on this domain"""
-        return self._props["http_endpoint_configuration"]
-
-    @property
-    def https_endpoint_configuration(self) -> Ref:
-        """object referencing the endpoint configuration applied to https traffic on this domain"""
-        return self._props["https_endpoint_configuration"]
 
     @property
     def certificate(self) -> Ref:
@@ -3735,6 +4566,14 @@ class Tunnel(object):
             if props["tunnel_session"] is not None
             else None
         )
+        self._props["endpoint"] = (
+            Ref(client, props["endpoint"]) if props["endpoint"] is not None else None
+        )
+        self._props["backends"] = (
+            [Ref(client, x) for x in props["backends"]]
+            if props["backends"] is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -3752,7 +4591,7 @@ class Tunnel(object):
 
     @property
     def public_url(self) -> str:
-        """URL of the tunnel's public endpoint"""
+        """URL of the ephemeral tunnel's public endpoint"""
         return self._props["public_url"]
 
     @property
@@ -3767,7 +4606,7 @@ class Tunnel(object):
 
     @property
     def proto(self) -> str:
-        """tunnel protocol. one of ``http``, ``https``, ``tcp`` or ``tls``"""
+        """tunnel protocol for ephemeral tunnels. one of ``http``, ``https``, ``tcp`` or ``tls``"""
         return self._props["proto"]
 
     @property
@@ -3779,6 +4618,26 @@ class Tunnel(object):
     def tunnel_session(self) -> Ref:
         """reference object pointing to the tunnel session on which this tunnel was started"""
         return self._props["tunnel_session"]
+
+    @property
+    def endpoint(self) -> Ref:
+        """the ephemeral endpoint this tunnel is associated with, if this is an agent-initiated tunnel"""
+        return self._props["endpoint"]
+
+    @property
+    def labels(self) -> Mapping[str, str]:
+        """the labels the tunnel group backends will match against, if this is a backend tunnel"""
+        return self._props["labels"]
+
+    @property
+    def backends(self) -> Sequence[Ref]:
+        """tunnel group backends served by this backend tunnel"""
+        return self._props["backends"]
+
+    @property
+    def forwards_to(self) -> str:
+        """upstream address the ngrok agent forwards traffic over this tunnel to. this may be expressed as a URL or a network address."""
+        return self._props["forwards_to"]
 
 
 class TunnelList(object):
