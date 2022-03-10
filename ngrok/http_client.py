@@ -1,8 +1,10 @@
 from __future__ import annotations
 from collections.abc import Iterator
 from typing import Any, Mapping, Dict, Generic, Optional
+from platform import python_version
 import os
 import requests
+import sys
 
 from .error import Error, NotFoundError
 
@@ -45,6 +47,17 @@ class HTTPClient(object):
             raise RuntimeError("server returned unexpected 204 response")
         return resp
 
+    def getUserAgentString(self):
+        package_version = "0.0.0"
+        py_version = "0.0.0"
+
+        try:
+            package_version = sys.modules["ngrok"].__version__
+            py_version = python_version()
+        finally:
+            user_agent = "ngrok-api-python/{0}/{1}".format(package_version, py_version)
+            return user_agent
+
     def do(
         self,
         method: str,
@@ -60,6 +73,7 @@ class HTTPClient(object):
             if query_params
             else None,
             headers={
+                "User-Agent": self.getUserAgentString(),
                 "ngrok-version": "2",
                 "authorization": "Bearer " + self.api_key,
             },
@@ -83,6 +97,7 @@ class HTTPClient(object):
             method,
             url,
             headers={
+                "User-Agent": self.getUserAgentString(),
                 "ngrok-version": "2",
                 "authorization": "Bearer " + self.api_key,
             },

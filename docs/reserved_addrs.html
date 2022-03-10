@@ -2,7 +2,7 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Reserved Domains" href="reserved_domains.html" /><link rel="prev" title="OIDC Module" href="endpoint_oidc_module.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Reserved Domains" href="reserved_domains.html" /><link rel="prev" title="IP Restrictions" href="ip_restrictions.html" />
 
     <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
         <title>Reserved Addresses - ngrok-api documentation</title>
@@ -118,28 +118,42 @@
 <li class="toctree-l1"><a class="reference internal" href="abuse_reports.html">Abuse Reports</a></li>
 <li class="toctree-l1"><a class="reference internal" href="agent_ingresses.html">Agent Ingresses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_keys.html">API Keys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="failover_backends.html">Failover Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http_response_backends.html">HTTP Response Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tunnel_group_backends.html">Tunnel Group Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weighted_backends.html">Weighted Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="certificate_authorities.html">Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Tunnel Credentials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_configurations.html">Endpoint Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="event_streams.html">Event Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edges_https_routes.html">HTTPS Edge Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edges_https.html">HTTPS Edges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https_edge_mutual_tls_module.html">HTTPS Edge Mutual TLS Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https_edge_tls_termination_module.html">HTTPS Edge TLS Termination Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edge_route_backend_module.html">HTTPS Edge Route Backend Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edge_route_ip_restriction_module.html">HTTPS Edge Route IP Restriction Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edge_route_request_headers_module.html">HTTPS Edge Route Request Headers Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edge_route_response_headers_module.html">HTTPS Edge Route Response Headers Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edge_route_compression_module.html">HTTPS Edge Route Compression Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edge_route_circuit_breaker_module.html">HTTPS Edge Route Circuit Breaker Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edge_route_webhook_verification_module.html">HTTPS Edge Route Webhook Verification Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edge_route_o_auth_module.html">HTTPS Edge Route OAuth Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edge_route_saml_module.html">HTTPS Edge Route SAML Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edge_route_oidc_module.html">HTTPS Edge Route OIDC Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edge_route_websocket_tcp_converter_module.html">HTTPS Edge Route Websocket TCP Converter Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edges_tcp.html">TCP Edges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tcp_edge_backend_module.html">TCP Edge Backend Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tcp_edge_ip_restriction_module.html">TCP Edge IP Restriction Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edges_tls.html">TLS Edges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_edge_backend_module.html">TLS Edge Backend Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_edge_ip_restriction_module.html">TLS Edge IP Restriction Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_edge_mutual_tls_module.html">TLS Edge Mutual TLS Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_edge_tls_termination_module.html">TLS Edge TLS Termination Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">Endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_destinations.html">Event Destinations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_subscriptions.html">Event Subscriptions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_sources.html">Event Sources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policies.html">IP Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policy_rules.html">IP Policy Rules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_restrictions.html">IP Restrictions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_logging_module.html">Logging Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_circuit_breaker_module.html">Circuit Breaker Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_compression_module.html">Compression Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_tls_termination_module.html">TLS Termination Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_ip_policy_module.html">IP Policy Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_mutual_tls_module.html">Mutual TLS Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_request_headers_module.html">Request Headers Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_response_headers_module.html">Response Headers Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_o_auth_module.html">OAuth Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_webhook_validation_module.html">Webhook Validation Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_saml_module.html">SAML Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoint_oidc_module.html">OIDC Module</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Reserved Addresses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reserved_domains.html">Reserved Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_certificate_authorities.html">SSH Certificate Authorities</a></li>
@@ -175,7 +189,7 @@ TCP address hostnames and ports are assigned by ngrok, they cannot be
 chosen.</p>
 <dl class="py method">
 <dt id="ngrok.services.ReservedAddrsClient.create">
-<code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoint_configuration_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#ReservedAddrsClient.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.ReservedAddrsClient.create" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#ReservedAddrsClient.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.ReservedAddrsClient.create" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new reserved address.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -183,7 +197,6 @@ chosen.</p>
 <li><p><strong>description</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – human-readable description of what this reserved address will be used for</p></li>
 <li><p><strong>metadata</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – arbitrary user-defined machine-readable data of this reserved address. Optional, max 4096 bytes.</p></li>
 <li><p><strong>region</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – reserve the address in this geographic ngrok datacenter. Optional, default is us. (au, eu, ap, us, jp, in, sa)</p></li>
-<li><p><strong>endpoint_configuration_id</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – ID of an endpoint configuration of type tcp that will be used to handle inbound traffic to this address</p></li>
 </ul>
 </dd>
 </dl>
@@ -204,17 +217,6 @@ chosen.</p>
 </dd>
 </dl>
 <p><a class="reference external" href="https://ngrok.com/docs/api#api-reserved-addrs-delete">https://ngrok.com/docs/api#api-reserved-addrs-delete</a></p>
-</dd></dl>
-<dl class="py method">
-<dt id="ngrok.services.ReservedAddrsClient.delete_endpoint_config">
-<code class="sig-name descname"><span class="pre">delete_endpoint_config</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#ReservedAddrsClient.delete_endpoint_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.ReservedAddrsClient.delete_endpoint_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>Detach the endpoint configuration attached to a reserved address.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
-</dd>
-</dl>
-<p><a class="reference external" href="https://ngrok.com/docs/api#api-reserved-addrs-delete-endpoint-config">https://ngrok.com/docs/api#api-reserved-addrs-delete-endpoint-config</a></p>
 </dd></dl>
 <dl class="py method">
 <dt id="ngrok.services.ReservedAddrsClient.get">
@@ -253,7 +255,7 @@ chosen.</p>
 </dd></dl>
 <dl class="py method">
 <dt id="ngrok.services.ReservedAddrsClient.update">
-<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoint_configuration_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#ReservedAddrsClient.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.ReservedAddrsClient.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#ReservedAddrsClient.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.ReservedAddrsClient.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update the attributes of a reserved address.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -261,7 +263,6 @@ chosen.</p>
 <li><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
 <li><p><strong>description</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – human-readable description of what this reserved address will be used for</p></li>
 <li><p><strong>metadata</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – arbitrary user-defined machine-readable data of this reserved address. Optional, max 4096 bytes.</p></li>
-<li><p><strong>endpoint_configuration_id</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – ID of an endpoint configuration of type tcp that will be used to handle inbound traffic to this address</p></li>
 </ul>
 </dd>
 </dl>
@@ -288,21 +289,21 @@ chosen.</p>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="endpoint_oidc_module.html">
+          <a class="prev-page" href="ip_restrictions.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">OIDC Module</div>
+                <div class="title">IP Restrictions</div>
                 
               </div>
             </a>
         </div>
 
         <div class="related-information">
-              Copyright &#169; 2021, ngrok Inc.
+              Copyright &#169; 1980, ngrok Inc.
             |
             Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
               and

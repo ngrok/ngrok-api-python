@@ -45,15 +45,11 @@ class Client(object):
         return CredentialsClient(self)
 
     @property
-    def endpoint_configurations(self) -> EndpointConfigurationsClient:
-        """Endpoint Configurations are a reusable group of modules that encapsulate how
-        traffic to a domain or address is handled. Endpoint configurations are only
-        applied to Domains and TCP Addresses they have been attached to."""
-        return EndpointConfigurationsClient(self)
-
-    @property
-    def event_streams(self) -> EventStreamsClient:
-        return EventStreamsClient(self)
+    def endpoints(self) -> EndpointsClient:
+        """Endpoints provides an API for querying the endpoint objects
+        which define what tunnel or edge is used to serve a hostport.
+        Only active endpoints associated with a tunnel or backend are returned."""
+        return EndpointsClient(self)
 
     @property
     def event_destinations(self) -> EventDestinationsClient:
@@ -155,33 +151,85 @@ class Client(object):
         return TunnelsClient(self)
 
     @property
-    def pointcfg_module(self):
+    def backends(self):
         ns = collections.namedtuple(
             "Namespace",
-            "logging",
-            "circuit_breaker",
-            "compression",
-            "tls_termination",
-            "ip_policy",
-            "mutual_tls",
-            "request_headers",
-            "response_headers",
-            "oauth",
-            "webhook_validation",
-            "saml",
-            "oidc",
+            "failover",
+            "http_response",
+            "tunnel_group",
+            "weighted",
         )
         return ns(
-            logging=EndpointLoggingModuleClient(self),
-            circuit_breaker=EndpointCircuitBreakerModuleClient(self),
-            compression=EndpointCompressionModuleClient(self),
-            tls_termination=EndpointTLSTerminationModuleClient(self),
-            ip_policy=EndpointIPPolicyModuleClient(self),
-            mutual_tls=EndpointMutualTLSModuleClient(self),
-            request_headers=EndpointRequestHeadersModuleClient(self),
-            response_headers=EndpointResponseHeadersModuleClient(self),
-            oauth=EndpointOAuthModuleClient(self),
-            webhook_validation=EndpointWebhookValidationModuleClient(self),
-            saml=EndpointSAMLModuleClient(self),
-            oidc=EndpointOIDCModuleClient(self),
+            failover=FailoverBackendsClient(self),
+            http_response=HTTPResponseBackendsClient(self),
+            tunnel_group=TunnelGroupBackendsClient(self),
+            weighted=WeightedBackendsClient(self),
+        )
+
+    @property
+    def edges(self):
+        ns = collections.namedtuple(
+            "Namespace",
+            "https_routes",
+            "https",
+            "tcp",
+            "tls",
+        )
+        return ns(
+            https_routes=EdgesHTTPSRoutesClient(self),
+            https=EdgesHTTPSClient(self),
+            tcp=EdgesTCPClient(self),
+            tls=EdgesTLSClient(self),
+        )
+
+    @property
+    def edge_modules(self):
+        ns = collections.namedtuple(
+            "Namespace",
+            "https_edge_mutual_tls",
+            "https_edge_tls_termination",
+            "https_edge_route_backend",
+            "https_edge_route_ip_restriction",
+            "https_edge_route_request_headers",
+            "https_edge_route_response_headers",
+            "https_edge_route_compression",
+            "https_edge_route_circuit_breaker",
+            "https_edge_route_webhook_verification",
+            "https_edge_route_oauth",
+            "https_edge_route_saml",
+            "https_edge_route_oidc",
+            "https_edge_route_websocket_tcp_converter",
+            "tcp_edge_backend",
+            "tcp_edge_ip_restriction",
+            "tls_edge_backend",
+            "tls_edge_ip_restriction",
+            "tls_edge_mutual_tls",
+            "tls_edge_tls_termination",
+        )
+        return ns(
+            https_edge_mutual_tls=HTTPSEdgeMutualTLSModuleClient(self),
+            https_edge_tls_termination=HTTPSEdgeTLSTerminationModuleClient(self),
+            https_edge_route_backend=EdgeRouteBackendModuleClient(self),
+            https_edge_route_ip_restriction=EdgeRouteIPRestrictionModuleClient(self),
+            https_edge_route_request_headers=EdgeRouteRequestHeadersModuleClient(self),
+            https_edge_route_response_headers=EdgeRouteResponseHeadersModuleClient(
+                self
+            ),
+            https_edge_route_compression=EdgeRouteCompressionModuleClient(self),
+            https_edge_route_circuit_breaker=EdgeRouteCircuitBreakerModuleClient(self),
+            https_edge_route_webhook_verification=EdgeRouteWebhookVerificationModuleClient(
+                self
+            ),
+            https_edge_route_oauth=EdgeRouteOAuthModuleClient(self),
+            https_edge_route_saml=EdgeRouteSAMLModuleClient(self),
+            https_edge_route_oidc=EdgeRouteOIDCModuleClient(self),
+            https_edge_route_websocket_tcp_converter=EdgeRouteWebsocketTCPConverterModuleClient(
+                self
+            ),
+            tcp_edge_backend=TCPEdgeBackendModuleClient(self),
+            tcp_edge_ip_restriction=TCPEdgeIPRestrictionModuleClient(self),
+            tls_edge_backend=TLSEdgeBackendModuleClient(self),
+            tls_edge_ip_restriction=TLSEdgeIPRestrictionModuleClient(self),
+            tls_edge_mutual_tls=TLSEdgeMutualTLSModuleClient(self),
+            tls_edge_tls_termination=TLSEdgeTLSTerminationModuleClient(self),
         )

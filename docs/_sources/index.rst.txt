@@ -119,28 +119,42 @@ API Reference
   abuse_reports
   agent_ingresses
   api_keys
+  failover_backends
+  http_response_backends
+  tunnel_group_backends
+  weighted_backends
   certificate_authorities
   credentials
-  endpoint_configurations
-  event_streams
+  edges_https_routes
+  edges_https
+  https_edge_mutual_tls_module
+  https_edge_tls_termination_module
+  edge_route_backend_module
+  edge_route_ip_restriction_module
+  edge_route_request_headers_module
+  edge_route_response_headers_module
+  edge_route_compression_module
+  edge_route_circuit_breaker_module
+  edge_route_webhook_verification_module
+  edge_route_o_auth_module
+  edge_route_saml_module
+  edge_route_oidc_module
+  edge_route_websocket_tcp_converter_module
+  edges_tcp
+  tcp_edge_backend_module
+  tcp_edge_ip_restriction_module
+  edges_tls
+  tls_edge_backend_module
+  tls_edge_ip_restriction_module
+  tls_edge_mutual_tls_module
+  tls_edge_tls_termination_module
+  endpoints
   event_destinations
   event_subscriptions
   event_sources
   ip_policies
   ip_policy_rules
   ip_restrictions
-  endpoint_logging_module
-  endpoint_circuit_breaker_module
-  endpoint_compression_module
-  endpoint_tls_termination_module
-  endpoint_ip_policy_module
-  endpoint_mutual_tls_module
-  endpoint_request_headers_module
-  endpoint_response_headers_module
-  endpoint_o_auth_module
-  endpoint_webhook_validation_module
-  endpoint_saml_module
-  endpoint_oidc_module
   reserved_addrs
   reserved_domains
   ssh_certificate_authorities
