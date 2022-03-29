@@ -197,7 +197,7 @@ weights.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>description</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – human-readable description of this backend. Optional</p></li>
 <li><p><strong>metadata</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – arbitrary user-defined machine-readable data of this backend. Optional</p></li>
-<li><p><strong>backends</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Mapping</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – the ids of the child backends to their weights (0-10000)</p></li>
+<li><p><strong>backends</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Mapping</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – the ids of the child backends to their weights [0-10000]</p></li>
 </ul>
 </dd>
 </dl>
@@ -211,7 +211,7 @@ weights.</p>
 <dl class="py method">
 <dt id="ngrok.services.WeightedBackendsClient.delete">
 <code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#WeightedBackendsClient.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.WeightedBackendsClient.delete" title="Permalink to this definition">¶</a></dt>
-<dd><p>Delete a Weighted backend by ID. TODO what if used?</p>
+<dd><p>Delete a Weighted backend by ID.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
@@ -264,7 +264,7 @@ weights.</p>
 <li><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
 <li><p><strong>description</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – human-readable description of this backend. Optional</p></li>
 <li><p><strong>metadata</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – arbitrary user-defined machine-readable data of this backend. Optional</p></li>
-<li><p><strong>backends</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Mapping</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – the ids of the child backends to their weights (0-10000)</p></li>
+<li><p><strong>backends</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Mapping</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – the ids of the child backends to their weights [0-10000]</p></li>
 </ul>
 </dd>
 </dl>

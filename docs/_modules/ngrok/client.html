@@ -334,10 +334,12 @@
     <span class="k">def</span> <span class="nf">backends</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">ns</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span>
             <span class="s2">"Namespace"</span><span class="p">,</span>
-            <span class="s2">"failover"</span><span class="p">,</span>
-            <span class="s2">"http_response"</span><span class="p">,</span>
-            <span class="s2">"tunnel_group"</span><span class="p">,</span>
-            <span class="s2">"weighted"</span><span class="p">,</span>
+            <span class="p">[</span>
+                <span class="s2">"failover"</span><span class="p">,</span>
+                <span class="s2">"http_response"</span><span class="p">,</span>
+                <span class="s2">"tunnel_group"</span><span class="p">,</span>
+                <span class="s2">"weighted"</span><span class="p">,</span>
+            <span class="p">],</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">ns</span><span class="p">(</span>
             <span class="n">failover</span><span class="o">=</span><span class="n">FailoverBackendsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>
@@ -350,10 +352,12 @@
     <span class="k">def</span> <span class="nf">edges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">ns</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span>
             <span class="s2">"Namespace"</span><span class="p">,</span>
-            <span class="s2">"https_routes"</span><span class="p">,</span>
-            <span class="s2">"https"</span><span class="p">,</span>
-            <span class="s2">"tcp"</span><span class="p">,</span>
-            <span class="s2">"tls"</span><span class="p">,</span>
+            <span class="p">[</span>
+                <span class="s2">"https_routes"</span><span class="p">,</span>
+                <span class="s2">"https"</span><span class="p">,</span>
+                <span class="s2">"tcp"</span><span class="p">,</span>
+                <span class="s2">"tls"</span><span class="p">,</span>
+            <span class="p">],</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">ns</span><span class="p">(</span>
             <span class="n">https_routes</span><span class="o">=</span><span class="n">EdgesHTTPSRoutesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>
@@ -366,25 +370,27 @@
     <span class="k">def</span> <span class="nf">edge_modules</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">ns</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span>
             <span class="s2">"Namespace"</span><span class="p">,</span>
-            <span class="s2">"https_edge_mutual_tls"</span><span class="p">,</span>
-            <span class="s2">"https_edge_tls_termination"</span><span class="p">,</span>
-            <span class="s2">"https_edge_route_backend"</span><span class="p">,</span>
-            <span class="s2">"https_edge_route_ip_restriction"</span><span class="p">,</span>
-            <span class="s2">"https_edge_route_request_headers"</span><span class="p">,</span>
-            <span class="s2">"https_edge_route_response_headers"</span><span class="p">,</span>
-            <span class="s2">"https_edge_route_compression"</span><span class="p">,</span>
-            <span class="s2">"https_edge_route_circuit_breaker"</span><span class="p">,</span>
-            <span class="s2">"https_edge_route_webhook_verification"</span><span class="p">,</span>
-            <span class="s2">"https_edge_route_oauth"</span><span class="p">,</span>
-            <span class="s2">"https_edge_route_saml"</span><span class="p">,</span>
-            <span class="s2">"https_edge_route_oidc"</span><span class="p">,</span>
-            <span class="s2">"https_edge_route_websocket_tcp_converter"</span><span class="p">,</span>
-            <span class="s2">"tcp_edge_backend"</span><span class="p">,</span>
-            <span class="s2">"tcp_edge_ip_restriction"</span><span class="p">,</span>
-            <span class="s2">"tls_edge_backend"</span><span class="p">,</span>
-            <span class="s2">"tls_edge_ip_restriction"</span><span class="p">,</span>
-            <span class="s2">"tls_edge_mutual_tls"</span><span class="p">,</span>
-            <span class="s2">"tls_edge_tls_termination"</span><span class="p">,</span>
+            <span class="p">[</span>
+                <span class="s2">"https_edge_mutual_tls"</span><span class="p">,</span>
+                <span class="s2">"https_edge_tls_termination"</span><span class="p">,</span>
+                <span class="s2">"https_edge_route_backend"</span><span class="p">,</span>
+                <span class="s2">"https_edge_route_ip_restriction"</span><span class="p">,</span>
+                <span class="s2">"https_edge_route_request_headers"</span><span class="p">,</span>
+                <span class="s2">"https_edge_route_response_headers"</span><span class="p">,</span>
+                <span class="s2">"https_edge_route_compression"</span><span class="p">,</span>
+                <span class="s2">"https_edge_route_circuit_breaker"</span><span class="p">,</span>
+                <span class="s2">"https_edge_route_webhook_verification"</span><span class="p">,</span>
+                <span class="s2">"https_edge_route_oauth"</span><span class="p">,</span>
+                <span class="s2">"https_edge_route_saml"</span><span class="p">,</span>
+                <span class="s2">"https_edge_route_oidc"</span><span class="p">,</span>
+                <span class="s2">"https_edge_route_websocket_tcp_converter"</span><span class="p">,</span>
+                <span class="s2">"tcp_edge_backend"</span><span class="p">,</span>
+                <span class="s2">"tcp_edge_ip_restriction"</span><span class="p">,</span>
+                <span class="s2">"tls_edge_backend"</span><span class="p">,</span>
+                <span class="s2">"tls_edge_ip_restriction"</span><span class="p">,</span>
+                <span class="s2">"tls_edge_mutual_tls"</span><span class="p">,</span>
+                <span class="s2">"tls_edge_tls_termination"</span><span class="p">,</span>
+            <span class="p">],</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">ns</span><span class="p">(</span>
             <span class="n">https_edge_mutual_tls</span><span class="o">=</span><span class="n">HTTPSEdgeMutualTLSModuleClient</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>

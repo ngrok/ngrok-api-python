@@ -154,10 +154,12 @@ class Client(object):
     def backends(self):
         ns = collections.namedtuple(
             "Namespace",
-            "failover",
-            "http_response",
-            "tunnel_group",
-            "weighted",
+            [
+                "failover",
+                "http_response",
+                "tunnel_group",
+                "weighted",
+            ],
         )
         return ns(
             failover=FailoverBackendsClient(self),
@@ -170,10 +172,12 @@ class Client(object):
     def edges(self):
         ns = collections.namedtuple(
             "Namespace",
-            "https_routes",
-            "https",
-            "tcp",
-            "tls",
+            [
+                "https_routes",
+                "https",
+                "tcp",
+                "tls",
+            ],
         )
         return ns(
             https_routes=EdgesHTTPSRoutesClient(self),
@@ -186,25 +190,27 @@ class Client(object):
     def edge_modules(self):
         ns = collections.namedtuple(
             "Namespace",
-            "https_edge_mutual_tls",
-            "https_edge_tls_termination",
-            "https_edge_route_backend",
-            "https_edge_route_ip_restriction",
-            "https_edge_route_request_headers",
-            "https_edge_route_response_headers",
-            "https_edge_route_compression",
-            "https_edge_route_circuit_breaker",
-            "https_edge_route_webhook_verification",
-            "https_edge_route_oauth",
-            "https_edge_route_saml",
-            "https_edge_route_oidc",
-            "https_edge_route_websocket_tcp_converter",
-            "tcp_edge_backend",
-            "tcp_edge_ip_restriction",
-            "tls_edge_backend",
-            "tls_edge_ip_restriction",
-            "tls_edge_mutual_tls",
-            "tls_edge_tls_termination",
+            [
+                "https_edge_mutual_tls",
+                "https_edge_tls_termination",
+                "https_edge_route_backend",
+                "https_edge_route_ip_restriction",
+                "https_edge_route_request_headers",
+                "https_edge_route_response_headers",
+                "https_edge_route_compression",
+                "https_edge_route_circuit_breaker",
+                "https_edge_route_webhook_verification",
+                "https_edge_route_oauth",
+                "https_edge_route_saml",
+                "https_edge_route_oidc",
+                "https_edge_route_websocket_tcp_converter",
+                "tcp_edge_backend",
+                "tcp_edge_ip_restriction",
+                "tls_edge_backend",
+                "tls_edge_ip_restriction",
+                "tls_edge_mutual_tls",
+                "tls_edge_tls_termination",
+            ],
         )
         return ns(
             https_edge_mutual_tls=HTTPSEdgeMutualTLSModuleClient(self),
