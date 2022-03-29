@@ -34,8 +34,8 @@ class AbuseReport(object):
         self._props = props
         self._props["hostnames"] = (
             [AbuseReportHostname(client, x) for x in props["hostnames"]]
-            if props["hostnames"] is not None
-            else None
+            if props.get("hostnames") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -187,8 +187,8 @@ class AgentIngressList(object):
         self._props = props
         self._props["ingresses"] = (
             [AgentIngress(client, x) for x in props["ingresses"]]
-            if props["ingresses"] is not None
-            else None
+            if props.get("ingresses") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -288,8 +288,8 @@ class APIKeyList(object):
         self._props = props
         self._props["keys"] = (
             [APIKey(client, x) for x in props["keys"]]
-            if props["keys"] is not None
-            else None
+            if props.get("keys") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -337,7 +337,7 @@ class FailoverBackend(object):
     def delete(
         self,
     ):
-        self._client.failover_backends.delete(
+        self._client.backends.failover.delete(
             id=self.id,
         )
 
@@ -347,7 +347,7 @@ class FailoverBackend(object):
         metadata: str = None,
         backends: Sequence[str] = [],
     ):
-        self._client.failover_backends.update(
+        self._client.backends.failover.update(
             id=self.id,
             description=description,
             metadata=metadata,
@@ -391,8 +391,8 @@ class FailoverBackendList(object):
         self._props = props
         self._props["backends"] = (
             [FailoverBackend(client, x) for x in props["backends"]]
-            if props["backends"] is not None
-            else None
+            if props.get("backends") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -440,7 +440,7 @@ class HTTPResponseBackend(object):
     def delete(
         self,
     ):
-        self._client.http_response_backends.delete(
+        self._client.backends.http_response.delete(
             id=self.id,
         )
 
@@ -452,7 +452,7 @@ class HTTPResponseBackend(object):
         headers: Mapping[str, str] = None,
         status_code: int = None,
     ):
-        self._client.http_response_backends.update(
+        self._client.backends.http_response.update(
             id=self.id,
             description=description,
             metadata=metadata,
@@ -507,8 +507,8 @@ class HTTPResponseBackendList(object):
         self._props = props
         self._props["backends"] = (
             [HTTPResponseBackend(client, x) for x in props["backends"]]
-            if props["backends"] is not None
-            else None
+            if props.get("backends") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -542,8 +542,8 @@ class TunnelGroupBackend(object):
         self._props = props
         self._props["tunnels"] = (
             [Ref(client, x) for x in props["tunnels"]]
-            if props["tunnels"] is not None
-            else None
+            if props.get("tunnels") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -558,7 +558,7 @@ class TunnelGroupBackend(object):
     def delete(
         self,
     ):
-        self._client.tunnel_group_backends.delete(
+        self._client.backends.tunnel_group.delete(
             id=self.id,
         )
 
@@ -568,7 +568,7 @@ class TunnelGroupBackend(object):
         metadata: str = None,
         labels: Mapping[str, str] = {},
     ):
-        self._client.tunnel_group_backends.update(
+        self._client.backends.tunnel_group.update(
             id=self.id,
             description=description,
             metadata=metadata,
@@ -617,8 +617,8 @@ class TunnelGroupBackendList(object):
         self._props = props
         self._props["backends"] = (
             [TunnelGroupBackend(client, x) for x in props["backends"]]
-            if props["backends"] is not None
-            else None
+            if props.get("backends") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -666,7 +666,7 @@ class WeightedBackend(object):
     def delete(
         self,
     ):
-        self._client.weighted_backends.delete(
+        self._client.backends.weighted.delete(
             id=self.id,
         )
 
@@ -676,7 +676,7 @@ class WeightedBackend(object):
         metadata: str = None,
         backends: Mapping[str, int] = {},
     ):
-        self._client.weighted_backends.update(
+        self._client.backends.weighted.update(
             id=self.id,
             description=description,
             metadata=metadata,
@@ -710,7 +710,7 @@ class WeightedBackend(object):
 
     @property
     def backends(self) -> Mapping[str, int]:
-        """the ids of the child backends to their weights (0-10000)"""
+        """the ids of the child backends to their weights [0-10000]"""
         return self._props["backends"]
 
 
@@ -720,8 +720,8 @@ class WeightedBackendList(object):
         self._props = props
         self._props["backends"] = (
             [WeightedBackend(client, x) for x in props["backends"]]
-            if props["backends"] is not None
-            else None
+            if props.get("backends") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -846,8 +846,8 @@ class CertificateAuthorityList(object):
         self._props = props
         self._props["certificate_authorities"] = (
             [CertificateAuthority(client, x) for x in props["certificate_authorities"]]
-            if props["certificate_authorities"] is not None
-            else None
+            if props.get("certificate_authorities") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -939,7 +939,7 @@ class Credential(object):
 
     @property
     def token(self) -> str:
-        """the credential's authtoken that can be used to authenticate an ngrok client. **This value is only available one time, on the API response from credential creation, otherwise it is null.**"""
+        """the credential's authtoken that can be used to authenticate an ngrok agent. **This value is only available one time, on the API response from credential creation, otherwise it is null.**"""
         return self._props["token"]
 
     @property
@@ -954,8 +954,8 @@ class CredentialList(object):
         self._props = props
         self._props["credentials"] = (
             [Credential(client, x) for x in props["credentials"]]
-            if props["credentials"] is not None
-            else None
+            if props.get("credentials") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -1044,8 +1044,8 @@ class EndpointMutualTLS(object):
         self._props = props
         self._props["certificate_authorities"] = (
             [Ref(client, x) for x in props["certificate_authorities"]]
-            if props["certificate_authorities"] is not None
-            else None
+            if props.get("certificate_authorities") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -1089,7 +1089,7 @@ class EndpointMutualTLSMutate(object):
 
     @property
     def certificate_authority_ids(self) -> Sequence[str]:
-        """list of certificate authorities that will be used to validate the TLS client certificate presnted by the initiatiator of the TLS connection"""
+        """list of certificate authorities that will be used to validate the TLS client certificate presented by the initiator of the TLS connection"""
         return self._props["certificate_authority_ids"]
 
 
@@ -1216,8 +1216,8 @@ class EndpointIPPolicy(object):
         self._props = props
         self._props["ip_policies"] = (
             [Ref(client, x) for x in props["ip_policies"]]
-            if props["ip_policies"] is not None
-            else None
+            if props.get("ip_policies") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -1315,7 +1315,7 @@ class EndpointOAuth(object):
         self._props = props
         self._props["provider"] = (
             EndpointOAuthProvider(client, props["provider"])
-            if props["provider"] is not None
+            if props.get("provider") is not None
             else None
         )
 
@@ -1370,22 +1370,22 @@ class EndpointOAuthProvider(object):
         self._props = props
         self._props["github"] = (
             EndpointOAuthGitHub(client, props["github"])
-            if props["github"] is not None
+            if props.get("github") is not None
             else None
         )
         self._props["facebook"] = (
             EndpointOAuthFacebook(client, props["facebook"])
-            if props["facebook"] is not None
+            if props.get("facebook") is not None
             else None
         )
         self._props["microsoft"] = (
             EndpointOAuthMicrosoft(client, props["microsoft"])
-            if props["microsoft"] is not None
+            if props.get("microsoft") is not None
             else None
         )
         self._props["google"] = (
             EndpointOAuthGoogle(client, props["google"])
-            if props["google"] is not None
+            if props.get("google") is not None
             else None
         )
 
@@ -1809,7 +1809,7 @@ class EndpointBackend(object):
         self._client = client
         self._props = props
         self._props["backend"] = (
-            Ref(client, props["backend"]) if props["backend"] is not None else None
+            Ref(client, props["backend"]) if props.get("backend") is not None else None
         )
 
     def __eq__(self, other):
@@ -1885,53 +1885,57 @@ class HTTPSEdgeRoute(object):
         self._props = props
         self._props["backend"] = (
             EndpointBackend(client, props["backend"])
-            if props["backend"] is not None
+            if props.get("backend") is not None
             else None
         )
         self._props["ip_restriction"] = (
             EndpointIPPolicy(client, props["ip_restriction"])
-            if props["ip_restriction"] is not None
+            if props.get("ip_restriction") is not None
             else None
         )
         self._props["circuit_breaker"] = (
             EndpointCircuitBreaker(client, props["circuit_breaker"])
-            if props["circuit_breaker"] is not None
+            if props.get("circuit_breaker") is not None
             else None
         )
         self._props["compression"] = (
             EndpointCompression(client, props["compression"])
-            if props["compression"] is not None
+            if props.get("compression") is not None
             else None
         )
         self._props["request_headers"] = (
             EndpointRequestHeaders(client, props["request_headers"])
-            if props["request_headers"] is not None
+            if props.get("request_headers") is not None
             else None
         )
         self._props["response_headers"] = (
             EndpointResponseHeaders(client, props["response_headers"])
-            if props["response_headers"] is not None
+            if props.get("response_headers") is not None
             else None
         )
         self._props["webhook_verification"] = (
             EndpointWebhookValidation(client, props["webhook_verification"])
-            if props["webhook_verification"] is not None
+            if props.get("webhook_verification") is not None
             else None
         )
         self._props["oauth"] = (
             EndpointOAuth(client, props["oauth"])
-            if props["oauth"] is not None
+            if props.get("oauth") is not None
             else None
         )
         self._props["saml"] = (
-            EndpointSAML(client, props["saml"]) if props["saml"] is not None else None
+            EndpointSAML(client, props["saml"])
+            if props.get("saml") is not None
+            else None
         )
         self._props["oidc"] = (
-            EndpointOIDC(client, props["oidc"]) if props["oidc"] is not None else None
+            EndpointOIDC(client, props["oidc"])
+            if props.get("oidc") is not None
+            else None
         )
         self._props["websocket_tcp_converter"] = (
             EndpointWebsocketTCPConverter(client, props["websocket_tcp_converter"])
-            if props["websocket_tcp_converter"] is not None
+            if props.get("websocket_tcp_converter") is not None
             else None
         )
 
@@ -1962,7 +1966,7 @@ class HTTPSEdgeRoute(object):
         oidc: EndpointOIDC = None,
         websocket_tcp_converter: EndpointWebsocketTCPConverter = None,
     ):
-        self._client.edges_https_routes.update(
+        self._client.edges.https_routes.update(
             edge_id=self.edge_id,
             id=self.id,
             match_type=match_type,
@@ -1985,7 +1989,7 @@ class HTTPSEdgeRoute(object):
     def delete(
         self,
     ):
-        self._client.edges_https_routes.delete(
+        self._client.edges.https_routes.delete(
             edge_id=self.edge_id,
             id=self.id,
         )
@@ -2092,8 +2096,8 @@ class HTTPSEdgeList(object):
         self._props = props
         self._props["https_edges"] = (
             [HTTPSEdge(client, x) for x in props["https_edges"]]
-            if props["https_edges"] is not None
-            else None
+            if props.get("https_edges") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -2130,18 +2134,18 @@ class HTTPSEdge(object):
         self._props = props
         self._props["mutual_tls"] = (
             EndpointMutualTLS(client, props["mutual_tls"])
-            if props["mutual_tls"] is not None
+            if props.get("mutual_tls") is not None
             else None
         )
         self._props["tls_termination"] = (
             EndpointTLSTermination(client, props["tls_termination"])
-            if props["tls_termination"] is not None
+            if props.get("tls_termination") is not None
             else None
         )
         self._props["routes"] = (
             [HTTPSEdgeRoute(client, x) for x in props["routes"]]
-            if props["routes"] is not None
-            else None
+            if props.get("routes") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -2161,7 +2165,7 @@ class HTTPSEdge(object):
         mutual_tls: EndpointMutualTLSMutate = None,
         tls_termination: EndpointTLSTerminationAtEdge = None,
     ):
-        self._client.edges_https.update(
+        self._client.edges.https.update(
             id=self.id,
             description=description,
             metadata=metadata,
@@ -2173,7 +2177,7 @@ class HTTPSEdge(object):
     def delete(
         self,
     ):
-        self._client.edges_https.delete(
+        self._client.edges.https.delete(
             id=self.id,
         )
 
@@ -2228,8 +2232,8 @@ class TCPEdgeList(object):
         self._props = props
         self._props["tcp_edges"] = (
             [TCPEdge(client, x) for x in props["tcp_edges"]]
-            if props["tcp_edges"] is not None
-            else None
+            if props.get("tcp_edges") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -2266,12 +2270,12 @@ class TCPEdge(object):
         self._props = props
         self._props["backend"] = (
             EndpointBackend(client, props["backend"])
-            if props["backend"] is not None
+            if props.get("backend") is not None
             else None
         )
         self._props["ip_restriction"] = (
             EndpointIPPolicy(client, props["ip_restriction"])
-            if props["ip_restriction"] is not None
+            if props.get("ip_restriction") is not None
             else None
         )
 
@@ -2292,7 +2296,7 @@ class TCPEdge(object):
         backend: EndpointBackendMutate = None,
         ip_restriction: EndpointIPPolicyMutate = None,
     ):
-        self._client.edges_tcp.update(
+        self._client.edges.tcp.update(
             id=self.id,
             description=description,
             metadata=metadata,
@@ -2304,7 +2308,7 @@ class TCPEdge(object):
     def delete(
         self,
     ):
-        self._client.edges_tcp.delete(
+        self._client.edges.tcp.delete(
             id=self.id,
         )
 
@@ -2354,8 +2358,8 @@ class TLSEdgeList(object):
         self._props = props
         self._props["tls_edges"] = (
             [TLSEdge(client, x) for x in props["tls_edges"]]
-            if props["tls_edges"] is not None
-            else None
+            if props.get("tls_edges") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -2392,22 +2396,22 @@ class TLSEdge(object):
         self._props = props
         self._props["backend"] = (
             EndpointBackend(client, props["backend"])
-            if props["backend"] is not None
+            if props.get("backend") is not None
             else None
         )
         self._props["ip_restriction"] = (
             EndpointIPPolicy(client, props["ip_restriction"])
-            if props["ip_restriction"] is not None
+            if props.get("ip_restriction") is not None
             else None
         )
         self._props["mutual_tls"] = (
             EndpointMutualTLS(client, props["mutual_tls"])
-            if props["mutual_tls"] is not None
+            if props.get("mutual_tls") is not None
             else None
         )
         self._props["tls_termination"] = (
             EndpointTLSTermination(client, props["tls_termination"])
-            if props["tls_termination"] is not None
+            if props.get("tls_termination") is not None
             else None
         )
 
@@ -2430,7 +2434,7 @@ class TLSEdge(object):
         mutual_tls: EndpointMutualTLSMutate = None,
         tls_termination: EndpointTLSTermination = None,
     ):
-        self._client.edges_tls.update(
+        self._client.edges.tls.update(
             id=self.id,
             description=description,
             metadata=metadata,
@@ -2444,7 +2448,7 @@ class TLSEdge(object):
     def delete(
         self,
     ):
-        self._client.edges_tls.delete(
+        self._client.edges.tls.delete(
             id=self.id,
         )
 
@@ -2501,16 +2505,18 @@ class Endpoint(object):
         self._client = client
         self._props = props
         self._props["domain"] = (
-            Ref(client, props["domain"]) if props["domain"] is not None else None
+            Ref(client, props["domain"]) if props.get("domain") is not None else None
         )
         self._props["tcp_addr"] = (
-            Ref(client, props["tcp_addr"]) if props["tcp_addr"] is not None else None
+            Ref(client, props["tcp_addr"])
+            if props.get("tcp_addr") is not None
+            else None
         )
         self._props["tunnel"] = (
-            Ref(client, props["tunnel"]) if props["tunnel"] is not None else None
+            Ref(client, props["tunnel"]) if props.get("tunnel") is not None else None
         )
         self._props["edge"] = (
-            Ref(client, props["edge"]) if props["edge"] is not None else None
+            Ref(client, props["edge"]) if props.get("edge") is not None else None
         )
 
     def __eq__(self, other):
@@ -2594,8 +2600,8 @@ class EndpointList(object):
         self._props = props
         self._props["endpoints"] = (
             [Endpoint(client, x) for x in props["endpoints"]]
-            if props["endpoints"] is not None
-            else None
+            if props.get("endpoints") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -2632,7 +2638,7 @@ class EventDestination(object):
         self._props = props
         self._props["target"] = (
             EventTarget(client, props["target"])
-            if props["target"] is not None
+            if props.get("target") is not None
             else None
         )
 
@@ -2694,8 +2700,8 @@ class EventDestinationList(object):
         self._props = props
         self._props["event_destinations"] = (
             [EventDestination(client, x) for x in props["event_destinations"]]
-            if props["event_destinations"] is not None
-            else None
+            if props.get("event_destinations") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -2732,17 +2738,17 @@ class EventTarget(object):
         self._props = props
         self._props["firehose"] = (
             EventTargetFirehose(client, props["firehose"])
-            if props["firehose"] is not None
+            if props.get("firehose") is not None
             else None
         )
         self._props["kinesis"] = (
             EventTargetKinesis(client, props["kinesis"])
-            if props["kinesis"] is not None
+            if props.get("kinesis") is not None
             else None
         )
         self._props["cloudwatch_logs"] = (
             EventTargetCloudwatchLogs(client, props["cloudwatch_logs"])
-            if props["cloudwatch_logs"] is not None
+            if props.get("cloudwatch_logs") is not None
             else None
         )
 
@@ -2776,7 +2782,7 @@ class EventTargetFirehose(object):
         self._client = client
         self._props = props
         self._props["auth"] = (
-            AWSAuth(client, props["auth"]) if props["auth"] is not None else None
+            AWSAuth(client, props["auth"]) if props.get("auth") is not None else None
         )
 
     def __eq__(self, other):
@@ -2804,7 +2810,7 @@ class EventTargetKinesis(object):
         self._client = client
         self._props = props
         self._props["auth"] = (
-            AWSAuth(client, props["auth"]) if props["auth"] is not None else None
+            AWSAuth(client, props["auth"]) if props.get("auth") is not None else None
         )
 
     def __eq__(self, other):
@@ -2832,7 +2838,7 @@ class EventTargetCloudwatchLogs(object):
         self._client = client
         self._props = props
         self._props["auth"] = (
-            AWSAuth(client, props["auth"]) if props["auth"] is not None else None
+            AWSAuth(client, props["auth"]) if props.get("auth") is not None else None
         )
 
     def __eq__(self, other):
@@ -2862,11 +2868,11 @@ class AWSAuth(object):
         self._client = client
         self._props = props
         self._props["role"] = (
-            AWSRole(client, props["role"]) if props["role"] is not None else None
+            AWSRole(client, props["role"]) if props.get("role") is not None else None
         )
         self._props["creds"] = (
             AWSCredentials(client, props["creds"])
-            if props["creds"] is not None
+            if props.get("creds") is not None
             else None
         )
 
@@ -2941,8 +2947,8 @@ class EventSubscriptionList(object):
         self._props = props
         self._props["event_subscriptions"] = (
             [EventSubscription(client, x) for x in props["event_subscriptions"]]
-            if props["event_subscriptions"] is not None
-            else None
+            if props.get("event_subscriptions") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -2979,13 +2985,13 @@ class EventSubscription(object):
         self._props = props
         self._props["sources"] = (
             [EventSource(client, x) for x in props["sources"]]
-            if props["sources"] is not None
-            else None
+            if props.get("sources") is not None
+            else []
         )
         self._props["destinations"] = (
             [Ref(client, x) for x in props["destinations"]]
-            if props["destinations"] is not None
-            else None
+            if props.get("destinations") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -3091,8 +3097,8 @@ class EventSourceList(object):
         self._props = props
         self._props["sources"] = (
             [EventSource(client, x) for x in props["sources"]]
-            if props["sources"] is not None
-            else None
+            if props.get("sources") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -3179,8 +3185,8 @@ class IPPolicyList(object):
         self._props = props
         self._props["ip_policies"] = (
             [IPPolicy(client, x) for x in props["ip_policies"]]
-            if props["ip_policies"] is not None
-            else None
+            if props.get("ip_policies") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -3216,7 +3222,9 @@ class IPPolicyRule(object):
         self._client = client
         self._props = props
         self._props["ip_policy"] = (
-            Ref(client, props["ip_policy"]) if props["ip_policy"] is not None else None
+            Ref(client, props["ip_policy"])
+            if props.get("ip_policy") is not None
+            else None
         )
 
     def __eq__(self, other):
@@ -3295,8 +3303,8 @@ class IPPolicyRuleList(object):
         self._props = props
         self._props["ip_policy_rules"] = (
             [IPPolicyRule(client, x) for x in props["ip_policy_rules"]]
-            if props["ip_policy_rules"] is not None
-            else None
+            if props.get("ip_policy_rules") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -3333,8 +3341,8 @@ class IPRestriction(object):
         self._props = props
         self._props["ip_policies"] = (
             [Ref(client, x) for x in props["ip_policies"]]
-            if props["ip_policies"] is not None
-            else None
+            if props.get("ip_policies") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -3400,8 +3408,8 @@ class IPRestrictionList(object):
         self._props = props
         self._props["ip_restrictions"] = (
             [IPRestriction(client, x) for x in props["ip_restrictions"]]
-            if props["ip_restrictions"] is not None
-            else None
+            if props.get("ip_restrictions") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -3423,7 +3431,7 @@ class IPRestrictionList(object):
 
     @property
     def uri(self) -> str:
-        """URI of the IP resrtrictions list API resource"""
+        """URI of the IP restrictions list API resource"""
         return self._props["uri"]
 
     @property
@@ -3495,8 +3503,8 @@ class ReservedAddrList(object):
         self._props = props
         self._props["reserved_addrs"] = (
             [ReservedAddr(client, x) for x in props["reserved_addrs"]]
-            if props["reserved_addrs"] is not None
-            else None
+            if props.get("reserved_addrs") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -3533,17 +3541,17 @@ class ReservedDomain(object):
         self._props = props
         self._props["certificate"] = (
             Ref(client, props["certificate"])
-            if props["certificate"] is not None
+            if props.get("certificate") is not None
             else None
         )
         self._props["certificate_management_policy"] = (
             ReservedDomainCertPolicy(client, props["certificate_management_policy"])
-            if props["certificate_management_policy"] is not None
+            if props.get("certificate_management_policy") is not None
             else None
         )
         self._props["certificate_management_status"] = (
             ReservedDomainCertStatus(client, props["certificate_management_status"])
-            if props["certificate_management_status"] is not None
+            if props.get("certificate_management_status") is not None
             else None
         )
 
@@ -3630,8 +3638,8 @@ class ReservedDomainList(object):
         self._props = props
         self._props["reserved_domains"] = (
             [ReservedDomain(client, x) for x in props["reserved_domains"]]
-            if props["reserved_domains"] is not None
-            else None
+            if props.get("reserved_domains") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -3693,7 +3701,7 @@ class ReservedDomainCertStatus(object):
         self._props = props
         self._props["provisioning_job"] = (
             ReservedDomainCertJob(client, props["provisioning_job"])
-            if props["provisioning_job"] is not None
+            if props.get("provisioning_job") is not None
             else None
         )
 
@@ -3829,8 +3837,8 @@ class SSHCertificateAuthorityList(object):
                 SSHCertificateAuthority(client, x)
                 for x in props["ssh_certificate_authorities"]
             ]
-            if props["ssh_certificate_authorities"] is not None
-            else None
+            if props.get("ssh_certificate_authorities") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -3939,8 +3947,8 @@ class SSHCredentialList(object):
         self._props = props
         self._props["ssh_credentials"] = (
             [SSHCredential(client, x) for x in props["ssh_credentials"]]
-            if props["ssh_credentials"] is not None
-            else None
+            if props.get("ssh_credentials") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -4070,8 +4078,8 @@ class SSHHostCertificateList(object):
         self._props = props
         self._props["ssh_host_certificates"] = (
             [SSHHostCertificate(client, x) for x in props["ssh_host_certificates"]]
-            if props["ssh_host_certificates"] is not None
-            else None
+            if props.get("ssh_host_certificates") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -4176,7 +4184,7 @@ class SSHUserCertificate(object):
 
     @property
     def principals(self) -> Sequence[str]:
-        """the list of principals included in the ssh user certificate. This is the list of usernames that the certificate holder may sign in as on a machine authorizinig the signing certificate authority. Dangerously, if no principals are specified, this certificate may be used to log in as any user."""
+        """the list of principals included in the ssh user certificate. This is the list of usernames that the certificate holder may sign in as on a machine authorizing the signing certificate authority. Dangerously, if no principals are specified, this certificate may be used to log in as any user."""
         return self._props["principals"]
 
     @property
@@ -4211,8 +4219,8 @@ class SSHUserCertificateList(object):
         self._props = props
         self._props["ssh_user_certificates"] = (
             [SSHUserCertificate(client, x) for x in props["ssh_user_certificates"]]
-            if props["ssh_user_certificates"] is not None
-            else None
+            if props.get("ssh_user_certificates") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -4249,7 +4257,7 @@ class TLSCertificate(object):
         self._props = props
         self._props["subject_alternative_names"] = (
             TLSCertificateSANs(client, props["subject_alternative_names"])
-            if props["subject_alternative_names"] is not None
+            if props.get("subject_alternative_names") is not None
             else None
         )
 
@@ -4392,8 +4400,8 @@ class TLSCertificateList(object):
         self._props = props
         self._props["tls_certificates"] = (
             [TLSCertificate(client, x) for x in props["tls_certificates"]]
-            if props["tls_certificates"] is not None
-            else None
+            if props.get("tls_certificates") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -4455,7 +4463,7 @@ class TunnelSession(object):
         self._props = props
         self._props["credential"] = (
             Ref(client, props["credential"])
-            if props["credential"] is not None
+            if props.get("credential") is not None
             else None
         )
 
@@ -4525,8 +4533,8 @@ class TunnelSessionList(object):
         self._props = props
         self._props["tunnel_sessions"] = (
             [TunnelSession(client, x) for x in props["tunnel_sessions"]]
-            if props["tunnel_sessions"] is not None
-            else None
+            if props.get("tunnel_sessions") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -4563,16 +4571,18 @@ class Tunnel(object):
         self._props = props
         self._props["tunnel_session"] = (
             Ref(client, props["tunnel_session"])
-            if props["tunnel_session"] is not None
+            if props.get("tunnel_session") is not None
             else None
         )
         self._props["endpoint"] = (
-            Ref(client, props["endpoint"]) if props["endpoint"] is not None else None
+            Ref(client, props["endpoint"])
+            if props.get("endpoint") is not None
+            else None
         )
         self._props["backends"] = (
             [Ref(client, x) for x in props["backends"]]
-            if props["backends"] is not None
-            else None
+            if props.get("backends") is not None
+            else []
         )
 
     def __eq__(self, other):
@@ -4646,8 +4656,8 @@ class TunnelList(object):
         self._props = props
         self._props["tunnels"] = (
             [Tunnel(client, x) for x in props["tunnels"]]
-            if props["tunnels"] is not None
-            else None
+            if props.get("tunnels") is not None
+            else []
         )
 
     def __eq__(self, other):

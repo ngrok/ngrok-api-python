@@ -8,7 +8,7 @@ def read_file(filename):
 
 setup(
     name="ngrok-api",
-    version="0.6.0",
+    version="0.7.0",
     description="ngrok HTTP API client library",
     long_description=read_file("README.md"),
     long_description_content_type="text/markdown",
@@ -29,6 +29,15 @@ setup(
     ],
     extras_require={
         "tox": ["tox==3.23.0"],
-        "doc": ["black==21.5b1", "furo==2021.4.11b34", "sphinx==3.5.4", "sphinx-autodoc-typehints==1.12.0", "sphinx-readable-theme==1.3.0"],
+        "doc": [
+            "black==21.5b1",
+            "click==8.0.4",
+            "furo==2021.4.11b34",
+            "sphinx==3.5.4",
+            "sphinx-autodoc-typehints==1.12.0",
+            "sphinx-readable-theme==1.3.0",
+            # Pin separately for https://github.com/sphinx-doc/sphinx/issues/10291
+            "Jinja2==3.0.3",
+        ],
     }
 )

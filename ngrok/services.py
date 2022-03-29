@@ -4,6 +4,7 @@ from typing import Any, Mapping, Sequence
 
 from .http_client import HTTPClient
 from .datatypes import *
+from .utils import *
 
 
 class AbuseReportsClient(object):
@@ -26,13 +27,11 @@ class AbuseReportsClient(object):
         https://ngrok.com/docs/api#api-abuse-reports-create
         """
         path = "/abuse_reports"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                urls=urls,
-                metadata=metadata,
-            ),
+        body_arg = dict(
+            urls=urls,
+            metadata=metadata,
         )
+        result = self._client.http_client.post(path, body_arg)
         return AbuseReport(self._client, result)
 
     def get(
@@ -49,7 +48,8 @@ class AbuseReportsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return AbuseReport(self._client, result)
 
 
@@ -72,14 +72,12 @@ class AgentIngressesClient(object):
         https://ngrok.com/docs/api#api-agent-ingresses-create
         """
         path = "/agent_ingresses"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                domain=domain,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            domain=domain,
         )
+        result = self._client.http_client.post(path, body_arg)
         return AgentIngress(self._client, result)
 
     def delete(
@@ -96,7 +94,8 @@ class AgentIngressesClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
     def get(
         self,
@@ -112,7 +111,8 @@ class AgentIngressesClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return AgentIngress(self._client, result)
 
     def list(
@@ -128,13 +128,11 @@ class AgentIngressesClient(object):
         https://ngrok.com/docs/api#api-agent-ingresses-list
         """
         path = "/agent_ingresses"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return AgentIngressList(self._client, result)
 
     def update(
@@ -155,13 +153,11 @@ class AgentIngressesClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
         )
+        result = self._client.http_client.patch(path, body_arg)
         return AgentIngress(self._client, result)
 
 
@@ -188,13 +184,11 @@ class APIKeysClient(object):
         https://ngrok.com/docs/api#api-api-keys-create
         """
         path = "/api_keys"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
         )
+        result = self._client.http_client.post(path, body_arg)
         return APIKey(self._client, result)
 
     def delete(
@@ -211,7 +205,8 @@ class APIKeysClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
     def get(
         self,
@@ -227,7 +222,8 @@ class APIKeysClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return APIKey(self._client, result)
 
     def list(
@@ -243,13 +239,11 @@ class APIKeysClient(object):
         https://ngrok.com/docs/api#api-api-keys-list
         """
         path = "/api_keys"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return APIKeyList(self._client, result)
 
     def update(
@@ -270,13 +264,11 @@ class APIKeysClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
         )
+        result = self._client.http_client.patch(path, body_arg)
         return APIKey(self._client, result)
 
 
@@ -304,21 +296,19 @@ class FailoverBackendsClient(object):
         https://ngrok.com/docs/api#api-failover-backends-create
         """
         path = "/backends/failover"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                backends=backends,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            backends=backends,
         )
+        result = self._client.http_client.post(path, body_arg)
         return FailoverBackend(self._client, result)
 
     def delete(
         self,
         id: str,
     ):
-        """Delete a Failover backend by ID. TODO what if used?
+        """Delete a Failover backend by ID.
 
         :param id: a resource identifier
 
@@ -328,7 +318,8 @@ class FailoverBackendsClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
     def get(
         self,
@@ -344,7 +335,8 @@ class FailoverBackendsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return FailoverBackend(self._client, result)
 
     def list(
@@ -360,13 +352,11 @@ class FailoverBackendsClient(object):
         https://ngrok.com/docs/api#api-failover-backends-list
         """
         path = "/backends/failover"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return FailoverBackendList(self._client, result)
 
     def update(
@@ -389,14 +379,12 @@ class FailoverBackendsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                backends=backends,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            backends=backends,
         )
+        result = self._client.http_client.patch(path, body_arg)
         return FailoverBackend(self._client, result)
 
 
@@ -423,16 +411,14 @@ class HTTPResponseBackendsClient(object):
         https://ngrok.com/docs/api#api-http-response-backends-create
         """
         path = "/backends/http_response"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                body=body,
-                headers=headers,
-                status_code=status_code,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            body=body,
+            headers=headers,
+            status_code=status_code,
         )
+        result = self._client.http_client.post(path, body_arg)
         return HTTPResponseBackend(self._client, result)
 
     def delete(
@@ -449,7 +435,8 @@ class HTTPResponseBackendsClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
     def get(
         self,
@@ -465,7 +452,8 @@ class HTTPResponseBackendsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return HTTPResponseBackend(self._client, result)
 
     def list(
@@ -481,13 +469,11 @@ class HTTPResponseBackendsClient(object):
         https://ngrok.com/docs/api#api-http-response-backends-list
         """
         path = "/backends/http_response"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return HTTPResponseBackendList(self._client, result)
 
     def update(
@@ -514,16 +500,14 @@ class HTTPResponseBackendsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                body=body,
-                headers=headers,
-                status_code=status_code,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            body=body,
+            headers=headers,
+            status_code=status_code,
         )
+        result = self._client.http_client.patch(path, body_arg)
         return HTTPResponseBackend(self._client, result)
 
 
@@ -549,21 +533,19 @@ class TunnelGroupBackendsClient(object):
         https://ngrok.com/docs/api#api-tunnel-group-backends-create
         """
         path = "/backends/tunnel_group"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                labels=labels,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            labels=labels,
         )
+        result = self._client.http_client.post(path, body_arg)
         return TunnelGroupBackend(self._client, result)
 
     def delete(
         self,
         id: str,
     ):
-        """Delete a TunnelGroup backend by ID. TODO what if used?
+        """Delete a TunnelGroup backend by ID.
 
         :param id: a resource identifier
 
@@ -573,7 +555,8 @@ class TunnelGroupBackendsClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
     def get(
         self,
@@ -589,7 +572,8 @@ class TunnelGroupBackendsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return TunnelGroupBackend(self._client, result)
 
     def list(
@@ -605,13 +589,11 @@ class TunnelGroupBackendsClient(object):
         https://ngrok.com/docs/api#api-tunnel-group-backends-list
         """
         path = "/backends/tunnel_group"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return TunnelGroupBackendList(self._client, result)
 
     def update(
@@ -634,14 +616,12 @@ class TunnelGroupBackendsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                labels=labels,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            labels=labels,
         )
+        result = self._client.http_client.patch(path, body_arg)
         return TunnelGroupBackend(self._client, result)
 
 
@@ -664,26 +644,24 @@ class WeightedBackendsClient(object):
 
         :param description: human-readable description of this backend. Optional
         :param metadata: arbitrary user-defined machine-readable data of this backend. Optional
-        :param backends: the ids of the child backends to their weights (0-10000)
+        :param backends: the ids of the child backends to their weights [0-10000]
 
         https://ngrok.com/docs/api#api-weighted-backends-create
         """
         path = "/backends/weighted"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                backends=backends,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            backends=backends,
         )
+        result = self._client.http_client.post(path, body_arg)
         return WeightedBackend(self._client, result)
 
     def delete(
         self,
         id: str,
     ):
-        """Delete a Weighted backend by ID. TODO what if used?
+        """Delete a Weighted backend by ID.
 
         :param id: a resource identifier
 
@@ -693,7 +671,8 @@ class WeightedBackendsClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
     def get(
         self,
@@ -709,7 +688,8 @@ class WeightedBackendsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return WeightedBackend(self._client, result)
 
     def list(
@@ -725,13 +705,11 @@ class WeightedBackendsClient(object):
         https://ngrok.com/docs/api#api-weighted-backends-list
         """
         path = "/backends/weighted"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return WeightedBackendList(self._client, result)
 
     def update(
@@ -746,7 +724,7 @@ class WeightedBackendsClient(object):
         :param id:
         :param description: human-readable description of this backend. Optional
         :param metadata: arbitrary user-defined machine-readable data of this backend. Optional
-        :param backends: the ids of the child backends to their weights (0-10000)
+        :param backends: the ids of the child backends to their weights [0-10000]
 
         https://ngrok.com/docs/api#api-weighted-backends-update
         """
@@ -754,14 +732,12 @@ class WeightedBackendsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                backends=backends,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            backends=backends,
         )
+        result = self._client.http_client.patch(path, body_arg)
         return WeightedBackend(self._client, result)
 
 
@@ -790,14 +766,12 @@ class CertificateAuthoritiesClient(object):
         https://ngrok.com/docs/api#api-certificate-authorities-create
         """
         path = "/certificate_authorities"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                ca_pem=ca_pem,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            ca_pem=ca_pem,
         )
+        result = self._client.http_client.post(path, body_arg)
         return CertificateAuthority(self._client, result)
 
     def delete(
@@ -814,7 +788,8 @@ class CertificateAuthoritiesClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
     def get(
         self,
@@ -830,7 +805,8 @@ class CertificateAuthoritiesClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return CertificateAuthority(self._client, result)
 
     def list(
@@ -846,13 +822,11 @@ class CertificateAuthoritiesClient(object):
         https://ngrok.com/docs/api#api-certificate-authorities-list
         """
         path = "/certificate_authorities"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return CertificateAuthorityList(self._client, result)
 
     def update(
@@ -873,13 +847,11 @@ class CertificateAuthoritiesClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
         )
+        result = self._client.http_client.patch(path, body_arg)
         return CertificateAuthority(self._client, result)
 
 
@@ -907,14 +879,12 @@ class CredentialsClient(object):
         https://ngrok.com/docs/api#api-credentials-create
         """
         path = "/credentials"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                acl=acl,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            acl=acl,
         )
+        result = self._client.http_client.post(path, body_arg)
         return Credential(self._client, result)
 
     def delete(
@@ -931,7 +901,8 @@ class CredentialsClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
     def get(
         self,
@@ -947,7 +918,8 @@ class CredentialsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return Credential(self._client, result)
 
     def list(
@@ -963,13 +935,11 @@ class CredentialsClient(object):
         https://ngrok.com/docs/api#api-credentials-list
         """
         path = "/credentials"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return CredentialList(self._client, result)
 
     def update(
@@ -992,14 +962,12 @@ class CredentialsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                acl=acl,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            acl=acl,
         )
+        result = self._client.http_client.patch(path, body_arg)
         return Credential(self._client, result)
 
 
@@ -1051,26 +1019,24 @@ class EdgesHTTPSRoutesClient(object):
         path = path.format(
             edge_id=edge_id,
         )
-        result = self._client.http_client.post(
-            path,
-            dict(
-                match_type=match_type,
-                match=match,
-                description=description,
-                metadata=metadata,
-                backend=backend,
-                ip_restriction=ip_restriction,
-                circuit_breaker=circuit_breaker,
-                compression=compression,
-                request_headers=request_headers,
-                response_headers=response_headers,
-                webhook_verification=webhook_verification,
-                oauth=oauth,
-                saml=saml,
-                oidc=oidc,
-                websocket_tcp_converter=websocket_tcp_converter,
-            ),
+        body_arg = dict(
+            match_type=match_type,
+            match=match,
+            description=description,
+            metadata=metadata,
+            backend=extract_props(backend),
+            ip_restriction=extract_props(ip_restriction),
+            circuit_breaker=extract_props(circuit_breaker),
+            compression=extract_props(compression),
+            request_headers=extract_props(request_headers),
+            response_headers=extract_props(response_headers),
+            webhook_verification=extract_props(webhook_verification),
+            oauth=extract_props(oauth),
+            saml=extract_props(saml),
+            oidc=extract_props(oidc),
+            websocket_tcp_converter=extract_props(websocket_tcp_converter),
         )
+        result = self._client.http_client.post(path, body_arg)
         return HTTPSEdgeRoute(self._client, result)
 
     def get(
@@ -1090,7 +1056,8 @@ class EdgesHTTPSRoutesClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return HTTPSEdgeRoute(self._client, result)
 
     def update(
@@ -1140,26 +1107,24 @@ class EdgesHTTPSRoutesClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                match_type=match_type,
-                match=match,
-                description=description,
-                metadata=metadata,
-                backend=backend,
-                ip_restriction=ip_restriction,
-                circuit_breaker=circuit_breaker,
-                compression=compression,
-                request_headers=request_headers,
-                response_headers=response_headers,
-                webhook_verification=webhook_verification,
-                oauth=oauth,
-                saml=saml,
-                oidc=oidc,
-                websocket_tcp_converter=websocket_tcp_converter,
-            ),
+        body_arg = dict(
+            match_type=match_type,
+            match=match,
+            description=description,
+            metadata=metadata,
+            backend=extract_props(backend),
+            ip_restriction=extract_props(ip_restriction),
+            circuit_breaker=extract_props(circuit_breaker),
+            compression=extract_props(compression),
+            request_headers=extract_props(request_headers),
+            response_headers=extract_props(response_headers),
+            webhook_verification=extract_props(webhook_verification),
+            oauth=extract_props(oauth),
+            saml=extract_props(saml),
+            oidc=extract_props(oidc),
+            websocket_tcp_converter=extract_props(websocket_tcp_converter),
         )
+        result = self._client.http_client.patch(path, body_arg)
         return HTTPSEdgeRoute(self._client, result)
 
     def delete(
@@ -1179,7 +1144,8 @@ class EdgesHTTPSRoutesClient(object):
             edge_id=edge_id,
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class EdgesHTTPSClient(object):
@@ -1205,16 +1171,14 @@ class EdgesHTTPSClient(object):
         https://ngrok.com/docs/api#api-edges-https-create
         """
         path = "/edges/https"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                hostports=hostports,
-                mutual_tls=mutual_tls,
-                tls_termination=tls_termination,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            hostports=hostports,
+            mutual_tls=extract_props(mutual_tls),
+            tls_termination=extract_props(tls_termination),
         )
+        result = self._client.http_client.post(path, body_arg)
         return HTTPSEdge(self._client, result)
 
     def get(
@@ -1231,7 +1195,8 @@ class EdgesHTTPSClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return HTTPSEdge(self._client, result)
 
     def list(
@@ -1247,13 +1212,11 @@ class EdgesHTTPSClient(object):
         https://ngrok.com/docs/api#api-edges-https-list
         """
         path = "/edges/https"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return HTTPSEdgeList(self._client, result)
 
     def update(
@@ -1280,16 +1243,14 @@ class EdgesHTTPSClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                hostports=hostports,
-                mutual_tls=mutual_tls,
-                tls_termination=tls_termination,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            hostports=hostports,
+            mutual_tls=extract_props(mutual_tls),
+            tls_termination=extract_props(tls_termination),
         )
+        result = self._client.http_client.patch(path, body_arg)
         return HTTPSEdge(self._client, result)
 
     def delete(
@@ -1306,7 +1267,8 @@ class EdgesHTTPSClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class HTTPSEdgeMutualTLSModuleClient(object):
@@ -1329,12 +1291,8 @@ class HTTPSEdgeMutualTLSModuleClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
         return EndpointMutualTLS(self._client, result)
 
     def get(
@@ -1351,7 +1309,8 @@ class HTTPSEdgeMutualTLSModuleClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EndpointMutualTLS(self._client, result)
 
     def delete(
@@ -1368,7 +1327,8 @@ class HTTPSEdgeMutualTLSModuleClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class HTTPSEdgeTLSTerminationModuleClient(object):
@@ -1391,12 +1351,8 @@ class HTTPSEdgeTLSTerminationModuleClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
         return EndpointTLSTermination(self._client, result)
 
     def get(
@@ -1413,7 +1369,8 @@ class HTTPSEdgeTLSTerminationModuleClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EndpointTLSTermination(self._client, result)
 
     def delete(
@@ -1430,7 +1387,8 @@ class HTTPSEdgeTLSTerminationModuleClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class EdgeRouteBackendModuleClient(object):
@@ -1456,12 +1414,8 @@ class EdgeRouteBackendModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
         return EndpointBackend(self._client, result)
 
     def get(
@@ -1481,7 +1435,8 @@ class EdgeRouteBackendModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EndpointBackend(self._client, result)
 
     def delete(
@@ -1501,7 +1456,8 @@ class EdgeRouteBackendModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class EdgeRouteIPRestrictionModuleClient(object):
@@ -1527,12 +1483,8 @@ class EdgeRouteIPRestrictionModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
         return EndpointIPPolicy(self._client, result)
 
     def get(
@@ -1552,7 +1504,8 @@ class EdgeRouteIPRestrictionModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EndpointIPPolicy(self._client, result)
 
     def delete(
@@ -1572,7 +1525,8 @@ class EdgeRouteIPRestrictionModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class EdgeRouteRequestHeadersModuleClient(object):
@@ -1598,12 +1552,8 @@ class EdgeRouteRequestHeadersModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
         return EndpointRequestHeaders(self._client, result)
 
     def get(
@@ -1623,7 +1573,8 @@ class EdgeRouteRequestHeadersModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EndpointRequestHeaders(self._client, result)
 
     def delete(
@@ -1643,7 +1594,8 @@ class EdgeRouteRequestHeadersModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class EdgeRouteResponseHeadersModuleClient(object):
@@ -1669,12 +1621,8 @@ class EdgeRouteResponseHeadersModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
         return EndpointResponseHeaders(self._client, result)
 
     def get(
@@ -1694,7 +1642,8 @@ class EdgeRouteResponseHeadersModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EndpointResponseHeaders(self._client, result)
 
     def delete(
@@ -1714,7 +1663,8 @@ class EdgeRouteResponseHeadersModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class EdgeRouteCompressionModuleClient(object):
@@ -1740,12 +1690,8 @@ class EdgeRouteCompressionModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
         return EndpointCompression(self._client, result)
 
     def get(
@@ -1765,7 +1711,8 @@ class EdgeRouteCompressionModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EndpointCompression(self._client, result)
 
     def delete(
@@ -1785,7 +1732,8 @@ class EdgeRouteCompressionModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class EdgeRouteCircuitBreakerModuleClient(object):
@@ -1811,12 +1759,8 @@ class EdgeRouteCircuitBreakerModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
         return EndpointCircuitBreaker(self._client, result)
 
     def get(
@@ -1836,7 +1780,8 @@ class EdgeRouteCircuitBreakerModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EndpointCircuitBreaker(self._client, result)
 
     def delete(
@@ -1856,7 +1801,8 @@ class EdgeRouteCircuitBreakerModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class EdgeRouteWebhookVerificationModuleClient(object):
@@ -1882,12 +1828,8 @@ class EdgeRouteWebhookVerificationModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
         return EndpointWebhookValidation(self._client, result)
 
     def get(
@@ -1907,7 +1849,8 @@ class EdgeRouteWebhookVerificationModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EndpointWebhookValidation(self._client, result)
 
     def delete(
@@ -1927,7 +1870,8 @@ class EdgeRouteWebhookVerificationModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class EdgeRouteOAuthModuleClient(object):
@@ -1953,12 +1897,8 @@ class EdgeRouteOAuthModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
         return EndpointOAuth(self._client, result)
 
     def get(
@@ -1978,7 +1918,8 @@ class EdgeRouteOAuthModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EndpointOAuth(self._client, result)
 
     def delete(
@@ -1998,7 +1939,8 @@ class EdgeRouteOAuthModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class EdgeRouteSAMLModuleClient(object):
@@ -2024,12 +1966,8 @@ class EdgeRouteSAMLModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
         return EndpointSAML(self._client, result)
 
     def get(
@@ -2049,7 +1987,8 @@ class EdgeRouteSAMLModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EndpointSAML(self._client, result)
 
     def delete(
@@ -2069,7 +2008,8 @@ class EdgeRouteSAMLModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class EdgeRouteOIDCModuleClient(object):
@@ -2095,12 +2035,8 @@ class EdgeRouteOIDCModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
         return EndpointOIDC(self._client, result)
 
     def get(
@@ -2120,7 +2056,8 @@ class EdgeRouteOIDCModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EndpointOIDC(self._client, result)
 
     def delete(
@@ -2140,7 +2077,8 @@ class EdgeRouteOIDCModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class EdgeRouteWebsocketTCPConverterModuleClient(object):
@@ -2166,12 +2104,8 @@ class EdgeRouteWebsocketTCPConverterModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
         return EndpointWebsocketTCPConverter(self._client, result)
 
     def get(
@@ -2191,7 +2125,8 @@ class EdgeRouteWebsocketTCPConverterModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EndpointWebsocketTCPConverter(self._client, result)
 
     def delete(
@@ -2211,7 +2146,8 @@ class EdgeRouteWebsocketTCPConverterModuleClient(object):
             edge_id=edge_id,
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class EdgesTCPClient(object):
@@ -2237,16 +2173,14 @@ class EdgesTCPClient(object):
         https://ngrok.com/docs/api#api-edges-tcp-create
         """
         path = "/edges/tcp"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                hostports=hostports,
-                backend=backend,
-                ip_restriction=ip_restriction,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            hostports=hostports,
+            backend=extract_props(backend),
+            ip_restriction=extract_props(ip_restriction),
         )
+        result = self._client.http_client.post(path, body_arg)
         return TCPEdge(self._client, result)
 
     def get(
@@ -2263,7 +2197,8 @@ class EdgesTCPClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return TCPEdge(self._client, result)
 
     def list(
@@ -2279,13 +2214,11 @@ class EdgesTCPClient(object):
         https://ngrok.com/docs/api#api-edges-tcp-list
         """
         path = "/edges/tcp"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return TCPEdgeList(self._client, result)
 
     def update(
@@ -2312,16 +2245,14 @@ class EdgesTCPClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                hostports=hostports,
-                backend=backend,
-                ip_restriction=ip_restriction,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            hostports=hostports,
+            backend=extract_props(backend),
+            ip_restriction=extract_props(ip_restriction),
         )
+        result = self._client.http_client.patch(path, body_arg)
         return TCPEdge(self._client, result)
 
     def delete(
@@ -2338,7 +2269,8 @@ class EdgesTCPClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class TCPEdgeBackendModuleClient(object):
@@ -2361,12 +2293,8 @@ class TCPEdgeBackendModuleClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
         return EndpointBackend(self._client, result)
 
     def get(
@@ -2383,7 +2311,8 @@ class TCPEdgeBackendModuleClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EndpointBackend(self._client, result)
 
     def delete(
@@ -2400,7 +2329,8 @@ class TCPEdgeBackendModuleClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class TCPEdgeIPRestrictionModuleClient(object):
@@ -2423,12 +2353,8 @@ class TCPEdgeIPRestrictionModuleClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
         return EndpointIPPolicy(self._client, result)
 
     def get(
@@ -2445,7 +2371,8 @@ class TCPEdgeIPRestrictionModuleClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EndpointIPPolicy(self._client, result)
 
     def delete(
@@ -2462,7 +2389,8 @@ class TCPEdgeIPRestrictionModuleClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class EdgesTLSClient(object):
@@ -2492,18 +2420,16 @@ class EdgesTLSClient(object):
         https://ngrok.com/docs/api#api-edges-tls-create
         """
         path = "/edges/tls"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                hostports=hostports,
-                backend=backend,
-                ip_restriction=ip_restriction,
-                mutual_tls=mutual_tls,
-                tls_termination=tls_termination,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            hostports=hostports,
+            backend=extract_props(backend),
+            ip_restriction=extract_props(ip_restriction),
+            mutual_tls=extract_props(mutual_tls),
+            tls_termination=extract_props(tls_termination),
         )
+        result = self._client.http_client.post(path, body_arg)
         return TLSEdge(self._client, result)
 
     def get(
@@ -2520,7 +2446,8 @@ class EdgesTLSClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return TLSEdge(self._client, result)
 
     def list(
@@ -2536,13 +2463,11 @@ class EdgesTLSClient(object):
         https://ngrok.com/docs/api#api-edges-tls-list
         """
         path = "/edges/tls"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return TLSEdgeList(self._client, result)
 
     def update(
@@ -2573,18 +2498,16 @@ class EdgesTLSClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                hostports=hostports,
-                backend=backend,
-                ip_restriction=ip_restriction,
-                mutual_tls=mutual_tls,
-                tls_termination=tls_termination,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            hostports=hostports,
+            backend=extract_props(backend),
+            ip_restriction=extract_props(ip_restriction),
+            mutual_tls=extract_props(mutual_tls),
+            tls_termination=extract_props(tls_termination),
         )
+        result = self._client.http_client.patch(path, body_arg)
         return TLSEdge(self._client, result)
 
     def delete(
@@ -2601,7 +2524,8 @@ class EdgesTLSClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class TLSEdgeBackendModuleClient(object):
@@ -2624,12 +2548,8 @@ class TLSEdgeBackendModuleClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
         return EndpointBackend(self._client, result)
 
     def get(
@@ -2646,7 +2566,8 @@ class TLSEdgeBackendModuleClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EndpointBackend(self._client, result)
 
     def delete(
@@ -2663,7 +2584,8 @@ class TLSEdgeBackendModuleClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class TLSEdgeIPRestrictionModuleClient(object):
@@ -2686,12 +2608,8 @@ class TLSEdgeIPRestrictionModuleClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
         return EndpointIPPolicy(self._client, result)
 
     def get(
@@ -2708,7 +2626,8 @@ class TLSEdgeIPRestrictionModuleClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EndpointIPPolicy(self._client, result)
 
     def delete(
@@ -2725,7 +2644,8 @@ class TLSEdgeIPRestrictionModuleClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class TLSEdgeMutualTLSModuleClient(object):
@@ -2748,12 +2668,8 @@ class TLSEdgeMutualTLSModuleClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
         return EndpointMutualTLS(self._client, result)
 
     def get(
@@ -2770,7 +2686,8 @@ class TLSEdgeMutualTLSModuleClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EndpointMutualTLS(self._client, result)
 
     def delete(
@@ -2787,7 +2704,8 @@ class TLSEdgeMutualTLSModuleClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class TLSEdgeTLSTerminationModuleClient(object):
@@ -2810,12 +2728,8 @@ class TLSEdgeTLSTerminationModuleClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.put(
-            path,
-            dict(
-                module=module,
-            ),
-        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
         return EndpointTLSTermination(self._client, result)
 
     def get(
@@ -2832,7 +2746,8 @@ class TLSEdgeTLSTerminationModuleClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EndpointTLSTermination(self._client, result)
 
     def delete(
@@ -2849,7 +2764,8 @@ class TLSEdgeTLSTerminationModuleClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class EndpointsClient(object):
@@ -2873,13 +2789,11 @@ class EndpointsClient(object):
         https://ngrok.com/docs/api#api-endpoints-list
         """
         path = "/endpoints"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return EndpointList(self._client, result)
 
     def get(
@@ -2896,7 +2810,8 @@ class EndpointsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return Endpoint(self._client, result)
 
 
@@ -2921,15 +2836,13 @@ class EventDestinationsClient(object):
         https://ngrok.com/docs/api#api-event-destinations-create
         """
         path = "/event_destinations"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                metadata=metadata,
-                description=description,
-                format=format,
-                target=target,
-            ),
+        body_arg = dict(
+            metadata=metadata,
+            description=description,
+            format=format,
+            target=extract_props(target),
         )
+        result = self._client.http_client.post(path, body_arg)
         return EventDestination(self._client, result)
 
     def delete(
@@ -2946,7 +2859,8 @@ class EventDestinationsClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
     def get(
         self,
@@ -2962,7 +2876,8 @@ class EventDestinationsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EventDestination(self._client, result)
 
     def list(
@@ -2978,13 +2893,11 @@ class EventDestinationsClient(object):
         https://ngrok.com/docs/api#api-event-destinations-list
         """
         path = "/event_destinations"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return EventDestinationList(self._client, result)
 
     def update(
@@ -3009,15 +2922,13 @@ class EventDestinationsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                metadata=metadata,
-                description=description,
-                format=format,
-                target=target,
-            ),
+        body_arg = dict(
+            metadata=metadata,
+            description=description,
+            format=format,
+            target=extract_props(target),
         )
+        result = self._client.http_client.patch(path, body_arg)
         return EventDestination(self._client, result)
 
 
@@ -3042,15 +2953,13 @@ class EventSubscriptionsClient(object):
         https://ngrok.com/docs/api#api-event-subscriptions-create
         """
         path = "/event_subscriptions"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                metadata=metadata,
-                description=description,
-                sources=sources,
-                destination_ids=destination_ids,
-            ),
+        body_arg = dict(
+            metadata=metadata,
+            description=description,
+            sources=[extract_props(item) for item in sources or []],
+            destination_ids=destination_ids,
         )
+        result = self._client.http_client.post(path, body_arg)
         return EventSubscription(self._client, result)
 
     def delete(
@@ -3067,7 +2976,8 @@ class EventSubscriptionsClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
     def get(
         self,
@@ -3083,7 +2993,8 @@ class EventSubscriptionsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EventSubscription(self._client, result)
 
     def list(
@@ -3099,13 +3010,11 @@ class EventSubscriptionsClient(object):
         https://ngrok.com/docs/api#api-event-subscriptions-list
         """
         path = "/event_subscriptions"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return EventSubscriptionList(self._client, result)
 
     def update(
@@ -3130,15 +3039,13 @@ class EventSubscriptionsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                metadata=metadata,
-                description=description,
-                sources=sources,
-                destination_ids=destination_ids,
-            ),
+        body_arg = dict(
+            metadata=metadata,
+            description=description,
+            sources=[extract_props(item) for item in sources or []],
+            destination_ids=destination_ids,
         )
+        result = self._client.http_client.patch(path, body_arg)
         return EventSubscription(self._client, result)
 
 
@@ -3162,12 +3069,10 @@ class EventSourcesClient(object):
         path = path.format(
             subscription_id=subscription_id,
         )
-        result = self._client.http_client.post(
-            path,
-            dict(
-                type=type,
-            ),
+        body_arg = dict(
+            type=type,
         )
+        result = self._client.http_client.post(path, body_arg)
         return EventSource(self._client, result)
 
     def delete(
@@ -3187,7 +3092,8 @@ class EventSourcesClient(object):
             subscription_id=subscription_id,
             type=type,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
     def get(
         self,
@@ -3206,7 +3112,8 @@ class EventSourcesClient(object):
             subscription_id=subscription_id,
             type=type,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EventSource(self._client, result)
 
     def list(
@@ -3223,7 +3130,8 @@ class EventSourcesClient(object):
         path = path.format(
             subscription_id=subscription_id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return EventSourceList(self._client, result)
 
     def update(
@@ -3243,7 +3151,8 @@ class EventSourcesClient(object):
             subscription_id=subscription_id,
             type=type,
         )
-        result = self._client.http_client.patch(path, dict())
+        body_arg = None
+        result = self._client.http_client.patch(path, body_arg)
         return EventSource(self._client, result)
 
 
@@ -3269,13 +3178,11 @@ class IPPoliciesClient(object):
         https://ngrok.com/docs/api#api-ip-policies-create
         """
         path = "/ip_policies"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
         )
+        result = self._client.http_client.post(path, body_arg)
         return IPPolicy(self._client, result)
 
     def delete(
@@ -3292,7 +3199,8 @@ class IPPoliciesClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
     def get(
         self,
@@ -3308,7 +3216,8 @@ class IPPoliciesClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return IPPolicy(self._client, result)
 
     def list(
@@ -3324,13 +3233,11 @@ class IPPoliciesClient(object):
         https://ngrok.com/docs/api#api-ip-policies-list
         """
         path = "/ip_policies"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return IPPolicyList(self._client, result)
 
     def update(
@@ -3351,13 +3258,11 @@ class IPPoliciesClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
         )
+        result = self._client.http_client.patch(path, body_arg)
         return IPPolicy(self._client, result)
 
 
@@ -3387,16 +3292,14 @@ class IPPolicyRulesClient(object):
         https://ngrok.com/docs/api#api-ip-policy-rules-create
         """
         path = "/ip_policy_rules"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                cidr=cidr,
-                ip_policy_id=ip_policy_id,
-                action=action,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            cidr=cidr,
+            ip_policy_id=ip_policy_id,
+            action=action,
         )
+        result = self._client.http_client.post(path, body_arg)
         return IPPolicyRule(self._client, result)
 
     def delete(
@@ -3413,7 +3316,8 @@ class IPPolicyRulesClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
     def get(
         self,
@@ -3429,7 +3333,8 @@ class IPPolicyRulesClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return IPPolicyRule(self._client, result)
 
     def list(
@@ -3445,13 +3350,11 @@ class IPPolicyRulesClient(object):
         https://ngrok.com/docs/api#api-ip-policy-rules-list
         """
         path = "/ip_policy_rules"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return IPPolicyRuleList(self._client, result)
 
     def update(
@@ -3474,14 +3377,12 @@ class IPPolicyRulesClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                cidr=cidr,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            cidr=cidr,
         )
+        result = self._client.http_client.patch(path, body_arg)
         return IPPolicyRule(self._client, result)
 
 
@@ -3515,16 +3416,14 @@ class IPRestrictionsClient(object):
         https://ngrok.com/docs/api#api-ip-restrictions-create
         """
         path = "/ip_restrictions"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                enforced=enforced,
-                type=type,
-                ip_policy_ids=ip_policy_ids,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            enforced=enforced,
+            type=type,
+            ip_policy_ids=ip_policy_ids,
         )
+        result = self._client.http_client.post(path, body_arg)
         return IPRestriction(self._client, result)
 
     def delete(
@@ -3541,7 +3440,8 @@ class IPRestrictionsClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
     def get(
         self,
@@ -3557,7 +3457,8 @@ class IPRestrictionsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return IPRestriction(self._client, result)
 
     def list(
@@ -3573,13 +3474,11 @@ class IPRestrictionsClient(object):
         https://ngrok.com/docs/api#api-ip-restrictions-list
         """
         path = "/ip_restrictions"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return IPRestrictionList(self._client, result)
 
     def update(
@@ -3604,15 +3503,13 @@ class IPRestrictionsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                enforced=enforced,
-                ip_policy_ids=ip_policy_ids,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            enforced=enforced,
+            ip_policy_ids=ip_policy_ids,
         )
+        result = self._client.http_client.patch(path, body_arg)
         return IPRestriction(self._client, result)
 
 
@@ -3639,14 +3536,12 @@ class ReservedAddrsClient(object):
         https://ngrok.com/docs/api#api-reserved-addrs-create
         """
         path = "/reserved_addrs"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                region=region,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            region=region,
         )
+        result = self._client.http_client.post(path, body_arg)
         return ReservedAddr(self._client, result)
 
     def delete(
@@ -3663,7 +3558,8 @@ class ReservedAddrsClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
     def get(
         self,
@@ -3679,7 +3575,8 @@ class ReservedAddrsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return ReservedAddr(self._client, result)
 
     def list(
@@ -3695,13 +3592,11 @@ class ReservedAddrsClient(object):
         https://ngrok.com/docs/api#api-reserved-addrs-list
         """
         path = "/reserved_addrs"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return ReservedAddrList(self._client, result)
 
     def update(
@@ -3722,13 +3617,11 @@ class ReservedAddrsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
         )
+        result = self._client.http_client.patch(path, body_arg)
         return ReservedAddr(self._client, result)
 
 
@@ -3762,17 +3655,15 @@ class ReservedDomainsClient(object):
         https://ngrok.com/docs/api#api-reserved-domains-create
         """
         path = "/reserved_domains"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                name=name,
-                region=region,
-                description=description,
-                metadata=metadata,
-                certificate_id=certificate_id,
-                certificate_management_policy=certificate_management_policy,
-            ),
+        body_arg = dict(
+            name=name,
+            region=region,
+            description=description,
+            metadata=metadata,
+            certificate_id=certificate_id,
+            certificate_management_policy=extract_props(certificate_management_policy),
         )
+        result = self._client.http_client.post(path, body_arg)
         return ReservedDomain(self._client, result)
 
     def delete(
@@ -3789,7 +3680,8 @@ class ReservedDomainsClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
     def get(
         self,
@@ -3805,7 +3697,8 @@ class ReservedDomainsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return ReservedDomain(self._client, result)
 
     def list(
@@ -3821,13 +3714,11 @@ class ReservedDomainsClient(object):
         https://ngrok.com/docs/api#api-reserved-domains-list
         """
         path = "/reserved_domains"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return ReservedDomainList(self._client, result)
 
     def update(
@@ -3852,15 +3743,13 @@ class ReservedDomainsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                certificate_id=certificate_id,
-                certificate_management_policy=certificate_management_policy,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            certificate_id=certificate_id,
+            certificate_management_policy=extract_props(certificate_management_policy),
         )
+        result = self._client.http_client.patch(path, body_arg)
         return ReservedDomain(self._client, result)
 
     def delete_certificate_management_policy(
@@ -3877,7 +3766,8 @@ class ReservedDomainsClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
     def delete_certificate(
         self,
@@ -3893,7 +3783,8 @@ class ReservedDomainsClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
 
 class SSHCertificateAuthoritiesClient(object):
@@ -3922,16 +3813,14 @@ class SSHCertificateAuthoritiesClient(object):
         https://ngrok.com/docs/api#api-ssh-certificate-authorities-create
         """
         path = "/ssh_certificate_authorities"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                private_key_type=private_key_type,
-                elliptic_curve=elliptic_curve,
-                key_size=key_size,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            private_key_type=private_key_type,
+            elliptic_curve=elliptic_curve,
+            key_size=key_size,
         )
+        result = self._client.http_client.post(path, body_arg)
         return SSHCertificateAuthority(self._client, result)
 
     def delete(
@@ -3948,7 +3837,8 @@ class SSHCertificateAuthoritiesClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
     def get(
         self,
@@ -3964,7 +3854,8 @@ class SSHCertificateAuthoritiesClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return SSHCertificateAuthority(self._client, result)
 
     def list(
@@ -3980,13 +3871,11 @@ class SSHCertificateAuthoritiesClient(object):
         https://ngrok.com/docs/api#api-ssh-certificate-authorities-list
         """
         path = "/ssh_certificate_authorities"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return SSHCertificateAuthorityList(self._client, result)
 
     def update(
@@ -4007,13 +3896,11 @@ class SSHCertificateAuthoritiesClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
         )
+        result = self._client.http_client.patch(path, body_arg)
         return SSHCertificateAuthority(self._client, result)
 
 
@@ -4041,15 +3928,13 @@ class SSHCredentialsClient(object):
         https://ngrok.com/docs/api#api-ssh-credentials-create
         """
         path = "/ssh_credentials"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                acl=acl,
-                public_key=public_key,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            acl=acl,
+            public_key=public_key,
         )
+        result = self._client.http_client.post(path, body_arg)
         return SSHCredential(self._client, result)
 
     def delete(
@@ -4066,7 +3951,8 @@ class SSHCredentialsClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
     def get(
         self,
@@ -4082,7 +3968,8 @@ class SSHCredentialsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return SSHCredential(self._client, result)
 
     def list(
@@ -4098,13 +3985,11 @@ class SSHCredentialsClient(object):
         https://ngrok.com/docs/api#api-ssh-credentials-list
         """
         path = "/ssh_credentials"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return SSHCredentialList(self._client, result)
 
     def update(
@@ -4127,14 +4012,12 @@ class SSHCredentialsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                acl=acl,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            acl=acl,
         )
+        result = self._client.http_client.patch(path, body_arg)
         return SSHCredential(self._client, result)
 
 
@@ -4169,18 +4052,16 @@ class SSHHostCertificatesClient(object):
         https://ngrok.com/docs/api#api-ssh-host-certificates-create
         """
         path = "/ssh_host_certificates"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                ssh_certificate_authority_id=ssh_certificate_authority_id,
-                public_key=public_key,
-                principals=principals,
-                valid_after=valid_after,
-                valid_until=valid_until,
-                description=description,
-                metadata=metadata,
-            ),
+        body_arg = dict(
+            ssh_certificate_authority_id=ssh_certificate_authority_id,
+            public_key=public_key,
+            principals=principals,
+            valid_after=valid_after,
+            valid_until=valid_until,
+            description=description,
+            metadata=metadata,
         )
+        result = self._client.http_client.post(path, body_arg)
         return SSHHostCertificate(self._client, result)
 
     def delete(
@@ -4197,7 +4078,8 @@ class SSHHostCertificatesClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
     def get(
         self,
@@ -4213,7 +4095,8 @@ class SSHHostCertificatesClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return SSHHostCertificate(self._client, result)
 
     def list(
@@ -4229,13 +4112,11 @@ class SSHHostCertificatesClient(object):
         https://ngrok.com/docs/api#api-ssh-host-certificates-list
         """
         path = "/ssh_host_certificates"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return SSHHostCertificateList(self._client, result)
 
     def update(
@@ -4256,13 +4137,11 @@ class SSHHostCertificatesClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
         )
+        result = self._client.http_client.patch(path, body_arg)
         return SSHHostCertificate(self._client, result)
 
 
@@ -4290,7 +4169,7 @@ class SSHUserCertificatesClient(object):
 
         :param ssh_certificate_authority_id: the ssh certificate authority that is used to sign this ssh user certificate
         :param public_key: a public key in OpenSSH Authorized Keys format that this certificate signs
-        :param principals: the list of principals included in the ssh user certificate. This is the list of usernames that the certificate holder may sign in as on a machine authorizinig the signing certificate authority. Dangerously, if no principals are specified, this certificate may be used to log in as any user.
+        :param principals: the list of principals included in the ssh user certificate. This is the list of usernames that the certificate holder may sign in as on a machine authorizing the signing certificate authority. Dangerously, if no principals are specified, this certificate may be used to log in as any user.
         :param critical_options: A map of critical options included in the certificate. Only two critical options are currently defined by OpenSSH: ``force-command`` and ``source-address``. See `the OpenSSH certificate protocol spec` <https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys>`_ for additional details.
         :param extensions: A map of extensions included in the certificate. Extensions are additional metadata that can be interpreted by the SSH server for any purpose. These can be used to permit or deny the ability to open a terminal, do port forwarding, x11 forwarding, and more. If unspecified, the certificate will include limited permissions with the following extension map: ``{"permit-pty": "", "permit-user-rc": ""}`` OpenSSH understands a number of predefined extensions. See `the OpenSSH certificate protocol spec` <https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys>`_ for additional details.
         :param valid_after: The time when the user certificate becomes valid, in RFC 3339 format. Defaults to the current time if unspecified.
@@ -4301,20 +4180,18 @@ class SSHUserCertificatesClient(object):
         https://ngrok.com/docs/api#api-ssh-user-certificates-create
         """
         path = "/ssh_user_certificates"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                ssh_certificate_authority_id=ssh_certificate_authority_id,
-                public_key=public_key,
-                principals=principals,
-                critical_options=critical_options,
-                extensions=extensions,
-                valid_after=valid_after,
-                valid_until=valid_until,
-                description=description,
-                metadata=metadata,
-            ),
+        body_arg = dict(
+            ssh_certificate_authority_id=ssh_certificate_authority_id,
+            public_key=public_key,
+            principals=principals,
+            critical_options=critical_options,
+            extensions=extensions,
+            valid_after=valid_after,
+            valid_until=valid_until,
+            description=description,
+            metadata=metadata,
         )
+        result = self._client.http_client.post(path, body_arg)
         return SSHUserCertificate(self._client, result)
 
     def delete(
@@ -4331,7 +4208,8 @@ class SSHUserCertificatesClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
     def get(
         self,
@@ -4347,7 +4225,8 @@ class SSHUserCertificatesClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return SSHUserCertificate(self._client, result)
 
     def list(
@@ -4363,13 +4242,11 @@ class SSHUserCertificatesClient(object):
         https://ngrok.com/docs/api#api-ssh-user-certificates-list
         """
         path = "/ssh_user_certificates"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return SSHUserCertificateList(self._client, result)
 
     def update(
@@ -4390,13 +4267,11 @@ class SSHUserCertificatesClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
         )
+        result = self._client.http_client.patch(path, body_arg)
         return SSHUserCertificate(self._client, result)
 
 
@@ -4427,15 +4302,13 @@ class TLSCertificatesClient(object):
         https://ngrok.com/docs/api#api-tls-certificates-create
         """
         path = "/tls_certificates"
-        result = self._client.http_client.post(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-                certificate_pem=certificate_pem,
-                private_key_pem=private_key_pem,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            certificate_pem=certificate_pem,
+            private_key_pem=private_key_pem,
         )
+        result = self._client.http_client.post(path, body_arg)
         return TLSCertificate(self._client, result)
 
     def delete(
@@ -4452,7 +4325,8 @@ class TLSCertificatesClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.delete(path, dict())
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
 
     def get(
         self,
@@ -4468,7 +4342,8 @@ class TLSCertificatesClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return TLSCertificate(self._client, result)
 
     def list(
@@ -4484,13 +4359,11 @@ class TLSCertificatesClient(object):
         https://ngrok.com/docs/api#api-tls-certificates-list
         """
         path = "/tls_certificates"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return TLSCertificateList(self._client, result)
 
     def update(
@@ -4511,13 +4384,11 @@ class TLSCertificatesClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.patch(
-            path,
-            dict(
-                description=description,
-                metadata=metadata,
-            ),
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
         )
+        result = self._client.http_client.patch(path, body_arg)
         return TLSCertificate(self._client, result)
 
 
@@ -4542,13 +4413,11 @@ class TunnelSessionsClient(object):
         https://ngrok.com/docs/api#api-tunnel-sessions-list
         """
         path = "/tunnel_sessions"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return TunnelSessionList(self._client, result)
 
     def get(
@@ -4565,7 +4434,8 @@ class TunnelSessionsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return TunnelSession(self._client, result)
 
     def restart(
@@ -4582,7 +4452,8 @@ class TunnelSessionsClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.post(path, dict())
+        body_arg = None
+        self._client.http_client.post(path, body_arg)
 
     def stop(
         self,
@@ -4598,7 +4469,8 @@ class TunnelSessionsClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.post(path, dict())
+        body_arg = None
+        self._client.http_client.post(path, body_arg)
 
     def update(
         self,
@@ -4614,7 +4486,8 @@ class TunnelSessionsClient(object):
         path = path.format(
             id=id,
         )
-        self._client.http_client.post(path, dict())
+        body_arg = None
+        self._client.http_client.post(path, body_arg)
 
 
 class TunnelsClient(object):
@@ -4637,13 +4510,11 @@ class TunnelsClient(object):
         https://ngrok.com/docs/api#api-tunnels-list
         """
         path = "/tunnels"
-        result = self._client.http_client.get(
-            path,
-            dict(
-                before_id=before_id,
-                limit=limit,
-            ),
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
         )
+        result = self._client.http_client.get(path, body_arg)
         return TunnelList(self._client, result)
 
     def get(
@@ -4660,5 +4531,6 @@ class TunnelsClient(object):
         path = path.format(
             id=id,
         )
-        result = self._client.http_client.get(path, dict())
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
         return Tunnel(self._client, result)

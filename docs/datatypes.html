@@ -788,7 +788,7 @@
 <dl class="py method">
 <dt id="ngrok.datatypes.Credential.token">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">token</span></code><a class="headerlink" href="#ngrok.datatypes.Credential.token" title="Permalink to this definition">¶</a></dt>
-<dd><p>the credential’s authtoken that can be used to authenticate an ngrok client. <strong>This value is only available one time, on the API response from credential creation, otherwise it is null.</strong></p>
+<dd><p>the credential’s authtoken that can be used to authenticate an ngrok agent. <strong>This value is only available one time, on the API response from credential creation, otherwise it is null.</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -1215,7 +1215,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.datatypes.EndpointMutualTLSMutate.certificate_authority_ids">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">certificate_authority_ids</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointMutualTLSMutate.certificate_authority_ids" title="Permalink to this definition">¶</a></dt>
-<dd><p>list of certificate authorities that will be used to validate the TLS client certificate presnted by the initiatiator of the TLS connection</p>
+<dd><p>list of certificate authorities that will be used to validate the TLS client certificate presented by the initiator of the TLS connection</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
@@ -3405,7 +3405,7 @@
 <dl class="py method">
 <dt id="ngrok.datatypes.IPRestrictionList.uri">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">uri</span></code><a class="headerlink" href="#ngrok.datatypes.IPRestrictionList.uri" title="Permalink to this definition">¶</a></dt>
-<dd><p>URI of the IP resrtrictions list API resource</p>
+<dd><p>URI of the IP restrictions list API resource</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -4291,7 +4291,7 @@
 <dl class="py method">
 <dt id="ngrok.datatypes.SSHUserCertificate.principals">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">principals</span></code><a class="headerlink" href="#ngrok.datatypes.SSHUserCertificate.principals" title="Permalink to this definition">¶</a></dt>
-<dd><p>the list of principals included in the ssh user certificate. This is the list of usernames that the certificate holder may sign in as on a machine authorizinig the signing certificate authority. Dangerously, if no principals are specified, this certificate may be used to log in as any user.</p>
+<dd><p>the list of principals included in the ssh user certificate. This is the list of usernames that the certificate holder may sign in as on a machine authorizing the signing certificate authority. Dangerously, if no principals are specified, this certificate may be used to log in as any user.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
@@ -5343,7 +5343,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.datatypes.WeightedBackend.backends">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">backends</span></code><a class="headerlink" href="#ngrok.datatypes.WeightedBackend.backends" title="Permalink to this definition">¶</a></dt>
-<dd><p>the ids of the child backends to their weights (0-10000)</p>
+<dd><p>the ids of the child backends to their weights [0-10000]</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapping</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</p>

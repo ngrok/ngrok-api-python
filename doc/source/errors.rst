@@ -9,7 +9,7 @@ When any method invoked against the ngrok API returns an error, a Exception of
 The exception includes details that will allow you to robustly handle any error
 returned by the API. The :attr:`ngrok.Error.error_code` field allows you to
 handle any error in the ngrok system. Consult our `API Errors Documentation
-<https://ngrok.com/docs/api/errors>`_ for the list of error codes the API may
+<https://ngrok.com/docs/errors>`_ for the list of error codes the API may
 return.
 
 Handling Errors
