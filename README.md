@@ -1,12 +1,14 @@
+# Unstable
+
+This library is currently unstable. We know of rough edges
+and are working to bring it to parity with our other API client
+libraries. Please feel free to try it out and let us know if you find
+it useful!
+
 # ngrok API client library for Python
 
 This library wraps the [ngrok HTTP API](https://ngrok.com/docs/api) to make it
 easier to consume in Python.
-
-## Beta Disclaimer
-
-The Python ngrok API client library is in beta. While most of this
-library should work, portions may be entirely broken or incomplete.
 
 ## Installation
 
