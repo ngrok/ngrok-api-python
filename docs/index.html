@@ -199,16 +199,16 @@ object. That’s it!</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ngrok</span>
 
 <span class="c1"># construct the api client</span>
-<span class="n">ng</span> <span class="o">=</span> <span class="n">ngrok</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s2">"&lt;API KEY&gt;"</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">ngrok</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s2">"&lt;API KEY&gt;"</span><span class="p">)</span>
 
 <span class="c1"># list all online tunnels</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">ng</span><span class="o">.</span><span class="n">tunnels</span><span class="p">():</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">client</span><span class="o">.</span><span class="n">tunnels</span><span class="o">.</span><span class="n">list</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 
 <span class="c1"># create an ip policy the allows traffic from some subnets</span>
-<span class="n">policy</span> <span class="o">=</span> <span class="n">ng</span><span class="o">.</span><span class="n">ip_policies</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"allow"</span><span class="p">)</span>
+<span class="n">policy</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ip_policies</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">cidr</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"24.0.0.0/8"</span><span class="p">,</span> <span class="s2">"12.0.0.0/8"</span><span class="p">]:</span>
-    <span class="n">ng</span><span class="o">.</span><span class="n">ip_policy_rules</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">cidr</span><span class="o">=</span><span class="n">cidr</span><span class="p">,</span> <span class="n">ip_policy_id</span><span class="o">=</span><span class="n">policy</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">ip_policy_rules</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">cidr</span><span class="o">=</span><span class="n">cidr</span><span class="p">,</span> <span class="n">ip_policy_id</span><span class="o">=</span><span class="n">policy</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">"allow"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -220,11 +220,11 @@ implements an <code class="docutils literal notranslate"><span class="pre">__ite
 pages for you.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ngrok</span>
 
-<span class="n">ng</span> <span class="o">=</span> <span class="n">ngrok</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s2">"&lt;API KEY&gt;"</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">ngrok</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s2">"&lt;API KEY&gt;"</span><span class="p">)</span>
 
 <span class="c1"># list all ip policies, transparently fetching additional</span>
 <span class="c1"># pages for you if necessary</span>
-<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ng</span><span class="o">.</span><span class="n">ip_policies</span><span class="o">.</span><span class="n">list</span><span class="p">():</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">client</span><span class="o">.</span><span class="n">ip_policies</span><span class="o">.</span><span class="n">list</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -233,18 +233,24 @@ pages for you.</p>
 <h3>Instance Methods<a class="headerlink" href="#instance-methods" title="Permalink to this headline">¶</a></h3>
 <p>Instance methods like <code class="docutils literal notranslate"><span class="pre">update</span></code> and <code class="docutils literal notranslate"><span class="pre">delete</span></code> can be invoked on an instance of an
 API object itself as well as directly without needing to first fetch the object.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># update the metadata of a credential</span>
-<span class="n">cred</span> <span class="o">=</span> <span class="n">ng</span><span class="o">.</span><span class="n">credentials</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"cr_1kYyunEyn6XHHlqyMBLrj5nxkoz"</span><span class="p">)</span>
-<span class="n">cred</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">metadata</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
-    <span class="s2">"server_name"</span><span class="p">:</span> <span class="s2">"giraffe-1"</span><span class="p">,</span>
-<span class="p">}))</span>
-
-<span class="c1"># or do it in single call</span>
-<span class="n">cred</span> <span class="o">=</span> <span class="n">ng</span><span class="o">.</span><span class="n">credentials</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">"cr_1kYyunEyn6XHHlqyMBLrj5nxkoz"</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
-    <span class="s2">"server_name"</span><span class="p">:</span> <span class="s2">"giraffe-1"</span><span class="p">,</span>
-<span class="p">}))</span>
-</pre></div>
-</div>
+<dl>
+<dt>::</dt><dd><p>import ngrok</p>
+<p>client = ngrok.Client(“&lt;API KEY&gt;”)</p>
+<p># update the metadata of a credential
+cred = client.credentials.get(“cr_1kYyunEyn6XHHlqyMBLrj5nxkoz”)
+cred.update(metadata=json.dumps({</p>
+<blockquote>
+<div><p>“server_name”: “giraffe-1”,</p>
+</div></blockquote>
+<p>}))</p>
+<p># or do it in single call
+cred = client.credentials.update(“cr_1kYyunEyn6XHHlqyMBLrj5nxkoz”, metadata=json.dumps({</p>
+<blockquote>
+<div><p>“server_name”: “giraffe-1”,</p>
+</div></blockquote>
+<p>}))</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="error-handling">
 <h3>Error Handling<a class="headerlink" href="#error-handling" title="Permalink to this headline">¶</a></h3>
@@ -252,10 +258,11 @@ API object itself as well as directly without needing to first fetch the object.
 section on <a class="reference internal" href="errors.html#errors"><span class="std std-ref">errors</span></a> for additional details.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ngrok</span>
 
-<span class="n">ng</span> <span class="o">=</span> <span class="n">ngrok</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s2">"&lt;API KEY&gt;"</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">ngrok</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s2">"&lt;API KEY&gt;"</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="n">ng</span><span class="o">.</span><span class="n">ip_policies</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"not a valid action"</span><span class="p">)</span>
+    <span class="n">policy</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ip_policies</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">ip_policy_rules</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">cidr</span><span class="o">=</span><span class="s2">"24.0.0.0/8"</span><span class="p">,</span> <span class="n">ip_policy_id</span><span class="o">=</span><span class="n">policy</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">"not a valid action"</span><span class="p">)</span>
 <span class="k">except</span> <span class="n">ngrok</span><span class="o">.</span><span class="n">Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"http status code"</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">http_status_code</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"ngrok error code"</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">error_code</span><span class="p">)</span>

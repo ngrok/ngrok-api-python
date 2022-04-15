@@ -185,14 +185,14 @@ Client object:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ngrok</span>
 
 <span class="c1"># construct the api client</span>
-<span class="n">ng</span> <span class="o">=</span> <span class="n">ngrok</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s2">"&lt;API KEY&gt;"</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">ngrok</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s2">"&lt;API KEY&gt;"</span><span class="p">)</span>
 
 <span class="c1"># list all ip policies</span>
-<span class="k">for</span> <span class="n">policy</span> <span class="ow">in</span> <span class="n">ng</span><span class="o">.</span><span class="n">ip_policies</span><span class="o">.</span><span class="n">list</span><span class="p">():</span>
+<span class="k">for</span> <span class="n">policy</span> <span class="ow">in</span> <span class="n">client</span><span class="o">.</span><span class="n">ip_policies</span><span class="o">.</span><span class="n">list</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">policy</span><span class="p">)</span>
 
 <span class="c1"># create an ngrok agent authtoken</span>
-<span class="n">cred</span> <span class="o">=</span> <span class="n">ng</span><span class="o">.</span><span class="n">credentials</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+<span class="n">cred</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">credentials</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">cred</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -256,7 +256,7 @@ thus a private key is not included in the resource.</p>
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">credentials</span></code><a class="headerlink" href="#ngrok.Client.credentials" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tunnel Credentials are ngrok agent authtokens. They authorize the ngrok
 agent to connect the ngrok service as your account. They are installed with
-the <code class="docutils literal notranslate"><span class="pre">ngrok</span> <span class="pre">authtoken</span></code> command or by specifying it in the <code class="docutils literal notranslate"><span class="pre">ngrok.yml</span></code>
+the <code class="docutils literal notranslate"><span class="pre">ngrok</span> <span class="pre">config</span> <span class="pre">add-authtoken</span></code> command or by specifying it in the <code class="docutils literal notranslate"><span class="pre">ngrok.yml</span></code>
 configuration file with the <code class="docutils literal notranslate"><span class="pre">authtoken</span></code> property.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>

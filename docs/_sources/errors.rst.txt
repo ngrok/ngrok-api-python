@@ -21,9 +21,9 @@ raised. Ensure that you check for it first because it is a subclass of :class:`n
 .. code-block::
 
     try:
-        c.ip_policies.get(id)
+        client.ip_policies.get(id)
     except ngrok.NotFoundError as e:
-        c.ip_policies.create(action="deny")
+        client.ip_policies.create()
     except ngrok.Error as e:
         # something else happened
 
@@ -34,9 +34,9 @@ documentation for the `list of all ngrok error codes <https://ngrok.com/docs/err
 ::
 
     try:
-        c.ip_policies.create(action="something invalid")
+        client.edges.https.create(hostports=["url-without-port.ngrok.io"])
     except ngrok.Error as e:
-        if e.error_code == "ERR_NGROK_1410":
+        if e.error_code == "ERR_NGROK_7104":
             # handle a specific condition
         else:
             raise
@@ -49,7 +49,7 @@ at that point it is best to use a naked ``except`` block or to catch a ``Runtime
 ::
 
     try:
-        c.ip_policies.create(action="something invalid")
+        client.ip_policies.create()
     except RuntimeError:
         # an unexpected network error that you could retry
 

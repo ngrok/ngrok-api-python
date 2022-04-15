@@ -31,16 +31,16 @@ object. That's it!
     import ngrok
 
     # construct the api client
-    ng = ngrok.Client("<API KEY>")
+    client = ngrok.Client("<API KEY>")
 
     # list all online tunnels
-    for t in ng.tunnels():
+    for t in client.tunnels.list():
         print(t)
 
     # create an ip policy the allows traffic from some subnets
-    policy = ng.ip_policies.create(action="allow")
+    policy = client.ip_policies.create()
     for cidr in ["24.0.0.0/8", "12.0.0.0/8"]:
-        ng.ip_policy_rules.create(cidr=cidr, ip_policy_id=policy.id)
+        client.ip_policy_rules.create(cidr=cidr, ip_policy_id=policy.id, action="allow")
 
 
 Automatic Paging
@@ -55,11 +55,11 @@ pages for you.
 
     import ngrok
 
-    ng = ngrok.Client("<API KEY>")
+    client = ngrok.Client("<API KEY>")
 
     # list all ip policies, transparently fetching additional
     # pages for you if necessary
-    for p in ng.ip_policies.list():
+    for p in client.ip_policies.list():
         print(p)
 
 
@@ -70,15 +70,18 @@ Instance methods like ``update`` and ``delete`` can be invoked on an instance of
 API object itself as well as directly without needing to first fetch the object.
 
 ::
+    import ngrok
+
+    client = ngrok.Client("<API KEY>")
 
     # update the metadata of a credential
-    cred = ng.credentials.get("cr_1kYyunEyn6XHHlqyMBLrj5nxkoz")
+    cred = client.credentials.get("cr_1kYyunEyn6XHHlqyMBLrj5nxkoz")
     cred.update(metadata=json.dumps({
         "server_name": "giraffe-1",
     }))
 
     # or do it in single call
-    cred = ng.credentials.update("cr_1kYyunEyn6XHHlqyMBLrj5nxkoz", metadata=json.dumps({
+    cred = client.credentials.update("cr_1kYyunEyn6XHHlqyMBLrj5nxkoz", metadata=json.dumps({
         "server_name": "giraffe-1",
     }))
 
@@ -93,10 +96,11 @@ section on :ref:`errors <errors>` for additional details.
 
     import ngrok
 
-    ng = ngrok.Client("<API KEY>")
+    client = ngrok.Client("<API KEY>")
 
     try:
-        ng.ip_policies.create(action="not a valid action")
+        policy = client.ip_policies.create()
+        client.ip_policy_rules.create(cidr="24.0.0.0/8", ip_policy_id=policy.id, action="not a valid action")
     except ngrok.Error as e:
         print("http status code", e.http_status_code)
         print("ngrok error code", e.error_code)

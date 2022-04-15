@@ -858,7 +858,7 @@ class CertificateAuthoritiesClient(object):
 class CredentialsClient(object):
     """Tunnel Credentials are ngrok agent authtokens. They authorize the ngrok
     agent to connect the ngrok service as your account. They are installed with
-    the ``ngrok authtoken`` command or by specifying it in the ``ngrok.yml``
+    the ``ngrok config add-authtoken`` command or by specifying it in the ``ngrok.yml``
     configuration file with the ``authtoken`` property."""
 
     def __init__(self, client):
@@ -3277,9 +3277,9 @@ class IPPolicyRulesClient(object):
         self,
         cidr: str,
         ip_policy_id: str,
+        action: str,
         description: str = "",
         metadata: str = "",
-        action: str = None,
     ) -> IPPolicyRule:
         """Create a new IP policy rule attached to an IP Policy.
 
