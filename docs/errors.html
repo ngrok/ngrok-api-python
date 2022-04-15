@@ -190,9 +190,9 @@ return.</p>
 <p>If the API returns an unexpected 404, a <a class="reference internal" href="#ngrok.NotFoundError" title="ngrok.NotFoundError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ngrok.NotFoundError</span></code></a> will be
 raised. Ensure that you check for it first because it is a subclass of <a class="reference internal" href="#ngrok.Error" title="ngrok.Error"><code class="xref py py-class docutils literal notranslate"><span class="pre">ngrok.Error</span></code></a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">ip_policies</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">ip_policies</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
 <span class="k">except</span> <span class="n">ngrok</span><span class="o">.</span><span class="n">NotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">ip_policies</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"deny"</span><span class="p">)</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">ip_policies</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
 <span class="k">except</span> <span class="n">ngrok</span><span class="o">.</span><span class="n">Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="c1"># something else happened</span>
 </pre></div>
@@ -200,9 +200,9 @@ raised. Ensure that you check for it first because it is a subclass of <a class=
 <p>Other validation errors are best distinguished by their error code. Consult our
 documentation for the <a class="reference external" href="https://ngrok.com/docs/errors">list of all ngrok error codes</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">ip_policies</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"something invalid"</span><span class="p">)</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">https</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">hostports</span><span class="o">=</span><span class="p">[</span><span class="s2">"url-without-port.ngrok.io"</span><span class="p">])</span>
 <span class="k">except</span> <span class="n">ngrok</span><span class="o">.</span><span class="n">Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">error_code</span> <span class="o">==</span> <span class="s2">"ERR_NGROK_1410"</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">error_code</span> <span class="o">==</span> <span class="s2">"ERR_NGROK_7104"</span><span class="p">:</span>
         <span class="c1"># handle a specific condition</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span>
@@ -212,7 +212,7 @@ documentation for the <a class="reference external" href="https://ngrok.com/docs
 network error, there are no guarantees about the type of exception thrown
 at that point it is best to use a naked <code class="docutils literal notranslate"><span class="pre">except</span></code> block or to catch a <code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">ip_policies</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"something invalid"</span><span class="p">)</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">ip_policies</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
 <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
     <span class="c1"># an unexpected network error that you could retry</span>
 </pre></div>

@@ -220,7 +220,7 @@
     <span class="k">def</span> <span class="nf">credentials</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CredentialsClient</span><span class="p">:</span>
         <span class="sd">"""Tunnel Credentials are ngrok agent authtokens. They authorize the ngrok</span>
 <span class="sd">        agent to connect the ngrok service as your account. They are installed with</span>
-<span class="sd">        the ``ngrok authtoken`` command or by specifying it in the ``ngrok.yml``</span>
+<span class="sd">        the ``ngrok config add-authtoken`` command or by specifying it in the ``ngrok.yml``</span>
 <span class="sd">        configuration file with the ``authtoken`` property."""</span>
         <span class="k">return</span> <span class="n">CredentialsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 

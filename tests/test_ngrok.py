@@ -1,5 +1,6 @@
 import json
 import os
+import unittest
 from typing import Optional, Mapping, Union, Dict, Any
 
 import ngrok
@@ -14,10 +15,92 @@ def setup_api_client():
         c.http_client = RecordingHTTPClient(c.http_client.api_key, c.http_client.base_url)
     return c, mock
 
+class TestQuickstartExamples(unittest.TestCase):
+    def test_quickstart_examples(self):
+        c, mock = setup_api_client()
+
+        # list all online tunnels
+        mock.returns(mock_tunnels_list)
+        tunnels = c.tunnels.list()
+        for t in tunnels:
+            pass
+        assert len(tunnels.tunnels) == 1
+
+        # create an ip policy the allows traffic from some subnets
+        mock.returns(mock_ip_policy)
+        policy = c.ip_policies.create()
+        for cidr in ["24.0.0.0/8", "12.0.0.0/8"]:
+            mock.returns(mock_ip_policy_rule)
+            rule = c.ip_policy_rules.create(cidr=cidr, ip_policy_id=policy.id, action="allow")
+            assert rule.action == "allow"
+
+        # list all ip policies, transparently fetching additional
+        # pages for you if necessary
+        mock.returns(mock_ip_policy_rules_list)
+        for p in c.ip_policies.list():
+            pass
+
+        # create a credential
+        mock.returns(mock_cred)
+        cred = c.credentials.create()
+        assert cred.metadata == ""
+
+        # get a credential
+        mock.returns(mock_cred)
+        cred = c.credentials.get("cr_27nRxf2wJGXDKuTjMkUpaWMoN1B")
+        assert cred.metadata == ""
+
+        # update the metadata of a credential
+        mock.returns(mock_updated_cred)
+        cred.update(metadata=json.dumps({
+            "foo": "bar",
+        }))
+        mock.returns(mock_updated_cred)
+        cred = c.credentials.get("cr_27nRxf2wJGXDKuTjMkUpaWMoN1B")
+        assert cred.metadata == "{foo:bar}"
+
+        # or do it in single call
+        mock.returns(mock_updated_cred)
+        cred = c.credentials.update("cr_27nRxf2wJGXDKuTjMkUpaWMoN1B", metadata=json.dumps({
+            "foo": "bar",
+        }))
+        assert cred.metadata == "{foo:bar}"
+
+        with self.assertRaises(ngrok.Error):
+            mock.returns(mock_ip_policy)
+            policy = c.ip_policies.create()
+            mock.returns(ngrok.Error(error_code=404, message="error", http_status_code=404, details=None))
+            c.ip_policy_rules.create(cidr="24.0.0.0/8", ip_policy_id=policy.id, action="not a valid action")
+
 def test_domains():
     c, mock = setup_api_client()
+
     mock.returns(mock_domains_list)
     c.reserved_domains.list()
+
+    mock.returns(mock_reserved_domain)
+    domain = c.reserved_domains.create(name="foo")
+    mock.returns(mock_reserved_domain)
+    domain = c.reserved_domains.get(domain.id)
+    assert domain.domain == "foo.ngrok.io.lan"
+
+    mock.returns(None)
+    domain.delete()
+
+def test_addrs():
+    c, mock = setup_api_client()
+
+    mock.returns(mock_addrs_list)
+    c.reserved_domains.list()
+
+    mock.returns(mock_reserved_addr)
+    addr = c.reserved_addrs.create()
+    mock.returns(mock_reserved_addr)
+    addr = c.reserved_addrs.get(addr.id)
+    assert addr.addr == "1.tcp.ngrok.io.lan:20020"
+
+    mock.returns(None)
+    addr.delete()
 
 def test_certificate_authorities():
     c, mock = setup_api_client()
@@ -64,6 +147,41 @@ def test_certificate_authorities():
         assert e.http_status_code == 404
     else:
         assert False
+
+def test_abuse_reports():
+    c, mock = setup_api_client()
+
+    mock.returns(mock_abuse_report)
+    report = c.abuse_reports.create(urls=["https://foo.ngrok.io:443"])
+    assert report.hostnames[0].status == "BANNED"
+
+    mock.returns(mock_abuse_report)
+    report = c.abuse_reports.get(report.id)
+    assert report.hostnames[0].status == "BANNED"
+
+def test_agent_ingress():
+    c, mock = setup_api_client()
+
+    mock.returns(mock_agent_ingress)
+    ingress = c.agent_ingresses.create(domain="foo")
+    mock.returns(mock_agent_ingress)
+    ingress = c.agent_ingresses.get(ingress.id)
+    assert ingress.domain == "foo"
+
+    mock.returns(None)
+    ingress.delete()
+
+def test_api_keys():
+    c, mock = setup_api_client()
+
+    mock.returns(mock_api_key)
+    key = c.api_keys.create()
+    mock.returns(mock_api_key)
+    key = c.api_keys.get(key.id)
+    assert key.id == "ak_27njujFZdCVl6tXApS7OkSm9Eab"
+
+    mock.returns(None)
+    key.delete()
 
 def test_event_subscriptions():
     c, mock = setup_api_client()
@@ -417,6 +535,219 @@ mock_domains_list = """
     }
   ],
   "uri": "https://api.ngrok.com/reserved_domains"
+}
+"""
+
+mock_addrs_list = """
+{
+  "next_page_uri": null,
+  "reserved_addrs": [
+    {
+      "addr": "1.tcp.ngrok.io.lan:20020",
+      "created_at": "2022-04-14T19:03:19Z",
+      "description": "",
+      "endpoint_configuration": null,
+      "id": "ra_27kiEWP6f5f987k0yUlcPE46GZf",
+      "metadata": "",
+      "region": "us",
+      "uri": "https://api.ngrok.com/reserved_addrs/ra_27kiEWP6f5f987k0yUlcPE46GZf"
+    }
+  ],
+  "uri": "https://api.ngrok.com/reserved_addrs"
+}
+"""
+
+mock_tunnels_list = """
+{
+  "next_page_uri": null,
+  "tunnels": [
+    {
+      "endpoint": {
+        "id": "ep_27nRDPONKvdRWvyUOjJhzllpbhn",
+        "uri": "https://api.ngrok.com/endpoints/ep_27nRDPONKvdRWvyUOjJhzllpbhn"
+      },
+      "forwards_to": "http://localhost:8080",
+      "id": "tn_27nRDPONKvdRWvyUOjJhzllpbhn",
+      "metadata": "",
+      "proto": "https",
+      "public_url": "https://853095c920d0.ngrok.io",
+      "region": "us",
+      "started_at": "2022-04-14T16:29:02Z",
+      "tunnel_session": {
+        "id": "ts_27nRDLESs1giNY2HHMNPyMNuPh5",
+        "uri": "https://api.ngrok.com/tunnel_sessions/ts_27nRDLESs1giNY2HHMNPyMNuPh5"
+      }
+    }
+  ],
+  "uri": "https://api.ngrok.com.lan/tunnels"
+}
+"""
+
+mock_ip_policy = """
+{
+  "created_at": "2022-04-14T16:30:32Z",
+  "description": "",
+  "id": "ipp_27nROi2mDmPHZ92203L5aJgCefH",
+  "metadata": "",
+  "uri": "https://api.ngrok.com/ip_policies/ipp_27nROi2mDmPHZ92203L5aJgCefH"
+}
+"""
+
+mock_ip_policy_rule = """
+{
+  "action": "allow",
+  "cidr": "24.0.0.0/8",
+  "created_at": "2022-04-14T16:32:47Z",
+  "description": "",
+  "id": "ipr_27nRfcc4p85cMaHmApkVxpQDOJo",
+  "ip_policy": {
+    "id": "ipp_27nROi2mDmPHZ92203L5aJgCefH",
+    "uri": "https://api.ngrok.com/ip_policies/ipp_27nROi2mDmPHZ92203L5aJgCefH"
+  },
+  "metadata": "",
+  "uri": "https://api.ngrok.com/ip_policy_rules/ipr_27nRfcc4p85cMaHmApkVxpQDOJo"
+}
+"""
+
+mock_ip_policy_rules_list = """
+{
+  "ip_policy_rules": [
+    {
+      "action": "allow",
+      "cidr": "12.0.0.0/8",
+      "created_at": "2022-04-14T16:33:58Z",
+      "description": "",
+      "id": "ipr_27nRoYzr2pPCWdwzZIP6husmX6C",
+      "ip_policy": {
+        "id": "ipp_27nROi2mDmPHZ92203L5aJgCefH",
+        "uri": "https://api.ngrok.com/ip_policies/ipp_27nROi2mDmPHZ92203L5aJgCefH"
+      },
+      "metadata": "",
+      "uri": "https://api.ngrok.com/ip_policy_rules/ipr_27nRoYzr2pPCWdwzZIP6husmX6C"
+    },
+    {
+      "action": "allow",
+      "cidr": "24.0.0.0/8",
+      "created_at": "2022-04-14T16:32:47Z",
+      "description": "",
+      "id": "ipr_27nRfcc4p85cMaHmApkVxpQDOJo",
+      "ip_policy": {
+        "id": "ipp_27nROi2mDmPHZ92203L5aJgCefH",
+        "uri": "https://api.ngrok.com/ip_policies/ipp_27nROi2mDmPHZ92203L5aJgCefH"
+      },
+      "metadata": "",
+      "uri": "https://api.ngrok.com/ip_policy_rules/ipr_27nRfcc4p85cMaHmApkVxpQDOJo"
+    }
+  ],
+  "next_page_uri": null,
+  "uri": "https://api.ngrok.com/ip_policy_rules"
+}
+"""
+
+mock_cred = """
+{
+  "acl": [],
+  "created_at": "2022-04-14T16:35:11Z",
+  "description": "",
+  "id": "cr_27nRxf2wJGXDKuTjMkUpaWMoN1B",
+  "metadata": "",
+  "token": "27nRxf2wJGXDKuTjMkUpaWMoN1B_7pUKA1z533U7sGpshjCkU",
+  "uri": "https://api.ngrok.com/credentials/cr_27nRxf2wJGXDKuTjMkUpaWMoN1B"
+}
+"""
+
+mock_updated_cred = """
+{
+  "acl": [],
+  "created_at": "2022-04-14T16:35:11Z",
+  "description": "",
+  "id": "cr_27nRxf2wJGXDKuTjMkUpaWMoN1B",
+  "metadata": "{foo:bar}",
+  "token": "27nRxf2wJGXDKuTjMkUpaWMoN1B_7pUKA1z533U7sGpshjCkU",
+  "uri": "https://api.ngrok.com/credentials/cr_27nRxf2wJGXDKuTjMkUpaWMoN1B"
+}
+"""
+
+mock_abuse_report = """
+{
+  "created_at": "2022-04-14T17:40:52Z",
+  "hostnames": [
+    {
+      "hostname": "foo.ngrok.io:443",
+      "status": "BANNED"
+    }
+  ],
+  "id": "abrp_27nZwwT46wPkmfFfysoE7LpVjbR",
+  "metadata": "",
+  "status": "PROCESSED",
+  "uri": "https://api.ngrok.com/abuse_reports/abrp_27nZwwT46wPkmfFfysoE7LpVjbR",
+  "urls": [
+    "https://foo.ngrok.io:443"
+  ]
+}
+"""
+
+mock_agent_ingress = """
+{
+  "created_at": "2022-04-14T18:59:38Z",
+  "description": "",
+  "domain": "foo",
+  "id": "agin_27njWu1U9FR823pTuRTh8mgrY3h",
+  "metadata": "",
+  "ns_targets": [
+    "1.kube-dns.kube-system.svc.cluster.local.",
+    "2.kube-dns.kube-system.svc.cluster.local.",
+    "3.kube-dns.kube-system.svc.cluster.local.",
+    "4.kube-dns.kube-system.svc.cluster.local."
+  ],
+  "region_domains": [
+    "tunnel.us.foo"
+  ],
+  "uri": "https://api.ngrok.com.lan/agent_ingresses/agin_27njWu1U9FR823pTuRTh8mgrY3h"
+}
+
+"""
+
+mock_api_key = """
+{
+  "created_at": "2022-04-14T19:02:48Z",
+  "description": "",
+  "id": "ak_27njujFZdCVl6tXApS7OkSm9Eab",
+  "metadata": "",
+  "token": "27njujFZdCVl6tXApS7OkSm9Eab_7MufErgFn7SeihmP7v9mn",
+  "uri": "https://api.ngrok.com/api_keys/ak_27njujFZdCVl6tXApS7OkSm9Eab"
+}
+"""
+
+mock_reserved_addr = """
+{
+  "addr": "1.tcp.ngrok.io.lan:20020",
+  "created_at": "2022-04-14T19:03:19Z",
+  "description": "",
+  "endpoint_configuration": null,
+  "id": "ra_27kiEWP6f5f987k0yUlcPE46GZf",
+  "metadata": "",
+  "region": "us",
+  "uri": "https://api.ngrok.com/reserved_addrs/ra_27kiEWP6f5f987k0yUlcPE46GZf"
+}
+"""
+
+mock_reserved_domain = """
+{
+  "acme_challenge_cname_target": null,
+  "certificate": null,
+  "certificate_management_policy": null,
+  "certificate_management_status": null,
+  "cname_target": null,
+  "created_at": "2022-04-14T19:04:14Z",
+  "description": "",
+  "domain": "foo.ngrok.io.lan",
+  "http_endpoint_configuration": null,
+  "https_endpoint_configuration": null,
+  "id": "rd_27nk5WLm85y0wqi13XNLobu3Xff",
+  "metadata": "",
+  "region": "us",
+  "uri": "https://api.ngrok.com/reserved_domains/rd_27nk5WLm85y0wqi13XNLobu3Xff"
 }
 """
 

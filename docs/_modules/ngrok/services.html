@@ -1038,7 +1038,7 @@
 <div class="viewcode-block" id="CredentialsClient"><a class="viewcode-back" href="../../credentials.html#ngrok.services.CredentialsClient">[docs]</a><span class="k">class</span> <span class="nc">CredentialsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">"""Tunnel Credentials are ngrok agent authtokens. They authorize the ngrok</span>
 <span class="sd">    agent to connect the ngrok service as your account. They are installed with</span>
-<span class="sd">    the ``ngrok authtoken`` command or by specifying it in the ``ngrok.yml``</span>
+<span class="sd">    the ``ngrok config add-authtoken`` command or by specifying it in the ``ngrok.yml``</span>
 <span class="sd">    configuration file with the ``authtoken`` property."""</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
@@ -3457,9 +3457,9 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">cidr</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">ip_policy_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">action</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
-        <span class="n">action</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPPolicyRule</span><span class="p">:</span>
         <span class="sd">"""Create a new IP policy rule attached to an IP Policy.</span>
 

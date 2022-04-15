@@ -10,14 +10,14 @@ Client object:
     import ngrok
 
     # construct the api client
-    ng = ngrok.Client("<API KEY>")
+    client = ngrok.Client("<API KEY>")
 
     # list all ip policies
-    for policy in ng.ip_policies.list():
+    for policy in client.ip_policies.list():
         print(policy)
  
     # create an ngrok agent authtoken
-    cred = ng.credentials.create()
+    cred = client.credentials.create()
     print(cred)
 
 .. automodule:: ngrok
