@@ -70,6 +70,7 @@ Instance methods like ``update`` and ``delete`` can be invoked on an instance of
 API object itself as well as directly without needing to first fetch the object.
 
 ::
+
     import ngrok
 
     client = ngrok.Client("<API KEY>")
