@@ -23,7 +23,7 @@ class Client(object):
         """API Keys are used to authenticate to the `ngrok
         API` <https://ngrok.com/docs/api#authentication>`_. You may use the API itself
         to provision and manage API Keys but you'll need to provision your first API
-        key from the `API Keys page` <https://dashboard.ngrok.com/api/keys>`_ on your
+        key from the `API Keys page` <https://dashboard.ngrok.com/api>`_ on your
         ngrok.com dashboard."""
         return APIKeysClient(self)
 
