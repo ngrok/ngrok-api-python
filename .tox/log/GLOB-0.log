@@ -1,0 +1,64 @@
+action: GLOB, msg: packaging
+cwd: /var/lib/buildkite-agent-3/builds/ip-172-31-58-32-us-west-2-compute-internal-3-1/ngrok/api-client-prs/.cache/ngrok-api-python
+cmd: /var/lib/buildkite-agent-3/builds/ip-172-31-58-32-us-west-2-compute-internal-3-1/ngrok/api-client-prs/.cache/ngrok-api-python/venv/bin/python setup.py sdist --formats=zip --dist-dir /var/lib/buildkite-agent-3/builds/ip-172-31-58-32-us-west-2-compute-internal-3-1/ngrok/api-client-prs/.cache/ngrok-api-python/.tox/dist
+running sdist
+running egg_info
+writing ngrok_api.egg-info/PKG-INFO
+writing dependency_links to ngrok_api.egg-info/dependency_links.txt
+writing requirements to ngrok_api.egg-info/requires.txt
+writing top-level names to ngrok_api.egg-info/top_level.txt
+reading manifest file 'ngrok_api.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file 'ngrok_api.egg-info/SOURCES.txt'
+running check
+creating ngrok-api-0.0.0
+creating ngrok-api-0.0.0/ngrok
+creating ngrok-api-0.0.0/ngrok_api.egg-info
+creating ngrok-api-0.0.0/tests
+copying files to ngrok-api-0.0.0...
+copying LICENSE -> ngrok-api-0.0.0
+copying README.md -> ngrok-api-0.0.0
+copying pyproject.toml -> ngrok-api-0.0.0
+copying setup.py -> ngrok-api-0.0.0
+copying ngrok/__init__.py -> ngrok-api-0.0.0/ngrok
+copying ngrok/client.py -> ngrok-api-0.0.0/ngrok
+copying ngrok/datatypes.py -> ngrok-api-0.0.0/ngrok
+copying ngrok/error.py -> ngrok-api-0.0.0/ngrok
+copying ngrok/http_client.py -> ngrok-api-0.0.0/ngrok
+copying ngrok/iterator.py -> ngrok-api-0.0.0/ngrok
+copying ngrok/services.py -> ngrok-api-0.0.0/ngrok
+copying ngrok/utils.py -> ngrok-api-0.0.0/ngrok
+copying ngrok_api.egg-info/PKG-INFO -> ngrok-api-0.0.0/ngrok_api.egg-info
+copying ngrok_api.egg-info/SOURCES.txt -> ngrok-api-0.0.0/ngrok_api.egg-info
+copying ngrok_api.egg-info/dependency_links.txt -> ngrok-api-0.0.0/ngrok_api.egg-info
+copying ngrok_api.egg-info/requires.txt -> ngrok-api-0.0.0/ngrok_api.egg-info
+copying ngrok_api.egg-info/top_level.txt -> ngrok-api-0.0.0/ngrok_api.egg-info
+copying tests/test_ngrok.py -> ngrok-api-0.0.0/tests
+Writing ngrok-api-0.0.0/setup.cfg
+creating /var/lib/buildkite-agent-3/builds/ip-172-31-58-32-us-west-2-compute-internal-3-1/ngrok/api-client-prs/.cache/ngrok-api-python/.tox/dist
+creating '/var/lib/buildkite-agent-3/builds/ip-172-31-58-32-us-west-2-compute-internal-3-1/ngrok/api-client-prs/.cache/ngrok-api-python/.tox/dist/ngrok-api-0.0.0.zip' and adding 'ngrok-api-0.0.0' to it
+adding 'ngrok-api-0.0.0'
+adding 'ngrok-api-0.0.0/tests'
+adding 'ngrok-api-0.0.0/ngrok'
+adding 'ngrok-api-0.0.0/ngrok_api.egg-info'
+adding 'ngrok-api-0.0.0/PKG-INFO'
+adding 'ngrok-api-0.0.0/pyproject.toml'
+adding 'ngrok-api-0.0.0/README.md'
+adding 'ngrok-api-0.0.0/LICENSE'
+adding 'ngrok-api-0.0.0/setup.cfg'
+adding 'ngrok-api-0.0.0/setup.py'
+adding 'ngrok-api-0.0.0/tests/test_ngrok.py'
+adding 'ngrok-api-0.0.0/ngrok/http_client.py'
+adding 'ngrok-api-0.0.0/ngrok/utils.py'
+adding 'ngrok-api-0.0.0/ngrok/error.py'
+adding 'ngrok-api-0.0.0/ngrok/iterator.py'
+adding 'ngrok-api-0.0.0/ngrok/services.py'
+adding 'ngrok-api-0.0.0/ngrok/client.py'
+adding 'ngrok-api-0.0.0/ngrok/datatypes.py'
+adding 'ngrok-api-0.0.0/ngrok/__init__.py'
+adding 'ngrok-api-0.0.0/ngrok_api.egg-info/PKG-INFO'
+adding 'ngrok-api-0.0.0/ngrok_api.egg-info/dependency_links.txt'
+adding 'ngrok-api-0.0.0/ngrok_api.egg-info/top_level.txt'
+adding 'ngrok-api-0.0.0/ngrok_api.egg-info/SOURCES.txt'
+adding 'ngrok-api-0.0.0/ngrok_api.egg-info/requires.txt'
+removing 'ngrok-api-0.0.0' (and everything under it)

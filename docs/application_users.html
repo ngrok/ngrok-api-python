@@ -2,10 +2,10 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Application Sessions" href="application_sessions.html" /><link rel="prev" title="Agent Ingresses" href="agent_ingresses.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Failover Backends" href="failover_backends.html" /><link rel="prev" title="Application Sessions" href="application_sessions.html" />
 
     <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
-        <title>API Keys - ngrok-api documentation</title>
+        <title>Application Users - ngrok-api documentation</title>
       <link rel="stylesheet" href="_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
     <link rel="stylesheet" href="_static/pygments.css">
     <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css">
@@ -117,9 +117,9 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="abuse_reports.html">Abuse Reports</a></li>
 <li class="toctree-l1"><a class="reference internal" href="agent_ingresses.html">Agent Ingresses</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">API Keys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_keys.html">API Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="application_sessions.html">Application Sessions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="application_users.html">Application Users</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Application Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="failover_backends.html">Failover Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="http_response_backends.html">HTTP Response Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tunnel_group_backends.html">Tunnel Group Backends</a></li>
@@ -179,69 +179,44 @@
         <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        <div class="section" id="api-keys">
-<h1>API Keys<a class="headerlink" href="#api-keys" title="Permalink to this headline">¶</a></h1>
+        <div class="section" id="application-users">
+<h1>Application Users<a class="headerlink" href="#application-users" title="Permalink to this headline">¶</a></h1>
 <p>Do not construct this object directly, instead access the
-<a class="reference internal" href="client.html#ngrok.Client.api_keys" title="ngrok.Client.api_keys"><code class="xref py py-attr docutils literal notranslate"><span class="pre">api_keys</span></code></a> property of an <a class="reference internal" href="client.html#ngrok.Client" title="ngrok.Client"><code class="xref py py-class docutils literal notranslate"><span class="pre">ngrok.Client</span></code></a> object.</p>
+<a class="reference internal" href="client.html#ngrok.Client.application_users" title="ngrok.Client.application_users"><code class="xref py py-attr docutils literal notranslate"><span class="pre">application_users</span></code></a> property of an <a class="reference internal" href="client.html#ngrok.Client" title="ngrok.Client"><code class="xref py py-class docutils literal notranslate"><span class="pre">ngrok.Client</span></code></a> object.</p>
 <span class="target" id="module-ngrok.services"></span><dl class="py class">
-<dt id="ngrok.services.APIKeysClient">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.services.</span></code><code class="sig-name descname"><span class="pre">APIKeysClient</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#APIKeysClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.APIKeysClient" title="Permalink to this definition">¶</a></dt>
-<dd><p>API Keys are used to authenticate to the <a class="reference external" href="https://ngrok.com/docs/api#authentication">ngrok
-API</a>. You may use the API itself
-to provision and manage API Keys but you’ll need to provision your first API
-key from the <a class="reference external" href="https://dashboard.ngrok.com/api/keys">API Keys page</a> on your
-ngrok.com dashboard.</p>
-<dl class="py method">
-<dt id="ngrok.services.APIKeysClient.create">
-<code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">owner_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#APIKeysClient.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.APIKeysClient.create" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a new API key. The generated API key can be used to authenticate to the ngrok API.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>description</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – human-readable description of what uses the API key to authenticate. optional, max 255 bytes.</p></li>
-<li><p><strong>metadata</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – arbitrary user-defined data of this API key. optional, max 4096 bytes</p></li>
-<li><p><strong>owner_id</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – If supplied at credential creation, ownership will be assigned to the specified User or Bot. Only admins may specify an owner other than themselves. Defaults to the authenticated User or Bot.</p></li>
-</ul>
-</dd>
-</dl>
-<p><a class="reference external" href="https://ngrok.com/docs/api#api-api-keys-create">https://ngrok.com/docs/api#api-api-keys-create</a></p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.APIKey" title="ngrok.datatypes.APIKey"><code class="xref py py-class docutils literal notranslate"><span class="pre">APIKey</span></code></a></p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="ngrok.services.APIKeysClient.delete">
-<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#APIKeysClient.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.APIKeysClient.delete" title="Permalink to this definition">¶</a></dt>
-<dd><p>Delete an API key by ID</p>
+<dt id="ngrok.services.ApplicationUsersClient">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.services.</span></code><code class="sig-name descname"><span class="pre">ApplicationUsersClient</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#ApplicationUsersClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.ApplicationUsersClient" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="ngrok.services.ApplicationUsersClient.delete">
+<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#ApplicationUsersClient.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.ApplicationUsersClient.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete an application user by ID.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
 </dd>
 </dl>
-<p><a class="reference external" href="https://ngrok.com/docs/api#api-api-keys-delete">https://ngrok.com/docs/api#api-api-keys-delete</a></p>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-application-users-delete">https://ngrok.com/docs/api#api-application-users-delete</a></p>
 </dd></dl>
 <dl class="py method">
-<dt id="ngrok.services.APIKeysClient.get">
-<code class="sig-name descname"><span class="pre">get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#APIKeysClient.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.APIKeysClient.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the details of an API key by ID.</p>
+<dt id="ngrok.services.ApplicationUsersClient.get">
+<code class="sig-name descname"><span class="pre">get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#ApplicationUsersClient.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.ApplicationUsersClient.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an application user by ID.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
 </dd>
 </dl>
-<p><a class="reference external" href="https://ngrok.com/docs/api#api-api-keys-get">https://ngrok.com/docs/api#api-api-keys-get</a></p>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-application-users-get">https://ngrok.com/docs/api#api-application-users-get</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.APIKey" title="ngrok.datatypes.APIKey"><code class="xref py py-class docutils literal notranslate"><span class="pre">APIKey</span></code></a></p>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.ApplicationUser" title="ngrok.datatypes.ApplicationUser"><code class="xref py py-class docutils literal notranslate"><span class="pre">ApplicationUser</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt id="ngrok.services.APIKeysClient.list">
-<code class="sig-name descname"><span class="pre">list</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">before_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#APIKeysClient.list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.APIKeysClient.list" title="Permalink to this definition">¶</a></dt>
-<dd><p>List all API keys owned by this account</p>
+<dt id="ngrok.services.ApplicationUsersClient.list">
+<code class="sig-name descname"><span class="pre">list</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">before_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#ApplicationUsersClient.list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.ApplicationUsersClient.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>List all application users for this account.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -250,30 +225,10 @@ ngrok.com dashboard.</p>
 </ul>
 </dd>
 </dl>
-<p><a class="reference external" href="https://ngrok.com/docs/api#api-api-keys-list">https://ngrok.com/docs/api#api-api-keys-list</a></p>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-application-users-list">https://ngrok.com/docs/api#api-application-users-list</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.APIKeyList" title="ngrok.datatypes.APIKeyList"><code class="xref py py-class docutils literal notranslate"><span class="pre">APIKeyList</span></code></a></p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="ngrok.services.APIKeysClient.update">
-<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#APIKeysClient.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.APIKeysClient.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update attributes of an API key by ID.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
-<li><p><strong>description</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – human-readable description of what uses the API key to authenticate. optional, max 255 bytes.</p></li>
-<li><p><strong>metadata</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – arbitrary user-defined data of this API key. optional, max 4096 bytes</p></li>
-</ul>
-</dd>
-</dl>
-<p><a class="reference external" href="https://ngrok.com/docs/api#api-api-keys-update">https://ngrok.com/docs/api#api-api-keys-update</a></p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.APIKey" title="ngrok.datatypes.APIKey"><code class="xref py py-class docutils literal notranslate"><span class="pre">APIKey</span></code></a></p>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.ApplicationUserList" title="ngrok.datatypes.ApplicationUserList"><code class="xref py py-class docutils literal notranslate"><span class="pre">ApplicationUserList</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -284,23 +239,23 @@ ngrok.com dashboard.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="application_sessions.html">
+          <a class="next-page" href="failover_backends.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Application Sessions</div>
+                <div class="title">Failover Backends</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="agent_ingresses.html">
+          <a class="prev-page" href="application_sessions.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Agent Ingresses</div>
+                <div class="title">Application Sessions</div>
                 
               </div>
             </a>
@@ -314,7 +269,7 @@ ngrok.com dashboard.</p>
               <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
               <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
             |
-            <a class="muted-link" href="_sources/api_keys.rst.txt"
+            <a class="muted-link" href="_sources/application_users.rst.txt"
                rel="nofollow">
               Show Source
             </a>

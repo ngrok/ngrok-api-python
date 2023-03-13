@@ -118,6 +118,8 @@
 <li class="toctree-l1"><a class="reference internal" href="abuse_reports.html">Abuse Reports</a></li>
 <li class="toctree-l1"><a class="reference internal" href="agent_ingresses.html">Agent Ingresses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_keys.html">API Keys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application_sessions.html">Application Sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application_users.html">Application Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="failover_backends.html">Failover Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="http_response_backends.html">HTTP Response Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tunnel_group_backends.html">Tunnel Group Backends</a></li>
@@ -222,14 +224,32 @@ ngrok that violate ngrok’s terms of service.</p>
 <dl class="py method">
 <dt id="ngrok.Client.api_keys">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">api_keys</span></code><a class="headerlink" href="#ngrok.Client.api_keys" title="Permalink to this definition">¶</a></dt>
-<dd><p>API Keys are used to authenticate to the <cite>ngrok
-API</cite> &lt;<a class="reference external" href="https://ngrok.com/docs/api#authentication">https://ngrok.com/docs/api#authentication</a>&gt;`_. You may use the API itself
+<dd><p>API Keys are used to authenticate to the <a class="reference external" href="https://ngrok.com/docs/api#authentication">ngrok
+API</a>. You may use the API itself
 to provision and manage API Keys but you’ll need to provision your first API
-key from the <cite>API Keys page</cite> &lt;<a class="reference external" href="https://dashboard.ngrok.com/api/keys">https://dashboard.ngrok.com/api/keys</a>&gt;`_ on your
+key from the <a class="reference external" href="https://dashboard.ngrok.com/api/keys">API Keys page</a> on your
 ngrok.com dashboard.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="api_keys.html#ngrok.services.APIKeysClient" title="ngrok.services.APIKeysClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">APIKeysClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.application_sessions">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">application_sessions</span></code><a class="headerlink" href="#ngrok.Client.application_sessions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="application_sessions.html#ngrok.services.ApplicationSessionsClient" title="ngrok.services.ApplicationSessionsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">ApplicationSessionsClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.Client.application_users">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">application_users</span></code><a class="headerlink" href="#ngrok.Client.application_users" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="application_users.html#ngrok.services.ApplicationUsersClient" title="ngrok.services.ApplicationUsersClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">ApplicationUsersClient</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>

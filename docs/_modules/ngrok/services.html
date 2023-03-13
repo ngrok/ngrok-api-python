@@ -118,6 +118,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../abuse_reports.html">Abuse Reports</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../agent_ingresses.html">Agent Ingresses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api_keys.html">API Keys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../application_sessions.html">Application Sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../application_users.html">Application Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../failover_backends.html">Failover Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../http_response_backends.html">HTTP Response Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tunnel_group_backends.html">Tunnel Group Backends</a></li>
@@ -181,6 +183,7 @@
 <span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 <span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterator</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Sequence</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
 
 <span class="kn">from</span> <span class="nn">.http_client</span> <span class="kn">import</span> <span class="n">HTTPClient</span>
 <span class="kn">from</span> <span class="nn">.datatypes</span> <span class="kn">import</span> <span class="o">*</span>
@@ -188,7 +191,7 @@
 
 
 <div class="viewcode-block" id="AbuseReportsClient"><a class="viewcode-back" href="../../abuse_reports.html#ngrok.services.AbuseReportsClient">[docs]</a><span class="k">class</span> <span class="nc">AbuseReportsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""Abuse Reports allow you to submit take-down requests for URLs hosted by</span>
+<span class="w">    </span><span class="sd">"""Abuse Reports allow you to submit take-down requests for URLs hosted by</span>
 <span class="sd">    ngrok that violate ngrok's terms of service."""</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
@@ -199,7 +202,7 @@
         <span class="n">urls</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbuseReport</span><span class="p">:</span>
-        <span class="sd">"""Creates a new abuse report which will be reviewed by our system and abuse response team. This API is only available to authorized accounts. Contact abuse@ngrok.com to request access</span>
+<span class="w">        </span><span class="sd">"""Creates a new abuse report which will be reviewed by our system and abuse response team. This API is only available to authorized accounts. Contact abuse@ngrok.com to request access</span>
 
 <span class="sd">        :param urls: a list of URLs containing suspected abusive content</span>
 <span class="sd">        :param metadata: arbitrary user-defined data about this abuse report. Optional, max 4096 bytes.</span>
@@ -218,7 +221,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbuseReport</span><span class="p">:</span>
-        <span class="sd">"""Get the detailed status of abuse report by ID.</span>
+<span class="w">        </span><span class="sd">"""Get the detailed status of abuse report by ID.</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -243,7 +246,7 @@
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentIngress</span><span class="p">:</span>
-        <span class="sd">"""Create a new Agent Ingress. The ngrok agent can be configured to connect to ngrok via the new set of addresses on the returned Agent Ingress.</span>
+<span class="w">        </span><span class="sd">"""Create a new Agent Ingress. The ngrok agent can be configured to connect to ngrok via the new set of addresses on the returned Agent Ingress.</span>
 
 <span class="sd">        :param description: human-readable description of the use of this Agent Ingress. optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this Agent Ingress. optional, max 4096 bytes</span>
@@ -264,7 +267,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete an Agent Ingress by ID</span>
+<span class="w">        </span><span class="sd">"""Delete an Agent Ingress by ID</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -281,7 +284,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentIngress</span><span class="p">:</span>
-        <span class="sd">"""Get the details of an Agent Ingress by ID.</span>
+<span class="w">        </span><span class="sd">"""Get the details of an Agent Ingress by ID.</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -300,7 +303,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentIngressList</span><span class="p">:</span>
-        <span class="sd">"""List all Agent Ingresses owned by this account</span>
+<span class="w">        </span><span class="sd">"""List all Agent Ingresses owned by this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -321,7 +324,7 @@
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentIngress</span><span class="p">:</span>
-        <span class="sd">"""Update attributes of an Agent Ingress by ID.</span>
+<span class="w">        </span><span class="sd">"""Update attributes of an Agent Ingress by ID.</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param description: human-readable description of the use of this Agent Ingress. optional, max 255 bytes.</span>
@@ -342,10 +345,10 @@
 
 
 <div class="viewcode-block" id="APIKeysClient"><a class="viewcode-back" href="../../api_keys.html#ngrok.services.APIKeysClient">[docs]</a><span class="k">class</span> <span class="nc">APIKeysClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""API Keys are used to authenticate to the `ngrok</span>
-<span class="sd">    API` &lt;https://ngrok.com/docs/api#authentication&gt;`_. You may use the API itself</span>
+<span class="w">    </span><span class="sd">"""API Keys are used to authenticate to the `ngrok</span>
+<span class="sd">    API &lt;https://ngrok.com/docs/api#authentication&gt;`_. You may use the API itself</span>
 <span class="sd">    to provision and manage API Keys but you'll need to provision your first API</span>
-<span class="sd">    key from the `API Keys page` &lt;https://dashboard.ngrok.com/api/keys&gt;`_ on your</span>
+<span class="sd">    key from the `API Keys page &lt;https://dashboard.ngrok.com/api/keys&gt;`_ on your</span>
 <span class="sd">    ngrok.com dashboard."""</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
@@ -355,11 +358,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
+        <span class="n">owner_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">APIKey</span><span class="p">:</span>
-        <span class="sd">"""Create a new API key. The generated API key can be used to authenticate to the ngrok API.</span>
+<span class="w">        </span><span class="sd">"""Create a new API key. The generated API key can be used to authenticate to the ngrok API.</span>
 
 <span class="sd">        :param description: human-readable description of what uses the API key to authenticate. optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined data of this API key. optional, max 4096 bytes</span>
+<span class="sd">        :param owner_id: If supplied at credential creation, ownership will be assigned to the specified User or Bot. Only admins may specify an owner other than themselves. Defaults to the authenticated User or Bot.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-api-keys-create</span>
 <span class="sd">        """</span>
@@ -367,6 +372,7 @@
         <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
             <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
+            <span class="n">owner_id</span><span class="o">=</span><span class="n">owner_id</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">APIKey</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -375,7 +381,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete an API key by ID</span>
+<span class="w">        </span><span class="sd">"""Delete an API key by ID</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -392,7 +398,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">APIKey</span><span class="p">:</span>
-        <span class="sd">"""Get the details of an API key by ID.</span>
+<span class="w">        </span><span class="sd">"""Get the details of an API key by ID.</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -411,7 +417,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">APIKeyList</span><span class="p">:</span>
-        <span class="sd">"""List all API keys owned by this account</span>
+<span class="w">        </span><span class="sd">"""List all API keys owned by this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -432,7 +438,7 @@
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">APIKey</span><span class="p">:</span>
-        <span class="sd">"""Update attributes of an API key by ID.</span>
+<span class="w">        </span><span class="sd">"""Update attributes of an API key by ID.</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param description: human-readable description of what uses the API key to authenticate. optional, max 255 bytes.</span>
@@ -452,8 +458,128 @@
         <span class="k">return</span> <span class="n">APIKey</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div></div>
 
 
+<div class="viewcode-block" id="ApplicationSessionsClient"><a class="viewcode-back" href="../../application_sessions.html#ngrok.services.ApplicationSessionsClient">[docs]</a><span class="k">class</span> <span class="nc">ApplicationSessionsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
+
+<div class="viewcode-block" id="ApplicationSessionsClient.get"><a class="viewcode-back" href="../../application_sessions.html#ngrok.services.ApplicationSessionsClient.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApplicationSession</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Get an application session by ID.</span>
+
+<span class="sd">        :param id: a resource identifier</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-application-sessions-get</span>
+<span class="sd">        """</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/app/sessions/</span><span class="si">{id}</span><span class="s2">"</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">body_arg</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ApplicationSession</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ApplicationSessionsClient.delete"><a class="viewcode-back" href="../../application_sessions.html#ngrok.services.ApplicationSessionsClient.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Delete an application session by ID.</span>
+
+<span class="sd">        :param id: a resource identifier</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-application-sessions-delete</span>
+<span class="sd">        """</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/app/sessions/</span><span class="si">{id}</span><span class="s2">"</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">body_arg</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ApplicationSessionsClient.list"><a class="viewcode-back" href="../../application_sessions.html#ngrok.services.ApplicationSessionsClient.list">[docs]</a>    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApplicationSessionList</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""List all application sessions for this account.</span>
+
+<span class="sd">        :param before_id:</span>
+<span class="sd">        :param limit:</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-application-sessions-list</span>
+<span class="sd">        """</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/app/sessions"</span>
+        <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
+            <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ApplicationSessionList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="ApplicationUsersClient"><a class="viewcode-back" href="../../application_users.html#ngrok.services.ApplicationUsersClient">[docs]</a><span class="k">class</span> <span class="nc">ApplicationUsersClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
+
+<div class="viewcode-block" id="ApplicationUsersClient.get"><a class="viewcode-back" href="../../application_users.html#ngrok.services.ApplicationUsersClient.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApplicationUser</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Get an application user by ID.</span>
+
+<span class="sd">        :param id: a resource identifier</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-application-users-get</span>
+<span class="sd">        """</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/app/users/</span><span class="si">{id}</span><span class="s2">"</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">body_arg</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ApplicationUser</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ApplicationUsersClient.delete"><a class="viewcode-back" href="../../application_users.html#ngrok.services.ApplicationUsersClient.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Delete an application user by ID.</span>
+
+<span class="sd">        :param id: a resource identifier</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-application-users-delete</span>
+<span class="sd">        """</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/app/users/</span><span class="si">{id}</span><span class="s2">"</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">body_arg</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ApplicationUsersClient.list"><a class="viewcode-back" href="../../application_users.html#ngrok.services.ApplicationUsersClient.list">[docs]</a>    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApplicationUserList</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""List all application users for this account.</span>
+
+<span class="sd">        :param before_id:</span>
+<span class="sd">        :param limit:</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-application-users-list</span>
+<span class="sd">        """</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">"/app/users"</span>
+        <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
+            <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ApplicationUserList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div></div>
+
+
 <div class="viewcode-block" id="FailoverBackendsClient"><a class="viewcode-back" href="../../failover_backends.html#ngrok.services.FailoverBackendsClient">[docs]</a><span class="k">class</span> <span class="nc">FailoverBackendsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""A Failover backend defines failover behavior within a list of referenced</span>
+<span class="w">    </span><span class="sd">"""A Failover backend defines failover behavior within a list of referenced</span>
 <span class="sd">    backends. Traffic is sent to the first backend in the list. If that backend</span>
 <span class="sd">    is offline or no connection can be established, ngrok attempts to connect to</span>
 <span class="sd">    the next backend in the list until one is successful."""</span>
@@ -467,7 +593,7 @@
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">backends</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FailoverBackend</span><span class="p">:</span>
-        <span class="sd">"""Create a new Failover backend</span>
+<span class="w">        </span><span class="sd">"""Create a new Failover backend</span>
 
 <span class="sd">        :param description: human-readable description of this backend. Optional</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this backend. Optional</span>
@@ -488,7 +614,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete a Failover backend by ID.</span>
+<span class="w">        </span><span class="sd">"""Delete a Failover backend by ID.</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -505,7 +631,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FailoverBackend</span><span class="p">:</span>
-        <span class="sd">"""Get detailed information about a Failover backend by ID</span>
+<span class="w">        </span><span class="sd">"""Get detailed information about a Failover backend by ID</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -524,7 +650,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FailoverBackendList</span><span class="p">:</span>
-        <span class="sd">"""List all Failover backends on this account</span>
+<span class="w">        </span><span class="sd">"""List all Failover backends on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -546,7 +672,7 @@
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">backends</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FailoverBackend</span><span class="p">:</span>
-        <span class="sd">"""Update Failover backend by ID</span>
+<span class="w">        </span><span class="sd">"""Update Failover backend by ID</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param description: human-readable description of this backend. Optional</span>
@@ -580,7 +706,7 @@
         <span class="n">headers</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{},</span>
         <span class="n">status_code</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HTTPResponseBackend</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param description: human-readable description of this backend. Optional</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this backend. Optional</span>
@@ -605,7 +731,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -622,7 +748,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HTTPResponseBackend</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -641,7 +767,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HTTPResponseBackendList</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -665,7 +791,7 @@
         <span class="n">headers</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">status_code</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HTTPResponseBackend</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param description: human-readable description of this backend. Optional</span>
@@ -692,7 +818,7 @@
 
 
 <div class="viewcode-block" id="TunnelGroupBackendsClient"><a class="viewcode-back" href="../../tunnel_group_backends.html#ngrok.services.TunnelGroupBackendsClient">[docs]</a><span class="k">class</span> <span class="nc">TunnelGroupBackendsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""A Tunnel Group Backend balances traffic among all online tunnels that match</span>
+<span class="w">    </span><span class="sd">"""A Tunnel Group Backend balances traffic among all online tunnels that match</span>
 <span class="sd">    a label selector."""</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
@@ -704,7 +830,7 @@
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">labels</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{},</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelGroupBackend</span><span class="p">:</span>
-        <span class="sd">"""Create a new TunnelGroup backend</span>
+<span class="w">        </span><span class="sd">"""Create a new TunnelGroup backend</span>
 
 <span class="sd">        :param description: human-readable description of this backend. Optional</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this backend. Optional</span>
@@ -725,7 +851,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete a TunnelGroup backend by ID.</span>
+<span class="w">        </span><span class="sd">"""Delete a TunnelGroup backend by ID.</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -742,7 +868,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelGroupBackend</span><span class="p">:</span>
-        <span class="sd">"""Get detailed information about a TunnelGroup backend by ID</span>
+<span class="w">        </span><span class="sd">"""Get detailed information about a TunnelGroup backend by ID</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -761,7 +887,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelGroupBackendList</span><span class="p">:</span>
-        <span class="sd">"""List all TunnelGroup backends on this account</span>
+<span class="w">        </span><span class="sd">"""List all TunnelGroup backends on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -783,7 +909,7 @@
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">labels</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{},</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelGroupBackend</span><span class="p">:</span>
-        <span class="sd">"""Update TunnelGroup backend by ID</span>
+<span class="w">        </span><span class="sd">"""Update TunnelGroup backend by ID</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param description: human-readable description of this backend. Optional</span>
@@ -806,7 +932,7 @@
 
 
 <div class="viewcode-block" id="WeightedBackendsClient"><a class="viewcode-back" href="../../weighted_backends.html#ngrok.services.WeightedBackendsClient">[docs]</a><span class="k">class</span> <span class="nc">WeightedBackendsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""A Weighted Backend balances traffic among the referenced backends. Traffic</span>
+<span class="w">    </span><span class="sd">"""A Weighted Backend balances traffic among the referenced backends. Traffic</span>
 <span class="sd">    is assigned proportionally to each based on its weight. The percentage of</span>
 <span class="sd">    traffic is calculated by dividing a backend's weight by the sum of all</span>
 <span class="sd">    weights."""</span>
@@ -820,7 +946,7 @@
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">backends</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">{},</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WeightedBackend</span><span class="p">:</span>
-        <span class="sd">"""Create a new Weighted backend</span>
+<span class="w">        </span><span class="sd">"""Create a new Weighted backend</span>
 
 <span class="sd">        :param description: human-readable description of this backend. Optional</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this backend. Optional</span>
@@ -841,7 +967,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete a Weighted backend by ID.</span>
+<span class="w">        </span><span class="sd">"""Delete a Weighted backend by ID.</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -858,7 +984,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WeightedBackend</span><span class="p">:</span>
-        <span class="sd">"""Get detailed information about a Weighted backend by ID</span>
+<span class="w">        </span><span class="sd">"""Get detailed information about a Weighted backend by ID</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -877,7 +1003,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WeightedBackendList</span><span class="p">:</span>
-        <span class="sd">"""List all Weighted backends on this account</span>
+<span class="w">        </span><span class="sd">"""List all Weighted backends on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -899,7 +1025,7 @@
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">backends</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">{},</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WeightedBackend</span><span class="p">:</span>
-        <span class="sd">"""Update Weighted backend by ID</span>
+<span class="w">        </span><span class="sd">"""Update Weighted backend by ID</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param description: human-readable description of this backend. Optional</span>
@@ -922,7 +1048,7 @@
 
 
 <div class="viewcode-block" id="CertificateAuthoritiesClient"><a class="viewcode-back" href="../../certificate_authorities.html#ngrok.services.CertificateAuthoritiesClient">[docs]</a><span class="k">class</span> <span class="nc">CertificateAuthoritiesClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""Certificate Authorities are x509 certificates that are used to sign other</span>
+<span class="w">    </span><span class="sd">"""Certificate Authorities are x509 certificates that are used to sign other</span>
 <span class="sd">    x509 certificates. Attach a Certificate Authority to the Mutual TLS module</span>
 <span class="sd">    to verify that the TLS certificate presented by a client has been signed by</span>
 <span class="sd">    this CA. Certificate Authorities  are used only for mTLS validation only and</span>
@@ -937,7 +1063,7 @@
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CertificateAuthority</span><span class="p">:</span>
-        <span class="sd">"""Upload a new Certificate Authority</span>
+<span class="w">        </span><span class="sd">"""Upload a new Certificate Authority</span>
 
 <span class="sd">        :param description: human-readable description of this Certificate Authority. optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this Certificate Authority. optional, max 4096 bytes.</span>
@@ -958,7 +1084,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete a Certificate Authority</span>
+<span class="w">        </span><span class="sd">"""Delete a Certificate Authority</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -975,7 +1101,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CertificateAuthority</span><span class="p">:</span>
-        <span class="sd">"""Get detailed information about a certficate authority</span>
+<span class="w">        </span><span class="sd">"""Get detailed information about a certficate authority</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -994,7 +1120,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CertificateAuthorityList</span><span class="p">:</span>
-        <span class="sd">"""List all Certificate Authority on this account</span>
+<span class="w">        </span><span class="sd">"""List all Certificate Authority on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -1015,7 +1141,7 @@
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CertificateAuthority</span><span class="p">:</span>
-        <span class="sd">"""Update attributes of a Certificate Authority by ID</span>
+<span class="w">        </span><span class="sd">"""Update attributes of a Certificate Authority by ID</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param description: human-readable description of this Certificate Authority. optional, max 255 bytes.</span>
@@ -1036,7 +1162,7 @@
 
 
 <div class="viewcode-block" id="CredentialsClient"><a class="viewcode-back" href="../../credentials.html#ngrok.services.CredentialsClient">[docs]</a><span class="k">class</span> <span class="nc">CredentialsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""Tunnel Credentials are ngrok agent authtokens. They authorize the ngrok</span>
+<span class="w">    </span><span class="sd">"""Tunnel Credentials are ngrok agent authtokens. They authorize the ngrok</span>
 <span class="sd">    agent to connect the ngrok service as your account. They are installed with</span>
 <span class="sd">    the ``ngrok config add-authtoken`` command or by specifying it in the ``ngrok.yml``</span>
 <span class="sd">    configuration file with the ``authtoken`` property."""</span>
@@ -1049,12 +1175,14 @@
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">acl</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">owner_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Credential</span><span class="p">:</span>
-        <span class="sd">"""Create a new tunnel authtoken credential. This authtoken credential can be used to start a new tunnel session. The response to this API call is the only time the generated token is available. If you need it for future use, you must save it securely yourself.</span>
+<span class="w">        </span><span class="sd">"""Create a new tunnel authtoken credential. This authtoken credential can be used to start a new tunnel session. The response to this API call is the only time the generated token is available. If you need it for future use, you must save it securely yourself.</span>
 
 <span class="sd">        :param description: human-readable description of who or what will use the credential to authenticate. Optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this credential. Optional, max 4096 bytes.</span>
-<span class="sd">        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.</span>
+<span class="sd">        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains, addresses, and labels the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules for domains may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. Bind rules for labels may specify a wildcard key and/or value to match multiple labels. For example, you may specify a rule of ``bind:*=example`` which will allow ``x=example``, ``y=example``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.</span>
+<span class="sd">        :param owner_id: If supplied at credential creation, ownership will be assigned to the specified User or Bot. Only admins may specify an owner other than themselves. Defaults to the authenticated User or Bot.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-credentials-create</span>
 <span class="sd">        """</span>
@@ -1063,6 +1191,7 @@
             <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
             <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
             <span class="n">acl</span><span class="o">=</span><span class="n">acl</span><span class="p">,</span>
+            <span class="n">owner_id</span><span class="o">=</span><span class="n">owner_id</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Credential</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -1071,7 +1200,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete a tunnel authtoken credential by ID</span>
+<span class="w">        </span><span class="sd">"""Delete a tunnel authtoken credential by ID</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -1088,7 +1217,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Credential</span><span class="p">:</span>
-        <span class="sd">"""Get detailed information about a tunnel authtoken credential</span>
+<span class="w">        </span><span class="sd">"""Get detailed information about a tunnel authtoken credential</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -1107,7 +1236,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CredentialList</span><span class="p">:</span>
-        <span class="sd">"""List all tunnel authtoken credentials on this account</span>
+<span class="w">        </span><span class="sd">"""List all tunnel authtoken credentials on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -1129,12 +1258,12 @@
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">acl</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Credential</span><span class="p">:</span>
-        <span class="sd">"""Update attributes of an tunnel authtoken credential by ID</span>
+<span class="w">        </span><span class="sd">"""Update attributes of an tunnel authtoken credential by ID</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param description: human-readable description of who or what will use the credential to authenticate. Optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this credential. Optional, max 4096 bytes.</span>
-<span class="sd">        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.</span>
+<span class="sd">        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains, addresses, and labels the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules for domains may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. Bind rules for labels may specify a wildcard key and/or value to match multiple labels. For example, you may specify a rule of ``bind:*=example`` which will allow ``x=example``, ``y=example``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-credentials-update</span>
 <span class="sd">        """</span>
@@ -1174,7 +1303,7 @@
         <span class="n">oidc</span><span class="p">:</span> <span class="n">EndpointOIDC</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">websocket_tcp_converter</span><span class="p">:</span> <span class="n">EndpointWebsocketTCPConverter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HTTPSEdgeRoute</span><span class="p">:</span>
-        <span class="sd">"""Create an HTTPS Edge Route</span>
+<span class="w">        </span><span class="sd">"""Create an HTTPS Edge Route</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param match_type: Type of match to use for this route. Valid values are "exact_path" and "path_prefix".</span>
@@ -1224,7 +1353,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HTTPSEdgeRoute</span><span class="p">:</span>
-        <span class="sd">"""Get an HTTPS Edge Route by ID</span>
+<span class="w">        </span><span class="sd">"""Get an HTTPS Edge Route by ID</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -1260,7 +1389,7 @@
         <span class="n">oidc</span><span class="p">:</span> <span class="n">EndpointOIDC</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">websocket_tcp_converter</span><span class="p">:</span> <span class="n">EndpointWebsocketTCPConverter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HTTPSEdgeRoute</span><span class="p">:</span>
-        <span class="sd">"""Updates an HTTPS Edge Route by ID. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.</span>
+<span class="w">        </span><span class="sd">"""Updates an HTTPS Edge Route by ID. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -1312,7 +1441,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete an HTTPS Edge Route by ID</span>
+<span class="w">        </span><span class="sd">"""Delete an HTTPS Edge Route by ID</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -1340,7 +1469,7 @@
         <span class="n">mutual_tls</span><span class="p">:</span> <span class="n">EndpointMutualTLSMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">tls_termination</span><span class="p">:</span> <span class="n">EndpointTLSTerminationAtEdge</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HTTPSEdge</span><span class="p">:</span>
-        <span class="sd">"""Create an HTTPS Edge</span>
+<span class="w">        </span><span class="sd">"""Create an HTTPS Edge</span>
 
 <span class="sd">        :param description: human-readable description of what this edge will be used for; optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this edge; optional, max 4096 bytes.</span>
@@ -1365,7 +1494,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HTTPSEdge</span><span class="p">:</span>
-        <span class="sd">"""Get an HTTPS Edge by ID</span>
+<span class="w">        </span><span class="sd">"""Get an HTTPS Edge by ID</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -1384,7 +1513,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HTTPSEdgeList</span><span class="p">:</span>
-        <span class="sd">"""Returns a list of all HTTPS Edges on this account</span>
+<span class="w">        </span><span class="sd">"""Returns a list of all HTTPS Edges on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -1408,7 +1537,7 @@
         <span class="n">mutual_tls</span><span class="p">:</span> <span class="n">EndpointMutualTLSMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">tls_termination</span><span class="p">:</span> <span class="n">EndpointTLSTerminationAtEdge</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HTTPSEdge</span><span class="p">:</span>
-        <span class="sd">"""Updates an HTTPS Edge by ID. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.</span>
+<span class="w">        </span><span class="sd">"""Updates an HTTPS Edge by ID. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.</span>
 
 <span class="sd">        :param id: unique identifier of this edge</span>
 <span class="sd">        :param description: human-readable description of what this edge will be used for; optional, max 255 bytes.</span>
@@ -1437,7 +1566,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete an HTTPS Edge by ID</span>
+<span class="w">        </span><span class="sd">"""Delete an HTTPS Edge by ID</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -1460,7 +1589,7 @@
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">module</span><span class="p">:</span> <span class="n">EndpointMutualTLSMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointMutualTLS</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param module:</span>
@@ -1479,7 +1608,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointMutualTLS</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -1497,7 +1626,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -1520,7 +1649,7 @@
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">module</span><span class="p">:</span> <span class="n">EndpointTLSTerminationAtEdge</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointTLSTermination</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param module:</span>
@@ -1539,7 +1668,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointTLSTermination</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -1557,7 +1686,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -1581,7 +1710,7 @@
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">module</span><span class="p">:</span> <span class="n">EndpointBackendMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointBackend</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id:</span>
 <span class="sd">        :param id:</span>
@@ -1603,7 +1732,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointBackend</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -1624,7 +1753,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -1650,7 +1779,7 @@
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">module</span><span class="p">:</span> <span class="n">EndpointIPPolicyMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointIPPolicy</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id:</span>
 <span class="sd">        :param id:</span>
@@ -1672,7 +1801,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointIPPolicy</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -1693,7 +1822,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -1719,7 +1848,7 @@
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">module</span><span class="p">:</span> <span class="n">EndpointRequestHeaders</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointRequestHeaders</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id:</span>
 <span class="sd">        :param id:</span>
@@ -1741,7 +1870,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointRequestHeaders</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -1762,7 +1891,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -1788,7 +1917,7 @@
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">module</span><span class="p">:</span> <span class="n">EndpointResponseHeaders</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointResponseHeaders</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id:</span>
 <span class="sd">        :param id:</span>
@@ -1810,7 +1939,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointResponseHeaders</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -1831,7 +1960,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -1857,7 +1986,7 @@
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">module</span><span class="p">:</span> <span class="n">EndpointCompression</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointCompression</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id:</span>
 <span class="sd">        :param id:</span>
@@ -1879,7 +2008,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointCompression</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -1900,7 +2029,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -1926,7 +2055,7 @@
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">module</span><span class="p">:</span> <span class="n">EndpointCircuitBreaker</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointCircuitBreaker</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id:</span>
 <span class="sd">        :param id:</span>
@@ -1948,7 +2077,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointCircuitBreaker</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -1969,7 +2098,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -1995,7 +2124,7 @@
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">module</span><span class="p">:</span> <span class="n">EndpointWebhookValidation</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointWebhookValidation</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id:</span>
 <span class="sd">        :param id:</span>
@@ -2017,7 +2146,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointWebhookValidation</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -2038,7 +2167,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -2064,7 +2193,7 @@
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">module</span><span class="p">:</span> <span class="n">EndpointOAuth</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointOAuth</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id:</span>
 <span class="sd">        :param id:</span>
@@ -2086,7 +2215,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointOAuth</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -2107,7 +2236,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -2133,7 +2262,7 @@
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">module</span><span class="p">:</span> <span class="n">EndpointSAMLMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointSAML</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id:</span>
 <span class="sd">        :param id:</span>
@@ -2155,7 +2284,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointSAML</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -2176,7 +2305,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -2202,7 +2331,7 @@
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">module</span><span class="p">:</span> <span class="n">EndpointOIDC</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointOIDC</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id:</span>
 <span class="sd">        :param id:</span>
@@ -2224,7 +2353,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointOIDC</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -2245,7 +2374,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -2271,7 +2400,7 @@
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">module</span><span class="p">:</span> <span class="n">EndpointWebsocketTCPConverter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointWebsocketTCPConverter</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id:</span>
 <span class="sd">        :param id:</span>
@@ -2293,7 +2422,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointWebsocketTCPConverter</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -2314,7 +2443,7 @@
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
@@ -2342,7 +2471,7 @@
         <span class="n">backend</span><span class="p">:</span> <span class="n">EndpointBackendMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">ip_restriction</span><span class="p">:</span> <span class="n">EndpointIPPolicyMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TCPEdge</span><span class="p">:</span>
-        <span class="sd">"""Create a TCP Edge</span>
+<span class="w">        </span><span class="sd">"""Create a TCP Edge</span>
 
 <span class="sd">        :param description: human-readable description of what this edge will be used for; optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this edge. Optional, max 4096 bytes.</span>
@@ -2367,7 +2496,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TCPEdge</span><span class="p">:</span>
-        <span class="sd">"""Get a TCP Edge by ID</span>
+<span class="w">        </span><span class="sd">"""Get a TCP Edge by ID</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -2386,7 +2515,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TCPEdgeList</span><span class="p">:</span>
-        <span class="sd">"""Returns a list of all TCP Edges on this account</span>
+<span class="w">        </span><span class="sd">"""Returns a list of all TCP Edges on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -2410,7 +2539,7 @@
         <span class="n">backend</span><span class="p">:</span> <span class="n">EndpointBackendMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">ip_restriction</span><span class="p">:</span> <span class="n">EndpointIPPolicyMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TCPEdge</span><span class="p">:</span>
-        <span class="sd">"""Updates a TCP Edge by ID. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.</span>
+<span class="w">        </span><span class="sd">"""Updates a TCP Edge by ID. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.</span>
 
 <span class="sd">        :param id: unique identifier of this edge</span>
 <span class="sd">        :param description: human-readable description of what this edge will be used for; optional, max 255 bytes.</span>
@@ -2439,7 +2568,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete a TCP Edge by ID</span>
+<span class="w">        </span><span class="sd">"""Delete a TCP Edge by ID</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -2462,7 +2591,7 @@
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">module</span><span class="p">:</span> <span class="n">EndpointBackendMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointBackend</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param module:</span>
@@ -2481,7 +2610,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointBackend</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -2499,7 +2628,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -2522,7 +2651,7 @@
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">module</span><span class="p">:</span> <span class="n">EndpointIPPolicyMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointIPPolicy</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param module:</span>
@@ -2541,7 +2670,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointIPPolicy</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -2559,7 +2688,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -2587,7 +2716,7 @@
         <span class="n">mutual_tls</span><span class="p">:</span> <span class="n">EndpointMutualTLSMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">tls_termination</span><span class="p">:</span> <span class="n">EndpointTLSTermination</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TLSEdge</span><span class="p">:</span>
-        <span class="sd">"""Create a TLS Edge</span>
+<span class="w">        </span><span class="sd">"""Create a TLS Edge</span>
 
 <span class="sd">        :param description: human-readable description of what this edge will be used for; optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this edge. Optional, max 4096 bytes.</span>
@@ -2616,7 +2745,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TLSEdge</span><span class="p">:</span>
-        <span class="sd">"""Get a TLS Edge by ID</span>
+<span class="w">        </span><span class="sd">"""Get a TLS Edge by ID</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -2635,7 +2764,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TLSEdgeList</span><span class="p">:</span>
-        <span class="sd">"""Returns a list of all TLS Edges on this account</span>
+<span class="w">        </span><span class="sd">"""Returns a list of all TLS Edges on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -2661,7 +2790,7 @@
         <span class="n">mutual_tls</span><span class="p">:</span> <span class="n">EndpointMutualTLSMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">tls_termination</span><span class="p">:</span> <span class="n">EndpointTLSTermination</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TLSEdge</span><span class="p">:</span>
-        <span class="sd">"""Updates a TLS Edge by ID. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.</span>
+<span class="w">        </span><span class="sd">"""Updates a TLS Edge by ID. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.</span>
 
 <span class="sd">        :param id: unique identifier of this edge</span>
 <span class="sd">        :param description: human-readable description of what this edge will be used for; optional, max 255 bytes.</span>
@@ -2694,7 +2823,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete a TLS Edge by ID</span>
+<span class="w">        </span><span class="sd">"""Delete a TLS Edge by ID</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -2717,7 +2846,7 @@
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">module</span><span class="p">:</span> <span class="n">EndpointBackendMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointBackend</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param module:</span>
@@ -2736,7 +2865,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointBackend</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -2754,7 +2883,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -2777,7 +2906,7 @@
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">module</span><span class="p">:</span> <span class="n">EndpointIPPolicyMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointIPPolicy</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param module:</span>
@@ -2796,7 +2925,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointIPPolicy</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -2814,7 +2943,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -2837,7 +2966,7 @@
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">module</span><span class="p">:</span> <span class="n">EndpointMutualTLSMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointMutualTLS</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param module:</span>
@@ -2856,7 +2985,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointMutualTLS</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -2874,7 +3003,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -2897,7 +3026,7 @@
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">module</span><span class="p">:</span> <span class="n">EndpointTLSTermination</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointTLSTermination</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param module:</span>
@@ -2916,7 +3045,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointTLSTermination</span><span class="p">:</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -2934,7 +3063,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""</span>
+<span class="w">        </span><span class="sd">"""</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -2949,7 +3078,7 @@
 
 
 <div class="viewcode-block" id="EndpointsClient"><a class="viewcode-back" href="../../endpoints.html#ngrok.services.EndpointsClient">[docs]</a><span class="k">class</span> <span class="nc">EndpointsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""Endpoints provides an API for querying the endpoint objects</span>
+<span class="w">    </span><span class="sd">"""Endpoints provides an API for querying the endpoint objects</span>
 <span class="sd">    which define what tunnel or edge is used to serve a hostport.</span>
 <span class="sd">    Only active endpoints associated with a tunnel or backend are returned."""</span>
 
@@ -2961,7 +3090,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointList</span><span class="p">:</span>
-        <span class="sd">"""List all active endpoints on the account</span>
+<span class="w">        </span><span class="sd">"""List all active endpoints on the account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -2980,7 +3109,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Endpoint</span><span class="p">:</span>
-        <span class="sd">"""Get the status of an endpoint by ID</span>
+<span class="w">        </span><span class="sd">"""Get the status of an endpoint by ID</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -3006,7 +3135,7 @@
         <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">target</span><span class="p">:</span> <span class="n">EventTarget</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventDestination</span><span class="p">:</span>
-        <span class="sd">"""Create a new Event Destination. It will not apply to anything until it is associated with an Event Stream, and that Event Stream is associated with an Endpoint Config.</span>
+<span class="w">        </span><span class="sd">"""Create a new Event Destination. It will not apply to anything until it is associated with an Event Subscription.</span>
 
 <span class="sd">        :param metadata: Arbitrary user-defined machine-readable data of this Event Destination. Optional, max 4096 bytes.</span>
 <span class="sd">        :param description: Human-readable description of the Event Destination. Optional, max 255 bytes.</span>
@@ -3029,7 +3158,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete an Event Destination. If the Event Destination is still referenced by an Event Subscription.</span>
+<span class="w">        </span><span class="sd">"""Delete an Event Destination. If the Event Destination is still referenced by an Event Subscription.</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -3046,7 +3175,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventDestination</span><span class="p">:</span>
-        <span class="sd">"""Get detailed information about an Event Destination by ID.</span>
+<span class="w">        </span><span class="sd">"""Get detailed information about an Event Destination by ID.</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -3065,7 +3194,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventDestinationList</span><span class="p">:</span>
-        <span class="sd">"""List all Event Destinations on this account.</span>
+<span class="w">        </span><span class="sd">"""List all Event Destinations on this account.</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -3088,7 +3217,7 @@
         <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">target</span><span class="p">:</span> <span class="n">EventTarget</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventDestination</span><span class="p">:</span>
-        <span class="sd">"""Update attributes of an Event Destination.</span>
+<span class="w">        </span><span class="sd">"""Update attributes of an Event Destination.</span>
 
 <span class="sd">        :param id: Unique identifier for this Event Destination.</span>
 <span class="sd">        :param metadata: Arbitrary user-defined machine-readable data of this Event Destination. Optional, max 4096 bytes.</span>
@@ -3123,7 +3252,7 @@
         <span class="n">sources</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">EventSourceReplace</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
         <span class="n">destination_ids</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSubscription</span><span class="p">:</span>
-        <span class="sd">"""Create an Event Subscription.</span>
+<span class="w">        </span><span class="sd">"""Create an Event Subscription.</span>
 
 <span class="sd">        :param metadata: Arbitrary customer supplied information intended to be machine readable. Optional, max 4096 chars.</span>
 <span class="sd">        :param description: Arbitrary customer supplied information intended to be human readable. Optional, max 255 chars.</span>
@@ -3146,7 +3275,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete an Event Subscription.</span>
+<span class="w">        </span><span class="sd">"""Delete an Event Subscription.</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -3163,7 +3292,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSubscription</span><span class="p">:</span>
-        <span class="sd">"""Get an Event Subscription by ID.</span>
+<span class="w">        </span><span class="sd">"""Get an Event Subscription by ID.</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -3182,7 +3311,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSubscriptionList</span><span class="p">:</span>
-        <span class="sd">"""List this Account's Event Subscriptions.</span>
+<span class="w">        </span><span class="sd">"""List this Account's Event Subscriptions.</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -3205,7 +3334,7 @@
         <span class="n">sources</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">EventSourceReplace</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">destination_ids</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSubscription</span><span class="p">:</span>
-        <span class="sd">"""Update an Event Subscription.</span>
+<span class="w">        </span><span class="sd">"""Update an Event Subscription.</span>
 
 <span class="sd">        :param id: Unique identifier for this Event Subscription.</span>
 <span class="sd">        :param metadata: Arbitrary customer supplied information intended to be machine readable. Optional, max 4096 chars.</span>
@@ -3238,7 +3367,7 @@
         <span class="n">subscription_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSource</span><span class="p">:</span>
-        <span class="sd">"""Add an additional type for which this event subscription will trigger</span>
+<span class="w">        </span><span class="sd">"""Add an additional type for which this event subscription will trigger</span>
 
 <span class="sd">        :param subscription_id: The unique identifier for the Event Subscription that this Event Source is attached to.</span>
 <span class="sd">        :param type: Type of event for which an event subscription will trigger</span>
@@ -3260,7 +3389,7 @@
         <span class="n">subscription_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Remove a type for which this event subscription will trigger</span>
+<span class="w">        </span><span class="sd">"""Remove a type for which this event subscription will trigger</span>
 
 <span class="sd">        :param subscription_id: The unique identifier for the Event Subscription that this Event Source is attached to.</span>
 <span class="sd">        :param type: Type of event for which an event subscription will trigger</span>
@@ -3280,7 +3409,7 @@
         <span class="n">subscription_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSource</span><span class="p">:</span>
-        <span class="sd">"""Get the details for a given type that triggers for the given event subscription</span>
+<span class="w">        </span><span class="sd">"""Get the details for a given type that triggers for the given event subscription</span>
 
 <span class="sd">        :param subscription_id: The unique identifier for the Event Subscription that this Event Source is attached to.</span>
 <span class="sd">        :param type: Type of event for which an event subscription will trigger</span>
@@ -3300,7 +3429,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">subscription_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSourceList</span><span class="p">:</span>
-        <span class="sd">"""List the types for which this event subscription will trigger</span>
+<span class="w">        </span><span class="sd">"""List the types for which this event subscription will trigger</span>
 
 <span class="sd">        :param subscription_id: The unique identifier for the Event Subscription that this Event Source is attached to.</span>
 
@@ -3319,7 +3448,7 @@
         <span class="n">subscription_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSource</span><span class="p">:</span>
-        <span class="sd">"""Update the type for which this event subscription will trigger</span>
+<span class="w">        </span><span class="sd">"""Update the type for which this event subscription will trigger</span>
 
 <span class="sd">        :param subscription_id: The unique identifier for the Event Subscription that this Event Source is attached to.</span>
 <span class="sd">        :param type: Type of event for which an event subscription will trigger</span>
@@ -3337,7 +3466,7 @@
 
 
 <div class="viewcode-block" id="IPPoliciesClient"><a class="viewcode-back" href="../../ip_policies.html#ngrok.services.IPPoliciesClient">[docs]</a><span class="k">class</span> <span class="nc">IPPoliciesClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""IP Policies are reusable groups of CIDR ranges with an ``allow`` or ``deny``</span>
+<span class="w">    </span><span class="sd">"""IP Policies are reusable groups of CIDR ranges with an ``allow`` or ``deny``</span>
 <span class="sd">    action. They can be attached to endpoints via the Endpoint Configuration IP</span>
 <span class="sd">    Policy module. They can also be used with IP Restrictions to control source</span>
 <span class="sd">    IP ranges that can start tunnel sessions and connect to the API and dashboard."""</span>
@@ -3350,7 +3479,7 @@
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPPolicy</span><span class="p">:</span>
-        <span class="sd">"""Create a new IP policy. It will not apply to any traffic until you associate to a traffic source via an endpoint configuration or IP restriction.</span>
+<span class="w">        </span><span class="sd">"""Create a new IP policy. It will not apply to any traffic until you associate to a traffic source via an endpoint configuration or IP restriction.</span>
 
 <span class="sd">        :param description: human-readable description of the source IPs of this IP policy. optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this IP policy. optional, max 4096 bytes.</span>
@@ -3369,7 +3498,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete an IP policy. If the IP policy is referenced by another object for the purposes of traffic restriction it will be treated as if the IP policy remains but has zero rules.</span>
+<span class="w">        </span><span class="sd">"""Delete an IP policy. If the IP policy is referenced by another object for the purposes of traffic restriction it will be treated as if the IP policy remains but has zero rules.</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -3386,7 +3515,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPPolicy</span><span class="p">:</span>
-        <span class="sd">"""Get detailed information about an IP policy by ID.</span>
+<span class="w">        </span><span class="sd">"""Get detailed information about an IP policy by ID.</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -3405,7 +3534,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPPolicyList</span><span class="p">:</span>
-        <span class="sd">"""List all IP policies on this account</span>
+<span class="w">        </span><span class="sd">"""List all IP policies on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -3426,7 +3555,7 @@
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPPolicy</span><span class="p">:</span>
-        <span class="sd">"""Update attributes of an IP policy by ID</span>
+<span class="w">        </span><span class="sd">"""Update attributes of an IP policy by ID</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param description: human-readable description of the source IPs of this IP policy. optional, max 255 bytes.</span>
@@ -3447,7 +3576,7 @@
 
 
 <div class="viewcode-block" id="IPPolicyRulesClient"><a class="viewcode-back" href="../../ip_policy_rules.html#ngrok.services.IPPolicyRulesClient">[docs]</a><span class="k">class</span> <span class="nc">IPPolicyRulesClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""IP Policy Rules are the IPv4 or IPv6 CIDRs entries that</span>
+<span class="w">    </span><span class="sd">"""IP Policy Rules are the IPv4 or IPv6 CIDRs entries that</span>
 <span class="sd">    make up an IP Policy."""</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
@@ -3461,7 +3590,7 @@
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPPolicyRule</span><span class="p">:</span>
-        <span class="sd">"""Create a new IP policy rule attached to an IP Policy.</span>
+<span class="w">        </span><span class="sd">"""Create a new IP policy rule attached to an IP Policy.</span>
 
 <span class="sd">        :param description: human-readable description of the source IPs of this IP rule. optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this IP policy rule. optional, max 4096 bytes.</span>
@@ -3486,7 +3615,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete an IP policy rule.</span>
+<span class="w">        </span><span class="sd">"""Delete an IP policy rule.</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -3503,7 +3632,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPPolicyRule</span><span class="p">:</span>
-        <span class="sd">"""Get detailed information about an IP policy rule by ID.</span>
+<span class="w">        </span><span class="sd">"""Get detailed information about an IP policy rule by ID.</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -3522,7 +3651,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPPolicyRuleList</span><span class="p">:</span>
-        <span class="sd">"""List all IP policy rules on this account</span>
+<span class="w">        </span><span class="sd">"""List all IP policy rules on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -3544,7 +3673,7 @@
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">cidr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPPolicyRule</span><span class="p">:</span>
-        <span class="sd">"""Update attributes of an IP policy rule by ID</span>
+<span class="w">        </span><span class="sd">"""Update attributes of an IP policy rule by ID</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param description: human-readable description of the source IPs of this IP rule. optional, max 255 bytes.</span>
@@ -3567,7 +3696,7 @@
 
 
 <div class="viewcode-block" id="IPRestrictionsClient"><a class="viewcode-back" href="../../ip_restrictions.html#ngrok.services.IPRestrictionsClient">[docs]</a><span class="k">class</span> <span class="nc">IPRestrictionsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""An IP restriction is a restriction placed on the CIDRs that are allowed to</span>
+<span class="w">    </span><span class="sd">"""An IP restriction is a restriction placed on the CIDRs that are allowed to</span>
 <span class="sd">    initiate traffic to a specific aspect of your ngrok account. An IP</span>
 <span class="sd">    restriction has a type which defines the ingress it applies to. IP</span>
 <span class="sd">    restrictions can be used to enforce the source IPs that can make API</span>
@@ -3585,7 +3714,7 @@
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">enforced</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPRestriction</span><span class="p">:</span>
-        <span class="sd">"""Create a new IP restriction</span>
+<span class="w">        </span><span class="sd">"""Create a new IP restriction</span>
 
 <span class="sd">        :param description: human-readable description of this IP restriction. optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this IP restriction. optional, max 4096 bytes.</span>
@@ -3610,7 +3739,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete an IP restriction</span>
+<span class="w">        </span><span class="sd">"""Delete an IP restriction</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -3627,7 +3756,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPRestriction</span><span class="p">:</span>
-        <span class="sd">"""Get detailed information about an IP restriction</span>
+<span class="w">        </span><span class="sd">"""Get detailed information about an IP restriction</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -3646,7 +3775,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPRestrictionList</span><span class="p">:</span>
-        <span class="sd">"""List all IP restrictions on this account</span>
+<span class="w">        </span><span class="sd">"""List all IP restrictions on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -3669,7 +3798,7 @@
         <span class="n">enforced</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">ip_policy_ids</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPRestriction</span><span class="p">:</span>
-        <span class="sd">"""Update attributes of an IP restriction by ID</span>
+<span class="w">        </span><span class="sd">"""Update attributes of an IP restriction by ID</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param description: human-readable description of this IP restriction. optional, max 255 bytes.</span>
@@ -3694,7 +3823,7 @@
 
 
 <div class="viewcode-block" id="ReservedAddrsClient"><a class="viewcode-back" href="../../reserved_addrs.html#ngrok.services.ReservedAddrsClient">[docs]</a><span class="k">class</span> <span class="nc">ReservedAddrsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""Reserved Addresses are TCP addresses that can be used to listen for traffic.</span>
+<span class="w">    </span><span class="sd">"""Reserved Addresses are TCP addresses that can be used to listen for traffic.</span>
 <span class="sd">    TCP address hostnames and ports are assigned by ngrok, they cannot be</span>
 <span class="sd">    chosen."""</span>
 
@@ -3707,7 +3836,7 @@
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">region</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReservedAddr</span><span class="p">:</span>
-        <span class="sd">"""Create a new reserved address.</span>
+<span class="w">        </span><span class="sd">"""Create a new reserved address.</span>
 
 <span class="sd">        :param description: human-readable description of what this reserved address will be used for</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this reserved address. Optional, max 4096 bytes.</span>
@@ -3728,7 +3857,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete a reserved address.</span>
+<span class="w">        </span><span class="sd">"""Delete a reserved address.</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -3745,7 +3874,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReservedAddr</span><span class="p">:</span>
-        <span class="sd">"""Get the details of a reserved address.</span>
+<span class="w">        </span><span class="sd">"""Get the details of a reserved address.</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -3764,7 +3893,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReservedAddrList</span><span class="p">:</span>
-        <span class="sd">"""List all reserved addresses on this account.</span>
+<span class="w">        </span><span class="sd">"""List all reserved addresses on this account.</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -3785,7 +3914,7 @@
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReservedAddr</span><span class="p">:</span>
-        <span class="sd">"""Update the attributes of a reserved address.</span>
+<span class="w">        </span><span class="sd">"""Update the attributes of a reserved address.</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param description: human-readable description of what this reserved address will be used for</span>
@@ -3806,7 +3935,7 @@
 
 
 <div class="viewcode-block" id="ReservedDomainsClient"><a class="viewcode-back" href="../../reserved_domains.html#ngrok.services.ReservedDomainsClient">[docs]</a><span class="k">class</span> <span class="nc">ReservedDomainsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""Reserved Domains are hostnames that you can listen for traffic on. Domains</span>
+<span class="w">    </span><span class="sd">"""Reserved Domains are hostnames that you can listen for traffic on. Domains</span>
 <span class="sd">    can be used to listen for http, https or tls traffic. You may use a domain</span>
 <span class="sd">    that you own by creating a CNAME record specified in the returned resource.</span>
 <span class="sd">    This CNAME record points traffic for that domain to ngrok's edge servers."""</span>
@@ -3816,16 +3945,18 @@
 
 <div class="viewcode-block" id="ReservedDomainsClient.create"><a class="viewcode-back" href="../../reserved_domains.html#ngrok.services.ReservedDomainsClient.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
+        <span class="n">domain</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">region</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">certificate_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">certificate_management_policy</span><span class="p">:</span> <span class="n">ReservedDomainCertPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReservedDomain</span><span class="p">:</span>
-        <span class="sd">"""Create a new reserved domain.</span>
+<span class="w">        </span><span class="sd">"""Create a new reserved domain.</span>
 
 <span class="sd">        :param name: the domain name to reserve. It may be a full domain name like app.example.com. If the name does not contain a '.' it will reserve that subdomain on ngrok.io.</span>
+<span class="sd">        :param domain: hostname of the reserved domain</span>
 <span class="sd">        :param region: reserve the domain in this geographic ngrok datacenter. Optional, default is us. (au, eu, ap, us, jp, in, sa)</span>
 <span class="sd">        :param description: human-readable description of what this reserved domain will be used for</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this reserved domain. Optional, max 4096 bytes.</span>
@@ -3837,6 +3968,7 @@
         <span class="n">path</span> <span class="o">=</span> <span class="s2">"/reserved_domains"</span>
         <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">domain</span><span class="o">=</span><span class="n">domain</span><span class="p">,</span>
             <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
             <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
             <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
@@ -3850,7 +3982,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete a reserved domain.</span>
+<span class="w">        </span><span class="sd">"""Delete a reserved domain.</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -3867,7 +3999,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReservedDomain</span><span class="p">:</span>
-        <span class="sd">"""Get the details of a reserved domain.</span>
+<span class="w">        </span><span class="sd">"""Get the details of a reserved domain.</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -3886,7 +4018,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReservedDomainList</span><span class="p">:</span>
-        <span class="sd">"""List all reserved domains on this account.</span>
+<span class="w">        </span><span class="sd">"""List all reserved domains on this account.</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -3909,7 +4041,7 @@
         <span class="n">certificate_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">certificate_management_policy</span><span class="p">:</span> <span class="n">ReservedDomainCertPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReservedDomain</span><span class="p">:</span>
-        <span class="sd">"""Update the attributes of a reserved domain.</span>
+<span class="w">        </span><span class="sd">"""Update the attributes of a reserved domain.</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param description: human-readable description of what this reserved domain will be used for</span>
@@ -3936,7 +4068,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Detach the certificate management policy attached to a reserved domain.</span>
+<span class="w">        </span><span class="sd">"""Detach the certificate management policy attached to a reserved domain.</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -3953,7 +4085,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Detach the certificate attached to a reserved domain.</span>
+<span class="w">        </span><span class="sd">"""Detach the certificate attached to a reserved domain.</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -3968,7 +4100,7 @@
 
 
 <div class="viewcode-block" id="SSHCertificateAuthoritiesClient"><a class="viewcode-back" href="../../ssh_certificate_authorities.html#ngrok.services.SSHCertificateAuthoritiesClient">[docs]</a><span class="k">class</span> <span class="nc">SSHCertificateAuthoritiesClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""An SSH Certificate Authority is a pair of an SSH Certificate and its private</span>
+<span class="w">    </span><span class="sd">"""An SSH Certificate Authority is a pair of an SSH Certificate and its private</span>
 <span class="sd">    key that can be used to sign other SSH host and user certificates."""</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
@@ -3982,7 +4114,7 @@
         <span class="n">elliptic_curve</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">key_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHCertificateAuthority</span><span class="p">:</span>
-        <span class="sd">"""Create a new SSH Certificate Authority</span>
+<span class="w">        </span><span class="sd">"""Create a new SSH Certificate Authority</span>
 
 <span class="sd">        :param description: human-readable description of this SSH Certificate Authority. optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this SSH Certificate Authority. optional, max 4096 bytes.</span>
@@ -4007,7 +4139,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete an SSH Certificate Authority</span>
+<span class="w">        </span><span class="sd">"""Delete an SSH Certificate Authority</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -4024,7 +4156,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHCertificateAuthority</span><span class="p">:</span>
-        <span class="sd">"""Get detailed information about an SSH Certficate Authority</span>
+<span class="w">        </span><span class="sd">"""Get detailed information about an SSH Certficate Authority</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -4043,7 +4175,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHCertificateAuthorityList</span><span class="p">:</span>
-        <span class="sd">"""List all SSH Certificate Authorities on this account</span>
+<span class="w">        </span><span class="sd">"""List all SSH Certificate Authorities on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -4064,7 +4196,7 @@
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHCertificateAuthority</span><span class="p">:</span>
-        <span class="sd">"""Update an SSH Certificate Authority</span>
+<span class="w">        </span><span class="sd">"""Update an SSH Certificate Authority</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param description: human-readable description of this SSH Certificate Authority. optional, max 255 bytes.</span>
@@ -4085,7 +4217,7 @@
 
 
 <div class="viewcode-block" id="SSHCredentialsClient"><a class="viewcode-back" href="../../ssh_credentials.html#ngrok.services.SSHCredentialsClient">[docs]</a><span class="k">class</span> <span class="nc">SSHCredentialsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""SSH Credentials are SSH public keys that can be used to start SSH tunnels</span>
+<span class="w">    </span><span class="sd">"""SSH Credentials are SSH public keys that can be used to start SSH tunnels</span>
 <span class="sd">    via the ngrok SSH tunnel gateway."""</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
@@ -4097,13 +4229,15 @@
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">acl</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">owner_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHCredential</span><span class="p">:</span>
-        <span class="sd">"""Create a new ssh_credential from an uploaded public SSH key. This ssh credential can be used to start new tunnels via ngrok's SSH gateway.</span>
+<span class="w">        </span><span class="sd">"""Create a new ssh_credential from an uploaded public SSH key. This ssh credential can be used to start new tunnels via ngrok's SSH gateway.</span>
 
 <span class="sd">        :param description: human-readable description of who or what will use the ssh credential to authenticate. Optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this ssh credential. Optional, max 4096 bytes.</span>
-<span class="sd">        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.</span>
+<span class="sd">        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains, addresses, and labels the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules for domains may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. Bind rules for labels may specify a wildcard key and/or value to match multiple labels. For example, you may specify a rule of ``bind:*=example`` which will allow ``x=example``, ``y=example``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.</span>
 <span class="sd">        :param public_key: the PEM-encoded public key of the SSH keypair that will be used to authenticate</span>
+<span class="sd">        :param owner_id: If supplied at credential creation, ownership will be assigned to the specified User or Bot. Only admins may specify an owner other than themselves. Defaults to the authenticated User or Bot.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-ssh-credentials-create</span>
 <span class="sd">        """</span>
@@ -4113,6 +4247,7 @@
             <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
             <span class="n">acl</span><span class="o">=</span><span class="n">acl</span><span class="p">,</span>
             <span class="n">public_key</span><span class="o">=</span><span class="n">public_key</span><span class="p">,</span>
+            <span class="n">owner_id</span><span class="o">=</span><span class="n">owner_id</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">SSHCredential</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -4121,7 +4256,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete an ssh_credential by ID</span>
+<span class="w">        </span><span class="sd">"""Delete an ssh_credential by ID</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -4138,7 +4273,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHCredential</span><span class="p">:</span>
-        <span class="sd">"""Get detailed information about an ssh_credential</span>
+<span class="w">        </span><span class="sd">"""Get detailed information about an ssh_credential</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -4157,7 +4292,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHCredentialList</span><span class="p">:</span>
-        <span class="sd">"""List all ssh credentials on this account</span>
+<span class="w">        </span><span class="sd">"""List all ssh credentials on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -4179,12 +4314,12 @@
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">acl</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHCredential</span><span class="p">:</span>
-        <span class="sd">"""Update attributes of an ssh_credential by ID</span>
+<span class="w">        </span><span class="sd">"""Update attributes of an ssh_credential by ID</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param description: human-readable description of who or what will use the ssh credential to authenticate. Optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this ssh credential. Optional, max 4096 bytes.</span>
-<span class="sd">        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.</span>
+<span class="sd">        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains, addresses, and labels the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules for domains may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. Bind rules for labels may specify a wildcard key and/or value to match multiple labels. For example, you may specify a rule of ``bind:*=example`` which will allow ``x=example``, ``y=example``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-ssh-credentials-update</span>
 <span class="sd">        """</span>
@@ -4202,7 +4337,7 @@
 
 
 <div class="viewcode-block" id="SSHHostCertificatesClient"><a class="viewcode-back" href="../../ssh_host_certificates.html#ngrok.services.SSHHostCertificatesClient">[docs]</a><span class="k">class</span> <span class="nc">SSHHostCertificatesClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""SSH Host Certificates along with the corresponding private key allows an SSH</span>
+<span class="w">    </span><span class="sd">"""SSH Host Certificates along with the corresponding private key allows an SSH</span>
 <span class="sd">    server to assert its authenticity to connecting SSH clients who trust the</span>
 <span class="sd">    SSH Certificate Authority that was used to sign the certificate."""</span>
 
@@ -4219,7 +4354,7 @@
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHHostCertificate</span><span class="p">:</span>
-        <span class="sd">"""Create a new SSH Host Certificate</span>
+<span class="w">        </span><span class="sd">"""Create a new SSH Host Certificate</span>
 
 <span class="sd">        :param ssh_certificate_authority_id: the ssh certificate authority that is used to sign this ssh host certificate</span>
 <span class="sd">        :param public_key: a public key in OpenSSH Authorized Keys format that this certificate signs</span>
@@ -4248,7 +4383,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete an SSH Host Certificate</span>
+<span class="w">        </span><span class="sd">"""Delete an SSH Host Certificate</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -4265,7 +4400,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHHostCertificate</span><span class="p">:</span>
-        <span class="sd">"""Get detailed information about an SSH Host Certficate</span>
+<span class="w">        </span><span class="sd">"""Get detailed information about an SSH Host Certficate</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -4284,7 +4419,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHHostCertificateList</span><span class="p">:</span>
-        <span class="sd">"""List all SSH Host Certificates issued on this account</span>
+<span class="w">        </span><span class="sd">"""List all SSH Host Certificates issued on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -4305,7 +4440,7 @@
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHHostCertificate</span><span class="p">:</span>
-        <span class="sd">"""Update an SSH Host Certificate</span>
+<span class="w">        </span><span class="sd">"""Update an SSH Host Certificate</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param description: human-readable description of this SSH Host Certificate. optional, max 255 bytes.</span>
@@ -4326,7 +4461,7 @@
 
 
 <div class="viewcode-block" id="SSHUserCertificatesClient"><a class="viewcode-back" href="../../ssh_user_certificates.html#ngrok.services.SSHUserCertificatesClient">[docs]</a><span class="k">class</span> <span class="nc">SSHUserCertificatesClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""SSH User Certificates are presented by SSH clients when connecting to an SSH</span>
+<span class="w">    </span><span class="sd">"""SSH User Certificates are presented by SSH clients when connecting to an SSH</span>
 <span class="sd">    server to authenticate their connection. The SSH server must trust the SSH</span>
 <span class="sd">    Certificate Authority used to sign the certificate."""</span>
 
@@ -4345,13 +4480,13 @@
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHUserCertificate</span><span class="p">:</span>
-        <span class="sd">"""Create a new SSH User Certificate</span>
+<span class="w">        </span><span class="sd">"""Create a new SSH User Certificate</span>
 
 <span class="sd">        :param ssh_certificate_authority_id: the ssh certificate authority that is used to sign this ssh user certificate</span>
 <span class="sd">        :param public_key: a public key in OpenSSH Authorized Keys format that this certificate signs</span>
 <span class="sd">        :param principals: the list of principals included in the ssh user certificate. This is the list of usernames that the certificate holder may sign in as on a machine authorizing the signing certificate authority. Dangerously, if no principals are specified, this certificate may be used to log in as any user.</span>
-<span class="sd">        :param critical_options: A map of critical options included in the certificate. Only two critical options are currently defined by OpenSSH: ``force-command`` and ``source-address``. See `the OpenSSH certificate protocol spec` &lt;https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys&gt;`_ for additional details.</span>
-<span class="sd">        :param extensions: A map of extensions included in the certificate. Extensions are additional metadata that can be interpreted by the SSH server for any purpose. These can be used to permit or deny the ability to open a terminal, do port forwarding, x11 forwarding, and more. If unspecified, the certificate will include limited permissions with the following extension map: ``{"permit-pty": "", "permit-user-rc": ""}`` OpenSSH understands a number of predefined extensions. See `the OpenSSH certificate protocol spec` &lt;https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys&gt;`_ for additional details.</span>
+<span class="sd">        :param critical_options: A map of critical options included in the certificate. Only two critical options are currently defined by OpenSSH: ``force-command`` and ``source-address``. See `the OpenSSH certificate protocol spec &lt;https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys&gt;`_ for additional details.</span>
+<span class="sd">        :param extensions: A map of extensions included in the certificate. Extensions are additional metadata that can be interpreted by the SSH server for any purpose. These can be used to permit or deny the ability to open a terminal, do port forwarding, x11 forwarding, and more. If unspecified, the certificate will include limited permissions with the following extension map: ``{"permit-pty": "", "permit-user-rc": ""}`` OpenSSH understands a number of predefined extensions. See `the OpenSSH certificate protocol spec &lt;https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys&gt;`_ for additional details.</span>
 <span class="sd">        :param valid_after: The time when the user certificate becomes valid, in RFC 3339 format. Defaults to the current time if unspecified.</span>
 <span class="sd">        :param valid_until: The time when this host certificate becomes invalid, in RFC 3339 format. If unspecified, a default value of 24 hours will be used. The OpenSSH certificates RFC calls this ``valid_before``.</span>
 <span class="sd">        :param description: human-readable description of this SSH User Certificate. optional, max 255 bytes.</span>
@@ -4378,7 +4513,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete an SSH User Certificate</span>
+<span class="w">        </span><span class="sd">"""Delete an SSH User Certificate</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -4395,7 +4530,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHUserCertificate</span><span class="p">:</span>
-        <span class="sd">"""Get detailed information about an SSH User Certficate</span>
+<span class="w">        </span><span class="sd">"""Get detailed information about an SSH User Certficate</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -4414,7 +4549,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHUserCertificateList</span><span class="p">:</span>
-        <span class="sd">"""List all SSH User Certificates issued on this account</span>
+<span class="w">        </span><span class="sd">"""List all SSH User Certificates issued on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -4435,7 +4570,7 @@
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHUserCertificate</span><span class="p">:</span>
-        <span class="sd">"""Update an SSH User Certificate</span>
+<span class="w">        </span><span class="sd">"""Update an SSH User Certificate</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param description: human-readable description of this SSH User Certificate. optional, max 255 bytes.</span>
@@ -4456,7 +4591,7 @@
 
 
 <div class="viewcode-block" id="TLSCertificatesClient"><a class="viewcode-back" href="../../tls_certificates.html#ngrok.services.TLSCertificatesClient">[docs]</a><span class="k">class</span> <span class="nc">TLSCertificatesClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""TLS Certificates are pairs of x509 certificates and their matching private</span>
+<span class="w">    </span><span class="sd">"""TLS Certificates are pairs of x509 certificates and their matching private</span>
 <span class="sd">    key that can be used to terminate TLS traffic. TLS certificates are unused</span>
 <span class="sd">    until they are attached to a Domain. TLS Certificates may also be</span>
 <span class="sd">    provisioned by ngrok automatically for domains on which you have enabled</span>
@@ -4472,12 +4607,12 @@
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TLSCertificate</span><span class="p">:</span>
-        <span class="sd">"""Upload a new TLS certificate</span>
+<span class="w">        </span><span class="sd">"""Upload a new TLS certificate</span>
 
 <span class="sd">        :param description: human-readable description of this TLS certificate. optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this TLS certificate. optional, max 4096 bytes.</span>
-<span class="sd">        :param certificate_pem: chain of PEM-encoded certificates, leaf first. See `Certificate Bundles` &lt;https://ngrok.com/docs/api#tls-certificates-pem&gt;`_.</span>
-<span class="sd">        :param private_key_pem: private key for the TLS certificate, PEM-encoded. See `Private Keys` &lt;https://ngrok.com/docs/ngrok-link#tls-certificates-key&gt;`_.</span>
+<span class="sd">        :param certificate_pem: chain of PEM-encoded certificates, leaf first. See `Certificate Bundles &lt;https://ngrok.com/docs/api#tls-certificates-pem&gt;`_.</span>
+<span class="sd">        :param private_key_pem: private key for the TLS certificate, PEM-encoded. See `Private Keys &lt;https://ngrok.com/docs/ngrok-link#tls-certificates-key&gt;`_.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-tls-certificates-create</span>
 <span class="sd">        """</span>
@@ -4495,7 +4630,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Delete a TLS certificate</span>
+<span class="w">        </span><span class="sd">"""Delete a TLS certificate</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -4512,7 +4647,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TLSCertificate</span><span class="p">:</span>
-        <span class="sd">"""Get detailed information about a TLS certificate</span>
+<span class="w">        </span><span class="sd">"""Get detailed information about a TLS certificate</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -4531,7 +4666,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TLSCertificateList</span><span class="p">:</span>
-        <span class="sd">"""List all TLS certificates on this account</span>
+<span class="w">        </span><span class="sd">"""List all TLS certificates on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -4552,7 +4687,7 @@
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TLSCertificate</span><span class="p">:</span>
-        <span class="sd">"""Update attributes of a TLS Certificate by ID</span>
+<span class="w">        </span><span class="sd">"""Update attributes of a TLS Certificate by ID</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param description: human-readable description of this TLS certificate. optional, max 255 bytes.</span>
@@ -4573,7 +4708,7 @@
 
 
 <div class="viewcode-block" id="TunnelSessionsClient"><a class="viewcode-back" href="../../tunnel_sessions.html#ngrok.services.TunnelSessionsClient">[docs]</a><span class="k">class</span> <span class="nc">TunnelSessionsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""Tunnel Sessions represent instances of ngrok agents or SSH reverse tunnel</span>
+<span class="w">    </span><span class="sd">"""Tunnel Sessions represent instances of ngrok agents or SSH reverse tunnel</span>
 <span class="sd">    sessions that are running and connected to the ngrok service. Each tunnel</span>
 <span class="sd">    session can include one or more Tunnels."""</span>
 
@@ -4585,7 +4720,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelSessionList</span><span class="p">:</span>
-        <span class="sd">"""List all online tunnel sessions running on this account.</span>
+<span class="w">        </span><span class="sd">"""List all online tunnel sessions running on this account.</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -4604,7 +4739,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelSession</span><span class="p">:</span>
-        <span class="sd">"""Get the detailed status of a tunnel session by ID</span>
+<span class="w">        </span><span class="sd">"""Get the detailed status of a tunnel session by ID</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -4622,7 +4757,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Issues a command instructing the ngrok agent to restart. The agent restarts itself by calling exec() on platforms that support it. This operation is notably not supported on Windows. When an agent restarts, it reconnects with a new tunnel session ID.</span>
+<span class="w">        </span><span class="sd">"""Issues a command instructing the ngrok agent to restart. The agent restarts itself by calling exec() on platforms that support it. This operation is notably not supported on Windows. When an agent restarts, it reconnects with a new tunnel session ID.</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -4639,7 +4774,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Issues a command instructing the ngrok agent that started this tunnel session to exit.</span>
+<span class="w">        </span><span class="sd">"""Issues a command instructing the ngrok agent that started this tunnel session to exit.</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -4656,7 +4791,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Issues a command instructing the ngrok agent to update itself to the latest version. After this call completes successfully, the ngrok agent will be in the update process. A caller should wait some amount of time to allow the update to complete (at least 10 seconds) before making a call to the Restart endpoint to request that the agent restart itself to start using the new code. This call will never update an ngrok agent to a new major version which could cause breaking compatibility issues. If you wish to update to a new major version, that must be done manually. Still, please be aware that updating your ngrok agent could break your integration. This call will fail in any of the following circumstances: there is no update available the ngrok agent's configuration disabled update checks the agent is currently in process of updating the agent has already successfully updated but has not yet been restarted</span>
+<span class="w">        </span><span class="sd">"""Issues a command instructing the ngrok agent to update itself to the latest version. After this call completes successfully, the ngrok agent will be in the update process. A caller should wait some amount of time to allow the update to complete (at least 10 seconds) before making a call to the Restart endpoint to request that the agent restart itself to start using the new code. This call will never update an ngrok agent to a new major version which could cause breaking compatibility issues. If you wish to update to a new major version, that must be done manually. Still, please be aware that updating your ngrok agent could break your integration. This call will fail in any of the following circumstances: there is no update available the ngrok agent's configuration disabled update checks the agent is currently in process of updating the agent has already successfully updated but has not yet been restarted</span>
 
 <span class="sd">        :param id:</span>
 
@@ -4671,7 +4806,7 @@
 
 
 <div class="viewcode-block" id="TunnelsClient"><a class="viewcode-back" href="../../tunnels.html#ngrok.services.TunnelsClient">[docs]</a><span class="k">class</span> <span class="nc">TunnelsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""Tunnels provide endpoints to access services exposed by a running ngrok</span>
+<span class="w">    </span><span class="sd">"""Tunnels provide endpoints to access services exposed by a running ngrok</span>
 <span class="sd">    agent tunnel session or an SSH reverse tunnel session."""</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
@@ -4682,7 +4817,7 @@
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelList</span><span class="p">:</span>
-        <span class="sd">"""List all online tunnels currently running on the account.</span>
+<span class="w">        </span><span class="sd">"""List all online tunnels currently running on the account.</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
@@ -4701,7 +4836,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tunnel</span><span class="p">:</span>
-        <span class="sd">"""Get the status of a tunnel by ID</span>
+<span class="w">        </span><span class="sd">"""Get the status of a tunnel by ID</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 

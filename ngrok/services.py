@@ -1,6 +1,7 @@
 from __future__ import annotations
 from collections.abc import Iterator
 from typing import Any, Mapping, Sequence
+from datetime import datetime, timedelta
 
 from .http_client import HTTPClient
 from .datatypes import *
@@ -163,9 +164,9 @@ class AgentIngressesClient(object):
 
 class APIKeysClient(object):
     """API Keys are used to authenticate to the `ngrok
-    API` <https://ngrok.com/docs/api#authentication>`_. You may use the API itself
+    API <https://ngrok.com/docs/api#authentication>`_. You may use the API itself
     to provision and manage API Keys but you'll need to provision your first API
-    key from the `API Keys page` <https://dashboard.ngrok.com/api/keys>`_ on your
+    key from the `API Keys page <https://dashboard.ngrok.com/api/keys>`_ on your
     ngrok.com dashboard."""
 
     def __init__(self, client):
@@ -175,11 +176,13 @@ class APIKeysClient(object):
         self,
         description: str = "",
         metadata: str = "",
+        owner_id: str = None,
     ) -> APIKey:
         """Create a new API key. The generated API key can be used to authenticate to the ngrok API.
 
         :param description: human-readable description of what uses the API key to authenticate. optional, max 255 bytes.
         :param metadata: arbitrary user-defined data of this API key. optional, max 4096 bytes
+        :param owner_id: If supplied at credential creation, ownership will be assigned to the specified User or Bot. Only admins may specify an owner other than themselves. Defaults to the authenticated User or Bot.
 
         https://ngrok.com/docs/api#api-api-keys-create
         """
@@ -187,6 +190,7 @@ class APIKeysClient(object):
         body_arg = dict(
             description=description,
             metadata=metadata,
+            owner_id=owner_id,
         )
         result = self._client.http_client.post(path, body_arg)
         return APIKey(self._client, result)
@@ -270,6 +274,126 @@ class APIKeysClient(object):
         )
         result = self._client.http_client.patch(path, body_arg)
         return APIKey(self._client, result)
+
+
+class ApplicationSessionsClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def get(
+        self,
+        id: str,
+    ) -> ApplicationSession:
+        """Get an application session by ID.
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-application-sessions-get
+        """
+        path = "/app/sessions/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
+        return ApplicationSession(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """Delete an application session by ID.
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-application-sessions-delete
+        """
+        path = "/app/sessions/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
+
+    def list(
+        self,
+        before_id: str = None,
+        limit: str = None,
+    ) -> ApplicationSessionList:
+        """List all application sessions for this account.
+
+        :param before_id:
+        :param limit:
+
+        https://ngrok.com/docs/api#api-application-sessions-list
+        """
+        path = "/app/sessions"
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
+        )
+        result = self._client.http_client.get(path, body_arg)
+        return ApplicationSessionList(self._client, result)
+
+
+class ApplicationUsersClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def get(
+        self,
+        id: str,
+    ) -> ApplicationUser:
+        """Get an application user by ID.
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-application-users-get
+        """
+        path = "/app/users/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
+        return ApplicationUser(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """Delete an application user by ID.
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-application-users-delete
+        """
+        path = "/app/users/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
+
+    def list(
+        self,
+        before_id: str = None,
+        limit: str = None,
+    ) -> ApplicationUserList:
+        """List all application users for this account.
+
+        :param before_id:
+        :param limit:
+
+        https://ngrok.com/docs/api#api-application-users-list
+        """
+        path = "/app/users"
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
+        )
+        result = self._client.http_client.get(path, body_arg)
+        return ApplicationUserList(self._client, result)
 
 
 class FailoverBackendsClient(object):
@@ -869,12 +993,14 @@ class CredentialsClient(object):
         description: str = "",
         metadata: str = "",
         acl: Sequence[str] = [],
+        owner_id: str = None,
     ) -> Credential:
         """Create a new tunnel authtoken credential. This authtoken credential can be used to start a new tunnel session. The response to this API call is the only time the generated token is available. If you need it for future use, you must save it securely yourself.
 
         :param description: human-readable description of who or what will use the credential to authenticate. Optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this credential. Optional, max 4096 bytes.
-        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.
+        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains, addresses, and labels the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules for domains may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. Bind rules for labels may specify a wildcard key and/or value to match multiple labels. For example, you may specify a rule of ``bind:*=example`` which will allow ``x=example``, ``y=example``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.
+        :param owner_id: If supplied at credential creation, ownership will be assigned to the specified User or Bot. Only admins may specify an owner other than themselves. Defaults to the authenticated User or Bot.
 
         https://ngrok.com/docs/api#api-credentials-create
         """
@@ -883,6 +1009,7 @@ class CredentialsClient(object):
             description=description,
             metadata=metadata,
             acl=acl,
+            owner_id=owner_id,
         )
         result = self._client.http_client.post(path, body_arg)
         return Credential(self._client, result)
@@ -954,7 +1081,7 @@ class CredentialsClient(object):
         :param id:
         :param description: human-readable description of who or what will use the credential to authenticate. Optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this credential. Optional, max 4096 bytes.
-        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.
+        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains, addresses, and labels the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules for domains may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. Bind rules for labels may specify a wildcard key and/or value to match multiple labels. For example, you may specify a rule of ``bind:*=example`` which will allow ``x=example``, ``y=example``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.
 
         https://ngrok.com/docs/api#api-credentials-update
         """
@@ -2826,7 +2953,7 @@ class EventDestinationsClient(object):
         format: str = "",
         target: EventTarget = None,
     ) -> EventDestination:
-        """Create a new Event Destination. It will not apply to anything until it is associated with an Event Stream, and that Event Stream is associated with an Endpoint Config.
+        """Create a new Event Destination. It will not apply to anything until it is associated with an Event Subscription.
 
         :param metadata: Arbitrary user-defined machine-readable data of this Event Destination. Optional, max 4096 bytes.
         :param description: Human-readable description of the Event Destination. Optional, max 255 bytes.
@@ -3636,7 +3763,8 @@ class ReservedDomainsClient(object):
 
     def create(
         self,
-        name: str,
+        name: str = "",
+        domain: str = "",
         region: str = "",
         description: str = "",
         metadata: str = "",
@@ -3646,6 +3774,7 @@ class ReservedDomainsClient(object):
         """Create a new reserved domain.
 
         :param name: the domain name to reserve. It may be a full domain name like app.example.com. If the name does not contain a '.' it will reserve that subdomain on ngrok.io.
+        :param domain: hostname of the reserved domain
         :param region: reserve the domain in this geographic ngrok datacenter. Optional, default is us. (au, eu, ap, us, jp, in, sa)
         :param description: human-readable description of what this reserved domain will be used for
         :param metadata: arbitrary user-defined machine-readable data of this reserved domain. Optional, max 4096 bytes.
@@ -3657,6 +3786,7 @@ class ReservedDomainsClient(object):
         path = "/reserved_domains"
         body_arg = dict(
             name=name,
+            domain=domain,
             region=region,
             description=description,
             metadata=metadata,
@@ -3917,13 +4047,15 @@ class SSHCredentialsClient(object):
         description: str = "",
         metadata: str = "",
         acl: Sequence[str] = [],
+        owner_id: str = None,
     ) -> SSHCredential:
         """Create a new ssh_credential from an uploaded public SSH key. This ssh credential can be used to start new tunnels via ngrok's SSH gateway.
 
         :param description: human-readable description of who or what will use the ssh credential to authenticate. Optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this ssh credential. Optional, max 4096 bytes.
-        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.
+        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains, addresses, and labels the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules for domains may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. Bind rules for labels may specify a wildcard key and/or value to match multiple labels. For example, you may specify a rule of ``bind:*=example`` which will allow ``x=example``, ``y=example``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.
         :param public_key: the PEM-encoded public key of the SSH keypair that will be used to authenticate
+        :param owner_id: If supplied at credential creation, ownership will be assigned to the specified User or Bot. Only admins may specify an owner other than themselves. Defaults to the authenticated User or Bot.
 
         https://ngrok.com/docs/api#api-ssh-credentials-create
         """
@@ -3933,6 +4065,7 @@ class SSHCredentialsClient(object):
             metadata=metadata,
             acl=acl,
             public_key=public_key,
+            owner_id=owner_id,
         )
         result = self._client.http_client.post(path, body_arg)
         return SSHCredential(self._client, result)
@@ -4004,7 +4137,7 @@ class SSHCredentialsClient(object):
         :param id:
         :param description: human-readable description of who or what will use the ssh credential to authenticate. Optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this ssh credential. Optional, max 4096 bytes.
-        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.
+        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains, addresses, and labels the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules for domains may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. Bind rules for labels may specify a wildcard key and/or value to match multiple labels. For example, you may specify a rule of ``bind:*=example`` which will allow ``x=example``, ``y=example``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.
 
         https://ngrok.com/docs/api#api-ssh-credentials-update
         """
@@ -4170,8 +4303,8 @@ class SSHUserCertificatesClient(object):
         :param ssh_certificate_authority_id: the ssh certificate authority that is used to sign this ssh user certificate
         :param public_key: a public key in OpenSSH Authorized Keys format that this certificate signs
         :param principals: the list of principals included in the ssh user certificate. This is the list of usernames that the certificate holder may sign in as on a machine authorizing the signing certificate authority. Dangerously, if no principals are specified, this certificate may be used to log in as any user.
-        :param critical_options: A map of critical options included in the certificate. Only two critical options are currently defined by OpenSSH: ``force-command`` and ``source-address``. See `the OpenSSH certificate protocol spec` <https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys>`_ for additional details.
-        :param extensions: A map of extensions included in the certificate. Extensions are additional metadata that can be interpreted by the SSH server for any purpose. These can be used to permit or deny the ability to open a terminal, do port forwarding, x11 forwarding, and more. If unspecified, the certificate will include limited permissions with the following extension map: ``{"permit-pty": "", "permit-user-rc": ""}`` OpenSSH understands a number of predefined extensions. See `the OpenSSH certificate protocol spec` <https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys>`_ for additional details.
+        :param critical_options: A map of critical options included in the certificate. Only two critical options are currently defined by OpenSSH: ``force-command`` and ``source-address``. See `the OpenSSH certificate protocol spec <https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys>`_ for additional details.
+        :param extensions: A map of extensions included in the certificate. Extensions are additional metadata that can be interpreted by the SSH server for any purpose. These can be used to permit or deny the ability to open a terminal, do port forwarding, x11 forwarding, and more. If unspecified, the certificate will include limited permissions with the following extension map: ``{"permit-pty": "", "permit-user-rc": ""}`` OpenSSH understands a number of predefined extensions. See `the OpenSSH certificate protocol spec <https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys>`_ for additional details.
         :param valid_after: The time when the user certificate becomes valid, in RFC 3339 format. Defaults to the current time if unspecified.
         :param valid_until: The time when this host certificate becomes invalid, in RFC 3339 format. If unspecified, a default value of 24 hours will be used. The OpenSSH certificates RFC calls this ``valid_before``.
         :param description: human-readable description of this SSH User Certificate. optional, max 255 bytes.
@@ -4296,8 +4429,8 @@ class TLSCertificatesClient(object):
 
         :param description: human-readable description of this TLS certificate. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this TLS certificate. optional, max 4096 bytes.
-        :param certificate_pem: chain of PEM-encoded certificates, leaf first. See `Certificate Bundles` <https://ngrok.com/docs/api#tls-certificates-pem>`_.
-        :param private_key_pem: private key for the TLS certificate, PEM-encoded. See `Private Keys` <https://ngrok.com/docs/ngrok-link#tls-certificates-key>`_.
+        :param certificate_pem: chain of PEM-encoded certificates, leaf first. See `Certificate Bundles <https://ngrok.com/docs/api#tls-certificates-pem>`_.
+        :param private_key_pem: private key for the TLS certificate, PEM-encoded. See `Private Keys <https://ngrok.com/docs/ngrok-link#tls-certificates-key>`_.
 
         https://ngrok.com/docs/api#api-tls-certificates-create
         """

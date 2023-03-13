@@ -1,5 +1,6 @@
 from __future__ import annotations
 from typing import Any, Mapping, Sequence
+from datetime import datetime, timedelta
 from .iterator import PagedIterator
 
 
@@ -281,6 +282,11 @@ class APIKey(object):
         """the bearer token that can be placed into the Authorization header to authenticate request to the ngrok API. **This value is only available one time, on the API response from key creation. Otherwise it is null.**"""
         return self._props["token"]
 
+    @property
+    def owner_id(self) -> str:
+        """If supplied at credential creation, ownership will be assigned to the specified User or Bot. Only admins may specify an owner other than themselves. Defaults to the authenticated User or Bot."""
+        return self._props["owner_id"]
+
 
 class APIKeyList(object):
     def __init__(self, client, props):
@@ -318,6 +324,402 @@ class APIKeyList(object):
     def next_page_uri(self) -> str:
         """URI of the next page, or null if there is no next page"""
         return self._props["next_page_uri"]
+
+
+class ApplicationSession(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["browser_session"] = (
+            BrowserSession(client, props["browser_session"])
+            if props.get("browser_session") is not None
+            else None
+        )
+        self._props["application_user"] = (
+            Ref(client, props["application_user"])
+            if props.get("application_user") is not None
+            else None
+        )
+        self._props["endpoint"] = (
+            Ref(client, props["endpoint"])
+            if props.get("endpoint") is not None
+            else None
+        )
+        self._props["edge"] = (
+            Ref(client, props["edge"]) if props.get("edge") is not None else None
+        )
+        self._props["route"] = (
+            Ref(client, props["route"]) if props.get("route") is not None else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<ApplicationSession {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<ApplicationSession {}>".format(repr(self._props))
+
+    def delete(
+        self,
+    ):
+        self._client.application_sessions.delete(
+            id=self.id,
+        )
+
+    @property
+    def id(self) -> str:
+        """unique application session resource identifier"""
+        return self._props["id"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the application session API resource"""
+        return self._props["uri"]
+
+    @property
+    def public_url(self) -> str:
+        """URL of the hostport served by this endpoint"""
+        return self._props["public_url"]
+
+    @property
+    def browser_session(self) -> BrowserSession:
+        """browser session details of the application session"""
+        return self._props["browser_session"]
+
+    @property
+    def application_user(self) -> Ref:
+        """application user this session is associated with"""
+        return self._props["application_user"]
+
+    @property
+    def created_at(self) -> str:
+        """timestamp when the user was created in RFC 3339 format"""
+        return self._props["created_at"]
+
+    @property
+    def last_active(self) -> str:
+        """timestamp when the user was last active in RFC 3339 format"""
+        return self._props["last_active"]
+
+    @property
+    def expires_at(self) -> str:
+        """timestamp when session expires in RFC 3339 format"""
+        return self._props["expires_at"]
+
+    @property
+    def endpoint(self) -> Ref:
+        """ephemeral endpoint this session is associated with"""
+        return self._props["endpoint"]
+
+    @property
+    def edge(self) -> Ref:
+        """edge this session is associated with, null if the endpoint is agent-initiated"""
+        return self._props["edge"]
+
+    @property
+    def route(self) -> Ref:
+        """route this session is associated with, null if the endpoint is agent-initiated"""
+        return self._props["route"]
+
+
+class ApplicationSessionList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["application_sessions"] = (
+            [ApplicationSession(client, x) for x in props["application_sessions"]]
+            if props.get("application_sessions") is not None
+            else []
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<ApplicationSessionList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<ApplicationSessionList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "application_sessions")
+
+    @property
+    def application_sessions(self) -> Sequence[ApplicationSession]:
+        """list of all application sessions on this account"""
+        return self._props["application_sessions"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the application session list API resource"""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page, or null if there is no next page"""
+        return self._props["next_page_uri"]
+
+
+class BrowserSession(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["user_agent"] = (
+            UserAgent(client, props["user_agent"])
+            if props.get("user_agent") is not None
+            else None
+        )
+        self._props["location"] = (
+            Location(client, props["location"])
+            if props.get("location") is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<BrowserSession {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<BrowserSession {}>".format(repr(self._props))
+
+    @property
+    def user_agent(self) -> UserAgent:
+        """HTTP User-Agent data"""
+        return self._props["user_agent"]
+
+    @property
+    def ip_address(self) -> str:
+        """IP address"""
+        return self._props["ip_address"]
+
+    @property
+    def location(self) -> Location:
+        """IP geolocation data"""
+        return self._props["location"]
+
+
+class UserAgent(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<UserAgent {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<UserAgent {}>".format(repr(self._props))
+
+    @property
+    def raw(self) -> str:
+        """raw User-Agent request header"""
+        return self._props["raw"]
+
+    @property
+    def browser_name(self) -> str:
+        """browser name (e.g. Chrome)"""
+        return self._props["browser_name"]
+
+    @property
+    def browser_version(self) -> str:
+        """browser version (e.g. 102)"""
+        return self._props["browser_version"]
+
+    @property
+    def device_type(self) -> str:
+        """type of device (e.g. Desktop)"""
+        return self._props["device_type"]
+
+    @property
+    def os_name(self) -> str:
+        """operating system name (e.g. MacOS)"""
+        return self._props["os_name"]
+
+    @property
+    def os_version(self) -> str:
+        """operating system version (e.g. 10.15.7)"""
+        return self._props["os_version"]
+
+
+class Location(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<Location {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<Location {}>".format(repr(self._props))
+
+    @property
+    def country_code(self) -> str:
+        """ISO country code"""
+        return self._props["country_code"]
+
+    @property
+    def latitude(self) -> float:
+        """geographical latitude"""
+        return self._props["latitude"]
+
+    @property
+    def longitude(self) -> float:
+        """geographical longitude"""
+        return self._props["longitude"]
+
+    @property
+    def lat_long_radius_km(self) -> int:
+        """accuracy radius of the geographical coordinates"""
+        return self._props["lat_long_radius_km"]
+
+
+class ApplicationUser(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["identity_provider"] = (
+            IdentityProvider(client, props["identity_provider"])
+            if props.get("identity_provider") is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<ApplicationUser {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<ApplicationUser {}>".format(repr(self._props))
+
+    def delete(
+        self,
+    ):
+        self._client.application_users.delete(
+            id=self.id,
+        )
+
+    @property
+    def id(self) -> str:
+        """unique application user resource identifier"""
+        return self._props["id"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the application user API resource"""
+        return self._props["uri"]
+
+    @property
+    def identity_provider(self) -> IdentityProvider:
+        """identity provider that the user authenticated with"""
+        return self._props["identity_provider"]
+
+    @property
+    def provider_user_id(self) -> str:
+        """unique user identifier"""
+        return self._props["provider_user_id"]
+
+    @property
+    def username(self) -> str:
+        """user username"""
+        return self._props["username"]
+
+    @property
+    def email(self) -> str:
+        """user email"""
+        return self._props["email"]
+
+    @property
+    def name(self) -> str:
+        """user common name"""
+        return self._props["name"]
+
+    @property
+    def created_at(self) -> str:
+        """timestamp when the user was created in RFC 3339 format"""
+        return self._props["created_at"]
+
+    @property
+    def last_active(self) -> str:
+        """timestamp when the user was last active in RFC 3339 format"""
+        return self._props["last_active"]
+
+    @property
+    def last_login(self) -> str:
+        """timestamp when the user last signed-in in RFC 3339 format"""
+        return self._props["last_login"]
+
+
+class ApplicationUserList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["application_users"] = (
+            [ApplicationUser(client, x) for x in props["application_users"]]
+            if props.get("application_users") is not None
+            else []
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<ApplicationUserList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<ApplicationUserList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "application_users")
+
+    @property
+    def application_users(self) -> Sequence[ApplicationUser]:
+        """list of all application users on this account"""
+        return self._props["application_users"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the application user list API resource"""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page, or null if there is no next page"""
+        return self._props["next_page_uri"]
+
+
+class IdentityProvider(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<IdentityProvider {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<IdentityProvider {}>".format(repr(self._props))
+
+    @property
+    def name(self) -> str:
+        """name of the identity provider (e.g. Google)"""
+        return self._props["name"]
+
+    @property
+    def url(self) -> str:
+        """URL of the identity provider (e.g. `https://accounts.google.com <https://accounts.google.com>`_)"""
+        return self._props["url"]
 
 
 class FailoverBackend(object):
@@ -944,8 +1346,13 @@ class Credential(object):
 
     @property
     def acl(self) -> Sequence[str]:
-        """optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions."""
+        """optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains, addresses, and labels the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules for domains may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. Bind rules for labels may specify a wildcard key and/or value to match multiple labels. For example, you may specify a rule of ``bind:*=example`` which will allow ``x=example``, ``y=example``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions."""
         return self._props["acl"]
+
+    @property
+    def owner_id(self) -> str:
+        """If supplied at credential creation, ownership will be assigned to the specified User or Bot. Only admins may specify an owner other than themselves. Defaults to the authenticated User or Bot."""
+        return self._props["owner_id"]
 
 
 class CredentialList(object):
@@ -1009,7 +1416,7 @@ class EndpointWebhookValidation(object):
 
     @property
     def provider(self) -> str:
-        """a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers: ``SLACK``, ``SNS``, ``STRIPE``, ``GITHUB``, ``TWILIO``, ``SHOPIFY``, ``GITLAB``, ``INTERCOM``, ``SENDGRID``, ``XERO``, ``PAGERDUTY``."""
+        """a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers defined at `https://ngrok.com/docs/cloud-edge/modules/webhook <https://ngrok.com/docs/cloud-edge/modules/webhook>`_"""
         return self._props["provider"]
 
     @property
@@ -1284,9 +1691,9 @@ class EndpointCircuitBreaker(object):
         return self._props["enabled"]
 
     @property
-    def tripped_duration(self) -> int:
+    def tripped_duration(self) -> timedelta:
         """Integer number of seconds after which the circuit is tripped to wait before re-evaluating upstream health"""
-        return self._props["tripped_duration"]
+        return timedelta(seconds=self._props["tripped_duration"])
 
     @property
     def rolling_window(self) -> int:
@@ -1354,9 +1761,9 @@ class EndpointOAuth(object):
         return self._props["inactivity_timeout"]
 
     @property
-    def maximum_duration(self) -> int:
+    def maximum_duration(self) -> timedelta:
         """Integer number of seconds of the maximum duration of an authenticated session. After this period is exceeded, a user must reauthenticate."""
-        return self._props["maximum_duration"]
+        return timedelta(seconds=self._props["maximum_duration"])
 
     @property
     def auth_check_interval(self) -> int:
@@ -1388,6 +1795,26 @@ class EndpointOAuthProvider(object):
             if props.get("google") is not None
             else None
         )
+        self._props["linkedin"] = (
+            EndpointOAuthLinkedIn(client, props["linkedin"])
+            if props.get("linkedin") is not None
+            else None
+        )
+        self._props["gitlab"] = (
+            EndpointOAuthGitLab(client, props["gitlab"])
+            if props.get("gitlab") is not None
+            else None
+        )
+        self._props["twitch"] = (
+            EndpointOAuthTwitch(client, props["twitch"])
+            if props.get("twitch") is not None
+            else None
+        )
+        self._props["amazon"] = (
+            EndpointOAuthAmazon(client, props["amazon"])
+            if props.get("amazon") is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -1417,6 +1844,26 @@ class EndpointOAuthProvider(object):
     def google(self) -> EndpointOAuthGoogle:
         """configuration for using google as the identity provider"""
         return self._props["google"]
+
+    @property
+    def linkedin(self) -> EndpointOAuthLinkedIn:
+        """configuration for using linkedin as the identity provider"""
+        return self._props["linkedin"]
+
+    @property
+    def gitlab(self) -> EndpointOAuthGitLab:
+        """configuration for using gitlab as the identity provider"""
+        return self._props["gitlab"]
+
+    @property
+    def twitch(self) -> EndpointOAuthTwitch:
+        """configuration for using twitch as the identity provider"""
+        return self._props["twitch"]
+
+    @property
+    def amazon(self) -> EndpointOAuthAmazon:
+        """configuration for using amazon as the identity provider"""
+        return self._props["amazon"]
 
 
 class EndpointOAuthGitHub(object):
@@ -1589,6 +2036,146 @@ class EndpointOAuthGoogle(object):
         return self._props["email_domains"]
 
 
+class EndpointOAuthLinkedIn(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointOAuthLinkedIn {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointOAuthLinkedIn {}>".format(repr(self._props))
+
+    @property
+    def client_id(self) -> str:
+        return self._props["client_id"]
+
+    @property
+    def client_secret(self) -> str:
+        return self._props["client_secret"]
+
+    @property
+    def scopes(self) -> Sequence[str]:
+        return self._props["scopes"]
+
+    @property
+    def email_addresses(self) -> Sequence[str]:
+        return self._props["email_addresses"]
+
+    @property
+    def email_domains(self) -> Sequence[str]:
+        return self._props["email_domains"]
+
+
+class EndpointOAuthGitLab(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointOAuthGitLab {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointOAuthGitLab {}>".format(repr(self._props))
+
+    @property
+    def client_id(self) -> str:
+        return self._props["client_id"]
+
+    @property
+    def client_secret(self) -> str:
+        return self._props["client_secret"]
+
+    @property
+    def scopes(self) -> Sequence[str]:
+        return self._props["scopes"]
+
+    @property
+    def email_addresses(self) -> Sequence[str]:
+        return self._props["email_addresses"]
+
+    @property
+    def email_domains(self) -> Sequence[str]:
+        return self._props["email_domains"]
+
+
+class EndpointOAuthTwitch(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointOAuthTwitch {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointOAuthTwitch {}>".format(repr(self._props))
+
+    @property
+    def client_id(self) -> str:
+        return self._props["client_id"]
+
+    @property
+    def client_secret(self) -> str:
+        return self._props["client_secret"]
+
+    @property
+    def scopes(self) -> Sequence[str]:
+        return self._props["scopes"]
+
+    @property
+    def email_addresses(self) -> Sequence[str]:
+        return self._props["email_addresses"]
+
+    @property
+    def email_domains(self) -> Sequence[str]:
+        return self._props["email_domains"]
+
+
+class EndpointOAuthAmazon(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointOAuthAmazon {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointOAuthAmazon {}>".format(repr(self._props))
+
+    @property
+    def client_id(self) -> str:
+        return self._props["client_id"]
+
+    @property
+    def client_secret(self) -> str:
+        return self._props["client_secret"]
+
+    @property
+    def scopes(self) -> Sequence[str]:
+        return self._props["scopes"]
+
+    @property
+    def email_addresses(self) -> Sequence[str]:
+        return self._props["email_addresses"]
+
+    @property
+    def email_domains(self) -> Sequence[str]:
+        return self._props["email_domains"]
+
+
 class EndpointSAML(object):
     def __init__(self, client, props):
         self._client = client
@@ -1624,9 +2211,9 @@ class EndpointSAML(object):
         return self._props["inactivity_timeout"]
 
     @property
-    def maximum_duration(self) -> int:
+    def maximum_duration(self) -> timedelta:
         """Integer number of seconds of the maximum duration of an authenticated session. After this period is exceeded, a user must reauthenticate."""
-        return self._props["maximum_duration"]
+        return timedelta(seconds=self._props["maximum_duration"])
 
     @property
     def idp_metadata(self) -> str:
@@ -1714,9 +2301,9 @@ class EndpointSAMLMutate(object):
         return self._props["inactivity_timeout"]
 
     @property
-    def maximum_duration(self) -> int:
+    def maximum_duration(self) -> timedelta:
         """Integer number of seconds of the maximum duration of an authenticated session. After this period is exceeded, a user must reauthenticate."""
-        return self._props["maximum_duration"]
+        return timedelta(seconds=self._props["maximum_duration"])
 
     @property
     def idp_metadata(self) -> str:
@@ -1779,9 +2366,9 @@ class EndpointOIDC(object):
         return self._props["inactivity_timeout"]
 
     @property
-    def maximum_duration(self) -> int:
+    def maximum_duration(self) -> timedelta:
         """Integer number of seconds of the maximum duration of an authenticated session. After this period is exceeded, a user must reauthenticate."""
-        return self._props["maximum_duration"]
+        return timedelta(seconds=self._props["maximum_duration"])
 
     @property
     def issuer(self) -> str:
@@ -3937,8 +4524,13 @@ class SSHCredential(object):
 
     @property
     def acl(self) -> Sequence[str]:
-        """optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions."""
+        """optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains, addresses, and labels the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules for domains may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. Bind rules for labels may specify a wildcard key and/or value to match multiple labels. For example, you may specify a rule of ``bind:*=example`` which will allow ``x=example``, ``y=example``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions."""
         return self._props["acl"]
+
+    @property
+    def owner_id(self) -> str:
+        """If supplied at credential creation, ownership will be assigned to the specified User or Bot. Only admins may specify an owner other than themselves. Defaults to the authenticated User or Bot."""
+        return self._props["owner_id"]
 
 
 class SSHCredentialList(object):
@@ -4189,12 +4781,12 @@ class SSHUserCertificate(object):
 
     @property
     def critical_options(self) -> Mapping[str, str]:
-        """A map of critical options included in the certificate. Only two critical options are currently defined by OpenSSH: ``force-command`` and ``source-address``. See `the OpenSSH certificate protocol spec` <https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys>`_ for additional details."""
+        """A map of critical options included in the certificate. Only two critical options are currently defined by OpenSSH: ``force-command`` and ``source-address``. See `the OpenSSH certificate protocol spec <https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys>`_ for additional details."""
         return self._props["critical_options"]
 
     @property
     def extensions(self) -> Mapping[str, str]:
-        """A map of extensions included in the certificate. Extensions are additional metadata that can be interpreted by the SSH server for any purpose. These can be used to permit or deny the ability to open a terminal, do port forwarding, x11 forwarding, and more. If unspecified, the certificate will include limited permissions with the following extension map: ``{"permit-pty": "", "permit-user-rc": ""}`` OpenSSH understands a number of predefined extensions. See `the OpenSSH certificate protocol spec` <https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys>`_ for additional details."""
+        """A map of extensions included in the certificate. Extensions are additional metadata that can be interpreted by the SSH server for any purpose. These can be used to permit or deny the ability to open a terminal, do port forwarding, x11 forwarding, and more. If unspecified, the certificate will include limited permissions with the following extension map: ``{"permit-pty": "", "permit-user-rc": ""}`` OpenSSH understands a number of predefined extensions. See `the OpenSSH certificate protocol spec <https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys>`_ for additional details."""
         return self._props["extensions"]
 
     @property
@@ -4315,7 +4907,7 @@ class TLSCertificate(object):
 
     @property
     def certificate_pem(self) -> str:
-        """chain of PEM-encoded certificates, leaf first. See `Certificate Bundles` <https://ngrok.com/docs/api#tls-certificates-pem>`_."""
+        """chain of PEM-encoded certificates, leaf first. See `Certificate Bundles <https://ngrok.com/docs/api#tls-certificates-pem>`_."""
         return self._props["certificate_pem"]
 
     @property
@@ -4611,7 +5203,7 @@ class Tunnel(object):
 
     @property
     def metadata(self) -> str:
-        """user-supplied metadata for the tunnel defined in the ngrok configuration file. See the tunnel `metadata configuration option` <https://ngrok.com/docs#tunnel-definitions-metadata>`_ In API version 0, this value was instead pulled from the top-level `metadata configuration option` <https://ngrok.com/docs#config_metadata>`_."""
+        """user-supplied metadata for the tunnel defined in the ngrok configuration file. See the tunnel `metadata configuration option <https://ngrok.com/docs#tunnel-definitions-metadata>`_ In API version 0, this value was instead pulled from the top-level `metadata configuration option <https://ngrok.com/docs#config_metadata>`_."""
         return self._props["metadata"]
 
     @property

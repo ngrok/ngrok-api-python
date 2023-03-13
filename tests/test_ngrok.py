@@ -79,7 +79,7 @@ def test_domains():
     c.reserved_domains.list()
 
     mock.returns(mock_reserved_domain)
-    domain = c.reserved_domains.create(name="foo")
+    domain = c.reserved_domains.create(domain="foo.ngrok.io.lan")
     mock.returns(mock_reserved_domain)
     domain = c.reserved_domains.get(domain.id)
     assert domain.domain == "foo.ngrok.io.lan"

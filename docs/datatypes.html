@@ -118,6 +118,8 @@
 <li class="toctree-l1"><a class="reference internal" href="abuse_reports.html">Abuse Reports</a></li>
 <li class="toctree-l1"><a class="reference internal" href="agent_ingresses.html">Agent Ingresses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_keys.html">API Keys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application_sessions.html">Application Sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application_users.html">Application Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="failover_backends.html">Failover Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="http_response_backends.html">HTTP Response Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tunnel_group_backends.html">Tunnel Group Backends</a></li>
@@ -221,6 +223,16 @@
 <dt id="ngrok.datatypes.APIKey.metadata">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">metadata</span></code><a class="headerlink" href="#ngrok.datatypes.APIKey.metadata" title="Permalink to this definition">¶</a></dt>
 <dd><p>arbitrary user-defined data of this API key. optional, max 4096 bytes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.APIKey.owner_id">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">owner_id</span></code><a class="headerlink" href="#ngrok.datatypes.APIKey.owner_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>If supplied at credential creation, ownership will be assigned to the specified User or Bot. Only admins may specify an owner other than themselves. Defaults to the authenticated User or Bot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -573,6 +585,334 @@
 </dd></dl>
 </dd></dl>
 <dl class="py class">
+<dt id="ngrok.datatypes.ApplicationSession">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">ApplicationSession</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#ApplicationSession"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.ApplicationSession" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="ngrok.datatypes.ApplicationSession.application_user">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">application_user</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationSession.application_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>application user this session is associated with</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.Ref" title="ngrok.datatypes.Ref"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ref</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationSession.browser_session">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">browser_session</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationSession.browser_session" title="Permalink to this definition">¶</a></dt>
+<dd><p>browser session details of the application session</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.BrowserSession" title="ngrok.datatypes.BrowserSession"><code class="xref py py-class docutils literal notranslate"><span class="pre">BrowserSession</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationSession.created_at">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">created_at</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationSession.created_at" title="Permalink to this definition">¶</a></dt>
+<dd><p>timestamp when the user was created in RFC 3339 format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationSession.delete">
+<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#ApplicationSession.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.ApplicationSession.delete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationSession.edge">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">edge</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationSession.edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>edge this session is associated with, null if the endpoint is agent-initiated</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.Ref" title="ngrok.datatypes.Ref"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ref</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationSession.endpoint">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">endpoint</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationSession.endpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>ephemeral endpoint this session is associated with</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.Ref" title="ngrok.datatypes.Ref"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ref</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationSession.expires_at">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">expires_at</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationSession.expires_at" title="Permalink to this definition">¶</a></dt>
+<dd><p>timestamp when session expires in RFC 3339 format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationSession.id">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">id</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationSession.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>unique application session resource identifier</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationSession.last_active">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">last_active</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationSession.last_active" title="Permalink to this definition">¶</a></dt>
+<dd><p>timestamp when the user was last active in RFC 3339 format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationSession.public_url">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">public_url</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationSession.public_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL of the hostport served by this endpoint</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationSession.route">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">route</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationSession.route" title="Permalink to this definition">¶</a></dt>
+<dd><p>route this session is associated with, null if the endpoint is agent-initiated</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.Ref" title="ngrok.datatypes.Ref"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ref</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationSession.uri">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">uri</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationSession.uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>URI of the application session API resource</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="ngrok.datatypes.ApplicationSessionList">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">ApplicationSessionList</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#ApplicationSessionList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.ApplicationSessionList" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="ngrok.datatypes.ApplicationSessionList.application_sessions">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">application_sessions</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationSessionList.application_sessions" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of all application sessions on this account</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<a class="reference internal" href="#ngrok.datatypes.ApplicationSession" title="ngrok.datatypes.ApplicationSession"><code class="xref py py-class docutils literal notranslate"><span class="pre">ApplicationSession</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationSessionList.next_page_uri">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">next_page_uri</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationSessionList.next_page_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>URI of the next page, or null if there is no next page</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationSessionList.uri">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">uri</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationSessionList.uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>URI of the application session list API resource</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="ngrok.datatypes.ApplicationUser">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">ApplicationUser</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#ApplicationUser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.ApplicationUser" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="ngrok.datatypes.ApplicationUser.created_at">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">created_at</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationUser.created_at" title="Permalink to this definition">¶</a></dt>
+<dd><p>timestamp when the user was created in RFC 3339 format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationUser.delete">
+<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#ApplicationUser.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.ApplicationUser.delete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationUser.email">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">email</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationUser.email" title="Permalink to this definition">¶</a></dt>
+<dd><p>user email</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationUser.id">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">id</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationUser.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>unique application user resource identifier</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationUser.identity_provider">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">identity_provider</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationUser.identity_provider" title="Permalink to this definition">¶</a></dt>
+<dd><p>identity provider that the user authenticated with</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.IdentityProvider" title="ngrok.datatypes.IdentityProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">IdentityProvider</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationUser.last_active">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">last_active</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationUser.last_active" title="Permalink to this definition">¶</a></dt>
+<dd><p>timestamp when the user was last active in RFC 3339 format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationUser.last_login">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">last_login</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationUser.last_login" title="Permalink to this definition">¶</a></dt>
+<dd><p>timestamp when the user last signed-in in RFC 3339 format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationUser.name">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">name</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationUser.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>user common name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationUser.provider_user_id">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">provider_user_id</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationUser.provider_user_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>unique user identifier</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationUser.uri">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">uri</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationUser.uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>URI of the application user API resource</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationUser.username">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">username</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationUser.username" title="Permalink to this definition">¶</a></dt>
+<dd><p>user username</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="ngrok.datatypes.ApplicationUserList">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">ApplicationUserList</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#ApplicationUserList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.ApplicationUserList" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="ngrok.datatypes.ApplicationUserList.application_users">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">application_users</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationUserList.application_users" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of all application users on this account</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<a class="reference internal" href="#ngrok.datatypes.ApplicationUser" title="ngrok.datatypes.ApplicationUser"><code class="xref py py-class docutils literal notranslate"><span class="pre">ApplicationUser</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationUserList.next_page_uri">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">next_page_uri</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationUserList.next_page_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>URI of the next page, or null if there is no next page</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.ApplicationUserList.uri">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">uri</span></code><a class="headerlink" href="#ngrok.datatypes.ApplicationUserList.uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>URI of the application user list API resource</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="ngrok.datatypes.BrowserSession">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">BrowserSession</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#BrowserSession"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.BrowserSession" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="ngrok.datatypes.BrowserSession.ip_address">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ip_address</span></code><a class="headerlink" href="#ngrok.datatypes.BrowserSession.ip_address" title="Permalink to this definition">¶</a></dt>
+<dd><p>IP address</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.BrowserSession.location">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">location</span></code><a class="headerlink" href="#ngrok.datatypes.BrowserSession.location" title="Permalink to this definition">¶</a></dt>
+<dd><p>IP geolocation data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.Location" title="ngrok.datatypes.Location"><code class="xref py py-class docutils literal notranslate"><span class="pre">Location</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.BrowserSession.user_agent">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">user_agent</span></code><a class="headerlink" href="#ngrok.datatypes.BrowserSession.user_agent" title="Permalink to this definition">¶</a></dt>
+<dd><p>HTTP User-Agent data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.UserAgent" title="ngrok.datatypes.UserAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserAgent</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
 <dt id="ngrok.datatypes.CertificateAuthority">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">CertificateAuthority</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#CertificateAuthority"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.CertificateAuthority" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py method">
@@ -734,7 +1074,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.datatypes.Credential.acl">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">acl</span></code><a class="headerlink" href="#ngrok.datatypes.Credential.acl" title="Permalink to this definition">¶</a></dt>
-<dd><p>optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the <code class="docutils literal notranslate"><span class="pre">bind</span></code> rule. The <code class="docutils literal notranslate"><span class="pre">bind</span></code> rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule <code class="docutils literal notranslate"><span class="pre">bind:example.ngrok.io</span></code>. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of <code class="docutils literal notranslate"><span class="pre">bind:*.example.com</span></code> which will allow <code class="docutils literal notranslate"><span class="pre">x.example.com</span></code>, <code class="docutils literal notranslate"><span class="pre">y.example.com</span></code>, <code class="docutils literal notranslate"><span class="pre">*.example.com</span></code>, etc. A rule of <code class="docutils literal notranslate"><span class="pre">'*'</span></code> is equivalent to no acl at all and will explicitly permit all actions.</p>
+<dd><p>optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the <code class="docutils literal notranslate"><span class="pre">bind</span></code> rule. The <code class="docutils literal notranslate"><span class="pre">bind</span></code> rule allows the caller to restrict what domains, addresses, and labels the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule <code class="docutils literal notranslate"><span class="pre">bind:example.ngrok.io</span></code>. Bind rules for domains may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of <code class="docutils literal notranslate"><span class="pre">bind:*.example.com</span></code> which will allow <code class="docutils literal notranslate"><span class="pre">x.example.com</span></code>, <code class="docutils literal notranslate"><span class="pre">y.example.com</span></code>, <code class="docutils literal notranslate"><span class="pre">*.example.com</span></code>, etc. Bind rules for labels may specify a wildcard key and/or value to match multiple labels. For example, you may specify a rule of <code class="docutils literal notranslate"><span class="pre">bind:*=example</span></code> which will allow <code class="docutils literal notranslate"><span class="pre">x=example</span></code>, <code class="docutils literal notranslate"><span class="pre">y=example</span></code>, etc. A rule of <code class="docutils literal notranslate"><span class="pre">'*'</span></code> is equivalent to no acl at all and will explicitly permit all actions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
@@ -779,6 +1119,16 @@
 <dt id="ngrok.datatypes.Credential.metadata">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">metadata</span></code><a class="headerlink" href="#ngrok.datatypes.Credential.metadata" title="Permalink to this definition">¶</a></dt>
 <dd><p>arbitrary user-defined machine-readable data of this credential. Optional, max 4096 bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.Credential.owner_id">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">owner_id</span></code><a class="headerlink" href="#ngrok.datatypes.Credential.owner_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>If supplied at credential creation, ownership will be assigned to the specified User or Bot. Only admins may specify an owner other than themselves. Defaults to the authenticated User or Bot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -1075,7 +1425,7 @@
 <dd><p>Integer number of seconds after which the circuit is tripped to wait before re-evaluating upstream health</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">timedelta</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1282,7 +1632,7 @@
 <dd><p>Integer number of seconds of the maximum duration of an authenticated session. After this period is exceeded, a user must reauthenticate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">timedelta</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1303,6 +1653,55 @@
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.EndpointOAuthProvider" title="ngrok.datatypes.EndpointOAuthProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointOAuthProvider</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="ngrok.datatypes.EndpointOAuthAmazon">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">EndpointOAuthAmazon</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#EndpointOAuthAmazon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthAmazon" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthAmazon.client_id">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">client_id</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthAmazon.client_id" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthAmazon.client_secret">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">client_secret</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthAmazon.client_secret" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthAmazon.email_addresses">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">email_addresses</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthAmazon.email_addresses" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthAmazon.email_domains">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">email_domains</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthAmazon.email_domains" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthAmazon.scopes">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">scopes</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthAmazon.scopes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1436,6 +1835,55 @@
 </dd></dl>
 </dd></dl>
 <dl class="py class">
+<dt id="ngrok.datatypes.EndpointOAuthGitLab">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">EndpointOAuthGitLab</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#EndpointOAuthGitLab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthGitLab" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthGitLab.client_id">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">client_id</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthGitLab.client_id" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthGitLab.client_secret">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">client_secret</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthGitLab.client_secret" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthGitLab.email_addresses">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">email_addresses</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthGitLab.email_addresses" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthGitLab.email_domains">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">email_domains</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthGitLab.email_domains" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthGitLab.scopes">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">scopes</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthGitLab.scopes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
 <dt id="ngrok.datatypes.EndpointOAuthGoogle">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">EndpointOAuthGoogle</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#EndpointOAuthGoogle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthGoogle" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py method">
@@ -1483,6 +1931,55 @@
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">scopes</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthGoogle.scopes" title="Permalink to this definition">¶</a></dt>
 <dd><p>a list of provider-specific OAuth scopes with the permissions your OAuth app would like to ask for. these may not be set if you are using the ngrok-managed oauth app (i.e. you must pass both <code class="docutils literal notranslate"><span class="pre">client_id</span></code> and <code class="docutils literal notranslate"><span class="pre">client_secret</span></code> to set scopes)</p>
 <dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="ngrok.datatypes.EndpointOAuthLinkedIn">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">EndpointOAuthLinkedIn</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#EndpointOAuthLinkedIn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthLinkedIn" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthLinkedIn.client_id">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">client_id</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthLinkedIn.client_id" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthLinkedIn.client_secret">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">client_secret</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthLinkedIn.client_secret" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthLinkedIn.email_addresses">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">email_addresses</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthLinkedIn.email_addresses" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthLinkedIn.email_domains">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">email_domains</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthLinkedIn.email_domains" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthLinkedIn.scopes">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">scopes</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthLinkedIn.scopes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
 </dd>
@@ -1547,6 +2044,16 @@
 <dt id="ngrok.datatypes.EndpointOAuthProvider">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">EndpointOAuthProvider</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#EndpointOAuthProvider"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthProvider" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthProvider.amazon">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">amazon</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthProvider.amazon" title="Permalink to this definition">¶</a></dt>
+<dd><p>configuration for using amazon as the identity provider</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.EndpointOAuthAmazon" title="ngrok.datatypes.EndpointOAuthAmazon"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointOAuthAmazon</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
 <dt id="ngrok.datatypes.EndpointOAuthProvider.facebook">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">facebook</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthProvider.facebook" title="Permalink to this definition">¶</a></dt>
 <dd><p>configuration for using facebook as the identity provider</p>
@@ -1567,6 +2074,16 @@
 </dl>
 </dd></dl>
 <dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthProvider.gitlab">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">gitlab</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthProvider.gitlab" title="Permalink to this definition">¶</a></dt>
+<dd><p>configuration for using gitlab as the identity provider</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.EndpointOAuthGitLab" title="ngrok.datatypes.EndpointOAuthGitLab"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointOAuthGitLab</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
 <dt id="ngrok.datatypes.EndpointOAuthProvider.google">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">google</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthProvider.google" title="Permalink to this definition">¶</a></dt>
 <dd><p>configuration for using google as the identity provider</p>
@@ -1577,12 +2094,81 @@
 </dl>
 </dd></dl>
 <dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthProvider.linkedin">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">linkedin</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthProvider.linkedin" title="Permalink to this definition">¶</a></dt>
+<dd><p>configuration for using linkedin as the identity provider</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.EndpointOAuthLinkedIn" title="ngrok.datatypes.EndpointOAuthLinkedIn"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointOAuthLinkedIn</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
 <dt id="ngrok.datatypes.EndpointOAuthProvider.microsoft">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">microsoft</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthProvider.microsoft" title="Permalink to this definition">¶</a></dt>
 <dd><p>configuration for using microsoft as the identity provider</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.EndpointOAuthMicrosoft" title="ngrok.datatypes.EndpointOAuthMicrosoft"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointOAuthMicrosoft</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthProvider.twitch">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">twitch</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthProvider.twitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>configuration for using twitch as the identity provider</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.EndpointOAuthTwitch" title="ngrok.datatypes.EndpointOAuthTwitch"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointOAuthTwitch</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="ngrok.datatypes.EndpointOAuthTwitch">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">EndpointOAuthTwitch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#EndpointOAuthTwitch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthTwitch" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthTwitch.client_id">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">client_id</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthTwitch.client_id" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthTwitch.client_secret">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">client_secret</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthTwitch.client_secret" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthTwitch.email_addresses">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">email_addresses</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthTwitch.email_addresses" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthTwitch.email_domains">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">email_domains</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthTwitch.email_domains" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.EndpointOAuthTwitch.scopes">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">scopes</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointOAuthTwitch.scopes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1656,7 +2242,7 @@
 <dd><p>Integer number of seconds of the maximum duration of an authenticated session. After this period is exceeded, a user must reauthenticate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">timedelta</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1848,7 +2434,7 @@
 <dd><p>Integer number of seconds of the maximum duration of an authenticated session. After this period is exceeded, a user must reauthenticate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">timedelta</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1982,7 +2568,7 @@
 <dd><p>Integer number of seconds of the maximum duration of an authenticated session. After this period is exceeded, a user must reauthenticate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">timedelta</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2081,7 +2667,7 @@
 <dl class="py method">
 <dt id="ngrok.datatypes.EndpointWebhookValidation.provider">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">provider</span></code><a class="headerlink" href="#ngrok.datatypes.EndpointWebhookValidation.provider" title="Permalink to this definition">¶</a></dt>
-<dd><p>a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers: <code class="docutils literal notranslate"><span class="pre">SLACK</span></code>, <code class="docutils literal notranslate"><span class="pre">SNS</span></code>, <code class="docutils literal notranslate"><span class="pre">STRIPE</span></code>, <code class="docutils literal notranslate"><span class="pre">GITHUB</span></code>, <code class="docutils literal notranslate"><span class="pre">TWILIO</span></code>, <code class="docutils literal notranslate"><span class="pre">SHOPIFY</span></code>, <code class="docutils literal notranslate"><span class="pre">GITLAB</span></code>, <code class="docutils literal notranslate"><span class="pre">INTERCOM</span></code>, <code class="docutils literal notranslate"><span class="pre">SENDGRID</span></code>, <code class="docutils literal notranslate"><span class="pre">XERO</span></code>, <code class="docutils literal notranslate"><span class="pre">PAGERDUTY</span></code>.</p>
+<dd><p>a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers defined at <a class="reference external" href="https://ngrok.com/docs/cloud-edge/modules/webhook">https://ngrok.com/docs/cloud-edge/modules/webhook</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -3414,6 +4000,74 @@
 </dd></dl>
 </dd></dl>
 <dl class="py class">
+<dt id="ngrok.datatypes.IdentityProvider">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">IdentityProvider</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#IdentityProvider"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.IdentityProvider" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="ngrok.datatypes.IdentityProvider.name">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">name</span></code><a class="headerlink" href="#ngrok.datatypes.IdentityProvider.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the identity provider (e.g. Google)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.IdentityProvider.url">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">url</span></code><a class="headerlink" href="#ngrok.datatypes.IdentityProvider.url" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL of the identity provider (e.g. <a class="reference external" href="https://accounts.google.com">https://accounts.google.com</a>)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="ngrok.datatypes.Location">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">Location</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#Location"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.Location" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="ngrok.datatypes.Location.country_code">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">country_code</span></code><a class="headerlink" href="#ngrok.datatypes.Location.country_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>ISO country code</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.Location.lat_long_radius_km">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">lat_long_radius_km</span></code><a class="headerlink" href="#ngrok.datatypes.Location.lat_long_radius_km" title="Permalink to this definition">¶</a></dt>
+<dd><p>accuracy radius of the geographical coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.Location.latitude">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">latitude</span></code><a class="headerlink" href="#ngrok.datatypes.Location.latitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>geographical latitude</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.Location.longitude">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">longitude</span></code><a class="headerlink" href="#ngrok.datatypes.Location.longitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>geographical longitude</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
 <dt id="ngrok.datatypes.Ref">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">Ref</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#Ref"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.Ref" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py method">
@@ -3925,7 +4579,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.datatypes.SSHCredential.acl">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">acl</span></code><a class="headerlink" href="#ngrok.datatypes.SSHCredential.acl" title="Permalink to this definition">¶</a></dt>
-<dd><p>optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the <code class="docutils literal notranslate"><span class="pre">bind</span></code> rule. The <code class="docutils literal notranslate"><span class="pre">bind</span></code> rule allows the caller to restrict what domains and addresses the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule <code class="docutils literal notranslate"><span class="pre">bind:example.ngrok.io</span></code>. Bind rules may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of <code class="docutils literal notranslate"><span class="pre">bind:*.example.com</span></code> which will allow <code class="docutils literal notranslate"><span class="pre">x.example.com</span></code>, <code class="docutils literal notranslate"><span class="pre">y.example.com</span></code>, <code class="docutils literal notranslate"><span class="pre">*.example.com</span></code>, etc. A rule of <code class="docutils literal notranslate"><span class="pre">'*'</span></code> is equivalent to no acl at all and will explicitly permit all actions.</p>
+<dd><p>optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the <code class="docutils literal notranslate"><span class="pre">bind</span></code> rule. The <code class="docutils literal notranslate"><span class="pre">bind</span></code> rule allows the caller to restrict what domains, addresses, and labels the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule <code class="docutils literal notranslate"><span class="pre">bind:example.ngrok.io</span></code>. Bind rules for domains may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of <code class="docutils literal notranslate"><span class="pre">bind:*.example.com</span></code> which will allow <code class="docutils literal notranslate"><span class="pre">x.example.com</span></code>, <code class="docutils literal notranslate"><span class="pre">y.example.com</span></code>, <code class="docutils literal notranslate"><span class="pre">*.example.com</span></code>, etc. Bind rules for labels may specify a wildcard key and/or value to match multiple labels. For example, you may specify a rule of <code class="docutils literal notranslate"><span class="pre">bind:*=example</span></code> which will allow <code class="docutils literal notranslate"><span class="pre">x=example</span></code>, <code class="docutils literal notranslate"><span class="pre">y=example</span></code>, etc. A rule of <code class="docutils literal notranslate"><span class="pre">'*'</span></code> is equivalent to no acl at all and will explicitly permit all actions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
@@ -3970,6 +4624,16 @@
 <dt id="ngrok.datatypes.SSHCredential.metadata">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">metadata</span></code><a class="headerlink" href="#ngrok.datatypes.SSHCredential.metadata" title="Permalink to this definition">¶</a></dt>
 <dd><p>arbitrary user-defined machine-readable data of this ssh credential. Optional, max 4096 bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.SSHCredential.owner_id">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">owner_id</span></code><a class="headerlink" href="#ngrok.datatypes.SSHCredential.owner_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>If supplied at credential creation, ownership will be assigned to the specified User or Bot. Only admins may specify an owner other than themselves. Defaults to the authenticated User or Bot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -4227,7 +4891,7 @@
 <dl class="py method">
 <dt id="ngrok.datatypes.SSHUserCertificate.critical_options">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">critical_options</span></code><a class="headerlink" href="#ngrok.datatypes.SSHUserCertificate.critical_options" title="Permalink to this definition">¶</a></dt>
-<dd><p>A map of critical options included in the certificate. Only two critical options are currently defined by OpenSSH: <code class="docutils literal notranslate"><span class="pre">force-command</span></code> and <code class="docutils literal notranslate"><span class="pre">source-address</span></code>. See <cite>the OpenSSH certificate protocol spec</cite> &lt;<a class="reference external" href="https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys">https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys</a>&gt;`_ for additional details.</p>
+<dd><p>A map of critical options included in the certificate. Only two critical options are currently defined by OpenSSH: <code class="docutils literal notranslate"><span class="pre">force-command</span></code> and <code class="docutils literal notranslate"><span class="pre">source-address</span></code>. See <a class="reference external" href="https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys">the OpenSSH certificate protocol spec</a> for additional details.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapping</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
@@ -4251,7 +4915,7 @@
 <dl class="py method">
 <dt id="ngrok.datatypes.SSHUserCertificate.extensions">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">extensions</span></code><a class="headerlink" href="#ngrok.datatypes.SSHUserCertificate.extensions" title="Permalink to this definition">¶</a></dt>
-<dd><p>A map of extensions included in the certificate. Extensions are additional metadata that can be interpreted by the SSH server for any purpose. These can be used to permit or deny the ability to open a terminal, do port forwarding, x11 forwarding, and more. If unspecified, the certificate will include limited permissions with the following extension map: <code class="docutils literal notranslate"><span class="pre">{"permit-pty":</span> <span class="pre">"",</span> <span class="pre">"permit-user-rc":</span> <span class="pre">""}</span></code> OpenSSH understands a number of predefined extensions. See <cite>the OpenSSH certificate protocol spec</cite> &lt;<a class="reference external" href="https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys">https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys</a>&gt;`_ for additional details.</p>
+<dd><p>A map of extensions included in the certificate. Extensions are additional metadata that can be interpreted by the SSH server for any purpose. These can be used to permit or deny the ability to open a terminal, do port forwarding, x11 forwarding, and more. If unspecified, the certificate will include limited permissions with the following extension map: <code class="docutils literal notranslate"><span class="pre">{"permit-pty":</span> <span class="pre">"",</span> <span class="pre">"permit-user-rc":</span> <span class="pre">""}</span></code> OpenSSH understands a number of predefined extensions. See <a class="reference external" href="https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys">the OpenSSH certificate protocol spec</a> for additional details.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapping</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
@@ -4518,7 +5182,7 @@
 <dd><dl class="py method">
 <dt id="ngrok.datatypes.TLSCertificate.certificate_pem">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">certificate_pem</span></code><a class="headerlink" href="#ngrok.datatypes.TLSCertificate.certificate_pem" title="Permalink to this definition">¶</a></dt>
-<dd><p>chain of PEM-encoded certificates, leaf first. See <cite>Certificate Bundles</cite> &lt;<a class="reference external" href="https://ngrok.com/docs/api#tls-certificates-pem">https://ngrok.com/docs/api#tls-certificates-pem</a>&gt;`_.</p>
+<dd><p>chain of PEM-encoded certificates, leaf first. See <a class="reference external" href="https://ngrok.com/docs/api#tls-certificates-pem">Certificate Bundles</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -4991,7 +5655,7 @@
 <dl class="py method">
 <dt id="ngrok.datatypes.Tunnel.metadata">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">metadata</span></code><a class="headerlink" href="#ngrok.datatypes.Tunnel.metadata" title="Permalink to this definition">¶</a></dt>
-<dd><p>user-supplied metadata for the tunnel defined in the ngrok configuration file. See the tunnel <cite>metadata configuration option</cite> &lt;<a class="reference external" href="https://ngrok.com/docs#tunnel-definitions-metadata">https://ngrok.com/docs#tunnel-definitions-metadata</a>&gt;`_ In API version 0, this value was instead pulled from the top-level <cite>metadata configuration option</cite> &lt;<a class="reference external" href="https://ngrok.com/docs#config_metadata">https://ngrok.com/docs#config_metadata</a>&gt;`_.</p>
+<dd><p>user-supplied metadata for the tunnel defined in the ngrok configuration file. See the tunnel <a class="reference external" href="https://ngrok.com/docs#tunnel-definitions-metadata">metadata configuration option</a> In API version 0, this value was instead pulled from the top-level <a class="reference external" href="https://ngrok.com/docs#config_metadata">metadata configuration option</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -5330,6 +5994,70 @@
 <dt id="ngrok.datatypes.TunnelSessionList.uri">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">uri</span></code><a class="headerlink" href="#ngrok.datatypes.TunnelSessionList.uri" title="Permalink to this definition">¶</a></dt>
 <dd><p>URI to the API resource of the tunnel session list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="ngrok.datatypes.UserAgent">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></code><code class="sig-name descname"><span class="pre">UserAgent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#UserAgent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.UserAgent" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="ngrok.datatypes.UserAgent.browser_name">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">browser_name</span></code><a class="headerlink" href="#ngrok.datatypes.UserAgent.browser_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>browser name (e.g. Chrome)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.UserAgent.browser_version">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">browser_version</span></code><a class="headerlink" href="#ngrok.datatypes.UserAgent.browser_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>browser version (e.g. 102)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.UserAgent.device_type">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">device_type</span></code><a class="headerlink" href="#ngrok.datatypes.UserAgent.device_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>type of device (e.g. Desktop)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.UserAgent.os_name">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">os_name</span></code><a class="headerlink" href="#ngrok.datatypes.UserAgent.os_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>operating system name (e.g. MacOS)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.UserAgent.os_version">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">os_version</span></code><a class="headerlink" href="#ngrok.datatypes.UserAgent.os_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>operating system version (e.g. 10.15.7)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="ngrok.datatypes.UserAgent.raw">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">raw</span></code><a class="headerlink" href="#ngrok.datatypes.UserAgent.raw" title="Permalink to this definition">¶</a></dt>
+<dd><p>raw User-Agent request header</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
