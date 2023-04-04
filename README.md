@@ -9,6 +9,10 @@ This library is published on [PyPi](https://pypi.org/project/ngrok-api/):
 
     pip install ngrok-api
 
+## Support
+
+The best place to get support using this library is through the [ngrok Slack Community](https://ngrok.com/slack). If you find any bugs, please contribute by opening a new GitHub issue.
+
 ## Documentation
 
 A quickstart guide and a full API reference are included in the [ngrok python API documentation](https://python-api.docs.ngrok.com).
