@@ -123,6 +123,8 @@ API Reference
   abuse_reports
   agent_ingresses
   api_keys
+  application_sessions
+  application_users
   failover_backends
   http_response_backends
   tunnel_group_backends
