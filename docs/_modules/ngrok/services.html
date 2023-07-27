@@ -166,6 +166,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../api_keys.html">API Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../application_sessions.html">Application Sessions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../application_users.html">Application Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tunnel_sessions.html">Tunnel Sessions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../failover_backends.html">Failover Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../http_response_backends.html">HTTP Response Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tunnel_group_backends.html">Tunnel Group Backends</a></li>
@@ -209,7 +210,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../ssh_host_certificates.html">SSH Host Certificates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ssh_user_certificates.html">SSH User Certificates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tls_certificates.html">TLS Certificates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tunnel_sessions.html">Tunnel Sessions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tunnels.html">Tunnels</a></li>
 </ul>
 
@@ -245,7 +245,10 @@
         </div>
         <article role="main">
           <h1>Source code for ngrok.services</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span></span><span class="c1"># Code generated for API Clients. DO NOT EDIT.</span>
+
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 <span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterator</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Sequence</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
@@ -641,6 +644,104 @@
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">ApplicationUserList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="TunnelSessionsClient"><a class="viewcode-back" href="../../tunnel_sessions.html#ngrok.services.TunnelSessionsClient">[docs]</a><span class="k">class</span> <span class="nc">TunnelSessionsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tunnel Sessions represent instances of ngrok agents or SSH reverse tunnel</span>
+<span class="sd">    sessions that are running and connected to the ngrok service. Each tunnel</span>
+<span class="sd">    session can include one or more Tunnels.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
+
+<div class="viewcode-block" id="TunnelSessionsClient.list"><a class="viewcode-back" href="../../tunnel_sessions.html#ngrok.services.TunnelSessionsClient.list">[docs]</a>    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelSessionList</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List all online tunnel sessions running on this account.</span>
+
+<span class="sd">        :param before_id:</span>
+<span class="sd">        :param limit:</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-tunnel-sessions-list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/tunnel_sessions&quot;</span>
+        <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
+            <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">TunnelSessionList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TunnelSessionsClient.get"><a class="viewcode-back" href="../../tunnel_sessions.html#ngrok.services.TunnelSessionsClient.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelSession</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the detailed status of a tunnel session by ID</span>
+
+<span class="sd">        :param id: a resource identifier</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-tunnel-sessions-get</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/tunnel_sessions/</span><span class="si">{id}</span><span class="s2">&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">body_arg</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">TunnelSession</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TunnelSessionsClient.restart"><a class="viewcode-back" href="../../tunnel_sessions.html#ngrok.services.TunnelSessionsClient.restart">[docs]</a>    <span class="k">def</span> <span class="nf">restart</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Issues a command instructing the ngrok agent to restart. The agent restarts itself by calling exec() on platforms that support it. This operation is notably not supported on Windows. When an agent restarts, it reconnects with a new tunnel session ID.</span>
+
+<span class="sd">        :param id: a resource identifier</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-tunnel-sessions-restart</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/tunnel_sessions/</span><span class="si">{id}</span><span class="s2">/restart&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">body_arg</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TunnelSessionsClient.stop"><a class="viewcode-back" href="../../tunnel_sessions.html#ngrok.services.TunnelSessionsClient.stop">[docs]</a>    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Issues a command instructing the ngrok agent that started this tunnel session to exit.</span>
+
+<span class="sd">        :param id: a resource identifier</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-tunnel-sessions-stop</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/tunnel_sessions/</span><span class="si">{id}</span><span class="s2">/stop&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">body_arg</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TunnelSessionsClient.update"><a class="viewcode-back" href="../../tunnel_sessions.html#ngrok.services.TunnelSessionsClient.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Issues a command instructing the ngrok agent to update itself to the latest version. After this call completes successfully, the ngrok agent will be in the update process. A caller should wait some amount of time to allow the update to complete (at least 10 seconds) before making a call to the Restart endpoint to request that the agent restart itself to start using the new code. This call will never update an ngrok agent to a new major version which could cause breaking compatibility issues. If you wish to update to a new major version, that must be done manually. Still, please be aware that updating your ngrok agent could break your integration. This call will fail in any of the following circumstances: there is no update available the ngrok agent&#39;s configuration disabled update checks the agent is currently in process of updating the agent has already successfully updated but has not yet been restarted</span>
+
+<span class="sd">        :param id:</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-tunnel-sessions-update</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/tunnel_sessions/</span><span class="si">{id}</span><span class="s2">/update&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">body_arg</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="FailoverBackendsClient"><a class="viewcode-back" href="../../failover_backends.html#ngrok.services.FailoverBackendsClient">[docs]</a><span class="k">class</span> <span class="nc">FailoverBackendsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -4770,104 +4871,6 @@
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">TLSCertificate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div></div>
-
-
-<div class="viewcode-block" id="TunnelSessionsClient"><a class="viewcode-back" href="../../tunnel_sessions.html#ngrok.services.TunnelSessionsClient">[docs]</a><span class="k">class</span> <span class="nc">TunnelSessionsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tunnel Sessions represent instances of ngrok agents or SSH reverse tunnel</span>
-<span class="sd">    sessions that are running and connected to the ngrok service. Each tunnel</span>
-<span class="sd">    session can include one or more Tunnels.&quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
-
-<div class="viewcode-block" id="TunnelSessionsClient.list"><a class="viewcode-back" href="../../tunnel_sessions.html#ngrok.services.TunnelSessionsClient.list">[docs]</a>    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelSessionList</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;List all online tunnel sessions running on this account.</span>
-
-<span class="sd">        :param before_id:</span>
-<span class="sd">        :param limit:</span>
-
-<span class="sd">        https://ngrok.com/docs/api#api-tunnel-sessions-list</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/tunnel_sessions&quot;</span>
-        <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-            <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
-            <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">TunnelSessionList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="TunnelSessionsClient.get"><a class="viewcode-back" href="../../tunnel_sessions.html#ngrok.services.TunnelSessionsClient.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelSession</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the detailed status of a tunnel session by ID</span>
-
-<span class="sd">        :param id: a resource identifier</span>
-
-<span class="sd">        https://ngrok.com/docs/api#api-tunnel-sessions-get</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/tunnel_sessions/</span><span class="si">{id}</span><span class="s2">&quot;</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="n">body_arg</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">TunnelSession</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="TunnelSessionsClient.restart"><a class="viewcode-back" href="../../tunnel_sessions.html#ngrok.services.TunnelSessionsClient.restart">[docs]</a>    <span class="k">def</span> <span class="nf">restart</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Issues a command instructing the ngrok agent to restart. The agent restarts itself by calling exec() on platforms that support it. This operation is notably not supported on Windows. When an agent restarts, it reconnects with a new tunnel session ID.</span>
-
-<span class="sd">        :param id: a resource identifier</span>
-
-<span class="sd">        https://ngrok.com/docs/api#api-tunnel-sessions-restart</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/tunnel_sessions/</span><span class="si">{id}</span><span class="s2">/restart&quot;</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="n">body_arg</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="TunnelSessionsClient.stop"><a class="viewcode-back" href="../../tunnel_sessions.html#ngrok.services.TunnelSessionsClient.stop">[docs]</a>    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Issues a command instructing the ngrok agent that started this tunnel session to exit.</span>
-
-<span class="sd">        :param id: a resource identifier</span>
-
-<span class="sd">        https://ngrok.com/docs/api#api-tunnel-sessions-stop</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/tunnel_sessions/</span><span class="si">{id}</span><span class="s2">/stop&quot;</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="n">body_arg</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="TunnelSessionsClient.update"><a class="viewcode-back" href="../../tunnel_sessions.html#ngrok.services.TunnelSessionsClient.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Issues a command instructing the ngrok agent to update itself to the latest version. After this call completes successfully, the ngrok agent will be in the update process. A caller should wait some amount of time to allow the update to complete (at least 10 seconds) before making a call to the Restart endpoint to request that the agent restart itself to start using the new code. This call will never update an ngrok agent to a new major version which could cause breaking compatibility issues. If you wish to update to a new major version, that must be done manually. Still, please be aware that updating your ngrok agent could break your integration. This call will fail in any of the following circumstances: there is no update available the ngrok agent&#39;s configuration disabled update checks the agent is currently in process of updating the agent has already successfully updated but has not yet been restarted</span>
-
-<span class="sd">        :param id:</span>
-
-<span class="sd">        https://ngrok.com/docs/api#api-tunnel-sessions-update</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/tunnel_sessions/</span><span class="si">{id}</span><span class="s2">/update&quot;</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="n">body_arg</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="TunnelsClient"><a class="viewcode-back" href="../../tunnels.html#ngrok.services.TunnelsClient">[docs]</a><span class="k">class</span> <span class="nc">TunnelsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>

@@ -166,6 +166,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../api_keys.html">API Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../application_sessions.html">Application Sessions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../application_users.html">Application Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tunnel_sessions.html">Tunnel Sessions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../failover_backends.html">Failover Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../http_response_backends.html">HTTP Response Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tunnel_group_backends.html">Tunnel Group Backends</a></li>
@@ -209,7 +210,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../ssh_host_certificates.html">SSH Host Certificates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ssh_user_certificates.html">SSH User Certificates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tls_certificates.html">TLS Certificates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tunnel_sessions.html">Tunnel Sessions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tunnels.html">Tunnels</a></li>
 </ul>
 
@@ -245,7 +245,10 @@
         </div>
         <article role="main">
           <h1>Source code for ngrok.datatypes</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span></span><span class="c1"># Code generated for API Clients. DO NOT EDIT.</span>
+
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Sequence</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
 <span class="kn">from</span> <span class="nn">.iterator</span> <span class="kn">import</span> <span class="n">PagedIterator</span>
@@ -967,6 +970,114 @@
     <span class="k">def</span> <span class="nf">url</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;URL of the identity provider (e.g. `https://accounts.google.com &lt;https://accounts.google.com&gt;`_)&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="TunnelSession"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.TunnelSession">[docs]</a><span class="k">class</span> <span class="nc">TunnelSession</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">props</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span> <span class="o">=</span> <span class="n">props</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;credential&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">Ref</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">props</span><span class="p">[</span><span class="s2">&quot;credential&quot;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;credential&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="k">else</span> <span class="kc">None</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_props</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s2">&quot;id&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;&lt;TunnelSession </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;&lt;TunnelSession </span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">agent_version</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;version of the ngrok agent that started this ngrok tunnel session&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;agent_version&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">credential</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Ref</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;reference to the tunnel credential or ssh credential used by the ngrok agent to start this tunnel session&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;credential&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;unique tunnel session resource identifier&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ip</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;source ip address of the tunnel session&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;ip&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;arbitrary user-defined data specified in the metadata property in the ngrok configuration file. See the metadata configuration option&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;metadata&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">os</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;operating system of the host the ngrok agent is running on&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;os&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">region</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;the ngrok region identifier in which this tunnel session was started&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;region&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">started_at</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;time when the tunnel session first connected to the ngrok servers&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;started_at&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">transport</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;the transport protocol used to start the tunnel session. Either ``ngrok/v2`` or ``ssh``&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;transport&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">uri</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;URI to the API resource of the tunnel session&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="TunnelSessionList"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.TunnelSessionList">[docs]</a><span class="k">class</span> <span class="nc">TunnelSessionList</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">props</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span> <span class="o">=</span> <span class="n">props</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;tunnel_sessions&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">[</span><span class="n">TunnelSession</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">props</span><span class="p">[</span><span class="s2">&quot;tunnel_sessions&quot;</span><span class="p">]]</span>
+            <span class="k">if</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tunnel_sessions&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="k">else</span> <span class="p">[]</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_props</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s2">&quot;id&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;&lt;TunnelSessionList </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;&lt;TunnelSessionList </span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">PagedIterator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;tunnel_sessions&quot;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">tunnel_sessions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">TunnelSession</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;list of all tunnel sessions on this account&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;tunnel_sessions&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">uri</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;URI to the API resource of the tunnel session list&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">next_page_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;URI of the next page, or null if there is no next page&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;next_page_uri&quot;</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="FailoverBackend"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.FailoverBackend">[docs]</a><span class="k">class</span> <span class="nc">FailoverBackend</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -3586,6 +3697,11 @@
             <span class="k">if</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;cloudwatch_logs&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
             <span class="k">else</span> <span class="kc">None</span>
         <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;datadog&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">EventTargetDatadog</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">props</span><span class="p">[</span><span class="s2">&quot;datadog&quot;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;datadog&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="k">else</span> <span class="kc">None</span>
+        <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_props</span>
@@ -3609,7 +3725,12 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">cloudwatch_logs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventTargetCloudwatchLogs</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Configuration used to send events to Amazon CloudWatch Logs.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;cloudwatch_logs&quot;</span><span class="p">]</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;cloudwatch_logs&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">datadog</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventTargetDatadog</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Configuration used to send events to Datadog.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;datadog&quot;</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="EventTargetFirehose"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.EventTargetFirehose">[docs]</a><span class="k">class</span> <span class="nc">EventTargetFirehose</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -3696,6 +3817,41 @@
     <span class="k">def</span> <span class="nf">log_group_arn</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;An Amazon Resource Name specifying the CloudWatch Logs group to deposit events into.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;log_group_arn&quot;</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="EventTargetDatadog"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.EventTargetDatadog">[docs]</a><span class="k">class</span> <span class="nc">EventTargetDatadog</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">props</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span> <span class="o">=</span> <span class="n">props</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_props</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s2">&quot;id&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;&lt;EventTargetDatadog </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;&lt;EventTargetDatadog </span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">api_key</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Datadog API key to use.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;api_key&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ddtags</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tags to send with the event.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;ddtags&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">service</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Service name to send with the event.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;service&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ddsite</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Datadog site to send event to.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;ddsite&quot;</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="AWSAuth"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.AWSAuth">[docs]</a><span class="k">class</span> <span class="nc">AWSAuth</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -5295,114 +5451,6 @@
     <span class="k">def</span> <span class="nf">ips</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;set of IP addresses this TLS certificate is also valid for&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;ips&quot;</span><span class="p">]</span></div>
-
-
-<div class="viewcode-block" id="TunnelSession"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.TunnelSession">[docs]</a><span class="k">class</span> <span class="nc">TunnelSession</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">props</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span> <span class="o">=</span> <span class="n">props</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;credential&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">Ref</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">props</span><span class="p">[</span><span class="s2">&quot;credential&quot;</span><span class="p">])</span>
-            <span class="k">if</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;credential&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-            <span class="k">else</span> <span class="kc">None</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_props</span>
-
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="s2">&quot;id&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;&lt;TunnelSession </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;&lt;TunnelSession </span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">))</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">agent_version</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;version of the ngrok agent that started this ngrok tunnel session&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;agent_version&quot;</span><span class="p">]</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">credential</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Ref</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;reference to the tunnel credential or ssh credential used by the ngrok agent to start this tunnel session&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;credential&quot;</span><span class="p">]</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;unique tunnel session resource identifier&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">ip</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;source ip address of the tunnel session&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;ip&quot;</span><span class="p">]</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;arbitrary user-defined data specified in the metadata property in the ngrok configuration file. See the metadata configuration option&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;metadata&quot;</span><span class="p">]</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">os</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;operating system of the host the ngrok agent is running on&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;os&quot;</span><span class="p">]</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">region</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;the ngrok region identifier in which this tunnel session was started&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;region&quot;</span><span class="p">]</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">started_at</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;time when the tunnel session first connected to the ngrok servers&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;started_at&quot;</span><span class="p">]</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">transport</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;the transport protocol used to start the tunnel session. Either ``ngrok/v2`` or ``ssh``&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;transport&quot;</span><span class="p">]</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">uri</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;URI to the API resource of the tunnel session&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">]</span></div>
-
-
-<div class="viewcode-block" id="TunnelSessionList"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.TunnelSessionList">[docs]</a><span class="k">class</span> <span class="nc">TunnelSessionList</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">props</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span> <span class="o">=</span> <span class="n">props</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;tunnel_sessions&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="p">[</span><span class="n">TunnelSession</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">props</span><span class="p">[</span><span class="s2">&quot;tunnel_sessions&quot;</span><span class="p">]]</span>
-            <span class="k">if</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tunnel_sessions&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-            <span class="k">else</span> <span class="p">[]</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_props</span>
-
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="s2">&quot;id&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;&lt;TunnelSessionList </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;&lt;TunnelSessionList </span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">))</span>
-
-    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">PagedIterator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;tunnel_sessions&quot;</span><span class="p">)</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">tunnel_sessions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">TunnelSession</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;list of all tunnel sessions on this account&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;tunnel_sessions&quot;</span><span class="p">]</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">uri</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;URI to the API resource of the tunnel session list&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">]</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">next_page_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;URI of the next page, or null if there is no next page&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;next_page_uri&quot;</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="Tunnel"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.Tunnel">[docs]</a><span class="k">class</span> <span class="nc">Tunnel</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>

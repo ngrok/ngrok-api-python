@@ -1,3 +1,5 @@
+<!-- Code generated for API Clients. DO NOT EDIT. -->
+
 # ngrok API client library for Python
 
 This library wraps the [ngrok HTTP API](https://ngrok.com/docs/api) to make it

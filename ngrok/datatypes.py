@@ -1,3 +1,6 @@
+# Code generated for API Clients. DO NOT EDIT.
+
+
 from __future__ import annotations
 from typing import Any, Mapping, Sequence
 from datetime import datetime, timedelta
@@ -720,6 +723,114 @@ class IdentityProvider(object):
     def url(self) -> str:
         """URL of the identity provider (e.g. `https://accounts.google.com <https://accounts.google.com>`_)"""
         return self._props["url"]
+
+
+class TunnelSession(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["credential"] = (
+            Ref(client, props["credential"])
+            if props.get("credential") is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<TunnelSession {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<TunnelSession {}>".format(repr(self._props))
+
+    @property
+    def agent_version(self) -> str:
+        """version of the ngrok agent that started this ngrok tunnel session"""
+        return self._props["agent_version"]
+
+    @property
+    def credential(self) -> Ref:
+        """reference to the tunnel credential or ssh credential used by the ngrok agent to start this tunnel session"""
+        return self._props["credential"]
+
+    @property
+    def id(self) -> str:
+        """unique tunnel session resource identifier"""
+        return self._props["id"]
+
+    @property
+    def ip(self) -> str:
+        """source ip address of the tunnel session"""
+        return self._props["ip"]
+
+    @property
+    def metadata(self) -> str:
+        """arbitrary user-defined data specified in the metadata property in the ngrok configuration file. See the metadata configuration option"""
+        return self._props["metadata"]
+
+    @property
+    def os(self) -> str:
+        """operating system of the host the ngrok agent is running on"""
+        return self._props["os"]
+
+    @property
+    def region(self) -> str:
+        """the ngrok region identifier in which this tunnel session was started"""
+        return self._props["region"]
+
+    @property
+    def started_at(self) -> datetime:
+        """time when the tunnel session first connected to the ngrok servers"""
+        return self._props["started_at"]
+
+    @property
+    def transport(self) -> str:
+        """the transport protocol used to start the tunnel session. Either ``ngrok/v2`` or ``ssh``"""
+        return self._props["transport"]
+
+    @property
+    def uri(self) -> str:
+        """URI to the API resource of the tunnel session"""
+        return self._props["uri"]
+
+
+class TunnelSessionList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["tunnel_sessions"] = (
+            [TunnelSession(client, x) for x in props["tunnel_sessions"]]
+            if props.get("tunnel_sessions") is not None
+            else []
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<TunnelSessionList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<TunnelSessionList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "tunnel_sessions")
+
+    @property
+    def tunnel_sessions(self) -> Sequence[TunnelSession]:
+        """list of all tunnel sessions on this account"""
+        return self._props["tunnel_sessions"]
+
+    @property
+    def uri(self) -> str:
+        """URI to the API resource of the tunnel session list"""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page, or null if there is no next page"""
+        return self._props["next_page_uri"]
 
 
 class FailoverBackend(object):
@@ -3339,6 +3450,11 @@ class EventTarget(object):
             if props.get("cloudwatch_logs") is not None
             else None
         )
+        self._props["datadog"] = (
+            EventTargetDatadog(client, props["datadog"])
+            if props.get("datadog") is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -3363,6 +3479,11 @@ class EventTarget(object):
     def cloudwatch_logs(self) -> EventTargetCloudwatchLogs:
         """Configuration used to send events to Amazon CloudWatch Logs."""
         return self._props["cloudwatch_logs"]
+
+    @property
+    def datadog(self) -> EventTargetDatadog:
+        """Configuration used to send events to Datadog."""
+        return self._props["datadog"]
 
 
 class EventTargetFirehose(object):
@@ -3449,6 +3570,41 @@ class EventTargetCloudwatchLogs(object):
     def log_group_arn(self) -> str:
         """An Amazon Resource Name specifying the CloudWatch Logs group to deposit events into."""
         return self._props["log_group_arn"]
+
+
+class EventTargetDatadog(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventTargetDatadog {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EventTargetDatadog {}>".format(repr(self._props))
+
+    @property
+    def api_key(self) -> str:
+        """Datadog API key to use."""
+        return self._props["api_key"]
+
+    @property
+    def ddtags(self) -> str:
+        """Tags to send with the event."""
+        return self._props["ddtags"]
+
+    @property
+    def service(self) -> str:
+        """Service name to send with the event."""
+        return self._props["service"]
+
+    @property
+    def ddsite(self) -> str:
+        """Datadog site to send event to."""
+        return self._props["ddsite"]
 
 
 class AWSAuth(object):
@@ -5048,114 +5204,6 @@ class TLSCertificateSANs(object):
     def ips(self) -> Sequence[str]:
         """set of IP addresses this TLS certificate is also valid for"""
         return self._props["ips"]
-
-
-class TunnelSession(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["credential"] = (
-            Ref(client, props["credential"])
-            if props.get("credential") is not None
-            else None
-        )
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<TunnelSession {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<TunnelSession {}>".format(repr(self._props))
-
-    @property
-    def agent_version(self) -> str:
-        """version of the ngrok agent that started this ngrok tunnel session"""
-        return self._props["agent_version"]
-
-    @property
-    def credential(self) -> Ref:
-        """reference to the tunnel credential or ssh credential used by the ngrok agent to start this tunnel session"""
-        return self._props["credential"]
-
-    @property
-    def id(self) -> str:
-        """unique tunnel session resource identifier"""
-        return self._props["id"]
-
-    @property
-    def ip(self) -> str:
-        """source ip address of the tunnel session"""
-        return self._props["ip"]
-
-    @property
-    def metadata(self) -> str:
-        """arbitrary user-defined data specified in the metadata property in the ngrok configuration file. See the metadata configuration option"""
-        return self._props["metadata"]
-
-    @property
-    def os(self) -> str:
-        """operating system of the host the ngrok agent is running on"""
-        return self._props["os"]
-
-    @property
-    def region(self) -> str:
-        """the ngrok region identifier in which this tunnel session was started"""
-        return self._props["region"]
-
-    @property
-    def started_at(self) -> datetime:
-        """time when the tunnel session first connected to the ngrok servers"""
-        return self._props["started_at"]
-
-    @property
-    def transport(self) -> str:
-        """the transport protocol used to start the tunnel session. Either ``ngrok/v2`` or ``ssh``"""
-        return self._props["transport"]
-
-    @property
-    def uri(self) -> str:
-        """URI to the API resource of the tunnel session"""
-        return self._props["uri"]
-
-
-class TunnelSessionList(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["tunnel_sessions"] = (
-            [TunnelSession(client, x) for x in props["tunnel_sessions"]]
-            if props.get("tunnel_sessions") is not None
-            else []
-        )
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<TunnelSessionList {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<TunnelSessionList {}>".format(repr(self._props))
-
-    def __iter__(self):
-        return PagedIterator(self._client, self, "tunnel_sessions")
-
-    @property
-    def tunnel_sessions(self) -> Sequence[TunnelSession]:
-        """list of all tunnel sessions on this account"""
-        return self._props["tunnel_sessions"]
-
-    @property
-    def uri(self) -> str:
-        """URI to the API resource of the tunnel session list"""
-        return self._props["uri"]
-
-    @property
-    def next_page_uri(self) -> str:
-        """URI of the next page, or null if there is no next page"""
-        return self._props["next_page_uri"]
 
 
 class Tunnel(object):

@@ -1,3 +1,6 @@
+# Code generated for API Clients. DO NOT EDIT.
+
+
 from __future__ import annotations
 import collections
 import os
@@ -34,6 +37,13 @@ class Client(object):
     @property
     def application_users(self) -> ApplicationUsersClient:
         return ApplicationUsersClient(self)
+
+    @property
+    def tunnel_sessions(self) -> TunnelSessionsClient:
+        """Tunnel Sessions represent instances of ngrok agents or SSH reverse tunnel
+        sessions that are running and connected to the ngrok service. Each tunnel
+        session can include one or more Tunnels."""
+        return TunnelSessionsClient(self)
 
     @property
     def certificate_authorities(self) -> CertificateAuthoritiesClient:
@@ -144,13 +154,6 @@ class Client(object):
         provisioned by ngrok automatically for domains on which you have enabled
         automated certificate provisioning."""
         return TLSCertificatesClient(self)
-
-    @property
-    def tunnel_sessions(self) -> TunnelSessionsClient:
-        """Tunnel Sessions represent instances of ngrok agents or SSH reverse tunnel
-        sessions that are running and connected to the ngrok service. Each tunnel
-        session can include one or more Tunnels."""
-        return TunnelSessionsClient(self)
 
     @property
     def tunnels(self) -> TunnelsClient:
