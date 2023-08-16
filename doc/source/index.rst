@@ -1,3 +1,6 @@
+..
+  Code generated for API Clients. DO NOT EDIT.
+
 
 ngrok-api
 #########
@@ -125,6 +128,7 @@ API Reference
   api_keys
   application_sessions
   application_users
+  tunnel_sessions
   failover_backends
   http_response_backends
   tunnel_group_backends
@@ -168,5 +172,4 @@ API Reference
   ssh_host_certificates
   ssh_user_certificates
   tls_certificates
-  tunnel_sessions
   tunnels

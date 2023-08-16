@@ -167,6 +167,7 @@
 <li class="toctree-l1"><a class="reference internal" href="api_keys.html">API Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="application_sessions.html">Application Sessions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="application_users.html">Application Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tunnel_sessions.html">Tunnel Sessions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="failover_backends.html">Failover Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="http_response_backends.html">HTTP Response Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tunnel_group_backends.html">Tunnel Group Backends</a></li>
@@ -210,7 +211,6 @@
 <li class="toctree-l1"><a class="reference internal" href="ssh_host_certificates.html">SSH Host Certificates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_user_certificates.html">SSH User Certificates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_certificates.html">TLS Certificates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tunnel_sessions.html">Tunnel Sessions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tunnels.html">Tunnels</a></li>
 </ul>
 
@@ -811,6 +811,7 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 </li>
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTarget"><code class="docutils literal notranslate"><span class="pre">EventTarget</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTarget.cloudwatch_logs"><code class="docutils literal notranslate"><span class="pre">EventTarget.cloudwatch_logs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTarget.datadog"><code class="docutils literal notranslate"><span class="pre">EventTarget.datadog</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTarget.firehose"><code class="docutils literal notranslate"><span class="pre">EventTarget.firehose</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTarget.kinesis"><code class="docutils literal notranslate"><span class="pre">EventTarget.kinesis</span></code></a></li>
 </ul>
@@ -818,6 +819,13 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTargetCloudwatchLogs"><code class="docutils literal notranslate"><span class="pre">EventTargetCloudwatchLogs</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTargetCloudwatchLogs.auth"><code class="docutils literal notranslate"><span class="pre">EventTargetCloudwatchLogs.auth</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTargetCloudwatchLogs.log_group_arn"><code class="docutils literal notranslate"><span class="pre">EventTargetCloudwatchLogs.log_group_arn</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTargetDatadog"><code class="docutils literal notranslate"><span class="pre">EventTargetDatadog</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTargetDatadog.api_key"><code class="docutils literal notranslate"><span class="pre">EventTargetDatadog.api_key</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTargetDatadog.ddsite"><code class="docutils literal notranslate"><span class="pre">EventTargetDatadog.ddsite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTargetDatadog.ddtags"><code class="docutils literal notranslate"><span class="pre">EventTargetDatadog.ddtags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTargetDatadog.service"><code class="docutils literal notranslate"><span class="pre">EventTargetDatadog.service</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTargetFirehose"><code class="docutils literal notranslate"><span class="pre">EventTargetFirehose</span></code></a><ul>
@@ -1348,6 +1356,17 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="tunnel_sessions.html">Tunnel Sessions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tunnel_sessions.html#ngrok.services.TunnelSessionsClient"><code class="docutils literal notranslate"><span class="pre">TunnelSessionsClient</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tunnel_sessions.html#ngrok.services.TunnelSessionsClient.get"><code class="docutils literal notranslate"><span class="pre">TunnelSessionsClient.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tunnel_sessions.html#ngrok.services.TunnelSessionsClient.list"><code class="docutils literal notranslate"><span class="pre">TunnelSessionsClient.list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tunnel_sessions.html#ngrok.services.TunnelSessionsClient.restart"><code class="docutils literal notranslate"><span class="pre">TunnelSessionsClient.restart()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tunnel_sessions.html#ngrok.services.TunnelSessionsClient.stop"><code class="docutils literal notranslate"><span class="pre">TunnelSessionsClient.stop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tunnel_sessions.html#ngrok.services.TunnelSessionsClient.update"><code class="docutils literal notranslate"><span class="pre">TunnelSessionsClient.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="failover_backends.html">Failover Backends</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="failover_backends.html#ngrok.services.FailoverBackendsClient"><code class="docutils literal notranslate"><span class="pre">FailoverBackendsClient</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="failover_backends.html#ngrok.services.FailoverBackendsClient.create"><code class="docutils literal notranslate"><span class="pre">FailoverBackendsClient.create()</span></code></a></li>
@@ -1777,17 +1796,6 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="tls_certificates.html#ngrok.services.TLSCertificatesClient.get"><code class="docutils literal notranslate"><span class="pre">TLSCertificatesClient.get()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="tls_certificates.html#ngrok.services.TLSCertificatesClient.list"><code class="docutils literal notranslate"><span class="pre">TLSCertificatesClient.list()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="tls_certificates.html#ngrok.services.TLSCertificatesClient.update"><code class="docutils literal notranslate"><span class="pre">TLSCertificatesClient.update()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="tunnel_sessions.html">Tunnel Sessions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tunnel_sessions.html#ngrok.services.TunnelSessionsClient"><code class="docutils literal notranslate"><span class="pre">TunnelSessionsClient</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tunnel_sessions.html#ngrok.services.TunnelSessionsClient.get"><code class="docutils literal notranslate"><span class="pre">TunnelSessionsClient.get()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="tunnel_sessions.html#ngrok.services.TunnelSessionsClient.list"><code class="docutils literal notranslate"><span class="pre">TunnelSessionsClient.list()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="tunnel_sessions.html#ngrok.services.TunnelSessionsClient.restart"><code class="docutils literal notranslate"><span class="pre">TunnelSessionsClient.restart()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="tunnel_sessions.html#ngrok.services.TunnelSessionsClient.stop"><code class="docutils literal notranslate"><span class="pre">TunnelSessionsClient.stop()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="tunnel_sessions.html#ngrok.services.TunnelSessionsClient.update"><code class="docutils literal notranslate"><span class="pre">TunnelSessionsClient.update()</span></code></a></li>
 </ul>
 </li>
 </ul>

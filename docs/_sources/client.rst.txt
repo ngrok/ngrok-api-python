@@ -1,3 +1,6 @@
+..
+  Code generated for API Clients. DO NOT EDIT.
+
 Client
 =====================================
 
@@ -15,7 +18,7 @@ Client object:
     # list all ip policies
     for policy in client.ip_policies.list():
         print(policy)
- 
+
     # create an ngrok agent authtoken
     cred = client.credentials.create()
     print(cred)
