@@ -1,3 +1,6 @@
+# Code generated for API Clients. DO NOT EDIT.
+
+
 class PagedIterator(object):
     def __init__(self, client, page, list_property):
         self.n = 0

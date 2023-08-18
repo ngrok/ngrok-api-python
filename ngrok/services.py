@@ -1,3 +1,6 @@
+# Code generated for API Clients. DO NOT EDIT.
+
+
 from __future__ import annotations
 from collections.abc import Iterator
 from typing import Any, Mapping, Sequence
@@ -394,6 +397,104 @@ class ApplicationUsersClient(object):
         )
         result = self._client.http_client.get(path, body_arg)
         return ApplicationUserList(self._client, result)
+
+
+class TunnelSessionsClient(object):
+    """Tunnel Sessions represent instances of ngrok agents or SSH reverse tunnel
+    sessions that are running and connected to the ngrok service. Each tunnel
+    session can include one or more Tunnels."""
+
+    def __init__(self, client):
+        self._client = client
+
+    def list(
+        self,
+        before_id: str = None,
+        limit: str = None,
+    ) -> TunnelSessionList:
+        """List all online tunnel sessions running on this account.
+
+        :param before_id:
+        :param limit:
+
+        https://ngrok.com/docs/api#api-tunnel-sessions-list
+        """
+        path = "/tunnel_sessions"
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
+        )
+        result = self._client.http_client.get(path, body_arg)
+        return TunnelSessionList(self._client, result)
+
+    def get(
+        self,
+        id: str,
+    ) -> TunnelSession:
+        """Get the detailed status of a tunnel session by ID
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tunnel-sessions-get
+        """
+        path = "/tunnel_sessions/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
+        return TunnelSession(self._client, result)
+
+    def restart(
+        self,
+        id: str,
+    ):
+        """Issues a command instructing the ngrok agent to restart. The agent restarts itself by calling exec() on platforms that support it. This operation is notably not supported on Windows. When an agent restarts, it reconnects with a new tunnel session ID.
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tunnel-sessions-restart
+        """
+        path = "/tunnel_sessions/{id}/restart"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        self._client.http_client.post(path, body_arg)
+
+    def stop(
+        self,
+        id: str,
+    ):
+        """Issues a command instructing the ngrok agent that started this tunnel session to exit.
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tunnel-sessions-stop
+        """
+        path = "/tunnel_sessions/{id}/stop"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        self._client.http_client.post(path, body_arg)
+
+    def update(
+        self,
+        id: str,
+    ):
+        """Issues a command instructing the ngrok agent to update itself to the latest version. After this call completes successfully, the ngrok agent will be in the update process. A caller should wait some amount of time to allow the update to complete (at least 10 seconds) before making a call to the Restart endpoint to request that the agent restart itself to start using the new code. This call will never update an ngrok agent to a new major version which could cause breaking compatibility issues. If you wish to update to a new major version, that must be done manually. Still, please be aware that updating your ngrok agent could break your integration. This call will fail in any of the following circumstances: there is no update available the ngrok agent's configuration disabled update checks the agent is currently in process of updating the agent has already successfully updated but has not yet been restarted
+
+        :param id:
+
+        https://ngrok.com/docs/api#api-tunnel-sessions-update
+        """
+        path = "/tunnel_sessions/{id}/update"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        self._client.http_client.post(path, body_arg)
 
 
 class FailoverBackendsClient(object):
@@ -3763,7 +3864,6 @@ class ReservedDomainsClient(object):
 
     def create(
         self,
-        name: str = "",
         domain: str = "",
         region: str = "",
         description: str = "",
@@ -3773,7 +3873,6 @@ class ReservedDomainsClient(object):
     ) -> ReservedDomain:
         """Create a new reserved domain.
 
-        :param name: the domain name to reserve. It may be a full domain name like app.example.com. If the name does not contain a '.' it will reserve that subdomain on ngrok.io.
         :param domain: hostname of the reserved domain
         :param region: reserve the domain in this geographic ngrok datacenter. Optional, default is us. (au, eu, ap, us, jp, in, sa)
         :param description: human-readable description of what this reserved domain will be used for
@@ -3785,7 +3884,6 @@ class ReservedDomainsClient(object):
         """
         path = "/reserved_domains"
         body_arg = dict(
-            name=name,
             domain=domain,
             region=region,
             description=description,
@@ -4429,8 +4527,8 @@ class TLSCertificatesClient(object):
 
         :param description: human-readable description of this TLS certificate. optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this TLS certificate. optional, max 4096 bytes.
-        :param certificate_pem: chain of PEM-encoded certificates, leaf first. See `Certificate Bundles </cloud-edge/endpoints#certificate-chains>`_.
-        :param private_key_pem: private key for the TLS certificate, PEM-encoded. See `Private Keys </cloud-edge/endpoints#private-keys>`_.
+        :param certificate_pem: chain of PEM-encoded certificates, leaf first. See `Certificate Bundles <https://ngrok.com/docs/cloud-edge/endpoints#certificate-chains>`_.
+        :param private_key_pem: private key for the TLS certificate, PEM-encoded. See `Private Keys <https://ngrok.com/docs/cloud-edge/endpoints#private-keys>`_.
 
         https://ngrok.com/docs/api#api-tls-certificates-create
         """
@@ -4523,104 +4621,6 @@ class TLSCertificatesClient(object):
         )
         result = self._client.http_client.patch(path, body_arg)
         return TLSCertificate(self._client, result)
-
-
-class TunnelSessionsClient(object):
-    """Tunnel Sessions represent instances of ngrok agents or SSH reverse tunnel
-    sessions that are running and connected to the ngrok service. Each tunnel
-    session can include one or more Tunnels."""
-
-    def __init__(self, client):
-        self._client = client
-
-    def list(
-        self,
-        before_id: str = None,
-        limit: str = None,
-    ) -> TunnelSessionList:
-        """List all online tunnel sessions running on this account.
-
-        :param before_id:
-        :param limit:
-
-        https://ngrok.com/docs/api#api-tunnel-sessions-list
-        """
-        path = "/tunnel_sessions"
-        body_arg = dict(
-            before_id=before_id,
-            limit=limit,
-        )
-        result = self._client.http_client.get(path, body_arg)
-        return TunnelSessionList(self._client, result)
-
-    def get(
-        self,
-        id: str,
-    ) -> TunnelSession:
-        """Get the detailed status of a tunnel session by ID
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-tunnel-sessions-get
-        """
-        path = "/tunnel_sessions/{id}"
-        path = path.format(
-            id=id,
-        )
-        body_arg = None
-        result = self._client.http_client.get(path, body_arg)
-        return TunnelSession(self._client, result)
-
-    def restart(
-        self,
-        id: str,
-    ):
-        """Issues a command instructing the ngrok agent to restart. The agent restarts itself by calling exec() on platforms that support it. This operation is notably not supported on Windows. When an agent restarts, it reconnects with a new tunnel session ID.
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-tunnel-sessions-restart
-        """
-        path = "/tunnel_sessions/{id}/restart"
-        path = path.format(
-            id=id,
-        )
-        body_arg = None
-        self._client.http_client.post(path, body_arg)
-
-    def stop(
-        self,
-        id: str,
-    ):
-        """Issues a command instructing the ngrok agent that started this tunnel session to exit.
-
-        :param id: a resource identifier
-
-        https://ngrok.com/docs/api#api-tunnel-sessions-stop
-        """
-        path = "/tunnel_sessions/{id}/stop"
-        path = path.format(
-            id=id,
-        )
-        body_arg = None
-        self._client.http_client.post(path, body_arg)
-
-    def update(
-        self,
-        id: str,
-    ):
-        """Issues a command instructing the ngrok agent to update itself to the latest version. After this call completes successfully, the ngrok agent will be in the update process. A caller should wait some amount of time to allow the update to complete (at least 10 seconds) before making a call to the Restart endpoint to request that the agent restart itself to start using the new code. This call will never update an ngrok agent to a new major version which could cause breaking compatibility issues. If you wish to update to a new major version, that must be done manually. Still, please be aware that updating your ngrok agent could break your integration. This call will fail in any of the following circumstances: there is no update available the ngrok agent's configuration disabled update checks the agent is currently in process of updating the agent has already successfully updated but has not yet been restarted
-
-        :param id:
-
-        https://ngrok.com/docs/api#api-tunnel-sessions-update
-        """
-        path = "/tunnel_sessions/{id}/update"
-        path = path.format(
-            id=id,
-        )
-        body_arg = None
-        self._client.http_client.post(path, body_arg)
 
 
 class TunnelsClient(object):

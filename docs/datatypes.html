@@ -167,6 +167,7 @@
 <li class="toctree-l1"><a class="reference internal" href="api_keys.html">API Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="application_sessions.html">Application Sessions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="application_users.html">Application Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tunnel_sessions.html">Tunnel Sessions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="failover_backends.html">Failover Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="http_response_backends.html">HTTP Response Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tunnel_group_backends.html">Tunnel Group Backends</a></li>
@@ -210,7 +211,6 @@
 <li class="toctree-l1"><a class="reference internal" href="ssh_host_certificates.html">SSH Host Certificates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_user_certificates.html">SSH User Certificates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_certificates.html">TLS Certificates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tunnel_sessions.html">Tunnel Sessions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tunnels.html">Tunnels</a></li>
 </ul>
 
@@ -3390,6 +3390,17 @@
 </dd></dl>
 
 <dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.EventTarget.datadog">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">datadog</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ngrok.datatypes.EventTargetDatadog" title="ngrok.datatypes.EventTargetDatadog"><span class="pre">EventTargetDatadog</span></a></em><a class="headerlink" href="#ngrok.datatypes.EventTarget.datadog" title="Permalink to this definition">#</a></dt>
+<dd><p>Configuration used to send events to Datadog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.EventTargetDatadog" title="ngrok.datatypes.EventTargetDatadog"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventTargetDatadog</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="ngrok.datatypes.EventTarget.firehose">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">firehose</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ngrok.datatypes.EventTargetFirehose" title="ngrok.datatypes.EventTargetFirehose"><span class="pre">EventTargetFirehose</span></a></em><a class="headerlink" href="#ngrok.datatypes.EventTarget.firehose" title="Permalink to this definition">#</a></dt>
 <dd><p>Configuration used to send events to Amazon Kinesis Data Firehose.</p>
@@ -3431,6 +3442,55 @@
 <dt class="sig sig-object py" id="ngrok.datatypes.EventTargetCloudwatchLogs.log_group_arn">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">log_group_arn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.EventTargetCloudwatchLogs.log_group_arn" title="Permalink to this definition">#</a></dt>
 <dd><p>An Amazon Resource Name specifying the CloudWatch Logs group to deposit events into.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ngrok.datatypes.EventTargetDatadog">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></span><span class="sig-name descname"><span class="pre">EventTargetDatadog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#EventTargetDatadog"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.EventTargetDatadog" title="Permalink to this definition">#</a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.EventTargetDatadog.api_key">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">api_key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.EventTargetDatadog.api_key" title="Permalink to this definition">#</a></dt>
+<dd><p>Datadog API key to use.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.EventTargetDatadog.ddsite">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ddsite</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.EventTargetDatadog.ddsite" title="Permalink to this definition">#</a></dt>
+<dd><p>Datadog site to send event to.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.EventTargetDatadog.ddtags">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ddtags</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.EventTargetDatadog.ddtags" title="Permalink to this definition">#</a></dt>
+<dd><p>Tags to send with the event.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.EventTargetDatadog.service">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">service</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.EventTargetDatadog.service" title="Permalink to this definition">#</a></dt>
+<dd><p>Service name to send with the event.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -5829,7 +5889,7 @@
 <dd><dl class="py property">
 <dt class="sig sig-object py" id="ngrok.datatypes.TLSCertificate.certificate_pem">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">certificate_pem</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.TLSCertificate.certificate_pem" title="Permalink to this definition">#</a></dt>
-<dd><p>chain of PEM-encoded certificates, leaf first. See <a class="reference external" href="/cloud-edge/endpoints#certificate-chains">Certificate Bundles</a>.</p>
+<dd><p>chain of PEM-encoded certificates, leaf first. See <a class="reference external" href="https://ngrok.com/docs/cloud-edge/endpoints#certificate-chains">Certificate Bundles</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -6355,7 +6415,7 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="ngrok.datatypes.Tunnel.metadata">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.Tunnel.metadata" title="Permalink to this definition">#</a></dt>
-<dd><p>user-supplied metadata for the tunnel defined in the ngrok configuration file. See the tunnel <a class="reference external" href="/ngrok-agent/config#common-tunnel-configuration-properties">metadata configuration option</a> In API version 0, this value was instead pulled from the top-level <a class="reference external" href="/ngrok-agent/config#metadata">metadata configuration option</a>.</p>
+<dd><p>user-supplied metadata for the tunnel defined in the ngrok configuration file. See the tunnel <a class="reference external" href="https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config#common-tunnel-configuration-properties">metadata configuration option</a> In API version 0, this value was instead pulled from the top-level <a class="reference external" href="https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config#metadata">metadata configuration option</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -7421,6 +7481,7 @@
 </li>
 <li><a class="reference internal" href="#ngrok.datatypes.EventTarget"><code class="docutils literal notranslate"><span class="pre">EventTarget</span></code></a><ul>
 <li><a class="reference internal" href="#ngrok.datatypes.EventTarget.cloudwatch_logs"><code class="docutils literal notranslate"><span class="pre">EventTarget.cloudwatch_logs</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.EventTarget.datadog"><code class="docutils literal notranslate"><span class="pre">EventTarget.datadog</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.EventTarget.firehose"><code class="docutils literal notranslate"><span class="pre">EventTarget.firehose</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.EventTarget.kinesis"><code class="docutils literal notranslate"><span class="pre">EventTarget.kinesis</span></code></a></li>
 </ul>
@@ -7428,6 +7489,13 @@
 <li><a class="reference internal" href="#ngrok.datatypes.EventTargetCloudwatchLogs"><code class="docutils literal notranslate"><span class="pre">EventTargetCloudwatchLogs</span></code></a><ul>
 <li><a class="reference internal" href="#ngrok.datatypes.EventTargetCloudwatchLogs.auth"><code class="docutils literal notranslate"><span class="pre">EventTargetCloudwatchLogs.auth</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.EventTargetCloudwatchLogs.log_group_arn"><code class="docutils literal notranslate"><span class="pre">EventTargetCloudwatchLogs.log_group_arn</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ngrok.datatypes.EventTargetDatadog"><code class="docutils literal notranslate"><span class="pre">EventTargetDatadog</span></code></a><ul>
+<li><a class="reference internal" href="#ngrok.datatypes.EventTargetDatadog.api_key"><code class="docutils literal notranslate"><span class="pre">EventTargetDatadog.api_key</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.EventTargetDatadog.ddsite"><code class="docutils literal notranslate"><span class="pre">EventTargetDatadog.ddsite</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.EventTargetDatadog.ddtags"><code class="docutils literal notranslate"><span class="pre">EventTargetDatadog.ddtags</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.EventTargetDatadog.service"><code class="docutils literal notranslate"><span class="pre">EventTargetDatadog.service</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#ngrok.datatypes.EventTargetFirehose"><code class="docutils literal notranslate"><span class="pre">EventTargetFirehose</span></code></a><ul>

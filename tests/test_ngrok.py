@@ -1,3 +1,5 @@
+# Code generated for API Clients. DO NOT EDIT.
+
 import json
 import os
 import unittest
