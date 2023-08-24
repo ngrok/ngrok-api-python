@@ -1,3 +1,5 @@
+# Code generated for API Clients. DO NOT EDIT.
+
 from __future__ import annotations
 from collections.abc import Iterator
 from typing import Any, Mapping, Dict, Generic, Optional

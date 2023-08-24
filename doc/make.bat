@@ -1,3 +1,5 @@
+REM Code generated for API Clients. DO NOT EDIT.
+
 @ECHO OFF
 
 pushd %~dp0

@@ -166,6 +166,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../api_keys.html">API Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../application_sessions.html">Application Sessions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../application_users.html">Application Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tunnel_sessions.html">Tunnel Sessions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../failover_backends.html">Failover Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../http_response_backends.html">HTTP Response Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tunnel_group_backends.html">Tunnel Group Backends</a></li>
@@ -209,7 +210,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../ssh_host_certificates.html">SSH Host Certificates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ssh_user_certificates.html">SSH User Certificates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tls_certificates.html">TLS Certificates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tunnel_sessions.html">Tunnel Sessions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tunnels.html">Tunnels</a></li>
 </ul>
 
@@ -245,7 +245,10 @@
         </div>
         <article role="main">
           <h1>Source code for ngrok.client</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span></span><span class="c1"># Code generated for API Clients. DO NOT EDIT.</span>
+
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 <span class="kn">import</span> <span class="nn">collections</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">.services</span> <span class="kn">import</span> <span class="o">*</span>
@@ -281,6 +284,13 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">application_users</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApplicationUsersClient</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">ApplicationUsersClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">tunnel_sessions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelSessionsClient</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tunnel Sessions represent instances of ngrok agents or SSH reverse tunnel</span>
+<span class="sd">        sessions that are running and connected to the ngrok service. Each tunnel</span>
+<span class="sd">        session can include one or more Tunnels.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">TunnelSessionsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">certificate_authorities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CertificateAuthoritiesClient</span><span class="p">:</span>
@@ -391,13 +401,6 @@
 <span class="sd">        provisioned by ngrok automatically for domains on which you have enabled</span>
 <span class="sd">        automated certificate provisioning.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">TLSCertificatesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">tunnel_sessions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelSessionsClient</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tunnel Sessions represent instances of ngrok agents or SSH reverse tunnel</span>
-<span class="sd">        sessions that are running and connected to the ngrok service. Each tunnel</span>
-<span class="sd">        session can include one or more Tunnels.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">TunnelSessionsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tunnels</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelsClient</span><span class="p">:</span>
