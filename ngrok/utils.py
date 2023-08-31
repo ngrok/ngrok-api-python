@@ -1,3 +1,5 @@
+# Code generated for API Clients. DO NOT EDIT.
+
 from typing import Any, Optional
 
 

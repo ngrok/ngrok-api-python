@@ -1,3 +1,6 @@
+# Code generated for API Clients. DO NOT EDIT.
+
+
 from __future__ import annotations
 from typing import Any, Mapping, Sequence
 from datetime import datetime, timedelta
@@ -113,6 +116,16 @@ class AgentIngress(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
+        self._props["certificate_management_policy"] = (
+            AgentIngressCertPolicy(client, props["certificate_management_policy"])
+            if props.get("certificate_management_policy") is not None
+            else None
+        )
+        self._props["certificate_management_status"] = (
+            AgentIngressCertStatus(client, props["certificate_management_status"])
+            if props.get("certificate_management_status") is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -134,11 +147,13 @@ class AgentIngress(object):
         self,
         description: str = None,
         metadata: str = None,
+        certificate_management_policy: AgentIngressCertPolicy = None,
     ):
         self._client.agent_ingresses.update(
             id=self.id,
             description=description,
             metadata=metadata,
+            certificate_management_policy=certificate_management_policy,
         )
 
     @property
@@ -181,6 +196,16 @@ class AgentIngress(object):
         """timestamp when the Agent Ingress was created, RFC 3339 format"""
         return self._props["created_at"]
 
+    @property
+    def certificate_management_policy(self) -> AgentIngressCertPolicy:
+        """configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled"""
+        return self._props["certificate_management_policy"]
+
+    @property
+    def certificate_management_status(self) -> AgentIngressCertStatus:
+        """status of the automatic certificate management for this domain, or null if automatic management is disabled"""
+        return self._props["certificate_management_status"]
+
 
 class AgentIngressList(object):
     def __init__(self, client, props):
@@ -218,6 +243,96 @@ class AgentIngressList(object):
     def next_page_uri(self) -> str:
         """URI of the next page, or null if there is no next page"""
         return self._props["next_page_uri"]
+
+
+class AgentIngressCertPolicy(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<AgentIngressCertPolicy {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<AgentIngressCertPolicy {}>".format(repr(self._props))
+
+    @property
+    def authority(self) -> str:
+        """certificate authority to request certificates from. The only supported value is letsencrypt."""
+        return self._props["authority"]
+
+    @property
+    def private_key_type(self) -> str:
+        """type of private key to use when requesting certificates. Defaults to rsa, can be either rsa or ecdsa."""
+        return self._props["private_key_type"]
+
+
+class AgentIngressCertStatus(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["provisioning_job"] = (
+            AgentIngressCertJob(client, props["provisioning_job"])
+            if props.get("provisioning_job") is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<AgentIngressCertStatus {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<AgentIngressCertStatus {}>".format(repr(self._props))
+
+    @property
+    def renews_at(self) -> datetime:
+        """timestamp when the next renewal will be requested, RFC 3339 format"""
+        return self._props["renews_at"]
+
+    @property
+    def provisioning_job(self) -> AgentIngressCertJob:
+        """status of the certificate provisioning job, or null if the certificiate isn't being provisioned or renewed"""
+        return self._props["provisioning_job"]
+
+
+class AgentIngressCertJob(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<AgentIngressCertJob {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<AgentIngressCertJob {}>".format(repr(self._props))
+
+    @property
+    def error_code(self) -> str:
+        """if present, an error code indicating why provisioning is failing. It may be either a temporary condition (INTERNAL_ERROR), or a permanent one the user must correct (DNS_ERROR)."""
+        return self._props["error_code"]
+
+    @property
+    def msg(self) -> str:
+        """a message describing the current status or error"""
+        return self._props["msg"]
+
+    @property
+    def started_at(self) -> datetime:
+        """timestamp when the provisioning job started, RFC 3339 format"""
+        return self._props["started_at"]
+
+    @property
+    def retries_at(self) -> datetime:
+        """timestamp when the provisioning job will be retried"""
+        return self._props["retries_at"]
 
 
 class APIKey(object):
@@ -720,6 +835,114 @@ class IdentityProvider(object):
     def url(self) -> str:
         """URL of the identity provider (e.g. `https://accounts.google.com <https://accounts.google.com>`_)"""
         return self._props["url"]
+
+
+class TunnelSession(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["credential"] = (
+            Ref(client, props["credential"])
+            if props.get("credential") is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<TunnelSession {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<TunnelSession {}>".format(repr(self._props))
+
+    @property
+    def agent_version(self) -> str:
+        """version of the ngrok agent that started this ngrok tunnel session"""
+        return self._props["agent_version"]
+
+    @property
+    def credential(self) -> Ref:
+        """reference to the tunnel credential or ssh credential used by the ngrok agent to start this tunnel session"""
+        return self._props["credential"]
+
+    @property
+    def id(self) -> str:
+        """unique tunnel session resource identifier"""
+        return self._props["id"]
+
+    @property
+    def ip(self) -> str:
+        """source ip address of the tunnel session"""
+        return self._props["ip"]
+
+    @property
+    def metadata(self) -> str:
+        """arbitrary user-defined data specified in the metadata property in the ngrok configuration file. See the metadata configuration option"""
+        return self._props["metadata"]
+
+    @property
+    def os(self) -> str:
+        """operating system of the host the ngrok agent is running on"""
+        return self._props["os"]
+
+    @property
+    def region(self) -> str:
+        """the ngrok region identifier in which this tunnel session was started"""
+        return self._props["region"]
+
+    @property
+    def started_at(self) -> datetime:
+        """time when the tunnel session first connected to the ngrok servers"""
+        return self._props["started_at"]
+
+    @property
+    def transport(self) -> str:
+        """the transport protocol used to start the tunnel session. Either ``ngrok/v2`` or ``ssh``"""
+        return self._props["transport"]
+
+    @property
+    def uri(self) -> str:
+        """URI to the API resource of the tunnel session"""
+        return self._props["uri"]
+
+
+class TunnelSessionList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["tunnel_sessions"] = (
+            [TunnelSession(client, x) for x in props["tunnel_sessions"]]
+            if props.get("tunnel_sessions") is not None
+            else []
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<TunnelSessionList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<TunnelSessionList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "tunnel_sessions")
+
+    @property
+    def tunnel_sessions(self) -> Sequence[TunnelSession]:
+        """list of all tunnel sessions on this account"""
+        return self._props["tunnel_sessions"]
+
+    @property
+    def uri(self) -> str:
+        """URI to the API resource of the tunnel session list"""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page, or null if there is no next page"""
+        return self._props["next_page_uri"]
 
 
 class FailoverBackend(object):
@@ -3339,6 +3562,11 @@ class EventTarget(object):
             if props.get("cloudwatch_logs") is not None
             else None
         )
+        self._props["datadog"] = (
+            EventTargetDatadog(client, props["datadog"])
+            if props.get("datadog") is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -3363,6 +3591,11 @@ class EventTarget(object):
     def cloudwatch_logs(self) -> EventTargetCloudwatchLogs:
         """Configuration used to send events to Amazon CloudWatch Logs."""
         return self._props["cloudwatch_logs"]
+
+    @property
+    def datadog(self) -> EventTargetDatadog:
+        """Configuration used to send events to Datadog."""
+        return self._props["datadog"]
 
 
 class EventTargetFirehose(object):
@@ -3449,6 +3682,41 @@ class EventTargetCloudwatchLogs(object):
     def log_group_arn(self) -> str:
         """An Amazon Resource Name specifying the CloudWatch Logs group to deposit events into."""
         return self._props["log_group_arn"]
+
+
+class EventTargetDatadog(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventTargetDatadog {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EventTargetDatadog {}>".format(repr(self._props))
+
+    @property
+    def api_key(self) -> str:
+        """Datadog API key to use."""
+        return self._props["api_key"]
+
+    @property
+    def ddtags(self) -> str:
+        """Tags to send with the event."""
+        return self._props["ddtags"]
+
+    @property
+    def service(self) -> str:
+        """Service name to send with the event."""
+        return self._props["service"]
+
+    @property
+    def ddsite(self) -> str:
+        """Datadog site to send event to."""
+        return self._props["ddsite"]
 
 
 class AWSAuth(object):
@@ -4908,7 +5176,7 @@ class TLSCertificate(object):
 
     @property
     def certificate_pem(self) -> str:
-        """chain of PEM-encoded certificates, leaf first. See `Certificate Bundles </cloud-edge/endpoints#certificate-chains>`_."""
+        """chain of PEM-encoded certificates, leaf first. See `Certificate Bundles <https://ngrok.com/docs/cloud-edge/endpoints#certificate-chains>`_."""
         return self._props["certificate_pem"]
 
     @property
@@ -5050,114 +5318,6 @@ class TLSCertificateSANs(object):
         return self._props["ips"]
 
 
-class TunnelSession(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["credential"] = (
-            Ref(client, props["credential"])
-            if props.get("credential") is not None
-            else None
-        )
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<TunnelSession {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<TunnelSession {}>".format(repr(self._props))
-
-    @property
-    def agent_version(self) -> str:
-        """version of the ngrok agent that started this ngrok tunnel session"""
-        return self._props["agent_version"]
-
-    @property
-    def credential(self) -> Ref:
-        """reference to the tunnel credential or ssh credential used by the ngrok agent to start this tunnel session"""
-        return self._props["credential"]
-
-    @property
-    def id(self) -> str:
-        """unique tunnel session resource identifier"""
-        return self._props["id"]
-
-    @property
-    def ip(self) -> str:
-        """source ip address of the tunnel session"""
-        return self._props["ip"]
-
-    @property
-    def metadata(self) -> str:
-        """arbitrary user-defined data specified in the metadata property in the ngrok configuration file. See the metadata configuration option"""
-        return self._props["metadata"]
-
-    @property
-    def os(self) -> str:
-        """operating system of the host the ngrok agent is running on"""
-        return self._props["os"]
-
-    @property
-    def region(self) -> str:
-        """the ngrok region identifier in which this tunnel session was started"""
-        return self._props["region"]
-
-    @property
-    def started_at(self) -> datetime:
-        """time when the tunnel session first connected to the ngrok servers"""
-        return self._props["started_at"]
-
-    @property
-    def transport(self) -> str:
-        """the transport protocol used to start the tunnel session. Either ``ngrok/v2`` or ``ssh``"""
-        return self._props["transport"]
-
-    @property
-    def uri(self) -> str:
-        """URI to the API resource of the tunnel session"""
-        return self._props["uri"]
-
-
-class TunnelSessionList(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["tunnel_sessions"] = (
-            [TunnelSession(client, x) for x in props["tunnel_sessions"]]
-            if props.get("tunnel_sessions") is not None
-            else []
-        )
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<TunnelSessionList {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<TunnelSessionList {}>".format(repr(self._props))
-
-    def __iter__(self):
-        return PagedIterator(self._client, self, "tunnel_sessions")
-
-    @property
-    def tunnel_sessions(self) -> Sequence[TunnelSession]:
-        """list of all tunnel sessions on this account"""
-        return self._props["tunnel_sessions"]
-
-    @property
-    def uri(self) -> str:
-        """URI to the API resource of the tunnel session list"""
-        return self._props["uri"]
-
-    @property
-    def next_page_uri(self) -> str:
-        """URI of the next page, or null if there is no next page"""
-        return self._props["next_page_uri"]
-
-
 class Tunnel(object):
     def __init__(self, client, props):
         self._client = client
@@ -5204,7 +5364,7 @@ class Tunnel(object):
 
     @property
     def metadata(self) -> str:
-        """user-supplied metadata for the tunnel defined in the ngrok configuration file. See the tunnel `metadata configuration option </ngrok-agent/config#common-tunnel-configuration-properties>`_ In API version 0, this value was instead pulled from the top-level `metadata configuration option </ngrok-agent/config#metadata>`_."""
+        """user-supplied metadata for the tunnel defined in the ngrok configuration file. See the tunnel `metadata configuration option <https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config#common-tunnel-configuration-properties>`_ In API version 0, this value was instead pulled from the top-level `metadata configuration option <https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config#metadata>`_."""
         return self._props["metadata"]
 
     @property
