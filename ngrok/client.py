@@ -46,6 +46,10 @@ class Client(object):
         return TunnelSessionsClient(self)
 
     @property
+    def bot_users(self) -> BotUsersClient:
+        return BotUsersClient(self)
+
+    @property
     def certificate_authorities(self) -> CertificateAuthoritiesClient:
         """Certificate Authorities are x509 certificates that are used to sign other
         x509 certificates. Attach a Certificate Authority to the Mutual TLS module
@@ -168,6 +172,7 @@ class Client(object):
             [
                 "failover",
                 "http_response",
+                "static_address",
                 "tunnel_group",
                 "weighted",
             ],
@@ -175,6 +180,7 @@ class Client(object):
         return ns(
             failover=FailoverBackendsClient(self),
             http_response=HTTPResponseBackendsClient(self),
+            static_address=StaticBackendsClient(self),
             tunnel_group=TunnelGroupBackendsClient(self),
             weighted=WeightedBackendsClient(self),
         )
@@ -215,6 +221,7 @@ class Client(object):
                 "https_edge_route_saml",
                 "https_edge_route_oidc",
                 "https_edge_route_websocket_tcp_converter",
+                "https_edge_route_user_agent_filter",
                 "tcp_edge_backend",
                 "tcp_edge_ip_restriction",
                 "tls_edge_backend",
@@ -241,6 +248,9 @@ class Client(object):
             https_edge_route_saml=EdgeRouteSAMLModuleClient(self),
             https_edge_route_oidc=EdgeRouteOIDCModuleClient(self),
             https_edge_route_websocket_tcp_converter=EdgeRouteWebsocketTCPConverterModuleClient(
+                self
+            ),
+            https_edge_route_user_agent_filter=EdgeRouteUserAgentFilterModuleClient(
                 self
             ),
             tcp_edge_backend=TCPEdgeBackendModuleClient(self),

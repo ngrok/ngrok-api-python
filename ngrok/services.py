@@ -742,6 +742,126 @@ class HTTPResponseBackendsClient(object):
         return HTTPResponseBackend(self._client, result)
 
 
+class StaticBackendsClient(object):
+    """A static backend sends traffic to a TCP address (hostname and port) that
+    is reachable on the public internet."""
+
+    def __init__(self, client):
+        self._client = client
+
+    def create(
+        self,
+        description: str = "",
+        metadata: str = "",
+        address: str = "",
+        tls: StaticBackendTLS = None,
+    ) -> StaticBackend:
+        """Create a new static backend
+
+        :param description: human-readable description of this backend. Optional
+        :param metadata: arbitrary user-defined machine-readable data of this backend. Optional
+        :param address: the address to forward to
+        :param tls: tls configuration to use
+
+        https://ngrok.com/docs/api#api-static-backends-create
+        """
+        path = "/backends/static"
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            address=address,
+            tls=extract_props(tls),
+        )
+        result = self._client.http_client.post(path, body_arg)
+        return StaticBackend(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """Delete a static backend by ID.
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-static-backends-delete
+        """
+        path = "/backends/static/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
+
+    def get(
+        self,
+        id: str,
+    ) -> StaticBackend:
+        """Get detailed information about a static backend by ID
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-static-backends-get
+        """
+        path = "/backends/static/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
+        return StaticBackend(self._client, result)
+
+    def list(
+        self,
+        before_id: str = None,
+        limit: str = None,
+    ) -> StaticBackendList:
+        """List all static backends on this account
+
+        :param before_id:
+        :param limit:
+
+        https://ngrok.com/docs/api#api-static-backends-list
+        """
+        path = "/backends/static"
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
+        )
+        result = self._client.http_client.get(path, body_arg)
+        return StaticBackendList(self._client, result)
+
+    def update(
+        self,
+        id: str,
+        description: str = None,
+        metadata: str = None,
+        address: str = "",
+        tls: StaticBackendTLS = None,
+    ) -> StaticBackend:
+        """Update static backend by ID
+
+        :param id:
+        :param description: human-readable description of this backend. Optional
+        :param metadata: arbitrary user-defined machine-readable data of this backend. Optional
+        :param address: the address to forward to
+        :param tls: tls configuration to use
+
+        https://ngrok.com/docs/api#api-static-backends-update
+        """
+        path = "/backends/static/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            address=address,
+            tls=extract_props(tls),
+        )
+        result = self._client.http_client.patch(path, body_arg)
+        return StaticBackend(self._client, result)
+
+
 class TunnelGroupBackendsClient(object):
     """A Tunnel Group Backend balances traffic among all online tunnels that match
     a label selector."""
@@ -970,6 +1090,111 @@ class WeightedBackendsClient(object):
         )
         result = self._client.http_client.patch(path, body_arg)
         return WeightedBackend(self._client, result)
+
+
+class BotUsersClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def create(
+        self,
+        name: str = "",
+        active: bool = None,
+    ) -> BotUser:
+        """Create a new bot user
+
+        :param name: human-readable name used to identify the bot
+        :param active: whether or not the bot is active
+
+        https://ngrok.com/docs/api#api-bot-users-create
+        """
+        path = "/bot_users"
+        body_arg = dict(
+            name=name,
+            active=active,
+        )
+        result = self._client.http_client.post(path, body_arg)
+        return BotUser(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """Delete a bot user by ID
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-bot-users-delete
+        """
+        path = "/bot_users/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
+
+    def get(
+        self,
+        id: str,
+    ) -> BotUser:
+        """Get the details of a Bot User by ID.
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-bot-users-get
+        """
+        path = "/bot_users/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
+        return BotUser(self._client, result)
+
+    def list(
+        self,
+        before_id: str = None,
+        limit: str = None,
+    ) -> BotUserList:
+        """List all bot users in this account.
+
+        :param before_id:
+        :param limit:
+
+        https://ngrok.com/docs/api#api-bot-users-list
+        """
+        path = "/bot_users"
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
+        )
+        result = self._client.http_client.get(path, body_arg)
+        return BotUserList(self._client, result)
+
+    def update(
+        self,
+        id: str,
+        name: str = None,
+        active: bool = None,
+    ) -> BotUser:
+        """Update attributes of a bot user by ID.
+
+        :param id:
+        :param name: human-readable name used to identify the bot
+        :param active: whether or not the bot is active
+
+        https://ngrok.com/docs/api#api-bot-users-update
+        """
+        path = "/bot_users/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = dict(
+            name=name,
+            active=active,
+        )
+        result = self._client.http_client.patch(path, body_arg)
+        return BotUser(self._client, result)
 
 
 class CertificateAuthoritiesClient(object):
@@ -1227,6 +1452,8 @@ class EdgesHTTPSRoutesClient(object):
         saml: EndpointSAMLMutate = None,
         oidc: EndpointOIDC = None,
         websocket_tcp_converter: EndpointWebsocketTCPConverter = None,
+        user_agent_filter: EndpointUserAgentFilter = None,
+        policy: EndpointPolicy = None,
     ) -> HTTPSEdgeRoute:
         """Create an HTTPS Edge Route
 
@@ -1246,6 +1473,8 @@ class EdgesHTTPSRoutesClient(object):
         :param saml: saml module configuration or ``null``
         :param oidc: oidc module configuration or ``null``
         :param websocket_tcp_converter: websocket to tcp adapter configuration or ``null``
+        :param user_agent_filter:
+        :param policy: the traffic policy associated with this edge or null
 
         https://ngrok.com/docs/api#api-edges-https-routes-create
         """
@@ -1269,6 +1498,8 @@ class EdgesHTTPSRoutesClient(object):
             saml=extract_props(saml),
             oidc=extract_props(oidc),
             websocket_tcp_converter=extract_props(websocket_tcp_converter),
+            user_agent_filter=extract_props(user_agent_filter),
+            policy=extract_props(policy),
         )
         result = self._client.http_client.post(path, body_arg)
         return HTTPSEdgeRoute(self._client, result)
@@ -1313,6 +1544,8 @@ class EdgesHTTPSRoutesClient(object):
         saml: EndpointSAMLMutate = None,
         oidc: EndpointOIDC = None,
         websocket_tcp_converter: EndpointWebsocketTCPConverter = None,
+        user_agent_filter: EndpointUserAgentFilter = None,
+        policy: EndpointPolicy = None,
     ) -> HTTPSEdgeRoute:
         """Updates an HTTPS Edge Route by ID. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.
 
@@ -1333,6 +1566,8 @@ class EdgesHTTPSRoutesClient(object):
         :param saml: saml module configuration or ``null``
         :param oidc: oidc module configuration or ``null``
         :param websocket_tcp_converter: websocket to tcp adapter configuration or ``null``
+        :param user_agent_filter:
+        :param policy: the traffic policy associated with this edge or null
 
         https://ngrok.com/docs/api#api-edges-https-routes-update
         """
@@ -1357,6 +1592,8 @@ class EdgesHTTPSRoutesClient(object):
             saml=extract_props(saml),
             oidc=extract_props(oidc),
             websocket_tcp_converter=extract_props(websocket_tcp_converter),
+            user_agent_filter=extract_props(user_agent_filter),
+            policy=extract_props(policy),
         )
         result = self._client.http_client.patch(path, body_arg)
         return HTTPSEdgeRoute(self._client, result)
@@ -2384,6 +2621,144 @@ class EdgeRouteWebsocketTCPConverterModuleClient(object):
         self._client.http_client.delete(path, body_arg)
 
 
+class EdgeRouteUserAgentFilterModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        edge_id: str,
+        id: str,
+        module: EndpointUserAgentFilter = None,
+    ) -> EndpointUserAgentFilter:
+        """
+
+        :param edge_id:
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-edge-route-user-agent-filter-module-replace
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/user_agent_filter"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
+        return EndpointUserAgentFilter(self._client, result)
+
+    def get(
+        self,
+        edge_id: str,
+        id: str,
+    ) -> EndpointUserAgentFilter:
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-user-agent-filter-module-get
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/user_agent_filter"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
+        return EndpointUserAgentFilter(self._client, result)
+
+    def delete(
+        self,
+        edge_id: str,
+        id: str,
+    ):
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-user-agent-filter-module-delete
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/user_agent_filter"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
+
+
+class EdgeRoutePolicyModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        edge_id: str,
+        id: str,
+        module: EndpointPolicy = None,
+    ) -> EndpointPolicy:
+        """
+
+        :param edge_id:
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-edge-route-policy-module-replace
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/policy"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
+        return EndpointPolicy(self._client, result)
+
+    def get(
+        self,
+        edge_id: str,
+        id: str,
+    ) -> EndpointPolicy:
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-policy-module-get
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/policy"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
+        return EndpointPolicy(self._client, result)
+
+    def delete(
+        self,
+        edge_id: str,
+        id: str,
+    ):
+        """
+
+        :param edge_id: unique identifier of this edge
+        :param id: unique identifier of this edge route
+
+        https://ngrok.com/docs/api#api-edge-route-policy-module-delete
+        """
+        path = "/edges/https/{edge_id}/routes/{id}/policy"
+        path = path.format(
+            edge_id=edge_id,
+            id=id,
+        )
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
+
+
 class EdgesTCPClient(object):
     def __init__(self, client):
         self._client = client
@@ -2395,6 +2770,7 @@ class EdgesTCPClient(object):
         hostports: Sequence[str] = None,
         backend: EndpointBackendMutate = None,
         ip_restriction: EndpointIPPolicyMutate = None,
+        policy: EndpointPolicy = None,
     ) -> TCPEdge:
         """Create a TCP Edge
 
@@ -2403,6 +2779,7 @@ class EdgesTCPClient(object):
         :param hostports: hostports served by this edge
         :param backend: edge modules
         :param ip_restriction:
+        :param policy: the traffic policy associated with this edge or null
 
         https://ngrok.com/docs/api#api-edges-tcp-create
         """
@@ -2413,6 +2790,7 @@ class EdgesTCPClient(object):
             hostports=hostports,
             backend=extract_props(backend),
             ip_restriction=extract_props(ip_restriction),
+            policy=extract_props(policy),
         )
         result = self._client.http_client.post(path, body_arg)
         return TCPEdge(self._client, result)
@@ -2463,6 +2841,7 @@ class EdgesTCPClient(object):
         hostports: Sequence[str] = None,
         backend: EndpointBackendMutate = None,
         ip_restriction: EndpointIPPolicyMutate = None,
+        policy: EndpointPolicy = None,
     ) -> TCPEdge:
         """Updates a TCP Edge by ID. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.
 
@@ -2472,6 +2851,7 @@ class EdgesTCPClient(object):
         :param hostports: hostports served by this edge
         :param backend: edge modules
         :param ip_restriction:
+        :param policy: the traffic policy associated with this edge or null
 
         https://ngrok.com/docs/api#api-edges-tcp-update
         """
@@ -2485,6 +2865,7 @@ class EdgesTCPClient(object):
             hostports=hostports,
             backend=extract_props(backend),
             ip_restriction=extract_props(ip_restriction),
+            policy=extract_props(policy),
         )
         result = self._client.http_client.patch(path, body_arg)
         return TCPEdge(self._client, result)
@@ -2627,6 +3008,66 @@ class TCPEdgeIPRestrictionModuleClient(object):
         self._client.http_client.delete(path, body_arg)
 
 
+class TCPEdgePolicyModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        id: str,
+        module: EndpointPolicy = None,
+    ) -> EndpointPolicy:
+        """
+
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-tcp-edge-policy-module-replace
+        """
+        path = "/edges/tcp/{id}/policy"
+        path = path.format(
+            id=id,
+        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
+        return EndpointPolicy(self._client, result)
+
+    def get(
+        self,
+        id: str,
+    ) -> EndpointPolicy:
+        """
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tcp-edge-policy-module-get
+        """
+        path = "/edges/tcp/{id}/policy"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
+        return EndpointPolicy(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tcp-edge-policy-module-delete
+        """
+        path = "/edges/tcp/{id}/policy"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
+
+
 class EdgesTLSClient(object):
     def __init__(self, client):
         self._client = client
@@ -2640,6 +3081,7 @@ class EdgesTLSClient(object):
         ip_restriction: EndpointIPPolicyMutate = None,
         mutual_tls: EndpointMutualTLSMutate = None,
         tls_termination: EndpointTLSTermination = None,
+        policy: EndpointPolicy = None,
     ) -> TLSEdge:
         """Create a TLS Edge
 
@@ -2650,6 +3092,7 @@ class EdgesTLSClient(object):
         :param ip_restriction:
         :param mutual_tls:
         :param tls_termination:
+        :param policy: the traffic policy associated with this edge or null
 
         https://ngrok.com/docs/api#api-edges-tls-create
         """
@@ -2662,6 +3105,7 @@ class EdgesTLSClient(object):
             ip_restriction=extract_props(ip_restriction),
             mutual_tls=extract_props(mutual_tls),
             tls_termination=extract_props(tls_termination),
+            policy=extract_props(policy),
         )
         result = self._client.http_client.post(path, body_arg)
         return TLSEdge(self._client, result)
@@ -2714,6 +3158,7 @@ class EdgesTLSClient(object):
         ip_restriction: EndpointIPPolicyMutate = None,
         mutual_tls: EndpointMutualTLSMutate = None,
         tls_termination: EndpointTLSTermination = None,
+        policy: EndpointPolicy = None,
     ) -> TLSEdge:
         """Updates a TLS Edge by ID. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.
 
@@ -2725,6 +3170,7 @@ class EdgesTLSClient(object):
         :param ip_restriction:
         :param mutual_tls:
         :param tls_termination:
+        :param policy: the traffic policy associated with this edge or null
 
         https://ngrok.com/docs/api#api-edges-tls-update
         """
@@ -2740,6 +3186,7 @@ class EdgesTLSClient(object):
             ip_restriction=extract_props(ip_restriction),
             mutual_tls=extract_props(mutual_tls),
             tls_termination=extract_props(tls_termination),
+            policy=extract_props(policy),
         )
         result = self._client.http_client.patch(path, body_arg)
         return TLSEdge(self._client, result)
@@ -2995,6 +3442,66 @@ class TLSEdgeTLSTerminationModuleClient(object):
         https://ngrok.com/docs/api#api-tls-edge-tls-termination-module-delete
         """
         path = "/edges/tls/{id}/tls_termination"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
+
+
+class TLSEdgePolicyModuleClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def replace(
+        self,
+        id: str,
+        module: EndpointPolicy = None,
+    ) -> EndpointPolicy:
+        """
+
+        :param id:
+        :param module:
+
+        https://ngrok.com/docs/api#api-tls-edge-policy-module-replace
+        """
+        path = "/edges/tls/{id}/policy"
+        path = path.format(
+            id=id,
+        )
+        body_arg = extract_props(module)
+        result = self._client.http_client.put(path, body_arg)
+        return EndpointPolicy(self._client, result)
+
+    def get(
+        self,
+        id: str,
+    ) -> EndpointPolicy:
+        """
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tls-edge-policy-module-get
+        """
+        path = "/edges/tls/{id}/policy"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
+        return EndpointPolicy(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-tls-edge-policy-module-delete
+        """
+        path = "/edges/tls/{id}/policy"
         path = path.format(
             id=id,
         )
@@ -3880,7 +4387,7 @@ class ReservedDomainsClient(object):
         """Create a new reserved domain.
 
         :param domain: hostname of the reserved domain
-        :param region: reserve the domain in this geographic ngrok datacenter. Optional, default is us. (au, eu, ap, us, jp, in, sa)
+        :param region: deprecated: With the launch of the ngrok Global Network domains traffic is now handled globally. This field applied only to endpoints. Note that agents may still connect to specific regions. Optional, null by default. (au, eu, ap, us, jp, in, sa)
         :param description: human-readable description of what this reserved domain will be used for
         :param metadata: arbitrary user-defined machine-readable data of this reserved domain. Optional, max 4096 bytes.
         :param certificate_id: ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with ``certificate_management_policy``.

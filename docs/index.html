@@ -170,8 +170,10 @@
 <li class="toctree-l1"><a class="reference internal" href="tunnel_sessions.html">Tunnel Sessions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="failover_backends.html">Failover Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="http_response_backends.html">HTTP Response Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="static_backends.html">Static Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tunnel_group_backends.html">Tunnel Group Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="weighted_backends.html">Weighted Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bot_users.html">Bot Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="certificate_authorities.html">Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Tunnel Credentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edges_https_routes.html">HTTPS Edge Routes</a></li>
@@ -189,14 +191,18 @@
 <li class="toctree-l1"><a class="reference internal" href="edge_route_saml_module.html">HTTPS Edge Route SAML Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edge_route_oidc_module.html">HTTPS Edge Route OIDC Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edge_route_websocket_tcp_converter_module.html">HTTPS Edge Route Websocket TCP Converter Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edge_route_user_agent_filter_module.html">HTTPS Edge Route User Agent Filter Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edge_route_policy_module.html">HTTPS Edge Route Policies Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edges_tcp.html">TCP Edges</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tcp_edge_backend_module.html">TCP Edge Backend Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tcp_edge_ip_restriction_module.html">TCP Edge IP Restriction Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tcp_edge_policy_module.html">TCP Edge Policy Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edges_tls.html">TLS Edges</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_edge_backend_module.html">TLS Edge Backend Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_edge_ip_restriction_module.html">TLS Edge IP Restriction Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_edge_mutual_tls_module.html">TLS Edge Mutual TLS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_edge_tls_termination_module.html">TLS Edge TLS Termination Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_edge_policy_module.html">TLS Edge Policy Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html">Endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_destinations.html">Event Destinations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_subscriptions.html">Event Subscriptions</a></li>
@@ -354,6 +360,7 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="client.html#ngrok.Client.application_sessions"><code class="docutils literal notranslate"><span class="pre">Client.application_sessions</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="client.html#ngrok.Client.application_users"><code class="docutils literal notranslate"><span class="pre">Client.application_users</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="client.html#ngrok.Client.backends"><code class="docutils literal notranslate"><span class="pre">Client.backends</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="client.html#ngrok.Client.bot_users"><code class="docutils literal notranslate"><span class="pre">Client.bot_users</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="client.html#ngrok.Client.certificate_authorities"><code class="docutils literal notranslate"><span class="pre">Client.certificate_authorities</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="client.html#ngrok.Client.credentials"><code class="docutils literal notranslate"><span class="pre">Client.credentials</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="client.html#ngrok.Client.edge_modules"><code class="docutils literal notranslate"><span class="pre">Client.edge_modules</span></code></a></li>
@@ -505,6 +512,22 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.ApplicationUserList.uri"><code class="docutils literal notranslate"><span class="pre">ApplicationUserList.uri</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.BotUser"><code class="docutils literal notranslate"><span class="pre">BotUser</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.BotUser.active"><code class="docutils literal notranslate"><span class="pre">BotUser.active</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.BotUser.created_at"><code class="docutils literal notranslate"><span class="pre">BotUser.created_at</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.BotUser.delete"><code class="docutils literal notranslate"><span class="pre">BotUser.delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.BotUser.id"><code class="docutils literal notranslate"><span class="pre">BotUser.id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.BotUser.name"><code class="docutils literal notranslate"><span class="pre">BotUser.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.BotUser.update"><code class="docutils literal notranslate"><span class="pre">BotUser.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.BotUser.uri"><code class="docutils literal notranslate"><span class="pre">BotUser.uri</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.BotUserList"><code class="docutils literal notranslate"><span class="pre">BotUserList</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.BotUserList.bot_users"><code class="docutils literal notranslate"><span class="pre">BotUserList.bot_users</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.BotUserList.next_page_uri"><code class="docutils literal notranslate"><span class="pre">BotUserList.next_page_uri</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.BotUserList.uri"><code class="docutils literal notranslate"><span class="pre">BotUserList.uri</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.BrowserSession"><code class="docutils literal notranslate"><span class="pre">BrowserSession</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.BrowserSession.ip_address"><code class="docutils literal notranslate"><span class="pre">BrowserSession.ip_address</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.BrowserSession.location"><code class="docutils literal notranslate"><span class="pre">BrowserSession.location</span></code></a></li>
@@ -566,6 +589,11 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint.tunnel"><code class="docutils literal notranslate"><span class="pre">Endpoint.tunnel</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint.type"><code class="docutils literal notranslate"><span class="pre">Endpoint.type</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint.updated_at"><code class="docutils literal notranslate"><span class="pre">Endpoint.updated_at</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointAction"><code class="docutils literal notranslate"><span class="pre">EndpointAction</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointAction.config"><code class="docutils literal notranslate"><span class="pre">EndpointAction.config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointAction.type"><code class="docutils literal notranslate"><span class="pre">EndpointAction.type</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointBackend"><code class="docutils literal notranslate"><span class="pre">EndpointBackend</span></code></a><ul>
@@ -716,6 +744,12 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointOIDC.scopes"><code class="docutils literal notranslate"><span class="pre">EndpointOIDC.scopes</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointPolicy"><code class="docutils literal notranslate"><span class="pre">EndpointPolicy</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointPolicy.enabled"><code class="docutils literal notranslate"><span class="pre">EndpointPolicy.enabled</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointPolicy.inbound"><code class="docutils literal notranslate"><span class="pre">EndpointPolicy.inbound</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointPolicy.outbound"><code class="docutils literal notranslate"><span class="pre">EndpointPolicy.outbound</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointRequestHeaders"><code class="docutils literal notranslate"><span class="pre">EndpointRequestHeaders</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointRequestHeaders.add"><code class="docutils literal notranslate"><span class="pre">EndpointRequestHeaders.add</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointRequestHeaders.enabled"><code class="docutils literal notranslate"><span class="pre">EndpointRequestHeaders.enabled</span></code></a></li>
@@ -726,6 +760,12 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointResponseHeaders.add"><code class="docutils literal notranslate"><span class="pre">EndpointResponseHeaders.add</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointResponseHeaders.enabled"><code class="docutils literal notranslate"><span class="pre">EndpointResponseHeaders.enabled</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointResponseHeaders.remove"><code class="docutils literal notranslate"><span class="pre">EndpointResponseHeaders.remove</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointRule"><code class="docutils literal notranslate"><span class="pre">EndpointRule</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointRule.actions"><code class="docutils literal notranslate"><span class="pre">EndpointRule.actions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointRule.expressions"><code class="docutils literal notranslate"><span class="pre">EndpointRule.expressions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointRule.name"><code class="docutils literal notranslate"><span class="pre">EndpointRule.name</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointSAML"><code class="docutils literal notranslate"><span class="pre">EndpointSAML</span></code></a><ul>
@@ -768,6 +808,12 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointTLSTerminationAtEdge"><code class="docutils literal notranslate"><span class="pre">EndpointTLSTerminationAtEdge</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointTLSTerminationAtEdge.enabled"><code class="docutils literal notranslate"><span class="pre">EndpointTLSTerminationAtEdge.enabled</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointTLSTerminationAtEdge.min_version"><code class="docutils literal notranslate"><span class="pre">EndpointTLSTerminationAtEdge.min_version</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointUserAgentFilter"><code class="docutils literal notranslate"><span class="pre">EndpointUserAgentFilter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointUserAgentFilter.allow"><code class="docutils literal notranslate"><span class="pre">EndpointUserAgentFilter.allow</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointUserAgentFilter.deny"><code class="docutils literal notranslate"><span class="pre">EndpointUserAgentFilter.deny</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointUserAgentFilter.enabled"><code class="docutils literal notranslate"><span class="pre">EndpointUserAgentFilter.enabled</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointWebhookValidation"><code class="docutils literal notranslate"><span class="pre">EndpointWebhookValidation</span></code></a><ul>
@@ -928,11 +974,13 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.metadata"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.metadata</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.oauth"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.oauth</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.oidc"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.oidc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.policy"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.policy</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.request_headers"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.request_headers</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.response_headers"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.response_headers</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.saml"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.saml</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.update"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.update()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.uri"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.uri</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.user_agent_filter"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.user_agent_filter</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.webhook_verification"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.webhook_verification</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.websocket_tcp_converter"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.websocket_tcp_converter</span></code></a></li>
 </ul>
@@ -1148,6 +1196,28 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.SSHUserCertificateList.uri"><code class="docutils literal notranslate"><span class="pre">SSHUserCertificateList.uri</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.StaticBackend"><code class="docutils literal notranslate"><span class="pre">StaticBackend</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.StaticBackend.address"><code class="docutils literal notranslate"><span class="pre">StaticBackend.address</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.StaticBackend.created_at"><code class="docutils literal notranslate"><span class="pre">StaticBackend.created_at</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.StaticBackend.delete"><code class="docutils literal notranslate"><span class="pre">StaticBackend.delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.StaticBackend.description"><code class="docutils literal notranslate"><span class="pre">StaticBackend.description</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.StaticBackend.id"><code class="docutils literal notranslate"><span class="pre">StaticBackend.id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.StaticBackend.metadata"><code class="docutils literal notranslate"><span class="pre">StaticBackend.metadata</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.StaticBackend.tls"><code class="docutils literal notranslate"><span class="pre">StaticBackend.tls</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.StaticBackend.update"><code class="docutils literal notranslate"><span class="pre">StaticBackend.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.StaticBackend.uri"><code class="docutils literal notranslate"><span class="pre">StaticBackend.uri</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.StaticBackendList"><code class="docutils literal notranslate"><span class="pre">StaticBackendList</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.StaticBackendList.backends"><code class="docutils literal notranslate"><span class="pre">StaticBackendList.backends</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.StaticBackendList.next_page_uri"><code class="docutils literal notranslate"><span class="pre">StaticBackendList.next_page_uri</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.StaticBackendList.uri"><code class="docutils literal notranslate"><span class="pre">StaticBackendList.uri</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.StaticBackendTLS"><code class="docutils literal notranslate"><span class="pre">StaticBackendTLS</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.StaticBackendTLS.enabled"><code class="docutils literal notranslate"><span class="pre">StaticBackendTLS.enabled</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TCPEdge"><code class="docutils literal notranslate"><span class="pre">TCPEdge</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TCPEdge.backend"><code class="docutils literal notranslate"><span class="pre">TCPEdge.backend</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TCPEdge.created_at"><code class="docutils literal notranslate"><span class="pre">TCPEdge.created_at</span></code></a></li>
@@ -1157,6 +1227,7 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TCPEdge.id"><code class="docutils literal notranslate"><span class="pre">TCPEdge.id</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TCPEdge.ip_restriction"><code class="docutils literal notranslate"><span class="pre">TCPEdge.ip_restriction</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TCPEdge.metadata"><code class="docutils literal notranslate"><span class="pre">TCPEdge.metadata</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TCPEdge.policy"><code class="docutils literal notranslate"><span class="pre">TCPEdge.policy</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TCPEdge.update"><code class="docutils literal notranslate"><span class="pre">TCPEdge.update()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TCPEdge.uri"><code class="docutils literal notranslate"><span class="pre">TCPEdge.uri</span></code></a></li>
 </ul>
@@ -1214,6 +1285,7 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TLSEdge.ip_restriction"><code class="docutils literal notranslate"><span class="pre">TLSEdge.ip_restriction</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TLSEdge.metadata"><code class="docutils literal notranslate"><span class="pre">TLSEdge.metadata</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TLSEdge.mutual_tls"><code class="docutils literal notranslate"><span class="pre">TLSEdge.mutual_tls</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TLSEdge.policy"><code class="docutils literal notranslate"><span class="pre">TLSEdge.policy</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TLSEdge.tls_termination"><code class="docutils literal notranslate"><span class="pre">TLSEdge.tls_termination</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TLSEdge.update"><code class="docutils literal notranslate"><span class="pre">TLSEdge.update()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TLSEdge.uri"><code class="docutils literal notranslate"><span class="pre">TLSEdge.uri</span></code></a></li>
@@ -1408,6 +1480,17 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="static_backends.html">Static Backends</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="static_backends.html#ngrok.services.StaticBackendsClient"><code class="docutils literal notranslate"><span class="pre">StaticBackendsClient</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="static_backends.html#ngrok.services.StaticBackendsClient.create"><code class="docutils literal notranslate"><span class="pre">StaticBackendsClient.create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="static_backends.html#ngrok.services.StaticBackendsClient.delete"><code class="docutils literal notranslate"><span class="pre">StaticBackendsClient.delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="static_backends.html#ngrok.services.StaticBackendsClient.get"><code class="docutils literal notranslate"><span class="pre">StaticBackendsClient.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="static_backends.html#ngrok.services.StaticBackendsClient.list"><code class="docutils literal notranslate"><span class="pre">StaticBackendsClient.list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="static_backends.html#ngrok.services.StaticBackendsClient.update"><code class="docutils literal notranslate"><span class="pre">StaticBackendsClient.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="tunnel_group_backends.html">Tunnel Group Backends</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tunnel_group_backends.html#ngrok.services.TunnelGroupBackendsClient"><code class="docutils literal notranslate"><span class="pre">TunnelGroupBackendsClient</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tunnel_group_backends.html#ngrok.services.TunnelGroupBackendsClient.create"><code class="docutils literal notranslate"><span class="pre">TunnelGroupBackendsClient.create()</span></code></a></li>
@@ -1426,6 +1509,17 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="weighted_backends.html#ngrok.services.WeightedBackendsClient.get"><code class="docutils literal notranslate"><span class="pre">WeightedBackendsClient.get()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="weighted_backends.html#ngrok.services.WeightedBackendsClient.list"><code class="docutils literal notranslate"><span class="pre">WeightedBackendsClient.list()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="weighted_backends.html#ngrok.services.WeightedBackendsClient.update"><code class="docutils literal notranslate"><span class="pre">WeightedBackendsClient.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bot_users.html">Bot Users</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bot_users.html#ngrok.services.BotUsersClient"><code class="docutils literal notranslate"><span class="pre">BotUsersClient</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bot_users.html#ngrok.services.BotUsersClient.create"><code class="docutils literal notranslate"><span class="pre">BotUsersClient.create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bot_users.html#ngrok.services.BotUsersClient.delete"><code class="docutils literal notranslate"><span class="pre">BotUsersClient.delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bot_users.html#ngrok.services.BotUsersClient.get"><code class="docutils literal notranslate"><span class="pre">BotUsersClient.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bot_users.html#ngrok.services.BotUsersClient.list"><code class="docutils literal notranslate"><span class="pre">BotUsersClient.list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bot_users.html#ngrok.services.BotUsersClient.update"><code class="docutils literal notranslate"><span class="pre">BotUsersClient.update()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1590,6 +1684,24 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="edge_route_user_agent_filter_module.html">HTTPS Edge Route User Agent Filter Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="edge_route_user_agent_filter_module.html#ngrok.services.EdgeRouteUserAgentFilterModuleClient"><code class="docutils literal notranslate"><span class="pre">EdgeRouteUserAgentFilterModuleClient</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="edge_route_user_agent_filter_module.html#ngrok.services.EdgeRouteUserAgentFilterModuleClient.delete"><code class="docutils literal notranslate"><span class="pre">EdgeRouteUserAgentFilterModuleClient.delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edge_route_user_agent_filter_module.html#ngrok.services.EdgeRouteUserAgentFilterModuleClient.get"><code class="docutils literal notranslate"><span class="pre">EdgeRouteUserAgentFilterModuleClient.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edge_route_user_agent_filter_module.html#ngrok.services.EdgeRouteUserAgentFilterModuleClient.replace"><code class="docutils literal notranslate"><span class="pre">EdgeRouteUserAgentFilterModuleClient.replace()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="edge_route_policy_module.html">HTTPS Edge Route Policies Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="edge_route_policy_module.html#ngrok.services.EdgeRoutePolicyModuleClient"><code class="docutils literal notranslate"><span class="pre">EdgeRoutePolicyModuleClient</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="edge_route_policy_module.html#ngrok.services.EdgeRoutePolicyModuleClient.delete"><code class="docutils literal notranslate"><span class="pre">EdgeRoutePolicyModuleClient.delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edge_route_policy_module.html#ngrok.services.EdgeRoutePolicyModuleClient.get"><code class="docutils literal notranslate"><span class="pre">EdgeRoutePolicyModuleClient.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edge_route_policy_module.html#ngrok.services.EdgeRoutePolicyModuleClient.replace"><code class="docutils literal notranslate"><span class="pre">EdgeRoutePolicyModuleClient.replace()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="edges_tcp.html">TCP Edges</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="edges_tcp.html#ngrok.services.EdgesTCPClient"><code class="docutils literal notranslate"><span class="pre">EdgesTCPClient</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="edges_tcp.html#ngrok.services.EdgesTCPClient.create"><code class="docutils literal notranslate"><span class="pre">EdgesTCPClient.create()</span></code></a></li>
@@ -1615,6 +1727,15 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="tcp_edge_ip_restriction_module.html#ngrok.services.TCPEdgeIPRestrictionModuleClient.delete"><code class="docutils literal notranslate"><span class="pre">TCPEdgeIPRestrictionModuleClient.delete()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="tcp_edge_ip_restriction_module.html#ngrok.services.TCPEdgeIPRestrictionModuleClient.get"><code class="docutils literal notranslate"><span class="pre">TCPEdgeIPRestrictionModuleClient.get()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="tcp_edge_ip_restriction_module.html#ngrok.services.TCPEdgeIPRestrictionModuleClient.replace"><code class="docutils literal notranslate"><span class="pre">TCPEdgeIPRestrictionModuleClient.replace()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tcp_edge_policy_module.html">TCP Edge Policy Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tcp_edge_policy_module.html#ngrok.services.TCPEdgePolicyModuleClient"><code class="docutils literal notranslate"><span class="pre">TCPEdgePolicyModuleClient</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tcp_edge_policy_module.html#ngrok.services.TCPEdgePolicyModuleClient.delete"><code class="docutils literal notranslate"><span class="pre">TCPEdgePolicyModuleClient.delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tcp_edge_policy_module.html#ngrok.services.TCPEdgePolicyModuleClient.get"><code class="docutils literal notranslate"><span class="pre">TCPEdgePolicyModuleClient.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tcp_edge_policy_module.html#ngrok.services.TCPEdgePolicyModuleClient.replace"><code class="docutils literal notranslate"><span class="pre">TCPEdgePolicyModuleClient.replace()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1662,6 +1783,15 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="tls_edge_tls_termination_module.html#ngrok.services.TLSEdgeTLSTerminationModuleClient.delete"><code class="docutils literal notranslate"><span class="pre">TLSEdgeTLSTerminationModuleClient.delete()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="tls_edge_tls_termination_module.html#ngrok.services.TLSEdgeTLSTerminationModuleClient.get"><code class="docutils literal notranslate"><span class="pre">TLSEdgeTLSTerminationModuleClient.get()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="tls_edge_tls_termination_module.html#ngrok.services.TLSEdgeTLSTerminationModuleClient.replace"><code class="docutils literal notranslate"><span class="pre">TLSEdgeTLSTerminationModuleClient.replace()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tls_edge_policy_module.html">TLS Edge Policy Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tls_edge_policy_module.html#ngrok.services.TLSEdgePolicyModuleClient"><code class="docutils literal notranslate"><span class="pre">TLSEdgePolicyModuleClient</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tls_edge_policy_module.html#ngrok.services.TLSEdgePolicyModuleClient.delete"><code class="docutils literal notranslate"><span class="pre">TLSEdgePolicyModuleClient.delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tls_edge_policy_module.html#ngrok.services.TLSEdgePolicyModuleClient.get"><code class="docutils literal notranslate"><span class="pre">TLSEdgePolicyModuleClient.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tls_edge_policy_module.html#ngrok.services.TLSEdgePolicyModuleClient.replace"><code class="docutils literal notranslate"><span class="pre">TLSEdgePolicyModuleClient.replace()</span></code></a></li>
 </ul>
 </li>
 </ul>
