@@ -170,8 +170,10 @@
 <li class="toctree-l1"><a class="reference internal" href="tunnel_sessions.html">Tunnel Sessions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="failover_backends.html">Failover Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="http_response_backends.html">HTTP Response Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="static_backends.html">Static Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tunnel_group_backends.html">Tunnel Group Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="weighted_backends.html">Weighted Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bot_users.html">Bot Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="certificate_authorities.html">Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Tunnel Credentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edges_https_routes.html">HTTPS Edge Routes</a></li>
@@ -189,14 +191,18 @@
 <li class="toctree-l1"><a class="reference internal" href="edge_route_saml_module.html">HTTPS Edge Route SAML Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edge_route_oidc_module.html">HTTPS Edge Route OIDC Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edge_route_websocket_tcp_converter_module.html">HTTPS Edge Route Websocket TCP Converter Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edge_route_user_agent_filter_module.html">HTTPS Edge Route User Agent Filter Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edge_route_policy_module.html">HTTPS Edge Route Policies Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edges_tcp.html">TCP Edges</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tcp_edge_backend_module.html">TCP Edge Backend Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tcp_edge_ip_restriction_module.html">TCP Edge IP Restriction Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tcp_edge_policy_module.html">TCP Edge Policy Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edges_tls.html">TLS Edges</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_edge_backend_module.html">TLS Edge Backend Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_edge_ip_restriction_module.html">TLS Edge IP Restriction Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_edge_mutual_tls_module.html">TLS Edge Mutual TLS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_edge_tls_termination_module.html">TLS Edge TLS Termination Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_edge_policy_module.html">TLS Edge Policy Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html">Endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_destinations.html">Event Destinations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_subscriptions.html">Event Subscriptions</a></li>
@@ -1152,6 +1158,114 @@
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="ngrok.datatypes.BotUser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></span><span class="sig-name descname"><span class="pre">BotUser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#BotUser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.BotUser" title="Permalink to this definition">#</a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.BotUser.active">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">active</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#ngrok.datatypes.BotUser.active" title="Permalink to this definition">#</a></dt>
+<dd><p>whether or not the bot is active</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.BotUser.created_at">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime</span></em><a class="headerlink" href="#ngrok.datatypes.BotUser.created_at" title="Permalink to this definition">#</a></dt>
+<dd><p>timestamp when the api key was created, RFC 3339 format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ngrok.datatypes.BotUser.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#BotUser.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.BotUser.delete" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.BotUser.id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.BotUser.id" title="Permalink to this definition">#</a></dt>
+<dd><p>unique API key resource identifier</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.BotUser.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.BotUser.name" title="Permalink to this definition">#</a></dt>
+<dd><p>human-readable name used to identify the bot</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ngrok.datatypes.BotUser.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">active</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#BotUser.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.BotUser.update" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.BotUser.uri">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">uri</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.BotUser.uri" title="Permalink to this definition">#</a></dt>
+<dd><p>URI to the API resource of this bot user</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ngrok.datatypes.BotUserList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></span><span class="sig-name descname"><span class="pre">BotUserList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#BotUserList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.BotUserList" title="Permalink to this definition">#</a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.BotUserList.bot_users">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bot_users</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#ngrok.datatypes.BotUser" title="ngrok.datatypes.BotUser"><span class="pre">BotUser</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ngrok.datatypes.BotUserList.bot_users" title="Permalink to this definition">#</a></dt>
+<dd><p>the list of all bot users on this account</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<a class="reference internal" href="#ngrok.datatypes.BotUser" title="ngrok.datatypes.BotUser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BotUser</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.BotUserList.next_page_uri">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">next_page_uri</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.BotUserList.next_page_uri" title="Permalink to this definition">#</a></dt>
+<dd><p>URI of the next page, or null if there is no next page</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.BotUserList.uri">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">uri</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.BotUserList.uri" title="Permalink to this definition">#</a></dt>
+<dd><p>URI of the bot users list API resource</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="ngrok.datatypes.BrowserSession">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></span><span class="sig-name descname"><span class="pre">BrowserSession</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#BrowserSession"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.BrowserSession" title="Permalink to this definition">#</a></dt>
 <dd><dl class="py property">
@@ -1646,6 +1760,33 @@
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ngrok.datatypes.EndpointAction">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></span><span class="sig-name descname"><span class="pre">EndpointAction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#EndpointAction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.EndpointAction" title="Permalink to this definition">#</a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.EndpointAction.config">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">object</span></em><a class="headerlink" href="#ngrok.datatypes.EndpointAction.config" title="Permalink to this definition">#</a></dt>
+<dd><p>the configuration for the action on the policy rule.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.EndpointAction.type">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.EndpointAction.type" title="Permalink to this definition">#</a></dt>
+<dd><p>the type of action on the policy rule.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2701,6 +2842,44 @@
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="ngrok.datatypes.EndpointPolicy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></span><span class="sig-name descname"><span class="pre">EndpointPolicy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#EndpointPolicy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.EndpointPolicy" title="Permalink to this definition">#</a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.EndpointPolicy.enabled">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">enabled</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#ngrok.datatypes.EndpointPolicy.enabled" title="Permalink to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the module will be applied to traffic, <code class="docutils literal notranslate"><span class="pre">false</span></code> to disable. default <code class="docutils literal notranslate"><span class="pre">true</span></code> if unspecified</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.EndpointPolicy.inbound">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">inbound</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#ngrok.datatypes.EndpointRule" title="ngrok.datatypes.EndpointRule"><span class="pre">EndpointRule</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ngrok.datatypes.EndpointPolicy.inbound" title="Permalink to this definition">#</a></dt>
+<dd><p>the inbound rules of the traffic policy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<a class="reference internal" href="#ngrok.datatypes.EndpointRule" title="ngrok.datatypes.EndpointRule"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointRule</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.EndpointPolicy.outbound">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">outbound</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#ngrok.datatypes.EndpointRule" title="ngrok.datatypes.EndpointRule"><span class="pre">EndpointRule</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ngrok.datatypes.EndpointPolicy.outbound" title="Permalink to this definition">#</a></dt>
+<dd><p>the outbound rules on the traffic policy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<a class="reference internal" href="#ngrok.datatypes.EndpointRule" title="ngrok.datatypes.EndpointRule"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointRule</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="ngrok.datatypes.EndpointRequestHeaders">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></span><span class="sig-name descname"><span class="pre">EndpointRequestHeaders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#EndpointRequestHeaders"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.EndpointRequestHeaders" title="Permalink to this definition">#</a></dt>
 <dd><dl class="py property">
@@ -2770,6 +2949,44 @@
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ngrok.datatypes.EndpointRule">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></span><span class="sig-name descname"><span class="pre">EndpointRule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#EndpointRule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.EndpointRule" title="Permalink to this definition">#</a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.EndpointRule.actions">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">actions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#ngrok.datatypes.EndpointAction" title="ngrok.datatypes.EndpointAction"><span class="pre">EndpointAction</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ngrok.datatypes.EndpointRule.actions" title="Permalink to this definition">#</a></dt>
+<dd><p>the set of actions on a policy rule.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<a class="reference internal" href="#ngrok.datatypes.EndpointAction" title="ngrok.datatypes.EndpointAction"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointAction</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.EndpointRule.expressions">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">expressions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ngrok.datatypes.EndpointRule.expressions" title="Permalink to this definition">#</a></dt>
+<dd><p>cel expressions that filter traffic the policy rule applies to.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.EndpointRule.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.EndpointRule.name" title="Permalink to this definition">#</a></dt>
+<dd><p>the name of the rule that is part of the traffic policy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -3127,6 +3344,41 @@
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="ngrok.datatypes.EndpointUserAgentFilter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></span><span class="sig-name descname"><span class="pre">EndpointUserAgentFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#EndpointUserAgentFilter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.EndpointUserAgentFilter" title="Permalink to this definition">#</a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.EndpointUserAgentFilter.allow">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">allow</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ngrok.datatypes.EndpointUserAgentFilter.allow" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.EndpointUserAgentFilter.deny">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deny</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ngrok.datatypes.EndpointUserAgentFilter.deny" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.EndpointUserAgentFilter.enabled">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">enabled</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#ngrok.datatypes.EndpointUserAgentFilter.enabled" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="ngrok.datatypes.EndpointWebhookValidation">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></span><span class="sig-name descname"><span class="pre">EndpointWebhookValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#EndpointWebhookValidation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.EndpointWebhookValidation" title="Permalink to this definition">#</a></dt>
 <dd><dl class="py property">
@@ -3143,7 +3395,7 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="ngrok.datatypes.EndpointWebhookValidation.provider">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">provider</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.EndpointWebhookValidation.provider" title="Permalink to this definition">#</a></dt>
-<dd><p>a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers defined at <a class="reference external" href="https://ngrok.com/docs/cloud-edge/modules/webhook">https://ngrok.com/docs/cloud-edge/modules/webhook</a></p>
+<dd><p>a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers defined at <a class="reference external" href="https://ngrok.com/docs/cloud-edge/modules/webhook-verification">https://ngrok.com/docs/cloud-edge/modules/webhook-verification</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -4237,6 +4489,17 @@
 </dd></dl>
 
 <dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.HTTPSEdgeRoute.policy">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">policy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ngrok.datatypes.EndpointPolicy" title="ngrok.datatypes.EndpointPolicy"><span class="pre">EndpointPolicy</span></a></em><a class="headerlink" href="#ngrok.datatypes.HTTPSEdgeRoute.policy" title="Permalink to this definition">#</a></dt>
+<dd><p>the traffic policy associated with this edge or null</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.EndpointPolicy" title="ngrok.datatypes.EndpointPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointPolicy</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="ngrok.datatypes.HTTPSEdgeRoute.request_headers">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">request_headers</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ngrok.datatypes.EndpointRequestHeaders" title="ngrok.datatypes.EndpointRequestHeaders"><span class="pre">EndpointRequestHeaders</span></a></em><a class="headerlink" href="#ngrok.datatypes.HTTPSEdgeRoute.request_headers" title="Permalink to this definition">#</a></dt>
 <dd><p>request headers module configuration or <code class="docutils literal notranslate"><span class="pre">null</span></code></p>
@@ -4271,7 +4534,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ngrok.datatypes.HTTPSEdgeRoute.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip_restriction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit_breaker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_headers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response_headers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">webhook_verification</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oauth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saml</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oidc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">websocket_tcp_converter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#HTTPSEdgeRoute.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.HTTPSEdgeRoute.update" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip_restriction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit_breaker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_headers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response_headers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">webhook_verification</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oauth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saml</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oidc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">websocket_tcp_converter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_agent_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#HTTPSEdgeRoute.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.HTTPSEdgeRoute.update" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
@@ -4281,6 +4544,16 @@
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.HTTPSEdgeRoute.user_agent_filter">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">user_agent_filter</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ngrok.datatypes.EndpointUserAgentFilter" title="ngrok.datatypes.EndpointUserAgentFilter"><span class="pre">EndpointUserAgentFilter</span></a></em><a class="headerlink" href="#ngrok.datatypes.HTTPSEdgeRoute.user_agent_filter" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.EndpointUserAgentFilter" title="ngrok.datatypes.EndpointUserAgentFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointUserAgentFilter</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -4972,7 +5245,7 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="ngrok.datatypes.ReservedDomain.cname_target">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cname_target</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.ReservedDomain.cname_target" title="Permalink to this definition">#</a></dt>
-<dd><p>DNS CNAME target for a custom hostname, or null if the reserved domain is a subdomain of <a href="#id1"><span class="problematic" id="id2">*</span></a>.ngrok.io</p>
+<dd><p>DNS CNAME target for a custom hostname, or null if the reserved domain is a subdomain of an ngrok owned domain (e.g. <a href="#id1"><span class="problematic" id="id2">*</span></a>.ngrok.app)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -5043,7 +5316,7 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="ngrok.datatypes.ReservedDomain.region">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">region</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.ReservedDomain.region" title="Permalink to this definition">#</a></dt>
-<dd><p>reserve the domain in this geographic ngrok datacenter. Optional, default is us. (au, eu, ap, us, jp, in, sa)</p>
+<dd><p>deprecated: With the launch of the ngrok Global Network domains traffic is now handled globally. This field applied only to endpoints. Note that agents may still connect to specific regions. Optional, null by default. (au, eu, ap, us, jp, in, sa)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -5869,6 +6142,152 @@
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="ngrok.datatypes.StaticBackend">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></span><span class="sig-name descname"><span class="pre">StaticBackend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#StaticBackend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.StaticBackend" title="Permalink to this definition">#</a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.StaticBackend.address">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">address</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.StaticBackend.address" title="Permalink to this definition">#</a></dt>
+<dd><p>the address to forward to</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.StaticBackend.created_at">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime</span></em><a class="headerlink" href="#ngrok.datatypes.StaticBackend.created_at" title="Permalink to this definition">#</a></dt>
+<dd><p>timestamp when the backend was created, RFC 3339 format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ngrok.datatypes.StaticBackend.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#StaticBackend.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.StaticBackend.delete" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.StaticBackend.description">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.StaticBackend.description" title="Permalink to this definition">#</a></dt>
+<dd><p>human-readable description of this backend. Optional</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.StaticBackend.id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.StaticBackend.id" title="Permalink to this definition">#</a></dt>
+<dd><p>unique identifier for this static backend</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.StaticBackend.metadata">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.StaticBackend.metadata" title="Permalink to this definition">#</a></dt>
+<dd><p>arbitrary user-defined machine-readable data of this backend. Optional</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.StaticBackend.tls">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tls</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ngrok.datatypes.StaticBackendTLS" title="ngrok.datatypes.StaticBackendTLS"><span class="pre">StaticBackendTLS</span></a></em><a class="headerlink" href="#ngrok.datatypes.StaticBackend.tls" title="Permalink to this definition">#</a></dt>
+<dd><p>tls configuration to use</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.StaticBackendTLS" title="ngrok.datatypes.StaticBackendTLS"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticBackendTLS</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ngrok.datatypes.StaticBackend.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#StaticBackend.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.StaticBackend.update" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.StaticBackend.uri">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">uri</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.StaticBackend.uri" title="Permalink to this definition">#</a></dt>
+<dd><p>URI of the StaticBackend API resource</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ngrok.datatypes.StaticBackendList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></span><span class="sig-name descname"><span class="pre">StaticBackendList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#StaticBackendList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.StaticBackendList" title="Permalink to this definition">#</a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.StaticBackendList.backends">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">backends</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#ngrok.datatypes.StaticBackend" title="ngrok.datatypes.StaticBackend"><span class="pre">StaticBackend</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ngrok.datatypes.StaticBackendList.backends" title="Permalink to this definition">#</a></dt>
+<dd><p>the list of all static backends on this account</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<a class="reference internal" href="#ngrok.datatypes.StaticBackend" title="ngrok.datatypes.StaticBackend"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticBackend</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.StaticBackendList.next_page_uri">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">next_page_uri</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.StaticBackendList.next_page_uri" title="Permalink to this definition">#</a></dt>
+<dd><p>URI of the next page, or null if there is no next page</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.StaticBackendList.uri">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">uri</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.StaticBackendList.uri" title="Permalink to this definition">#</a></dt>
+<dd><p>URI of the static backends list API resource</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ngrok.datatypes.StaticBackendTLS">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></span><span class="sig-name descname"><span class="pre">StaticBackendTLS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#StaticBackendTLS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.StaticBackendTLS" title="Permalink to this definition">#</a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.StaticBackendTLS.enabled">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">enabled</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#ngrok.datatypes.StaticBackendTLS.enabled" title="Permalink to this definition">#</a></dt>
+<dd><p>if TLS is checked</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="ngrok.datatypes.TCPEdge">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></span><span class="sig-name descname"><span class="pre">TCPEdge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#TCPEdge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.TCPEdge" title="Permalink to this definition">#</a></dt>
 <dd><dl class="py property">
@@ -5952,9 +6371,20 @@
 </dl>
 </dd></dl>
 
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.TCPEdge.policy">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">policy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ngrok.datatypes.EndpointPolicy" title="ngrok.datatypes.EndpointPolicy"><span class="pre">EndpointPolicy</span></a></em><a class="headerlink" href="#ngrok.datatypes.TCPEdge.policy" title="Permalink to this definition">#</a></dt>
+<dd><p>the traffic policy associated with this edge or null</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.EndpointPolicy" title="ngrok.datatypes.EndpointPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointPolicy</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="ngrok.datatypes.TCPEdge.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hostports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip_restriction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#TCPEdge.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.TCPEdge.update" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hostports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip_restriction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#TCPEdge.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.TCPEdge.update" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
@@ -6414,6 +6844,17 @@
 </dd></dl>
 
 <dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.TLSEdge.policy">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">policy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ngrok.datatypes.EndpointPolicy" title="ngrok.datatypes.EndpointPolicy"><span class="pre">EndpointPolicy</span></a></em><a class="headerlink" href="#ngrok.datatypes.TLSEdge.policy" title="Permalink to this definition">#</a></dt>
+<dd><p>the traffic policy associated with this edge or null</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.EndpointPolicy" title="ngrok.datatypes.EndpointPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointPolicy</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="ngrok.datatypes.TLSEdge.tls_termination">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tls_termination</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ngrok.datatypes.EndpointTLSTermination" title="ngrok.datatypes.EndpointTLSTermination"><span class="pre">EndpointTLSTermination</span></a></em><a class="headerlink" href="#ngrok.datatypes.TLSEdge.tls_termination" title="Permalink to this definition">#</a></dt>
 <dd><dl class="field-list simple">
@@ -6425,7 +6866,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ngrok.datatypes.TLSEdge.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hostports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip_restriction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mutual_tls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tls_termination</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#TLSEdge.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.TLSEdge.update" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hostports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip_restriction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mutual_tls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tls_termination</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#TLSEdge.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.TLSEdge.update" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
@@ -7300,6 +7741,22 @@
 <li><a class="reference internal" href="#ngrok.datatypes.ApplicationUserList.uri"><code class="docutils literal notranslate"><span class="pre">ApplicationUserList.uri</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#ngrok.datatypes.BotUser"><code class="docutils literal notranslate"><span class="pre">BotUser</span></code></a><ul>
+<li><a class="reference internal" href="#ngrok.datatypes.BotUser.active"><code class="docutils literal notranslate"><span class="pre">BotUser.active</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.BotUser.created_at"><code class="docutils literal notranslate"><span class="pre">BotUser.created_at</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.BotUser.delete"><code class="docutils literal notranslate"><span class="pre">BotUser.delete()</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.BotUser.id"><code class="docutils literal notranslate"><span class="pre">BotUser.id</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.BotUser.name"><code class="docutils literal notranslate"><span class="pre">BotUser.name</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.BotUser.update"><code class="docutils literal notranslate"><span class="pre">BotUser.update()</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.BotUser.uri"><code class="docutils literal notranslate"><span class="pre">BotUser.uri</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ngrok.datatypes.BotUserList"><code class="docutils literal notranslate"><span class="pre">BotUserList</span></code></a><ul>
+<li><a class="reference internal" href="#ngrok.datatypes.BotUserList.bot_users"><code class="docutils literal notranslate"><span class="pre">BotUserList.bot_users</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.BotUserList.next_page_uri"><code class="docutils literal notranslate"><span class="pre">BotUserList.next_page_uri</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.BotUserList.uri"><code class="docutils literal notranslate"><span class="pre">BotUserList.uri</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#ngrok.datatypes.BrowserSession"><code class="docutils literal notranslate"><span class="pre">BrowserSession</span></code></a><ul>
 <li><a class="reference internal" href="#ngrok.datatypes.BrowserSession.ip_address"><code class="docutils literal notranslate"><span class="pre">BrowserSession.ip_address</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.BrowserSession.location"><code class="docutils literal notranslate"><span class="pre">BrowserSession.location</span></code></a></li>
@@ -7361,6 +7818,11 @@
 <li><a class="reference internal" href="#ngrok.datatypes.Endpoint.tunnel"><code class="docutils literal notranslate"><span class="pre">Endpoint.tunnel</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.Endpoint.type"><code class="docutils literal notranslate"><span class="pre">Endpoint.type</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.Endpoint.updated_at"><code class="docutils literal notranslate"><span class="pre">Endpoint.updated_at</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ngrok.datatypes.EndpointAction"><code class="docutils literal notranslate"><span class="pre">EndpointAction</span></code></a><ul>
+<li><a class="reference internal" href="#ngrok.datatypes.EndpointAction.config"><code class="docutils literal notranslate"><span class="pre">EndpointAction.config</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.EndpointAction.type"><code class="docutils literal notranslate"><span class="pre">EndpointAction.type</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#ngrok.datatypes.EndpointBackend"><code class="docutils literal notranslate"><span class="pre">EndpointBackend</span></code></a><ul>
@@ -7511,6 +7973,12 @@
 <li><a class="reference internal" href="#ngrok.datatypes.EndpointOIDC.scopes"><code class="docutils literal notranslate"><span class="pre">EndpointOIDC.scopes</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#ngrok.datatypes.EndpointPolicy"><code class="docutils literal notranslate"><span class="pre">EndpointPolicy</span></code></a><ul>
+<li><a class="reference internal" href="#ngrok.datatypes.EndpointPolicy.enabled"><code class="docutils literal notranslate"><span class="pre">EndpointPolicy.enabled</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.EndpointPolicy.inbound"><code class="docutils literal notranslate"><span class="pre">EndpointPolicy.inbound</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.EndpointPolicy.outbound"><code class="docutils literal notranslate"><span class="pre">EndpointPolicy.outbound</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#ngrok.datatypes.EndpointRequestHeaders"><code class="docutils literal notranslate"><span class="pre">EndpointRequestHeaders</span></code></a><ul>
 <li><a class="reference internal" href="#ngrok.datatypes.EndpointRequestHeaders.add"><code class="docutils literal notranslate"><span class="pre">EndpointRequestHeaders.add</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.EndpointRequestHeaders.enabled"><code class="docutils literal notranslate"><span class="pre">EndpointRequestHeaders.enabled</span></code></a></li>
@@ -7521,6 +7989,12 @@
 <li><a class="reference internal" href="#ngrok.datatypes.EndpointResponseHeaders.add"><code class="docutils literal notranslate"><span class="pre">EndpointResponseHeaders.add</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.EndpointResponseHeaders.enabled"><code class="docutils literal notranslate"><span class="pre">EndpointResponseHeaders.enabled</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.EndpointResponseHeaders.remove"><code class="docutils literal notranslate"><span class="pre">EndpointResponseHeaders.remove</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ngrok.datatypes.EndpointRule"><code class="docutils literal notranslate"><span class="pre">EndpointRule</span></code></a><ul>
+<li><a class="reference internal" href="#ngrok.datatypes.EndpointRule.actions"><code class="docutils literal notranslate"><span class="pre">EndpointRule.actions</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.EndpointRule.expressions"><code class="docutils literal notranslate"><span class="pre">EndpointRule.expressions</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.EndpointRule.name"><code class="docutils literal notranslate"><span class="pre">EndpointRule.name</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#ngrok.datatypes.EndpointSAML"><code class="docutils literal notranslate"><span class="pre">EndpointSAML</span></code></a><ul>
@@ -7563,6 +8037,12 @@
 <li><a class="reference internal" href="#ngrok.datatypes.EndpointTLSTerminationAtEdge"><code class="docutils literal notranslate"><span class="pre">EndpointTLSTerminationAtEdge</span></code></a><ul>
 <li><a class="reference internal" href="#ngrok.datatypes.EndpointTLSTerminationAtEdge.enabled"><code class="docutils literal notranslate"><span class="pre">EndpointTLSTerminationAtEdge.enabled</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.EndpointTLSTerminationAtEdge.min_version"><code class="docutils literal notranslate"><span class="pre">EndpointTLSTerminationAtEdge.min_version</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ngrok.datatypes.EndpointUserAgentFilter"><code class="docutils literal notranslate"><span class="pre">EndpointUserAgentFilter</span></code></a><ul>
+<li><a class="reference internal" href="#ngrok.datatypes.EndpointUserAgentFilter.allow"><code class="docutils literal notranslate"><span class="pre">EndpointUserAgentFilter.allow</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.EndpointUserAgentFilter.deny"><code class="docutils literal notranslate"><span class="pre">EndpointUserAgentFilter.deny</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.EndpointUserAgentFilter.enabled"><code class="docutils literal notranslate"><span class="pre">EndpointUserAgentFilter.enabled</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#ngrok.datatypes.EndpointWebhookValidation"><code class="docutils literal notranslate"><span class="pre">EndpointWebhookValidation</span></code></a><ul>
@@ -7723,11 +8203,13 @@
 <li><a class="reference internal" href="#ngrok.datatypes.HTTPSEdgeRoute.metadata"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.metadata</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.HTTPSEdgeRoute.oauth"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.oauth</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.HTTPSEdgeRoute.oidc"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.oidc</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.HTTPSEdgeRoute.policy"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.policy</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.HTTPSEdgeRoute.request_headers"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.request_headers</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.HTTPSEdgeRoute.response_headers"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.response_headers</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.HTTPSEdgeRoute.saml"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.saml</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.HTTPSEdgeRoute.update"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.update()</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.HTTPSEdgeRoute.uri"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.uri</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.HTTPSEdgeRoute.user_agent_filter"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.user_agent_filter</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.HTTPSEdgeRoute.webhook_verification"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.webhook_verification</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.HTTPSEdgeRoute.websocket_tcp_converter"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.websocket_tcp_converter</span></code></a></li>
 </ul>
@@ -7943,6 +8425,28 @@
 <li><a class="reference internal" href="#ngrok.datatypes.SSHUserCertificateList.uri"><code class="docutils literal notranslate"><span class="pre">SSHUserCertificateList.uri</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#ngrok.datatypes.StaticBackend"><code class="docutils literal notranslate"><span class="pre">StaticBackend</span></code></a><ul>
+<li><a class="reference internal" href="#ngrok.datatypes.StaticBackend.address"><code class="docutils literal notranslate"><span class="pre">StaticBackend.address</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.StaticBackend.created_at"><code class="docutils literal notranslate"><span class="pre">StaticBackend.created_at</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.StaticBackend.delete"><code class="docutils literal notranslate"><span class="pre">StaticBackend.delete()</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.StaticBackend.description"><code class="docutils literal notranslate"><span class="pre">StaticBackend.description</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.StaticBackend.id"><code class="docutils literal notranslate"><span class="pre">StaticBackend.id</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.StaticBackend.metadata"><code class="docutils literal notranslate"><span class="pre">StaticBackend.metadata</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.StaticBackend.tls"><code class="docutils literal notranslate"><span class="pre">StaticBackend.tls</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.StaticBackend.update"><code class="docutils literal notranslate"><span class="pre">StaticBackend.update()</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.StaticBackend.uri"><code class="docutils literal notranslate"><span class="pre">StaticBackend.uri</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ngrok.datatypes.StaticBackendList"><code class="docutils literal notranslate"><span class="pre">StaticBackendList</span></code></a><ul>
+<li><a class="reference internal" href="#ngrok.datatypes.StaticBackendList.backends"><code class="docutils literal notranslate"><span class="pre">StaticBackendList.backends</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.StaticBackendList.next_page_uri"><code class="docutils literal notranslate"><span class="pre">StaticBackendList.next_page_uri</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.StaticBackendList.uri"><code class="docutils literal notranslate"><span class="pre">StaticBackendList.uri</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ngrok.datatypes.StaticBackendTLS"><code class="docutils literal notranslate"><span class="pre">StaticBackendTLS</span></code></a><ul>
+<li><a class="reference internal" href="#ngrok.datatypes.StaticBackendTLS.enabled"><code class="docutils literal notranslate"><span class="pre">StaticBackendTLS.enabled</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#ngrok.datatypes.TCPEdge"><code class="docutils literal notranslate"><span class="pre">TCPEdge</span></code></a><ul>
 <li><a class="reference internal" href="#ngrok.datatypes.TCPEdge.backend"><code class="docutils literal notranslate"><span class="pre">TCPEdge.backend</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.TCPEdge.created_at"><code class="docutils literal notranslate"><span class="pre">TCPEdge.created_at</span></code></a></li>
@@ -7952,6 +8456,7 @@
 <li><a class="reference internal" href="#ngrok.datatypes.TCPEdge.id"><code class="docutils literal notranslate"><span class="pre">TCPEdge.id</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.TCPEdge.ip_restriction"><code class="docutils literal notranslate"><span class="pre">TCPEdge.ip_restriction</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.TCPEdge.metadata"><code class="docutils literal notranslate"><span class="pre">TCPEdge.metadata</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.TCPEdge.policy"><code class="docutils literal notranslate"><span class="pre">TCPEdge.policy</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.TCPEdge.update"><code class="docutils literal notranslate"><span class="pre">TCPEdge.update()</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.TCPEdge.uri"><code class="docutils literal notranslate"><span class="pre">TCPEdge.uri</span></code></a></li>
 </ul>
@@ -8009,6 +8514,7 @@
 <li><a class="reference internal" href="#ngrok.datatypes.TLSEdge.ip_restriction"><code class="docutils literal notranslate"><span class="pre">TLSEdge.ip_restriction</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.TLSEdge.metadata"><code class="docutils literal notranslate"><span class="pre">TLSEdge.metadata</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.TLSEdge.mutual_tls"><code class="docutils literal notranslate"><span class="pre">TLSEdge.mutual_tls</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.TLSEdge.policy"><code class="docutils literal notranslate"><span class="pre">TLSEdge.policy</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.TLSEdge.tls_termination"><code class="docutils literal notranslate"><span class="pre">TLSEdge.tls_termination</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.TLSEdge.update"><code class="docutils literal notranslate"><span class="pre">TLSEdge.update()</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.TLSEdge.uri"><code class="docutils literal notranslate"><span class="pre">TLSEdge.uri</span></code></a></li>

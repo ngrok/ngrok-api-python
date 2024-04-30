@@ -170,8 +170,10 @@
 <li class="toctree-l1"><a class="reference internal" href="tunnel_sessions.html">Tunnel Sessions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="failover_backends.html">Failover Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="http_response_backends.html">HTTP Response Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="static_backends.html">Static Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tunnel_group_backends.html">Tunnel Group Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="weighted_backends.html">Weighted Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bot_users.html">Bot Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="certificate_authorities.html">Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Tunnel Credentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edges_https_routes.html">HTTPS Edge Routes</a></li>
@@ -189,14 +191,18 @@
 <li class="toctree-l1"><a class="reference internal" href="edge_route_saml_module.html">HTTPS Edge Route SAML Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edge_route_oidc_module.html">HTTPS Edge Route OIDC Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edge_route_websocket_tcp_converter_module.html">HTTPS Edge Route Websocket TCP Converter Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edge_route_user_agent_filter_module.html">HTTPS Edge Route User Agent Filter Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edge_route_policy_module.html">HTTPS Edge Route Policies Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edges_tcp.html">TCP Edges</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tcp_edge_backend_module.html">TCP Edge Backend Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tcp_edge_ip_restriction_module.html">TCP Edge IP Restriction Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tcp_edge_policy_module.html">TCP Edge Policy Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edges_tls.html">TLS Edges</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_edge_backend_module.html">TLS Edge Backend Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_edge_ip_restriction_module.html">TLS Edge IP Restriction Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_edge_mutual_tls_module.html">TLS Edge Mutual TLS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_edge_tls_termination_module.html">TLS Edge TLS Termination Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_edge_policy_module.html">TLS Edge Policy Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html">Endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_destinations.html">Event Destinations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_subscriptions.html">Event Subscriptions</a></li>
@@ -265,11 +271,11 @@ This CNAME record points traffic for that domain to ngrok’s edge servers.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>domain</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – hostname of the reserved domain</p></li>
-<li><p><strong>region</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – reserve the domain in this geographic ngrok datacenter. Optional, default is us. (au, eu, ap, us, jp, in, sa)</p></li>
+<li><p><strong>region</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – deprecated: With the launch of the ngrok Global Network domains traffic is now handled globally. This field applied only to endpoints. Note that agents may still connect to specific regions. Optional, null by default. (au, eu, ap, us, jp, in, sa)</p></li>
 <li><p><strong>description</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – human-readable description of what this reserved domain will be used for</p></li>
 <li><p><strong>metadata</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – arbitrary user-defined machine-readable data of this reserved domain. Optional, max 4096 bytes.</p></li>
-<li><p><strong>certificate_id</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with <code class="docutils literal notranslate"><span class="pre">certificate_management_policy</span></code>.</p></li>
-<li><p><strong>certificate_management_policy</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="datatypes.html#ngrok.datatypes.ReservedDomainCertPolicy" title="ngrok.datatypes.ReservedDomainCertPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomainCertPolicy</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with <code class="docutils literal notranslate"><span class="pre">certificate_id</span></code>.</p></li>
+<li><p><strong>certificate_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with <code class="docutils literal notranslate"><span class="pre">certificate_management_policy</span></code>.</p></li>
+<li><p><strong>certificate_management_policy</strong> (<a class="reference internal" href="datatypes.html#ngrok.datatypes.ReservedDomainCertPolicy" title="ngrok.datatypes.ReservedDomainCertPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomainCertPolicy</span></code></a>) – configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with <code class="docutils literal notranslate"><span class="pre">certificate_id</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -341,8 +347,8 @@ This CNAME record points traffic for that domain to ngrok’s edge servers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>before_id</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – </p></li>
-<li><p><strong>limit</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – </p></li>
+<li><p><strong>before_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>limit</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
 </ul>
 </dd>
 </dl>
@@ -362,10 +368,10 @@ This CNAME record points traffic for that domain to ngrok’s edge servers.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
-<li><p><strong>description</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – human-readable description of what this reserved domain will be used for</p></li>
-<li><p><strong>metadata</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – arbitrary user-defined machine-readable data of this reserved domain. Optional, max 4096 bytes.</p></li>
-<li><p><strong>certificate_id</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with <code class="docutils literal notranslate"><span class="pre">certificate_management_policy</span></code>.</p></li>
-<li><p><strong>certificate_management_policy</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="datatypes.html#ngrok.datatypes.ReservedDomainCertPolicy" title="ngrok.datatypes.ReservedDomainCertPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomainCertPolicy</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with <code class="docutils literal notranslate"><span class="pre">certificate_id</span></code>.</p></li>
+<li><p><strong>description</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – human-readable description of what this reserved domain will be used for</p></li>
+<li><p><strong>metadata</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – arbitrary user-defined machine-readable data of this reserved domain. Optional, max 4096 bytes.</p></li>
+<li><p><strong>certificate_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with <code class="docutils literal notranslate"><span class="pre">certificate_management_policy</span></code>.</p></li>
+<li><p><strong>certificate_management_policy</strong> (<a class="reference internal" href="datatypes.html#ngrok.datatypes.ReservedDomainCertPolicy" title="ngrok.datatypes.ReservedDomainCertPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomainCertPolicy</span></code></a>) – configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with <code class="docutils literal notranslate"><span class="pre">certificate_id</span></code>.</p></li>
 </ul>
 </dd>
 </dl>

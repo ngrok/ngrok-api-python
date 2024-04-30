@@ -1161,6 +1161,141 @@ class HTTPResponseBackendList(object):
         return self._props["next_page_uri"]
 
 
+class StaticBackend(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["tls"] = (
+            StaticBackendTLS(client, props["tls"])
+            if props.get("tls") is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<StaticBackend {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<StaticBackend {}>".format(repr(self._props))
+
+    def delete(
+        self,
+    ):
+        self._client.backends.static_address.delete(
+            id=self.id,
+        )
+
+    def update(
+        self,
+        description: str = None,
+        metadata: str = None,
+        address: str = "",
+        tls: StaticBackendTLS = None,
+    ):
+        self._client.backends.static_address.update(
+            id=self.id,
+            description=description,
+            metadata=metadata,
+            address=address,
+            tls=tls,
+        )
+
+    @property
+    def id(self) -> str:
+        """unique identifier for this static backend"""
+        return self._props["id"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the StaticBackend API resource"""
+        return self._props["uri"]
+
+    @property
+    def created_at(self) -> datetime:
+        """timestamp when the backend was created, RFC 3339 format"""
+        return self._props["created_at"]
+
+    @property
+    def description(self) -> str:
+        """human-readable description of this backend. Optional"""
+        return self._props["description"]
+
+    @property
+    def metadata(self) -> str:
+        """arbitrary user-defined machine-readable data of this backend. Optional"""
+        return self._props["metadata"]
+
+    @property
+    def address(self) -> str:
+        """the address to forward to"""
+        return self._props["address"]
+
+    @property
+    def tls(self) -> StaticBackendTLS:
+        """tls configuration to use"""
+        return self._props["tls"]
+
+
+class StaticBackendTLS(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<StaticBackendTLS {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<StaticBackendTLS {}>".format(repr(self._props))
+
+    @property
+    def enabled(self) -> bool:
+        """if TLS is checked"""
+        return self._props["enabled"]
+
+
+class StaticBackendList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["backends"] = (
+            [StaticBackend(client, x) for x in props["backends"]]
+            if props.get("backends") is not None
+            else []
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<StaticBackendList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<StaticBackendList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "backends")
+
+    @property
+    def backends(self) -> Sequence[StaticBackend]:
+        """the list of all static backends on this account"""
+        return self._props["backends"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the static backends list API resource"""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page, or null if there is no next page"""
+        return self._props["next_page_uri"]
+
+
 class TunnelGroupBackend(object):
     def __init__(self, client, props):
         self._client = client
@@ -1369,6 +1504,102 @@ class WeightedBackendList(object):
     @property
     def uri(self) -> str:
         """URI of the Weighted backends list API resource"""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page, or null if there is no next page"""
+        return self._props["next_page_uri"]
+
+
+class BotUser(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<BotUser {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<BotUser {}>".format(repr(self._props))
+
+    def delete(
+        self,
+    ):
+        self._client.bot_users.delete(
+            id=self.id,
+        )
+
+    def update(
+        self,
+        name: str = None,
+        active: bool = None,
+    ):
+        self._client.bot_users.update(
+            id=self.id,
+            name=name,
+            active=active,
+        )
+
+    @property
+    def id(self) -> str:
+        """unique API key resource identifier"""
+        return self._props["id"]
+
+    @property
+    def uri(self) -> str:
+        """URI to the API resource of this bot user"""
+        return self._props["uri"]
+
+    @property
+    def name(self) -> str:
+        """human-readable name used to identify the bot"""
+        return self._props["name"]
+
+    @property
+    def active(self) -> bool:
+        """whether or not the bot is active"""
+        return self._props["active"]
+
+    @property
+    def created_at(self) -> datetime:
+        """timestamp when the api key was created, RFC 3339 format"""
+        return self._props["created_at"]
+
+
+class BotUserList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["bot_users"] = (
+            [BotUser(client, x) for x in props["bot_users"]]
+            if props.get("bot_users") is not None
+            else []
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<BotUserList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<BotUserList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "bot_users")
+
+    @property
+    def bot_users(self) -> Sequence[BotUser]:
+        """the list of all bot users on this account"""
+        return self._props["bot_users"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the bot users list API resource"""
         return self._props["uri"]
 
     @property
@@ -1639,7 +1870,7 @@ class EndpointWebhookValidation(object):
 
     @property
     def provider(self) -> str:
-        """a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers defined at `https://ngrok.com/docs/cloud-edge/modules/webhook <https://ngrok.com/docs/cloud-edge/modules/webhook>`_"""
+        """a string indicating which webhook provider will be sending webhooks to this endpoint. Value must be one of the supported providers defined at `https://ngrok.com/docs/cloud-edge/modules/webhook-verification <https://ngrok.com/docs/cloud-edge/modules/webhook-verification>`_"""
         return self._props["provider"]
 
     @property
@@ -2690,6 +2921,133 @@ class EndpointWebsocketTCPConverter(object):
         return self._props["enabled"]
 
 
+class EndpointUserAgentFilter(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointUserAgentFilter {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointUserAgentFilter {}>".format(repr(self._props))
+
+    @property
+    def enabled(self) -> bool:
+        return self._props["enabled"]
+
+    @property
+    def allow(self) -> Sequence[str]:
+        return self._props["allow"]
+
+    @property
+    def deny(self) -> Sequence[str]:
+        return self._props["deny"]
+
+
+class EndpointPolicy(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["inbound"] = (
+            [EndpointRule(client, x) for x in props["inbound"]]
+            if props.get("inbound") is not None
+            else []
+        )
+        self._props["outbound"] = (
+            [EndpointRule(client, x) for x in props["outbound"]]
+            if props.get("outbound") is not None
+            else []
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointPolicy {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointPolicy {}>".format(repr(self._props))
+
+    @property
+    def enabled(self) -> bool:
+        """``true`` if the module will be applied to traffic, ``false`` to disable. default ``true`` if unspecified"""
+        return self._props["enabled"]
+
+    @property
+    def inbound(self) -> Sequence[EndpointRule]:
+        """the inbound rules of the traffic policy."""
+        return self._props["inbound"]
+
+    @property
+    def outbound(self) -> Sequence[EndpointRule]:
+        """the outbound rules on the traffic policy."""
+        return self._props["outbound"]
+
+
+class EndpointRule(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["actions"] = (
+            [EndpointAction(client, x) for x in props["actions"]]
+            if props.get("actions") is not None
+            else []
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointRule {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointRule {}>".format(repr(self._props))
+
+    @property
+    def expressions(self) -> Sequence[str]:
+        """cel expressions that filter traffic the policy rule applies to."""
+        return self._props["expressions"]
+
+    @property
+    def actions(self) -> Sequence[EndpointAction]:
+        """the set of actions on a policy rule."""
+        return self._props["actions"]
+
+    @property
+    def name(self) -> str:
+        """the name of the rule that is part of the traffic policy."""
+        return self._props["name"]
+
+
+class EndpointAction(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EndpointAction {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<EndpointAction {}>".format(repr(self._props))
+
+    @property
+    def type(self) -> str:
+        """the type of action on the policy rule."""
+        return self._props["type"]
+
+    @property
+    def config(self) -> object:
+        """the configuration for the action on the policy rule."""
+        return self._props["config"]
+
+
 class HTTPSEdgeRoute(object):
     def __init__(self, client, props):
         self._client = client
@@ -2749,6 +3107,16 @@ class HTTPSEdgeRoute(object):
             if props.get("websocket_tcp_converter") is not None
             else None
         )
+        self._props["user_agent_filter"] = (
+            EndpointUserAgentFilter(client, props["user_agent_filter"])
+            if props.get("user_agent_filter") is not None
+            else None
+        )
+        self._props["policy"] = (
+            EndpointPolicy(client, props["policy"])
+            if props.get("policy") is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -2776,6 +3144,8 @@ class HTTPSEdgeRoute(object):
         saml: EndpointSAMLMutate = None,
         oidc: EndpointOIDC = None,
         websocket_tcp_converter: EndpointWebsocketTCPConverter = None,
+        user_agent_filter: EndpointUserAgentFilter = None,
+        policy: EndpointPolicy = None,
     ):
         self._client.edges.https_routes.update(
             edge_id=self.edge_id,
@@ -2795,6 +3165,8 @@ class HTTPSEdgeRoute(object):
             saml=saml,
             oidc=oidc,
             websocket_tcp_converter=websocket_tcp_converter,
+            user_agent_filter=user_agent_filter,
+            policy=policy,
         )
 
     def delete(
@@ -2899,6 +3271,15 @@ class HTTPSEdgeRoute(object):
     def websocket_tcp_converter(self) -> EndpointWebsocketTCPConverter:
         """websocket to tcp adapter configuration or ``null``"""
         return self._props["websocket_tcp_converter"]
+
+    @property
+    def user_agent_filter(self) -> EndpointUserAgentFilter:
+        return self._props["user_agent_filter"]
+
+    @property
+    def policy(self) -> EndpointPolicy:
+        """the traffic policy associated with this edge or null"""
+        return self._props["policy"]
 
 
 class HTTPSEdgeList(object):
@@ -3089,6 +3470,11 @@ class TCPEdge(object):
             if props.get("ip_restriction") is not None
             else None
         )
+        self._props["policy"] = (
+            EndpointPolicy(client, props["policy"])
+            if props.get("policy") is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -3106,6 +3492,7 @@ class TCPEdge(object):
         hostports: Sequence[str] = None,
         backend: EndpointBackendMutate = None,
         ip_restriction: EndpointIPPolicyMutate = None,
+        policy: EndpointPolicy = None,
     ):
         self._client.edges.tcp.update(
             id=self.id,
@@ -3114,6 +3501,7 @@ class TCPEdge(object):
             hostports=hostports,
             backend=backend,
             ip_restriction=ip_restriction,
+            policy=policy,
         )
 
     def delete(
@@ -3161,6 +3549,11 @@ class TCPEdge(object):
     @property
     def ip_restriction(self) -> EndpointIPPolicy:
         return self._props["ip_restriction"]
+
+    @property
+    def policy(self) -> EndpointPolicy:
+        """the traffic policy associated with this edge or null"""
+        return self._props["policy"]
 
 
 class TLSEdgeList(object):
@@ -3225,6 +3618,11 @@ class TLSEdge(object):
             if props.get("tls_termination") is not None
             else None
         )
+        self._props["policy"] = (
+            EndpointPolicy(client, props["policy"])
+            if props.get("policy") is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -3244,6 +3642,7 @@ class TLSEdge(object):
         ip_restriction: EndpointIPPolicyMutate = None,
         mutual_tls: EndpointMutualTLSMutate = None,
         tls_termination: EndpointTLSTermination = None,
+        policy: EndpointPolicy = None,
     ):
         self._client.edges.tls.update(
             id=self.id,
@@ -3254,6 +3653,7 @@ class TLSEdge(object):
             ip_restriction=ip_restriction,
             mutual_tls=mutual_tls,
             tls_termination=tls_termination,
+            policy=policy,
         )
 
     def delete(
@@ -3309,6 +3709,11 @@ class TLSEdge(object):
     @property
     def tls_termination(self) -> EndpointTLSTermination:
         return self._props["tls_termination"]
+
+    @property
+    def policy(self) -> EndpointPolicy:
+        """the traffic policy associated with this edge or null"""
+        return self._props["policy"]
 
 
 class Endpoint(object):
@@ -4459,12 +4864,12 @@ class ReservedDomain(object):
 
     @property
     def region(self) -> str:
-        """reserve the domain in this geographic ngrok datacenter. Optional, default is us. (au, eu, ap, us, jp, in, sa)"""
+        """deprecated: With the launch of the ngrok Global Network domains traffic is now handled globally. This field applied only to endpoints. Note that agents may still connect to specific regions. Optional, null by default. (au, eu, ap, us, jp, in, sa)"""
         return self._props["region"]
 
     @property
     def cname_target(self) -> str:
-        """DNS CNAME target for a custom hostname, or null if the reserved domain is a subdomain of *.ngrok.io"""
+        """DNS CNAME target for a custom hostname, or null if the reserved domain is a subdomain of an ngrok owned domain (e.g. *.ngrok.app)"""
         return self._props["cname_target"]
 
     @property
