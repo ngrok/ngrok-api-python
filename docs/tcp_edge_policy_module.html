@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="TLS Edges" href="edges_tls.html" /><link rel="prev" title="TCP Edge IP Restriction Module" href="tcp_edge_ip_restriction_module.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
         <title>TCP Edge Policy Module - ngrok-api documentation</title>
@@ -134,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -161,7 +161,7 @@
 <li class="toctree-l1"><a class="reference internal" href="errors.html">Errors</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Services</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="abuse_reports.html">Abuse Reports</a></li>
 <li class="toctree-l1"><a class="reference internal" href="agent_ingresses.html">Agent Ingresses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_keys.html">API Keys</a></li>
@@ -192,17 +192,17 @@
 <li class="toctree-l1"><a class="reference internal" href="edge_route_oidc_module.html">HTTPS Edge Route OIDC Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edge_route_websocket_tcp_converter_module.html">HTTPS Edge Route Websocket TCP Converter Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edge_route_user_agent_filter_module.html">HTTPS Edge Route User Agent Filter Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="edge_route_policy_module.html">HTTPS Edge Route Policies Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edge_route_traffic_policy_module.html">HTTPS Edge Route Traffic Policy Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edges_tcp.html">TCP Edges</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tcp_edge_backend_module.html">TCP Edge Backend Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tcp_edge_ip_restriction_module.html">TCP Edge IP Restriction Module</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">TCP Edge Policy Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tcp_edge_traffic_policy_module.html">TCP Edge Traffic Policy Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edges_tls.html">TLS Edges</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_edge_backend_module.html">TLS Edge Backend Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_edge_ip_restriction_module.html">TLS Edge IP Restriction Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_edge_mutual_tls_module.html">TLS Edge Mutual TLS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_edge_tls_termination_module.html">TLS Edge TLS Termination Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tls_edge_policy_module.html">TLS Edge Policy Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_edge_traffic_policy_module.html">TLS Edge Traffic Policy Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html">Endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_destinations.html">Event Destinations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_subscriptions.html">Event Subscriptions</a></li>
@@ -246,7 +246,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -256,84 +256,15 @@
 <h1>TCP Edge Policy Module<a class="headerlink" href="#tcp-edge-policy-module" title="Permalink to this heading">#</a></h1>
 <p>Do not construct this object directly, instead access the
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">tcp_edge_policy_module</span></code> property of an <a class="reference internal" href="client.html#ngrok.Client" title="ngrok.Client"><code class="xref py py-class docutils literal notranslate"><span class="pre">ngrok.Client</span></code></a> object.</p>
-<span class="target" id="module-ngrok.services"></span><dl class="py class">
-<dt class="sig sig-object py" id="ngrok.services.TCPEdgePolicyModuleClient">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.services.</span></span><span class="sig-name descname"><span class="pre">TCPEdgePolicyModuleClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#TCPEdgePolicyModuleClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.TCPEdgePolicyModuleClient" title="Permalink to this definition">#</a></dt>
-<dd><dl class="py method">
-<dt class="sig sig-object py" id="ngrok.services.TCPEdgePolicyModuleClient.delete">
-<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#TCPEdgePolicyModuleClient.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.TCPEdgePolicyModuleClient.delete" title="Permalink to this definition">#</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
-</dd>
-</dl>
-<p><a class="reference external" href="https://ngrok.com/docs/api#api-tcp-edge-policy-module-delete">https://ngrok.com/docs/api#api-tcp-edge-policy-module-delete</a></p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ngrok.services.TCPEdgePolicyModuleClient.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#TCPEdgePolicyModuleClient.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.TCPEdgePolicyModuleClient.get" title="Permalink to this definition">#</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
-</dd>
-</dl>
-<p><a class="reference external" href="https://ngrok.com/docs/api#api-tcp-edge-policy-module-get">https://ngrok.com/docs/api#api-tcp-edge-policy-module-get</a></p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointPolicy" title="ngrok.datatypes.EndpointPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointPolicy</span></code></a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ngrok.services.TCPEdgePolicyModuleClient.replace">
-<span class="sig-name descname"><span class="pre">replace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#TCPEdgePolicyModuleClient.replace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.TCPEdgePolicyModuleClient.replace" title="Permalink to this definition">#</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
-<li><p><strong>module</strong> (<a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointPolicy" title="ngrok.datatypes.EndpointPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointPolicy</span></code></a>) – </p></li>
-</ul>
-</dd>
-</dl>
-<p><a class="reference external" href="https://ngrok.com/docs/api#api-tcp-edge-policy-module-replace">https://ngrok.com/docs/api#api-tcp-edge-policy-module-replace</a></p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointPolicy" title="ngrok.datatypes.EndpointPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointPolicy</span></code></a></p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</section>
+<span class="target" id="module-ngrok.services"></span></section>
 
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="edges_tls.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">TLS Edges</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="tcp_edge_ip_restriction_module.html">
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-              <div class="page-info">
-                <div class="context">
-                  <span>Previous</span>
-                </div>
-                
-                <div class="title">TCP Edge IP Restriction Module</div>
-                
-              </div>
-            </a>
+          
+          
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -352,32 +283,8 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">TCP Edge Policy Module</a><ul>
-<li><a class="reference internal" href="#ngrok.services.TCPEdgePolicyModuleClient"><code class="docutils literal notranslate"><span class="pre">TCPEdgePolicyModuleClient</span></code></a><ul>
-<li><a class="reference internal" href="#ngrok.services.TCPEdgePolicyModuleClient.delete"><code class="docutils literal notranslate"><span class="pre">TCPEdgePolicyModuleClient.delete()</span></code></a></li>
-<li><a class="reference internal" href="#ngrok.services.TCPEdgePolicyModuleClient.get"><code class="docutils literal notranslate"><span class="pre">TCPEdgePolicyModuleClient.get()</span></code></a></li>
-<li><a class="reference internal" href="#ngrok.services.TCPEdgePolicyModuleClient.replace"><code class="docutils literal notranslate"><span class="pre">TCPEdgePolicyModuleClient.replace()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>

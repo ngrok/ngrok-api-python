@@ -153,17 +153,17 @@ API Reference
   edge_route_oidc_module
   edge_route_websocket_tcp_converter_module
   edge_route_user_agent_filter_module
-  edge_route_policy_module
+  edge_route_traffic_policy_module
   edges_tcp
   tcp_edge_backend_module
   tcp_edge_ip_restriction_module
-  tcp_edge_policy_module
+  tcp_edge_traffic_policy_module
   edges_tls
   tls_edge_backend_module
   tls_edge_ip_restriction_module
   tls_edge_mutual_tls_module
   tls_edge_tls_termination_module
-  tls_edge_policy_module
+  tls_edge_traffic_policy_module
   endpoints
   event_destinations
   event_subscriptions

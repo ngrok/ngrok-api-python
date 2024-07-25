@@ -192,17 +192,17 @@
 <li class="toctree-l1"><a class="reference internal" href="edge_route_oidc_module.html">HTTPS Edge Route OIDC Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edge_route_websocket_tcp_converter_module.html">HTTPS Edge Route Websocket TCP Converter Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edge_route_user_agent_filter_module.html">HTTPS Edge Route User Agent Filter Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="edge_route_policy_module.html">HTTPS Edge Route Policies Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edge_route_traffic_policy_module.html">HTTPS Edge Route Traffic Policy Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edges_tcp.html">TCP Edges</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tcp_edge_backend_module.html">TCP Edge Backend Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tcp_edge_ip_restriction_module.html">TCP Edge IP Restriction Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tcp_edge_policy_module.html">TCP Edge Policy Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tcp_edge_traffic_policy_module.html">TCP Edge Traffic Policy Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edges_tls.html">TLS Edges</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_edge_backend_module.html">TLS Edge Backend Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_edge_ip_restriction_module.html">TLS Edge IP Restriction Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_edge_mutual_tls_module.html">TLS Edge Mutual TLS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_edge_tls_termination_module.html">TLS Edge TLS Termination Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tls_edge_policy_module.html">TLS Edge Policy Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_edge_traffic_policy_module.html">TLS Edge Traffic Policy Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html">Endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_destinations.html">Event Destinations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event_subscriptions.html">Event Subscriptions</a></li>
@@ -591,11 +591,6 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint.updated_at"><code class="docutils literal notranslate"><span class="pre">Endpoint.updated_at</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointAction"><code class="docutils literal notranslate"><span class="pre">EndpointAction</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointAction.config"><code class="docutils literal notranslate"><span class="pre">EndpointAction.config</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointAction.type"><code class="docutils literal notranslate"><span class="pre">EndpointAction.type</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointBackend"><code class="docutils literal notranslate"><span class="pre">EndpointBackend</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointBackend.backend"><code class="docutils literal notranslate"><span class="pre">EndpointBackend.backend</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointBackend.enabled"><code class="docutils literal notranslate"><span class="pre">EndpointBackend.enabled</span></code></a></li>
@@ -744,12 +739,6 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointOIDC.scopes"><code class="docutils literal notranslate"><span class="pre">EndpointOIDC.scopes</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointPolicy"><code class="docutils literal notranslate"><span class="pre">EndpointPolicy</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointPolicy.enabled"><code class="docutils literal notranslate"><span class="pre">EndpointPolicy.enabled</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointPolicy.inbound"><code class="docutils literal notranslate"><span class="pre">EndpointPolicy.inbound</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointPolicy.outbound"><code class="docutils literal notranslate"><span class="pre">EndpointPolicy.outbound</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointRequestHeaders"><code class="docutils literal notranslate"><span class="pre">EndpointRequestHeaders</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointRequestHeaders.add"><code class="docutils literal notranslate"><span class="pre">EndpointRequestHeaders.add</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointRequestHeaders.enabled"><code class="docutils literal notranslate"><span class="pre">EndpointRequestHeaders.enabled</span></code></a></li>
@@ -760,12 +749,6 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointResponseHeaders.add"><code class="docutils literal notranslate"><span class="pre">EndpointResponseHeaders.add</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointResponseHeaders.enabled"><code class="docutils literal notranslate"><span class="pre">EndpointResponseHeaders.enabled</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointResponseHeaders.remove"><code class="docutils literal notranslate"><span class="pre">EndpointResponseHeaders.remove</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointRule"><code class="docutils literal notranslate"><span class="pre">EndpointRule</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointRule.actions"><code class="docutils literal notranslate"><span class="pre">EndpointRule.actions</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointRule.expressions"><code class="docutils literal notranslate"><span class="pre">EndpointRule.expressions</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointRule.name"><code class="docutils literal notranslate"><span class="pre">EndpointRule.name</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointSAML"><code class="docutils literal notranslate"><span class="pre">EndpointSAML</span></code></a><ul>
@@ -808,6 +791,11 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointTLSTerminationAtEdge"><code class="docutils literal notranslate"><span class="pre">EndpointTLSTerminationAtEdge</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointTLSTerminationAtEdge.enabled"><code class="docutils literal notranslate"><span class="pre">EndpointTLSTerminationAtEdge.enabled</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointTLSTerminationAtEdge.min_version"><code class="docutils literal notranslate"><span class="pre">EndpointTLSTerminationAtEdge.min_version</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointTrafficPolicy"><code class="docutils literal notranslate"><span class="pre">EndpointTrafficPolicy</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointTrafficPolicy.enabled"><code class="docutils literal notranslate"><span class="pre">EndpointTrafficPolicy.enabled</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointTrafficPolicy.value"><code class="docutils literal notranslate"><span class="pre">EndpointTrafficPolicy.value</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointUserAgentFilter"><code class="docutils literal notranslate"><span class="pre">EndpointUserAgentFilter</span></code></a><ul>
@@ -875,10 +863,20 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTarget"><code class="docutils literal notranslate"><span class="pre">EventTarget</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTarget.azure_logs_ingestion"><code class="docutils literal notranslate"><span class="pre">EventTarget.azure_logs_ingestion</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTarget.cloudwatch_logs"><code class="docutils literal notranslate"><span class="pre">EventTarget.cloudwatch_logs</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTarget.datadog"><code class="docutils literal notranslate"><span class="pre">EventTarget.datadog</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTarget.firehose"><code class="docutils literal notranslate"><span class="pre">EventTarget.firehose</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTarget.kinesis"><code class="docutils literal notranslate"><span class="pre">EventTarget.kinesis</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTargetAzureLogsIngestion"><code class="docutils literal notranslate"><span class="pre">EventTargetAzureLogsIngestion</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTargetAzureLogsIngestion.client_id"><code class="docutils literal notranslate"><span class="pre">EventTargetAzureLogsIngestion.client_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTargetAzureLogsIngestion.client_secret"><code class="docutils literal notranslate"><span class="pre">EventTargetAzureLogsIngestion.client_secret</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTargetAzureLogsIngestion.data_collection_rule_id"><code class="docutils literal notranslate"><span class="pre">EventTargetAzureLogsIngestion.data_collection_rule_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTargetAzureLogsIngestion.data_collection_stream_name"><code class="docutils literal notranslate"><span class="pre">EventTargetAzureLogsIngestion.data_collection_stream_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTargetAzureLogsIngestion.logs_ingestion_uri"><code class="docutils literal notranslate"><span class="pre">EventTargetAzureLogsIngestion.logs_ingestion_uri</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTargetAzureLogsIngestion.tenant_id"><code class="docutils literal notranslate"><span class="pre">EventTargetAzureLogsIngestion.tenant_id</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.EventTargetCloudwatchLogs"><code class="docutils literal notranslate"><span class="pre">EventTargetCloudwatchLogs</span></code></a><ul>
@@ -974,10 +972,10 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.metadata"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.metadata</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.oauth"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.oauth</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.oidc"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.oidc</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.policy"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.policy</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.request_headers"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.request_headers</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.response_headers"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.response_headers</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.saml"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.saml</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.traffic_policy"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.traffic_policy</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.update"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.update()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.uri"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.uri</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.user_agent_filter"><code class="docutils literal notranslate"><span class="pre">HTTPSEdgeRoute.user_agent_filter</span></code></a></li>
@@ -1227,7 +1225,7 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TCPEdge.id"><code class="docutils literal notranslate"><span class="pre">TCPEdge.id</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TCPEdge.ip_restriction"><code class="docutils literal notranslate"><span class="pre">TCPEdge.ip_restriction</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TCPEdge.metadata"><code class="docutils literal notranslate"><span class="pre">TCPEdge.metadata</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TCPEdge.policy"><code class="docutils literal notranslate"><span class="pre">TCPEdge.policy</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TCPEdge.traffic_policy"><code class="docutils literal notranslate"><span class="pre">TCPEdge.traffic_policy</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TCPEdge.update"><code class="docutils literal notranslate"><span class="pre">TCPEdge.update()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TCPEdge.uri"><code class="docutils literal notranslate"><span class="pre">TCPEdge.uri</span></code></a></li>
 </ul>
@@ -1285,8 +1283,8 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TLSEdge.ip_restriction"><code class="docutils literal notranslate"><span class="pre">TLSEdge.ip_restriction</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TLSEdge.metadata"><code class="docutils literal notranslate"><span class="pre">TLSEdge.metadata</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TLSEdge.mutual_tls"><code class="docutils literal notranslate"><span class="pre">TLSEdge.mutual_tls</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TLSEdge.policy"><code class="docutils literal notranslate"><span class="pre">TLSEdge.policy</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TLSEdge.tls_termination"><code class="docutils literal notranslate"><span class="pre">TLSEdge.tls_termination</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TLSEdge.traffic_policy"><code class="docutils literal notranslate"><span class="pre">TLSEdge.traffic_policy</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TLSEdge.update"><code class="docutils literal notranslate"><span class="pre">TLSEdge.update()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.TLSEdge.uri"><code class="docutils literal notranslate"><span class="pre">TLSEdge.uri</span></code></a></li>
 </ul>
@@ -1693,11 +1691,11 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="edge_route_policy_module.html">HTTPS Edge Route Policies Module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="edge_route_policy_module.html#ngrok.services.EdgeRoutePolicyModuleClient"><code class="docutils literal notranslate"><span class="pre">EdgeRoutePolicyModuleClient</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="edge_route_policy_module.html#ngrok.services.EdgeRoutePolicyModuleClient.delete"><code class="docutils literal notranslate"><span class="pre">EdgeRoutePolicyModuleClient.delete()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="edge_route_policy_module.html#ngrok.services.EdgeRoutePolicyModuleClient.get"><code class="docutils literal notranslate"><span class="pre">EdgeRoutePolicyModuleClient.get()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="edge_route_policy_module.html#ngrok.services.EdgeRoutePolicyModuleClient.replace"><code class="docutils literal notranslate"><span class="pre">EdgeRoutePolicyModuleClient.replace()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="edge_route_traffic_policy_module.html">HTTPS Edge Route Traffic Policy Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="edge_route_traffic_policy_module.html#ngrok.services.EdgeRouteTrafficPolicyModuleClient"><code class="docutils literal notranslate"><span class="pre">EdgeRouteTrafficPolicyModuleClient</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="edge_route_traffic_policy_module.html#ngrok.services.EdgeRouteTrafficPolicyModuleClient.delete"><code class="docutils literal notranslate"><span class="pre">EdgeRouteTrafficPolicyModuleClient.delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edge_route_traffic_policy_module.html#ngrok.services.EdgeRouteTrafficPolicyModuleClient.get"><code class="docutils literal notranslate"><span class="pre">EdgeRouteTrafficPolicyModuleClient.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edge_route_traffic_policy_module.html#ngrok.services.EdgeRouteTrafficPolicyModuleClient.replace"><code class="docutils literal notranslate"><span class="pre">EdgeRouteTrafficPolicyModuleClient.replace()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1731,11 +1729,11 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="tcp_edge_policy_module.html">TCP Edge Policy Module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tcp_edge_policy_module.html#ngrok.services.TCPEdgePolicyModuleClient"><code class="docutils literal notranslate"><span class="pre">TCPEdgePolicyModuleClient</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tcp_edge_policy_module.html#ngrok.services.TCPEdgePolicyModuleClient.delete"><code class="docutils literal notranslate"><span class="pre">TCPEdgePolicyModuleClient.delete()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="tcp_edge_policy_module.html#ngrok.services.TCPEdgePolicyModuleClient.get"><code class="docutils literal notranslate"><span class="pre">TCPEdgePolicyModuleClient.get()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="tcp_edge_policy_module.html#ngrok.services.TCPEdgePolicyModuleClient.replace"><code class="docutils literal notranslate"><span class="pre">TCPEdgePolicyModuleClient.replace()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="tcp_edge_traffic_policy_module.html">TCP Edge Traffic Policy Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tcp_edge_traffic_policy_module.html#ngrok.services.TCPEdgeTrafficPolicyModuleClient"><code class="docutils literal notranslate"><span class="pre">TCPEdgeTrafficPolicyModuleClient</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tcp_edge_traffic_policy_module.html#ngrok.services.TCPEdgeTrafficPolicyModuleClient.delete"><code class="docutils literal notranslate"><span class="pre">TCPEdgeTrafficPolicyModuleClient.delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tcp_edge_traffic_policy_module.html#ngrok.services.TCPEdgeTrafficPolicyModuleClient.get"><code class="docutils literal notranslate"><span class="pre">TCPEdgeTrafficPolicyModuleClient.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tcp_edge_traffic_policy_module.html#ngrok.services.TCPEdgeTrafficPolicyModuleClient.replace"><code class="docutils literal notranslate"><span class="pre">TCPEdgeTrafficPolicyModuleClient.replace()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1787,11 +1785,11 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="tls_edge_policy_module.html">TLS Edge Policy Module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tls_edge_policy_module.html#ngrok.services.TLSEdgePolicyModuleClient"><code class="docutils literal notranslate"><span class="pre">TLSEdgePolicyModuleClient</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tls_edge_policy_module.html#ngrok.services.TLSEdgePolicyModuleClient.delete"><code class="docutils literal notranslate"><span class="pre">TLSEdgePolicyModuleClient.delete()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="tls_edge_policy_module.html#ngrok.services.TLSEdgePolicyModuleClient.get"><code class="docutils literal notranslate"><span class="pre">TLSEdgePolicyModuleClient.get()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="tls_edge_policy_module.html#ngrok.services.TLSEdgePolicyModuleClient.replace"><code class="docutils literal notranslate"><span class="pre">TLSEdgePolicyModuleClient.replace()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_edge_traffic_policy_module.html">TLS Edge Traffic Policy Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tls_edge_traffic_policy_module.html#ngrok.services.TLSEdgeTrafficPolicyModuleClient"><code class="docutils literal notranslate"><span class="pre">TLSEdgeTrafficPolicyModuleClient</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tls_edge_traffic_policy_module.html#ngrok.services.TLSEdgeTrafficPolicyModuleClient.delete"><code class="docutils literal notranslate"><span class="pre">TLSEdgeTrafficPolicyModuleClient.delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tls_edge_traffic_policy_module.html#ngrok.services.TLSEdgeTrafficPolicyModuleClient.get"><code class="docutils literal notranslate"><span class="pre">TLSEdgeTrafficPolicyModuleClient.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tls_edge_traffic_policy_module.html#ngrok.services.TLSEdgeTrafficPolicyModuleClient.replace"><code class="docutils literal notranslate"><span class="pre">TLSEdgeTrafficPolicyModuleClient.replace()</span></code></a></li>
 </ul>
 </li>
 </ul>

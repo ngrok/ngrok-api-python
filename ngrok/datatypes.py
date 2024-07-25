@@ -2948,29 +2948,19 @@ class EndpointUserAgentFilter(object):
         return self._props["deny"]
 
 
-class EndpointPolicy(object):
+class EndpointTrafficPolicy(object):
     def __init__(self, client, props):
         self._client = client
         self._props = props
-        self._props["inbound"] = (
-            [EndpointRule(client, x) for x in props["inbound"]]
-            if props.get("inbound") is not None
-            else []
-        )
-        self._props["outbound"] = (
-            [EndpointRule(client, x) for x in props["outbound"]]
-            if props.get("outbound") is not None
-            else []
-        )
 
     def __eq__(self, other):
         return self._props == other._props
 
     def __str__(self):
         if "id" in self._props:
-            return "<EndpointPolicy {} {}>".format(self.id, repr(self._props))
+            return "<EndpointTrafficPolicy {} {}>".format(self.id, repr(self._props))
         else:
-            return "<EndpointPolicy {}>".format(repr(self._props))
+            return "<EndpointTrafficPolicy {}>".format(repr(self._props))
 
     @property
     def enabled(self) -> bool:
@@ -2978,74 +2968,9 @@ class EndpointPolicy(object):
         return self._props["enabled"]
 
     @property
-    def inbound(self) -> Sequence[EndpointRule]:
-        """the inbound rules of the traffic policy."""
-        return self._props["inbound"]
-
-    @property
-    def outbound(self) -> Sequence[EndpointRule]:
-        """the outbound rules on the traffic policy."""
-        return self._props["outbound"]
-
-
-class EndpointRule(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-        self._props["actions"] = (
-            [EndpointAction(client, x) for x in props["actions"]]
-            if props.get("actions") is not None
-            else []
-        )
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<EndpointRule {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<EndpointRule {}>".format(repr(self._props))
-
-    @property
-    def expressions(self) -> Sequence[str]:
-        """cel expressions that filter traffic the policy rule applies to."""
-        return self._props["expressions"]
-
-    @property
-    def actions(self) -> Sequence[EndpointAction]:
-        """the set of actions on a policy rule."""
-        return self._props["actions"]
-
-    @property
-    def name(self) -> str:
-        """the name of the rule that is part of the traffic policy."""
-        return self._props["name"]
-
-
-class EndpointAction(object):
-    def __init__(self, client, props):
-        self._client = client
-        self._props = props
-
-    def __eq__(self, other):
-        return self._props == other._props
-
-    def __str__(self):
-        if "id" in self._props:
-            return "<EndpointAction {} {}>".format(self.id, repr(self._props))
-        else:
-            return "<EndpointAction {}>".format(repr(self._props))
-
-    @property
-    def type(self) -> str:
-        """the type of action on the policy rule."""
-        return self._props["type"]
-
-    @property
-    def config(self) -> object:
-        """the configuration for the action on the policy rule."""
-        return self._props["config"]
+    def value(self) -> str:
+        """the traffic policy that should be applied to the traffic on your endpoint."""
+        return self._props["value"]
 
 
 class HTTPSEdgeRoute(object):
@@ -3112,9 +3037,9 @@ class HTTPSEdgeRoute(object):
             if props.get("user_agent_filter") is not None
             else None
         )
-        self._props["policy"] = (
-            EndpointPolicy(client, props["policy"])
-            if props.get("policy") is not None
+        self._props["traffic_policy"] = (
+            EndpointTrafficPolicy(client, props["traffic_policy"])
+            if props.get("traffic_policy") is not None
             else None
         )
 
@@ -3145,7 +3070,7 @@ class HTTPSEdgeRoute(object):
         oidc: EndpointOIDC = None,
         websocket_tcp_converter: EndpointWebsocketTCPConverter = None,
         user_agent_filter: EndpointUserAgentFilter = None,
-        policy: EndpointPolicy = None,
+        traffic_policy: EndpointTrafficPolicy = None,
     ):
         self._client.edges.https_routes.update(
             edge_id=self.edge_id,
@@ -3166,7 +3091,7 @@ class HTTPSEdgeRoute(object):
             oidc=oidc,
             websocket_tcp_converter=websocket_tcp_converter,
             user_agent_filter=user_agent_filter,
-            policy=policy,
+            traffic_policy=traffic_policy,
         )
 
     def delete(
@@ -3277,9 +3202,9 @@ class HTTPSEdgeRoute(object):
         return self._props["user_agent_filter"]
 
     @property
-    def policy(self) -> EndpointPolicy:
+    def traffic_policy(self) -> EndpointTrafficPolicy:
         """the traffic policy associated with this edge or null"""
-        return self._props["policy"]
+        return self._props["traffic_policy"]
 
 
 class HTTPSEdgeList(object):
@@ -3470,9 +3395,9 @@ class TCPEdge(object):
             if props.get("ip_restriction") is not None
             else None
         )
-        self._props["policy"] = (
-            EndpointPolicy(client, props["policy"])
-            if props.get("policy") is not None
+        self._props["traffic_policy"] = (
+            EndpointTrafficPolicy(client, props["traffic_policy"])
+            if props.get("traffic_policy") is not None
             else None
         )
 
@@ -3492,7 +3417,7 @@ class TCPEdge(object):
         hostports: Sequence[str] = None,
         backend: EndpointBackendMutate = None,
         ip_restriction: EndpointIPPolicyMutate = None,
-        policy: EndpointPolicy = None,
+        traffic_policy: EndpointTrafficPolicy = None,
     ):
         self._client.edges.tcp.update(
             id=self.id,
@@ -3501,7 +3426,7 @@ class TCPEdge(object):
             hostports=hostports,
             backend=backend,
             ip_restriction=ip_restriction,
-            policy=policy,
+            traffic_policy=traffic_policy,
         )
 
     def delete(
@@ -3551,9 +3476,9 @@ class TCPEdge(object):
         return self._props["ip_restriction"]
 
     @property
-    def policy(self) -> EndpointPolicy:
+    def traffic_policy(self) -> EndpointTrafficPolicy:
         """the traffic policy associated with this edge or null"""
-        return self._props["policy"]
+        return self._props["traffic_policy"]
 
 
 class TLSEdgeList(object):
@@ -3618,9 +3543,9 @@ class TLSEdge(object):
             if props.get("tls_termination") is not None
             else None
         )
-        self._props["policy"] = (
-            EndpointPolicy(client, props["policy"])
-            if props.get("policy") is not None
+        self._props["traffic_policy"] = (
+            EndpointTrafficPolicy(client, props["traffic_policy"])
+            if props.get("traffic_policy") is not None
             else None
         )
 
@@ -3642,7 +3567,7 @@ class TLSEdge(object):
         ip_restriction: EndpointIPPolicyMutate = None,
         mutual_tls: EndpointMutualTLSMutate = None,
         tls_termination: EndpointTLSTermination = None,
-        policy: EndpointPolicy = None,
+        traffic_policy: EndpointTrafficPolicy = None,
     ):
         self._client.edges.tls.update(
             id=self.id,
@@ -3653,7 +3578,7 @@ class TLSEdge(object):
             ip_restriction=ip_restriction,
             mutual_tls=mutual_tls,
             tls_termination=tls_termination,
-            policy=policy,
+            traffic_policy=traffic_policy,
         )
 
     def delete(
@@ -3711,9 +3636,9 @@ class TLSEdge(object):
         return self._props["tls_termination"]
 
     @property
-    def policy(self) -> EndpointPolicy:
+    def traffic_policy(self) -> EndpointTrafficPolicy:
         """the traffic policy associated with this edge or null"""
-        return self._props["policy"]
+        return self._props["traffic_policy"]
 
 
 class Endpoint(object):
@@ -3972,6 +3897,11 @@ class EventTarget(object):
             if props.get("datadog") is not None
             else None
         )
+        self._props["azure_logs_ingestion"] = (
+            EventTargetAzureLogsIngestion(client, props["azure_logs_ingestion"])
+            if props.get("azure_logs_ingestion") is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -4001,6 +3931,10 @@ class EventTarget(object):
     def datadog(self) -> EventTargetDatadog:
         """Configuration used to send events to Datadog."""
         return self._props["datadog"]
+
+    @property
+    def azure_logs_ingestion(self) -> EventTargetAzureLogsIngestion:
+        return self._props["azure_logs_ingestion"]
 
 
 class EventTargetFirehose(object):
@@ -4122,6 +4056,53 @@ class EventTargetDatadog(object):
     def ddsite(self) -> str:
         """Datadog site to send event to."""
         return self._props["ddsite"]
+
+
+class EventTargetAzureLogsIngestion(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<EventTargetAzureLogsIngestion {} {}>".format(
+                self.id, repr(self._props)
+            )
+        else:
+            return "<EventTargetAzureLogsIngestion {}>".format(repr(self._props))
+
+    @property
+    def tenant_id(self) -> str:
+        """Tenant ID for the Azure account"""
+        return self._props["tenant_id"]
+
+    @property
+    def client_id(self) -> str:
+        """Client ID for the application client"""
+        return self._props["client_id"]
+
+    @property
+    def client_secret(self) -> str:
+        """Client Secret for the application client"""
+        return self._props["client_secret"]
+
+    @property
+    def logs_ingestion_uri(self) -> str:
+        """Data collection endpoint logs ingestion URI"""
+        return self._props["logs_ingestion_uri"]
+
+    @property
+    def data_collection_rule_id(self) -> str:
+        """Data collection rule immutable ID"""
+        return self._props["data_collection_rule_id"]
+
+    @property
+    def data_collection_stream_name(self) -> str:
+        """Data collection stream name to use as destination, located instide the DCR"""
+        return self._props["data_collection_stream_name"]
 
 
 class AWSAuth(object):
