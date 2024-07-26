@@ -191,17 +191,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../../edge_route_oidc_module.html">HTTPS Edge Route OIDC Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../edge_route_websocket_tcp_converter_module.html">HTTPS Edge Route Websocket TCP Converter Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../edge_route_user_agent_filter_module.html">HTTPS Edge Route User Agent Filter Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../edge_route_policy_module.html">HTTPS Edge Route Policies Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../edge_route_traffic_policy_module.html">HTTPS Edge Route Traffic Policy Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../edges_tcp.html">TCP Edges</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tcp_edge_backend_module.html">TCP Edge Backend Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tcp_edge_ip_restriction_module.html">TCP Edge IP Restriction Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tcp_edge_policy_module.html">TCP Edge Policy Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tcp_edge_traffic_policy_module.html">TCP Edge Traffic Policy Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../edges_tls.html">TLS Edges</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tls_edge_backend_module.html">TLS Edge Backend Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tls_edge_ip_restriction_module.html">TLS Edge IP Restriction Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tls_edge_mutual_tls_module.html">TLS Edge Mutual TLS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tls_edge_tls_termination_module.html">TLS Edge TLS Termination Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tls_edge_policy_module.html">TLS Edge Policy Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tls_edge_traffic_policy_module.html">TLS Edge Traffic Policy Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html">Endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../event_destinations.html">Event Destinations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../event_subscriptions.html">Event Subscriptions</a></li>
@@ -1706,7 +1706,7 @@
         <span class="n">oidc</span><span class="p">:</span> <span class="n">EndpointOIDC</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">websocket_tcp_converter</span><span class="p">:</span> <span class="n">EndpointWebsocketTCPConverter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">user_agent_filter</span><span class="p">:</span> <span class="n">EndpointUserAgentFilter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">policy</span><span class="p">:</span> <span class="n">EndpointPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">traffic_policy</span><span class="p">:</span> <span class="n">EndpointTrafficPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HTTPSEdgeRoute</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an HTTPS Edge Route</span>
 
@@ -1727,7 +1727,7 @@
 <span class="sd">        :param oidc: oidc module configuration or ``null``</span>
 <span class="sd">        :param websocket_tcp_converter: websocket to tcp adapter configuration or ``null``</span>
 <span class="sd">        :param user_agent_filter:</span>
-<span class="sd">        :param policy: the traffic policy associated with this edge or null</span>
+<span class="sd">        :param traffic_policy: the traffic policy associated with this edge or null</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-edges-https-routes-create</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1752,7 +1752,7 @@
             <span class="n">oidc</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">oidc</span><span class="p">),</span>
             <span class="n">websocket_tcp_converter</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">websocket_tcp_converter</span><span class="p">),</span>
             <span class="n">user_agent_filter</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">user_agent_filter</span><span class="p">),</span>
-            <span class="n">policy</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">policy</span><span class="p">),</span>
+            <span class="n">traffic_policy</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">traffic_policy</span><span class="p">),</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">HTTPSEdgeRoute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -1798,7 +1798,7 @@
         <span class="n">oidc</span><span class="p">:</span> <span class="n">EndpointOIDC</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">websocket_tcp_converter</span><span class="p">:</span> <span class="n">EndpointWebsocketTCPConverter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">user_agent_filter</span><span class="p">:</span> <span class="n">EndpointUserAgentFilter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">policy</span><span class="p">:</span> <span class="n">EndpointPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">traffic_policy</span><span class="p">:</span> <span class="n">EndpointTrafficPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HTTPSEdgeRoute</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates an HTTPS Edge Route by ID. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.</span>
 
@@ -1820,7 +1820,7 @@
 <span class="sd">        :param oidc: oidc module configuration or ``null``</span>
 <span class="sd">        :param websocket_tcp_converter: websocket to tcp adapter configuration or ``null``</span>
 <span class="sd">        :param user_agent_filter:</span>
-<span class="sd">        :param policy: the traffic policy associated with this edge or null</span>
+<span class="sd">        :param traffic_policy: the traffic policy associated with this edge or null</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-edges-https-routes-update</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1846,7 +1846,7 @@
             <span class="n">oidc</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">oidc</span><span class="p">),</span>
             <span class="n">websocket_tcp_converter</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">websocket_tcp_converter</span><span class="p">),</span>
             <span class="n">user_agent_filter</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">user_agent_filter</span><span class="p">),</span>
-            <span class="n">policy</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">policy</span><span class="p">),</span>
+            <span class="n">traffic_policy</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">traffic_policy</span><span class="p">),</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">HTTPSEdgeRoute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -2943,55 +2943,55 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="EdgeRoutePolicyModuleClient"><a class="viewcode-back" href="../../edge_route_policy_module.html#ngrok.services.EdgeRoutePolicyModuleClient">[docs]</a><span class="k">class</span> <span class="nc">EdgeRoutePolicyModuleClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="EdgeRouteTrafficPolicyModuleClient"><a class="viewcode-back" href="../../edge_route_traffic_policy_module.html#ngrok.services.EdgeRouteTrafficPolicyModuleClient">[docs]</a><span class="k">class</span> <span class="nc">EdgeRouteTrafficPolicyModuleClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
 
-<div class="viewcode-block" id="EdgeRoutePolicyModuleClient.replace"><a class="viewcode-back" href="../../edge_route_policy_module.html#ngrok.services.EdgeRoutePolicyModuleClient.replace">[docs]</a>    <span class="k">def</span> <span class="nf">replace</span><span class="p">(</span>
+<div class="viewcode-block" id="EdgeRouteTrafficPolicyModuleClient.replace"><a class="viewcode-back" href="../../edge_route_traffic_policy_module.html#ngrok.services.EdgeRouteTrafficPolicyModuleClient.replace">[docs]</a>    <span class="k">def</span> <span class="nf">replace</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">module</span><span class="p">:</span> <span class="n">EndpointPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointPolicy</span><span class="p">:</span>
+        <span class="n">module</span><span class="p">:</span> <span class="n">EndpointTrafficPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointTrafficPolicy</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        :param edge_id:</span>
 <span class="sd">        :param id:</span>
 <span class="sd">        :param module:</span>
 
-<span class="sd">        https://ngrok.com/docs/api#api-edge-route-policy-module-replace</span>
+<span class="sd">        https://ngrok.com/docs/api#api-edge-route-traffic-policy-module-replace</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/edges/https/</span><span class="si">{edge_id}</span><span class="s2">/routes/</span><span class="si">{id}</span><span class="s2">/policy&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/edges/https/</span><span class="si">{edge_id}</span><span class="s2">/routes/</span><span class="si">{id}</span><span class="s2">/traffic_policy&quot;</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">edge_id</span><span class="o">=</span><span class="n">edge_id</span><span class="p">,</span>
             <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">body_arg</span> <span class="o">=</span> <span class="n">extract_props</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">EndpointPolicy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">EndpointTrafficPolicy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdgeRoutePolicyModuleClient.get"><a class="viewcode-back" href="../../edge_route_policy_module.html#ngrok.services.EdgeRoutePolicyModuleClient.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
+<div class="viewcode-block" id="EdgeRouteTrafficPolicyModuleClient.get"><a class="viewcode-back" href="../../edge_route_traffic_policy_module.html#ngrok.services.EdgeRouteTrafficPolicyModuleClient.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointPolicy</span><span class="p">:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointTrafficPolicy</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
 
-<span class="sd">        https://ngrok.com/docs/api#api-edge-route-policy-module-get</span>
+<span class="sd">        https://ngrok.com/docs/api#api-edge-route-traffic-policy-module-get</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/edges/https/</span><span class="si">{edge_id}</span><span class="s2">/routes/</span><span class="si">{id}</span><span class="s2">/policy&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/edges/https/</span><span class="si">{edge_id}</span><span class="s2">/routes/</span><span class="si">{id}</span><span class="s2">/traffic_policy&quot;</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">edge_id</span><span class="o">=</span><span class="n">edge_id</span><span class="p">,</span>
             <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">body_arg</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">EndpointPolicy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">EndpointTrafficPolicy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdgeRoutePolicyModuleClient.delete"><a class="viewcode-back" href="../../edge_route_policy_module.html#ngrok.services.EdgeRoutePolicyModuleClient.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span>
+<div class="viewcode-block" id="EdgeRouteTrafficPolicyModuleClient.delete"><a class="viewcode-back" href="../../edge_route_traffic_policy_module.html#ngrok.services.EdgeRouteTrafficPolicyModuleClient.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">edge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -3001,9 +3001,9 @@
 <span class="sd">        :param edge_id: unique identifier of this edge</span>
 <span class="sd">        :param id: unique identifier of this edge route</span>
 
-<span class="sd">        https://ngrok.com/docs/api#api-edge-route-policy-module-delete</span>
+<span class="sd">        https://ngrok.com/docs/api#api-edge-route-traffic-policy-module-delete</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/edges/https/</span><span class="si">{edge_id}</span><span class="s2">/routes/</span><span class="si">{id}</span><span class="s2">/policy&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/edges/https/</span><span class="si">{edge_id}</span><span class="s2">/routes/</span><span class="si">{id}</span><span class="s2">/traffic_policy&quot;</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">edge_id</span><span class="o">=</span><span class="n">edge_id</span><span class="p">,</span>
             <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
@@ -3023,7 +3023,7 @@
         <span class="n">hostports</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">backend</span><span class="p">:</span> <span class="n">EndpointBackendMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">ip_restriction</span><span class="p">:</span> <span class="n">EndpointIPPolicyMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">policy</span><span class="p">:</span> <span class="n">EndpointPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">traffic_policy</span><span class="p">:</span> <span class="n">EndpointTrafficPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TCPEdge</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a TCP Edge</span>
 
@@ -3032,7 +3032,7 @@
 <span class="sd">        :param hostports: hostports served by this edge</span>
 <span class="sd">        :param backend: edge modules</span>
 <span class="sd">        :param ip_restriction:</span>
-<span class="sd">        :param policy: the traffic policy associated with this edge or null</span>
+<span class="sd">        :param traffic_policy: the traffic policy associated with this edge or null</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-edges-tcp-create</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -3043,7 +3043,7 @@
             <span class="n">hostports</span><span class="o">=</span><span class="n">hostports</span><span class="p">,</span>
             <span class="n">backend</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">backend</span><span class="p">),</span>
             <span class="n">ip_restriction</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">ip_restriction</span><span class="p">),</span>
-            <span class="n">policy</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">policy</span><span class="p">),</span>
+            <span class="n">traffic_policy</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">traffic_policy</span><span class="p">),</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">TCPEdge</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -3094,7 +3094,7 @@
         <span class="n">hostports</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">backend</span><span class="p">:</span> <span class="n">EndpointBackendMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">ip_restriction</span><span class="p">:</span> <span class="n">EndpointIPPolicyMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">policy</span><span class="p">:</span> <span class="n">EndpointPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">traffic_policy</span><span class="p">:</span> <span class="n">EndpointTrafficPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TCPEdge</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates a TCP Edge by ID. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.</span>
 
@@ -3104,7 +3104,7 @@
 <span class="sd">        :param hostports: hostports served by this edge</span>
 <span class="sd">        :param backend: edge modules</span>
 <span class="sd">        :param ip_restriction:</span>
-<span class="sd">        :param policy: the traffic policy associated with this edge or null</span>
+<span class="sd">        :param traffic_policy: the traffic policy associated with this edge or null</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-edges-tcp-update</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -3118,7 +3118,7 @@
             <span class="n">hostports</span><span class="o">=</span><span class="n">hostports</span><span class="p">,</span>
             <span class="n">backend</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">backend</span><span class="p">),</span>
             <span class="n">ip_restriction</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">ip_restriction</span><span class="p">),</span>
-            <span class="n">policy</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">policy</span><span class="p">),</span>
+            <span class="n">traffic_policy</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">traffic_policy</span><span class="p">),</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">TCPEdge</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -3261,49 +3261,49 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="TCPEdgePolicyModuleClient"><a class="viewcode-back" href="../../tcp_edge_policy_module.html#ngrok.services.TCPEdgePolicyModuleClient">[docs]</a><span class="k">class</span> <span class="nc">TCPEdgePolicyModuleClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="TCPEdgeTrafficPolicyModuleClient"><a class="viewcode-back" href="../../tcp_edge_traffic_policy_module.html#ngrok.services.TCPEdgeTrafficPolicyModuleClient">[docs]</a><span class="k">class</span> <span class="nc">TCPEdgeTrafficPolicyModuleClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
 
-<div class="viewcode-block" id="TCPEdgePolicyModuleClient.replace"><a class="viewcode-back" href="../../tcp_edge_policy_module.html#ngrok.services.TCPEdgePolicyModuleClient.replace">[docs]</a>    <span class="k">def</span> <span class="nf">replace</span><span class="p">(</span>
+<div class="viewcode-block" id="TCPEdgeTrafficPolicyModuleClient.replace"><a class="viewcode-back" href="../../tcp_edge_traffic_policy_module.html#ngrok.services.TCPEdgeTrafficPolicyModuleClient.replace">[docs]</a>    <span class="k">def</span> <span class="nf">replace</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">module</span><span class="p">:</span> <span class="n">EndpointPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointPolicy</span><span class="p">:</span>
+        <span class="n">module</span><span class="p">:</span> <span class="n">EndpointTrafficPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointTrafficPolicy</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param module:</span>
 
-<span class="sd">        https://ngrok.com/docs/api#api-tcp-edge-policy-module-replace</span>
+<span class="sd">        https://ngrok.com/docs/api#api-tcp-edge-traffic-policy-module-replace</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/edges/tcp/</span><span class="si">{id}</span><span class="s2">/policy&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/edges/tcp/</span><span class="si">{id}</span><span class="s2">/traffic_policy&quot;</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">body_arg</span> <span class="o">=</span> <span class="n">extract_props</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">EndpointPolicy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">EndpointTrafficPolicy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="TCPEdgePolicyModuleClient.get"><a class="viewcode-back" href="../../tcp_edge_policy_module.html#ngrok.services.TCPEdgePolicyModuleClient.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
+<div class="viewcode-block" id="TCPEdgeTrafficPolicyModuleClient.get"><a class="viewcode-back" href="../../tcp_edge_traffic_policy_module.html#ngrok.services.TCPEdgeTrafficPolicyModuleClient.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointPolicy</span><span class="p">:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointTrafficPolicy</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
-<span class="sd">        https://ngrok.com/docs/api#api-tcp-edge-policy-module-get</span>
+<span class="sd">        https://ngrok.com/docs/api#api-tcp-edge-traffic-policy-module-get</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/edges/tcp/</span><span class="si">{id}</span><span class="s2">/policy&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/edges/tcp/</span><span class="si">{id}</span><span class="s2">/traffic_policy&quot;</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">body_arg</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">EndpointPolicy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">EndpointTrafficPolicy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="TCPEdgePolicyModuleClient.delete"><a class="viewcode-back" href="../../tcp_edge_policy_module.html#ngrok.services.TCPEdgePolicyModuleClient.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span>
+<div class="viewcode-block" id="TCPEdgeTrafficPolicyModuleClient.delete"><a class="viewcode-back" href="../../tcp_edge_traffic_policy_module.html#ngrok.services.TCPEdgeTrafficPolicyModuleClient.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
@@ -3311,9 +3311,9 @@
 
 <span class="sd">        :param id: a resource identifier</span>
 
-<span class="sd">        https://ngrok.com/docs/api#api-tcp-edge-policy-module-delete</span>
+<span class="sd">        https://ngrok.com/docs/api#api-tcp-edge-traffic-policy-module-delete</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/edges/tcp/</span><span class="si">{id}</span><span class="s2">/policy&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/edges/tcp/</span><span class="si">{id}</span><span class="s2">/traffic_policy&quot;</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
         <span class="p">)</span>
@@ -3334,7 +3334,7 @@
         <span class="n">ip_restriction</span><span class="p">:</span> <span class="n">EndpointIPPolicyMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">mutual_tls</span><span class="p">:</span> <span class="n">EndpointMutualTLSMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">tls_termination</span><span class="p">:</span> <span class="n">EndpointTLSTermination</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">policy</span><span class="p">:</span> <span class="n">EndpointPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">traffic_policy</span><span class="p">:</span> <span class="n">EndpointTrafficPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TLSEdge</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a TLS Edge</span>
 
@@ -3345,7 +3345,7 @@
 <span class="sd">        :param ip_restriction:</span>
 <span class="sd">        :param mutual_tls:</span>
 <span class="sd">        :param tls_termination:</span>
-<span class="sd">        :param policy: the traffic policy associated with this edge or null</span>
+<span class="sd">        :param traffic_policy: the traffic policy associated with this edge or null</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-edges-tls-create</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -3358,7 +3358,7 @@
             <span class="n">ip_restriction</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">ip_restriction</span><span class="p">),</span>
             <span class="n">mutual_tls</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">mutual_tls</span><span class="p">),</span>
             <span class="n">tls_termination</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">tls_termination</span><span class="p">),</span>
-            <span class="n">policy</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">policy</span><span class="p">),</span>
+            <span class="n">traffic_policy</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">traffic_policy</span><span class="p">),</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">TLSEdge</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -3411,7 +3411,7 @@
         <span class="n">ip_restriction</span><span class="p">:</span> <span class="n">EndpointIPPolicyMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">mutual_tls</span><span class="p">:</span> <span class="n">EndpointMutualTLSMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">tls_termination</span><span class="p">:</span> <span class="n">EndpointTLSTermination</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">policy</span><span class="p">:</span> <span class="n">EndpointPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">traffic_policy</span><span class="p">:</span> <span class="n">EndpointTrafficPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TLSEdge</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates a TLS Edge by ID. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.</span>
 
@@ -3423,7 +3423,7 @@
 <span class="sd">        :param ip_restriction:</span>
 <span class="sd">        :param mutual_tls:</span>
 <span class="sd">        :param tls_termination:</span>
-<span class="sd">        :param policy: the traffic policy associated with this edge or null</span>
+<span class="sd">        :param traffic_policy: the traffic policy associated with this edge or null</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-edges-tls-update</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -3439,7 +3439,7 @@
             <span class="n">ip_restriction</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">ip_restriction</span><span class="p">),</span>
             <span class="n">mutual_tls</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">mutual_tls</span><span class="p">),</span>
             <span class="n">tls_termination</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">tls_termination</span><span class="p">),</span>
-            <span class="n">policy</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">policy</span><span class="p">),</span>
+            <span class="n">traffic_policy</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">traffic_policy</span><span class="p">),</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">TLSEdge</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -3702,49 +3702,49 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="TLSEdgePolicyModuleClient"><a class="viewcode-back" href="../../tls_edge_policy_module.html#ngrok.services.TLSEdgePolicyModuleClient">[docs]</a><span class="k">class</span> <span class="nc">TLSEdgePolicyModuleClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="TLSEdgeTrafficPolicyModuleClient"><a class="viewcode-back" href="../../tls_edge_traffic_policy_module.html#ngrok.services.TLSEdgeTrafficPolicyModuleClient">[docs]</a><span class="k">class</span> <span class="nc">TLSEdgeTrafficPolicyModuleClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
 
-<div class="viewcode-block" id="TLSEdgePolicyModuleClient.replace"><a class="viewcode-back" href="../../tls_edge_policy_module.html#ngrok.services.TLSEdgePolicyModuleClient.replace">[docs]</a>    <span class="k">def</span> <span class="nf">replace</span><span class="p">(</span>
+<div class="viewcode-block" id="TLSEdgeTrafficPolicyModuleClient.replace"><a class="viewcode-back" href="../../tls_edge_traffic_policy_module.html#ngrok.services.TLSEdgeTrafficPolicyModuleClient.replace">[docs]</a>    <span class="k">def</span> <span class="nf">replace</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">module</span><span class="p">:</span> <span class="n">EndpointPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointPolicy</span><span class="p">:</span>
+        <span class="n">module</span><span class="p">:</span> <span class="n">EndpointTrafficPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointTrafficPolicy</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        :param id:</span>
 <span class="sd">        :param module:</span>
 
-<span class="sd">        https://ngrok.com/docs/api#api-tls-edge-policy-module-replace</span>
+<span class="sd">        https://ngrok.com/docs/api#api-tls-edge-traffic-policy-module-replace</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/edges/tls/</span><span class="si">{id}</span><span class="s2">/policy&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/edges/tls/</span><span class="si">{id}</span><span class="s2">/traffic_policy&quot;</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">body_arg</span> <span class="o">=</span> <span class="n">extract_props</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">EndpointPolicy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">EndpointTrafficPolicy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="TLSEdgePolicyModuleClient.get"><a class="viewcode-back" href="../../tls_edge_policy_module.html#ngrok.services.TLSEdgePolicyModuleClient.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
+<div class="viewcode-block" id="TLSEdgeTrafficPolicyModuleClient.get"><a class="viewcode-back" href="../../tls_edge_traffic_policy_module.html#ngrok.services.TLSEdgeTrafficPolicyModuleClient.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointPolicy</span><span class="p">:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointTrafficPolicy</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
-<span class="sd">        https://ngrok.com/docs/api#api-tls-edge-policy-module-get</span>
+<span class="sd">        https://ngrok.com/docs/api#api-tls-edge-traffic-policy-module-get</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/edges/tls/</span><span class="si">{id}</span><span class="s2">/policy&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/edges/tls/</span><span class="si">{id}</span><span class="s2">/traffic_policy&quot;</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">body_arg</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">EndpointPolicy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">EndpointTrafficPolicy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="TLSEdgePolicyModuleClient.delete"><a class="viewcode-back" href="../../tls_edge_policy_module.html#ngrok.services.TLSEdgePolicyModuleClient.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span>
+<div class="viewcode-block" id="TLSEdgeTrafficPolicyModuleClient.delete"><a class="viewcode-back" href="../../tls_edge_traffic_policy_module.html#ngrok.services.TLSEdgeTrafficPolicyModuleClient.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
@@ -3752,9 +3752,9 @@
 
 <span class="sd">        :param id: a resource identifier</span>
 
-<span class="sd">        https://ngrok.com/docs/api#api-tls-edge-policy-module-delete</span>
+<span class="sd">        https://ngrok.com/docs/api#api-tls-edge-traffic-policy-module-delete</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/edges/tls/</span><span class="si">{id}</span><span class="s2">/policy&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/edges/tls/</span><span class="si">{id}</span><span class="s2">/traffic_policy&quot;</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
         <span class="p">)</span>

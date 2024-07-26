@@ -191,17 +191,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../../edge_route_oidc_module.html">HTTPS Edge Route OIDC Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../edge_route_websocket_tcp_converter_module.html">HTTPS Edge Route Websocket TCP Converter Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../edge_route_user_agent_filter_module.html">HTTPS Edge Route User Agent Filter Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../edge_route_policy_module.html">HTTPS Edge Route Policies Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../edge_route_traffic_policy_module.html">HTTPS Edge Route Traffic Policy Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../edges_tcp.html">TCP Edges</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tcp_edge_backend_module.html">TCP Edge Backend Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tcp_edge_ip_restriction_module.html">TCP Edge IP Restriction Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tcp_edge_policy_module.html">TCP Edge Policy Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tcp_edge_traffic_policy_module.html">TCP Edge Traffic Policy Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../edges_tls.html">TLS Edges</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tls_edge_backend_module.html">TLS Edge Backend Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tls_edge_ip_restriction_module.html">TLS Edge IP Restriction Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tls_edge_mutual_tls_module.html">TLS Edge Mutual TLS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tls_edge_tls_termination_module.html">TLS Edge TLS Termination Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tls_edge_policy_module.html">TLS Edge Policy Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tls_edge_traffic_policy_module.html">TLS Edge Traffic Policy Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html">Endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../event_destinations.html">Event Destinations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../event_subscriptions.html">Event Subscriptions</a></li>
@@ -3201,29 +3201,19 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;deny&quot;</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="EndpointPolicy"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.EndpointPolicy">[docs]</a><span class="k">class</span> <span class="nc">EndpointPolicy</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="EndpointTrafficPolicy"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.EndpointTrafficPolicy">[docs]</a><span class="k">class</span> <span class="nc">EndpointTrafficPolicy</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">props</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_props</span> <span class="o">=</span> <span class="n">props</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;inbound&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="p">[</span><span class="n">EndpointRule</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">props</span><span class="p">[</span><span class="s2">&quot;inbound&quot;</span><span class="p">]]</span>
-            <span class="k">if</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;inbound&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-            <span class="k">else</span> <span class="p">[]</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;outbound&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="p">[</span><span class="n">EndpointRule</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">props</span><span class="p">[</span><span class="s2">&quot;outbound&quot;</span><span class="p">]]</span>
-            <span class="k">if</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;outbound&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-            <span class="k">else</span> <span class="p">[]</span>
-        <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_props</span>
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="s2">&quot;id&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;&lt;EndpointPolicy </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">))</span>
+            <span class="k">return</span> <span class="s2">&quot;&lt;EndpointTrafficPolicy </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;&lt;EndpointPolicy </span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">))</span>
+            <span class="k">return</span> <span class="s2">&quot;&lt;EndpointTrafficPolicy </span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">))</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -3231,74 +3221,9 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;enabled&quot;</span><span class="p">]</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">inbound</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">EndpointRule</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;the inbound rules of the traffic policy.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;inbound&quot;</span><span class="p">]</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">outbound</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">EndpointRule</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;the outbound rules on the traffic policy.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;outbound&quot;</span><span class="p">]</span></div>
-
-
-<div class="viewcode-block" id="EndpointRule"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.EndpointRule">[docs]</a><span class="k">class</span> <span class="nc">EndpointRule</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">props</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span> <span class="o">=</span> <span class="n">props</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;actions&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="p">[</span><span class="n">EndpointAction</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">props</span><span class="p">[</span><span class="s2">&quot;actions&quot;</span><span class="p">]]</span>
-            <span class="k">if</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actions&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-            <span class="k">else</span> <span class="p">[]</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_props</span>
-
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="s2">&quot;id&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;&lt;EndpointRule </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;&lt;EndpointRule </span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">))</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">expressions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;cel expressions that filter traffic the policy rule applies to.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;expressions&quot;</span><span class="p">]</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">EndpointAction</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;the set of actions on a policy rule.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;actions&quot;</span><span class="p">]</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;the name of the rule that is part of the traffic policy.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span></div>
-
-
-<div class="viewcode-block" id="EndpointAction"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.EndpointAction">[docs]</a><span class="k">class</span> <span class="nc">EndpointAction</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">props</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span> <span class="o">=</span> <span class="n">props</span>
-
-    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_props</span>
-
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="s2">&quot;id&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;&lt;EndpointAction </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;&lt;EndpointAction </span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">))</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;the type of action on the policy rule.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;the configuration for the action on the policy rule.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;config&quot;</span><span class="p">]</span></div>
+    <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;the traffic policy that should be applied to the traffic on your endpoint.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="HTTPSEdgeRoute"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.HTTPSEdgeRoute">[docs]</a><span class="k">class</span> <span class="nc">HTTPSEdgeRoute</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -3365,9 +3290,9 @@
             <span class="k">if</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;user_agent_filter&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
             <span class="k">else</span> <span class="kc">None</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;policy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">EndpointPolicy</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">props</span><span class="p">[</span><span class="s2">&quot;policy&quot;</span><span class="p">])</span>
-            <span class="k">if</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;policy&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;traffic_policy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">EndpointTrafficPolicy</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">props</span><span class="p">[</span><span class="s2">&quot;traffic_policy&quot;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;traffic_policy&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
             <span class="k">else</span> <span class="kc">None</span>
         <span class="p">)</span>
 
@@ -3398,7 +3323,7 @@
         <span class="n">oidc</span><span class="p">:</span> <span class="n">EndpointOIDC</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">websocket_tcp_converter</span><span class="p">:</span> <span class="n">EndpointWebsocketTCPConverter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">user_agent_filter</span><span class="p">:</span> <span class="n">EndpointUserAgentFilter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">policy</span><span class="p">:</span> <span class="n">EndpointPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">traffic_policy</span><span class="p">:</span> <span class="n">EndpointTrafficPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">https_routes</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
             <span class="n">edge_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">edge_id</span><span class="p">,</span>
@@ -3419,7 +3344,7 @@
             <span class="n">oidc</span><span class="o">=</span><span class="n">oidc</span><span class="p">,</span>
             <span class="n">websocket_tcp_converter</span><span class="o">=</span><span class="n">websocket_tcp_converter</span><span class="p">,</span>
             <span class="n">user_agent_filter</span><span class="o">=</span><span class="n">user_agent_filter</span><span class="p">,</span>
-            <span class="n">policy</span><span class="o">=</span><span class="n">policy</span><span class="p">,</span>
+            <span class="n">traffic_policy</span><span class="o">=</span><span class="n">traffic_policy</span><span class="p">,</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="HTTPSEdgeRoute.delete"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.HTTPSEdgeRoute.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span>
@@ -3530,9 +3455,9 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;user_agent_filter&quot;</span><span class="p">]</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">policy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointPolicy</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">traffic_policy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointTrafficPolicy</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;the traffic policy associated with this edge or null&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;policy&quot;</span><span class="p">]</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;traffic_policy&quot;</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="HTTPSEdgeList"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.HTTPSEdgeList">[docs]</a><span class="k">class</span> <span class="nc">HTTPSEdgeList</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -3723,9 +3648,9 @@
             <span class="k">if</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ip_restriction&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
             <span class="k">else</span> <span class="kc">None</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;policy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">EndpointPolicy</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">props</span><span class="p">[</span><span class="s2">&quot;policy&quot;</span><span class="p">])</span>
-            <span class="k">if</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;policy&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;traffic_policy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">EndpointTrafficPolicy</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">props</span><span class="p">[</span><span class="s2">&quot;traffic_policy&quot;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;traffic_policy&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
             <span class="k">else</span> <span class="kc">None</span>
         <span class="p">)</span>
 
@@ -3745,7 +3670,7 @@
         <span class="n">hostports</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">backend</span><span class="p">:</span> <span class="n">EndpointBackendMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">ip_restriction</span><span class="p">:</span> <span class="n">EndpointIPPolicyMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">policy</span><span class="p">:</span> <span class="n">EndpointPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">traffic_policy</span><span class="p">:</span> <span class="n">EndpointTrafficPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">tcp</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
             <span class="nb">id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
@@ -3754,7 +3679,7 @@
             <span class="n">hostports</span><span class="o">=</span><span class="n">hostports</span><span class="p">,</span>
             <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span>
             <span class="n">ip_restriction</span><span class="o">=</span><span class="n">ip_restriction</span><span class="p">,</span>
-            <span class="n">policy</span><span class="o">=</span><span class="n">policy</span><span class="p">,</span>
+            <span class="n">traffic_policy</span><span class="o">=</span><span class="n">traffic_policy</span><span class="p">,</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="TCPEdge.delete"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.TCPEdge.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span>
@@ -3804,9 +3729,9 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;ip_restriction&quot;</span><span class="p">]</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">policy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointPolicy</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">traffic_policy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointTrafficPolicy</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;the traffic policy associated with this edge or null&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;policy&quot;</span><span class="p">]</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;traffic_policy&quot;</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="TLSEdgeList"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.TLSEdgeList">[docs]</a><span class="k">class</span> <span class="nc">TLSEdgeList</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -3871,9 +3796,9 @@
             <span class="k">if</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tls_termination&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
             <span class="k">else</span> <span class="kc">None</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;policy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">EndpointPolicy</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">props</span><span class="p">[</span><span class="s2">&quot;policy&quot;</span><span class="p">])</span>
-            <span class="k">if</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;policy&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;traffic_policy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">EndpointTrafficPolicy</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">props</span><span class="p">[</span><span class="s2">&quot;traffic_policy&quot;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;traffic_policy&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
             <span class="k">else</span> <span class="kc">None</span>
         <span class="p">)</span>
 
@@ -3895,7 +3820,7 @@
         <span class="n">ip_restriction</span><span class="p">:</span> <span class="n">EndpointIPPolicyMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">mutual_tls</span><span class="p">:</span> <span class="n">EndpointMutualTLSMutate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">tls_termination</span><span class="p">:</span> <span class="n">EndpointTLSTermination</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">policy</span><span class="p">:</span> <span class="n">EndpointPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">traffic_policy</span><span class="p">:</span> <span class="n">EndpointTrafficPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">tls</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
             <span class="nb">id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
@@ -3906,7 +3831,7 @@
             <span class="n">ip_restriction</span><span class="o">=</span><span class="n">ip_restriction</span><span class="p">,</span>
             <span class="n">mutual_tls</span><span class="o">=</span><span class="n">mutual_tls</span><span class="p">,</span>
             <span class="n">tls_termination</span><span class="o">=</span><span class="n">tls_termination</span><span class="p">,</span>
-            <span class="n">policy</span><span class="o">=</span><span class="n">policy</span><span class="p">,</span>
+            <span class="n">traffic_policy</span><span class="o">=</span><span class="n">traffic_policy</span><span class="p">,</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="TLSEdge.delete"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.TLSEdge.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span>
@@ -3964,9 +3889,9 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;tls_termination&quot;</span><span class="p">]</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">policy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointPolicy</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">traffic_policy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointTrafficPolicy</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;the traffic policy associated with this edge or null&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;policy&quot;</span><span class="p">]</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;traffic_policy&quot;</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="Endpoint"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.Endpoint">[docs]</a><span class="k">class</span> <span class="nc">Endpoint</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -4225,6 +4150,11 @@
             <span class="k">if</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;datadog&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
             <span class="k">else</span> <span class="kc">None</span>
         <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;azure_logs_ingestion&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">EventTargetAzureLogsIngestion</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">props</span><span class="p">[</span><span class="s2">&quot;azure_logs_ingestion&quot;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;azure_logs_ingestion&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="k">else</span> <span class="kc">None</span>
+        <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_props</span>
@@ -4253,7 +4183,11 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">datadog</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventTargetDatadog</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Configuration used to send events to Datadog.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;datadog&quot;</span><span class="p">]</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;datadog&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">azure_logs_ingestion</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventTargetAzureLogsIngestion</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;azure_logs_ingestion&quot;</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="EventTargetFirehose"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.EventTargetFirehose">[docs]</a><span class="k">class</span> <span class="nc">EventTargetFirehose</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -4375,6 +4309,53 @@
     <span class="k">def</span> <span class="nf">ddsite</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Datadog site to send event to.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;ddsite&quot;</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="EventTargetAzureLogsIngestion"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.EventTargetAzureLogsIngestion">[docs]</a><span class="k">class</span> <span class="nc">EventTargetAzureLogsIngestion</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">props</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_props</span> <span class="o">=</span> <span class="n">props</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_props</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s2">&quot;id&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;&lt;EventTargetAzureLogsIngestion </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;&lt;EventTargetAzureLogsIngestion </span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">tenant_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tenant ID for the Azure account&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;tenant_id&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">client_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Client ID for the application client&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;client_id&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">client_secret</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Client Secret for the application client&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;client_secret&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">logs_ingestion_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Data collection endpoint logs ingestion URI&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;logs_ingestion_uri&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">data_collection_rule_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Data collection rule immutable ID&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;data_collection_rule_id&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">data_collection_stream_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Data collection stream name to use as destination, located instide the DCR&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;data_collection_stream_name&quot;</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="AWSAuth"><a class="viewcode-back" href="../../datatypes.html#ngrok.datatypes.AWSAuth">[docs]</a><span class="k">class</span> <span class="nc">AWSAuth</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>

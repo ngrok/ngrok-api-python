@@ -1453,7 +1453,7 @@ class EdgesHTTPSRoutesClient(object):
         oidc: EndpointOIDC = None,
         websocket_tcp_converter: EndpointWebsocketTCPConverter = None,
         user_agent_filter: EndpointUserAgentFilter = None,
-        policy: EndpointPolicy = None,
+        traffic_policy: EndpointTrafficPolicy = None,
     ) -> HTTPSEdgeRoute:
         """Create an HTTPS Edge Route
 
@@ -1474,7 +1474,7 @@ class EdgesHTTPSRoutesClient(object):
         :param oidc: oidc module configuration or ``null``
         :param websocket_tcp_converter: websocket to tcp adapter configuration or ``null``
         :param user_agent_filter:
-        :param policy: the traffic policy associated with this edge or null
+        :param traffic_policy: the traffic policy associated with this edge or null
 
         https://ngrok.com/docs/api#api-edges-https-routes-create
         """
@@ -1499,7 +1499,7 @@ class EdgesHTTPSRoutesClient(object):
             oidc=extract_props(oidc),
             websocket_tcp_converter=extract_props(websocket_tcp_converter),
             user_agent_filter=extract_props(user_agent_filter),
-            policy=extract_props(policy),
+            traffic_policy=extract_props(traffic_policy),
         )
         result = self._client.http_client.post(path, body_arg)
         return HTTPSEdgeRoute(self._client, result)
@@ -1545,7 +1545,7 @@ class EdgesHTTPSRoutesClient(object):
         oidc: EndpointOIDC = None,
         websocket_tcp_converter: EndpointWebsocketTCPConverter = None,
         user_agent_filter: EndpointUserAgentFilter = None,
-        policy: EndpointPolicy = None,
+        traffic_policy: EndpointTrafficPolicy = None,
     ) -> HTTPSEdgeRoute:
         """Updates an HTTPS Edge Route by ID. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.
 
@@ -1567,7 +1567,7 @@ class EdgesHTTPSRoutesClient(object):
         :param oidc: oidc module configuration or ``null``
         :param websocket_tcp_converter: websocket to tcp adapter configuration or ``null``
         :param user_agent_filter:
-        :param policy: the traffic policy associated with this edge or null
+        :param traffic_policy: the traffic policy associated with this edge or null
 
         https://ngrok.com/docs/api#api-edges-https-routes-update
         """
@@ -1593,7 +1593,7 @@ class EdgesHTTPSRoutesClient(object):
             oidc=extract_props(oidc),
             websocket_tcp_converter=extract_props(websocket_tcp_converter),
             user_agent_filter=extract_props(user_agent_filter),
-            policy=extract_props(policy),
+            traffic_policy=extract_props(traffic_policy),
         )
         result = self._client.http_client.patch(path, body_arg)
         return HTTPSEdgeRoute(self._client, result)
@@ -2690,7 +2690,7 @@ class EdgeRouteUserAgentFilterModuleClient(object):
         self._client.http_client.delete(path, body_arg)
 
 
-class EdgeRoutePolicyModuleClient(object):
+class EdgeRouteTrafficPolicyModuleClient(object):
     def __init__(self, client):
         self._client = client
 
@@ -2698,45 +2698,45 @@ class EdgeRoutePolicyModuleClient(object):
         self,
         edge_id: str,
         id: str,
-        module: EndpointPolicy = None,
-    ) -> EndpointPolicy:
+        module: EndpointTrafficPolicy = None,
+    ) -> EndpointTrafficPolicy:
         """
 
         :param edge_id:
         :param id:
         :param module:
 
-        https://ngrok.com/docs/api#api-edge-route-policy-module-replace
+        https://ngrok.com/docs/api#api-edge-route-traffic-policy-module-replace
         """
-        path = "/edges/https/{edge_id}/routes/{id}/policy"
+        path = "/edges/https/{edge_id}/routes/{id}/traffic_policy"
         path = path.format(
             edge_id=edge_id,
             id=id,
         )
         body_arg = extract_props(module)
         result = self._client.http_client.put(path, body_arg)
-        return EndpointPolicy(self._client, result)
+        return EndpointTrafficPolicy(self._client, result)
 
     def get(
         self,
         edge_id: str,
         id: str,
-    ) -> EndpointPolicy:
+    ) -> EndpointTrafficPolicy:
         """
 
         :param edge_id: unique identifier of this edge
         :param id: unique identifier of this edge route
 
-        https://ngrok.com/docs/api#api-edge-route-policy-module-get
+        https://ngrok.com/docs/api#api-edge-route-traffic-policy-module-get
         """
-        path = "/edges/https/{edge_id}/routes/{id}/policy"
+        path = "/edges/https/{edge_id}/routes/{id}/traffic_policy"
         path = path.format(
             edge_id=edge_id,
             id=id,
         )
         body_arg = None
         result = self._client.http_client.get(path, body_arg)
-        return EndpointPolicy(self._client, result)
+        return EndpointTrafficPolicy(self._client, result)
 
     def delete(
         self,
@@ -2748,9 +2748,9 @@ class EdgeRoutePolicyModuleClient(object):
         :param edge_id: unique identifier of this edge
         :param id: unique identifier of this edge route
 
-        https://ngrok.com/docs/api#api-edge-route-policy-module-delete
+        https://ngrok.com/docs/api#api-edge-route-traffic-policy-module-delete
         """
-        path = "/edges/https/{edge_id}/routes/{id}/policy"
+        path = "/edges/https/{edge_id}/routes/{id}/traffic_policy"
         path = path.format(
             edge_id=edge_id,
             id=id,
@@ -2770,7 +2770,7 @@ class EdgesTCPClient(object):
         hostports: Sequence[str] = None,
         backend: EndpointBackendMutate = None,
         ip_restriction: EndpointIPPolicyMutate = None,
-        policy: EndpointPolicy = None,
+        traffic_policy: EndpointTrafficPolicy = None,
     ) -> TCPEdge:
         """Create a TCP Edge
 
@@ -2779,7 +2779,7 @@ class EdgesTCPClient(object):
         :param hostports: hostports served by this edge
         :param backend: edge modules
         :param ip_restriction:
-        :param policy: the traffic policy associated with this edge or null
+        :param traffic_policy: the traffic policy associated with this edge or null
 
         https://ngrok.com/docs/api#api-edges-tcp-create
         """
@@ -2790,7 +2790,7 @@ class EdgesTCPClient(object):
             hostports=hostports,
             backend=extract_props(backend),
             ip_restriction=extract_props(ip_restriction),
-            policy=extract_props(policy),
+            traffic_policy=extract_props(traffic_policy),
         )
         result = self._client.http_client.post(path, body_arg)
         return TCPEdge(self._client, result)
@@ -2841,7 +2841,7 @@ class EdgesTCPClient(object):
         hostports: Sequence[str] = None,
         backend: EndpointBackendMutate = None,
         ip_restriction: EndpointIPPolicyMutate = None,
-        policy: EndpointPolicy = None,
+        traffic_policy: EndpointTrafficPolicy = None,
     ) -> TCPEdge:
         """Updates a TCP Edge by ID. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.
 
@@ -2851,7 +2851,7 @@ class EdgesTCPClient(object):
         :param hostports: hostports served by this edge
         :param backend: edge modules
         :param ip_restriction:
-        :param policy: the traffic policy associated with this edge or null
+        :param traffic_policy: the traffic policy associated with this edge or null
 
         https://ngrok.com/docs/api#api-edges-tcp-update
         """
@@ -2865,7 +2865,7 @@ class EdgesTCPClient(object):
             hostports=hostports,
             backend=extract_props(backend),
             ip_restriction=extract_props(ip_restriction),
-            policy=extract_props(policy),
+            traffic_policy=extract_props(traffic_policy),
         )
         result = self._client.http_client.patch(path, body_arg)
         return TCPEdge(self._client, result)
@@ -3008,47 +3008,47 @@ class TCPEdgeIPRestrictionModuleClient(object):
         self._client.http_client.delete(path, body_arg)
 
 
-class TCPEdgePolicyModuleClient(object):
+class TCPEdgeTrafficPolicyModuleClient(object):
     def __init__(self, client):
         self._client = client
 
     def replace(
         self,
         id: str,
-        module: EndpointPolicy = None,
-    ) -> EndpointPolicy:
+        module: EndpointTrafficPolicy = None,
+    ) -> EndpointTrafficPolicy:
         """
 
         :param id:
         :param module:
 
-        https://ngrok.com/docs/api#api-tcp-edge-policy-module-replace
+        https://ngrok.com/docs/api#api-tcp-edge-traffic-policy-module-replace
         """
-        path = "/edges/tcp/{id}/policy"
+        path = "/edges/tcp/{id}/traffic_policy"
         path = path.format(
             id=id,
         )
         body_arg = extract_props(module)
         result = self._client.http_client.put(path, body_arg)
-        return EndpointPolicy(self._client, result)
+        return EndpointTrafficPolicy(self._client, result)
 
     def get(
         self,
         id: str,
-    ) -> EndpointPolicy:
+    ) -> EndpointTrafficPolicy:
         """
 
         :param id: a resource identifier
 
-        https://ngrok.com/docs/api#api-tcp-edge-policy-module-get
+        https://ngrok.com/docs/api#api-tcp-edge-traffic-policy-module-get
         """
-        path = "/edges/tcp/{id}/policy"
+        path = "/edges/tcp/{id}/traffic_policy"
         path = path.format(
             id=id,
         )
         body_arg = None
         result = self._client.http_client.get(path, body_arg)
-        return EndpointPolicy(self._client, result)
+        return EndpointTrafficPolicy(self._client, result)
 
     def delete(
         self,
@@ -3058,9 +3058,9 @@ class TCPEdgePolicyModuleClient(object):
 
         :param id: a resource identifier
 
-        https://ngrok.com/docs/api#api-tcp-edge-policy-module-delete
+        https://ngrok.com/docs/api#api-tcp-edge-traffic-policy-module-delete
         """
-        path = "/edges/tcp/{id}/policy"
+        path = "/edges/tcp/{id}/traffic_policy"
         path = path.format(
             id=id,
         )
@@ -3081,7 +3081,7 @@ class EdgesTLSClient(object):
         ip_restriction: EndpointIPPolicyMutate = None,
         mutual_tls: EndpointMutualTLSMutate = None,
         tls_termination: EndpointTLSTermination = None,
-        policy: EndpointPolicy = None,
+        traffic_policy: EndpointTrafficPolicy = None,
     ) -> TLSEdge:
         """Create a TLS Edge
 
@@ -3092,7 +3092,7 @@ class EdgesTLSClient(object):
         :param ip_restriction:
         :param mutual_tls:
         :param tls_termination:
-        :param policy: the traffic policy associated with this edge or null
+        :param traffic_policy: the traffic policy associated with this edge or null
 
         https://ngrok.com/docs/api#api-edges-tls-create
         """
@@ -3105,7 +3105,7 @@ class EdgesTLSClient(object):
             ip_restriction=extract_props(ip_restriction),
             mutual_tls=extract_props(mutual_tls),
             tls_termination=extract_props(tls_termination),
-            policy=extract_props(policy),
+            traffic_policy=extract_props(traffic_policy),
         )
         result = self._client.http_client.post(path, body_arg)
         return TLSEdge(self._client, result)
@@ -3158,7 +3158,7 @@ class EdgesTLSClient(object):
         ip_restriction: EndpointIPPolicyMutate = None,
         mutual_tls: EndpointMutualTLSMutate = None,
         tls_termination: EndpointTLSTermination = None,
-        policy: EndpointPolicy = None,
+        traffic_policy: EndpointTrafficPolicy = None,
     ) -> TLSEdge:
         """Updates a TLS Edge by ID. If a module is not specified in the update, it will not be modified. However, each module configuration that is specified will completely replace the existing value. There is no way to delete an existing module via this API, instead use the delete module API.
 
@@ -3170,7 +3170,7 @@ class EdgesTLSClient(object):
         :param ip_restriction:
         :param mutual_tls:
         :param tls_termination:
-        :param policy: the traffic policy associated with this edge or null
+        :param traffic_policy: the traffic policy associated with this edge or null
 
         https://ngrok.com/docs/api#api-edges-tls-update
         """
@@ -3186,7 +3186,7 @@ class EdgesTLSClient(object):
             ip_restriction=extract_props(ip_restriction),
             mutual_tls=extract_props(mutual_tls),
             tls_termination=extract_props(tls_termination),
-            policy=extract_props(policy),
+            traffic_policy=extract_props(traffic_policy),
         )
         result = self._client.http_client.patch(path, body_arg)
         return TLSEdge(self._client, result)
@@ -3449,47 +3449,47 @@ class TLSEdgeTLSTerminationModuleClient(object):
         self._client.http_client.delete(path, body_arg)
 
 
-class TLSEdgePolicyModuleClient(object):
+class TLSEdgeTrafficPolicyModuleClient(object):
     def __init__(self, client):
         self._client = client
 
     def replace(
         self,
         id: str,
-        module: EndpointPolicy = None,
-    ) -> EndpointPolicy:
+        module: EndpointTrafficPolicy = None,
+    ) -> EndpointTrafficPolicy:
         """
 
         :param id:
         :param module:
 
-        https://ngrok.com/docs/api#api-tls-edge-policy-module-replace
+        https://ngrok.com/docs/api#api-tls-edge-traffic-policy-module-replace
         """
-        path = "/edges/tls/{id}/policy"
+        path = "/edges/tls/{id}/traffic_policy"
         path = path.format(
             id=id,
         )
         body_arg = extract_props(module)
         result = self._client.http_client.put(path, body_arg)
-        return EndpointPolicy(self._client, result)
+        return EndpointTrafficPolicy(self._client, result)
 
     def get(
         self,
         id: str,
-    ) -> EndpointPolicy:
+    ) -> EndpointTrafficPolicy:
         """
 
         :param id: a resource identifier
 
-        https://ngrok.com/docs/api#api-tls-edge-policy-module-get
+        https://ngrok.com/docs/api#api-tls-edge-traffic-policy-module-get
         """
-        path = "/edges/tls/{id}/policy"
+        path = "/edges/tls/{id}/traffic_policy"
         path = path.format(
             id=id,
         )
         body_arg = None
         result = self._client.http_client.get(path, body_arg)
-        return EndpointPolicy(self._client, result)
+        return EndpointTrafficPolicy(self._client, result)
 
     def delete(
         self,
@@ -3499,9 +3499,9 @@ class TLSEdgePolicyModuleClient(object):
 
         :param id: a resource identifier
 
-        https://ngrok.com/docs/api#api-tls-edge-policy-module-delete
+        https://ngrok.com/docs/api#api-tls-edge-traffic-policy-module-delete
         """
-        path = "/edges/tls/{id}/policy"
+        path = "/edges/tls/{id}/traffic_policy"
         path = path.format(
             id=id,
         )
