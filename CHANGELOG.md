@@ -1,8 +1,13 @@
 <!-- Code generated for API Clients. DO NOT EDIT. -->
 
+## 0.12.0
+* Renamed the Policy Module to the Traffic Policy Module on HTTP Edge Routes, TCP Edges, and TLS Edges, which allows you to configure rules that can be used to influence and control traffic to and from your upstream service. The Traffic Policy itself is now specified as either a JSON or YAML string.
+
 ## 0.11.0
 
 * Added support for the Bot User API. The Bot User API allows you to manage the bots that are registered to your ngrok account. You can automate the creation, management, and deletion of bot users in your account.
+
+* Added support for the Policy Module on HTTP Edge Routes, TCP Edges, and TLS Edges, which allows you to configure rules that can be used to influence and control traffic to and from your upstream service.
 
 ## 0.10.0
 
