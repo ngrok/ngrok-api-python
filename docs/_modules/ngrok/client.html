@@ -475,12 +475,15 @@
                 <span class="s2">&quot;https_edge_route_oidc&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;https_edge_route_websocket_tcp_converter&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;https_edge_route_user_agent_filter&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;https_edge_route_traffic_policy&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;tcp_edge_backend&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;tcp_edge_ip_restriction&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;tcp_edge_traffic_policy&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;tls_edge_backend&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;tls_edge_ip_restriction&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;tls_edge_mutual_tls&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;tls_edge_tls_termination&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;tls_edge_traffic_policy&quot;</span><span class="p">,</span>
             <span class="p">],</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">ns</span><span class="p">(</span>
@@ -506,12 +509,15 @@
             <span class="n">https_edge_route_user_agent_filter</span><span class="o">=</span><span class="n">EdgeRouteUserAgentFilterModuleClient</span><span class="p">(</span>
                 <span class="bp">self</span>
             <span class="p">),</span>
+            <span class="n">https_edge_route_traffic_policy</span><span class="o">=</span><span class="n">EdgeRouteTrafficPolicyModuleClient</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>
             <span class="n">tcp_edge_backend</span><span class="o">=</span><span class="n">TCPEdgeBackendModuleClient</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>
             <span class="n">tcp_edge_ip_restriction</span><span class="o">=</span><span class="n">TCPEdgeIPRestrictionModuleClient</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>
+            <span class="n">tcp_edge_traffic_policy</span><span class="o">=</span><span class="n">TCPEdgeTrafficPolicyModuleClient</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>
             <span class="n">tls_edge_backend</span><span class="o">=</span><span class="n">TLSEdgeBackendModuleClient</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>
             <span class="n">tls_edge_ip_restriction</span><span class="o">=</span><span class="n">TLSEdgeIPRestrictionModuleClient</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>
             <span class="n">tls_edge_mutual_tls</span><span class="o">=</span><span class="n">TLSEdgeMutualTLSModuleClient</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>
             <span class="n">tls_edge_tls_termination</span><span class="o">=</span><span class="n">TLSEdgeTLSTerminationModuleClient</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>
+            <span class="n">tls_edge_traffic_policy</span><span class="o">=</span><span class="n">TLSEdgeTrafficPolicyModuleClient</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>
         <span class="p">)</span></div>
 </pre></div>
         </article>
