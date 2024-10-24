@@ -3659,6 +3659,16 @@ class Endpoint(object):
         self._props["edge"] = (
             Ref(client, props["edge"]) if props.get("edge") is not None else None
         )
+        self._props["principal"] = (
+            Ref(client, props["principal"])
+            if props.get("principal") is not None
+            else None
+        )
+        self._props["tunnel_session"] = (
+            Ref(client, props["tunnel_session"])
+            if props.get("tunnel_session") is not None
+            else None
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -3668,6 +3678,30 @@ class Endpoint(object):
             return "<Endpoint {} {}>".format(self.id, repr(self._props))
         else:
             return "<Endpoint {}>".format(repr(self._props))
+
+    def update(
+        self,
+        url: str = None,
+        traffic_policy: str = None,
+        description: str = None,
+        metadata: str = None,
+        bindings: Sequence[str] = None,
+    ):
+        self._client.endpoints.update(
+            id=self.id,
+            url=url,
+            traffic_policy=traffic_policy,
+            description=description,
+            metadata=metadata,
+            bindings=bindings,
+        )
+
+    def delete(
+        self,
+    ):
+        self._client.endpoints.delete(
+            id=self.id,
+        )
 
     @property
     def id(self) -> str:
@@ -3700,19 +3734,36 @@ class Endpoint(object):
         return self._props["proto"]
 
     @property
+    def scheme(self) -> str:
+        return self._props["scheme"]
+
+    @property
     def hostport(self) -> str:
-        """hostport served by this endpoint (hostname:port)"""
+        """hostport served by this endpoint (hostname:port) -> soon to be deprecated"""
         return self._props["hostport"]
 
     @property
+    def host(self) -> str:
+        return self._props["host"]
+
+    @property
+    def port(self) -> int:
+        return self._props["port"]
+
+    @property
     def type(self) -> str:
-        """whether the endpoint is ``ephemeral`` (served directly by an agent-initiated tunnel) or ``edge`` (served by an edge)"""
+        """whether the endpoint is ``ephemeral`` (served directly by an agent-initiated tunnel) or ``edge`` (served by an edge) or ``cloud (represents a cloud endpoint)``"""
         return self._props["type"]
 
     @property
     def metadata(self) -> str:
         """user-supplied metadata of the associated tunnel or edge object"""
         return self._props["metadata"]
+
+    @property
+    def description(self) -> str:
+        """user-supplied description of the associated tunnel"""
+        return self._props["description"]
 
     @property
     def domain(self) -> Ref:
@@ -3733,6 +3784,51 @@ class Endpoint(object):
     def edge(self) -> Ref:
         """the edge serving requests to this endpoint, if this is an edge endpoint"""
         return self._props["edge"]
+
+    @property
+    def upstream_url(self) -> str:
+        """the local address the tunnel forwards to"""
+        return self._props["upstream_url"]
+
+    @property
+    def upstream_proto(self) -> str:
+        """the protocol the agent uses to forward with"""
+        return self._props["upstream_proto"]
+
+    @property
+    def url(self) -> str:
+        """the url of the endpoint"""
+        return self._props["url"]
+
+    @property
+    def principal(self) -> Ref:
+        """The ID of the owner (bot or user) that owns this endpoint"""
+        return self._props["principal"]
+
+    @property
+    def traffic_policy(self) -> str:
+        """The traffic policy attached to this endpoint"""
+        return self._props["traffic_policy"]
+
+    @property
+    def bindings(self) -> Sequence[str]:
+        """the bindings associated with this endpoint"""
+        return self._props["bindings"]
+
+    @property
+    def tunnel_session(self) -> Ref:
+        """The tunnel session of the agent for this endpoint"""
+        return self._props["tunnel_session"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the clep API resource"""
+        return self._props["uri"]
+
+    @property
+    def name(self) -> str:
+        """user supplied name for the endpoint"""
+        return self._props["name"]
 
 
 class EndpointList(object):
@@ -4101,7 +4197,7 @@ class EventTargetAzureLogsIngestion(object):
 
     @property
     def data_collection_stream_name(self) -> str:
-        """Data collection stream name to use as destination, located instide the DCR"""
+        """Data collection stream name to use as destination, located inside the DCR"""
         return self._props["data_collection_stream_name"]
 
 
@@ -4933,7 +5029,7 @@ class ReservedDomainCertPolicy(object):
 
     @property
     def private_key_type(self) -> str:
-        """type of private key to use when requesting certificates. Defaults to rsa, can be either rsa or ecdsa."""
+        """type of private key to use when requesting certificates. Defaults to ecdsa, can be either rsa or ecdsa."""
         return self._props["private_key_type"]
 
 
