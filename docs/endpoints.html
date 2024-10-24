@@ -263,6 +263,42 @@
 which define what tunnel or edge is used to serve a hostport.
 Only active endpoints associated with a tunnel or backend are returned.</p>
 <dl class="py method">
+<dt class="sig sig-object py" id="ngrok.services.EndpointsClient.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">traffic_policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bindings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EndpointsClient.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EndpointsClient.create" title="Permalink to this definition">#</a></dt>
+<dd><p>Create an endpoint, currently available only for cloud endpoints</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – the url of the endpoint</p></li>
+<li><p><strong>type</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – whether the endpoint is <code class="docutils literal notranslate"><span class="pre">ephemeral</span></code> (served directly by an agent-initiated tunnel) or <code class="docutils literal notranslate"><span class="pre">edge</span></code> (served by an edge) or <code class="docutils literal notranslate"><span class="pre">cloud</span> <span class="pre">(represents</span> <span class="pre">a</span> <span class="pre">cloud</span> <span class="pre">endpoint)</span></code></p></li>
+<li><p><strong>traffic_policy</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – The traffic policy attached to this endpoint</p></li>
+<li><p><strong>description</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – user-supplied description of the associated tunnel</p></li>
+<li><p><strong>metadata</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – user-supplied metadata of the associated tunnel or edge object</p></li>
+<li><p><strong>bindings</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – the bindings associated with this endpoint</p></li>
+</ul>
+</dd>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-endpoints-create">https://ngrok.com/docs/api#api-endpoints-create</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint" title="ngrok.datatypes.Endpoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">Endpoint</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ngrok.services.EndpointsClient.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EndpointsClient.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EndpointsClient.delete" title="Permalink to this definition">#</a></dt>
+<dd><p>Delete an Endpoint by ID, currently available only for cloud endpoints</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-endpoints-delete">https://ngrok.com/docs/api#api-endpoints-delete</a></p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="ngrok.services.EndpointsClient.get">
 <span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EndpointsClient.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EndpointsClient.get" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the status of an endpoint by ID</p>
@@ -295,6 +331,30 @@ Only active endpoints associated with a tunnel or backend are returned.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointList" title="ngrok.datatypes.EndpointList"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointList</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ngrok.services.EndpointsClient.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">traffic_policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bindings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#EndpointsClient.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.EndpointsClient.update" title="Permalink to this definition">#</a></dt>
+<dd><p>Update an Endpoint by ID, currently available only for cloud endpoints</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – unique endpoint resource identifier</p></li>
+<li><p><strong>url</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – the url of the endpoint</p></li>
+<li><p><strong>traffic_policy</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – The traffic policy attached to this endpoint</p></li>
+<li><p><strong>description</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – user-supplied description of the associated tunnel</p></li>
+<li><p><strong>metadata</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – user-supplied metadata of the associated tunnel or edge object</p></li>
+<li><p><strong>bindings</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – the bindings associated with this endpoint</p></li>
+</ul>
+</dd>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-endpoints-update">https://ngrok.com/docs/api#api-endpoints-update</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint" title="ngrok.datatypes.Endpoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">Endpoint</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -360,8 +420,11 @@ Only active endpoints associated with a tunnel or backend are returned.</p>
             <ul>
 <li><a class="reference internal" href="#">Endpoints</a><ul>
 <li><a class="reference internal" href="#ngrok.services.EndpointsClient"><code class="docutils literal notranslate"><span class="pre">EndpointsClient</span></code></a><ul>
+<li><a class="reference internal" href="#ngrok.services.EndpointsClient.create"><code class="docutils literal notranslate"><span class="pre">EndpointsClient.create()</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.services.EndpointsClient.delete"><code class="docutils literal notranslate"><span class="pre">EndpointsClient.delete()</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.services.EndpointsClient.get"><code class="docutils literal notranslate"><span class="pre">EndpointsClient.get()</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.services.EndpointsClient.list"><code class="docutils literal notranslate"><span class="pre">EndpointsClient.list()</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.services.EndpointsClient.update"><code class="docutils literal notranslate"><span class="pre">EndpointsClient.update()</span></code></a></li>
 </ul>
 </li>
 </ul>
