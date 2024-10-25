@@ -222,12 +222,15 @@ class Client(object):
                 "https_edge_route_oidc",
                 "https_edge_route_websocket_tcp_converter",
                 "https_edge_route_user_agent_filter",
+                "https_edge_route_traffic_policy",
                 "tcp_edge_backend",
                 "tcp_edge_ip_restriction",
+                "tcp_edge_traffic_policy",
                 "tls_edge_backend",
                 "tls_edge_ip_restriction",
                 "tls_edge_mutual_tls",
                 "tls_edge_tls_termination",
+                "tls_edge_traffic_policy",
             ],
         )
         return ns(
@@ -253,10 +256,13 @@ class Client(object):
             https_edge_route_user_agent_filter=EdgeRouteUserAgentFilterModuleClient(
                 self
             ),
+            https_edge_route_traffic_policy=EdgeRouteTrafficPolicyModuleClient(self),
             tcp_edge_backend=TCPEdgeBackendModuleClient(self),
             tcp_edge_ip_restriction=TCPEdgeIPRestrictionModuleClient(self),
+            tcp_edge_traffic_policy=TCPEdgeTrafficPolicyModuleClient(self),
             tls_edge_backend=TLSEdgeBackendModuleClient(self),
             tls_edge_ip_restriction=TLSEdgeIPRestrictionModuleClient(self),
             tls_edge_mutual_tls=TLSEdgeMutualTLSModuleClient(self),
             tls_edge_tls_termination=TLSEdgeTLSTerminationModuleClient(self),
+            tls_edge_traffic_policy=TLSEdgeTrafficPolicyModuleClient(self),
         )

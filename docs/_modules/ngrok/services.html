@@ -3770,6 +3770,38 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
 
+<div class="viewcode-block" id="EndpointsClient.create"><a class="viewcode-back" href="../../endpoints.html#ngrok.services.EndpointsClient.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">traffic_policy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">bindings</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Endpoint</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an endpoint, currently available only for cloud endpoints</span>
+
+<span class="sd">        :param url: the url of the endpoint</span>
+<span class="sd">        :param type: whether the endpoint is ``ephemeral`` (served directly by an agent-initiated tunnel) or ``edge`` (served by an edge) or ``cloud (represents a cloud endpoint)``</span>
+<span class="sd">        :param traffic_policy: The traffic policy attached to this endpoint</span>
+<span class="sd">        :param description: user-supplied description of the associated tunnel</span>
+<span class="sd">        :param metadata: user-supplied metadata of the associated tunnel or edge object</span>
+<span class="sd">        :param bindings: the bindings associated with this endpoint</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-endpoints-create</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/endpoints&quot;</span>
+        <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">,</span>
+            <span class="n">traffic_policy</span><span class="o">=</span><span class="n">traffic_policy</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
+            <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
+            <span class="n">bindings</span><span class="o">=</span><span class="n">bindings</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Endpoint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="EndpointsClient.list"><a class="viewcode-back" href="../../endpoints.html#ngrok.services.EndpointsClient.list">[docs]</a>    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -3806,7 +3838,58 @@
         <span class="p">)</span>
         <span class="n">body_arg</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Endpoint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">Endpoint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EndpointsClient.update"><a class="viewcode-back" href="../../endpoints.html#ngrok.services.EndpointsClient.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">traffic_policy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">bindings</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Endpoint</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update an Endpoint by ID, currently available only for cloud endpoints</span>
+
+<span class="sd">        :param id: unique endpoint resource identifier</span>
+<span class="sd">        :param url: the url of the endpoint</span>
+<span class="sd">        :param traffic_policy: The traffic policy attached to this endpoint</span>
+<span class="sd">        :param description: user-supplied description of the associated tunnel</span>
+<span class="sd">        :param metadata: user-supplied metadata of the associated tunnel or edge object</span>
+<span class="sd">        :param bindings: the bindings associated with this endpoint</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-endpoints-update</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/endpoints/</span><span class="si">{id}</span><span class="s2">&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+            <span class="n">traffic_policy</span><span class="o">=</span><span class="n">traffic_policy</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
+            <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
+            <span class="n">bindings</span><span class="o">=</span><span class="n">bindings</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Endpoint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EndpointsClient.delete"><a class="viewcode-back" href="../../endpoints.html#ngrok.services.EndpointsClient.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete an Endpoint by ID, currently available only for cloud endpoints</span>
+
+<span class="sd">        :param id: a resource identifier</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-endpoints-delete</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/endpoints/</span><span class="si">{id}</span><span class="s2">&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">body_arg</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="EventDestinationsClient"><a class="viewcode-back" href="../../event_destinations.html#ngrok.services.EventDestinationsClient">[docs]</a><span class="k">class</span> <span class="nc">EventDestinationsClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
