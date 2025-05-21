@@ -3519,21 +3519,23 @@ class EndpointsClient(object):
 
     def create(
         self,
-        url: str = "",
-        type: str = "",
-        traffic_policy: str = "",
+        url: str,
+        type: str,
+        traffic_policy: str,
         description: str = None,
         metadata: str = None,
         bindings: Sequence[str] = None,
+        pooling_enabled: bool = False,
     ) -> Endpoint:
         """Create an endpoint, currently available only for cloud endpoints
 
         :param url: the url of the endpoint
-        :param type: whether the endpoint is ``ephemeral`` (served directly by an agent-initiated tunnel) or ``edge`` (served by an edge) or ``cloud (represents a cloud endpoint)``
+        :param type: Type of endpoint. Only 'cloud' is currently supported (represents a cloud endpoint). Defaults to 'cloud' if not specified.
         :param traffic_policy: The traffic policy attached to this endpoint
         :param description: user-supplied description of the associated tunnel
         :param metadata: user-supplied metadata of the associated tunnel or edge object
         :param bindings: the bindings associated with this endpoint
+        :param pooling_enabled:
 
         https://ngrok.com/docs/api#api-endpoints-create
         """
@@ -3545,6 +3547,7 @@ class EndpointsClient(object):
             description=description,
             metadata=metadata,
             bindings=bindings,
+            pooling_enabled=pooling_enabled,
         )
         result = self._client.http_client.post(path, body_arg)
         return Endpoint(self._client, result)
@@ -3595,6 +3598,7 @@ class EndpointsClient(object):
         description: str = None,
         metadata: str = None,
         bindings: Sequence[str] = None,
+        pooling_enabled: bool = False,
     ) -> Endpoint:
         """Update an Endpoint by ID, currently available only for cloud endpoints
 
@@ -3604,6 +3608,7 @@ class EndpointsClient(object):
         :param description: user-supplied description of the associated tunnel
         :param metadata: user-supplied metadata of the associated tunnel or edge object
         :param bindings: the bindings associated with this endpoint
+        :param pooling_enabled:
 
         https://ngrok.com/docs/api#api-endpoints-update
         """
@@ -3617,6 +3622,7 @@ class EndpointsClient(object):
             description=description,
             metadata=metadata,
             bindings=bindings,
+            pooling_enabled=pooling_enabled,
         )
         result = self._client.http_client.patch(path, body_arg)
         return Endpoint(self._client, result)
@@ -4335,6 +4341,164 @@ class IPRestrictionsClient(object):
         )
         result = self._client.http_client.patch(path, body_arg)
         return IPRestriction(self._client, result)
+
+
+class KubernetesOperatorsClient(object):
+    """KubernetesOperators is used by the Kubernetes Operator to register and
+    manage its own resource, as well as for users to see active kubernetes
+    clusters."""
+
+    def __init__(self, client):
+        self._client = client
+
+    def create(
+        self,
+        description: str = "",
+        metadata: str = "",
+        enabled_features: Sequence[str] = [],
+        region: str = "",
+        deployment: KubernetesOperatorDeployment = None,
+        binding: KubernetesOperatorBindingCreate = None,
+    ) -> KubernetesOperator:
+        """Create a new Kubernetes Operator
+
+        :param description: human-readable description of this Kubernetes Operator. optional, max 255 bytes.
+        :param metadata: arbitrary user-defined machine-readable data of this Kubernetes Operator. optional, max 4096 bytes.
+        :param enabled_features: features enabled for this Kubernetes Operator. a subset of "bindings", "ingress", and "gateway"
+        :param region: the ngrok region in which the ingress for this operator is served. defaults to "global"
+        :param deployment: information about the deployment of this Kubernetes Operator
+        :param binding: configuration for the Bindings feature of this Kubernetes Operator. set only if enabling the "bindings" feature
+
+        https://ngrok.com/docs/api#api-kubernetes-operators-create
+        """
+        path = "/kubernetes_operators"
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            enabled_features=enabled_features,
+            region=region,
+            deployment=extract_props(deployment),
+            binding=extract_props(binding),
+        )
+        result = self._client.http_client.post(path, body_arg)
+        return KubernetesOperator(self._client, result)
+
+    def update(
+        self,
+        id: str,
+        description: str = None,
+        metadata: str = None,
+        enabled_features: Sequence[str] = None,
+        region: str = None,
+        binding: KubernetesOperatorBindingUpdate = None,
+        deployment: KubernetesOperatorDeploymentUpdate = None,
+    ) -> KubernetesOperator:
+        """Update an existing Kubernetes operator by ID.
+
+        :param id: unique identifier for this Kubernetes Operator
+        :param description: human-readable description of this Kubernetes Operator. optional, max 255 bytes.
+        :param metadata: arbitrary user-defined machine-readable data of this Kubernetes Operator. optional, max 4096 bytes.
+        :param enabled_features: features enabled for this Kubernetes Operator. a subset of "bindings", "ingress", and "gateway"
+        :param region: the ngrok region in which the ingress for this operator is served. defaults to "global"
+        :param binding: configuration for the Bindings feature of this Kubernetes Operator. set only if enabling the "bindings" feature
+        :param deployment: configuration for the Deployment info
+
+        https://ngrok.com/docs/api#api-kubernetes-operators-update
+        """
+        path = "/kubernetes_operators/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = dict(
+            description=description,
+            metadata=metadata,
+            enabled_features=enabled_features,
+            region=region,
+            binding=extract_props(binding),
+            deployment=extract_props(deployment),
+        )
+        result = self._client.http_client.patch(path, body_arg)
+        return KubernetesOperator(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """Delete a Kubernetes Operator
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-kubernetes-operators-delete
+        """
+        path = "/kubernetes_operators/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
+
+    def get(
+        self,
+        id: str,
+    ) -> KubernetesOperator:
+        """Get of a Kubernetes Operator
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-kubernetes-operators-get
+        """
+        path = "/kubernetes_operators/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
+        return KubernetesOperator(self._client, result)
+
+    def list(
+        self,
+        before_id: str = None,
+        limit: str = None,
+    ) -> KubernetesOperatorList:
+        """List all Kubernetes Operators owned by this account
+
+        :param before_id:
+        :param limit:
+
+        https://ngrok.com/docs/api#api-kubernetes-operators-list
+        """
+        path = "/kubernetes_operators"
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
+        )
+        result = self._client.http_client.get(path, body_arg)
+        return KubernetesOperatorList(self._client, result)
+
+    def get_bound_endpoints(
+        self,
+        id: str,
+        before_id: str = None,
+        limit: str = None,
+    ) -> EndpointList:
+        """List Endpoints bound to a Kubernetes Operator
+
+        :param id: a resource identifier
+        :param before_id:
+        :param limit:
+
+        https://ngrok.com/docs/api#api-kubernetes-operators-get-bound-endpoints
+        """
+        path = "/kubernetes_operators/{id}/bound_endpoints"
+        path = path.format(
+            id=id,
+        )
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
+        )
+        result = self._client.http_client.get(path, body_arg)
+        return EndpointList(self._client, result)
 
 
 class ReservedAddrsClient(object):

@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="SSH User Certificates" href="ssh_user_certificates.html" /><link rel="prev" title="SSH Credentials" href="ssh_credentials.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Reserved Addresses" href="reserved_addrs.html" /><link rel="prev" title="IP Restrictions" href="ip_restrictions.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
-        <title>SSH Host Certificates - ngrok-api documentation</title>
+        <title>Kubernetes Operators - ngrok-api documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -210,12 +210,12 @@
 <li class="toctree-l1"><a class="reference internal" href="ip_policies.html">IP Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policy_rules.html">IP Policy Rules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_restrictions.html">IP Restrictions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kubernetes_operators.html">Kubernetes Operators</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Kubernetes Operators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reserved_addrs.html">Reserved Addresses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reserved_domains.html">Reserved Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_certificate_authorities.html">SSH Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_credentials.html">SSH Credentials</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">SSH Host Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssh_host_certificates.html">SSH Host Certificates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_user_certificates.html">SSH User Certificates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_certificates.html">TLS Certificates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tunnels.html">Tunnels</a></li>
@@ -253,74 +253,94 @@
           </label>
         </div>
         <article role="main">
-          <section id="ssh-host-certificates">
-<h1>SSH Host Certificates<a class="headerlink" href="#ssh-host-certificates" title="Permalink to this heading">#</a></h1>
+          <section id="kubernetes-operators">
+<h1>Kubernetes Operators<a class="headerlink" href="#kubernetes-operators" title="Permalink to this heading">#</a></h1>
 <p>Do not construct this object directly, instead access the
-<a class="reference internal" href="client.html#ngrok.Client.ssh_host_certificates" title="ngrok.Client.ssh_host_certificates"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ssh_host_certificates</span></code></a> property of an <a class="reference internal" href="client.html#ngrok.Client" title="ngrok.Client"><code class="xref py py-class docutils literal notranslate"><span class="pre">ngrok.Client</span></code></a> object.</p>
+<a class="reference internal" href="client.html#ngrok.Client.kubernetes_operators" title="ngrok.Client.kubernetes_operators"><code class="xref py py-attr docutils literal notranslate"><span class="pre">kubernetes_operators</span></code></a> property of an <a class="reference internal" href="client.html#ngrok.Client" title="ngrok.Client"><code class="xref py py-class docutils literal notranslate"><span class="pre">ngrok.Client</span></code></a> object.</p>
 <span class="target" id="module-ngrok.services"></span><dl class="py class">
-<dt class="sig sig-object py" id="ngrok.services.SSHHostCertificatesClient">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.services.</span></span><span class="sig-name descname"><span class="pre">SSHHostCertificatesClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#SSHHostCertificatesClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.SSHHostCertificatesClient" title="Permalink to this definition">#</a></dt>
-<dd><p>SSH Host Certificates along with the corresponding private key allows an SSH
-server to assert its authenticity to connecting SSH clients who trust the
-SSH Certificate Authority that was used to sign the certificate.</p>
+<dt class="sig sig-object py" id="ngrok.services.KubernetesOperatorsClient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.services.</span></span><span class="sig-name descname"><span class="pre">KubernetesOperatorsClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#KubernetesOperatorsClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.KubernetesOperatorsClient" title="Permalink to this definition">#</a></dt>
+<dd><p>KubernetesOperators is used by the Kubernetes Operator to register and
+manage its own resource, as well as for users to see active kubernetes
+clusters.</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="ngrok.services.SSHHostCertificatesClient.create">
-<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssh_certificate_authority_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">public_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">principals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">datetime.datetime(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_until</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">datetime.datetime(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#SSHHostCertificatesClient.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.SSHHostCertificatesClient.create" title="Permalink to this definition">#</a></dt>
-<dd><p>Create a new SSH Host Certificate</p>
+<dt class="sig sig-object py" id="ngrok.services.KubernetesOperatorsClient.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enabled_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deployment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#KubernetesOperatorsClient.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.KubernetesOperatorsClient.create" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a new Kubernetes Operator</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ssh_certificate_authority_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – the ssh certificate authority that is used to sign this ssh host certificate</p></li>
-<li><p><strong>public_key</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a public key in OpenSSH Authorized Keys format that this certificate signs</p></li>
-<li><p><strong>principals</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – the list of principals included in the ssh host certificate. This is the list of hostnames and/or IP addresses that are authorized to serve SSH traffic with this certificate. Dangerously, if no principals are specified, this certificate is considered valid for all hosts.</p></li>
-<li><p><strong>valid_after</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code>) – The time when the host certificate becomes valid, in RFC 3339 format. Defaults to the current time if unspecified.</p></li>
-<li><p><strong>valid_until</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code>) – The time when this host certificate becomes invalid, in RFC 3339 format. If unspecified, a default value of one year in the future will be used. The OpenSSH certificates RFC calls this <code class="docutils literal notranslate"><span class="pre">valid_before</span></code>.</p></li>
-<li><p><strong>description</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – human-readable description of this SSH Host Certificate. optional, max 255 bytes.</p></li>
-<li><p><strong>metadata</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – arbitrary user-defined machine-readable data of this SSH Host Certificate. optional, max 4096 bytes.</p></li>
+<li><p><strong>description</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – human-readable description of this Kubernetes Operator. optional, max 255 bytes.</p></li>
+<li><p><strong>metadata</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – arbitrary user-defined machine-readable data of this Kubernetes Operator. optional, max 4096 bytes.</p></li>
+<li><p><strong>enabled_features</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – features enabled for this Kubernetes Operator. a subset of “bindings”, “ingress”, and “gateway”</p></li>
+<li><p><strong>region</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – the ngrok region in which the ingress for this operator is served. defaults to “global”</p></li>
+<li><p><strong>deployment</strong> (<a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorDeployment" title="ngrok.datatypes.KubernetesOperatorDeployment"><code class="xref py py-class docutils literal notranslate"><span class="pre">KubernetesOperatorDeployment</span></code></a>) – information about the deployment of this Kubernetes Operator</p></li>
+<li><p><strong>binding</strong> (<a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorBindingCreate" title="ngrok.datatypes.KubernetesOperatorBindingCreate"><code class="xref py py-class docutils literal notranslate"><span class="pre">KubernetesOperatorBindingCreate</span></code></a>) – configuration for the Bindings feature of this Kubernetes Operator. set only if enabling the “bindings” feature</p></li>
 </ul>
 </dd>
 </dl>
-<p><a class="reference external" href="https://ngrok.com/docs/api#api-ssh-host-certificates-create">https://ngrok.com/docs/api#api-ssh-host-certificates-create</a></p>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-kubernetes-operators-create">https://ngrok.com/docs/api#api-kubernetes-operators-create</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.SSHHostCertificate" title="ngrok.datatypes.SSHHostCertificate"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSHHostCertificate</span></code></a></p>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperator" title="ngrok.datatypes.KubernetesOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">KubernetesOperator</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="ngrok.services.SSHHostCertificatesClient.delete">
-<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#SSHHostCertificatesClient.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.SSHHostCertificatesClient.delete" title="Permalink to this definition">#</a></dt>
-<dd><p>Delete an SSH Host Certificate</p>
+<dt class="sig sig-object py" id="ngrok.services.KubernetesOperatorsClient.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#KubernetesOperatorsClient.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.KubernetesOperatorsClient.delete" title="Permalink to this definition">#</a></dt>
+<dd><p>Delete a Kubernetes Operator</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
 </dd>
 </dl>
-<p><a class="reference external" href="https://ngrok.com/docs/api#api-ssh-host-certificates-delete">https://ngrok.com/docs/api#api-ssh-host-certificates-delete</a></p>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-kubernetes-operators-delete">https://ngrok.com/docs/api#api-kubernetes-operators-delete</a></p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="ngrok.services.SSHHostCertificatesClient.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#SSHHostCertificatesClient.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.SSHHostCertificatesClient.get" title="Permalink to this definition">#</a></dt>
-<dd><p>Get detailed information about an SSH Host Certficate</p>
+<dt class="sig sig-object py" id="ngrok.services.KubernetesOperatorsClient.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#KubernetesOperatorsClient.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.KubernetesOperatorsClient.get" title="Permalink to this definition">#</a></dt>
+<dd><p>Get of a Kubernetes Operator</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
 </dd>
 </dl>
-<p><a class="reference external" href="https://ngrok.com/docs/api#api-ssh-host-certificates-get">https://ngrok.com/docs/api#api-ssh-host-certificates-get</a></p>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-kubernetes-operators-get">https://ngrok.com/docs/api#api-kubernetes-operators-get</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.SSHHostCertificate" title="ngrok.datatypes.SSHHostCertificate"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSHHostCertificate</span></code></a></p>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperator" title="ngrok.datatypes.KubernetesOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">KubernetesOperator</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="ngrok.services.SSHHostCertificatesClient.list">
-<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">before_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#SSHHostCertificatesClient.list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.SSHHostCertificatesClient.list" title="Permalink to this definition">#</a></dt>
-<dd><p>List all SSH Host Certificates issued on this account</p>
+<dt class="sig sig-object py" id="ngrok.services.KubernetesOperatorsClient.get_bound_endpoints">
+<span class="sig-name descname"><span class="pre">get_bound_endpoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">before_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#KubernetesOperatorsClient.get_bound_endpoints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.KubernetesOperatorsClient.get_bound_endpoints" title="Permalink to this definition">#</a></dt>
+<dd><p>List Endpoints bound to a Kubernetes Operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p></li>
+<li><p><strong>before_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>limit</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-kubernetes-operators-get-bound-endpoints">https://ngrok.com/docs/api#api-kubernetes-operators-get-bound-endpoints</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.EndpointList" title="ngrok.datatypes.EndpointList"><code class="xref py py-class docutils literal notranslate"><span class="pre">EndpointList</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ngrok.services.KubernetesOperatorsClient.list">
+<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">before_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#KubernetesOperatorsClient.list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.KubernetesOperatorsClient.list" title="Permalink to this definition">#</a></dt>
+<dd><p>List all Kubernetes Operators owned by this account</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -329,31 +349,35 @@ SSH Certificate Authority that was used to sign the certificate.</p>
 </ul>
 </dd>
 </dl>
-<p><a class="reference external" href="https://ngrok.com/docs/api#api-ssh-host-certificates-list">https://ngrok.com/docs/api#api-ssh-host-certificates-list</a></p>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-kubernetes-operators-list">https://ngrok.com/docs/api#api-kubernetes-operators-list</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.SSHHostCertificateList" title="ngrok.datatypes.SSHHostCertificateList"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSHHostCertificateList</span></code></a></p>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorList" title="ngrok.datatypes.KubernetesOperatorList"><code class="xref py py-class docutils literal notranslate"><span class="pre">KubernetesOperatorList</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="ngrok.services.SSHHostCertificatesClient.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#SSHHostCertificatesClient.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.SSHHostCertificatesClient.update" title="Permalink to this definition">#</a></dt>
-<dd><p>Update an SSH Host Certificate</p>
+<dt class="sig sig-object py" id="ngrok.services.KubernetesOperatorsClient.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enabled_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deployment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#KubernetesOperatorsClient.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.KubernetesOperatorsClient.update" title="Permalink to this definition">#</a></dt>
+<dd><p>Update an existing Kubernetes operator by ID.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
-<li><p><strong>description</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – human-readable description of this SSH Host Certificate. optional, max 255 bytes.</p></li>
-<li><p><strong>metadata</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – arbitrary user-defined machine-readable data of this SSH Host Certificate. optional, max 4096 bytes.</p></li>
+<li><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – unique identifier for this Kubernetes Operator</p></li>
+<li><p><strong>description</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – human-readable description of this Kubernetes Operator. optional, max 255 bytes.</p></li>
+<li><p><strong>metadata</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – arbitrary user-defined machine-readable data of this Kubernetes Operator. optional, max 4096 bytes.</p></li>
+<li><p><strong>enabled_features</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – features enabled for this Kubernetes Operator. a subset of “bindings”, “ingress”, and “gateway”</p></li>
+<li><p><strong>region</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – the ngrok region in which the ingress for this operator is served. defaults to “global”</p></li>
+<li><p><strong>binding</strong> (<a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorBindingUpdate" title="ngrok.datatypes.KubernetesOperatorBindingUpdate"><code class="xref py py-class docutils literal notranslate"><span class="pre">KubernetesOperatorBindingUpdate</span></code></a>) – configuration for the Bindings feature of this Kubernetes Operator. set only if enabling the “bindings” feature</p></li>
+<li><p><strong>deployment</strong> (<a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorDeploymentUpdate" title="ngrok.datatypes.KubernetesOperatorDeploymentUpdate"><code class="xref py py-class docutils literal notranslate"><span class="pre">KubernetesOperatorDeploymentUpdate</span></code></a>) – configuration for the Deployment info</p></li>
 </ul>
 </dd>
 </dl>
-<p><a class="reference external" href="https://ngrok.com/docs/api#api-ssh-host-certificates-update">https://ngrok.com/docs/api#api-ssh-host-certificates-update</a></p>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-kubernetes-operators-update">https://ngrok.com/docs/api#api-kubernetes-operators-update</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.SSHHostCertificate" title="ngrok.datatypes.SSHHostCertificate"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSHHostCertificate</span></code></a></p>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperator" title="ngrok.datatypes.KubernetesOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">KubernetesOperator</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -367,23 +391,23 @@ SSH Certificate Authority that was used to sign the certificate.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="ssh_user_certificates.html">
+          <a class="next-page" href="reserved_addrs.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">SSH User Certificates</div>
+                <div class="title">Reserved Addresses</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="ssh_credentials.html">
+          <a class="prev-page" href="ip_restrictions.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">SSH Credentials</div>
+                <div class="title">IP Restrictions</div>
                 
               </div>
             </a>
@@ -417,13 +441,14 @@ SSH Certificate Authority that was used to sign the certificate.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">SSH Host Certificates</a><ul>
-<li><a class="reference internal" href="#ngrok.services.SSHHostCertificatesClient"><code class="docutils literal notranslate"><span class="pre">SSHHostCertificatesClient</span></code></a><ul>
-<li><a class="reference internal" href="#ngrok.services.SSHHostCertificatesClient.create"><code class="docutils literal notranslate"><span class="pre">SSHHostCertificatesClient.create()</span></code></a></li>
-<li><a class="reference internal" href="#ngrok.services.SSHHostCertificatesClient.delete"><code class="docutils literal notranslate"><span class="pre">SSHHostCertificatesClient.delete()</span></code></a></li>
-<li><a class="reference internal" href="#ngrok.services.SSHHostCertificatesClient.get"><code class="docutils literal notranslate"><span class="pre">SSHHostCertificatesClient.get()</span></code></a></li>
-<li><a class="reference internal" href="#ngrok.services.SSHHostCertificatesClient.list"><code class="docutils literal notranslate"><span class="pre">SSHHostCertificatesClient.list()</span></code></a></li>
-<li><a class="reference internal" href="#ngrok.services.SSHHostCertificatesClient.update"><code class="docutils literal notranslate"><span class="pre">SSHHostCertificatesClient.update()</span></code></a></li>
+<li><a class="reference internal" href="#">Kubernetes Operators</a><ul>
+<li><a class="reference internal" href="#ngrok.services.KubernetesOperatorsClient"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorsClient</span></code></a><ul>
+<li><a class="reference internal" href="#ngrok.services.KubernetesOperatorsClient.create"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorsClient.create()</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.services.KubernetesOperatorsClient.delete"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorsClient.delete()</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.services.KubernetesOperatorsClient.get"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorsClient.get()</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.services.KubernetesOperatorsClient.get_bound_endpoints"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorsClient.get_bound_endpoints()</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.services.KubernetesOperatorsClient.list"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorsClient.list()</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.services.KubernetesOperatorsClient.update"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorsClient.update()</span></code></a></li>
 </ul>
 </li>
 </ul>

@@ -210,6 +210,7 @@
 <li class="toctree-l1"><a class="reference internal" href="ip_policies.html">IP Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policy_rules.html">IP Policy Rules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_restrictions.html">IP Restrictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kubernetes_operators.html">Kubernetes Operators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reserved_addrs.html">Reserved Addresses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reserved_domains.html">Reserved Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_certificate_authorities.html">SSH Certificate Authorities</a></li>
@@ -257,7 +258,7 @@
 <p><a class="reference internal" href="#ngrok.Client" title="ngrok.Client"><code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code></a> is the root object of the <cite>ngrok-api</cite> library. Construct
 a Client with an API Key. Then you can access API Services as properties of the
 Client object:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ngrok</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ngrok</span>
 
 <span class="c1"># construct the api client</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">ngrok</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s2">&quot;&lt;API KEY&gt;&quot;</span><span class="p">)</span>
@@ -471,6 +472,19 @@ public-facing endpoints.</p>
 </dd></dl>
 
 <dl class="py property">
+<dt class="sig sig-object py" id="ngrok.Client.kubernetes_operators">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">kubernetes_operators</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kubernetes_operators.html#ngrok.services.KubernetesOperatorsClient" title="ngrok.services.KubernetesOperatorsClient"><span class="pre">KubernetesOperatorsClient</span></a></em><a class="headerlink" href="#ngrok.Client.kubernetes_operators" title="Permalink to this definition">#</a></dt>
+<dd><p>KubernetesOperators is used by the Kubernetes Operator to register and
+manage its own resource, as well as for users to see active kubernetes
+clusters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="kubernetes_operators.html#ngrok.services.KubernetesOperatorsClient" title="ngrok.services.KubernetesOperatorsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">KubernetesOperatorsClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="ngrok.Client.reserved_addrs">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reserved_addrs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="reserved_addrs.html#ngrok.services.ReservedAddrsClient" title="ngrok.services.ReservedAddrsClient"><span class="pre">ReservedAddrsClient</span></a></em><a class="headerlink" href="#ngrok.Client.reserved_addrs" title="Permalink to this definition">#</a></dt>
 <dd><p>Reserved Addresses are TCP addresses that can be used to listen for traffic.
@@ -666,6 +680,7 @@ agent tunnel session or an SSH reverse tunnel session.</p>
 <li><a class="reference internal" href="#ngrok.Client.ip_policies"><code class="docutils literal notranslate"><span class="pre">Client.ip_policies</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.Client.ip_policy_rules"><code class="docutils literal notranslate"><span class="pre">Client.ip_policy_rules</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.Client.ip_restrictions"><code class="docutils literal notranslate"><span class="pre">Client.ip_restrictions</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.Client.kubernetes_operators"><code class="docutils literal notranslate"><span class="pre">Client.kubernetes_operators</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.Client.reserved_addrs"><code class="docutils literal notranslate"><span class="pre">Client.reserved_addrs</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.Client.reserved_domains"><code class="docutils literal notranslate"><span class="pre">Client.reserved_domains</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.Client.ssh_certificate_authorities"><code class="docutils literal notranslate"><span class="pre">Client.ssh_certificate_authorities</span></code></a></li>

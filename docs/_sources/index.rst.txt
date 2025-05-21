@@ -171,6 +171,7 @@ API Reference
   ip_policies
   ip_policy_rules
   ip_restrictions
+  kubernetes_operators
   reserved_addrs
   reserved_domains
   ssh_certificate_authorities

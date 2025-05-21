@@ -210,6 +210,7 @@
 <li class="toctree-l1"><a class="reference internal" href="ip_policies.html">IP Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_policy_rules.html">IP Policy Rules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_restrictions.html">IP Restrictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kubernetes_operators.html">Kubernetes Operators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reserved_addrs.html">Reserved Addresses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reserved_domains.html">Reserved Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_certificate_authorities.html">SSH Certificate Authorities</a></li>
@@ -271,7 +272,7 @@ HTTP API</a> from Python.</p>
 <p>In your application’s code, construct an <a class="reference internal" href="client.html#ngrok.Client" title="ngrok.Client"><code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code></a> object
 with the API key. API services can be accessed as properties of the client
 object. That’s it!</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ngrok</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ngrok</span>
 
 <span class="c1"># construct the api client</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">ngrok</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s2">&quot;&lt;API KEY&gt;&quot;</span><span class="p">)</span>
@@ -293,7 +294,7 @@ object. That’s it!</p>
 from you. All response objects from any <code class="docutils literal notranslate"><span class="pre">list()</span></code> methods return an object that
 implements an <code class="docutils literal notranslate"><span class="pre">__iter__()</span></code> method which will automatically fetch additional
 pages for you.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ngrok</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ngrok</span>
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">ngrok</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s2">&quot;&lt;API KEY&gt;&quot;</span><span class="p">)</span>
 
@@ -331,7 +332,7 @@ cred = client.credentials.update(“cr_1kYyunEyn6XHHlqyMBLrj5nxkoz”, metadata=
 <h3>Error Handling<a class="headerlink" href="#error-handling" title="Permalink to this heading">#</a></h3>
 <p>The ngrok API returns detailed information when an API call fails. Consult the
 section on <a class="reference internal" href="errors.html#errors"><span class="std std-ref">errors</span></a> for additional details.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ngrok</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ngrok</span>
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">ngrok</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s2">&quot;&lt;API KEY&gt;&quot;</span><span class="p">)</span>
 
@@ -372,6 +373,7 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="client.html#ngrok.Client.ip_policies"><code class="docutils literal notranslate"><span class="pre">Client.ip_policies</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="client.html#ngrok.Client.ip_policy_rules"><code class="docutils literal notranslate"><span class="pre">Client.ip_policy_rules</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="client.html#ngrok.Client.ip_restrictions"><code class="docutils literal notranslate"><span class="pre">Client.ip_restrictions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="client.html#ngrok.Client.kubernetes_operators"><code class="docutils literal notranslate"><span class="pre">Client.kubernetes_operators</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="client.html#ngrok.Client.reserved_addrs"><code class="docutils literal notranslate"><span class="pre">Client.reserved_addrs</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="client.html#ngrok.Client.reserved_domains"><code class="docutils literal notranslate"><span class="pre">Client.reserved_domains</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="client.html#ngrok.Client.ssh_certificate_authorities"><code class="docutils literal notranslate"><span class="pre">Client.ssh_certificate_authorities</span></code></a></li>
@@ -587,9 +589,9 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint.id"><code class="docutils literal notranslate"><span class="pre">Endpoint.id</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint.metadata"><code class="docutils literal notranslate"><span class="pre">Endpoint.metadata</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint.name"><code class="docutils literal notranslate"><span class="pre">Endpoint.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint.pooling_enabled"><code class="docutils literal notranslate"><span class="pre">Endpoint.pooling_enabled</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint.port"><code class="docutils literal notranslate"><span class="pre">Endpoint.port</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint.principal"><code class="docutils literal notranslate"><span class="pre">Endpoint.principal</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint.principal_id"><code class="docutils literal notranslate"><span class="pre">Endpoint.principal_id</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint.proto"><code class="docutils literal notranslate"><span class="pre">Endpoint.proto</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint.public_url"><code class="docutils literal notranslate"><span class="pre">Endpoint.public_url</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint.region"><code class="docutils literal notranslate"><span class="pre">Endpoint.region</span></code></a></li>
@@ -601,7 +603,7 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint.type"><code class="docutils literal notranslate"><span class="pre">Endpoint.type</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint.update"><code class="docutils literal notranslate"><span class="pre">Endpoint.update()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint.updated_at"><code class="docutils literal notranslate"><span class="pre">Endpoint.updated_at</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint.upstream_proto"><code class="docutils literal notranslate"><span class="pre">Endpoint.upstream_proto</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint.upstream_protocol"><code class="docutils literal notranslate"><span class="pre">Endpoint.upstream_protocol</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint.upstream_url"><code class="docutils literal notranslate"><span class="pre">Endpoint.upstream_url</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint.uri"><code class="docutils literal notranslate"><span class="pre">Endpoint.uri</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Endpoint.url"><code class="docutils literal notranslate"><span class="pre">Endpoint.url</span></code></a></li>
@@ -1055,6 +1057,64 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.IdentityProvider"><code class="docutils literal notranslate"><span class="pre">IdentityProvider</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.IdentityProvider.name"><code class="docutils literal notranslate"><span class="pre">IdentityProvider.name</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.IdentityProvider.url"><code class="docutils literal notranslate"><span class="pre">IdentityProvider.url</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperator"><code class="docutils literal notranslate"><span class="pre">KubernetesOperator</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperator.binding"><code class="docutils literal notranslate"><span class="pre">KubernetesOperator.binding</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperator.created_at"><code class="docutils literal notranslate"><span class="pre">KubernetesOperator.created_at</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperator.delete"><code class="docutils literal notranslate"><span class="pre">KubernetesOperator.delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperator.deployment"><code class="docutils literal notranslate"><span class="pre">KubernetesOperator.deployment</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperator.description"><code class="docutils literal notranslate"><span class="pre">KubernetesOperator.description</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperator.enabled_features"><code class="docutils literal notranslate"><span class="pre">KubernetesOperator.enabled_features</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperator.id"><code class="docutils literal notranslate"><span class="pre">KubernetesOperator.id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperator.metadata"><code class="docutils literal notranslate"><span class="pre">KubernetesOperator.metadata</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperator.principal"><code class="docutils literal notranslate"><span class="pre">KubernetesOperator.principal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperator.region"><code class="docutils literal notranslate"><span class="pre">KubernetesOperator.region</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperator.update"><code class="docutils literal notranslate"><span class="pre">KubernetesOperator.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperator.updated_at"><code class="docutils literal notranslate"><span class="pre">KubernetesOperator.updated_at</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperator.uri"><code class="docutils literal notranslate"><span class="pre">KubernetesOperator.uri</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorBinding"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorBinding</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorBinding.cert"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorBinding.cert</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorBinding.endpoint_selectors"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorBinding.endpoint_selectors</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorBinding.ingress_endpoint"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorBinding.ingress_endpoint</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorBindingCreate"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorBindingCreate</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorBindingCreate.csr"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorBindingCreate.csr</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorBindingCreate.endpoint_selectors"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorBindingCreate.endpoint_selectors</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorBindingCreate.ingress_endpoint"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorBindingCreate.ingress_endpoint</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorBindingUpdate"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorBindingUpdate</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorBindingUpdate.csr"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorBindingUpdate.csr</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorBindingUpdate.endpoint_selectors"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorBindingUpdate.endpoint_selectors</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorBindingUpdate.ingress_endpoint"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorBindingUpdate.ingress_endpoint</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorCert"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorCert</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorCert.cert"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorCert.cert</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorCert.not_after"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorCert.not_after</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorCert.not_before"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorCert.not_before</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorDeployment"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorDeployment</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorDeployment.cluster_name"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorDeployment.cluster_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorDeployment.name"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorDeployment.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorDeployment.namespace"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorDeployment.namespace</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorDeployment.version"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorDeployment.version</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorDeploymentUpdate"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorDeploymentUpdate</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorDeploymentUpdate.name"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorDeploymentUpdate.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorDeploymentUpdate.version"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorDeploymentUpdate.version</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorList"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorList</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorList.next_page_uri"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorList.next_page_uri</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorList.operators"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorList.operators</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.KubernetesOperatorList.uri"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorList.uri</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Location"><code class="docutils literal notranslate"><span class="pre">Location</span></code></a><ul>
@@ -1883,6 +1943,18 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="ip_restrictions.html#ngrok.services.IPRestrictionsClient.get"><code class="docutils literal notranslate"><span class="pre">IPRestrictionsClient.get()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="ip_restrictions.html#ngrok.services.IPRestrictionsClient.list"><code class="docutils literal notranslate"><span class="pre">IPRestrictionsClient.list()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="ip_restrictions.html#ngrok.services.IPRestrictionsClient.update"><code class="docutils literal notranslate"><span class="pre">IPRestrictionsClient.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kubernetes_operators.html">Kubernetes Operators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="kubernetes_operators.html#ngrok.services.KubernetesOperatorsClient"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorsClient</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="kubernetes_operators.html#ngrok.services.KubernetesOperatorsClient.create"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorsClient.create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="kubernetes_operators.html#ngrok.services.KubernetesOperatorsClient.delete"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorsClient.delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="kubernetes_operators.html#ngrok.services.KubernetesOperatorsClient.get"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorsClient.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="kubernetes_operators.html#ngrok.services.KubernetesOperatorsClient.get_bound_endpoints"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorsClient.get_bound_endpoints()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="kubernetes_operators.html#ngrok.services.KubernetesOperatorsClient.list"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorsClient.list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="kubernetes_operators.html#ngrok.services.KubernetesOperatorsClient.update"><code class="docutils literal notranslate"><span class="pre">KubernetesOperatorsClient.update()</span></code></a></li>
 </ul>
 </li>
 </ul>

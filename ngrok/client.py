@@ -110,6 +110,13 @@ class Client(object):
         return IPRestrictionsClient(self)
 
     @property
+    def kubernetes_operators(self) -> KubernetesOperatorsClient:
+        """KubernetesOperators is used by the Kubernetes Operator to register and
+        manage its own resource, as well as for users to see active kubernetes
+        clusters."""
+        return KubernetesOperatorsClient(self)
+
+    @property
     def reserved_addrs(self) -> ReservedAddrsClient:
         """Reserved Addresses are TCP addresses that can be used to listen for traffic.
         TCP address hostnames and ports are assigned by ngrok, they cannot be

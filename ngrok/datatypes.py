@@ -3664,11 +3664,6 @@ class Endpoint(object):
             if props.get("principal") is not None
             else None
         )
-        self._props["principal_id"] = (
-            Ref(client, props["principal_id"])
-            if props.get("principal_id") is not None
-            else None
-        )
         self._props["tunnel_session"] = (
             Ref(client, props["tunnel_session"])
             if props.get("tunnel_session") is not None
@@ -3691,6 +3686,7 @@ class Endpoint(object):
         description: str = None,
         metadata: str = None,
         bindings: Sequence[str] = None,
+        pooling_enabled: bool = False,
     ):
         self._client.endpoints.update(
             id=self.id,
@@ -3699,6 +3695,7 @@ class Endpoint(object):
             description=description,
             metadata=metadata,
             bindings=bindings,
+            pooling_enabled=pooling_enabled,
         )
 
     def delete(
@@ -3796,9 +3793,9 @@ class Endpoint(object):
         return self._props["upstream_url"]
 
     @property
-    def upstream_proto(self) -> str:
+    def upstream_protocol(self) -> str:
         """the protocol the agent uses to forward with"""
-        return self._props["upstream_proto"]
+        return self._props["upstream_protocol"]
 
     @property
     def url(self) -> str:
@@ -3809,11 +3806,6 @@ class Endpoint(object):
     def principal(self) -> Ref:
         """The ID of the owner (bot or user) that owns this endpoint"""
         return self._props["principal"]
-
-    @property
-    def principal_id(self) -> Ref:
-        """TODO: deprecate me!"""
-        return self._props["principal_id"]
 
     @property
     def traffic_policy(self) -> str:
@@ -3839,6 +3831,11 @@ class Endpoint(object):
     def name(self) -> str:
         """user supplied name for the endpoint"""
         return self._props["name"]
+
+    @property
+    def pooling_enabled(self) -> bool:
+        """whether the endpoint allows pooling"""
+        return self._props["pooling_enabled"]
 
 
 class EndpointList(object):
@@ -4780,6 +4777,349 @@ class IPRestrictionList(object):
     @property
     def uri(self) -> str:
         """URI of the IP restrictions list API resource"""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page, or null if there is no next page"""
+        return self._props["next_page_uri"]
+
+
+class KubernetesOperatorBindingCreate(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<KubernetesOperatorBindingCreate {} {}>".format(
+                self.id, repr(self._props)
+            )
+        else:
+            return "<KubernetesOperatorBindingCreate {}>".format(repr(self._props))
+
+    @property
+    def endpoint_selectors(self) -> Sequence[str]:
+        """the list of cel expressions that filter the k8s bound endpoints for this operator"""
+        return self._props["endpoint_selectors"]
+
+    @property
+    def csr(self) -> str:
+        """CSR is supplied during initial creation to enable creating a mutual TLS secured connection between ngrok and the operator. This is an internal implementation detail and subject to change."""
+        return self._props["csr"]
+
+    @property
+    def ingress_endpoint(self) -> str:
+        """the public ingress endpoint for this Kubernetes Operator"""
+        return self._props["ingress_endpoint"]
+
+
+class KubernetesOperatorBindingUpdate(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<KubernetesOperatorBindingUpdate {} {}>".format(
+                self.id, repr(self._props)
+            )
+        else:
+            return "<KubernetesOperatorBindingUpdate {}>".format(repr(self._props))
+
+    @property
+    def endpoint_selectors(self) -> Sequence[str]:
+        """the list of cel expressions that filter the k8s bound endpoints for this operator"""
+        return self._props["endpoint_selectors"]
+
+    @property
+    def csr(self) -> str:
+        """CSR is supplied during initial creation to enable creating a mutual TLS secured connection between ngrok and the operator. This is an internal implementation detail and subject to change."""
+        return self._props["csr"]
+
+    @property
+    def ingress_endpoint(self) -> str:
+        """the public ingress endpoint for this Kubernetes Operator"""
+        return self._props["ingress_endpoint"]
+
+
+class KubernetesOperatorDeploymentUpdate(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<KubernetesOperatorDeploymentUpdate {} {}>".format(
+                self.id, repr(self._props)
+            )
+        else:
+            return "<KubernetesOperatorDeploymentUpdate {}>".format(repr(self._props))
+
+    @property
+    def name(self) -> str:
+        """the deployment name"""
+        return self._props["name"]
+
+    @property
+    def version(self) -> str:
+        """the version of this Kubernetes Operator"""
+        return self._props["version"]
+
+
+class KubernetesOperator(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["principal"] = (
+            Ref(client, props["principal"])
+            if props.get("principal") is not None
+            else None
+        )
+        self._props["deployment"] = (
+            KubernetesOperatorDeployment(client, props["deployment"])
+            if props.get("deployment") is not None
+            else None
+        )
+        self._props["binding"] = (
+            KubernetesOperatorBinding(client, props["binding"])
+            if props.get("binding") is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<KubernetesOperator {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<KubernetesOperator {}>".format(repr(self._props))
+
+    def update(
+        self,
+        description: str = None,
+        metadata: str = None,
+        enabled_features: Sequence[str] = None,
+        region: str = None,
+        binding: KubernetesOperatorBindingUpdate = None,
+        deployment: KubernetesOperatorDeploymentUpdate = None,
+    ):
+        self._client.kubernetes_operators.update(
+            id=self.id,
+            description=description,
+            metadata=metadata,
+            enabled_features=enabled_features,
+            region=region,
+            binding=binding,
+            deployment=deployment,
+        )
+
+    def delete(
+        self,
+    ):
+        self._client.kubernetes_operators.delete(
+            id=self.id,
+        )
+
+    @property
+    def id(self) -> str:
+        """unique identifier for this Kubernetes Operator"""
+        return self._props["id"]
+
+    @property
+    def uri(self) -> str:
+        """URI of this Kubernetes Operator API resource"""
+        return self._props["uri"]
+
+    @property
+    def created_at(self) -> datetime:
+        """timestamp when the Kubernetes Operator was created. RFC 3339 format"""
+        return self._props["created_at"]
+
+    @property
+    def updated_at(self) -> datetime:
+        """timestamp when the Kubernetes Operator was last updated. RFC 3339 format"""
+        return self._props["updated_at"]
+
+    @property
+    def description(self) -> str:
+        """human-readable description of this Kubernetes Operator. optional, max 255 bytes."""
+        return self._props["description"]
+
+    @property
+    def metadata(self) -> str:
+        """arbitrary user-defined machine-readable data of this Kubernetes Operator. optional, max 4096 bytes."""
+        return self._props["metadata"]
+
+    @property
+    def principal(self) -> Ref:
+        """the principal who created this Kubernetes Operator"""
+        return self._props["principal"]
+
+    @property
+    def enabled_features(self) -> Sequence[str]:
+        """features enabled for this Kubernetes Operator. a subset of "bindings", "ingress", and "gateway" """
+        return self._props["enabled_features"]
+
+    @property
+    def region(self) -> str:
+        """the ngrok region in which the ingress for this operator is served. defaults to "global" """
+        return self._props["region"]
+
+    @property
+    def deployment(self) -> KubernetesOperatorDeployment:
+        """information about the deployment of this Kubernetes Operator"""
+        return self._props["deployment"]
+
+    @property
+    def binding(self) -> KubernetesOperatorBinding:
+        """information about the Bindings feature of this Kubernetes Operator, if enabled"""
+        return self._props["binding"]
+
+
+class KubernetesOperatorDeployment(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<KubernetesOperatorDeployment {} {}>".format(
+                self.id, repr(self._props)
+            )
+        else:
+            return "<KubernetesOperatorDeployment {}>".format(repr(self._props))
+
+    @property
+    def name(self) -> str:
+        """the deployment name"""
+        return self._props["name"]
+
+    @property
+    def namespace(self) -> str:
+        """the namespace this Kubernetes Operator is deployed to"""
+        return self._props["namespace"]
+
+    @property
+    def version(self) -> str:
+        """the version of this Kubernetes Operator"""
+        return self._props["version"]
+
+    @property
+    def cluster_name(self) -> str:
+        """user-given name for the cluster the Kubernetes Operator is deployed to"""
+        return self._props["cluster_name"]
+
+
+class KubernetesOperatorCert(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<KubernetesOperatorCert {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<KubernetesOperatorCert {}>".format(repr(self._props))
+
+    @property
+    def cert(self) -> str:
+        """the public client certificate generated for this Kubernetes Operator from the CSR supplied when enabling the Bindings feature"""
+        return self._props["cert"]
+
+    @property
+    def not_before(self) -> datetime:
+        """timestamp when the certificate becomes valid. RFC 3339 format"""
+        return self._props["not_before"]
+
+    @property
+    def not_after(self) -> datetime:
+        """timestamp when the certificate becomes invalid. RFC 3339 format"""
+        return self._props["not_after"]
+
+
+class KubernetesOperatorBinding(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["cert"] = (
+            KubernetesOperatorCert(client, props["cert"])
+            if props.get("cert") is not None
+            else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<KubernetesOperatorBinding {} {}>".format(
+                self.id, repr(self._props)
+            )
+        else:
+            return "<KubernetesOperatorBinding {}>".format(repr(self._props))
+
+    @property
+    def endpoint_selectors(self) -> Sequence[str]:
+        """the list of cel expressions that filter the k8s bound endpoints for this operator"""
+        return self._props["endpoint_selectors"]
+
+    @property
+    def cert(self) -> KubernetesOperatorCert:
+        """the binding certificate information"""
+        return self._props["cert"]
+
+    @property
+    def ingress_endpoint(self) -> str:
+        """the public ingress endpoint for this Kubernetes Operator"""
+        return self._props["ingress_endpoint"]
+
+
+class KubernetesOperatorList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["operators"] = (
+            [KubernetesOperator(client, x) for x in props["operators"]]
+            if props.get("operators") is not None
+            else []
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<KubernetesOperatorList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<KubernetesOperatorList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "operators")
+
+    @property
+    def operators(self) -> Sequence[KubernetesOperator]:
+        """the list of Kubernetes Operators for this account"""
+        return self._props["operators"]
+
+    @property
+    def uri(self) -> str:
         return self._props["uri"]
 
     @property
