@@ -5,3 +5,4 @@ doc/build
 .swp
 __pycache__
 /ngrok_api.egg-info
+.tox

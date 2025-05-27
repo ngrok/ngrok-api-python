@@ -254,28 +254,28 @@
 <span></span><span class="c1"># Code generated for API Clients. DO NOT EDIT.</span>
 
 
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
-<span class="kn">import</span> <span class="nn">collections</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">.services</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">collections</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.services</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
 
-<div class="viewcode-block" id="Client"><a class="viewcode-back" href="../../client.html#ngrok.Client">[docs]</a><span class="k">class</span> <span class="nc">Client</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">base_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;https://api.ngrok.com&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="Client"><a class="viewcode-back" href="../../client.html#ngrok.Client">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">Client</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">base_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;https://api.ngrok.com&quot;</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">http_client</span> <span class="o">=</span> <span class="n">HTTPClient</span><span class="p">(</span><span class="n">api_key</span><span class="p">,</span> <span class="n">base_url</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">abuse_reports</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbuseReportsClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">abuse_reports</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbuseReportsClient</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Abuse Reports allow you to submit take-down requests for URLs hosted by</span>
 <span class="sd">        ngrok that violate ngrok&#39;s terms of service.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">AbuseReportsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">agent_ingresses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentIngressesClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">agent_ingresses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentIngressesClient</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">AgentIngressesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">api_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">APIKeysClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">api_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">APIKeysClient</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;API Keys are used to authenticate to the `ngrok</span>
 <span class="sd">        API &lt;https://ngrok.com/docs/api#authentication&gt;`_. You may use the API itself</span>
 <span class="sd">        to provision and manage API Keys but you&#39;ll need to provision your first API</span>
@@ -284,26 +284,26 @@
         <span class="k">return</span> <span class="n">APIKeysClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">application_sessions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApplicationSessionsClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">application_sessions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApplicationSessionsClient</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">ApplicationSessionsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">application_users</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApplicationUsersClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">application_users</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApplicationUsersClient</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">ApplicationUsersClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">tunnel_sessions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelSessionsClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">tunnel_sessions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelSessionsClient</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Tunnel Sessions represent instances of ngrok agents or SSH reverse tunnel</span>
 <span class="sd">        sessions that are running and connected to the ngrok service. Each tunnel</span>
 <span class="sd">        session can include one or more Tunnels.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">TunnelSessionsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">bot_users</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BotUsersClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">bot_users</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BotUsersClient</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">BotUsersClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">certificate_authorities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CertificateAuthoritiesClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">certificate_authorities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CertificateAuthoritiesClient</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Certificate Authorities are x509 certificates that are used to sign other</span>
 <span class="sd">        x509 certificates. Attach a Certificate Authority to the Mutual TLS module</span>
 <span class="sd">        to verify that the TLS certificate presented by a client has been signed by</span>
@@ -312,7 +312,7 @@
         <span class="k">return</span> <span class="n">CertificateAuthoritiesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">credentials</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CredentialsClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">credentials</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CredentialsClient</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Tunnel Credentials are ngrok agent authtokens. They authorize the ngrok</span>
 <span class="sd">        agent to connect the ngrok service as your account. They are installed with</span>
 <span class="sd">        the ``ngrok config add-authtoken`` command or by specifying it in the ``ngrok.yml``</span>
@@ -320,26 +320,26 @@
         <span class="k">return</span> <span class="n">CredentialsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">endpoints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointsClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">endpoints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointsClient</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Endpoints provides an API for querying the endpoint objects</span>
 <span class="sd">        which define what tunnel or edge is used to serve a hostport.</span>
 <span class="sd">        Only active endpoints associated with a tunnel or backend are returned.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">EndpointsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">event_destinations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventDestinationsClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">event_destinations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventDestinationsClient</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">EventDestinationsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">event_subscriptions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSubscriptionsClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">event_subscriptions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSubscriptionsClient</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">EventSubscriptionsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">event_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSourcesClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">event_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSourcesClient</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">EventSourcesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">ip_policies</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPPoliciesClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ip_policies</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPPoliciesClient</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;IP Policies are reusable groups of CIDR ranges with an ``allow`` or ``deny``</span>
 <span class="sd">        action. They can be attached to endpoints via the Endpoint Configuration IP</span>
 <span class="sd">        Policy module. They can also be used with IP Restrictions to control source</span>
@@ -347,13 +347,13 @@
         <span class="k">return</span> <span class="n">IPPoliciesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">ip_policy_rules</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPPolicyRulesClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ip_policy_rules</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPPolicyRulesClient</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;IP Policy Rules are the IPv4 or IPv6 CIDRs entries that</span>
 <span class="sd">        make up an IP Policy.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">IPPolicyRulesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">ip_restrictions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPRestrictionsClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ip_restrictions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPRestrictionsClient</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;An IP restriction is a restriction placed on the CIDRs that are allowed to</span>
 <span class="sd">        initiate traffic to a specific aspect of your ngrok account. An IP</span>
 <span class="sd">        restriction has a type which defines the ingress it applies to. IP</span>
@@ -363,14 +363,14 @@
         <span class="k">return</span> <span class="n">IPRestrictionsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">reserved_addrs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReservedAddrsClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reserved_addrs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReservedAddrsClient</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Reserved Addresses are TCP addresses that can be used to listen for traffic.</span>
 <span class="sd">        TCP address hostnames and ports are assigned by ngrok, they cannot be</span>
 <span class="sd">        chosen.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">ReservedAddrsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">reserved_domains</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReservedDomainsClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reserved_domains</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReservedDomainsClient</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Reserved Domains are hostnames that you can listen for traffic on. Domains</span>
 <span class="sd">        can be used to listen for http, https or tls traffic. You may use a domain</span>
 <span class="sd">        that you own by creating a CNAME record specified in the returned resource.</span>
@@ -378,33 +378,33 @@
         <span class="k">return</span> <span class="n">ReservedDomainsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">ssh_certificate_authorities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHCertificateAuthoritiesClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ssh_certificate_authorities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHCertificateAuthoritiesClient</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;An SSH Certificate Authority is a pair of an SSH Certificate and its private</span>
 <span class="sd">        key that can be used to sign other SSH host and user certificates.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">SSHCertificateAuthoritiesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">ssh_credentials</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHCredentialsClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ssh_credentials</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHCredentialsClient</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;SSH Credentials are SSH public keys that can be used to start SSH tunnels</span>
 <span class="sd">        via the ngrok SSH tunnel gateway.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">SSHCredentialsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">ssh_host_certificates</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHHostCertificatesClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ssh_host_certificates</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHHostCertificatesClient</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;SSH Host Certificates along with the corresponding private key allows an SSH</span>
 <span class="sd">        server to assert its authenticity to connecting SSH clients who trust the</span>
 <span class="sd">        SSH Certificate Authority that was used to sign the certificate.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">SSHHostCertificatesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">ssh_user_certificates</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHUserCertificatesClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ssh_user_certificates</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHUserCertificatesClient</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;SSH User Certificates are presented by SSH clients when connecting to an SSH</span>
 <span class="sd">        server to authenticate their connection. The SSH server must trust the SSH</span>
 <span class="sd">        Certificate Authority used to sign the certificate.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">SSHUserCertificatesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">tls_certificates</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TLSCertificatesClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">tls_certificates</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TLSCertificatesClient</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;TLS Certificates are pairs of x509 certificates and their matching private</span>
 <span class="sd">        key that can be used to terminate TLS traffic. TLS certificates are unused</span>
 <span class="sd">        until they are attached to a Domain. TLS Certificates may also be</span>
@@ -413,13 +413,13 @@
         <span class="k">return</span> <span class="n">TLSCertificatesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">tunnels</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelsClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">tunnels</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelsClient</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Tunnels provide endpoints to access services exposed by a running ngrok</span>
 <span class="sd">        agent tunnel session or an SSH reverse tunnel session.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">TunnelsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">backends</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">backends</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">ns</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span>
             <span class="s2">&quot;Namespace&quot;</span><span class="p">,</span>
             <span class="p">[</span>
@@ -439,7 +439,7 @@
         <span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">edges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">edges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">ns</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span>
             <span class="s2">&quot;Namespace&quot;</span><span class="p">,</span>
             <span class="p">[</span>
@@ -457,7 +457,7 @@
         <span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">edge_modules</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">edge_modules</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">ns</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span>
             <span class="s2">&quot;Namespace&quot;</span><span class="p">,</span>
             <span class="p">[</span>

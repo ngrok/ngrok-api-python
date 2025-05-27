@@ -3519,21 +3519,23 @@ class EndpointsClient(object):
 
     def create(
         self,
-        url: str = "",
-        type: str = "",
-        traffic_policy: str = "",
+        url: str,
+        type: str,
+        traffic_policy: str,
         description: str = None,
         metadata: str = None,
         bindings: Sequence[str] = None,
+        pooling_enabled: bool = False,
     ) -> Endpoint:
         """Create an endpoint, currently available only for cloud endpoints
 
         :param url: the url of the endpoint
-        :param type: whether the endpoint is ``ephemeral`` (served directly by an agent-initiated tunnel) or ``edge`` (served by an edge) or ``cloud (represents a cloud endpoint)``
+        :param type: Type of endpoint. Only 'cloud' is currently supported (represents a cloud endpoint). Defaults to 'cloud' if not specified.
         :param traffic_policy: The traffic policy attached to this endpoint
         :param description: user-supplied description of the associated tunnel
         :param metadata: user-supplied metadata of the associated tunnel or edge object
         :param bindings: the bindings associated with this endpoint
+        :param pooling_enabled:
 
         https://ngrok.com/docs/api#api-endpoints-create
         """
@@ -3545,6 +3547,7 @@ class EndpointsClient(object):
             description=description,
             metadata=metadata,
             bindings=bindings,
+            pooling_enabled=pooling_enabled,
         )
         result = self._client.http_client.post(path, body_arg)
         return Endpoint(self._client, result)
@@ -3595,6 +3598,7 @@ class EndpointsClient(object):
         description: str = None,
         metadata: str = None,
         bindings: Sequence[str] = None,
+        pooling_enabled: bool = False,
     ) -> Endpoint:
         """Update an Endpoint by ID, currently available only for cloud endpoints
 
@@ -3604,6 +3608,7 @@ class EndpointsClient(object):
         :param description: user-supplied description of the associated tunnel
         :param metadata: user-supplied metadata of the associated tunnel or edge object
         :param bindings: the bindings associated with this endpoint
+        :param pooling_enabled:
 
         https://ngrok.com/docs/api#api-endpoints-update
         """
@@ -3617,6 +3622,7 @@ class EndpointsClient(object):
             description=description,
             metadata=metadata,
             bindings=bindings,
+            pooling_enabled=pooling_enabled,
         )
         result = self._client.http_client.patch(path, body_arg)
         return Endpoint(self._client, result)
