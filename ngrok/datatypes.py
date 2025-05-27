@@ -3664,11 +3664,6 @@ class Endpoint(object):
             if props.get("principal") is not None
             else None
         )
-        self._props["principal_id"] = (
-            Ref(client, props["principal_id"])
-            if props.get("principal_id") is not None
-            else None
-        )
         self._props["tunnel_session"] = (
             Ref(client, props["tunnel_session"])
             if props.get("tunnel_session") is not None
@@ -3691,6 +3686,7 @@ class Endpoint(object):
         description: str = None,
         metadata: str = None,
         bindings: Sequence[str] = None,
+        pooling_enabled: bool = False,
     ):
         self._client.endpoints.update(
             id=self.id,
@@ -3699,6 +3695,7 @@ class Endpoint(object):
             description=description,
             metadata=metadata,
             bindings=bindings,
+            pooling_enabled=pooling_enabled,
         )
 
     def delete(
@@ -3796,9 +3793,9 @@ class Endpoint(object):
         return self._props["upstream_url"]
 
     @property
-    def upstream_proto(self) -> str:
+    def upstream_protocol(self) -> str:
         """the protocol the agent uses to forward with"""
-        return self._props["upstream_proto"]
+        return self._props["upstream_protocol"]
 
     @property
     def url(self) -> str:
@@ -3809,11 +3806,6 @@ class Endpoint(object):
     def principal(self) -> Ref:
         """The ID of the owner (bot or user) that owns this endpoint"""
         return self._props["principal"]
-
-    @property
-    def principal_id(self) -> Ref:
-        """TODO: deprecate me!"""
-        return self._props["principal_id"]
 
     @property
     def traffic_policy(self) -> str:
@@ -3839,6 +3831,11 @@ class Endpoint(object):
     def name(self) -> str:
         """user supplied name for the endpoint"""
         return self._props["name"]
+
+    @property
+    def pooling_enabled(self) -> bool:
+        """whether the endpoint allows pooling"""
+        return self._props["pooling_enabled"]
 
 
 class EndpointList(object):
