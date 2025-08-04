@@ -4617,6 +4617,128 @@ class ReservedDomainsClient(object):
         self._client.http_client.delete(path, body_arg)
 
 
+class SecretsClient(object):
+    """Secrets is an api service for securely storing and managing sensitive data such as secrets, credentials, and tokens."""
+
+    def __init__(self, client):
+        self._client = client
+
+    def create(
+        self,
+        vault_id: str,
+        name: str = "",
+        value: str = "",
+        metadata: str = "",
+        description: str = "",
+    ) -> Secret:
+        """Create a new Secret
+
+        :param name: Name of secret
+        :param value: Value of secret
+        :param metadata: Arbitrary user-defined metadata for this Secret
+        :param description: description of Secret
+        :param vault_id: unique identifier of the referenced vault
+
+        https://ngrok.com/docs/api#api-secrets-create
+        """
+        path = "/vault_secrets"
+        body_arg = dict(
+            name=name,
+            value=value,
+            metadata=metadata,
+            description=description,
+            vault_id=vault_id,
+        )
+        result = self._client.http_client.post(path, body_arg)
+        return Secret(self._client, result)
+
+    def update(
+        self,
+        id: str,
+        name: str = None,
+        value: str = None,
+        metadata: str = None,
+        description: str = None,
+    ) -> Secret:
+        """Update an existing Secret by ID
+
+        :param id: identifier for Secret
+        :param name: Name of secret
+        :param value: Value of secret
+        :param metadata: Arbitrary user-defined metadata for this Secret
+        :param description: description of Secret
+
+        https://ngrok.com/docs/api#api-secrets-update
+        """
+        path = "/vault_secrets/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = dict(
+            name=name,
+            value=value,
+            metadata=metadata,
+            description=description,
+        )
+        result = self._client.http_client.patch(path, body_arg)
+        return Secret(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """Delete a Secret
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-secrets-delete
+        """
+        path = "/vault_secrets/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
+
+    def get(
+        self,
+        id: str,
+    ) -> Secret:
+        """Get a Secret by ID
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-secrets-get
+        """
+        path = "/vault_secrets/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
+        return Secret(self._client, result)
+
+    def list(
+        self,
+        before_id: str = None,
+        limit: str = None,
+    ) -> SecretList:
+        """List all Secrets owned by account
+
+        :param before_id:
+        :param limit:
+
+        https://ngrok.com/docs/api#api-secrets-list
+        """
+        path = "/vault_secrets"
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
+        )
+        result = self._client.http_client.get(path, body_arg)
+        return SecretList(self._client, result)
+
+
 class SSHCertificateAuthoritiesClient(object):
     """An SSH Certificate Authority is a pair of an SSH Certificate and its private
     key that can be used to sign other SSH host and user certificates."""
@@ -5269,3 +5391,116 @@ class TunnelsClient(object):
         body_arg = None
         result = self._client.http_client.get(path, body_arg)
         return Tunnel(self._client, result)
+
+
+class VaultsClient(object):
+    """Vaults is an api service for securely storing and managing sensitive data such as secrets, credentials, and tokens."""
+
+    def __init__(self, client):
+        self._client = client
+
+    def create(
+        self,
+        name: str = "",
+        metadata: str = "",
+        description: str = "",
+    ) -> Vault:
+        """Create a new Vault
+
+        :param name: Name of vault
+        :param metadata: Arbitrary user-defined metadata for this Vault
+        :param description: description of Vault
+
+        https://ngrok.com/docs/api#api-vaults-create
+        """
+        path = "/vaults"
+        body_arg = dict(
+            name=name,
+            metadata=metadata,
+            description=description,
+        )
+        result = self._client.http_client.post(path, body_arg)
+        return Vault(self._client, result)
+
+    def update(
+        self,
+        id: str,
+        name: str = None,
+        metadata: str = None,
+        description: str = None,
+    ) -> Vault:
+        """Update an existing Vault by ID
+
+        :param id: identifier for Vault
+        :param name: Name of vault
+        :param metadata: Arbitrary user-defined metadata for this Vault
+        :param description: description of Vault
+
+        https://ngrok.com/docs/api#api-vaults-update
+        """
+        path = "/vaults/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = dict(
+            name=name,
+            metadata=metadata,
+            description=description,
+        )
+        result = self._client.http_client.patch(path, body_arg)
+        return Vault(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """Delete a Vault
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-vaults-delete
+        """
+        path = "/vaults/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
+
+    def get(
+        self,
+        id: str,
+    ) -> Vault:
+        """Get a Vault by ID
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-vaults-get
+        """
+        path = "/vaults/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
+        return Vault(self._client, result)
+
+    def list(
+        self,
+        before_id: str = None,
+        limit: str = None,
+    ) -> VaultList:
+        """List all Vaults owned by account
+
+        :param before_id:
+        :param limit:
+
+        https://ngrok.com/docs/api#api-vaults-list
+        """
+        path = "/vaults"
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
+        )
+        result = self._client.http_client.get(path, body_arg)
+        return VaultList(self._client, result)

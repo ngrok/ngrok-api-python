@@ -212,12 +212,14 @@
 <li class="toctree-l1"><a class="reference internal" href="ip_restrictions.html">IP Restrictions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reserved_addrs.html">Reserved Addresses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reserved_domains.html">Reserved Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="secrets.html">Secrets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_certificate_authorities.html">SSH Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_credentials.html">SSH Credentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_host_certificates.html">SSH Host Certificates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_user_certificates.html">SSH User Certificates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_certificates.html">TLS Certificates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tunnels.html">Tunnels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vaults.html">Vaults</a></li>
 </ul>
 
 </div>
@@ -498,6 +500,17 @@ This CNAME record points traffic for that domain to ngrok’s edge servers.</p>
 </dd></dl>
 
 <dl class="py property">
+<dt class="sig sig-object py" id="ngrok.Client.secrets">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">secrets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="secrets.html#ngrok.services.SecretsClient" title="ngrok.services.SecretsClient"><span class="pre">SecretsClient</span></a></em><a class="headerlink" href="#ngrok.Client.secrets" title="Permalink to this definition">#</a></dt>
+<dd><p>Secrets is an api service for securely storing and managing sensitive data such as secrets, credentials, and tokens.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="secrets.html#ngrok.services.SecretsClient" title="ngrok.services.SecretsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">SecretsClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="ngrok.Client.ssh_certificate_authorities">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ssh_certificate_authorities</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="ssh_certificate_authorities.html#ngrok.services.SSHCertificateAuthoritiesClient" title="ngrok.services.SSHCertificateAuthoritiesClient"><span class="pre">SSHCertificateAuthoritiesClient</span></a></em><a class="headerlink" href="#ngrok.Client.ssh_certificate_authorities" title="Permalink to this definition">#</a></dt>
 <dd><p>An SSH Certificate Authority is a pair of an SSH Certificate and its private
@@ -587,6 +600,17 @@ agent tunnel session or an SSH reverse tunnel session.</p>
 </dl>
 </dd></dl>
 
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.Client.vaults">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vaults</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="vaults.html#ngrok.services.VaultsClient" title="ngrok.services.VaultsClient"><span class="pre">VaultsClient</span></a></em><a class="headerlink" href="#ngrok.Client.vaults" title="Permalink to this definition">#</a></dt>
+<dd><p>Vaults is an api service for securely storing and managing sensitive data such as secrets, credentials, and tokens.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="vaults.html#ngrok.services.VaultsClient" title="ngrok.services.VaultsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">VaultsClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -668,6 +692,7 @@ agent tunnel session or an SSH reverse tunnel session.</p>
 <li><a class="reference internal" href="#ngrok.Client.ip_restrictions"><code class="docutils literal notranslate"><span class="pre">Client.ip_restrictions</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.Client.reserved_addrs"><code class="docutils literal notranslate"><span class="pre">Client.reserved_addrs</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.Client.reserved_domains"><code class="docutils literal notranslate"><span class="pre">Client.reserved_domains</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.Client.secrets"><code class="docutils literal notranslate"><span class="pre">Client.secrets</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.Client.ssh_certificate_authorities"><code class="docutils literal notranslate"><span class="pre">Client.ssh_certificate_authorities</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.Client.ssh_credentials"><code class="docutils literal notranslate"><span class="pre">Client.ssh_credentials</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.Client.ssh_host_certificates"><code class="docutils literal notranslate"><span class="pre">Client.ssh_host_certificates</span></code></a></li>
@@ -675,6 +700,7 @@ agent tunnel session or an SSH reverse tunnel session.</p>
 <li><a class="reference internal" href="#ngrok.Client.tls_certificates"><code class="docutils literal notranslate"><span class="pre">Client.tls_certificates</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.Client.tunnel_sessions"><code class="docutils literal notranslate"><span class="pre">Client.tunnel_sessions</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.Client.tunnels"><code class="docutils literal notranslate"><span class="pre">Client.tunnels</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.Client.vaults"><code class="docutils literal notranslate"><span class="pre">Client.vaults</span></code></a></li>
 </ul>
 </li>
 </ul>

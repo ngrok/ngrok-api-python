@@ -173,9 +173,11 @@ API Reference
   ip_restrictions
   reserved_addrs
   reserved_domains
+  secrets
   ssh_certificate_authorities
   ssh_credentials
   ssh_host_certificates
   ssh_user_certificates
   tls_certificates
   tunnels
+  vaults
