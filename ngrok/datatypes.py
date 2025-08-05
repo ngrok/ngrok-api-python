@@ -5105,6 +5105,128 @@ class ReservedDomainCertJob(object):
         return self._props["retries_at"]
 
 
+class Secret(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["created_by"] = (
+            Ref(client, props["created_by"])
+            if props.get("created_by") is not None
+            else None
+        )
+        self._props["last_updated_by"] = (
+            Ref(client, props["last_updated_by"])
+            if props.get("last_updated_by") is not None
+            else None
+        )
+        self._props["vault"] = (
+            Ref(client, props["vault"]) if props.get("vault") is not None else None
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<Secret {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<Secret {}>".format(repr(self._props))
+
+    def delete(
+        self,
+    ):
+        self._client.secrets.delete(
+            id=self.id,
+        )
+
+    @property
+    def id(self) -> str:
+        """identifier for Secret"""
+        return self._props["id"]
+
+    @property
+    def uri(self) -> str:
+        """URI of this Secret API resource"""
+        return self._props["uri"]
+
+    @property
+    def created_at(self) -> datetime:
+        """Timestamp when the Secret was created (RFC 3339 format)"""
+        return self._props["created_at"]
+
+    @property
+    def updated_at(self) -> datetime:
+        """Timestamp when the Secret was last updated (RFC 3339 format)"""
+        return self._props["updated_at"]
+
+    @property
+    def name(self) -> str:
+        """Name of secret"""
+        return self._props["name"]
+
+    @property
+    def description(self) -> str:
+        """description of Secret"""
+        return self._props["description"]
+
+    @property
+    def metadata(self) -> str:
+        """Arbitrary user-defined metadata for this Secret"""
+        return self._props["metadata"]
+
+    @property
+    def created_by(self) -> Ref:
+        """Reference to who created this Secret"""
+        return self._props["created_by"]
+
+    @property
+    def last_updated_by(self) -> Ref:
+        """Reference to who created this Secret"""
+        return self._props["last_updated_by"]
+
+    @property
+    def vault(self) -> Ref:
+        """Reference to the vault the secret is stored in"""
+        return self._props["vault"]
+
+
+class SecretList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["secrets"] = (
+            [Secret(client, x) for x in props["secrets"]]
+            if props.get("secrets") is not None
+            else []
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<SecretList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<SecretList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "secrets")
+
+    @property
+    def secrets(self) -> Sequence[Secret]:
+        """The list of Secrets for this account"""
+        return self._props["secrets"]
+
+    @property
+    def uri(self) -> str:
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page of results, or null if there is no next page"""
+        return self._props["next_page_uri"]
+
+
 class SSHCertificateAuthority(object):
     def __init__(self, client, props):
         self._client = client
@@ -5927,4 +6049,121 @@ class TunnelList(object):
     @property
     def next_page_uri(self) -> str:
         """URI of the next page, or null if there is no next page"""
+        return self._props["next_page_uri"]
+
+
+class Vault(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<Vault {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<Vault {}>".format(repr(self._props))
+
+    def update(
+        self,
+        name: str = None,
+        metadata: str = None,
+        description: str = None,
+    ):
+        self._client.vaults.update(
+            id=self.id,
+            name=name,
+            metadata=metadata,
+            description=description,
+        )
+
+    def delete(
+        self,
+    ):
+        self._client.vaults.delete(
+            id=self.id,
+        )
+
+    @property
+    def id(self) -> str:
+        """identifier for Vault"""
+        return self._props["id"]
+
+    @property
+    def uri(self) -> str:
+        """URI of this Vault API resource"""
+        return self._props["uri"]
+
+    @property
+    def created_at(self) -> datetime:
+        """Timestamp when the Vault was created (RFC 3339 format)"""
+        return self._props["created_at"]
+
+    @property
+    def updated_at(self) -> datetime:
+        """Timestamp when the Vault was last updated (RFC 3339 format)"""
+        return self._props["updated_at"]
+
+    @property
+    def name(self) -> str:
+        """Name of vault"""
+        return self._props["name"]
+
+    @property
+    def description(self) -> str:
+        """description of Vault"""
+        return self._props["description"]
+
+    @property
+    def metadata(self) -> str:
+        """Arbitrary user-defined metadata for this Vault"""
+        return self._props["metadata"]
+
+    @property
+    def created_by(self) -> str:
+        """Reference to who created this Vault"""
+        return self._props["created_by"]
+
+    @property
+    def last_updated_by(self) -> str:
+        """Reference to who created this Vault"""
+        return self._props["last_updated_by"]
+
+
+class VaultList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["vaults"] = (
+            [Vault(client, x) for x in props["vaults"]]
+            if props.get("vaults") is not None
+            else []
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<VaultList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<VaultList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "vaults")
+
+    @property
+    def vaults(self) -> Sequence[Vault]:
+        """The list of Vaults for this account"""
+        return self._props["vaults"]
+
+    @property
+    def uri(self) -> str:
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page of results, or null if there is no next page"""
         return self._props["next_page_uri"]
