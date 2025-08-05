@@ -212,12 +212,14 @@
 <li class="toctree-l1"><a class="reference internal" href="ip_restrictions.html">IP Restrictions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reserved_addrs.html">Reserved Addresses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reserved_domains.html">Reserved Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="secrets.html">Secrets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_certificate_authorities.html">SSH Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_credentials.html">SSH Credentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_host_certificates.html">SSH Host Certificates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_user_certificates.html">SSH User Certificates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tls_certificates.html">TLS Certificates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tunnels.html">Tunnels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vaults.html">Vaults</a></li>
 </ul>
 
 </div>
@@ -6308,6 +6310,163 @@
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="ngrok.datatypes.Secret">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></span><span class="sig-name descname"><span class="pre">Secret</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#Secret"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.Secret" title="Permalink to this definition">#</a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.Secret.created_at">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime</span></em><a class="headerlink" href="#ngrok.datatypes.Secret.created_at" title="Permalink to this definition">#</a></dt>
+<dd><p>Timestamp when the Secret was created (RFC 3339 format)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.Secret.created_by">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">created_by</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ngrok.datatypes.Ref" title="ngrok.datatypes.Ref"><span class="pre">Ref</span></a></em><a class="headerlink" href="#ngrok.datatypes.Secret.created_by" title="Permalink to this definition">#</a></dt>
+<dd><p>Reference to who created this Secret</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.Ref" title="ngrok.datatypes.Ref"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ref</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ngrok.datatypes.Secret.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#Secret.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.Secret.delete" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.Secret.description">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.Secret.description" title="Permalink to this definition">#</a></dt>
+<dd><p>description of Secret</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.Secret.id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.Secret.id" title="Permalink to this definition">#</a></dt>
+<dd><p>identifier for Secret</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.Secret.last_updated_by">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">last_updated_by</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ngrok.datatypes.Ref" title="ngrok.datatypes.Ref"><span class="pre">Ref</span></a></em><a class="headerlink" href="#ngrok.datatypes.Secret.last_updated_by" title="Permalink to this definition">#</a></dt>
+<dd><p>Reference to who created this Secret</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.Ref" title="ngrok.datatypes.Ref"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ref</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.Secret.metadata">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.Secret.metadata" title="Permalink to this definition">#</a></dt>
+<dd><p>Arbitrary user-defined metadata for this Secret</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.Secret.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.Secret.name" title="Permalink to this definition">#</a></dt>
+<dd><p>Name of secret</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.Secret.updated_at">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">updated_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime</span></em><a class="headerlink" href="#ngrok.datatypes.Secret.updated_at" title="Permalink to this definition">#</a></dt>
+<dd><p>Timestamp when the Secret was last updated (RFC 3339 format)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.Secret.uri">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">uri</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.Secret.uri" title="Permalink to this definition">#</a></dt>
+<dd><p>URI of this Secret API resource</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.Secret.vault">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vault</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ngrok.datatypes.Ref" title="ngrok.datatypes.Ref"><span class="pre">Ref</span></a></em><a class="headerlink" href="#ngrok.datatypes.Secret.vault" title="Permalink to this definition">#</a></dt>
+<dd><p>Reference to the vault the secret is stored in</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ngrok.datatypes.Ref" title="ngrok.datatypes.Ref"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ref</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ngrok.datatypes.SecretList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></span><span class="sig-name descname"><span class="pre">SecretList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#SecretList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.SecretList" title="Permalink to this definition">#</a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.SecretList.next_page_uri">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">next_page_uri</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.SecretList.next_page_uri" title="Permalink to this definition">#</a></dt>
+<dd><p>URI of the next page of results, or null if there is no next page</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.SecretList.secrets">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">secrets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#ngrok.datatypes.Secret" title="ngrok.datatypes.Secret"><span class="pre">Secret</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ngrok.datatypes.SecretList.secrets" title="Permalink to this definition">#</a></dt>
+<dd><p>The list of Secrets for this account</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<a class="reference internal" href="#ngrok.datatypes.Secret" title="ngrok.datatypes.Secret"><code class="xref py py-class docutils literal notranslate"><span class="pre">Secret</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.SecretList.uri">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">uri</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.SecretList.uri" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="ngrok.datatypes.StaticBackend">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></span><span class="sig-name descname"><span class="pre">StaticBackend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#StaticBackend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.StaticBackend" title="Permalink to this definition">#</a></dt>
 <dd><dl class="py property">
@@ -7605,6 +7764,157 @@
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="ngrok.datatypes.Vault">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></span><span class="sig-name descname"><span class="pre">Vault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#Vault"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.Vault" title="Permalink to this definition">#</a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.Vault.created_at">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime</span></em><a class="headerlink" href="#ngrok.datatypes.Vault.created_at" title="Permalink to this definition">#</a></dt>
+<dd><p>Timestamp when the Vault was created (RFC 3339 format)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.Vault.created_by">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">created_by</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.Vault.created_by" title="Permalink to this definition">#</a></dt>
+<dd><p>Reference to who created this Vault</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ngrok.datatypes.Vault.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#Vault.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.Vault.delete" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.Vault.description">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.Vault.description" title="Permalink to this definition">#</a></dt>
+<dd><p>description of Vault</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.Vault.id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.Vault.id" title="Permalink to this definition">#</a></dt>
+<dd><p>identifier for Vault</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.Vault.last_updated_by">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">last_updated_by</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.Vault.last_updated_by" title="Permalink to this definition">#</a></dt>
+<dd><p>Reference to who created this Vault</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.Vault.metadata">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.Vault.metadata" title="Permalink to this definition">#</a></dt>
+<dd><p>Arbitrary user-defined metadata for this Vault</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.Vault.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.Vault.name" title="Permalink to this definition">#</a></dt>
+<dd><p>Name of vault</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ngrok.datatypes.Vault.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#Vault.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.Vault.update" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.Vault.updated_at">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">updated_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime</span></em><a class="headerlink" href="#ngrok.datatypes.Vault.updated_at" title="Permalink to this definition">#</a></dt>
+<dd><p>Timestamp when the Vault was last updated (RFC 3339 format)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.Vault.uri">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">uri</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.Vault.uri" title="Permalink to this definition">#</a></dt>
+<dd><p>URI of this Vault API resource</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ngrok.datatypes.VaultList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></span><span class="sig-name descname"><span class="pre">VaultList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#VaultList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.VaultList" title="Permalink to this definition">#</a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.VaultList.next_page_uri">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">next_page_uri</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.VaultList.next_page_uri" title="Permalink to this definition">#</a></dt>
+<dd><p>URI of the next page of results, or null if there is no next page</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.VaultList.uri">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">uri</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.VaultList.uri" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.VaultList.vaults">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vaults</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#ngrok.datatypes.Vault" title="ngrok.datatypes.Vault"><span class="pre">Vault</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ngrok.datatypes.VaultList.vaults" title="Permalink to this definition">#</a></dt>
+<dd><p>The list of Vaults for this account</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<a class="reference internal" href="#ngrok.datatypes.Vault" title="ngrok.datatypes.Vault"><code class="xref py py-class docutils literal notranslate"><span class="pre">Vault</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="ngrok.datatypes.WeightedBackend">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></span><span class="sig-name descname"><span class="pre">WeightedBackend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#WeightedBackend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.WeightedBackend" title="Permalink to this definition">#</a></dt>
 <dd><dl class="py property">
@@ -8605,6 +8915,26 @@
 <li><a class="reference internal" href="#ngrok.datatypes.SSHUserCertificateList.uri"><code class="docutils literal notranslate"><span class="pre">SSHUserCertificateList.uri</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#ngrok.datatypes.Secret"><code class="docutils literal notranslate"><span class="pre">Secret</span></code></a><ul>
+<li><a class="reference internal" href="#ngrok.datatypes.Secret.created_at"><code class="docutils literal notranslate"><span class="pre">Secret.created_at</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.Secret.created_by"><code class="docutils literal notranslate"><span class="pre">Secret.created_by</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.Secret.delete"><code class="docutils literal notranslate"><span class="pre">Secret.delete()</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.Secret.description"><code class="docutils literal notranslate"><span class="pre">Secret.description</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.Secret.id"><code class="docutils literal notranslate"><span class="pre">Secret.id</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.Secret.last_updated_by"><code class="docutils literal notranslate"><span class="pre">Secret.last_updated_by</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.Secret.metadata"><code class="docutils literal notranslate"><span class="pre">Secret.metadata</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.Secret.name"><code class="docutils literal notranslate"><span class="pre">Secret.name</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.Secret.updated_at"><code class="docutils literal notranslate"><span class="pre">Secret.updated_at</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.Secret.uri"><code class="docutils literal notranslate"><span class="pre">Secret.uri</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.Secret.vault"><code class="docutils literal notranslate"><span class="pre">Secret.vault</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ngrok.datatypes.SecretList"><code class="docutils literal notranslate"><span class="pre">SecretList</span></code></a><ul>
+<li><a class="reference internal" href="#ngrok.datatypes.SecretList.next_page_uri"><code class="docutils literal notranslate"><span class="pre">SecretList.next_page_uri</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.SecretList.secrets"><code class="docutils literal notranslate"><span class="pre">SecretList.secrets</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.SecretList.uri"><code class="docutils literal notranslate"><span class="pre">SecretList.uri</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#ngrok.datatypes.StaticBackend"><code class="docutils literal notranslate"><span class="pre">StaticBackend</span></code></a><ul>
 <li><a class="reference internal" href="#ngrok.datatypes.StaticBackend.address"><code class="docutils literal notranslate"><span class="pre">StaticBackend.address</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.StaticBackend.created_at"><code class="docutils literal notranslate"><span class="pre">StaticBackend.created_at</span></code></a></li>
@@ -8770,6 +9100,26 @@
 <li><a class="reference internal" href="#ngrok.datatypes.UserAgent.os_name"><code class="docutils literal notranslate"><span class="pre">UserAgent.os_name</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.UserAgent.os_version"><code class="docutils literal notranslate"><span class="pre">UserAgent.os_version</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.UserAgent.raw"><code class="docutils literal notranslate"><span class="pre">UserAgent.raw</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ngrok.datatypes.Vault"><code class="docutils literal notranslate"><span class="pre">Vault</span></code></a><ul>
+<li><a class="reference internal" href="#ngrok.datatypes.Vault.created_at"><code class="docutils literal notranslate"><span class="pre">Vault.created_at</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.Vault.created_by"><code class="docutils literal notranslate"><span class="pre">Vault.created_by</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.Vault.delete"><code class="docutils literal notranslate"><span class="pre">Vault.delete()</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.Vault.description"><code class="docutils literal notranslate"><span class="pre">Vault.description</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.Vault.id"><code class="docutils literal notranslate"><span class="pre">Vault.id</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.Vault.last_updated_by"><code class="docutils literal notranslate"><span class="pre">Vault.last_updated_by</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.Vault.metadata"><code class="docutils literal notranslate"><span class="pre">Vault.metadata</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.Vault.name"><code class="docutils literal notranslate"><span class="pre">Vault.name</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.Vault.update"><code class="docutils literal notranslate"><span class="pre">Vault.update()</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.Vault.updated_at"><code class="docutils literal notranslate"><span class="pre">Vault.updated_at</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.Vault.uri"><code class="docutils literal notranslate"><span class="pre">Vault.uri</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ngrok.datatypes.VaultList"><code class="docutils literal notranslate"><span class="pre">VaultList</span></code></a><ul>
+<li><a class="reference internal" href="#ngrok.datatypes.VaultList.next_page_uri"><code class="docutils literal notranslate"><span class="pre">VaultList.next_page_uri</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.VaultList.uri"><code class="docutils literal notranslate"><span class="pre">VaultList.uri</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.VaultList.vaults"><code class="docutils literal notranslate"><span class="pre">VaultList.vaults</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#ngrok.datatypes.WeightedBackend"><code class="docutils literal notranslate"><span class="pre">WeightedBackend</span></code></a><ul>
