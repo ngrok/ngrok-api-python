@@ -1,4 +1,8 @@
 <!-- Code generated for API Clients. DO NOT EDIT. -->
+
+## 0.15.1
+* Un-pin specific version of `requests`
+
 ## 0.15.0
 * Add support for `vaults`
 * Add support for `secrets`
