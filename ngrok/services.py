@@ -3556,11 +3556,15 @@ class EndpointsClient(object):
         self,
         before_id: str = None,
         limit: str = None,
+        ids: Sequence[str] = [],
+        urls: Sequence[str] = [],
     ) -> EndpointList:
         """List all active endpoints on the account
 
         :param before_id:
         :param limit:
+        :param ids:
+        :param urls:
 
         https://ngrok.com/docs/api#api-endpoints-list
         """
@@ -3568,6 +3572,8 @@ class EndpointsClient(object):
         body_arg = dict(
             before_id=before_id,
             limit=limit,
+            ids=ids,
+            urls=urls,
         )
         result = self._client.http_client.get(path, body_arg)
         return EndpointList(self._client, result)
