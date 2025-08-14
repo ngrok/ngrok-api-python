@@ -3824,7 +3824,7 @@ class Endpoint(object):
 
     @property
     def uri(self) -> str:
-        """URI of the clep API resource"""
+        """URI of the Cloud Endpoint API resource"""
         return self._props["uri"]
 
     @property
