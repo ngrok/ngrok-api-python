@@ -3811,15 +3811,15 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">ids</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
-        <span class="n">urls</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">url</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all active endpoints on the account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
-<span class="sd">        :param ids:</span>
-<span class="sd">        :param urls:</span>
+<span class="sd">        :param id:</span>
+<span class="sd">        :param url:</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-endpoints-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -3827,8 +3827,8 @@
         <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
             <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
-            <span class="n">ids</span><span class="o">=</span><span class="n">ids</span><span class="p">,</span>
-            <span class="n">urls</span><span class="o">=</span><span class="n">urls</span><span class="p">,</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">EndpointList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -5745,6 +5745,31 @@
         <span class="n">body_arg</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Vault</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VaultsClient.get_secrets_by_vault"><a class="viewcode-back" href="../../vaults.html#ngrok.services.VaultsClient.get_secrets_by_vault">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_secrets_by_vault</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SecretList</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get Secrets by Vault ID</span>
+
+<span class="sd">        :param id: a resource identifier</span>
+<span class="sd">        :param before_id:</span>
+<span class="sd">        :param limit:</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-vaults-get-secrets-by-vault</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/vaults/</span><span class="si">{id}</span><span class="s2">/secrets&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
+            <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">SecretList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="VaultsClient.list"><a class="viewcode-back" href="../../vaults.html#ngrok.services.VaultsClient.list">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>

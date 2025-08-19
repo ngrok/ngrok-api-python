@@ -313,6 +313,27 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="ngrok.services.VaultsClient.get_secrets_by_vault">
+<span class="sig-name descname"><span class="pre">get_secrets_by_vault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">before_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#VaultsClient.get_secrets_by_vault"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.VaultsClient.get_secrets_by_vault" title="Permalink to this definition">#</a></dt>
+<dd><p>Get Secrets by Vault ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p></li>
+<li><p><strong>before_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>limit</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-vaults-get-secrets-by-vault">https://ngrok.com/docs/api#api-vaults-get-secrets-by-vault</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.SecretList" title="ngrok.datatypes.SecretList"><code class="xref py py-class docutils literal notranslate"><span class="pre">SecretList</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="ngrok.services.VaultsClient.list">
 <span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">before_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#VaultsClient.list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.VaultsClient.list" title="Permalink to this definition">#</a></dt>
 <dd><p>List all Vaults owned by account</p>
@@ -410,6 +431,7 @@
 <li><a class="reference internal" href="#ngrok.services.VaultsClient.create"><code class="docutils literal notranslate"><span class="pre">VaultsClient.create()</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.services.VaultsClient.delete"><code class="docutils literal notranslate"><span class="pre">VaultsClient.delete()</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.services.VaultsClient.get"><code class="docutils literal notranslate"><span class="pre">VaultsClient.get()</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.services.VaultsClient.get_secrets_by_vault"><code class="docutils literal notranslate"><span class="pre">VaultsClient.get_secrets_by_vault()</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.services.VaultsClient.list"><code class="docutils literal notranslate"><span class="pre">VaultsClient.list()</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.services.VaultsClient.update"><code class="docutils literal notranslate"><span class="pre">VaultsClient.update()</span></code></a></li>
 </ul>
