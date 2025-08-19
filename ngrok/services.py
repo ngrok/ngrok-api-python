@@ -3556,15 +3556,15 @@ class EndpointsClient(object):
         self,
         before_id: str = None,
         limit: str = None,
-        ids: Sequence[str] = [],
-        urls: Sequence[str] = [],
+        id: Sequence[str] = [],
+        url: Sequence[str] = [],
     ) -> EndpointList:
         """List all active endpoints on the account
 
         :param before_id:
         :param limit:
-        :param ids:
-        :param urls:
+        :param id:
+        :param url:
 
         https://ngrok.com/docs/api#api-endpoints-list
         """
@@ -3572,8 +3572,8 @@ class EndpointsClient(object):
         body_arg = dict(
             before_id=before_id,
             limit=limit,
-            ids=ids,
-            urls=urls,
+            id=id,
+            url=url,
         )
         result = self._client.http_client.get(path, body_arg)
         return EndpointList(self._client, result)
@@ -5490,6 +5490,31 @@ class VaultsClient(object):
         body_arg = None
         result = self._client.http_client.get(path, body_arg)
         return Vault(self._client, result)
+
+    def get_secrets_by_vault(
+        self,
+        id: str,
+        before_id: str = None,
+        limit: str = None,
+    ) -> SecretList:
+        """Get Secrets by Vault ID
+
+        :param id: a resource identifier
+        :param before_id:
+        :param limit:
+
+        https://ngrok.com/docs/api#api-vaults-get-secrets-by-vault
+        """
+        path = "/vaults/{id}/secrets"
+        path = path.format(
+            id=id,
+        )
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
+        )
+        result = self._client.http_client.get(path, body_arg)
+        return SecretList(self._client, result)
 
     def list(
         self,
