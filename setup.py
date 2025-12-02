@@ -33,13 +33,13 @@ setup(
         "requests>=2.25.1,<3.0",
     ],
     extras_require={
-        "tox": ["tox==3.23.0"],
+        "tox": ["tox==4.32.0"],
         "doc": [
             "black==21.5b1",
             "isort==5.11.5",
             "click==8.0.4",
             "furo==2022.12.7",
-            "sphinx==6.1.3",
+            "sphinx==6.2.0",
             "sphinx-autodoc-typehints==1.12.0",
             "sphinx-readable-theme==1.3.0",
             # Pin separately for https://github.com/sphinx-doc/sphinx/issues/10291
