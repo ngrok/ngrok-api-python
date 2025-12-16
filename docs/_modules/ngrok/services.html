@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
-    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
+    <!-- Generated with Sphinx 6.2.0 and Furo 2022.12.07 -->
         <title>ngrok.services - ngrok-api documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
@@ -212,6 +212,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../reserved_addrs.html">Reserved Addresses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reserved_domains.html">Reserved Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../secrets.html">Secrets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../service_users.html">Service Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ssh_certificate_authorities.html">SSH Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ssh_credentials.html">SSH Credentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ssh_host_certificates.html">SSH Host Certificates</a></li>
@@ -381,11 +382,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">filter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentIngressList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all Agent Ingresses owned by this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
+<span class="sd">        :param filter:</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-agent-ingresses-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -393,6 +396,7 @@
         <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
             <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+            <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">AgentIngressList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -498,11 +502,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">filter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">APIKeyList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all API keys owned by this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
+<span class="sd">        :param filter:</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-api-keys-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -510,6 +516,7 @@
         <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
             <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+            <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">APIKeyList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -672,11 +679,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">filter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelSessionList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all online tunnel sessions running on this account.</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
+<span class="sd">        :param filter:</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-tunnel-sessions-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -684,6 +693,7 @@
         <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
             <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+            <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">TunnelSessionList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -1506,7 +1516,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CertificateAuthority</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get detailed information about a certficate authority</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get detailed information about a certificate authority</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -1524,11 +1534,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">filter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CertificateAuthorityList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all Certificate Authority on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
+<span class="sd">        :param filter:</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-certificate-authorities-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1536,6 +1548,7 @@
         <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
             <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+            <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">CertificateAuthorityList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -1640,11 +1653,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">filter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CredentialList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all tunnel authtoken credentials on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
+<span class="sd">        :param filter:</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-credentials-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1652,6 +1667,7 @@
         <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
             <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+            <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">CredentialList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -3780,7 +3796,7 @@
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">bindings</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">pooling_enabled</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">pooling_enabled</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Endpoint</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an endpoint, currently available only for cloud endpoints</span>
 
@@ -3813,6 +3829,7 @@
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
         <span class="n">url</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="nb">filter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all active endpoints on the account</span>
 
@@ -3820,6 +3837,7 @@
 <span class="sd">        :param limit:</span>
 <span class="sd">        :param id:</span>
 <span class="sd">        :param url:</span>
+<span class="sd">        :param filter:</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-endpoints-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -3829,6 +3847,7 @@
             <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
             <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
             <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+            <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">EndpointList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -3859,7 +3878,7 @@
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">bindings</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">pooling_enabled</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">pooling_enabled</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Endpoint</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Update an Endpoint by ID, currently available only for cloud endpoints</span>
 
@@ -3975,11 +3994,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">filter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventDestinationList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all Event Destinations on this account.</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
+<span class="sd">        :param filter:</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-event-destinations-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -3987,6 +4008,7 @@
         <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
             <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+            <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">EventDestinationList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -4092,11 +4114,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">filter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSubscriptionList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List this Account&#39;s Event Subscriptions.</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
+<span class="sd">        :param filter:</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-event-subscriptions-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -4104,6 +4128,7 @@
         <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
             <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+            <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">EventSubscriptionList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -4315,11 +4340,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">filter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPPolicyList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all IP policies on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
+<span class="sd">        :param filter:</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-ip-policies-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -4327,6 +4354,7 @@
         <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
             <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+            <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">IPPolicyList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -4432,11 +4460,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">filter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPPolicyRuleList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all IP policy rules on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
+<span class="sd">        :param filter:</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-ip-policy-rules-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -4444,6 +4474,7 @@
         <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
             <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+            <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">IPPolicyRuleList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -4556,11 +4587,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">filter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPRestrictionList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all IP restrictions on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
+<span class="sd">        :param filter:</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-ip-restrictions-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -4568,6 +4601,7 @@
         <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
             <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+            <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">IPRestrictionList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -4674,11 +4708,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">filter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReservedAddrList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all reserved addresses on this account.</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
+<span class="sd">        :param filter:</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-reserved-addrs-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -4686,6 +4722,7 @@
         <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
             <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+            <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">ReservedAddrList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -4796,11 +4833,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">filter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReservedDomainList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all reserved domains on this account.</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
+<span class="sd">        :param filter:</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-reserved-domains-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -4808,6 +4847,7 @@
         <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
             <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+            <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">ReservedDomainList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -4886,11 +4926,12 @@
 
 <div class="viewcode-block" id="SecretsClient.create"><a class="viewcode-back" href="../../secrets.html#ngrok.services.SecretsClient.create">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">vault_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">vault_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">vault_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Secret</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new Secret</span>
 
@@ -4899,6 +4940,7 @@
 <span class="sd">        :param metadata: Arbitrary user-defined metadata for this Secret</span>
 <span class="sd">        :param description: description of Secret</span>
 <span class="sd">        :param vault_id: unique identifier of the referenced vault</span>
+<span class="sd">        :param vault_name: name of the referenced vault</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-secrets-create</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -4909,6 +4951,7 @@
             <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
             <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
             <span class="n">vault_id</span><span class="o">=</span><span class="n">vault_id</span><span class="p">,</span>
+            <span class="n">vault_name</span><span class="o">=</span><span class="n">vault_name</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Secret</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -4983,11 +5026,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">filter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SecretList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all Secrets owned by account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
+<span class="sd">        :param filter:</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-secrets-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -4995,9 +5040,118 @@
         <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
             <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+            <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">SecretList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="ServiceUsersClient"><a class="viewcode-back" href="../../service_users.html#ngrok.services.ServiceUsersClient">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">ServiceUsersClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
+
+<div class="viewcode-block" id="ServiceUsersClient.create"><a class="viewcode-back" href="../../service_users.html#ngrok.services.ServiceUsersClient.create">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">active</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ServiceUser</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new service user</span>
+
+<span class="sd">        :param name: human-readable name used to identify the service</span>
+<span class="sd">        :param active: whether or not the service is active</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-service-users-create</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/service_users&quot;</span>
+        <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">active</span><span class="o">=</span><span class="n">active</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ServiceUser</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ServiceUsersClient.delete"><a class="viewcode-back" href="../../service_users.html#ngrok.services.ServiceUsersClient.delete">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete a service user by ID</span>
+
+<span class="sd">        :param id: a resource identifier</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-service-users-delete</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/service_users/</span><span class="si">{id}</span><span class="s2">&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">body_arg</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ServiceUsersClient.get"><a class="viewcode-back" href="../../service_users.html#ngrok.services.ServiceUsersClient.get">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ServiceUser</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the details of a Bot User by ID.</span>
+
+<span class="sd">        :param id: a resource identifier</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-service-users-get</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/service_users/</span><span class="si">{id}</span><span class="s2">&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">body_arg</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ServiceUser</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ServiceUsersClient.list"><a class="viewcode-back" href="../../service_users.html#ngrok.services.ServiceUsersClient.list">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">filter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ServiceUserList</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List all service users in this account.</span>
+
+<span class="sd">        :param before_id:</span>
+<span class="sd">        :param limit:</span>
+<span class="sd">        :param filter:</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-service-users-list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/service_users&quot;</span>
+        <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
+            <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+            <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ServiceUserList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ServiceUsersClient.update"><a class="viewcode-back" href="../../service_users.html#ngrok.services.ServiceUsersClient.update">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">active</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ServiceUser</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update attributes of a service user by ID.</span>
+
+<span class="sd">        :param id:</span>
+<span class="sd">        :param name: human-readable name used to identify the service</span>
+<span class="sd">        :param active: whether or not the service is active</span>
+
+<span class="sd">        https://ngrok.com/docs/api#api-service-users-update</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/service_users/</span><span class="si">{id}</span><span class="s2">&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">active</span><span class="o">=</span><span class="n">active</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ServiceUser</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="SSHCertificateAuthoritiesClient"><a class="viewcode-back" href="../../ssh_certificate_authorities.html#ngrok.services.SSHCertificateAuthoritiesClient">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">SSHCertificateAuthoritiesClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -5057,7 +5211,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHCertificateAuthority</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get detailed information about an SSH Certficate Authority</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get detailed information about an SSH Certificate Authority</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -5075,11 +5229,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">filter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHCertificateAuthorityList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all SSH Certificate Authorities on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
+<span class="sd">        :param filter:</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-ssh-certificate-authorities-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -5087,6 +5243,7 @@
         <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
             <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+            <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">SSHCertificateAuthorityList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -5192,11 +5349,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">filter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHCredentialList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all ssh credentials on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
+<span class="sd">        :param filter:</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-ssh-credentials-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -5204,6 +5363,7 @@
         <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
             <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+            <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">SSHCredentialList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -5301,7 +5461,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHHostCertificate</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get detailed information about an SSH Host Certficate</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get detailed information about an SSH Host Certificate</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -5431,7 +5591,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHUserCertificate</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get detailed information about an SSH User Certficate</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get detailed information about an SSH User Certificate</span>
 
 <span class="sd">        :param id: a resource identifier</span>
 
@@ -5566,11 +5726,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">filter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TLSCertificateList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all TLS certificates on this account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
+<span class="sd">        :param filter:</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-tls-certificates-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -5578,6 +5740,7 @@
         <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
             <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+            <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">TLSCertificateList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -5775,11 +5938,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">before_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">filter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VaultList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all Vaults owned by account</span>
 
 <span class="sd">        :param before_id:</span>
 <span class="sd">        :param limit:</span>
+<span class="sd">        :param filter:</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-vaults-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -5787,6 +5952,7 @@
         <span class="n">body_arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">before_id</span><span class="o">=</span><span class="n">before_id</span><span class="p">,</span>
             <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+            <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">VaultList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div></div>

@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="search.html" />
 
-    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 --><title>Index - ngrok-api documentation</title>
+    <!-- Generated with Sphinx 6.2.0 and Furo 2022.12.07 --><title>Index - ngrok-api documentation</title>
 <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -211,6 +211,7 @@
 <li class="toctree-l1"><a class="reference internal" href="reserved_addrs.html">Reserved Addresses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reserved_domains.html">Reserved Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="secrets.html">Secrets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="service_users.html">Service Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_certificate_authorities.html">SSH Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_credentials.html">SSH Credentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_host_certificates.html">SSH Host Certificates</a></li>
@@ -279,7 +280,11 @@
         <li><a href="datatypes.html#ngrok.datatypes.IPPolicyRule.action">action (ngrok.datatypes.IPPolicyRule property)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.BotUser.active">active (ngrok.datatypes.BotUser property)</a>
+
+        <ul>
+          <li><a href="datatypes.html#ngrok.datatypes.ServiceUser.active">(ngrok.datatypes.ServiceUser property)</a>
 </li>
+        </ul></li>
         <li><a href="datatypes.html#ngrok.datatypes.EndpointRequestHeaders.add">add (ngrok.datatypes.EndpointRequestHeaders property)</a>
 
         <ul>
@@ -320,10 +325,10 @@
 </li>
         <li><a href="client.html#ngrok.Client.api_keys">api_keys (ngrok.Client property)</a>
 </li>
-        <li><a href="datatypes.html#ngrok.datatypes.APIKey">APIKey (class in ngrok.datatypes)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="datatypes.html#ngrok.datatypes.APIKey">APIKey (class in ngrok.datatypes)</a>
+</li>
         <li><a href="datatypes.html#ngrok.datatypes.APIKeyList">APIKeyList (class in ngrok.datatypes)</a>
 </li>
         <li><a href="api_keys.html#ngrok.services.APIKeysClient">APIKeysClient (class in ngrok.services)</a>
@@ -617,6 +622,8 @@
 </li>
           <li><a href="secrets.html#ngrok.services.SecretsClient.create">(ngrok.services.SecretsClient method)</a>
 </li>
+          <li><a href="service_users.html#ngrok.services.ServiceUsersClient.create">(ngrok.services.ServiceUsersClient method)</a>
+</li>
           <li><a href="ssh_certificate_authorities.html#ngrok.services.SSHCertificateAuthoritiesClient.create">(ngrok.services.SSHCertificateAuthoritiesClient method)</a>
 </li>
           <li><a href="ssh_credentials.html#ngrok.services.SSHCredentialsClient.create">(ngrok.services.SSHCredentialsClient method)</a>
@@ -680,6 +687,8 @@
           <li><a href="datatypes.html#ngrok.datatypes.ReservedDomain.created_at">(ngrok.datatypes.ReservedDomain property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.Secret.created_at">(ngrok.datatypes.Secret property)</a>
+</li>
+          <li><a href="datatypes.html#ngrok.datatypes.ServiceUser.created_at">(ngrok.datatypes.ServiceUser property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.SSHCertificateAuthority.created_at">(ngrok.datatypes.SSHCertificateAuthority property)</a>
 </li>
@@ -787,6 +796,8 @@
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.Secret.delete">(ngrok.datatypes.Secret method)</a>
 </li>
+          <li><a href="datatypes.html#ngrok.datatypes.ServiceUser.delete">(ngrok.datatypes.ServiceUser method)</a>
+</li>
           <li><a href="datatypes.html#ngrok.datatypes.SSHCertificateAuthority.delete">(ngrok.datatypes.SSHCertificateAuthority method)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.SSHCredential.delete">(ngrok.datatypes.SSHCredential method)</a>
@@ -884,6 +895,8 @@
           <li><a href="reserved_domains.html#ngrok.services.ReservedDomainsClient.delete">(ngrok.services.ReservedDomainsClient method)</a>
 </li>
           <li><a href="secrets.html#ngrok.services.SecretsClient.delete">(ngrok.services.SecretsClient method)</a>
+</li>
+          <li><a href="service_users.html#ngrok.services.ServiceUsersClient.delete">(ngrok.services.ServiceUsersClient method)</a>
 </li>
           <li><a href="ssh_certificate_authorities.html#ngrok.services.SSHCertificateAuthoritiesClient.delete">(ngrok.services.SSHCertificateAuthoritiesClient method)</a>
 </li>
@@ -1403,6 +1416,8 @@
 </li>
           <li><a href="secrets.html#ngrok.services.SecretsClient.get">(ngrok.services.SecretsClient method)</a>
 </li>
+          <li><a href="service_users.html#ngrok.services.ServiceUsersClient.get">(ngrok.services.ServiceUsersClient method)</a>
+</li>
           <li><a href="ssh_certificate_authorities.html#ngrok.services.SSHCertificateAuthoritiesClient.get">(ngrok.services.SSHCertificateAuthoritiesClient method)</a>
 </li>
           <li><a href="ssh_credentials.html#ngrok.services.SSHCredentialsClient.get">(ngrok.services.SSHCredentialsClient method)</a>
@@ -1551,6 +1566,8 @@
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.Secret.id">(ngrok.datatypes.Secret property)</a>
 </li>
+          <li><a href="datatypes.html#ngrok.datatypes.ServiceUser.id">(ngrok.datatypes.ServiceUser property)</a>
+</li>
           <li><a href="datatypes.html#ngrok.datatypes.SSHCertificateAuthority.id">(ngrok.datatypes.SSHCertificateAuthority property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.SSHCredential.id">(ngrok.datatypes.SSHCredential property)</a>
@@ -1578,10 +1595,10 @@
           <li><a href="datatypes.html#ngrok.datatypes.WeightedBackend.id">(ngrok.datatypes.WeightedBackend property)</a>
 </li>
         </ul></li>
-        <li><a href="datatypes.html#ngrok.datatypes.ApplicationUser.identity_provider">identity_provider (ngrok.datatypes.ApplicationUser property)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="datatypes.html#ngrok.datatypes.ApplicationUser.identity_provider">identity_provider (ngrok.datatypes.ApplicationUser property)</a>
+</li>
         <li><a href="datatypes.html#ngrok.datatypes.IdentityProvider">IdentityProvider (class in ngrok.datatypes)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.EndpointSAML.idp_metadata">idp_metadata (ngrok.datatypes.EndpointSAML property)</a>
@@ -1773,6 +1790,8 @@
 </li>
           <li><a href="secrets.html#ngrok.services.SecretsClient.list">(ngrok.services.SecretsClient method)</a>
 </li>
+          <li><a href="service_users.html#ngrok.services.ServiceUsersClient.list">(ngrok.services.ServiceUsersClient method)</a>
+</li>
           <li><a href="ssh_certificate_authorities.html#ngrok.services.SSHCertificateAuthoritiesClient.list">(ngrok.services.SSHCertificateAuthoritiesClient method)</a>
 </li>
           <li><a href="ssh_credentials.html#ngrok.services.SSHCredentialsClient.list">(ngrok.services.SSHCredentialsClient method)</a>
@@ -1914,7 +1933,7 @@
 </li>
           <li><a href="datatypes.html#module-ngrok.datatypes">ngrok.datatypes</a>
 </li>
-          <li><a href="abuse_reports.html#module-ngrok.services">ngrok.services</a>, <a href="agent_ingresses.html#module-ngrok.services">[1]</a>, <a href="api_keys.html#module-ngrok.services">[2]</a>, <a href="application_sessions.html#module-ngrok.services">[3]</a>, <a href="application_users.html#module-ngrok.services">[4]</a>, <a href="bot_users.html#module-ngrok.services">[5]</a>, <a href="certificate_authorities.html#module-ngrok.services">[6]</a>, <a href="credentials.html#module-ngrok.services">[7]</a>, <a href="edge_route_backend_module.html#module-ngrok.services">[8]</a>, <a href="edge_route_circuit_breaker_module.html#module-ngrok.services">[9]</a>, <a href="edge_route_compression_module.html#module-ngrok.services">[10]</a>, <a href="edge_route_ip_restriction_module.html#module-ngrok.services">[11]</a>, <a href="edge_route_o_auth_module.html#module-ngrok.services">[12]</a>, <a href="edge_route_oidc_module.html#module-ngrok.services">[13]</a>, <a href="edge_route_policy_module.html#module-ngrok.services">[14]</a>, <a href="edge_route_request_headers_module.html#module-ngrok.services">[15]</a>, <a href="edge_route_response_headers_module.html#module-ngrok.services">[16]</a>, <a href="edge_route_saml_module.html#module-ngrok.services">[17]</a>, <a href="edge_route_traffic_policy_module.html#module-ngrok.services">[18]</a>, <a href="edge_route_user_agent_filter_module.html#module-ngrok.services">[19]</a>, <a href="edge_route_webhook_verification_module.html#module-ngrok.services">[20]</a>, <a href="edge_route_websocket_tcp_converter_module.html#module-ngrok.services">[21]</a>, <a href="edges_https.html#module-ngrok.services">[22]</a>, <a href="edges_https_routes.html#module-ngrok.services">[23]</a>, <a href="edges_tcp.html#module-ngrok.services">[24]</a>, <a href="edges_tls.html#module-ngrok.services">[25]</a>, <a href="endpoints.html#module-ngrok.services">[26]</a>, <a href="event_destinations.html#module-ngrok.services">[27]</a>, <a href="event_sources.html#module-ngrok.services">[28]</a>, <a href="event_subscriptions.html#module-ngrok.services">[29]</a>, <a href="failover_backends.html#module-ngrok.services">[30]</a>, <a href="http_response_backends.html#module-ngrok.services">[31]</a>, <a href="https_edge_mutual_tls_module.html#module-ngrok.services">[32]</a>, <a href="https_edge_tls_termination_module.html#module-ngrok.services">[33]</a>, <a href="ip_policies.html#module-ngrok.services">[34]</a>, <a href="ip_policy_rules.html#module-ngrok.services">[35]</a>, <a href="ip_restrictions.html#module-ngrok.services">[36]</a>, <a href="reserved_addrs.html#module-ngrok.services">[37]</a>, <a href="reserved_domains.html#module-ngrok.services">[38]</a>, <a href="secrets.html#module-ngrok.services">[39]</a>, <a href="ssh_certificate_authorities.html#module-ngrok.services">[40]</a>, <a href="ssh_credentials.html#module-ngrok.services">[41]</a>, <a href="ssh_host_certificates.html#module-ngrok.services">[42]</a>, <a href="ssh_user_certificates.html#module-ngrok.services">[43]</a>, <a href="static_backends.html#module-ngrok.services">[44]</a>, <a href="tcp_edge_backend_module.html#module-ngrok.services">[45]</a>, <a href="tcp_edge_ip_restriction_module.html#module-ngrok.services">[46]</a>, <a href="tcp_edge_policy_module.html#module-ngrok.services">[47]</a>, <a href="tcp_edge_traffic_policy_module.html#module-ngrok.services">[48]</a>, <a href="tls_certificates.html#module-ngrok.services">[49]</a>, <a href="tls_edge_backend_module.html#module-ngrok.services">[50]</a>, <a href="tls_edge_ip_restriction_module.html#module-ngrok.services">[51]</a>, <a href="tls_edge_mutual_tls_module.html#module-ngrok.services">[52]</a>, <a href="tls_edge_policy_module.html#module-ngrok.services">[53]</a>, <a href="tls_edge_tls_termination_module.html#module-ngrok.services">[54]</a>, <a href="tls_edge_traffic_policy_module.html#module-ngrok.services">[55]</a>, <a href="tunnel_group_backends.html#module-ngrok.services">[56]</a>, <a href="tunnel_sessions.html#module-ngrok.services">[57]</a>, <a href="tunnels.html#module-ngrok.services">[58]</a>, <a href="vaults.html#module-ngrok.services">[59]</a>, <a href="weighted_backends.html#module-ngrok.services">[60]</a>
+          <li><a href="abuse_reports.html#module-ngrok.services">ngrok.services</a>, <a href="agent_ingresses.html#module-ngrok.services">[1]</a>, <a href="api_keys.html#module-ngrok.services">[2]</a>, <a href="application_sessions.html#module-ngrok.services">[3]</a>, <a href="application_users.html#module-ngrok.services">[4]</a>, <a href="bot_users.html#module-ngrok.services">[5]</a>, <a href="certificate_authorities.html#module-ngrok.services">[6]</a>, <a href="credentials.html#module-ngrok.services">[7]</a>, <a href="edge_route_backend_module.html#module-ngrok.services">[8]</a>, <a href="edge_route_circuit_breaker_module.html#module-ngrok.services">[9]</a>, <a href="edge_route_compression_module.html#module-ngrok.services">[10]</a>, <a href="edge_route_ip_restriction_module.html#module-ngrok.services">[11]</a>, <a href="edge_route_o_auth_module.html#module-ngrok.services">[12]</a>, <a href="edge_route_oidc_module.html#module-ngrok.services">[13]</a>, <a href="edge_route_policy_module.html#module-ngrok.services">[14]</a>, <a href="edge_route_request_headers_module.html#module-ngrok.services">[15]</a>, <a href="edge_route_response_headers_module.html#module-ngrok.services">[16]</a>, <a href="edge_route_saml_module.html#module-ngrok.services">[17]</a>, <a href="edge_route_traffic_policy_module.html#module-ngrok.services">[18]</a>, <a href="edge_route_user_agent_filter_module.html#module-ngrok.services">[19]</a>, <a href="edge_route_webhook_verification_module.html#module-ngrok.services">[20]</a>, <a href="edge_route_websocket_tcp_converter_module.html#module-ngrok.services">[21]</a>, <a href="edges_https.html#module-ngrok.services">[22]</a>, <a href="edges_https_routes.html#module-ngrok.services">[23]</a>, <a href="edges_tcp.html#module-ngrok.services">[24]</a>, <a href="edges_tls.html#module-ngrok.services">[25]</a>, <a href="endpoints.html#module-ngrok.services">[26]</a>, <a href="event_destinations.html#module-ngrok.services">[27]</a>, <a href="event_sources.html#module-ngrok.services">[28]</a>, <a href="event_subscriptions.html#module-ngrok.services">[29]</a>, <a href="failover_backends.html#module-ngrok.services">[30]</a>, <a href="http_response_backends.html#module-ngrok.services">[31]</a>, <a href="https_edge_mutual_tls_module.html#module-ngrok.services">[32]</a>, <a href="https_edge_tls_termination_module.html#module-ngrok.services">[33]</a>, <a href="ip_policies.html#module-ngrok.services">[34]</a>, <a href="ip_policy_rules.html#module-ngrok.services">[35]</a>, <a href="ip_restrictions.html#module-ngrok.services">[36]</a>, <a href="reserved_addrs.html#module-ngrok.services">[37]</a>, <a href="reserved_domains.html#module-ngrok.services">[38]</a>, <a href="secrets.html#module-ngrok.services">[39]</a>, <a href="service_users.html#module-ngrok.services">[40]</a>, <a href="ssh_certificate_authorities.html#module-ngrok.services">[41]</a>, <a href="ssh_credentials.html#module-ngrok.services">[42]</a>, <a href="ssh_host_certificates.html#module-ngrok.services">[43]</a>, <a href="ssh_user_certificates.html#module-ngrok.services">[44]</a>, <a href="static_backends.html#module-ngrok.services">[45]</a>, <a href="tcp_edge_backend_module.html#module-ngrok.services">[46]</a>, <a href="tcp_edge_ip_restriction_module.html#module-ngrok.services">[47]</a>, <a href="tcp_edge_policy_module.html#module-ngrok.services">[48]</a>, <a href="tcp_edge_traffic_policy_module.html#module-ngrok.services">[49]</a>, <a href="tls_certificates.html#module-ngrok.services">[50]</a>, <a href="tls_edge_backend_module.html#module-ngrok.services">[51]</a>, <a href="tls_edge_ip_restriction_module.html#module-ngrok.services">[52]</a>, <a href="tls_edge_mutual_tls_module.html#module-ngrok.services">[53]</a>, <a href="tls_edge_policy_module.html#module-ngrok.services">[54]</a>, <a href="tls_edge_tls_termination_module.html#module-ngrok.services">[55]</a>, <a href="tls_edge_traffic_policy_module.html#module-ngrok.services">[56]</a>, <a href="tunnel_group_backends.html#module-ngrok.services">[57]</a>, <a href="tunnel_sessions.html#module-ngrok.services">[58]</a>, <a href="tunnels.html#module-ngrok.services">[59]</a>, <a href="vaults.html#module-ngrok.services">[60]</a>, <a href="weighted_backends.html#module-ngrok.services">[61]</a>
 </li>
         </ul></li>
         <li><a href="datatypes.html#ngrok.datatypes.AgentIngressCertJob.msg">msg (ngrok.datatypes.AgentIngressCertJob property)</a>
@@ -1947,6 +1966,8 @@
           <li><a href="datatypes.html#ngrok.datatypes.IdentityProvider.name">(ngrok.datatypes.IdentityProvider property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.Secret.name">(ngrok.datatypes.Secret property)</a>
+</li>
+          <li><a href="datatypes.html#ngrok.datatypes.ServiceUser.name">(ngrok.datatypes.ServiceUser property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.Vault.name">(ngrok.datatypes.Vault property)</a>
 </li>
@@ -1996,6 +2017,8 @@
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.SecretList.next_page_uri">(ngrok.datatypes.SecretList property)</a>
 </li>
+          <li><a href="datatypes.html#ngrok.datatypes.ServiceUserList.next_page_uri">(ngrok.datatypes.ServiceUserList property)</a>
+</li>
           <li><a href="datatypes.html#ngrok.datatypes.SSHCertificateAuthorityList.next_page_uri">(ngrok.datatypes.SSHCertificateAuthorityList property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.SSHCredentialList.next_page_uri">(ngrok.datatypes.SSHCredentialList property)</a>
@@ -2043,7 +2066,7 @@
     ngrok.services
 
         <ul>
-          <li><a href="abuse_reports.html#module-ngrok.services">module</a>, <a href="agent_ingresses.html#module-ngrok.services">[1]</a>, <a href="api_keys.html#module-ngrok.services">[2]</a>, <a href="application_sessions.html#module-ngrok.services">[3]</a>, <a href="application_users.html#module-ngrok.services">[4]</a>, <a href="bot_users.html#module-ngrok.services">[5]</a>, <a href="certificate_authorities.html#module-ngrok.services">[6]</a>, <a href="credentials.html#module-ngrok.services">[7]</a>, <a href="edge_route_backend_module.html#module-ngrok.services">[8]</a>, <a href="edge_route_circuit_breaker_module.html#module-ngrok.services">[9]</a>, <a href="edge_route_compression_module.html#module-ngrok.services">[10]</a>, <a href="edge_route_ip_restriction_module.html#module-ngrok.services">[11]</a>, <a href="edge_route_o_auth_module.html#module-ngrok.services">[12]</a>, <a href="edge_route_oidc_module.html#module-ngrok.services">[13]</a>, <a href="edge_route_policy_module.html#module-ngrok.services">[14]</a>, <a href="edge_route_request_headers_module.html#module-ngrok.services">[15]</a>, <a href="edge_route_response_headers_module.html#module-ngrok.services">[16]</a>, <a href="edge_route_saml_module.html#module-ngrok.services">[17]</a>, <a href="edge_route_traffic_policy_module.html#module-ngrok.services">[18]</a>, <a href="edge_route_user_agent_filter_module.html#module-ngrok.services">[19]</a>, <a href="edge_route_webhook_verification_module.html#module-ngrok.services">[20]</a>, <a href="edge_route_websocket_tcp_converter_module.html#module-ngrok.services">[21]</a>, <a href="edges_https.html#module-ngrok.services">[22]</a>, <a href="edges_https_routes.html#module-ngrok.services">[23]</a>, <a href="edges_tcp.html#module-ngrok.services">[24]</a>, <a href="edges_tls.html#module-ngrok.services">[25]</a>, <a href="endpoints.html#module-ngrok.services">[26]</a>, <a href="event_destinations.html#module-ngrok.services">[27]</a>, <a href="event_sources.html#module-ngrok.services">[28]</a>, <a href="event_subscriptions.html#module-ngrok.services">[29]</a>, <a href="failover_backends.html#module-ngrok.services">[30]</a>, <a href="http_response_backends.html#module-ngrok.services">[31]</a>, <a href="https_edge_mutual_tls_module.html#module-ngrok.services">[32]</a>, <a href="https_edge_tls_termination_module.html#module-ngrok.services">[33]</a>, <a href="ip_policies.html#module-ngrok.services">[34]</a>, <a href="ip_policy_rules.html#module-ngrok.services">[35]</a>, <a href="ip_restrictions.html#module-ngrok.services">[36]</a>, <a href="reserved_addrs.html#module-ngrok.services">[37]</a>, <a href="reserved_domains.html#module-ngrok.services">[38]</a>, <a href="secrets.html#module-ngrok.services">[39]</a>, <a href="ssh_certificate_authorities.html#module-ngrok.services">[40]</a>, <a href="ssh_credentials.html#module-ngrok.services">[41]</a>, <a href="ssh_host_certificates.html#module-ngrok.services">[42]</a>, <a href="ssh_user_certificates.html#module-ngrok.services">[43]</a>, <a href="static_backends.html#module-ngrok.services">[44]</a>, <a href="tcp_edge_backend_module.html#module-ngrok.services">[45]</a>, <a href="tcp_edge_ip_restriction_module.html#module-ngrok.services">[46]</a>, <a href="tcp_edge_policy_module.html#module-ngrok.services">[47]</a>, <a href="tcp_edge_traffic_policy_module.html#module-ngrok.services">[48]</a>, <a href="tls_certificates.html#module-ngrok.services">[49]</a>, <a href="tls_edge_backend_module.html#module-ngrok.services">[50]</a>, <a href="tls_edge_ip_restriction_module.html#module-ngrok.services">[51]</a>, <a href="tls_edge_mutual_tls_module.html#module-ngrok.services">[52]</a>, <a href="tls_edge_policy_module.html#module-ngrok.services">[53]</a>, <a href="tls_edge_tls_termination_module.html#module-ngrok.services">[54]</a>, <a href="tls_edge_traffic_policy_module.html#module-ngrok.services">[55]</a>, <a href="tunnel_group_backends.html#module-ngrok.services">[56]</a>, <a href="tunnel_sessions.html#module-ngrok.services">[57]</a>, <a href="tunnels.html#module-ngrok.services">[58]</a>, <a href="vaults.html#module-ngrok.services">[59]</a>, <a href="weighted_backends.html#module-ngrok.services">[60]</a>
+          <li><a href="abuse_reports.html#module-ngrok.services">module</a>, <a href="agent_ingresses.html#module-ngrok.services">[1]</a>, <a href="api_keys.html#module-ngrok.services">[2]</a>, <a href="application_sessions.html#module-ngrok.services">[3]</a>, <a href="application_users.html#module-ngrok.services">[4]</a>, <a href="bot_users.html#module-ngrok.services">[5]</a>, <a href="certificate_authorities.html#module-ngrok.services">[6]</a>, <a href="credentials.html#module-ngrok.services">[7]</a>, <a href="edge_route_backend_module.html#module-ngrok.services">[8]</a>, <a href="edge_route_circuit_breaker_module.html#module-ngrok.services">[9]</a>, <a href="edge_route_compression_module.html#module-ngrok.services">[10]</a>, <a href="edge_route_ip_restriction_module.html#module-ngrok.services">[11]</a>, <a href="edge_route_o_auth_module.html#module-ngrok.services">[12]</a>, <a href="edge_route_oidc_module.html#module-ngrok.services">[13]</a>, <a href="edge_route_policy_module.html#module-ngrok.services">[14]</a>, <a href="edge_route_request_headers_module.html#module-ngrok.services">[15]</a>, <a href="edge_route_response_headers_module.html#module-ngrok.services">[16]</a>, <a href="edge_route_saml_module.html#module-ngrok.services">[17]</a>, <a href="edge_route_traffic_policy_module.html#module-ngrok.services">[18]</a>, <a href="edge_route_user_agent_filter_module.html#module-ngrok.services">[19]</a>, <a href="edge_route_webhook_verification_module.html#module-ngrok.services">[20]</a>, <a href="edge_route_websocket_tcp_converter_module.html#module-ngrok.services">[21]</a>, <a href="edges_https.html#module-ngrok.services">[22]</a>, <a href="edges_https_routes.html#module-ngrok.services">[23]</a>, <a href="edges_tcp.html#module-ngrok.services">[24]</a>, <a href="edges_tls.html#module-ngrok.services">[25]</a>, <a href="endpoints.html#module-ngrok.services">[26]</a>, <a href="event_destinations.html#module-ngrok.services">[27]</a>, <a href="event_sources.html#module-ngrok.services">[28]</a>, <a href="event_subscriptions.html#module-ngrok.services">[29]</a>, <a href="failover_backends.html#module-ngrok.services">[30]</a>, <a href="http_response_backends.html#module-ngrok.services">[31]</a>, <a href="https_edge_mutual_tls_module.html#module-ngrok.services">[32]</a>, <a href="https_edge_tls_termination_module.html#module-ngrok.services">[33]</a>, <a href="ip_policies.html#module-ngrok.services">[34]</a>, <a href="ip_policy_rules.html#module-ngrok.services">[35]</a>, <a href="ip_restrictions.html#module-ngrok.services">[36]</a>, <a href="reserved_addrs.html#module-ngrok.services">[37]</a>, <a href="reserved_domains.html#module-ngrok.services">[38]</a>, <a href="secrets.html#module-ngrok.services">[39]</a>, <a href="service_users.html#module-ngrok.services">[40]</a>, <a href="ssh_certificate_authorities.html#module-ngrok.services">[41]</a>, <a href="ssh_credentials.html#module-ngrok.services">[42]</a>, <a href="ssh_host_certificates.html#module-ngrok.services">[43]</a>, <a href="ssh_user_certificates.html#module-ngrok.services">[44]</a>, <a href="static_backends.html#module-ngrok.services">[45]</a>, <a href="tcp_edge_backend_module.html#module-ngrok.services">[46]</a>, <a href="tcp_edge_ip_restriction_module.html#module-ngrok.services">[47]</a>, <a href="tcp_edge_policy_module.html#module-ngrok.services">[48]</a>, <a href="tcp_edge_traffic_policy_module.html#module-ngrok.services">[49]</a>, <a href="tls_certificates.html#module-ngrok.services">[50]</a>, <a href="tls_edge_backend_module.html#module-ngrok.services">[51]</a>, <a href="tls_edge_ip_restriction_module.html#module-ngrok.services">[52]</a>, <a href="tls_edge_mutual_tls_module.html#module-ngrok.services">[53]</a>, <a href="tls_edge_policy_module.html#module-ngrok.services">[54]</a>, <a href="tls_edge_tls_termination_module.html#module-ngrok.services">[55]</a>, <a href="tls_edge_traffic_policy_module.html#module-ngrok.services">[56]</a>, <a href="tunnel_group_backends.html#module-ngrok.services">[57]</a>, <a href="tunnel_sessions.html#module-ngrok.services">[58]</a>, <a href="tunnels.html#module-ngrok.services">[59]</a>, <a href="vaults.html#module-ngrok.services">[60]</a>, <a href="weighted_backends.html#module-ngrok.services">[61]</a>
 </li>
         </ul></li>
         <li><a href="datatypes.html#ngrok.datatypes.CertificateAuthority.not_after">not_after (ngrok.datatypes.CertificateAuthority property)</a>
@@ -2366,6 +2389,18 @@
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.EventTargetDatadog.service">service (ngrok.datatypes.EventTargetDatadog property)</a>
 </li>
+        <li><a href="client.html#ngrok.Client.service_users">service_users (ngrok.Client property)</a>
+
+        <ul>
+          <li><a href="datatypes.html#ngrok.datatypes.ServiceUserList.service_users">(ngrok.datatypes.ServiceUserList property)</a>
+</li>
+        </ul></li>
+        <li><a href="datatypes.html#ngrok.datatypes.ServiceUser">ServiceUser (class in ngrok.datatypes)</a>
+</li>
+        <li><a href="datatypes.html#ngrok.datatypes.ServiceUserList">ServiceUserList (class in ngrok.datatypes)</a>
+</li>
+        <li><a href="service_users.html#ngrok.services.ServiceUsersClient">ServiceUsersClient (class in ngrok.services)</a>
+</li>
         <li><a href="datatypes.html#ngrok.datatypes.EndpointSAML.single_logout_url">single_logout_url (ngrok.datatypes.EndpointSAML property)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.EventSourceList.sources">sources (ngrok.datatypes.EventSourceList property)</a>
@@ -2398,14 +2433,14 @@
           <li><a href="datatypes.html#ngrok.datatypes.SSHHostCertificateList.ssh_host_certificates">(ngrok.datatypes.SSHHostCertificateList property)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="client.html#ngrok.Client.ssh_user_certificates">ssh_user_certificates (ngrok.Client property)</a>
 
         <ul>
           <li><a href="datatypes.html#ngrok.datatypes.SSHUserCertificateList.ssh_user_certificates">(ngrok.datatypes.SSHUserCertificateList property)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="ssh_certificate_authorities.html#ngrok.services.SSHCertificateAuthoritiesClient">SSHCertificateAuthoritiesClient (class in ngrok.services)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.SSHCertificateAuthority">SSHCertificateAuthority (class in ngrok.datatypes)</a>
@@ -2653,6 +2688,8 @@
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.IPPolicyRule.update">(ngrok.datatypes.IPPolicyRule method)</a>
 </li>
+          <li><a href="datatypes.html#ngrok.datatypes.ServiceUser.update">(ngrok.datatypes.ServiceUser method)</a>
+</li>
           <li><a href="datatypes.html#ngrok.datatypes.SSHCertificateAuthority.update">(ngrok.datatypes.SSHCertificateAuthority method)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.SSHCredential.update">(ngrok.datatypes.SSHCredential method)</a>
@@ -2716,6 +2753,8 @@
           <li><a href="reserved_domains.html#ngrok.services.ReservedDomainsClient.update">(ngrok.services.ReservedDomainsClient method)</a>
 </li>
           <li><a href="secrets.html#ngrok.services.SecretsClient.update">(ngrok.services.SecretsClient method)</a>
+</li>
+          <li><a href="service_users.html#ngrok.services.ServiceUsersClient.update">(ngrok.services.ServiceUsersClient method)</a>
 </li>
           <li><a href="ssh_certificate_authorities.html#ngrok.services.SSHCertificateAuthoritiesClient.update">(ngrok.services.SSHCertificateAuthoritiesClient method)</a>
 </li>
@@ -2837,6 +2876,10 @@
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.SecretList.uri">(ngrok.datatypes.SecretList property)</a>
 </li>
+          <li><a href="datatypes.html#ngrok.datatypes.ServiceUser.uri">(ngrok.datatypes.ServiceUser property)</a>
+</li>
+          <li><a href="datatypes.html#ngrok.datatypes.ServiceUserList.uri">(ngrok.datatypes.ServiceUserList property)</a>
+</li>
           <li><a href="datatypes.html#ngrok.datatypes.SSHCertificateAuthority.uri">(ngrok.datatypes.SSHCertificateAuthority property)</a>
 </li>
           <li><a href="datatypes.html#ngrok.datatypes.SSHCertificateAuthorityList.uri">(ngrok.datatypes.SSHCertificateAuthorityList property)</a>
@@ -2933,6 +2976,8 @@
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="datatypes.html#ngrok.datatypes.Secret.vault">vault (ngrok.datatypes.Secret property)</a>
+</li>
+        <li><a href="datatypes.html#ngrok.datatypes.Secret.vault_name">vault_name (ngrok.datatypes.Secret property)</a>
 </li>
         <li><a href="datatypes.html#ngrok.datatypes.VaultList">VaultList (class in ngrok.datatypes)</a>
 </li>

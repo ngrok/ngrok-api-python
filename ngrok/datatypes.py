@@ -3686,7 +3686,7 @@ class Endpoint(object):
         description: str = None,
         metadata: str = None,
         bindings: Sequence[str] = None,
-        pooling_enabled: bool = False,
+        pooling_enabled: bool = None,
     ):
         self._client.endpoints.update(
             id=self.id,
@@ -3727,7 +3727,7 @@ class Endpoint(object):
 
     @property
     def public_url(self) -> str:
-        """URL of the hostport served by this endpoint"""
+        """deprecated [replaced by URL]: URL of the hostport served by this endpoint"""
         return self._props["public_url"]
 
     @property
@@ -5189,6 +5189,11 @@ class Secret(object):
         """Reference to the vault the secret is stored in"""
         return self._props["vault"]
 
+    @property
+    def vault_name(self) -> str:
+        """Name of the vault the secret is stored in"""
+        return self._props["vault_name"]
+
 
 class SecretList(object):
     def __init__(self, client, props):
@@ -5224,6 +5229,102 @@ class SecretList(object):
     @property
     def next_page_uri(self) -> str:
         """URI of the next page of results, or null if there is no next page"""
+        return self._props["next_page_uri"]
+
+
+class ServiceUser(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<ServiceUser {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<ServiceUser {}>".format(repr(self._props))
+
+    def delete(
+        self,
+    ):
+        self._client.service_users.delete(
+            id=self.id,
+        )
+
+    def update(
+        self,
+        name: str = None,
+        active: bool = None,
+    ):
+        self._client.service_users.update(
+            id=self.id,
+            name=name,
+            active=active,
+        )
+
+    @property
+    def id(self) -> str:
+        """unique API key resource identifier"""
+        return self._props["id"]
+
+    @property
+    def uri(self) -> str:
+        """URI to the API resource of this service user"""
+        return self._props["uri"]
+
+    @property
+    def name(self) -> str:
+        """human-readable name used to identify the service"""
+        return self._props["name"]
+
+    @property
+    def active(self) -> bool:
+        """whether or not the service is active"""
+        return self._props["active"]
+
+    @property
+    def created_at(self) -> datetime:
+        """timestamp when the api key was created, RFC 3339 format"""
+        return self._props["created_at"]
+
+
+class ServiceUserList(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+        self._props["service_users"] = (
+            [ServiceUser(client, x) for x in props["service_users"]]
+            if props.get("service_users") is not None
+            else []
+        )
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<ServiceUserList {} {}>".format(self.id, repr(self._props))
+        else:
+            return "<ServiceUserList {}>".format(repr(self._props))
+
+    def __iter__(self):
+        return PagedIterator(self._client, self, "service_users")
+
+    @property
+    def service_users(self) -> Sequence[ServiceUser]:
+        """the list of all service users on this account"""
+        return self._props["service_users"]
+
+    @property
+    def uri(self) -> str:
+        """URI of the service users list API resource"""
+        return self._props["uri"]
+
+    @property
+    def next_page_uri(self) -> str:
+        """URI of the next page, or null if there is no next page"""
         return self._props["next_page_uri"]
 
 

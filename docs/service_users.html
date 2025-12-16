@@ -2,9 +2,12 @@
 <html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="#" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="SSH Certificate Authorities" href="ssh_certificate_authorities.html" /><link rel="prev" title="Secrets" href="secrets.html" />
 
-    <!-- Generated with Sphinx 6.2.0 and Furo 2022.12.07 --><title>Search - ngrok-api  documentation</title><link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <!-- Generated with Sphinx 6.2.0 and Furo 2022.12.07 -->
+        <title>Service Users - ngrok-api documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
@@ -131,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -145,7 +148,7 @@
   
   <span class="sidebar-brand-text">ngrok-api  documentation</span>
   
-</a><form class="sidebar-search-container" method="get" action="#" role="search">
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
@@ -158,7 +161,7 @@
 <li class="toctree-l1"><a class="reference internal" href="errors.html">Errors</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Services</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="abuse_reports.html">Abuse Reports</a></li>
 <li class="toctree-l1"><a class="reference internal" href="agent_ingresses.html">Agent Ingresses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_keys.html">API Keys</a></li>
@@ -210,7 +213,7 @@
 <li class="toctree-l1"><a class="reference internal" href="reserved_addrs.html">Reserved Addresses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reserved_domains.html">Reserved Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="secrets.html">Secrets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="service_users.html">Service Users</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Service Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_certificate_authorities.html">SSH Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_credentials.html">SSH Credentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_host_certificates.html">SSH Host Certificates</a></li>
@@ -237,7 +240,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -245,31 +249,139 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          
-<noscript>
-<div class="admonition error">
-  <p class="admonition-title">Error</p>
-  <p>
-    Please activate JavaScript to enable the search functionality.
-  </p>
-</div>
-</noscript>
+          <section id="service-users">
+<h1>Service Users<a class="headerlink" href="#service-users" title="Permalink to this heading">#</a></h1>
+<p>Do not construct this object directly, instead access the
+<a class="reference internal" href="client.html#ngrok.Client.service_users" title="ngrok.Client.service_users"><code class="xref py py-attr docutils literal notranslate"><span class="pre">service_users</span></code></a> property of an <a class="reference internal" href="client.html#ngrok.Client" title="ngrok.Client"><code class="xref py py-class docutils literal notranslate"><span class="pre">ngrok.Client</span></code></a> object.</p>
+<span class="target" id="module-ngrok.services"></span><dl class="py class">
+<dt class="sig sig-object py" id="ngrok.services.ServiceUsersClient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.services.</span></span><span class="sig-name descname"><span class="pre">ServiceUsersClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#ServiceUsersClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.ServiceUsersClient" title="Permalink to this definition">#</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="ngrok.services.ServiceUsersClient.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">active</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#ServiceUsersClient.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.ServiceUsersClient.create" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a new service user</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – human-readable name used to identify the service</p></li>
+<li><p><strong>active</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – whether or not the service is active</p></li>
+</ul>
+</dd>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-service-users-create">https://ngrok.com/docs/api#api-service-users-create</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.ServiceUser" title="ngrok.datatypes.ServiceUser"><code class="xref py py-class docutils literal notranslate"><span class="pre">ServiceUser</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
 
-<div id="search-results"></div>
+<dl class="py method">
+<dt class="sig sig-object py" id="ngrok.services.ServiceUsersClient.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#ServiceUsersClient.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.ServiceUsersClient.delete" title="Permalink to this definition">#</a></dt>
+<dd><p>Delete a service user by ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-service-users-delete">https://ngrok.com/docs/api#api-service-users-delete</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ngrok.services.ServiceUsersClient.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#ServiceUsersClient.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.ServiceUsersClient.get" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the details of a Bot User by ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a resource identifier</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-service-users-get">https://ngrok.com/docs/api#api-service-users-get</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.ServiceUser" title="ngrok.datatypes.ServiceUser"><code class="xref py py-class docutils literal notranslate"><span class="pre">ServiceUser</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ngrok.services.ServiceUsersClient.list">
+<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">before_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#ServiceUsersClient.list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.ServiceUsersClient.list" title="Permalink to this definition">#</a></dt>
+<dd><p>List all service users in this account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>before_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>limit</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>filter</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-service-users-list">https://ngrok.com/docs/api#api-service-users-list</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.ServiceUserList" title="ngrok.datatypes.ServiceUserList"><code class="xref py py-class docutils literal notranslate"><span class="pre">ServiceUserList</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ngrok.services.ServiceUsersClient.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">active</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/services.html#ServiceUsersClient.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.services.ServiceUsersClient.update" title="Permalink to this definition">#</a></dt>
+<dd><p>Update attributes of a service user by ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – human-readable name used to identify the service</p></li>
+<li><p><strong>active</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – whether or not the service is active</p></li>
+</ul>
+</dd>
+</dl>
+<p><a class="reference external" href="https://ngrok.com/docs/api#api-service-users-update">https://ngrok.com/docs/api#api-service-users-update</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="datatypes.html#ngrok.datatypes.ServiceUser" title="ngrok.datatypes.ServiceUser"><code class="xref py py-class docutils literal notranslate"><span class="pre">ServiceUser</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
 
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="ssh_certificate_authorities.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">SSH Certificate Authorities</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="secrets.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Secrets</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -288,8 +400,34 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Service Users</a><ul>
+<li><a class="reference internal" href="#ngrok.services.ServiceUsersClient"><code class="docutils literal notranslate"><span class="pre">ServiceUsersClient</span></code></a><ul>
+<li><a class="reference internal" href="#ngrok.services.ServiceUsersClient.create"><code class="docutils literal notranslate"><span class="pre">ServiceUsersClient.create()</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.services.ServiceUsersClient.delete"><code class="docutils literal notranslate"><span class="pre">ServiceUsersClient.delete()</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.services.ServiceUsersClient.get"><code class="docutils literal notranslate"><span class="pre">ServiceUsersClient.get()</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.services.ServiceUsersClient.list"><code class="docutils literal notranslate"><span class="pre">ServiceUsersClient.list()</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.services.ServiceUsersClient.update"><code class="docutils literal notranslate"><span class="pre">ServiceUsersClient.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -298,8 +436,5 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
-    
-<script src="_static/searchtools.js"></script>
-<script src="_static/language_data.js"></script>
-<script src="searchindex.js"></script></body>
+    </body>
 </html>
