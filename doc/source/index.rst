@@ -174,6 +174,7 @@ API Reference
   reserved_addrs
   reserved_domains
   secrets
+  service_users
   ssh_certificate_authorities
   ssh_credentials
   ssh_host_certificates

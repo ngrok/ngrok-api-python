@@ -130,6 +130,10 @@ class Client(object):
         return SecretsClient(self)
 
     @property
+    def service_users(self) -> ServiceUsersClient:
+        return ServiceUsersClient(self)
+
+    @property
     def ssh_certificate_authorities(self) -> SSHCertificateAuthoritiesClient:
         """An SSH Certificate Authority is a pair of an SSH Certificate and its private
         key that can be used to sign other SSH host and user certificates."""

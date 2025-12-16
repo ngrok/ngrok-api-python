@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Client" href="client.html" />
 
-    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
+    <!-- Generated with Sphinx 6.2.0 and Furo 2022.12.07 -->
         <title>ngrok-api documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
@@ -213,6 +213,7 @@
 <li class="toctree-l1"><a class="reference internal" href="reserved_addrs.html">Reserved Addresses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reserved_domains.html">Reserved Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="secrets.html">Secrets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="service_users.html">Service Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_certificate_authorities.html">SSH Certificate Authorities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_credentials.html">SSH Credentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_host_certificates.html">SSH Host Certificates</a></li>
@@ -377,6 +378,7 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="client.html#ngrok.Client.reserved_addrs"><code class="docutils literal notranslate"><span class="pre">Client.reserved_addrs</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="client.html#ngrok.Client.reserved_domains"><code class="docutils literal notranslate"><span class="pre">Client.reserved_domains</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="client.html#ngrok.Client.secrets"><code class="docutils literal notranslate"><span class="pre">Client.secrets</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="client.html#ngrok.Client.service_users"><code class="docutils literal notranslate"><span class="pre">Client.service_users</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="client.html#ngrok.Client.ssh_certificate_authorities"><code class="docutils literal notranslate"><span class="pre">Client.ssh_certificate_authorities</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="client.html#ngrok.Client.ssh_credentials"><code class="docutils literal notranslate"><span class="pre">Client.ssh_credentials</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="client.html#ngrok.Client.ssh_host_certificates"><code class="docutils literal notranslate"><span class="pre">Client.ssh_host_certificates</span></code></a></li>
@@ -1226,12 +1228,29 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Secret.updated_at"><code class="docutils literal notranslate"><span class="pre">Secret.updated_at</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Secret.uri"><code class="docutils literal notranslate"><span class="pre">Secret.uri</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Secret.vault"><code class="docutils literal notranslate"><span class="pre">Secret.vault</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.Secret.vault_name"><code class="docutils literal notranslate"><span class="pre">Secret.vault_name</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.SecretList"><code class="docutils literal notranslate"><span class="pre">SecretList</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.SecretList.next_page_uri"><code class="docutils literal notranslate"><span class="pre">SecretList.next_page_uri</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.SecretList.secrets"><code class="docutils literal notranslate"><span class="pre">SecretList.secrets</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.SecretList.uri"><code class="docutils literal notranslate"><span class="pre">SecretList.uri</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.ServiceUser"><code class="docutils literal notranslate"><span class="pre">ServiceUser</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.ServiceUser.active"><code class="docutils literal notranslate"><span class="pre">ServiceUser.active</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.ServiceUser.created_at"><code class="docutils literal notranslate"><span class="pre">ServiceUser.created_at</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.ServiceUser.delete"><code class="docutils literal notranslate"><span class="pre">ServiceUser.delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.ServiceUser.id"><code class="docutils literal notranslate"><span class="pre">ServiceUser.id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.ServiceUser.name"><code class="docutils literal notranslate"><span class="pre">ServiceUser.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.ServiceUser.update"><code class="docutils literal notranslate"><span class="pre">ServiceUser.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.ServiceUser.uri"><code class="docutils literal notranslate"><span class="pre">ServiceUser.uri</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.ServiceUserList"><code class="docutils literal notranslate"><span class="pre">ServiceUserList</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.ServiceUserList.next_page_uri"><code class="docutils literal notranslate"><span class="pre">ServiceUserList.next_page_uri</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.ServiceUserList.service_users"><code class="docutils literal notranslate"><span class="pre">ServiceUserList.service_users</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypes.html#ngrok.datatypes.ServiceUserList.uri"><code class="docutils literal notranslate"><span class="pre">ServiceUserList.uri</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html#ngrok.datatypes.StaticBackend"><code class="docutils literal notranslate"><span class="pre">StaticBackend</span></code></a><ul>
@@ -1962,6 +1981,17 @@ section on <a class="reference internal" href="errors.html#errors"><span class="
 <li class="toctree-l3"><a class="reference internal" href="secrets.html#ngrok.services.SecretsClient.get"><code class="docutils literal notranslate"><span class="pre">SecretsClient.get()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="secrets.html#ngrok.services.SecretsClient.list"><code class="docutils literal notranslate"><span class="pre">SecretsClient.list()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="secrets.html#ngrok.services.SecretsClient.update"><code class="docutils literal notranslate"><span class="pre">SecretsClient.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="service_users.html">Service Users</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="service_users.html#ngrok.services.ServiceUsersClient"><code class="docutils literal notranslate"><span class="pre">ServiceUsersClient</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service_users.html#ngrok.services.ServiceUsersClient.create"><code class="docutils literal notranslate"><span class="pre">ServiceUsersClient.create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="service_users.html#ngrok.services.ServiceUsersClient.delete"><code class="docutils literal notranslate"><span class="pre">ServiceUsersClient.delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="service_users.html#ngrok.services.ServiceUsersClient.get"><code class="docutils literal notranslate"><span class="pre">ServiceUsersClient.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="service_users.html#ngrok.services.ServiceUsersClient.list"><code class="docutils literal notranslate"><span class="pre">ServiceUsersClient.list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="service_users.html#ngrok.services.ServiceUsersClient.update"><code class="docutils literal notranslate"><span class="pre">ServiceUsersClient.update()</span></code></a></li>
 </ul>
 </li>
 </ul>

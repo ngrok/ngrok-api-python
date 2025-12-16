@@ -126,11 +126,13 @@ class AgentIngressesClient(object):
         self,
         before_id: str = None,
         limit: str = None,
+        filter: str = None,
     ) -> AgentIngressList:
         """List all Agent Ingresses owned by this account
 
         :param before_id:
         :param limit:
+        :param filter:
 
         https://ngrok.com/docs/api#api-agent-ingresses-list
         """
@@ -138,6 +140,7 @@ class AgentIngressesClient(object):
         body_arg = dict(
             before_id=before_id,
             limit=limit,
+            filter=filter,
         )
         result = self._client.http_client.get(path, body_arg)
         return AgentIngressList(self._client, result)
@@ -243,11 +246,13 @@ class APIKeysClient(object):
         self,
         before_id: str = None,
         limit: str = None,
+        filter: str = None,
     ) -> APIKeyList:
         """List all API keys owned by this account
 
         :param before_id:
         :param limit:
+        :param filter:
 
         https://ngrok.com/docs/api#api-api-keys-list
         """
@@ -255,6 +260,7 @@ class APIKeysClient(object):
         body_arg = dict(
             before_id=before_id,
             limit=limit,
+            filter=filter,
         )
         result = self._client.http_client.get(path, body_arg)
         return APIKeyList(self._client, result)
@@ -417,11 +423,13 @@ class TunnelSessionsClient(object):
         self,
         before_id: str = None,
         limit: str = None,
+        filter: str = None,
     ) -> TunnelSessionList:
         """List all online tunnel sessions running on this account.
 
         :param before_id:
         :param limit:
+        :param filter:
 
         https://ngrok.com/docs/api#api-tunnel-sessions-list
         """
@@ -429,6 +437,7 @@ class TunnelSessionsClient(object):
         body_arg = dict(
             before_id=before_id,
             limit=limit,
+            filter=filter,
         )
         result = self._client.http_client.get(path, body_arg)
         return TunnelSessionList(self._client, result)
@@ -1251,7 +1260,7 @@ class CertificateAuthoritiesClient(object):
         self,
         id: str,
     ) -> CertificateAuthority:
-        """Get detailed information about a certficate authority
+        """Get detailed information about a certificate authority
 
         :param id: a resource identifier
 
@@ -1269,11 +1278,13 @@ class CertificateAuthoritiesClient(object):
         self,
         before_id: str = None,
         limit: str = None,
+        filter: str = None,
     ) -> CertificateAuthorityList:
         """List all Certificate Authority on this account
 
         :param before_id:
         :param limit:
+        :param filter:
 
         https://ngrok.com/docs/api#api-certificate-authorities-list
         """
@@ -1281,6 +1292,7 @@ class CertificateAuthoritiesClient(object):
         body_arg = dict(
             before_id=before_id,
             limit=limit,
+            filter=filter,
         )
         result = self._client.http_client.get(path, body_arg)
         return CertificateAuthorityList(self._client, result)
@@ -1385,11 +1397,13 @@ class CredentialsClient(object):
         self,
         before_id: str = None,
         limit: str = None,
+        filter: str = None,
     ) -> CredentialList:
         """List all tunnel authtoken credentials on this account
 
         :param before_id:
         :param limit:
+        :param filter:
 
         https://ngrok.com/docs/api#api-credentials-list
         """
@@ -1397,6 +1411,7 @@ class CredentialsClient(object):
         body_arg = dict(
             before_id=before_id,
             limit=limit,
+            filter=filter,
         )
         result = self._client.http_client.get(path, body_arg)
         return CredentialList(self._client, result)
@@ -3525,7 +3540,7 @@ class EndpointsClient(object):
         description: str = None,
         metadata: str = None,
         bindings: Sequence[str] = None,
-        pooling_enabled: bool = False,
+        pooling_enabled: bool = None,
     ) -> Endpoint:
         """Create an endpoint, currently available only for cloud endpoints
 
@@ -3558,6 +3573,7 @@ class EndpointsClient(object):
         limit: str = None,
         id: Sequence[str] = [],
         url: Sequence[str] = [],
+        filter: str = None,
     ) -> EndpointList:
         """List all active endpoints on the account
 
@@ -3565,6 +3581,7 @@ class EndpointsClient(object):
         :param limit:
         :param id:
         :param url:
+        :param filter:
 
         https://ngrok.com/docs/api#api-endpoints-list
         """
@@ -3574,6 +3591,7 @@ class EndpointsClient(object):
             limit=limit,
             id=id,
             url=url,
+            filter=filter,
         )
         result = self._client.http_client.get(path, body_arg)
         return EndpointList(self._client, result)
@@ -3604,7 +3622,7 @@ class EndpointsClient(object):
         description: str = None,
         metadata: str = None,
         bindings: Sequence[str] = None,
-        pooling_enabled: bool = False,
+        pooling_enabled: bool = None,
     ) -> Endpoint:
         """Update an Endpoint by ID, currently available only for cloud endpoints
 
@@ -3720,11 +3738,13 @@ class EventDestinationsClient(object):
         self,
         before_id: str = None,
         limit: str = None,
+        filter: str = None,
     ) -> EventDestinationList:
         """List all Event Destinations on this account.
 
         :param before_id:
         :param limit:
+        :param filter:
 
         https://ngrok.com/docs/api#api-event-destinations-list
         """
@@ -3732,6 +3752,7 @@ class EventDestinationsClient(object):
         body_arg = dict(
             before_id=before_id,
             limit=limit,
+            filter=filter,
         )
         result = self._client.http_client.get(path, body_arg)
         return EventDestinationList(self._client, result)
@@ -3837,11 +3858,13 @@ class EventSubscriptionsClient(object):
         self,
         before_id: str = None,
         limit: str = None,
+        filter: str = None,
     ) -> EventSubscriptionList:
         """List this Account's Event Subscriptions.
 
         :param before_id:
         :param limit:
+        :param filter:
 
         https://ngrok.com/docs/api#api-event-subscriptions-list
         """
@@ -3849,6 +3872,7 @@ class EventSubscriptionsClient(object):
         body_arg = dict(
             before_id=before_id,
             limit=limit,
+            filter=filter,
         )
         result = self._client.http_client.get(path, body_arg)
         return EventSubscriptionList(self._client, result)
@@ -4060,11 +4084,13 @@ class IPPoliciesClient(object):
         self,
         before_id: str = None,
         limit: str = None,
+        filter: str = None,
     ) -> IPPolicyList:
         """List all IP policies on this account
 
         :param before_id:
         :param limit:
+        :param filter:
 
         https://ngrok.com/docs/api#api-ip-policies-list
         """
@@ -4072,6 +4098,7 @@ class IPPoliciesClient(object):
         body_arg = dict(
             before_id=before_id,
             limit=limit,
+            filter=filter,
         )
         result = self._client.http_client.get(path, body_arg)
         return IPPolicyList(self._client, result)
@@ -4177,11 +4204,13 @@ class IPPolicyRulesClient(object):
         self,
         before_id: str = None,
         limit: str = None,
+        filter: str = None,
     ) -> IPPolicyRuleList:
         """List all IP policy rules on this account
 
         :param before_id:
         :param limit:
+        :param filter:
 
         https://ngrok.com/docs/api#api-ip-policy-rules-list
         """
@@ -4189,6 +4218,7 @@ class IPPolicyRulesClient(object):
         body_arg = dict(
             before_id=before_id,
             limit=limit,
+            filter=filter,
         )
         result = self._client.http_client.get(path, body_arg)
         return IPPolicyRuleList(self._client, result)
@@ -4301,11 +4331,13 @@ class IPRestrictionsClient(object):
         self,
         before_id: str = None,
         limit: str = None,
+        filter: str = None,
     ) -> IPRestrictionList:
         """List all IP restrictions on this account
 
         :param before_id:
         :param limit:
+        :param filter:
 
         https://ngrok.com/docs/api#api-ip-restrictions-list
         """
@@ -4313,6 +4345,7 @@ class IPRestrictionsClient(object):
         body_arg = dict(
             before_id=before_id,
             limit=limit,
+            filter=filter,
         )
         result = self._client.http_client.get(path, body_arg)
         return IPRestrictionList(self._client, result)
@@ -4419,11 +4452,13 @@ class ReservedAddrsClient(object):
         self,
         before_id: str = None,
         limit: str = None,
+        filter: str = None,
     ) -> ReservedAddrList:
         """List all reserved addresses on this account.
 
         :param before_id:
         :param limit:
+        :param filter:
 
         https://ngrok.com/docs/api#api-reserved-addrs-list
         """
@@ -4431,6 +4466,7 @@ class ReservedAddrsClient(object):
         body_arg = dict(
             before_id=before_id,
             limit=limit,
+            filter=filter,
         )
         result = self._client.http_client.get(path, body_arg)
         return ReservedAddrList(self._client, result)
@@ -4541,11 +4577,13 @@ class ReservedDomainsClient(object):
         self,
         before_id: str = None,
         limit: str = None,
+        filter: str = None,
     ) -> ReservedDomainList:
         """List all reserved domains on this account.
 
         :param before_id:
         :param limit:
+        :param filter:
 
         https://ngrok.com/docs/api#api-reserved-domains-list
         """
@@ -4553,6 +4591,7 @@ class ReservedDomainsClient(object):
         body_arg = dict(
             before_id=before_id,
             limit=limit,
+            filter=filter,
         )
         result = self._client.http_client.get(path, body_arg)
         return ReservedDomainList(self._client, result)
@@ -4631,11 +4670,12 @@ class SecretsClient(object):
 
     def create(
         self,
-        vault_id: str,
         name: str = "",
         value: str = "",
         metadata: str = "",
         description: str = "",
+        vault_id: str = "",
+        vault_name: str = "",
     ) -> Secret:
         """Create a new Secret
 
@@ -4644,6 +4684,7 @@ class SecretsClient(object):
         :param metadata: Arbitrary user-defined metadata for this Secret
         :param description: description of Secret
         :param vault_id: unique identifier of the referenced vault
+        :param vault_name: name of the referenced vault
 
         https://ngrok.com/docs/api#api-secrets-create
         """
@@ -4654,6 +4695,7 @@ class SecretsClient(object):
             metadata=metadata,
             description=description,
             vault_id=vault_id,
+            vault_name=vault_name,
         )
         result = self._client.http_client.post(path, body_arg)
         return Secret(self._client, result)
@@ -4728,11 +4770,13 @@ class SecretsClient(object):
         self,
         before_id: str = None,
         limit: str = None,
+        filter: str = None,
     ) -> SecretList:
         """List all Secrets owned by account
 
         :param before_id:
         :param limit:
+        :param filter:
 
         https://ngrok.com/docs/api#api-secrets-list
         """
@@ -4740,9 +4784,118 @@ class SecretsClient(object):
         body_arg = dict(
             before_id=before_id,
             limit=limit,
+            filter=filter,
         )
         result = self._client.http_client.get(path, body_arg)
         return SecretList(self._client, result)
+
+
+class ServiceUsersClient(object):
+    def __init__(self, client):
+        self._client = client
+
+    def create(
+        self,
+        name: str = "",
+        active: bool = None,
+    ) -> ServiceUser:
+        """Create a new service user
+
+        :param name: human-readable name used to identify the service
+        :param active: whether or not the service is active
+
+        https://ngrok.com/docs/api#api-service-users-create
+        """
+        path = "/service_users"
+        body_arg = dict(
+            name=name,
+            active=active,
+        )
+        result = self._client.http_client.post(path, body_arg)
+        return ServiceUser(self._client, result)
+
+    def delete(
+        self,
+        id: str,
+    ):
+        """Delete a service user by ID
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-service-users-delete
+        """
+        path = "/service_users/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        self._client.http_client.delete(path, body_arg)
+
+    def get(
+        self,
+        id: str,
+    ) -> ServiceUser:
+        """Get the details of a Bot User by ID.
+
+        :param id: a resource identifier
+
+        https://ngrok.com/docs/api#api-service-users-get
+        """
+        path = "/service_users/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = None
+        result = self._client.http_client.get(path, body_arg)
+        return ServiceUser(self._client, result)
+
+    def list(
+        self,
+        before_id: str = None,
+        limit: str = None,
+        filter: str = None,
+    ) -> ServiceUserList:
+        """List all service users in this account.
+
+        :param before_id:
+        :param limit:
+        :param filter:
+
+        https://ngrok.com/docs/api#api-service-users-list
+        """
+        path = "/service_users"
+        body_arg = dict(
+            before_id=before_id,
+            limit=limit,
+            filter=filter,
+        )
+        result = self._client.http_client.get(path, body_arg)
+        return ServiceUserList(self._client, result)
+
+    def update(
+        self,
+        id: str,
+        name: str = None,
+        active: bool = None,
+    ) -> ServiceUser:
+        """Update attributes of a service user by ID.
+
+        :param id:
+        :param name: human-readable name used to identify the service
+        :param active: whether or not the service is active
+
+        https://ngrok.com/docs/api#api-service-users-update
+        """
+        path = "/service_users/{id}"
+        path = path.format(
+            id=id,
+        )
+        body_arg = dict(
+            name=name,
+            active=active,
+        )
+        result = self._client.http_client.patch(path, body_arg)
+        return ServiceUser(self._client, result)
 
 
 class SSHCertificateAuthoritiesClient(object):
@@ -4802,7 +4955,7 @@ class SSHCertificateAuthoritiesClient(object):
         self,
         id: str,
     ) -> SSHCertificateAuthority:
-        """Get detailed information about an SSH Certficate Authority
+        """Get detailed information about an SSH Certificate Authority
 
         :param id: a resource identifier
 
@@ -4820,11 +4973,13 @@ class SSHCertificateAuthoritiesClient(object):
         self,
         before_id: str = None,
         limit: str = None,
+        filter: str = None,
     ) -> SSHCertificateAuthorityList:
         """List all SSH Certificate Authorities on this account
 
         :param before_id:
         :param limit:
+        :param filter:
 
         https://ngrok.com/docs/api#api-ssh-certificate-authorities-list
         """
@@ -4832,6 +4987,7 @@ class SSHCertificateAuthoritiesClient(object):
         body_arg = dict(
             before_id=before_id,
             limit=limit,
+            filter=filter,
         )
         result = self._client.http_client.get(path, body_arg)
         return SSHCertificateAuthorityList(self._client, result)
@@ -4937,11 +5093,13 @@ class SSHCredentialsClient(object):
         self,
         before_id: str = None,
         limit: str = None,
+        filter: str = None,
     ) -> SSHCredentialList:
         """List all ssh credentials on this account
 
         :param before_id:
         :param limit:
+        :param filter:
 
         https://ngrok.com/docs/api#api-ssh-credentials-list
         """
@@ -4949,6 +5107,7 @@ class SSHCredentialsClient(object):
         body_arg = dict(
             before_id=before_id,
             limit=limit,
+            filter=filter,
         )
         result = self._client.http_client.get(path, body_arg)
         return SSHCredentialList(self._client, result)
@@ -5046,7 +5205,7 @@ class SSHHostCertificatesClient(object):
         self,
         id: str,
     ) -> SSHHostCertificate:
-        """Get detailed information about an SSH Host Certficate
+        """Get detailed information about an SSH Host Certificate
 
         :param id: a resource identifier
 
@@ -5176,7 +5335,7 @@ class SSHUserCertificatesClient(object):
         self,
         id: str,
     ) -> SSHUserCertificate:
-        """Get detailed information about an SSH User Certficate
+        """Get detailed information about an SSH User Certificate
 
         :param id: a resource identifier
 
@@ -5311,11 +5470,13 @@ class TLSCertificatesClient(object):
         self,
         before_id: str = None,
         limit: str = None,
+        filter: str = None,
     ) -> TLSCertificateList:
         """List all TLS certificates on this account
 
         :param before_id:
         :param limit:
+        :param filter:
 
         https://ngrok.com/docs/api#api-tls-certificates-list
         """
@@ -5323,6 +5484,7 @@ class TLSCertificatesClient(object):
         body_arg = dict(
             before_id=before_id,
             limit=limit,
+            filter=filter,
         )
         result = self._client.http_client.get(path, body_arg)
         return TLSCertificateList(self._client, result)
@@ -5520,11 +5682,13 @@ class VaultsClient(object):
         self,
         before_id: str = None,
         limit: str = None,
+        filter: str = None,
     ) -> VaultList:
         """List all Vaults owned by account
 
         :param before_id:
         :param limit:
+        :param filter:
 
         https://ngrok.com/docs/api#api-vaults-list
         """
@@ -5532,6 +5696,7 @@ class VaultsClient(object):
         body_arg = dict(
             before_id=before_id,
             limit=limit,
+            filter=filter,
         )
         result = self._client.http_client.get(path, body_arg)
         return VaultList(self._client, result)
