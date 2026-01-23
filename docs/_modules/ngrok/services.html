@@ -386,9 +386,9 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentIngressList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all Agent Ingresses owned by this account</span>
 
-<span class="sd">        :param before_id:</span>
-<span class="sd">        :param limit:</span>
-<span class="sd">        :param filter:</span>
+<span class="sd">        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.</span>
+<span class="sd">        :param limit: Constrains the number of results in the dataset. See the `API Overview &lt;https://ngrok.com/docs/api/index#pagination&gt;`_ for details.</span>
+<span class="sd">        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering &lt;https://ngrok.com/docs/api/api-filtering&gt;`_.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-agent-ingresses-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -506,9 +506,9 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">APIKeyList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all API keys owned by this account</span>
 
-<span class="sd">        :param before_id:</span>
-<span class="sd">        :param limit:</span>
-<span class="sd">        :param filter:</span>
+<span class="sd">        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.</span>
+<span class="sd">        :param limit: Constrains the number of results in the dataset. See the `API Overview &lt;https://ngrok.com/docs/api/index#pagination&gt;`_ for details.</span>
+<span class="sd">        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering &lt;https://ngrok.com/docs/api/api-filtering&gt;`_.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-api-keys-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -683,9 +683,9 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelSessionList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all online tunnel sessions running on this account.</span>
 
-<span class="sd">        :param before_id:</span>
-<span class="sd">        :param limit:</span>
-<span class="sd">        :param filter:</span>
+<span class="sd">        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.</span>
+<span class="sd">        :param limit: Constrains the number of results in the dataset. See the `API Overview &lt;https://ngrok.com/docs/api/index#pagination&gt;`_ for details.</span>
+<span class="sd">        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering &lt;https://ngrok.com/docs/api/api-filtering&gt;`_.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-tunnel-sessions-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1538,9 +1538,9 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CertificateAuthorityList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all Certificate Authority on this account</span>
 
-<span class="sd">        :param before_id:</span>
-<span class="sd">        :param limit:</span>
-<span class="sd">        :param filter:</span>
+<span class="sd">        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.</span>
+<span class="sd">        :param limit: Constrains the number of results in the dataset. See the `API Overview &lt;https://ngrok.com/docs/api/index#pagination&gt;`_ for details.</span>
+<span class="sd">        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering &lt;https://ngrok.com/docs/api/api-filtering&gt;`_.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-certificate-authorities-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1600,7 +1600,7 @@
 <span class="sd">        :param description: human-readable description of who or what will use the credential to authenticate. Optional, max 255 bytes.</span>
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this credential. Optional, max 4096 bytes.</span>
 <span class="sd">        :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains, addresses, and labels the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules for domains may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. Bind rules for labels may specify a wildcard key and/or value to match multiple labels. For example, you may specify a rule of ``bind:*=example`` which will allow ``x=example``, ``y=example``, etc. A rule of ``&#39;*&#39;`` is equivalent to no acl at all and will explicitly permit all actions.</span>
-<span class="sd">        :param owner_id: If supplied at credential creation, ownership will be assigned to the specified User or Bot. Only admins may specify an owner other than themselves. Defaults to the authenticated User or Bot.</span>
+<span class="sd">        :param owner_id: If supplied at credential creation, ownership will be assigned to the specified User or Service User. Only admins may specify an owner other than themselves. Defaults to the authenticated User or Service User. Accepts one of: User ID, User email, or SCIM User ID.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-credentials-create</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1657,9 +1657,9 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CredentialList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all tunnel authtoken credentials on this account</span>
 
-<span class="sd">        :param before_id:</span>
-<span class="sd">        :param limit:</span>
-<span class="sd">        :param filter:</span>
+<span class="sd">        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.</span>
+<span class="sd">        :param limit: Constrains the number of results in the dataset. See the `API Overview &lt;https://ngrok.com/docs/api/index#pagination&gt;`_ for details.</span>
+<span class="sd">        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering &lt;https://ngrok.com/docs/api/api-filtering&gt;`_.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-credentials-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -3833,11 +3833,11 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EndpointList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all active endpoints on the account</span>
 
-<span class="sd">        :param before_id:</span>
-<span class="sd">        :param limit:</span>
-<span class="sd">        :param id:</span>
-<span class="sd">        :param url:</span>
-<span class="sd">        :param filter:</span>
+<span class="sd">        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.</span>
+<span class="sd">        :param limit: Constrains the number of results in the dataset. See the `API Overview &lt;https://ngrok.com/docs/api/index#pagination&gt;`_ for details.</span>
+<span class="sd">        :param id: Filter results by endpoint IDs. Deprecated: use ``filter`` instead.</span>
+<span class="sd">        :param url: Filter results by endpoint URLs. Deprecated: use ``filter`` instead.</span>
+<span class="sd">        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering &lt;https://ngrok.com/docs/api/api-filtering&gt;`_.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-endpoints-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -3998,9 +3998,9 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventDestinationList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all Event Destinations on this account.</span>
 
-<span class="sd">        :param before_id:</span>
-<span class="sd">        :param limit:</span>
-<span class="sd">        :param filter:</span>
+<span class="sd">        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.</span>
+<span class="sd">        :param limit: Constrains the number of results in the dataset. See the `API Overview &lt;https://ngrok.com/docs/api/index#pagination&gt;`_ for details.</span>
+<span class="sd">        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering &lt;https://ngrok.com/docs/api/api-filtering&gt;`_.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-event-destinations-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -4118,9 +4118,9 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventSubscriptionList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List this Account&#39;s Event Subscriptions.</span>
 
-<span class="sd">        :param before_id:</span>
-<span class="sd">        :param limit:</span>
-<span class="sd">        :param filter:</span>
+<span class="sd">        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.</span>
+<span class="sd">        :param limit: Constrains the number of results in the dataset. See the `API Overview &lt;https://ngrok.com/docs/api/index#pagination&gt;`_ for details.</span>
+<span class="sd">        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering &lt;https://ngrok.com/docs/api/api-filtering&gt;`_.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-event-subscriptions-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -4344,9 +4344,9 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPPolicyList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all IP policies on this account</span>
 
-<span class="sd">        :param before_id:</span>
-<span class="sd">        :param limit:</span>
-<span class="sd">        :param filter:</span>
+<span class="sd">        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.</span>
+<span class="sd">        :param limit: Constrains the number of results in the dataset. See the `API Overview &lt;https://ngrok.com/docs/api/index#pagination&gt;`_ for details.</span>
+<span class="sd">        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering &lt;https://ngrok.com/docs/api/api-filtering&gt;`_.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-ip-policies-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -4464,9 +4464,9 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPPolicyRuleList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all IP policy rules on this account</span>
 
-<span class="sd">        :param before_id:</span>
-<span class="sd">        :param limit:</span>
-<span class="sd">        :param filter:</span>
+<span class="sd">        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.</span>
+<span class="sd">        :param limit: Constrains the number of results in the dataset. See the `API Overview &lt;https://ngrok.com/docs/api/index#pagination&gt;`_ for details.</span>
+<span class="sd">        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering &lt;https://ngrok.com/docs/api/api-filtering&gt;`_.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-ip-policy-rules-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -4591,9 +4591,9 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPRestrictionList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all IP restrictions on this account</span>
 
-<span class="sd">        :param before_id:</span>
-<span class="sd">        :param limit:</span>
-<span class="sd">        :param filter:</span>
+<span class="sd">        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.</span>
+<span class="sd">        :param limit: Constrains the number of results in the dataset. See the `API Overview &lt;https://ngrok.com/docs/api/index#pagination&gt;`_ for details.</span>
+<span class="sd">        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering &lt;https://ngrok.com/docs/api/api-filtering&gt;`_.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-ip-restrictions-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -4712,9 +4712,9 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReservedAddrList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all reserved addresses on this account.</span>
 
-<span class="sd">        :param before_id:</span>
-<span class="sd">        :param limit:</span>
-<span class="sd">        :param filter:</span>
+<span class="sd">        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.</span>
+<span class="sd">        :param limit: Constrains the number of results in the dataset. See the `API Overview &lt;https://ngrok.com/docs/api/index#pagination&gt;`_ for details.</span>
+<span class="sd">        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering &lt;https://ngrok.com/docs/api/api-filtering&gt;`_.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-reserved-addrs-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -4770,6 +4770,7 @@
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="n">certificate_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">certificate_management_policy</span><span class="p">:</span> <span class="n">ReservedDomainCertPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">resolves_to</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">ReservedDomainResolvesToEntry</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReservedDomain</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new reserved domain.</span>
 
@@ -4779,6 +4780,7 @@
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this reserved domain. Optional, max 4096 bytes.</span>
 <span class="sd">        :param certificate_id: ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with ``certificate_management_policy``.</span>
 <span class="sd">        :param certificate_management_policy: configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with ``certificate_id``.</span>
+<span class="sd">        :param resolves_to: DNS resolver targets configured for the reserved domain, or empty for &quot;global&quot; resolution.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-reserved-domains-create</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -4790,6 +4792,7 @@
             <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
             <span class="n">certificate_id</span><span class="o">=</span><span class="n">certificate_id</span><span class="p">,</span>
             <span class="n">certificate_management_policy</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">certificate_management_policy</span><span class="p">),</span>
+            <span class="n">resolves_to</span><span class="o">=</span><span class="p">[</span><span class="n">extract_props</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">resolves_to</span> <span class="ow">or</span> <span class="p">[]],</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">ReservedDomain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -4837,9 +4840,9 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReservedDomainList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all reserved domains on this account.</span>
 
-<span class="sd">        :param before_id:</span>
-<span class="sd">        :param limit:</span>
-<span class="sd">        :param filter:</span>
+<span class="sd">        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.</span>
+<span class="sd">        :param limit: Constrains the number of results in the dataset. See the `API Overview &lt;https://ngrok.com/docs/api/index#pagination&gt;`_ for details.</span>
+<span class="sd">        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering &lt;https://ngrok.com/docs/api/api-filtering&gt;`_.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-reserved-domains-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -4859,6 +4862,7 @@
         <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">certificate_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">certificate_management_policy</span><span class="p">:</span> <span class="n">ReservedDomainCertPolicy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">resolves_to</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">ReservedDomainResolvesToEntry</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReservedDomain</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the attributes of a reserved domain.</span>
 
@@ -4867,6 +4871,7 @@
 <span class="sd">        :param metadata: arbitrary user-defined machine-readable data of this reserved domain. Optional, max 4096 bytes.</span>
 <span class="sd">        :param certificate_id: ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with ``certificate_management_policy``.</span>
 <span class="sd">        :param certificate_management_policy: configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with ``certificate_id``.</span>
+<span class="sd">        :param resolves_to: DNS resolver targets configured for the reserved domain, or empty for &quot;global&quot; resolution.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-reserved-domains-update</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -4879,6 +4884,7 @@
             <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
             <span class="n">certificate_id</span><span class="o">=</span><span class="n">certificate_id</span><span class="p">,</span>
             <span class="n">certificate_management_policy</span><span class="o">=</span><span class="n">extract_props</span><span class="p">(</span><span class="n">certificate_management_policy</span><span class="p">),</span>
+            <span class="n">resolves_to</span><span class="o">=</span><span class="p">[</span><span class="n">extract_props</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">resolves_to</span> <span class="ow">or</span> <span class="p">[]],</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">http_client</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body_arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">ReservedDomain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
@@ -5030,9 +5036,9 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SecretList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all Secrets owned by account</span>
 
-<span class="sd">        :param before_id:</span>
-<span class="sd">        :param limit:</span>
-<span class="sd">        :param filter:</span>
+<span class="sd">        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.</span>
+<span class="sd">        :param limit: Constrains the number of results in the dataset. See the `API Overview &lt;https://ngrok.com/docs/api/index#pagination&gt;`_ for details.</span>
+<span class="sd">        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering &lt;https://ngrok.com/docs/api/api-filtering&gt;`_.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-secrets-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -5113,9 +5119,9 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ServiceUserList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all service users in this account.</span>
 
-<span class="sd">        :param before_id:</span>
-<span class="sd">        :param limit:</span>
-<span class="sd">        :param filter:</span>
+<span class="sd">        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.</span>
+<span class="sd">        :param limit: Constrains the number of results in the dataset. See the `API Overview &lt;https://ngrok.com/docs/api/index#pagination&gt;`_ for details.</span>
+<span class="sd">        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering &lt;https://ngrok.com/docs/api/api-filtering&gt;`_.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-service-users-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -5233,9 +5239,9 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHCertificateAuthorityList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all SSH Certificate Authorities on this account</span>
 
-<span class="sd">        :param before_id:</span>
-<span class="sd">        :param limit:</span>
-<span class="sd">        :param filter:</span>
+<span class="sd">        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.</span>
+<span class="sd">        :param limit: Constrains the number of results in the dataset. See the `API Overview &lt;https://ngrok.com/docs/api/index#pagination&gt;`_ for details.</span>
+<span class="sd">        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering &lt;https://ngrok.com/docs/api/api-filtering&gt;`_.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-ssh-certificate-authorities-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -5353,9 +5359,9 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SSHCredentialList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all ssh credentials on this account</span>
 
-<span class="sd">        :param before_id:</span>
-<span class="sd">        :param limit:</span>
-<span class="sd">        :param filter:</span>
+<span class="sd">        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.</span>
+<span class="sd">        :param limit: Constrains the number of results in the dataset. See the `API Overview &lt;https://ngrok.com/docs/api/index#pagination&gt;`_ for details.</span>
+<span class="sd">        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering &lt;https://ngrok.com/docs/api/api-filtering&gt;`_.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-ssh-credentials-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -5730,9 +5736,9 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TLSCertificateList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all TLS certificates on this account</span>
 
-<span class="sd">        :param before_id:</span>
-<span class="sd">        :param limit:</span>
-<span class="sd">        :param filter:</span>
+<span class="sd">        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.</span>
+<span class="sd">        :param limit: Constrains the number of results in the dataset. See the `API Overview &lt;https://ngrok.com/docs/api/index#pagination&gt;`_ for details.</span>
+<span class="sd">        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering &lt;https://ngrok.com/docs/api/api-filtering&gt;`_.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-tls-certificates-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -5942,9 +5948,9 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VaultList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List all Vaults owned by account</span>
 
-<span class="sd">        :param before_id:</span>
-<span class="sd">        :param limit:</span>
-<span class="sd">        :param filter:</span>
+<span class="sd">        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.</span>
+<span class="sd">        :param limit: Constrains the number of results in the dataset. See the `API Overview &lt;https://ngrok.com/docs/api/index#pagination&gt;`_ for details.</span>
+<span class="sd">        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering &lt;https://ngrok.com/docs/api/api-filtering&gt;`_.</span>
 
 <span class="sd">        https://ngrok.com/docs/api#api-vaults-list</span>
 <span class="sd">        &quot;&quot;&quot;</span>

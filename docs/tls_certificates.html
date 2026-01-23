@@ -325,9 +325,9 @@ automated certificate provisioning.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>before_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
-<li><p><strong>limit</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
-<li><p><strong>filter</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>before_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.</p></li>
+<li><p><strong>limit</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Constrains the number of results in the dataset. See the <a class="reference external" href="https://ngrok.com/docs/api/index#pagination">API Overview</a> for details.</p></li>
+<li><p><strong>filter</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">metadata</span></code>, <code class="docutils literal notranslate"><span class="pre">created_at</span></code>, and more. See ngrok API Filtering for syntax and field details: <a class="reference external" href="https://ngrok.com/docs/api/api-filtering">https://ngrok.com/docs/api/api-filtering</a>.</p></li>
 </ul>
 </dd>
 </dl>
