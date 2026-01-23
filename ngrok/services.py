@@ -130,9 +130,9 @@ class AgentIngressesClient(object):
     ) -> AgentIngressList:
         """List all Agent Ingresses owned by this account
 
-        :param before_id:
-        :param limit:
-        :param filter:
+        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.
+        :param limit: Constrains the number of results in the dataset. See the `API Overview <https://ngrok.com/docs/api/index#pagination>`_ for details.
+        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering <https://ngrok.com/docs/api/api-filtering>`_.
 
         https://ngrok.com/docs/api#api-agent-ingresses-list
         """
@@ -250,9 +250,9 @@ class APIKeysClient(object):
     ) -> APIKeyList:
         """List all API keys owned by this account
 
-        :param before_id:
-        :param limit:
-        :param filter:
+        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.
+        :param limit: Constrains the number of results in the dataset. See the `API Overview <https://ngrok.com/docs/api/index#pagination>`_ for details.
+        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering <https://ngrok.com/docs/api/api-filtering>`_.
 
         https://ngrok.com/docs/api#api-api-keys-list
         """
@@ -427,9 +427,9 @@ class TunnelSessionsClient(object):
     ) -> TunnelSessionList:
         """List all online tunnel sessions running on this account.
 
-        :param before_id:
-        :param limit:
-        :param filter:
+        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.
+        :param limit: Constrains the number of results in the dataset. See the `API Overview <https://ngrok.com/docs/api/index#pagination>`_ for details.
+        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering <https://ngrok.com/docs/api/api-filtering>`_.
 
         https://ngrok.com/docs/api#api-tunnel-sessions-list
         """
@@ -1282,9 +1282,9 @@ class CertificateAuthoritiesClient(object):
     ) -> CertificateAuthorityList:
         """List all Certificate Authority on this account
 
-        :param before_id:
-        :param limit:
-        :param filter:
+        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.
+        :param limit: Constrains the number of results in the dataset. See the `API Overview <https://ngrok.com/docs/api/index#pagination>`_ for details.
+        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering <https://ngrok.com/docs/api/api-filtering>`_.
 
         https://ngrok.com/docs/api#api-certificate-authorities-list
         """
@@ -1344,7 +1344,7 @@ class CredentialsClient(object):
         :param description: human-readable description of who or what will use the credential to authenticate. Optional, max 255 bytes.
         :param metadata: arbitrary user-defined machine-readable data of this credential. Optional, max 4096 bytes.
         :param acl: optional list of ACL rules. If unspecified, the credential will have no restrictions. The only allowed ACL rule at this time is the ``bind`` rule. The ``bind`` rule allows the caller to restrict what domains, addresses, and labels the token is allowed to bind. For example, to allow the token to open a tunnel on example.ngrok.io your ACL would include the rule ``bind:example.ngrok.io``. Bind rules for domains may specify a leading wildcard to match multiple domains with a common suffix. For example, you may specify a rule of ``bind:*.example.com`` which will allow ``x.example.com``, ``y.example.com``, ``*.example.com``, etc. Bind rules for labels may specify a wildcard key and/or value to match multiple labels. For example, you may specify a rule of ``bind:*=example`` which will allow ``x=example``, ``y=example``, etc. A rule of ``'*'`` is equivalent to no acl at all and will explicitly permit all actions.
-        :param owner_id: If supplied at credential creation, ownership will be assigned to the specified User or Bot. Only admins may specify an owner other than themselves. Defaults to the authenticated User or Bot.
+        :param owner_id: If supplied at credential creation, ownership will be assigned to the specified User or Service User. Only admins may specify an owner other than themselves. Defaults to the authenticated User or Service User. Accepts one of: User ID, User email, or SCIM User ID.
 
         https://ngrok.com/docs/api#api-credentials-create
         """
@@ -1401,9 +1401,9 @@ class CredentialsClient(object):
     ) -> CredentialList:
         """List all tunnel authtoken credentials on this account
 
-        :param before_id:
-        :param limit:
-        :param filter:
+        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.
+        :param limit: Constrains the number of results in the dataset. See the `API Overview <https://ngrok.com/docs/api/index#pagination>`_ for details.
+        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering <https://ngrok.com/docs/api/api-filtering>`_.
 
         https://ngrok.com/docs/api#api-credentials-list
         """
@@ -3577,11 +3577,11 @@ class EndpointsClient(object):
     ) -> EndpointList:
         """List all active endpoints on the account
 
-        :param before_id:
-        :param limit:
-        :param id:
-        :param url:
-        :param filter:
+        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.
+        :param limit: Constrains the number of results in the dataset. See the `API Overview <https://ngrok.com/docs/api/index#pagination>`_ for details.
+        :param id: Filter results by endpoint IDs. Deprecated: use ``filter`` instead.
+        :param url: Filter results by endpoint URLs. Deprecated: use ``filter`` instead.
+        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering <https://ngrok.com/docs/api/api-filtering>`_.
 
         https://ngrok.com/docs/api#api-endpoints-list
         """
@@ -3742,9 +3742,9 @@ class EventDestinationsClient(object):
     ) -> EventDestinationList:
         """List all Event Destinations on this account.
 
-        :param before_id:
-        :param limit:
-        :param filter:
+        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.
+        :param limit: Constrains the number of results in the dataset. See the `API Overview <https://ngrok.com/docs/api/index#pagination>`_ for details.
+        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering <https://ngrok.com/docs/api/api-filtering>`_.
 
         https://ngrok.com/docs/api#api-event-destinations-list
         """
@@ -3862,9 +3862,9 @@ class EventSubscriptionsClient(object):
     ) -> EventSubscriptionList:
         """List this Account's Event Subscriptions.
 
-        :param before_id:
-        :param limit:
-        :param filter:
+        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.
+        :param limit: Constrains the number of results in the dataset. See the `API Overview <https://ngrok.com/docs/api/index#pagination>`_ for details.
+        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering <https://ngrok.com/docs/api/api-filtering>`_.
 
         https://ngrok.com/docs/api#api-event-subscriptions-list
         """
@@ -4088,9 +4088,9 @@ class IPPoliciesClient(object):
     ) -> IPPolicyList:
         """List all IP policies on this account
 
-        :param before_id:
-        :param limit:
-        :param filter:
+        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.
+        :param limit: Constrains the number of results in the dataset. See the `API Overview <https://ngrok.com/docs/api/index#pagination>`_ for details.
+        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering <https://ngrok.com/docs/api/api-filtering>`_.
 
         https://ngrok.com/docs/api#api-ip-policies-list
         """
@@ -4208,9 +4208,9 @@ class IPPolicyRulesClient(object):
     ) -> IPPolicyRuleList:
         """List all IP policy rules on this account
 
-        :param before_id:
-        :param limit:
-        :param filter:
+        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.
+        :param limit: Constrains the number of results in the dataset. See the `API Overview <https://ngrok.com/docs/api/index#pagination>`_ for details.
+        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering <https://ngrok.com/docs/api/api-filtering>`_.
 
         https://ngrok.com/docs/api#api-ip-policy-rules-list
         """
@@ -4335,9 +4335,9 @@ class IPRestrictionsClient(object):
     ) -> IPRestrictionList:
         """List all IP restrictions on this account
 
-        :param before_id:
-        :param limit:
-        :param filter:
+        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.
+        :param limit: Constrains the number of results in the dataset. See the `API Overview <https://ngrok.com/docs/api/index#pagination>`_ for details.
+        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering <https://ngrok.com/docs/api/api-filtering>`_.
 
         https://ngrok.com/docs/api#api-ip-restrictions-list
         """
@@ -4456,9 +4456,9 @@ class ReservedAddrsClient(object):
     ) -> ReservedAddrList:
         """List all reserved addresses on this account.
 
-        :param before_id:
-        :param limit:
-        :param filter:
+        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.
+        :param limit: Constrains the number of results in the dataset. See the `API Overview <https://ngrok.com/docs/api/index#pagination>`_ for details.
+        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering <https://ngrok.com/docs/api/api-filtering>`_.
 
         https://ngrok.com/docs/api#api-reserved-addrs-list
         """
@@ -4514,6 +4514,7 @@ class ReservedDomainsClient(object):
         metadata: str = "",
         certificate_id: str = None,
         certificate_management_policy: ReservedDomainCertPolicy = None,
+        resolves_to: Sequence[ReservedDomainResolvesToEntry] = None,
     ) -> ReservedDomain:
         """Create a new reserved domain.
 
@@ -4523,6 +4524,7 @@ class ReservedDomainsClient(object):
         :param metadata: arbitrary user-defined machine-readable data of this reserved domain. Optional, max 4096 bytes.
         :param certificate_id: ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with ``certificate_management_policy``.
         :param certificate_management_policy: configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with ``certificate_id``.
+        :param resolves_to: DNS resolver targets configured for the reserved domain, or empty for "global" resolution.
 
         https://ngrok.com/docs/api#api-reserved-domains-create
         """
@@ -4534,6 +4536,7 @@ class ReservedDomainsClient(object):
             metadata=metadata,
             certificate_id=certificate_id,
             certificate_management_policy=extract_props(certificate_management_policy),
+            resolves_to=[extract_props(item) for item in resolves_to or []],
         )
         result = self._client.http_client.post(path, body_arg)
         return ReservedDomain(self._client, result)
@@ -4581,9 +4584,9 @@ class ReservedDomainsClient(object):
     ) -> ReservedDomainList:
         """List all reserved domains on this account.
 
-        :param before_id:
-        :param limit:
-        :param filter:
+        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.
+        :param limit: Constrains the number of results in the dataset. See the `API Overview <https://ngrok.com/docs/api/index#pagination>`_ for details.
+        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering <https://ngrok.com/docs/api/api-filtering>`_.
 
         https://ngrok.com/docs/api#api-reserved-domains-list
         """
@@ -4603,6 +4606,7 @@ class ReservedDomainsClient(object):
         metadata: str = None,
         certificate_id: str = None,
         certificate_management_policy: ReservedDomainCertPolicy = None,
+        resolves_to: Sequence[ReservedDomainResolvesToEntry] = None,
     ) -> ReservedDomain:
         """Update the attributes of a reserved domain.
 
@@ -4611,6 +4615,7 @@ class ReservedDomainsClient(object):
         :param metadata: arbitrary user-defined machine-readable data of this reserved domain. Optional, max 4096 bytes.
         :param certificate_id: ID of a user-uploaded TLS certificate to use for connections to targeting this domain. Optional, mutually exclusive with ``certificate_management_policy``.
         :param certificate_management_policy: configuration for automatic management of TLS certificates for this domain, or null if automatic management is disabled. Optional, mutually exclusive with ``certificate_id``.
+        :param resolves_to: DNS resolver targets configured for the reserved domain, or empty for "global" resolution.
 
         https://ngrok.com/docs/api#api-reserved-domains-update
         """
@@ -4623,6 +4628,7 @@ class ReservedDomainsClient(object):
             metadata=metadata,
             certificate_id=certificate_id,
             certificate_management_policy=extract_props(certificate_management_policy),
+            resolves_to=[extract_props(item) for item in resolves_to or []],
         )
         result = self._client.http_client.patch(path, body_arg)
         return ReservedDomain(self._client, result)
@@ -4774,9 +4780,9 @@ class SecretsClient(object):
     ) -> SecretList:
         """List all Secrets owned by account
 
-        :param before_id:
-        :param limit:
-        :param filter:
+        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.
+        :param limit: Constrains the number of results in the dataset. See the `API Overview <https://ngrok.com/docs/api/index#pagination>`_ for details.
+        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering <https://ngrok.com/docs/api/api-filtering>`_.
 
         https://ngrok.com/docs/api#api-secrets-list
         """
@@ -4857,9 +4863,9 @@ class ServiceUsersClient(object):
     ) -> ServiceUserList:
         """List all service users in this account.
 
-        :param before_id:
-        :param limit:
-        :param filter:
+        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.
+        :param limit: Constrains the number of results in the dataset. See the `API Overview <https://ngrok.com/docs/api/index#pagination>`_ for details.
+        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering <https://ngrok.com/docs/api/api-filtering>`_.
 
         https://ngrok.com/docs/api#api-service-users-list
         """
@@ -4977,9 +4983,9 @@ class SSHCertificateAuthoritiesClient(object):
     ) -> SSHCertificateAuthorityList:
         """List all SSH Certificate Authorities on this account
 
-        :param before_id:
-        :param limit:
-        :param filter:
+        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.
+        :param limit: Constrains the number of results in the dataset. See the `API Overview <https://ngrok.com/docs/api/index#pagination>`_ for details.
+        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering <https://ngrok.com/docs/api/api-filtering>`_.
 
         https://ngrok.com/docs/api#api-ssh-certificate-authorities-list
         """
@@ -5097,9 +5103,9 @@ class SSHCredentialsClient(object):
     ) -> SSHCredentialList:
         """List all ssh credentials on this account
 
-        :param before_id:
-        :param limit:
-        :param filter:
+        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.
+        :param limit: Constrains the number of results in the dataset. See the `API Overview <https://ngrok.com/docs/api/index#pagination>`_ for details.
+        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering <https://ngrok.com/docs/api/api-filtering>`_.
 
         https://ngrok.com/docs/api#api-ssh-credentials-list
         """
@@ -5474,9 +5480,9 @@ class TLSCertificatesClient(object):
     ) -> TLSCertificateList:
         """List all TLS certificates on this account
 
-        :param before_id:
-        :param limit:
-        :param filter:
+        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.
+        :param limit: Constrains the number of results in the dataset. See the `API Overview <https://ngrok.com/docs/api/index#pagination>`_ for details.
+        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering <https://ngrok.com/docs/api/api-filtering>`_.
 
         https://ngrok.com/docs/api#api-tls-certificates-list
         """
@@ -5686,9 +5692,9 @@ class VaultsClient(object):
     ) -> VaultList:
         """List all Vaults owned by account
 
-        :param before_id:
-        :param limit:
-        :param filter:
+        :param before_id: Expects a resource ID as its input. Returns earlier entries in the result set, sorted by ID.
+        :param limit: Constrains the number of results in the dataset. See the `API Overview <https://ngrok.com/docs/api/index#pagination>`_ for details.
+        :param filter: A CEL expression to filter the list results. Supports logical and comparison operators to match on fields such as ``id``, ``metadata``, ``created_at``, and more. See ngrok API Filtering for syntax and field details: `https://ngrok.com/docs/api/api-filtering <https://ngrok.com/docs/api/api-filtering>`_.
 
         https://ngrok.com/docs/api#api-vaults-list
         """

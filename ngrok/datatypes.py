@@ -1805,7 +1805,7 @@ class Credential(object):
 
     @property
     def owner_id(self) -> str:
-        """If supplied at credential creation, ownership will be assigned to the specified User or Bot. Only admins may specify an owner other than themselves. Defaults to the authenticated User or Bot."""
+        """If supplied at credential creation, ownership will be assigned to the specified User or Service User. Only admins may specify an owner other than themselves. Defaults to the authenticated User or Service User. Accepts one of: User ID, User email, or SCIM User ID."""
         return self._props["owner_id"]
 
 
@@ -4899,6 +4899,11 @@ class ReservedDomain(object):
             if props.get("certificate_management_status") is not None
             else None
         )
+        self._props["resolves_to"] = (
+            [ReservedDomainResolvesToEntry(client, x) for x in props["resolves_to"]]
+            if props.get("resolves_to") is not None
+            else []
+        )
 
     def __eq__(self, other):
         return self._props == other._props
@@ -4975,6 +4980,11 @@ class ReservedDomain(object):
     def acme_challenge_cname_target(self) -> str:
         """DNS CNAME target for the host _acme-challenge.example.com, where example.com is your reserved domain name. This is required to issue certificates for wildcard, non-ngrok reserved domains. Must be null for non-wildcard domains and ngrok subdomains."""
         return self._props["acme_challenge_cname_target"]
+
+    @property
+    def resolves_to(self) -> Sequence[ReservedDomainResolvesToEntry]:
+        """DNS resolver targets configured for the reserved domain, or empty for "global" resolution."""
+        return self._props["resolves_to"]
 
 
 class ReservedDomainList(object):
@@ -5103,6 +5113,28 @@ class ReservedDomainCertJob(object):
     def retries_at(self) -> datetime:
         """timestamp when the provisioning job will be retried"""
         return self._props["retries_at"]
+
+
+class ReservedDomainResolvesToEntry(object):
+    def __init__(self, client, props):
+        self._client = client
+        self._props = props
+
+    def __eq__(self, other):
+        return self._props == other._props
+
+    def __str__(self):
+        if "id" in self._props:
+            return "<ReservedDomainResolvesToEntry {} {}>".format(
+                self.id, repr(self._props)
+            )
+        else:
+            return "<ReservedDomainResolvesToEntry {}>".format(repr(self._props))
+
+    @property
+    def value(self) -> str:
+        """accepts an ngrok point-of-presence shortcode, or "global" """
+        return self._props["value"]
 
 
 class Secret(object):

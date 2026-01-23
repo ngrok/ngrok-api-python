@@ -1546,7 +1546,7 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="ngrok.datatypes.Credential.owner_id">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">owner_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.Credential.owner_id" title="Permalink to this definition">#</a></dt>
-<dd><p>If supplied at credential creation, ownership will be assigned to the specified User or Bot. Only admins may specify an owner other than themselves. Defaults to the authenticated User or Bot.</p>
+<dd><p>If supplied at credential creation, ownership will be assigned to the specified User or Service User. Only admins may specify an owner other than themselves. Defaults to the authenticated User or Service User. Accepts one of: User ID, User email, or SCIM User ID.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -5494,6 +5494,17 @@
 </dd></dl>
 
 <dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.ReservedDomain.resolves_to">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">resolves_to</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#ngrok.datatypes.ReservedDomainResolvesToEntry" title="ngrok.datatypes.ReservedDomainResolvesToEntry"><span class="pre">ReservedDomainResolvesToEntry</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ngrok.datatypes.ReservedDomain.resolves_to" title="Permalink to this definition">#</a></dt>
+<dd><p>DNS resolver targets configured for the reserved domain, or empty for “global” resolution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<a class="reference internal" href="#ngrok.datatypes.ReservedDomainResolvesToEntry" title="ngrok.datatypes.ReservedDomainResolvesToEntry"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReservedDomainResolvesToEntry</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="ngrok.datatypes.ReservedDomain.uri">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">uri</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.ReservedDomain.uri" title="Permalink to this definition">#</a></dt>
 <dd><p>URI of the reserved domain API resource</p>
@@ -5638,6 +5649,22 @@
 <dt class="sig sig-object py" id="ngrok.datatypes.ReservedDomainList.uri">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">uri</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.ReservedDomainList.uri" title="Permalink to this definition">#</a></dt>
 <dd><p>URI of the reserved domain list API resource</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ngrok.datatypes.ReservedDomainResolvesToEntry">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ngrok.datatypes.</span></span><span class="sig-name descname"><span class="pre">ReservedDomainResolvesToEntry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ngrok/datatypes.html#ReservedDomainResolvesToEntry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ngrok.datatypes.ReservedDomainResolvesToEntry" title="Permalink to this definition">#</a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="ngrok.datatypes.ReservedDomainResolvesToEntry.value">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ngrok.datatypes.ReservedDomainResolvesToEntry.value" title="Permalink to this definition">#</a></dt>
+<dd><p>accepts an ngrok point-of-presence shortcode, or “global”</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -8924,6 +8951,7 @@
 <li><a class="reference internal" href="#ngrok.datatypes.ReservedDomain.id"><code class="docutils literal notranslate"><span class="pre">ReservedDomain.id</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.ReservedDomain.metadata"><code class="docutils literal notranslate"><span class="pre">ReservedDomain.metadata</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.ReservedDomain.region"><code class="docutils literal notranslate"><span class="pre">ReservedDomain.region</span></code></a></li>
+<li><a class="reference internal" href="#ngrok.datatypes.ReservedDomain.resolves_to"><code class="docutils literal notranslate"><span class="pre">ReservedDomain.resolves_to</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.ReservedDomain.uri"><code class="docutils literal notranslate"><span class="pre">ReservedDomain.uri</span></code></a></li>
 </ul>
 </li>
@@ -8948,6 +8976,10 @@
 <li><a class="reference internal" href="#ngrok.datatypes.ReservedDomainList.next_page_uri"><code class="docutils literal notranslate"><span class="pre">ReservedDomainList.next_page_uri</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.ReservedDomainList.reserved_domains"><code class="docutils literal notranslate"><span class="pre">ReservedDomainList.reserved_domains</span></code></a></li>
 <li><a class="reference internal" href="#ngrok.datatypes.ReservedDomainList.uri"><code class="docutils literal notranslate"><span class="pre">ReservedDomainList.uri</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ngrok.datatypes.ReservedDomainResolvesToEntry"><code class="docutils literal notranslate"><span class="pre">ReservedDomainResolvesToEntry</span></code></a><ul>
+<li><a class="reference internal" href="#ngrok.datatypes.ReservedDomainResolvesToEntry.value"><code class="docutils literal notranslate"><span class="pre">ReservedDomainResolvesToEntry.value</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#ngrok.datatypes.SSHCertificateAuthority"><code class="docutils literal notranslate"><span class="pre">SSHCertificateAuthority</span></code></a><ul>
